@@ -12,6 +12,8 @@ export const MainPage = () => {
       <hr/>
       <h2>Urgent Activity</h2>
       <Cards/>
+      <hr/>
+      <h2>Search by Date</h2>
     </>
   )
 }

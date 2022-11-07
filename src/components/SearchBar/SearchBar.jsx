@@ -16,11 +16,17 @@ export const SearchBarContainer = styled.div`
   background-color: whitesmoke;
   max-width: 50rem;
   min-width: 20rem;
-  height: 5rem;
+  height: 4rem;
   align-items: center;
   justify-content: center;
   border-radius: 35px;
-  margin-top: -45px;
+  margin-top: -35px;
   /* border: 1px solid black; */
   background-color: tomato;
+  @media ( max-width: 1024px) {
+    width: 700px;
+  }
+  @media ( max-width: 768px) {
+    width: 250px;
+  }
 `

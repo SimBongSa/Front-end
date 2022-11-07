@@ -67,6 +67,10 @@ export const HeaderRegister = styled.div`
   &:hover {
     transform: translateY(-10%);
   }
+  @media ( max-width: 768px) {
+    width: 100px;
+    font-size: .4rem;
+  }
 `
 
 export const UserIcon = styled(FaRegUserCircle)`
