@@ -8,6 +8,7 @@ export const HeaderContainer = styled.header`
   left: 0;
   width: 100%;
   padding: .5rem 0;
+  z-index: 3;
   will-change: transform;
   transition: background .3s,
   -webkit-transform .5s cubic-bezier(.694,.048,.335,1);

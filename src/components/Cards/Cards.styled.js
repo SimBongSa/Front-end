@@ -8,6 +8,7 @@ export const CardContainer = styled.section`
   justify-content: space-around;
   flex-wrap: wrap;
   padding: 1rem;
+  margin-bottom: 5rem;
 `
 
 export const Card = styled.article`
@@ -15,24 +16,32 @@ export const Card = styled.article`
   width: 300px;
   height: 350px;
   border-radius: 20px;
+  background: #aaaaaa;
   cursor: pointer;
   transition: 0.4s;
   margin: 0.5rem;
+  &:hover {
+    transform: translateY(-5%);
+  }
   @media ( max-width: 1610px) {
     width: 250px;
     height: 250px;
+    margin-top: 1.4rem;
   }
   @media ( max-width: 1400px) {
     width: 800px;
     height: 250px;
+    margin-top: 1.4rem;
   }
   @media ( max-width: 1024px) {
     width: 700px;
     height: 250px;
+    margin-top: 1.4rem;
   }
   @media ( max-width: 768px) {
     width: 350px;
     height: 250px;
+    margin-top: 1.4rem;
   }
 `
 
@@ -49,7 +58,6 @@ export const CardImg = styled.div`
 `
 export const CardTitle = styled.div`
   text-align: center;
-  font-family: sans-serif;
   font-weight: bold;
   margin-top: -80px;
   height: 40px;
@@ -59,4 +67,13 @@ export const CardTitle = styled.div`
   & span {
     color: gray;
   }
+`
+
+export const CardContent = styled.h2`
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+  margin-top: 1.4rem;
+  font-size: 1.3rem;
+  width: 90%;
 `
