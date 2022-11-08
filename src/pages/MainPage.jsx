@@ -21,4 +21,4 @@ export const MainPage = () => {
       <Footer/>
     </>
   )
-}
+};

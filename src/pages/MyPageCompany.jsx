@@ -1,7 +1,11 @@
+import Header from "../components/Header/Header"
+import Profile from "../components/MyPage/Profile/Profile"
+
 export const MyPageCompany = () => {
   return (
     <div>
-      회사 마이페이지임
+      <Header/>
+      <Profile/>
     </div>
   )
 }
