@@ -32,10 +32,13 @@ const Profile = () => {
 export default Profile;
 
 export const ProfileContainer = styled.div`
+  float: left;
+  position: sticky;
   margin-top: 10rem;
+  margin-left: 2rem;
   border-radius: 5px;
   padding: 30px 10px 10px 10px;
-  width: 250px;
+  width: 200px;
 	max-width: 100%;
 	text-align: center;
   background-color: #aaaaaa;
@@ -73,8 +76,8 @@ export const ProfileTag = styled.span`
 	font-weight: bold;
 	padding: 3px 7px;
 	position: absolute;
-	top: 12rem;
-	left: 30px;
+	top: 1.5rem;
+	left: 1.5rem;
   z-index: 4;
 `
 
@@ -97,6 +100,7 @@ export const ProfileSkill = styled.ul`
     border-radius: 4px;
     display: inline-block;
     font-size: 12px;
+    margin: 0 7px 7px 7px;
     padding: 7px;
     transition: all 0.3s;
     &:hover {

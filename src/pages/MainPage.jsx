@@ -1,3 +1,4 @@
+import styled from "styled-components"
 import MainCalendar from "../components/Calendar/Calendar"
 import Cards from "../components/Cards/Cards"
 import Footer from "../components/Footer/Footer"
@@ -12,13 +13,23 @@ export const MainPage = () => {
       <MainBg/>
       <SearchBar/>
       <hr/>
-      <h2>Urgent Activity</h2>
+      <MainPageText>Urgent Activity</MainPageText>
       <Cards/>
-      <hr/>
-      <h2>Search by Date</h2>
-      <MainCalendar/>
-      <hr/>
+      {/* <hr/> */}
+      {/* <h2>Search by Date</h2>
+      <MainCalendar/> */}
       <Footer/>
     </>
   )
 };
+
+export const MainPageText = styled.span`
+  display: flex;
+  align-items: center;
+  margin: 1rem;
+  float: left;
+  width: 15%;
+  font-size: 2.8rem;
+  vertical-align: middle;
+  height: 350px;
+`
