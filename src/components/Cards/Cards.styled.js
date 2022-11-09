@@ -13,6 +13,7 @@ export const CardContainer = styled.div`
   float: right;
   overflow: auto;
   white-space: nowrap;
+  transition: all 0.5s;
 `
 
 export const Card = styled.article`
@@ -80,4 +81,34 @@ export const CardContent = styled.h2`
   margin-top: 1.4rem;
   font-size: 1.3rem;
   width: 90%;
+`
+
+export const CardMoveLeftBtn = styled.button`
+  position: absolute;
+  cursor: pointer;
+  top: 60rem;
+  left: 17rem;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  border: none;
+  background-color: rgba(0,0,0,0.7);
+  color: white;
+  z-index: 6;
+  user-select: none;
+`
+
+export const CardMoveRightBtn = styled.button`
+  position: absolute;
+  cursor: pointer;
+  top: 60rem;
+  right: 5rem;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  border: none;
+  background-color: rgba(0,0,0,0.7);
+  color: white;
+  z-index: 6;
+  user-select: none;
 `
