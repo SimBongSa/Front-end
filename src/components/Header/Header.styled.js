@@ -22,11 +22,10 @@ export const HeaderContainer = styled.header`
 export const HeaderLogo = styled.span`
   float: left;
   padding: 13px 10px 13px 10px;
-  margin: 0px 0px 0px 1rem;
+  margin: 9px 0px 0px 15px;
   font-size: 2.25rem;
   line-height: inherit;
   font-weight: 500;
-  color: black;
   &::after {
     content: '';
     display: table;
@@ -81,4 +80,36 @@ export const UserIcon = styled(FaRegUserCircle)`
   font-size: 3rem;
   color: grey;
   
+`
+
+export const LightThemeBtn = styled.button`
+  cursor: pointer;
+  position: fixed;
+  bottom: 20px;
+  left: 200px;
+  border-radius: 50%;
+  background: ${(props) => props.theme.WHITE};
+  color: ${(props) => props.theme.BLACK};
+  padding: 1rem;
+  text-align: center;
+  width: 3rem;
+  height: 3rem;
+  border: none;
+  -webkit-transform: rotate(0deg);
+  -moz-transform: rotate(0deg);
+  -o-transform: rotate(0deg);
+  transform: rotate(0deg);
+  -webkit-transition: all 0.7s;
+  -moz-transition: all 0.7s;
+  -o-transition: all 0.7s;
+  transition: all 0.7s;
+  opacity: 1;
+  &:hover {
+  -webkit-transform: rotate(360deg);
+  -moz-transform: rotate(360deg);
+  -o-transform: rotate(360deg);
+  transform: rotate(360deg);
+  background: black;
+  color: #fff
+  }
 `

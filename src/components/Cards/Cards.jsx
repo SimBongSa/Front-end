@@ -6,14 +6,14 @@ const Cards = () => {
   const [moveIndex, setMoveIndex] = useState(0);
 
   const moveLeft = () => {
-    setMoveIndex((prev) => prev - 10);
+    setMoveIndex((prev) => prev - 20);
   };
 
   const moveRight = () => {
     if (moveIndex === 0) {
       return;
     }
-    setMoveIndex((prev) => prev + 10);
+    setMoveIndex((prev) => prev + 20);
   }
 
   return (
