@@ -123,6 +123,10 @@ export const CalendarContainer = styled.div`
     background: none;
     text-align: center;
     line-height: 2.5rem;
+    transition: 0.4s;
+    &:hover {
+      transform: translateY(-5%);
+    }
 
     .dot {
       height: 5px;

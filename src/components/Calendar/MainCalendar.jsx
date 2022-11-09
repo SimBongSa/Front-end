@@ -4,10 +4,11 @@ import Calendar from "react-calendar";
 import moment from "moment";
 import { CalendarContainer } from "./MainCalendar.styled";
 import axios from "axios";
-import Modal from "../Modal/Modal";
+import Serverlist from "../Serverlist/Serverlist";
 
 const MainCalendar = () => {
   const [value, onChange] = useState(new Date());
+  const [date, setDate] = useState(new Date());
 
   const [mark, setMark] = useState([
     "2022-11-10",
@@ -15,6 +16,37 @@ const MainCalendar = () => {
     "2022-11-15",
     "2022-11-16",
   ]);
+
+  const array = [
+    {
+      date: "2022-11-10",
+      list: {
+        name: "",
+        location: "",
+      },
+    },
+    {
+      date: "2022-11-11",
+      list: {
+        name: "",
+        location: "",
+      },
+    },
+    {
+      date: "2022-11-12",
+      list: {
+        name: "",
+        location: "",
+      },
+    },
+    {
+      date: "2022-11-13",
+      list: {
+        name: "",
+        location: "",
+      },
+    },
+  ];
   return (
     <>
       <CalendarContainer>
@@ -50,10 +82,7 @@ const MainCalendar = () => {
         />
         <div className="text-gray-500 mt-4">
           {moment(value).format("YYYY년 MM월 DD일")}
-          <Modal />
-          <Modal />
-          <Modal />
-          <Modal />
+          <Serverlist result={array} key={mark} mark={mark} />
         </div>
       </CalendarContainer>
     </>

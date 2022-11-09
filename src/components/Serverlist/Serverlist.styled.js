@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const ModalContainer = styled.div`
+export const ServerlistContainer = styled.div`
   width: 25rem;
   height: 5.5rem;
   background-color: #ffffff;

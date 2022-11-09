@@ -1,12 +1,15 @@
-import { ReviewContainer } from "./Review.styled";
+import { ReviewContainer, StartBox } from "./Review.styled";
 
 function Review() {
   return (
     <>
       <ReviewContainer>
-        <h3>Children Christmas Santa Volunteer</h3>
-        <lr />
-        <p>W chidren Hospital 100 smart street </p>Gannam-gu
+        <div>
+          <StartBox>⭐⭐⭐⭐</StartBox>
+          <h3>Children Christmas Santa Volunteer</h3>
+          <div>W chidren Hospital 100 smart street </div>
+          <div>Gannam-gu</div>
+        </div>
       </ReviewContainer>
     </>
   );
