@@ -2,6 +2,7 @@ import styled from "styled-components";
 import Header from "../components/Header/Header"
 import Profile from "../components/MyPage/Profile/Profile"
 import Cards from "../components/Cards/Cards"
+import Review from "../components/MyPage/Review/Review";
 
 export const MyPageCompany = () => {
   return (
@@ -10,6 +11,8 @@ export const MyPageCompany = () => {
       <Profile/>
       <Test>My Activity</Test>
       <Cards/>
+      <Test>My Reviews</Test>
+      <Review/>
     </div>
   )
 };

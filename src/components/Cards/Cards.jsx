@@ -1,8 +1,25 @@
 import { CardContainer, Card, CardImg, CardTitle, CardContent } from "./Cards.styled";
+import { useState } from "react";
 
 const Cards = () => {
+
+  const [moveIndex, setMoveIndex] = useState(0);
+
+  const moveLeft = () => {
+    if (moveIndex === 0) {
+      return;
+    }
+    setMoveIndex((prev) => prev + 10);
+  };
+
+  const moveRight = () => {
+    setMoveIndex((prev) => prev - 10);
+  }
+
   return (
-    <CardContainer>
+    <CardContainer style={{ transform: `translateX(${moveIndex}%)` }}>
+      <button onClick={moveLeft}>left</button>
+      <button onClick={moveRight}>right</button>
       <Card>
         <CardImg>
           {/* <img src="https://i.redd.it/b3esnz5ra34y.jpg" alt="test"/> */}
@@ -11,7 +28,7 @@ const Cards = () => {
           <p>W Children Hospital</p>
           <span>100 Smart Street, Gangnam-gu</span>
         </CardTitle>
-        <CardContent>Children Christmas Santa Volunteer</CardContent>
+        {/* <CardContent>Children Christmas Santa Volunteer</CardContent> */}
       </Card>
 
       <Card>
@@ -22,7 +39,7 @@ const Cards = () => {
           <p>W Children Hospital</p>
           <span>100 Smart Street, Gangnam-gu</span>
         </CardTitle>
-        <CardContent>Children Christmas Santa Volunteer</CardContent>
+        {/* <CardContent>Children Christmas Santa Volunteer</CardContent> */}
       </Card>
 
       <Card>
@@ -33,7 +50,7 @@ const Cards = () => {
           <p>W Children Hospital</p>
           <span>100 Smart Street, Gangnam-gu</span>
         </CardTitle>
-        <CardContent>Children Christmas Santa Volunteer</CardContent>
+        {/* <CardContent>Children Christmas Santa Volunteer</CardContent> */}
       </Card>
 
       <Card>
@@ -44,7 +61,7 @@ const Cards = () => {
           <p>W Children Hospital</p>
           <span>100 Smart Street, Gangnam-gu</span>
         </CardTitle>
-        <CardContent>Children Christmas Santa Volunteer</CardContent>
+        {/* <CardContent>Children Christmas Santa Volunteer</CardContent> */}
       </Card>
       
     </CardContainer>

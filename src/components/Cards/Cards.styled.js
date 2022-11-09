@@ -1,8 +1,9 @@
 import styled from "styled-components";
 
-export const CardContainer = styled.section`
+export const CardContainer = styled.div`
   z-index: 0;
-  width: 80%;
+  width: 75%;
+  min-width: 1160px;
   display: flex;
   margin: 0 auto;
   justify-content: space-around;
@@ -10,15 +11,14 @@ export const CardContainer = styled.section`
   padding: 1rem;
   margin-bottom: 5rem;
   float: right;
-  @media ( max-width: 1410px) {
-    width: 70%;
-  }
+  overflow: auto;
+  white-space: nowrap;
 `
 
 export const Card = styled.article`
-  margin: 30px auto;
-  width: 300px;
-  height: 350px;
+  margin: 0px auto;
+  width: 250px;
+  height: 300px;
   border-radius: 20px;
   background: #aaaaaa;
   cursor: pointer;
