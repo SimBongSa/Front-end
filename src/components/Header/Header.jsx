@@ -1,6 +1,10 @@
+import { useNavigate } from "react-router-dom";
 import { HeaderContainer, HeaderLogo, HeaderMenu, HeaderMenuItem, HeaderRegister } from "./Header.styled";
 
 const Header = () => {
+
+  const navigate = useNavigate();
+
   return (
     <HeaderContainer>
       <HeaderLogo>VONGOLE</HeaderLogo>
@@ -8,7 +12,11 @@ const Header = () => {
       <HeaderMenu>
         <HeaderMenuItem>Notice</HeaderMenuItem>
         <HeaderMenuItem>Message</HeaderMenuItem>
-        <HeaderRegister>Register Organization</HeaderRegister>
+        <HeaderRegister
+          onClick={() => {
+            navigate("/register");
+          }}
+        >Register Organization</HeaderRegister>
       </HeaderMenu>
 
     </HeaderContainer>

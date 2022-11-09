@@ -1,5 +1,5 @@
 import { createGlobalStyle } from "styled-components";
-import reset from "styled-reset"
+import reset from "styled-reset";
 
 export const GloblaStyle = createGlobalStyle`
   ${reset}
@@ -13,4 +13,4 @@ export const GloblaStyle = createGlobalStyle`
     background: ${({ theme }) => theme.bgColor};
     color: ${({ theme }) => theme.textColor};
   }
-`
+`;

@@ -2,19 +2,21 @@ import styled from "styled-components";
 
 export const CalendarContainer = styled.div`
   display: flex;
-  justify-content: space-evenly;
+  justify-content: center;
+  padding-top: 8rem;
+
+  // calendar css
 
   .react-calendar {
-    width: 45rem;
+    width: 80rem;
     height: 40rem;
     max-width: 100%;
     background: #ffffff;
     font-family: Arial, Helvetica, sans-serif;
-    line-height: 3.5rem;
+    line-height: 5rem;
     border-radius: 12px;
     border-style: outset;
   }
-
   .react-calendar__month-view__days__day--neighboringMonth {
     opacity: 0.7;
   }
@@ -117,7 +119,7 @@ export const CalendarContainer = styled.div`
   } */
   .react-calendar__tile {
     max-width: 100%;
-    padding: 1.2rem 0.5rem;
+    padding: 1rem 0.5rem;
     background: none;
     text-align: center;
     line-height: 2.5rem;
@@ -189,3 +191,8 @@ export const CalendarContainer = styled.div`
     background-color: #e6e6e6;
   } */
 `;
+
+//  background: #ff8331;
+// padding: 24px;
+// border-radius: 50%;
+// color: #fff;

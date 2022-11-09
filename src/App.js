@@ -1,15 +1,15 @@
-import Router from "./shared/Router"
+import Router from "./shared/Router";
 import styled from "styled-components";
 import { useState } from "react";
 import { BsFillMoonFill } from "react-icons/bs";
 
 function App() {
-
-
   return (
     <div className="App">
-      <Router/>
-      <LightThemeBtn><BsFillMoonFill/></LightThemeBtn>
+      <Router />
+      <LightThemeBtn>
+        <BsFillMoonFill />
+      </LightThemeBtn>
     </div>
   );
 }
@@ -39,11 +39,11 @@ const LightThemeBtn = styled.button`
   transition: all 0.5s;
   opacity: 1;
   &:hover {
-  -webkit-transform: rotate(360deg);
-  -moz-transform: rotate(360deg);
-  -o-transform: rotate(360deg);
-  transform: rotate(360deg);
-  background: black;
-  color: #fff
+    -webkit-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg);
+    background: black;
+    color: #fff;
   }
-`
+`;

@@ -2,9 +2,8 @@ import { useState, useQuery } from "react";
 import Calendar from "react-calendar";
 // import "react-calendar/dist/Calendar.css";
 import moment from "moment";
-import { CalendarContainer } from "./MainCalendar.styled";
+import { CalendarContainer } from "./CustomerClaendar.styled";
 import axios from "axios";
-import Modal from "../Modal/Modal";
 
 const MainCalendar = () => {
   const [value, onChange] = useState(new Date());
@@ -15,6 +14,24 @@ const MainCalendar = () => {
     "2022-11-15",
     "2022-11-16",
   ]);
+
+  // const { data } = useQuery(
+  //   ["logDate", month],
+  //   async () => {
+  //     const result = await axios.get(
+  //       `/`
+  //     );
+  //     return result.data;
+  //   },
+  //   {
+  //     onSuccess: (data) => {
+  //       setMark(data);
+  //      // ["2022-02-02", "2022-02-02", "2022-02-10"] 형태로 가져옴
+  //     },
+  //   }
+  // );
+  console.log(mark);
+  // console.log(value);
   return (
     <>
       <CalendarContainer>
@@ -30,6 +47,7 @@ const MainCalendar = () => {
           calendarType="US" // 일요일 부터 start
           navigationLabel={null}
           // showNeighboringMonth={false} //  이전, 이후 달의 날짜는 보이지 않도록 설정
+          className="mx-auto w-full text-sm border-b"
           tileContent={({ date, view }) => {
             // 날짜 타일에 컨텐츠 추가하기 (html 태그)
             // 추가할 html 태그를 변수 초기화
@@ -48,13 +66,6 @@ const MainCalendar = () => {
             );
           }}
         />
-        <div className="text-gray-500 mt-4">
-          {moment(value).format("YYYY년 MM월 DD일")}
-          <Modal />
-          <Modal />
-          <Modal />
-          <Modal />
-        </div>
       </CalendarContainer>
     </>
   );

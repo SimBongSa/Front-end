@@ -1,13 +1,14 @@
 import styled from "styled-components";
 
-export const ModalContainer = styled.div`
-  width: 25rem;
-  height: 5.5rem;
+export const ReviewContainer = styled.div`
+  width: 80rem;
+  height: 8rem;
   background-color: #ffffff;
   border-radius: 15px;
   border-style: outset;
-  margin-top: 1rem;
-  margin-bottom: 1rem;
+  margin-bottom: 3rem;
+  display: flex;
+  margin-left: 25rem;
   cursor: pointer;
   transition: 0.4s;
   &:hover {

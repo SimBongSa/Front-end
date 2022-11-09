@@ -9,6 +9,10 @@ export const CardContainer = styled.section`
   flex-wrap: wrap;
   padding: 1rem;
   margin-bottom: 5rem;
+  float: right;
+  @media ( max-width: 1410px) {
+    width: 70%;
+  }
 `
 
 export const Card = styled.article`
@@ -23,18 +27,18 @@ export const Card = styled.article`
   &:hover {
     transform: translateY(-5%);
   }
-  @media ( max-width: 1610px) {
+  /* @media ( max-width: 1610px) {
     width: 250px;
     height: 250px;
     margin-top: 1.4rem;
   }
   @media ( max-width: 1400px) {
-    width: 800px;
+    width: 650px;
     height: 250px;
     margin-top: 1.4rem;
   }
   @media ( max-width: 1024px) {
-    width: 700px;
+    width: 650px;
     height: 250px;
     margin-top: 1.4rem;
   }
@@ -42,7 +46,7 @@ export const Card = styled.article`
     width: 350px;
     height: 250px;
     margin-top: 1.4rem;
-  }
+  } */
 `
 
 export const CardImg = styled.div`

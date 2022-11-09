@@ -4,10 +4,8 @@ function Modal() {
   return (
     <>
       <ModalContainer>
-        <h2>Children Christmas Santa Volunteer</h2>
-        <h3>W chidren Hospital</h3>
-        <lr />
-        <span>100 smart street, Gannam-gu</span>
+        <h3>Children Christmas Santa Volunteer</h3>
+        <div>W chidren Hospital 100 smart street, Gannam-gu</div>
       </ModalContainer>
     </>
   );
