@@ -3,12 +3,12 @@ import { FaRegUserCircle } from "react-icons/fa";
 
 export const HeaderContainer = styled.header`
   position: fixed;
-  background-color: white;
   top: 0;
   left: 0;
   width: 100%;
   padding: .5rem 0;
   z-index: 3;
+  background-color: ${(props) => props.theme.bgColor};
   will-change: transform;
   transition: background .3s,
   -webkit-transform .5s cubic-bezier(.694,.048,.335,1);
@@ -54,15 +54,17 @@ export const HeaderMenuItem = styled.span`
 export const HeaderRegister = styled.div`
   cursor: pointer;
   display: flex;
-  background: #232323;
   border-radius: 35px;
-  color: #fff;
+  background: ${(props) => props.theme.ctrColor};
+  color: ${(props) => props.theme.bgColor};
   padding: 15px;
-  font-size: 0.7rem;
+  font-size: 0.8rem;
   width: 150px;
-  margin-left: 1.75rem;
+  margin-left: 1.2rem;
   float: right;
   justify-content: center;
+  text-align: center;
+  align-items: center;
   transition: all 0.3s;
   &:hover {
     transform: translateY(-10%);
@@ -88,8 +90,8 @@ export const LightThemeBtn = styled.button`
   bottom: 20px;
   left: 200px;
   border-radius: 50%;
-  background: ${(props) => props.theme.WHITE};
-  color: ${(props) => props.theme.BLACK};
+  background-color: ${(props) => props.theme.ctrColor};
+  color: ${(props) => props.theme.bgColor};
   padding: 1rem;
   text-align: center;
   width: 3rem;
@@ -109,7 +111,5 @@ export const LightThemeBtn = styled.button`
   -moz-transform: rotate(360deg);
   -o-transform: rotate(360deg);
   transform: rotate(360deg);
-  background: black;
-  color: #fff
   }
 `
