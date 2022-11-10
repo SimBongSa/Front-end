@@ -12,5 +12,6 @@ export const GloblaStyle = createGlobalStyle`
   body {
     background: ${({ theme }) => theme.bgColor};
     color: ${({ theme }) => theme.textColor};
+    transition: all 0.5s;
   }
 `;

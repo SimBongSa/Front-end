@@ -33,7 +33,7 @@ export default Profile;
 
 export const ProfileContainer = styled.div`
   float: left;
-  position: sticky;
+  position: fixed;
   margin-top: 10rem;
   margin-left: 2rem;
   border-radius: 5px;
