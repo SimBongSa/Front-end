@@ -57,7 +57,7 @@ export const LoginOverlay = styled.div`
 export const LoginBox = styled.div`
   display: flex;
   margin: 0 auto;
-  padding: 20px;
+  padding: 50px;
   max-width: 500px;
   width: 30%;
   height: 40vh;
@@ -131,7 +131,6 @@ export const LoginBtn = styled.button`
 export const SocialContainer = styled.div`
   display: flex;
   margin: 0 auto;
-  margin-top: -25px;
   & div {
     cursor: pointer;
     font-size: .8rem;
