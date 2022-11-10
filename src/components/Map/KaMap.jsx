@@ -30,7 +30,7 @@ const KaMap = (props) => {
       position: map.getCenter(),
     });
 
-    // 마커위에 뜨는 정보창입니다.
+    // 마커위에 뜨는 정보창입니다
     const infowindow = new window.kakao.maps.InfoWindow({ zindex: 1 });
 
     // 해당 위치 값이 어딘지 알게해주는 역할
