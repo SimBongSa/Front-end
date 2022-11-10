@@ -22,10 +22,11 @@ export const HeaderContainer = styled.header`
 export const HeaderLogo = styled.span`
   float: left;
   padding: 13px 10px 13px 10px;
-  margin: 9px 0px 0px 15px;
+  margin: 13px 0px 0px 15px;
   font-size: 2.25rem;
   line-height: inherit;
   font-weight: 500;
+  transition: all 0.3s;
   &::after {
     content: '';
     display: table;
@@ -43,6 +44,8 @@ export const HeaderMenu = styled.div`
 export const HeaderMenuItem = styled.span`
   cursor: pointer;
   display: inline-block;
+  justify-content: center;
+  margin-top: 4px;
   padding: 13px 10px 13px 10px;
   text-decoration: none;
   transition: all 0.3s;
@@ -54,13 +57,13 @@ export const HeaderMenuItem = styled.span`
 export const HeaderRegister = styled.div`
   cursor: pointer;
   display: flex;
-  border-radius: 35px;
+  border-radius: 30px;
   background: ${(props) => props.theme.ctrColor};
   color: ${(props) => props.theme.bgColor};
   padding: 15px;
-  font-size: 0.8rem;
-  width: 150px;
-  margin-left: 1.2rem;
+  width: fit-content;
+  margin-left: 50px;
+  padding: 16px 25px 15px 25px;
   float: right;
   justify-content: center;
   text-align: center;
@@ -68,10 +71,6 @@ export const HeaderRegister = styled.div`
   transition: all 0.3s;
   &:hover {
     transform: translateY(-10%);
-  }
-  @media ( max-width: 768px) {
-    width: 100px;
-    font-size: .4rem;
   }
 `
 
@@ -81,13 +80,12 @@ export const UserIcon = styled(FaRegUserCircle)`
   justify-content: right;
   font-size: 3rem;
   color: grey;
-  
 `
 
 export const LightThemeBtn = styled.button`
   cursor: pointer;
   position: fixed;
-  bottom: 20px;
+  bottom: 25px;
   left: 200px;
   border-radius: 50%;
   background-color: ${(props) => props.theme.ctrColor};

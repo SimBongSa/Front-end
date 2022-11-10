@@ -17,12 +17,13 @@ const Header = () => {
       <LightThemeBtn onClick={toggleTheme}><BsFillMoonFill/></LightThemeBtn>
         <HeaderMenuItem>Notice</HeaderMenuItem>
         <HeaderMenuItem>Message</HeaderMenuItem>
+        {/* <HeaderMenuItem>Login</HeaderMenuItem> */}
 
         <HeaderRegister
           onClick={() => {
-            navigate("/register");
+            navigate("/login");
           }}
-        >Register Organization</HeaderRegister>
+        >Login</HeaderRegister>
       </HeaderMenu>
 
     </HeaderContainer>
