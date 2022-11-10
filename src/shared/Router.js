@@ -6,10 +6,13 @@ import { MyPageCompany } from '../pages/MyPageCompany';
 import { RegisterPage } from '../pages/RegisterPage';
 import { GloblaStyle } from '../theme/GlobalStyle';
 import { ThemeProvider } from '../context/themeProvider';
+import CombinedMap from "../components/Map/CombinedMap";
+
 
 const Router = () => {
   return (
     <BrowserRouter>
+
       <ThemeProvider>
         <GloblaStyle/>
         <Suspense fallback={ <div>...loading</div> }>
@@ -18,9 +21,11 @@ const Router = () => {
             <Route path="/login" element={ <LoginPage/> } />
             <Route path="/register" element={ <RegisterPage/> } />
             <Route path="/mypage" element={ <MyPageCompany/> }/>
+            <Route path="/map" element={<CombinedMap />} />
           </Routes>
         </Suspense>
       </ThemeProvider>
+
     </BrowserRouter>
   );
 };
