@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { HeaderContainer, HeaderLogo, HeaderMenu, HeaderMenuItem, HeaderRegister, LightThemeBtn, DarkThemeBtn } from "./Header.styled";
+import { HeaderContainer, HeaderLogo, HeaderMenu, HeaderMenuItem, HeaderRegister, LightThemeBtn } from "./Header.styled";
 import { BsFillMoonFill } from "react-icons/bs";
 import { useTheme } from "../../context/themeProvider";
 
@@ -17,8 +17,6 @@ const Header = () => {
       <LightThemeBtn onClick={toggleTheme}><BsFillMoonFill/></LightThemeBtn>
         <HeaderMenuItem>Notice</HeaderMenuItem>
         <HeaderMenuItem>Message</HeaderMenuItem>
-        {/* <HeaderMenuItem>Login</HeaderMenuItem> */}
-
         <HeaderRegister
           onClick={() => {
             navigate("/login");

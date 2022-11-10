@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { MainPage } from '../pages/MainPage';
 import { LoginPage } from '../pages/LoginPage';
 import { MyPageCompany } from '../pages/MyPageCompany';
+import { MyPageUser } from "../pages/MyPageUser"
 import { RegisterPage } from '../pages/RegisterPage';
 import { GloblaStyle } from '../theme/GlobalStyle';
 import { ThemeProvider } from '../context/themeProvider';
@@ -18,6 +19,7 @@ const Router = () => {
             <Route path="/login" element={ <LoginPage/> } />
             <Route path="/register" element={ <RegisterPage/> } />
             <Route path="/mypage" element={ <MyPageCompany/> }/>
+            <Route path="/usermypage" element={ <MyPageUser/> } />
           </Routes>
         </Suspense>
       </ThemeProvider>

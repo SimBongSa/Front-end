@@ -30,7 +30,7 @@ function useTheme() {
       setThemeMode("light");
       window.localStorage.setItem('theme', "light")
     };
-  }, [themeMode]);
+  }, [themeMode, setThemeMode]);
   return [ themeMode, toggleTheme ];
 }
 
