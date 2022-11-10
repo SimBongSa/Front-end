@@ -1,59 +1,149 @@
-import { Map, MapMarker, useMap } from "react-kakao-maps-sdk";
-import { useState, useEffect, useSelector, useRef } from "react";
-import KaPost from "./KaPost";
-import styled from "styled-components";
+// import { Map, MapMarker, useMap } from "react-kakao-maps-sdk";
+// import { useState, useEffect, useSelector, useRef } from "react";
+// import KaPost from "./KaPost";
+// import styled from "styled-components";
 
-const { kakao } = window;
+// const { kakao } = window;
+
+// const KaMap = () => {
+//   const [state, setState] = useState({
+//     // 지도의 초기 위치
+//     center: { lat: 37.49676871972202, lng: 127.02474726969814 },
+//     // 지도 위치 변경시 panto를 이용할지(부드럽게 이동)
+//     isPanto: true,
+//   });
+//   const [searchAddress, SetSearchAddress] = useState();
+
+//   // 주소 입력후 검색 클릭 시 원하는 주소로 이동
+//   const SearchMap = () => {
+//     const geocoder = new kakao.maps.services.Geocoder();
+
+//     let callback = function (result, status) {
+//       if (status === kakao.maps.services.Status.OK) {
+//         const newSearch = result[0];
+//         setState({
+//           center: { lat: newSearch.y, lng: newSearch.x },
+//         });
+//       }
+//     };
+//     geocoder.addressSearch(`${searchAddress}`, callback);
+//   };
+
+//   const handleSearchAddress = (e) => {
+//     SetSearchAddress(e.target.value);
+//   };
+
+//   return (
+//     <div>
+//       <Map>
+//         center={state.center}
+//         isPanto={state.isPanto}
+//         style=
+//         {{
+//           // 지도의 크기
+//           width: "100%",
+//           height: "450px",
+//         }}
+//         level={3}
+//       </Map>{" "}
+//       <input onChange={handleSearchAddress}></input>
+//       <button onClick={SearchMap}>클릭</button>
+//     </div>
+//   );
+// };
+// export default KaMap;
+
+import { useEffect, useState } from "react";
+import { MapMarker, Map } from "react-kakao-maps-sdk";
 
 const KaMap = () => {
-  const positions = [
-    {
-      title: "카카오",
-      latlng: { lat: 33.450705, lng: 126.570677 },
-    },
-    {
-      title: "생태연못",
-      latlng: { lat: 33.450936, lng: 126.569477 },
-    },
-    {
-      title: "텃밭",
-      latlng: { lat: 33.450879, lng: 126.56994 },
-    },
-    {
-      title: "근린공원",
-      latlng: { lat: 33.451393, lng: 126.570738 },
-    },
-  ];
+  const [info, setInfo] = useState();
+  const [markers, setMarkers] = useState([]);
+  const [map, setMap] = useState();
+  const [schedule, setSchedule] = useState("");
+
+  const { kakao } = window;
+  const geocoder = new kakao.maps.services.Geocoder();
+
+  console.log("주소 =>", schedule);
+
+  const onAddScheduleHandler = (e) => {
+    e.preventDefault();
+    if (!map) return;
+    const ps = new kakao.maps.services.Places();
+    geocoder.addressSearch(`${schedule}`, (data, status, _pagination) => {
+      if (status === kakao.maps.services.Status.OK) {
+        // 검색된 장소 위치를 기준으로 지도 범위를 재설정하기위해
+        // LatLngBounds 객체에 좌표를 추가합니다
+        const bounds = new kakao.maps.LatLngBounds();
+        let markers = [];
+
+        for (let i = 0; i < data.length; i++) {
+          // @ts-ignore
+          markers.push({
+            position: {
+              lat: data[i].y,
+              lng: data[i].x,
+            },
+            content: data[i].place_name,
+          });
+
+          // @ts-ignore
+          bounds.extend(new kakao.maps.LatLng(data[i].y, data[i].x));
+        }
+        setMarkers(markers);
+
+        // 검색된 장소 위치를 기준으로 지도 범위를 재설정합니다
+        map.setBounds(bounds);
+      }
+    });
+    setSchedule("");
+  };
+
+  const onChangeHandler = (e) => {
+    // const { name, value } = e.target;
+    // setSchedule({ ...schedule, [name]: value });
+    setSchedule(e.target.value);
+  };
 
   return (
-    <Map // 지도를 표시할 Container
-      center={{
-        // 지도의 중심좌표
-        lat: 33.450701,
-        lng: 126.570667,
-      }}
-      style={{
-        // 지도의 크기
-        width: "100%",
-        height: "450px",
-      }}
-      level={3} // 지도의 확대 레벨
-    >
-      {positions.map((position, index) => (
-        <MapMarker
-          key={`${position.title}-${position.latlng}`}
-          position={position.latlng} // 마커를 표시할 위치
-          image={{
-            src: "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png", // 마커이미지의 주소입니다
-            size: {
-              width: 24,
-              height: 35,
-            }, // 마커이미지의 크기입니다
-          }}
-          title={position.title} // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
+    <div>
+      <form onSubmit={onAddScheduleHandler}>
+        <input
+          type="text"
+          placeholder="주소"
+          name="address"
+          value={schedule}
+          onChange={onChangeHandler}
         />
-      ))}
-    </Map>
+        <button type="submit">작성</button>
+      </form>
+      <Map // 로드뷰를 표시할 Container
+        center={{
+          lat: 37.566826,
+          lng: 126.9786567,
+        }}
+        style={{
+          width: "100%",
+          height: "350px",
+        }}
+        level={3}
+        onCreate={setMap}
+      >
+        {markers.map((marker) => (
+          <MapMarker
+            key={`marker-${marker.content}-${marker.position.lat},${marker.position.lng}`}
+            position={marker.position}
+            onClick={() => setInfo(marker)}
+          >
+            {info && info.content === marker.content && (
+              <div style={{ color: "#000" }}>{marker.content}</div>
+            )}
+          </MapMarker>
+        ))}
+      </Map>
+    </div>
   );
 };
+
 export default KaMap;
