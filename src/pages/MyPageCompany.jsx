@@ -7,14 +7,14 @@ import Review from "../components/MyPage/Review/Review";
 export const MyPageCompany = () => {
   return (
     <div>
-      <Header/>
-      <Profile/>
+      <Header />
+      <Profile />
       <Test>My Activity</Test>
       <Cards/>
       <Test>My Reviews</Test>
       <Review/>
     </div>
-  )
+  );
 };
 
 export const Test = styled.h1`
@@ -24,10 +24,10 @@ export const Test = styled.h1`
   width: 80%;
   float: right;
   text-align: left;
-  @media ( max-width: 1515px) {
+  @media (max-width: 1515px) {
     width: 79%;
   }
-  @media ( max-width: 1400px) {
+  @media (max-width: 1400px) {
     width: 70%;
   }
-`
+`;

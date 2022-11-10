@@ -22,7 +22,7 @@ const Router = () => {
         </Suspense>
       </ThemeProvider>
     </BrowserRouter>
-  )
+  );
 };
 
 export default Router;
