@@ -1,35 +1,12 @@
 import styled from "styled-components";
 import { VscAccount, VscOrganization } from "react-icons/vsc";
 import { useState } from "react";
-import { useDispatch } from "react-redux";
-import { __register } from "../../redux/modules/registerSlice";
+import Individual from "./Individual/Individual";
+import Organization from "./Organization/Organization";
 
 const Register = () => {
 
   const [option, setOption] = useState(null);
-
-
-  const init = {
-    username: "",
-    password: "",
-    passwordConfirm: ""
-  }
-
-  const dispatch = useDispatch();
-
-  const [input, setInput] = useState(init);
-
-  const onChangeHandler = (e) => {
-    const { name, value } = e.target;
-    setInput({ ...input, [name]: value });
-  };
-  const onSubmitHandler = (e) => {
-    e.preventDefault();
-    dispatch(__register(input))
-    setInput(init);
-  }
-
-  console.log(input);
 
   return (
     <RegisterContainer>
@@ -66,25 +43,11 @@ const Register = () => {
       }
 
       {
-        option === "individual" ? (
-          <div>
-            <RegisterTitle>
-              <h1>개인회원가입임</h1>
-              <h4>You are almost done!</h4>
-            </RegisterTitle>
-          </div>
-        ) : null
+        option === "individual" ? (<Individual/>) : null
       }
 
       {
-        option === "organization" ? (
-          <div>
-            <RegisterTitle>
-              <h1>기관회원가입임</h1>
-              <h4>You are almost done!</h4>
-            </RegisterTitle>
-          </div>
-        ) : null
+        option === "organization" ? (<Organization/>) : null
       }
 
     </RegisterContainer>
@@ -116,6 +79,7 @@ export const RegisterContainer = styled.div`
 export const RegisterTitle = styled.div`
   background-color: ${(props) => props.theme.ctrColor};
   color: ${(props) => props.theme.bgColor};
+  margin-bottom: 1rem;
 `
 
 export const RegisterOptionContainer = styled.div`

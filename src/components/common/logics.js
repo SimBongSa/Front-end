@@ -1,0 +1,1 @@
+// export function is[a-zA-Z\d]*${3,12}[a-z\d]*${3,32}
