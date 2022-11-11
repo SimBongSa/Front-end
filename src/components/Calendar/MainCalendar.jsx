@@ -10,6 +10,8 @@ const MainCalendar = () => {
   const [value, onChange] = useState(new Date());
   const [date, setDate] = useState(new Date());
 
+  const [result, setResult] = useState([]);
+
   const [mark, setMark] = useState([
     "2022-11-10",
     "2022-11-12",
@@ -21,36 +23,43 @@ const MainCalendar = () => {
     {
       date: "2022-11-10",
       list: {
-        name: "",
-        location: "",
-      },
-    },
-    {
-      date: "2022-11-11",
-      list: {
-        name: "",
-        location: "",
+        name: "나다",
+        location: "너냐",
       },
     },
     {
       date: "2022-11-12",
       list: {
-        name: "",
-        location: "",
+        name: "너니",
+        location: "나다",
       },
     },
     {
-      date: "2022-11-13",
+      date: "2022-11-15",
       list: {
-        name: "",
-        location: "",
+        name: "나네",
+        location: "너구나",
+      },
+    },
+    {
+      date: "2022-11-16",
+      list: {
+        name: "너니",
+        location: "그래",
       },
     },
   ];
+  console.log(moment(new Date()).format("YYYY/MM/DD"));
+  const onClickDayHandler = (e) => {
+    moment(date).format("DD");
+    // console.log(e);
+    setResult();
+  };
   return (
     <>
       <CalendarContainer>
         <Calendar
+          onClickDay={(e) => onClickDayHandler(e)}
           onChange={onChange} // useState로 포커스 변경 시 현재 날짜 받아오기
           formatDay={(locale, date) => moment(date).format("DD")} // 날'일' 제외하고 숫자만 보이도록 설정
           locale="en-EN"
@@ -80,9 +89,10 @@ const MainCalendar = () => {
             );
           }}
         />
+
         <div className="text-gray-500 mt-4">
           {/* {moment(value).format("YYYY년 MM월 DD일")} */}
-          <Serverlist result={array} key={mark.id} mark={mark} />
+          <Serverlist result={array} key={date} mark={mark} />
         </div>
       </CalendarContainer>
     </>

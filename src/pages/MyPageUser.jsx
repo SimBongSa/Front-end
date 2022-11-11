@@ -1,19 +1,18 @@
 import Header from "../components/Header/Header";
-import Mypage from "../components/CustomerMypage/CustomerProfile/CustomerMypage";
 import CustomerCalendr from "../components/Calendar/CustomerCalendar";
-import Card from "../components/Cards/Cards";
 import styled from "styled-components";
-import CustomerReview from "../components/CustomerMypage/CustomerReview/CustomerReview";
+import CustomerCard from "../components/CustomerMypage/CustomerCard/CustomerCard";
 import Footer from "../components/Footer/Footer";
+import CustomerMypage from "./../components/CustomerMypage/CustomerProfile/CustomerMypage";
 
 export const MyPageUser = () => {
   return (
     <>
       <Header />
-      <Mypage />
+      <CustomerMypage />
       <CustomerCalendr />
       <Text>Upcoming Activity</Text>
-      <CustomerReview />
+      <CustomerCard />
       <Footer />
     </>
   );

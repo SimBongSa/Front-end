@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { __getCustomer } from "../../../redux/modules/customerSlice";
+
 import {
   More,
   CustomerCardContainer,
@@ -8,9 +9,9 @@ import {
   CardImg,
   CardTitle,
   CardContent,
-} from "./CustomerReview.styled";
+} from "./CustomerCard.styled";
 
-function CustomerReview() {
+function CustomerCard() {
   const dispatch = useDispatch();
   const { customerList } = useSelector((state) => state.customerList);
 
@@ -64,4 +65,4 @@ function CustomerReview() {
   );
 }
 
-export default CustomerReview;
+export default CustomerCard;

@@ -1,8 +1,10 @@
 import styled from "styled-components";
 import { FiCheck } from "react-icons/fi";
 import { FaPen } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 
 const CustomerMypage = () => {
+  const navigate = useNavigate();
   return (
     <ProfileContainer>
       <ProfileTag>개인</ProfileTag>
@@ -13,7 +15,8 @@ const CustomerMypage = () => {
       />
 
       <h3>
-        John Doe <FaPen className="edit" />
+        John Doe{" "}
+        <FaPen className="edit" onClick={() => navigate("/customeredit")} />
       </h3>
       <h5>
         <FiCheck /> male

@@ -1,4 +1,3 @@
-import styled from "styled-components";
 import { FooterContainer, FooterContent, FooterBtn } from "./Footer.styled";
 
 const Footer = () => {

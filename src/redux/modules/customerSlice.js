@@ -41,3 +41,18 @@ const customerSlice = createSlice({
 
 export const {} = customerSlice.actions;
 export default customerSlice.reducer;
+
+//   extraReducers: (builder) => {
+//   builder
+//   .addCase(__register.pending, (state, action) => {
+//     state.isLoading = true;
+//   })
+//   .addCase(__register.fulfilled, (state, action) => {
+//     state.isLoading = false;
+//     state.userInfo.concat(action.payload);
+//   })
+//   .addCase(__register.rejected, (state, action) => {
+//     state.isLoading = false;
+//     state.error = action.payload;
+//   })
+// }

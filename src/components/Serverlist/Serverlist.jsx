@@ -1,15 +1,16 @@
 import { ServerlistContainer } from "./Serverlist.styled";
+import { useState } from "react";
 
 function Serverlist({ result, mark }) {
   return (
     <>
       {result && result.length > 0
-        ? result.map((obj) => {
+        ? result.map((obj, date) => {
             return (
-              <ServerlistContainer key={mark.id}>
+              <ServerlistContainer key={date}>
                 {obj.date}
-                <h3>Children Christmas Santa Volunteer</h3>
-                <div>W chidren Hospital 100 smart street, Gannam-gu</div>
+                <h3>{obj.list.name}</h3>
+                <div>{obj.list.location}</div>
               </ServerlistContainer>
             );
           })
