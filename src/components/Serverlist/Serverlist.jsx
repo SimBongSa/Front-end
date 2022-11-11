@@ -6,7 +6,8 @@ function Serverlist({ result, mark }) {
       {result && result.length > 0
         ? result.map((obj) => {
             return (
-              <ServerlistContainer>
+              <ServerlistContainer key={mark.id}>
+                {obj.date}
                 <h3>Children Christmas Santa Volunteer</h3>
                 <div>W chidren Hospital 100 smart street, Gannam-gu</div>
               </ServerlistContainer>
