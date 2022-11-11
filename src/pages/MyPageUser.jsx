@@ -1,5 +1,5 @@
 import Header from "../components/Header/Header";
-import Mypage from "../components/Mypage/Mypage";
+import MyPage from "../components/MyPage/MyPage";
 import CustomerCalendr from "../components/Calendar/CustomerCalendar";
 import Card from "../components/Cards/Cards";
 import styled from "styled-components";
@@ -10,7 +10,7 @@ export const MyPageUser = () => {
   return (
     <>
       <Header />
-      <Mypage />
+      <MyPage />
       <CustomerCalendr />
       <Text>Upcoming Activity</Text>
       <Card />
