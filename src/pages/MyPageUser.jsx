@@ -1,24 +1,18 @@
 import Header from "../components/Header/Header";
-import MyPage from "../components/MyPage/MyPage";
 import CustomerCalendr from "../components/Calendar/CustomerCalendar";
-import Card from "../components/Cards/Cards";
 import styled from "styled-components";
-import Review from "../components/Review/Review";
+import CustomerCard from "../components/CustomerMypage/CustomerCard/CustomerCard";
 import Footer from "../components/Footer/Footer";
+import CustomerMypage from "./../components/CustomerMypage/CustomerProfile/CustomerMypage";
 
 export const MyPageUser = () => {
   return (
     <>
       <Header />
-      <MyPage />
+      <CustomerMypage />
       <CustomerCalendr />
       <Text>Upcoming Activity</Text>
-      <Card />
-      <Text>My Reviews</Text>
-      <Review />
-      <Review />
-      <Review />
-      <Review />
+      <CustomerCard />
       <Footer />
     </>
   );
@@ -31,10 +25,4 @@ export const Text = styled.h1`
   width: 80%;
   float: right;
   text-align: left;
-  @media (max-width: 1515px) {
-    width: 79%;
-  }
-  @media (max-width: 1400px) {
-    width: 70%;
-  }
 `;

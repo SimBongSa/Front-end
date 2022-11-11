@@ -3,6 +3,7 @@ import styled from "styled-components";
 export const CalendarContainer = styled.div`
   display: flex;
   justify-content: space-evenly;
+  margin-top: 30rem;
 
   .react-calendar {
     width: 45rem;
