@@ -8,6 +8,7 @@ import { GloblaStyle } from "../theme/GlobalStyle";
 import { ThemeProvider } from "../context/themeProvider";
 import CombinedMap from "../components/Map/CombinedMap";
 import List from "../components/List/List";
+import RegisterActivity from "../components/RegisterActivity/RegisterActivity";
 
 const Router = () => {
   return (
@@ -22,6 +23,7 @@ const Router = () => {
             <Route path="/mypage" element={<MyPageCompany />} />
             <Route path="/map" element={<CombinedMap />} />
             <Route path="/list" element={<List />} />
+            <Route path="/registeractivity" element={<RegisterActivity />} />
           </Routes>
         </Suspense>
       </ThemeProvider>
