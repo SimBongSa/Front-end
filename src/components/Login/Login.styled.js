@@ -59,14 +59,17 @@ export const LoginBox = styled.div`
   margin: 0 auto;
   padding: 50px;
   max-width: 500px;
+  min-width: 500px;
   width: 30%;
   height: 40vh;
+  min-height: 40vh;
   overflow: hidden;
   flex-direction: column;
   justify-content: space-around;
   font-size: 3rem;
   color: ${(props) => props.theme.bgColor};
   background-color: ${(props) => props.theme.ctrColor};;
+  transition: all 0.5s;
   @media (max-width: 980px) {
     width: 100%;
   }

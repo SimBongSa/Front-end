@@ -14,6 +14,7 @@ export const HeaderContainer = styled.header`
 `
 
 export const HeaderLogo = styled.span`
+  cursor: pointer;
   float: left;
   padding: 13px 10px 13px 10px;
   margin: 13px 0px 0px 15px;

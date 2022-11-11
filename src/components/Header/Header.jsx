@@ -11,7 +11,7 @@ const Header = () => {
 
   return (
     <HeaderContainer>
-      <HeaderLogo>VONGOLE</HeaderLogo>
+      <HeaderLogo onClick={() => navigate("/")}>VONGOLE</HeaderLogo>
 
       <HeaderMenu>
       <LightThemeBtn onClick={toggleTheme}><BsFillMoonFill/></LightThemeBtn>
