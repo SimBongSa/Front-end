@@ -1,5 +1,7 @@
 import styled from "styled-components";
 
+export const Wrap = styled.form``;
+
 export const ImgWrap = styled.form``;
 
 export const UserName = styled.p`
