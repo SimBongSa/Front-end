@@ -7,7 +7,7 @@ export const __register = createAsyncThunk(
   "regitser",
   async (payload, thunkAPI) => {
     try {
-      await axios.post(`${BASE_URL}/api/member/signup`)
+      await axios.post(`${BASE_URL}/api/members/signup`)
       return thunkAPI.fulfillWithValue(payload);
     } catch (error) {
       return thunkAPI.rejectWithValue(error)

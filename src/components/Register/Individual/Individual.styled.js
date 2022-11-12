@@ -9,6 +9,7 @@ export const InputContainer = styled.div`
   border-radius: 10px;
   margin-top: 50px;
   background: #aaaaaa;
+  transition: all 0.5s;
 `
 
 export const InputForm = styled.div`

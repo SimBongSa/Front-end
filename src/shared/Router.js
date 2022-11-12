@@ -8,6 +8,7 @@ import { GloblaStyle } from "../theme/GlobalStyle";
 import { ThemeProvider } from "../context/themeProvider";
 import CombinedMap from "../components/Map/CombinedMap";
 import List from "../components/List/List";
+import { MyPageUser } from "../pages/MyPageUser";
 
 const Router = () => {
   return (

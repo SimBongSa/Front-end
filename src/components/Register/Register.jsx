@@ -20,7 +20,6 @@ const Register = () => {
             </RegisterTitle>
 
             <RegisterOptionContainer>
-              <RegisterOptions>
                 <RegisterOption onClick={() => {
                   setOption("individual");
                 }}>
@@ -35,8 +34,6 @@ const Register = () => {
                   <OptionOrganization/>
                   <h1>봉사 단체</h1>
                 </RegisterOption>
-              </RegisterOptions>
-              <RegisterBtn>NEXT</RegisterBtn>
             </RegisterOptionContainer>
           </>
         ) : null
@@ -62,9 +59,10 @@ export const RegisterContainer = styled.div`
   width: 80%;
   max-width: 1180px;
   margin: 0 auto;
-  margin-top: 20vh;
+  margin-top: 10vh;
   background-color: ${(props) => props.theme.bgColor};
   color: ${(props) => props.theme.textColor};
+  transition: all 0.5s;
   & h1 {
     font-size: 4rem;
     padding: 2rem;
@@ -79,10 +77,13 @@ export const RegisterContainer = styled.div`
 export const RegisterTitle = styled.div`
   background-color: ${(props) => props.theme.ctrColor};
   color: ${(props) => props.theme.bgColor};
-  margin-bottom: 1rem;
 `
 
 export const RegisterOptionContainer = styled.div`
+  display: grid;
+  margin: 0;
+  grid-template-columns: auto auto;
+  place-content: center;
   background: ${(props) => props.theme.ctrColor};
   color: ${(props) => props.theme.bgColor};
 `
@@ -93,7 +94,7 @@ export const RegisterOptions = styled.div`
   text-align: center;
 `
 
-export const RegisterOption = styled.div`
+export const RegisterOption = styled.button`
   cursor: pointer;
   width: 500px;
   height: 500px;

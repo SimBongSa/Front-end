@@ -7,15 +7,15 @@ import { __register } from "../../../redux/modules/registerSlice"
 const Individual = () => {
 
   const init = {
-    member_id: "",
+    username: "",
     nickname: "",
     password: "",
     passwordConfirm: "",
     email: "",
-    phone_num: "",
+    phoneNum: "",
     name: "",
     gender: "",
-    age: "",
+    age: 0,
   }
 
   const dispatch = useDispatch();
@@ -25,6 +25,10 @@ const Individual = () => {
     const { name, value } = e.target;
     setInput({ ...input, [name]: value });
   };
+  const onChangeAge = (e) => {
+    const { name, value } = e.target;
+    setInput({...input, [name]: +value });
+  }
   const onSubmitHandler = (e) => {
     e.preventDefault();
     dispatch(__register(input))
@@ -41,14 +45,16 @@ const Individual = () => {
         <InputBox>
           <form onSubmit={onSubmitHandler}>
             <Input 
+              dupleCheck={true}
               placeholder="Username"
               type="text"
-              name="member_id"
-              value={input.member_id}
+              name="username"
+              value={input.username}
               onChange={onChangeHandler}
             />
             <Input 
               placeholder="Nickname"
+              dupleCheck={true}
               type="text"
               name="nickname"
               value={input.nickname}
@@ -70,6 +76,7 @@ const Individual = () => {
             />
             <Input 
               placeholder="Email"
+              dupleCheck={true}
               type="email"
               name="email"
               value={input.email}
@@ -77,9 +84,9 @@ const Individual = () => {
             />
             <Input 
               placeholder="PhoneNumber"
-              type="text"
-              name="phone_num"
-              value={input.phone_num}
+              type="tel"
+              name="phoneNum"
+              value={input.phoneNum}
               onChange={onChangeHandler}
             />
             <Input 
@@ -89,12 +96,24 @@ const Individual = () => {
               value={input.name}
               onChange={onChangeHandler}
             />
+            <Input
+              type="radio"
+              name="gender"
+              value="male"
+              onChange={onChangeHandler}
+            />
+            <Input
+              type="radio"
+              name="gender"
+              value="female"
+              onChange={onChangeHandler}
+            />
             <Input 
               placeholder="Birth Date"
-              type="text"
+              type="number"
               name="age"
               value={input.age}
-              onChange={onChangeHandler}
+              onChange={onChangeAge}
             />
             <button type="submit">로구인</button>
           </form>
