@@ -15,28 +15,32 @@ const Input = ({
 
       {
         type === "text" || "password" ? (
-          <StInput 
-            placeholder={placeholder}
-            type={type}
-            name={name}
-            value={value}
-            onChange={onChange}
-          />
+          <StInputContainer>
+            <StInput 
+              placeholder={placeholder}
+              type={type}
+              name={name}
+              value={value}
+              onChange={onChange}
+            />
+            {/* <StErrorMsg>아이디 대충 몇 글자임</StErrorMsg> */}
+          </StInputContainer>
         ) : null
       }
 
       {
         dupleCheck ? (
-          <StCheckContainer>
-            {/* <span>중복체크</span> */}
-            <input id={id} type="checkbox"/>
-            <label htmlFor={id}/>
-          </StCheckContainer>
+          // <StCheckContainer>
+            <>
+              <input id={id} type="checkbox"/>
+              <label htmlFor={id}></label>
+            </>
+          // </StCheckContainer>
         ) : null
       }
 
       {
-        type === "radio" ? "라디오임" : null
+        type === "radio" ? <span>{value}</span> : null
       }
 
     </StInputContainer>
@@ -60,6 +64,10 @@ export const StInput = styled.input`
   outline: none;
   background: ${(props) => props.theme.WHITE};
   color: ${(props) => props.theme.BLACK};
+`
+
+export const StErrorMsg = styled.span`
+  color: tomato;
 `
 
 export const StCheckContainer = styled.div`

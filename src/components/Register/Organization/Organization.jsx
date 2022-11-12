@@ -2,6 +2,8 @@ import { InputContainer, InputForm, InputBox } from "../Individual/Individual.st
 import Input from "../../common/input/Input";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
+import { __registerManager } from "../../../redux/modules/managerSlice";
+import { useNavigate } from "react-router-dom";
 
 
 const Organization = () => {
@@ -19,6 +21,7 @@ const Organization = () => {
   }
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [input, setInput] = useState(init);
 
   const onChangeHandler = (e) => {
@@ -27,7 +30,7 @@ const Organization = () => {
   };
   const onSubmitHandler = (e) => {
     e.preventDefault();
-    // dispatch(__register(input));
+    dispatch(__registerManager(input));
     console.log(input);
     setInput(init);
   }
@@ -100,7 +103,7 @@ const Organization = () => {
             <button type="submit">로구인</button>
           </form>
         </InputBox>
-        <span>You are already member? Log in Now</span>
+        <span onClick={() => navigate("/login")}>You are already member? Log in Now</span>
       </InputForm>
     </InputContainer>
   )

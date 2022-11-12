@@ -110,6 +110,7 @@ export const LoginInput = styled.input`
   margin-top: 25px;
   font-size: 16px;
   background-color: ${(props) => props.theme.ctrColor};
+  color: ${(props) => props.theme.bgColor};
   border: none;
   outline: none;
   border-bottom: 2px solid #B0B3B9;

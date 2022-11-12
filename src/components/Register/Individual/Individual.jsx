@@ -2,7 +2,8 @@ import { InputContainer, InputForm, InputBox } from "./Individual.styled";
 import Input from "../../common/input/Input";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { __register } from "../../../redux/modules/registerSlice"
+import { __registerUser } from "../../../redux/modules/registerSlice"
+import { useNavigate } from "react-router-dom";
 
 const Individual = () => {
 
@@ -15,10 +16,11 @@ const Individual = () => {
     phoneNum: "",
     name: "",
     gender: "",
-    age: 0,
+    age: "",
   }
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [input, setInput] = useState(init);
 
   const onChangeHandler = (e) => {
@@ -31,7 +33,7 @@ const Individual = () => {
   }
   const onSubmitHandler = (e) => {
     e.preventDefault();
-    dispatch(__register(input))
+    dispatch(__registerUser(input))
     console.log(input);
     setInput(init);
   }
@@ -97,12 +99,14 @@ const Individual = () => {
               onChange={onChangeHandler}
             />
             <Input
+              id="male"
               type="radio"
               name="gender"
               value="male"
               onChange={onChangeHandler}
             />
             <Input
+              id="female"
               type="radio"
               name="gender"
               value="female"
@@ -110,7 +114,7 @@ const Individual = () => {
             />
             <Input 
               placeholder="Birth Date"
-              type="number"
+              type="text"
               name="age"
               value={input.age}
               onChange={onChangeAge}
@@ -118,7 +122,7 @@ const Individual = () => {
             <button type="submit">로구인</button>
           </form>
         </InputBox>
-        <span>You are already member? Log in Now</span>
+        <span onClick={() => navigate("/login")}>You are already member? Log in Now</span>
       </InputForm>
     </InputContainer>
   )
