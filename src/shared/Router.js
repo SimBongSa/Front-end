@@ -6,9 +6,11 @@ import { MyPageCompany } from "../pages/MyPageCompany";
 import { RegisterPage } from "../pages/RegisterPage";
 import { GloblaStyle } from "../theme/GlobalStyle";
 import { ThemeProvider } from "../context/themeProvider";
+import { MyPageUser } from "./../pages/MyPageUser";
 import CombinedMap from "../components/Map/CombinedMap";
 import List from "../components/List/List";
 import { MyPageUser } from "../pages/MyPageUser";
+import CustomerEdit from "../components/CustomerEdit/CustomerEdit";
 
 const Router = () => {
   return (
@@ -21,9 +23,10 @@ const Router = () => {
             <Route path="/login" element={<LoginPage />} />
             <Route path="/register" element={<RegisterPage />} />
             <Route path="/mypage" element={<MyPageCompany />} />
-            <Route path="/usermypage" element={ <MyPageUser/> } />
+            <Route path="/usermypage" element={<MyPageUser />} />
             <Route path="/map" element={<CombinedMap />} />
             <Route path="/list" element={<List />} />
+            <Route path="/customeredit" element={<CustomerEdit />} />
           </Routes>
         </Suspense>
       </ThemeProvider>
