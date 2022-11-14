@@ -8,12 +8,13 @@ import { useNavigate } from "react-router-dom";
 const Individual = () => {
 
   const init = {
+    userType: 0,
     username: "",
     nickname: "",
     password: "",
     passwordConfirm: "",
     email: "",
-    phoneNum: "",
+    phoneNumber: "",
     name: "",
     gender: "",
     age: "",
@@ -37,8 +38,6 @@ const Individual = () => {
     console.log(input);
     setInput(init);
   }
-
-  console.log(input);
 
   return(
     <InputContainer>
@@ -87,8 +86,8 @@ const Individual = () => {
             <Input 
               placeholder="PhoneNumber"
               type="tel"
-              name="phoneNum"
-              value={input.phoneNum}
+              name="phoneNumber"
+              value={input.phoneNumber}
               onChange={onChangeHandler}
             />
             <Input 

@@ -30,7 +30,7 @@ const Register = () => {
                   <>
                     <h1 className="individual">Hello 개인</h1>
                     <p className="individual">봉사에 참여하고 싶어요</p>
-                    <RegisterBtn onClick={moveLeft}>Sign Up</RegisterBtn>
+                    <RegisterBtn onClick={moveLeft}>기관이에요</RegisterBtn>
                   </>
                 ) : null
               }
@@ -40,7 +40,7 @@ const Register = () => {
                   <>
                     <h1 className="organization">Hello 기관</h1>
                     <p className="organization">함께할 봉사자가 필요해요</p>
-                    <RegisterBtn className="organization" onClick={moveRight}>Sign Up</RegisterBtn>
+                    <RegisterBtn className="organization" onClick={moveRight}>개인이에요</RegisterBtn>
                   </>
                 ) : null
               }

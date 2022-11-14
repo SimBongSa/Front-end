@@ -6,9 +6,12 @@ const BASE_URL = process.env.REACT_APP_SERVER
 export const __registerUser = createAsyncThunk(
   "regitser",
   async (payload, thunkAPI) => {
-    console.log(payload);
     try {
-      await axios.post(`${BASE_URL}/api/members/signup`)
+      const response = await axios.post(`${BASE_URL}/members/signup`, payload, {
+        'Content-Type' : 'application/json',
+      });
+      console.log(payload);
+      console.log(response.data);
       return thunkAPI.fulfillWithValue(payload);
     } catch (error) {
       return thunkAPI.rejectWithValue(error)
