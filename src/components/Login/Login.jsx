@@ -12,7 +12,6 @@ const Login = () => {
         <LoginBackLeft>
           <LoginOverlay>
             <h1>Hello World.</h1>
-            <p>대충 로그인하고 봉사활동 시작해보라는 글귀</p>
             <p>암튼 여기 왼쪽은 이미지 들어갈거임</p>
             <p>글씨는 넣을까 말까 고민중</p>
           </LoginOverlay>
