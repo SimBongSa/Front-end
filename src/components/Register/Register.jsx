@@ -1,70 +1,206 @@
 import styled from "styled-components";
-import { VscAccount, VscOrganization } from "react-icons/vsc";
 import { useState } from "react";
-import Individual from "./Individual/Individual";
-import Organization from "./Organization/Organization";
+import { VscAccount, VscOrganization } from "react-icons/vsc";
+import Individual from "../Register/Individual/Individual"
+import Organization from "../Register/Organization/Organization"
 
 const Register = () => {
+
+  const [moveIndex, setMoveIndex] = useState(0);
+  const moveLeft = () => {
+    setMoveIndex((prev) => prev - 100);
+  };
+  const moveRight = () => {
+    if (moveIndex === 0) {
+      return;
+    }
+    setMoveIndex((prev) => prev + 100);
+  };  
 
   const [option, setOption] = useState(null);
 
   return (
-    <RegisterContainer>
-      
+    <>
       {
         option === null ? (
-          <>
-            <RegisterTitle>
-              <h1>What service are you looking for?</h1>
-              <h4>Join as a volunteer or organizations</h4>
-            </RegisterTitle>
-
-            <RegisterOptionContainer>
-              <RegisterOptions>
-                <RegisterOption onClick={() => {
-                  setOption("individual");
-                }}>
-                  <h4>봉사에 참여하고 싶어요</h4>
-                  <OptionProfile/>
-                  <h1>봉사 지원자</h1>
-                </RegisterOption>
-                <RegisterOption onClick={() => {
-                  setOption("organization");
-                }}>
-                  <h4>함께할 봉사자가 필요해요</h4>
-                  <OptionOrganization/>
-                  <h1>봉사 단체</h1>
-                </RegisterOption>
-              </RegisterOptions>
-              <RegisterBtn>NEXT</RegisterBtn>
-            </RegisterOptionContainer>
-          </>
+          <RegisterContainer>
+            <RegisterCover className="cover" style={{ transform: `translateX(${moveIndex}%)` }}>
+              {
+                moveIndex === 0 ? (
+                  <>
+                    <h1 className="individual">Hello 개인</h1>
+                    <p className="individual">봉사에 참여하고 싶어요</p>
+                    <RegisterBtn onClick={moveLeft}>기관이에요</RegisterBtn>
+                  </>
+                ) : null
+              }
+      
+              {
+                moveIndex === -100 ? (
+                  <>
+                    <h1 className="organization">Hello 기관</h1>
+                    <p className="organization">함께할 봉사자가 필요해요</p>
+                    <RegisterBtn className="organization" onClick={moveRight}>개인이에요</RegisterBtn>
+                  </>
+                ) : null
+              }
+            </RegisterCover>
+            <RegisterIndividual>
+              <h1>봉사 지원자 가입</h1>
+              <p>봉사활동을 하고싶어요</p>
+              <OptionProfile/><br/>
+              <RegisterBtn onClick={() => setOption("individual")}>Register</RegisterBtn>
+            </RegisterIndividual>
+            <RegisterOrganization>
+              <h1>봉사 기관 가입</h1>
+              <p>자원봉사자가 필요해요</p>
+              <OptionOrganization/><br/>
+              <RegisterBtn onClick={() => setOption("organization")}>Register</RegisterBtn>
+            </RegisterOrganization>
+          </RegisterContainer>    
         ) : null
       }
 
       {
-        option === "individual" ? (<Individual/>) : null
+        option === "individual" ? (
+          <RegisterFormContainer>
+            <Individual/>
+          </RegisterFormContainer>
+        ) : null
       }
 
       {
-        option === "organization" ? (<Organization/>) : null
+        option === "organization" ? (
+          <RegisterFormContainer>
+            <Organization/>
+          </RegisterFormContainer>
+        ) : null
       }
-
-    </RegisterContainer>
+    </>
   )
 };
 
 export default Register;
 
 export const RegisterContainer = styled.div`
+  border-radius: 10px;
+  height: 550px;
+  margin: 5% auto;
+  margin-top: 15rem;
+  overflow: hidden;
+  width: 1000px;
+`
+
+export const RegisterCover = styled.div`
+  /* background: ${(props) => props.theme.bgColor}; */
+  background: tomato;
+  color: ${(props) => props.theme.textColor};
+  height: 550px;
+  margin: 0 0 0 50%;
+  position: relative;
+  text-align: center;
+  width: 50%;
+  z-index: 5;
+  transition: all 0.7s;
+  & h1 {
+    padding-top: 38%;
+    font-size: 2rem;
+  }
+  & p {
+    font-weight: 300;
+    line-height: 22px;
+    padding: 30px 45px 40px;
+  }
+`
+
+export const RegisterBtn = styled.button`
+  cursor: pointer;
+  border: 1px solid ${(props) => props.theme.bgColor};
+  background: transparent;
+  border-radius: 20px;
+  color: ${(props) => props.theme.bgColor};
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  padding: 15px 60px;
+  text-decoration: none;
+  text-transform: uppercase;
+  margin-top: 3rem;
+  & h1 {
+    padding: 20% 0 25px;
+  }
+`
+
+export const RegisterIndividual = styled.div`
+  background: ${(props) => props.theme.ctrColor};
+  color: ${(props) => props.theme.bgColor};
+  float: left;
+  height: 100%;
+  position: relative;
+  width: 50%;
+  text-align: center;
+  top: -550px;
+  z-index: 1;
+  transition: all 0.5s;
+  & h1 {
+    color: tomato;
+    margin-top: 4rem;
+    font-size: 2rem;
+  }
+  & p {
+    font-size: 12px;
+    font-weight: 300;
+    letter-spacing: 0.3px;
+    padding: 20px;
+  }
+`
+
+export const RegisterOrganization = styled.div`
+  background: ${(props) => props.theme.ctrColor};
+  color: ${(props) => props.theme.bgColor};
+  float: right;
+  height: 100%;
+  position: relative;
+  width: 50%;
+  text-align: center;
+  top: -550px;
+  z-index: 1;
+  transition: all 0.5s;
+  & h1 {
+    color: tomato;
+    margin-top: 4rem;
+    font-size: 2rem;
+  }
+  & p {
+    font-size: 12px;
+    font-weight: 300;
+    letter-spacing: 0.3px;
+    padding: 20px;
+  }
+`
+
+export const OptionProfile = styled(VscAccount)`
+  font-size: 10rem;
+  margin-top: 2rem;
+  color: #4c4c4c;
+`
+
+export const OptionOrganization = styled(VscOrganization)`
+  font-size: 10rem;
+  margin-top: 2rem;
+  color: #4c4c4c;
+`
+
+export const RegisterFormContainer = styled.div`
   display: flex;
   flex-direction: column;
   width: 80%;
   max-width: 1180px;
   margin: 0 auto;
-  margin-top: 20vh;
+  margin-top: 10vh;
   background-color: ${(props) => props.theme.bgColor};
   color: ${(props) => props.theme.textColor};
+  transition: all 0.5s;
   & h1 {
     font-size: 4rem;
     padding: 2rem;
@@ -74,64 +210,4 @@ export const RegisterContainer = styled.div`
     padding: 2rem;
     margin-top: 1.5rem;
   }
-`
-
-export const RegisterTitle = styled.div`
-  background-color: ${(props) => props.theme.ctrColor};
-  color: ${(props) => props.theme.bgColor};
-  margin-bottom: 1rem;
-`
-
-export const RegisterOptionContainer = styled.div`
-  background: ${(props) => props.theme.ctrColor};
-  color: ${(props) => props.theme.bgColor};
-`
-
-export const RegisterOptions = styled.div`
-  display: flex;
-  justify-content: space-evenly;
-  text-align: center;
-`
-
-export const RegisterOption = styled.div`
-  cursor: pointer;
-  width: 500px;
-  height: 500px;
-  border-radius: 25px;
-  margin: 2rem;
-  padding: 1rem;
-  background: ${(props) => props.theme.bgColor};
-  color: ${(props) => props.theme.textColor};
-  transition: all 0.5s;
-  &:hover {
-    transform: translateY(-3%);
-  }
-`
-
-export const OptionProfile = styled(VscAccount)`
-  font-size: 10rem;
-`
-
-export const OptionOrganization = styled(VscOrganization)`
-  font-size: 10rem;
-`
-
-export const RegisterBtn = styled.button`
-  display: flex;
-  cursor: pointer;
-	border-radius: 20px;
-  border: none;
-	font-size: 12px;
-	font-weight: bold;
-	padding: 12px 45px;
-  width: 30%;
-  height: 80px;
-  margin: 0 auto;
-  font-size: 1.2rem;
-  justify-content: center;
-  align-items: center;
-	letter-spacing: 1px;
-  margin-bottom: 1rem;
-  background: ${(props) => props.theme.bgColor};
-  color: ${(props) => props.theme.textColor};
 `

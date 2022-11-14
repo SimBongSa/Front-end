@@ -9,7 +9,9 @@ import { ThemeProvider } from "../context/themeProvider";
 import { MyPageUser } from "./../pages/MyPageUser";
 import CombinedMap from "../components/Map/CombinedMap";
 import List from "../components/List/List";
+import { MyPageUser } from "../pages/MyPageUser";
 import CustomerEdit from "../components/CustomerEdit/CustomerEdit";
+
 const Router = () => {
   return (
     <BrowserRouter>

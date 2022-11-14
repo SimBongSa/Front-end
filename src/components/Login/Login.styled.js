@@ -62,7 +62,7 @@ export const LoginBox = styled.div`
   min-width: 500px;
   width: 30%;
   height: 40vh;
-  min-height: 40vh;
+  min-height: 55vh;
   overflow: hidden;
   flex-direction: column;
   justify-content: space-around;
@@ -110,6 +110,7 @@ export const LoginInput = styled.input`
   margin-top: 25px;
   font-size: 16px;
   background-color: ${(props) => props.theme.ctrColor};
+  color: ${(props) => props.theme.bgColor};
   border: none;
   outline: none;
   border-bottom: 2px solid #B0B3B9;
