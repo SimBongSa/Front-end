@@ -2,7 +2,7 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { apis } from "./APi/api";
 
 export const __loginMember = createAsyncThunk(
-  "login",
+  "loginMember",
   async (payload, thunkAPI)=> {
     try {
       const response = await apis.memberLogin(payload);
@@ -15,7 +15,7 @@ export const __loginMember = createAsyncThunk(
 );
 
 export const __loginManager = createAsyncThunk(
-  "login",
+  "loginManager",
   async (payload, thunkAPI)=> {
     try {
       const response = await apis.managerLogin(payload);

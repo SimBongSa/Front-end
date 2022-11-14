@@ -1,9 +1,28 @@
 import { LoginContainer, LoginBackLeft, LoginOverlay, LoginBox, LoginBoxTitle, LoginArrowBack, LoginForm, LoginInput, LoginBtn, SocialContainer } from "./Login.styled";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { __loginMember } from "../../redux/modules/registerSlice";
+import { useState } from "react";
 
 const Login = () => {
 
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const init = {
+    "username": "",
+    "password": "",
+  }
+  const [input, setInput] = useState(init);
+  const onChangeHandler = (e) => {
+    const { name, value } = e.target;
+    setInput({ ...input, [name]: value });
+  };
+  const onSubmitHandler = (e) => {
+    e.preventDefault();
+    dispatch(__loginMember(input))
+    console.log(input);
+    setInput(init);
+  }
 
   return(
     <>
@@ -22,16 +41,24 @@ const Login = () => {
             <h4>Login</h4><LoginArrowBack onClick={() => navigate("/")}/>
           </LoginBoxTitle>
 
-          <LoginForm>
+          <LoginForm onSubmit={onSubmitHandler}>
             <LoginInput 
               placeholder="username" 
               type="text"
+              name="username"
+              value={input.username}
+              onChange={onChangeHandler}
             />
             <LoginInput 
               placeholder="password"
               type="password"
+              name="password"
+              value={input.password}
+              onChange={onChangeHandler}
             />
-            <LoginBtn>Login</LoginBtn>
+            <LoginBtn onClick={() => {
+              dispatch(__loginMember(input))
+            }}>Login</LoginBtn>
           </LoginForm>
 
           <span>Forgot Your Password?</span>

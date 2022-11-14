@@ -62,7 +62,7 @@ export const LoginBox = styled.div`
   min-width: 500px;
   width: 30%;
   height: 40vh;
-  min-height: 55vh;
+  min-height: 600px;
   overflow: hidden;
   flex-direction: column;
   justify-content: space-around;
