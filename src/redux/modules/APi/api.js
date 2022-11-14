@@ -1,5 +1,6 @@
 import axios from "axios";
-import { BASE_URL } from "./server";
+
+const BASE_URL = process.env.REACT_APP_SERVER
 
 const api = axios.create({
   baseURL: BASE_URL,
@@ -27,8 +28,10 @@ export const apis = {
   //delmenu: (payload) => api.delete(`/menu/${payload}`),
 
   // registerSlice
-  login: (payload) => api.post(),
-  signup: (payload) => api.post(),
+  memberLogin: (payload) => api.post(`${BASE_URL}/members/login`, payload),
+  managerLogin: (payload) => api.post(`${BASE_URL}/managers/login`, payload),
+  memberSignup: (payload) => axios.post(`${BASE_URL}/members/signup`, payload),
+  managerSignup: (payload) => axios.post(`${BASE_URL}/managers/signup`, payload),
 
   //customerSlice
   customerlist: () => api.get(),
