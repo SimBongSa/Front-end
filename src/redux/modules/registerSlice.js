@@ -1,13 +1,33 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { apis } from "./APi/api";
+import { setCookie } from "../../utils/cookie";
+
 
 export const __loginMember = createAsyncThunk(
   "loginMember",
   async (payload, thunkAPI)=> {
     try {
       const response = await apis.memberLogin(payload);
-      console.log(response);
-      return thunkAPI.fulfillWithValue(payload);
+      console.log(response)
+      localStorage.setItem('refresh-token', response.headers['refresh-token']); // refresh token은 로껄스토리지
+      setCookie("access-token", response.headers["access-token"], { // access token은 쿠키에
+        path: "/",
+        secure: true,
+        sameSite: "none",
+      })
+      setCookie("username", response.headers["username"], { // username
+        path: "/",
+        secure: true,
+        sameSite: "none",
+      })
+      // setCookie("userType", response.headers["userType"], { // userType
+      //   path: "/",
+      //   secure: true,
+      //   sameSite: "none",
+      // })
+      console.log("accessToken : ",response.headers["access-token"]);
+
+      return thunkAPI.fulfillWithValue(response.data);
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
     }
@@ -59,6 +79,7 @@ export const registerSlice = createSlice({
     memberInfo: [],
     managerInfo: [],
     loginInfo: [],
+    statusCode: null,
     isLoading: false,
     error: "",
   },
@@ -73,6 +94,8 @@ export const registerSlice = createSlice({
       })
       .addCase(__loginMember.fulfilled, (state, action) => {
         state.isLoading = false;
+        // console.log(action.payload)
+        state.statusCode = action.payload.success;
         state.loginInfo.concat(action.payload);
       })
       .addCase(__loginMember.rejected, (state, action) => {
