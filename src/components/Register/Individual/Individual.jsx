@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 const Individual = () => {
 
   const init = {
-    userType: 0,
+    authority: "ROLE_MEMBER",
     username: "",
     nickname: "",
     password: "",
