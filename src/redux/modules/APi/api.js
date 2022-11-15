@@ -1,5 +1,8 @@
 import axios from "axios";
+import { getCookieToken } from "../../../utils/cookie";
+
 const BASE_URL = process.env.REACT_APP_SERVER;
+const Authorization = getCookieToken("access-token");
 
 const api = axios.create({
   baseURL: BASE_URL,
@@ -21,21 +24,42 @@ api.interceptors.request.use(function (config) {
 });
 
 export const apis = {
-  // 예시
-  //login: (payload) => api.post(`/member/login`, payload.postLogin),
-  //slice에서 await apis.signup(payload) 이렇게 쓰시면 됩니다.
-  //delmenu: (payload) => api.delete(`/menu/${payload}`),
-
   // registerSlice
-  login: (payload) => api.post(),
-  signup: (payload) => api.post(),
+  memberLogin: (payload) => api.post(`${BASE_URL}/members/login`, payload),
+  managerLogin: (payload) => api.post(`${BASE_URL}/managers/login`, payload),
+  memberSignup: (payload) => axios.post(`${BASE_URL}/members/signup`, payload),
+  managerSignup: (payload) =>
+    axios.post(`${BASE_URL}/managers/signup`, payload),
 
   //customerSlice
   customerlist: () => api.get(),
   edit: (payload) =>
     api.post(`http://localhost:8080/mypage`, payload, {
       headers: {
+        Authorization,
         "Content-Type": "multipart/form-data",
+      },
+    }),
+
+  // addCreateSlice
+  addCreate: (payload) =>
+    axios.post(`${BASE_URL}/boards`, payload, {
+      headers: {
+        Authorization,
+        "Content-Type": "multipart/form-data",
+      },
+    }),
+  getCreate: () => axios.get(`${BASE_URL}/boards`),
+  delCreate: (id) =>
+    axios.delete(`${BASE_URL}/boards/${id}/remove`, {
+      headers: {
+        Authorization,
+      },
+    }),
+  editCreate: (payload) =>
+    axios.put(`${BASE_URL}/boards/${payload.id}`, payload.upData, {
+      headers: {
+        Authorization,
       },
     }),
 };
