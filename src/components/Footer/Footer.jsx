@@ -51,6 +51,7 @@ export const FooterItem = styled.li`
   cursor: pointer;
   width: fit-content;
   font-size: 1vw;
+  margin-left: 3px;
   color: #8DB9ED;
   transition: all 0.5s;
   &:hover {
