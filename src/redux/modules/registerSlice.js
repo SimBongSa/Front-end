@@ -1,23 +1,23 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
-const BASE_URL = process.env.REACT_APP_SERVER
+const BASE_URL = process.env.REACT_APP_SERVER;
 
 export const __registerUser = createAsyncThunk(
   "regitser",
   async (payload, thunkAPI) => {
     try {
       const response = await axios.post(`${BASE_URL}/members/signup`, payload, {
-        'Content-Type' : 'application/json',
+        "Content-Type": "application/json",
       });
       console.log(payload);
       console.log(response.data);
       return thunkAPI.fulfillWithValue(payload);
     } catch (error) {
-      return thunkAPI.rejectWithValue(error)
+      return thunkAPI.rejectWithValue(error);
     }
   }
-)
+);
 
 export const registerSlice = createSlice({
   name: "userInfo",
@@ -27,6 +27,7 @@ export const registerSlice = createSlice({
     error: "",
   },
   reducers: {},
+
   extraReducers: (builder) => {
     builder
       .addCase(__registerUser.pending, (state, action) => {
@@ -39,8 +40,8 @@ export const registerSlice = createSlice({
       .addCase(__registerUser.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.payload;
-      })
-  }
+      });
+  },
 });
 
 export const { register } = registerSlice.actions;

@@ -9,6 +9,7 @@ import { ThemeProvider } from "../context/themeProvider";
 import { MyPageUser } from "./../pages/MyPageUser";
 import CombinedMap from "../components/Map/CombinedMap";
 import List from "../components/List/List";
+import RegisterActivity from "../components/RegisterActivity/RegisterActivity";
 import CustomerEdit from "../components/CustomerEdit/CustomerEdit";
 
 const Router = () => {
@@ -25,6 +26,7 @@ const Router = () => {
             <Route path="/usermypage" element={<MyPageUser />} />
             <Route path="/map" element={<CombinedMap />} />
             <Route path="/list" element={<List />} />
+            <Route path="/registeractivity" element={<RegisterActivity />} />
             <Route path="/customeredit" element={<CustomerEdit />} />
           </Routes>
         </Suspense>

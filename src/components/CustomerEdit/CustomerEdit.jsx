@@ -8,7 +8,6 @@ function CustomerEdit() {
   const dispatch = useDispatch();
   const [input, setInput] = useState({
     nickname: "",
-    memberImage: "",
     email: "",
     phoneNum: "",
     name: "",
@@ -16,7 +15,8 @@ function CustomerEdit() {
     age: "",
     introduction: "",
   });
-  const [imageSrc, setImageSrc] = useState("");
+  const [imageSrc, setImageSrc] = useState(null);
+  const [prevImage, setPrevImage] = useState("");
 
   const onChangeHandler = (e) => {
     const { name, value } = e.target;
@@ -25,21 +25,25 @@ function CustomerEdit() {
     });
   };
 
-  const onUploadImage = (fileBlob) => {
-    const reader = new FileReader();
-    reader.readAsDataURL(fileBlob);
-    return new Promise((resolve) => {
-      reader.onload = () => {
-        setImageSrc(reader.result);
-        resolve();
-      };
-    });
+  const onChangeImage = (e) => {
+    setImageSrc(e.target.files);
+    let reader = new FileReader();
+    if (e.target.files[0]) {
+      reader.readAsDataURL(e.target.files[0]);
+    }
+    reader.onloadend = () => {
+      const previewImageUrl = reader.result;
+      if (previewImageUrl) {
+        setPrevImage([...prevImage, previewImageUrl]);
+      }
+    };
   };
 
   const onSubmitHandler = (e) => {
     e.preventDefault();
-    dispatch(__putCutomer(input));
+    dispatch(__putCutomer(input, imageSrc));
   };
+
   return (
     <>
       수정 페이지
@@ -58,7 +62,7 @@ function CustomerEdit() {
         />
         <Input
           name="email"
-          type="email"
+          type="text"
           onChange={onChangeHandler}
           value={input?.email}
           placeholder={"email"}
@@ -87,15 +91,15 @@ function CustomerEdit() {
           value={input?.introduction}
           placeholder={"introduction"}
         />
+        <ImgSize src={prevImage} alt="" />
         <Input
           name="memberImage"
-          type="file"
-          accept="image/*"
-          onChange={onUploadImage}
-          value={input?.memberImage}
+          type={"file"}
+          accept={"image/*"}
+          onChange={onChangeImage}
           placeholder={"memberImage"}
         />
-        <div>{imageSrc && <img src={imageSrc} alt="preview-img" />}</div>
+
         <button>Edit</button>
       </form>
     </>
@@ -103,3 +107,8 @@ function CustomerEdit() {
 }
 
 export default CustomerEdit;
+
+export const ImgSize = styled.img`
+  width: 200px;
+  height: 200px;
+`;

@@ -32,5 +32,10 @@ export const apis = {
 
   //customerSlice
   customerlist: () => api.get(),
-  edit: (payload) => api.post(`http://localhost:8080/mypage`, payload),
+  edit: (payload) =>
+    api.post(`http://localhost:8080/mypage`, payload, {
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    }),
 };

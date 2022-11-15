@@ -25,6 +25,11 @@ export const __getCustomer = createAsyncThunk(
 export const __putCutomer = createAsyncThunk(
   "putCustomer",
   async (payload, thunkAPI) => {
+    const formData = new FormData();
+    Object.entries(payload).forEach(([key, value]) => {
+      formData.append(key, value);
+    });
+
     try {
       const response = await apis.edit(payload);
 
