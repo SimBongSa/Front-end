@@ -24,7 +24,6 @@ const Profile = () => {
           <li>JavaScript</li>
         </ProfileSkill>
       </ProfileSkills>
-
     </ProfileContainer>
   )
 };
