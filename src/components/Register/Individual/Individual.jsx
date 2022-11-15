@@ -2,13 +2,13 @@ import { InputContainer, InputForm, InputBox } from "./Individual.styled";
 import Input from "../../common/input/Input";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { __registerUser } from "../../../redux/modules/registerSlice"
+import { __registerMember } from "../../../redux/modules/registerSlice"
 import { useNavigate } from "react-router-dom";
 
 const Individual = () => {
 
   const init = {
-    userType: 0,
+    authority: "ROLE_MEMBER",
     username: "",
     nickname: "",
     password: "",
@@ -34,7 +34,7 @@ const Individual = () => {
   }
   const onSubmitHandler = (e) => {
     e.preventDefault();
-    dispatch(__registerUser(input))
+    dispatch(__registerMember(input))
     console.log(input);
     setInput(init);
   }

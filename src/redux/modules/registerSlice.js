@@ -1,26 +1,72 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import axios from "axios";
+import { apis } from "./Api/api";
+import { setCookie } from "../../utils/cookie";
 
-<<<<<<< HEAD
-export const __register = createAsyncThunk(
-  "register",
+export const __loginMember = createAsyncThunk(
+  "loginMember",
+  async (payload, thunkAPI)=> {
+    try {
+      const response = await apis.memberLogin(payload);
+      console.log(response)
+      if ( response.status === 200 ) {
+        localStorage.setItem('refresh-token', response.headers['refresh-token']); // refresh token은 로껄스토리지
+        setCookie("access-token", response.headers["access-token"], { // access token은 쿠키에
+          path: "/",
+          secure: true,
+          sameSite: "none",
+        })
+        setCookie("username", response.headers["username"], {
+          path: "/",
+          secure: true,
+          sameSite: "none",
+        })
+        // setCookie("userType", response.headers["userType"], {
+        //   path: "/",
+        //   secure: true,
+        //   sameSite: "none",
+        // })
+      }
+      return thunkAPI.fulfillWithValue(response.data);
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error);
+    }
+  }
+);
+
+export const __loginManager = createAsyncThunk(
+  "loginManager",
+  async (payload, thunkAPI)=> {
+    try {
+      const response = await apis.managerLogin(payload);
+      return thunkAPI.fulfillWithValue(response.data);
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error);
+    }
+  }
+);
+
+export const __registerMember = createAsyncThunk(
+  "regitserMember",
   async (payload, thunkAPI) => {
     try {
-      await axios.post("http://3.39.193.27:8080/api/member/signup");
-=======
-const BASE_URL = process.env.REACT_APP_SERVER
+      const response = await apis.memberSignup(payload);
+      console.log(response)
+      // if ( response.status === 200 ) {
+      //   navigator()
+      // }
+      return thunkAPI.fulfillWithValue(response.data);
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error);
+    }
+  }
+);
 
-export const __registerUser = createAsyncThunk(
-  "regitser",
+export const __registerManager = createAsyncThunk(
+  "registerManager",
   async (payload, thunkAPI) => {
     try {
-      const response = await axios.post(`${BASE_URL}/members/signup`, payload, {
-        'Content-Type' : 'application/json',
-      });
-      console.log(payload);
-      console.log(response.data);
->>>>>>> 81e37ec9527984565b5aee9861f5980c58285a8c
-      return thunkAPI.fulfillWithValue(payload);
+      const response = await apis.managerSignup(payload);
+      return thunkAPI.fulfillWithValue(response.data);
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
     }
@@ -30,21 +76,67 @@ export const __registerUser = createAsyncThunk(
 export const registerSlice = createSlice({
   name: "userInfo",
   initialState: {
-    userInfo: [],
+    memberInfo: [],
+    managerInfo: [],
+    loginInfo: [],
+    statusCode: null,
     isLoading: false,
     error: "",
   },
   reducers: {},
   extraReducers: (builder) => {
+
+    //  Login
     builder
-      .addCase(__registerUser.pending, (state, action) => {
+      // member
+      .addCase(__loginMember.pending, (state, _) => {
         state.isLoading = true;
       })
-      .addCase(__registerUser.fulfilled, (state, action) => {
+      .addCase(__loginMember.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.userInfo.concat(action.payload);
+        state.statusCode = action.payload.success;
+        state.loginInfo.concat(action.payload);
       })
-      .addCase(__registerUser.rejected, (state, action) => {
+      .addCase(__loginMember.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.payload;
+      })
+      // manager
+      .addCase(__loginManager.pending, (state, _) => {
+        state.isLoading = true;
+      })
+      .addCase(__loginManager.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.loginInfo.concat(action.payload);
+      })
+      .addCase(__loginManager.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.payload;
+      })
+
+    // Register
+    builder
+      //Member
+      .addCase(__registerMember.pending, (state, _) => {
+        state.isLoading = true;
+      })
+      .addCase(__registerMember.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.memberInfo.concat(action.payload);
+      })
+      .addCase(__registerMember.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.payload;
+      })
+      // Manager
+      .addCase(__registerManager.pending, (state, _) => {
+        state.isLoading = true;
+      })
+      .addCase(__registerManager.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.managerInfo.concat(action.payload);
+      })
+      .addCase(__registerManager.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.payload;
       })

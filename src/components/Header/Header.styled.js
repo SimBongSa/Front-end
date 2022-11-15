@@ -1,5 +1,6 @@
 import styled from "styled-components"
 import { FaRegUserCircle } from "react-icons/fa";
+import { GoPerson } from "react-icons/go";
 
 export const HeaderContainer = styled.header`
   position: fixed;
@@ -62,6 +63,7 @@ export const HeaderRegister = styled.div`
   justify-content: center;
   text-align: center;
   align-items: center;
+  user-select: none;
   transition: all 0.3s;
   &:hover {
     transform: translateY(-10%);
@@ -69,11 +71,17 @@ export const HeaderRegister = styled.div`
 `
 
 export const UserIcon = styled(FaRegUserCircle)`
+  cursor: pointer;
   display: flex;
   float: right;
   justify-content: right;
   font-size: 3rem;
   color: grey;
+  margin-left: 1rem;
+  transition: all 0.5s;
+  &:hover {
+    transform: translateY(-10%);
+  }
 `
 
 export const LightThemeBtn = styled.button`
