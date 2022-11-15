@@ -10,23 +10,17 @@ export const HeaderContainer = styled.header`
   z-index: 3;
   background-color: ${(props) => props.theme.bgColor};
   will-change: transform;
-  transition: background .3s,
-  -webkit-transform .5s cubic-bezier(.694,.048,.335,1);
-  transition: transform .5s cubic-bezier(.694,.048,.335,1), background .3s;
-  transition: transform .5s cubic-bezier(.694,.048,.335,1), background .3s,
-  -webkit-transform .5s cubic-bezier(.694,.048,.335,1);
-  transform: translateY(0);
-  -webkit-transform: translateY(0);
+  transition: all 0.5s;
 `
 
 export const HeaderLogo = styled.span`
+  cursor: pointer;
   float: left;
   padding: 13px 10px 13px 10px;
   margin: 13px 0px 0px 15px;
   font-size: 2.25rem;
   line-height: inherit;
   font-weight: 500;
-  transition: all 0.3s;
   &::after {
     content: '';
     display: table;

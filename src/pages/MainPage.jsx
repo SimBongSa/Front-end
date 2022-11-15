@@ -13,11 +13,10 @@ export const MainPage = () => {
       <Header />
       <MainBg />
       <SearchBar />
-      {/* <hr />
-      <MainPageText>Urgent Activity</MainPageText>
-      <Cards /> */}
       <hr />
-      <h2>Search by Date</h2>
+      <MainPageText>Urgent Activity</MainPageText>
+      <Cards />
+      <MainPageText>Search by Date</MainPageText>
       <MainCalendar />
       <Footer />
     </>
