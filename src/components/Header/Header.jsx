@@ -5,19 +5,26 @@ import { useTheme } from "../../context/themeProvider";
 import { getCookieToken } from "../../utils/cookie";
 import { useEffect } from "react";
 import { useCookies } from "react-cookie";
+import { removeCookie } from "../../utils/cookie";
 
 const Header = () => {
 
   const navigate = useNavigate();
   const [ThemeMode, toggleTheme] = useTheme();
-  const [cookies, setCookie, removeCookie] = useCookies(["Authorization"])
+  const [cookies] = useCookies(["Authorization"])
 
   useEffect(() => {
     getCookieToken();
   })
 
   const isLogin = cookies['access-token'];
-  console.log(isLogin)
+
+  const logOut = () => {
+    removeCookie(['access-token'], { path: '/' });
+    removeCookie(['username'], { path: '/' });
+    localStorage.removeItem("refresh-token");
+    // navigate("/login");
+  }
 
   return (
     <HeaderContainer>
@@ -29,9 +36,9 @@ const Header = () => {
       {
         isLogin ? (
           <>
-            <HeaderRegister>봉사등록</HeaderRegister>
             <HeaderMenuItem>Notice</HeaderMenuItem>
             <HeaderMenuItem>Messagse</HeaderMenuItem>
+            <HeaderMenuItem onClick={logOut}>Log out</HeaderMenuItem>
             <UserIcon onClick={() => {
               navigate("/mypage")
             }}/>

@@ -63,6 +63,7 @@ export const HeaderRegister = styled.div`
   justify-content: center;
   text-align: center;
   align-items: center;
+  user-select: none;
   transition: all 0.3s;
   &:hover {
     transform: translateY(-10%);

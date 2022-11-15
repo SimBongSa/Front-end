@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { apis } from "./APi/api";
 import { setCookie } from "../../utils/cookie";
-
+import { useNavigate } from "react-router-dom";
 
 export const __loginMember = createAsyncThunk(
   "loginMember",
@@ -9,24 +9,24 @@ export const __loginMember = createAsyncThunk(
     try {
       const response = await apis.memberLogin(payload);
       console.log(response)
-      localStorage.setItem('refresh-token', response.headers['refresh-token']); // refresh token은 로껄스토리지
-      setCookie("access-token", response.headers["access-token"], { // access token은 쿠키에
-        path: "/",
-        secure: true,
-        sameSite: "none",
-      })
-      setCookie("username", response.headers["username"], { // username
-        path: "/",
-        secure: true,
-        sameSite: "none",
-      })
-      // setCookie("userType", response.headers["userType"], { // userType
-      //   path: "/",
-      //   secure: true,
-      //   sameSite: "none",
-      // })
-      console.log("accessToken : ",response.headers["access-token"]);
-
+      if ( response.status === 200 ) {
+        localStorage.setItem('refresh-token', response.headers['refresh-token']); // refresh token은 로껄스토리지
+        setCookie("access-token", response.headers["access-token"], { // access token은 쿠키에
+          path: "/",
+          secure: true,
+          sameSite: "none",
+        })
+        setCookie("username", response.headers["username"], {
+          path: "/",
+          secure: true,
+          sameSite: "none",
+        })
+        // setCookie("userType", response.headers["userType"], {
+        //   path: "/",
+        //   secure: true,
+        //   sameSite: "none",
+        // })
+      }
       return thunkAPI.fulfillWithValue(response.data);
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
@@ -39,8 +39,7 @@ export const __loginManager = createAsyncThunk(
   async (payload, thunkAPI)=> {
     try {
       const response = await apis.managerLogin(payload);
-      console.log(response);
-      return thunkAPI.fulfillWithValue(payload);
+      return thunkAPI.fulfillWithValue(response.data);
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
     }
@@ -52,8 +51,11 @@ export const __registerMember = createAsyncThunk(
   async (payload, thunkAPI) => {
     try {
       const response = await apis.memberSignup(payload);
-      console.log(response.data);
-      return thunkAPI.fulfillWithValue(payload);
+      console.log(response)
+      // if ( response.status === 200 ) {
+      //   navigator()
+      // }
+      return thunkAPI.fulfillWithValue(response.data);
     } catch (error) {
       return thunkAPI.rejectWithValue(error)
     }
@@ -65,8 +67,7 @@ export const __registerManager = createAsyncThunk(
   async (payload, thunkAPI) => {
     try {
       const response = await apis.managerSignup(payload);
-      console.log(response.data);
-      return thunkAPI.fulfillWithValue(payload);
+      return thunkAPI.fulfillWithValue(response.data);
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
     }
@@ -94,7 +95,6 @@ export const registerSlice = createSlice({
       })
       .addCase(__loginMember.fulfilled, (state, action) => {
         state.isLoading = false;
-        // console.log(action.payload)
         state.statusCode = action.payload.success;
         state.loginInfo.concat(action.payload);
       })
@@ -115,8 +115,9 @@ export const registerSlice = createSlice({
         state.error = action.payload;
       })
 
-    // Member Register
+    // Register
     builder
+      //Member
       .addCase(__registerMember.pending, (state, _) => {
         state.isLoading = true;
       })
@@ -128,9 +129,7 @@ export const registerSlice = createSlice({
         state.isLoading = false;
         state.error = action.payload;
       })
-
-      //ManagerRegister
-      builder
+      // Manager
       .addCase(__registerManager.pending, (state, _) => {
         state.isLoading = true;
       })
