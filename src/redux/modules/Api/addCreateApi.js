@@ -1,15 +1,7 @@
 import axios from "axios";
-// import Cookies from "universal-cookie";
+
 const BASE_URL = process.env.REACT_APP_SERVER;
 const authorization = localStorage.getItem("Authorization");
-
-// export const setCookie = (name, value, option) => {
-//   return Cookies.set(name, value, { ...option });
-// };
-
-// export const getCookie = (name) => {
-//   return Cookies.get(name);
-// };
 
 export const addCreateApi = async (payload) => {
   console.log("BASE_URL => ", BASE_URL);

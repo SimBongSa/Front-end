@@ -10,7 +10,6 @@ import { MyPageUser } from "./../pages/MyPageUser";
 import CombinedMap from "../components/Map/CombinedMap";
 import List from "../components/List/List";
 import RegisterActivity from "../components/RegisterActivity/RegisterActivity";
-import { MyPageUser } from "../pages/MyPageUser";
 import CustomerEdit from "../components/CustomerEdit/CustomerEdit";
 
 const Router = () => {
