@@ -57,7 +57,7 @@ export const __registerMember = createAsyncThunk(
       // }
       return thunkAPI.fulfillWithValue(response.data);
     } catch (error) {
-      return thunkAPI.rejectWithValue(error)
+      return thunkAPI.rejectWithValue(error);
     }
   }
 );
