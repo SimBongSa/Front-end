@@ -1,16 +1,20 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { apis } from "./Api/api";
+import { apis } from "./APi/apis";
 import { setCookie } from "../../utils/cookie";
 
 export const __loginMember = createAsyncThunk(
   "loginMember",
-  async (payload, thunkAPI)=> {
+  async (payload, thunkAPI) => {
     try {
       const response = await apis.memberLogin(payload);
-      console.log(response)
-      if ( response.status === 200 ) {
-        localStorage.setItem('refresh-token', response.headers['refresh-token']); // refresh token은 로껄스토리지
-        setCookie("access-token", response.headers["access-token"], { // access token은 쿠키에
+      console.log(response);
+      if (response.status === 200) {
+        localStorage.setItem(
+          "refresh-token",
+          response.headers["refresh-token"]
+        ); // refresh token은 로껄스토리지
+        setCookie("access-token", response.headers["access-token"], {
+          // access token은 쿠키에
           path: "/",
           secure: true,
           sameSite: "none",
@@ -35,7 +39,7 @@ export const __loginMember = createAsyncThunk(
 
 export const __loginManager = createAsyncThunk(
   "loginManager",
-  async (payload, thunkAPI)=> {
+  async (payload, thunkAPI) => {
     try {
       const response = await apis.managerLogin(payload);
       return thunkAPI.fulfillWithValue(response.data);
@@ -50,7 +54,7 @@ export const __registerMember = createAsyncThunk(
   async (payload, thunkAPI) => {
     try {
       const response = await apis.memberSignup(payload);
-      console.log(response)
+      console.log(response);
       // if ( response.status === 200 ) {
       //   navigator()
       // }
@@ -84,8 +88,8 @@ export const registerSlice = createSlice({
     error: "",
   },
   reducers: {},
-  extraReducers: (builder) => {
 
+  extraReducers: (builder) => {
     //  Login
     builder
       // member
@@ -112,7 +116,7 @@ export const registerSlice = createSlice({
       .addCase(__loginManager.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.payload;
-      })
+      });
 
     // Register
     builder
@@ -139,8 +143,8 @@ export const registerSlice = createSlice({
       .addCase(__registerManager.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.payload;
-      })
-  }
+      });
+  },
 });
 
 export const { register } = registerSlice.actions;
