@@ -1,5 +1,5 @@
 import axios from "axios";
-import { BASE_URL } from "./server";
+const BASE_URL = process.env.REACT_APP_SERVER;
 
 const api = axios.create({
   baseURL: BASE_URL,
@@ -32,4 +32,5 @@ export const apis = {
 
   //customerSlice
   customerlist: () => api.get(),
+  edit: (payload) => api.post(`http://localhost:8080/mypage`, payload),
 };
