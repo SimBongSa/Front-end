@@ -4,6 +4,7 @@ import { Provider } from "react-redux";
 import { ThemeProvider } from "styled-components";
 import { store } from "./redux/config/configStore";
 import App from "./App";
+import { CookiesProvider } from "react-cookie";
 
 const theme = {
   BLACK: "#232323",
@@ -18,7 +19,9 @@ root.render(
   // <React.StrictMode>
   <Provider store={store}>
     <ThemeProvider theme={theme}>
-      <App />
+      <CookiesProvider>
+        <App />
+      </CookiesProvider>
     </ThemeProvider>
   </Provider>
   // </React.StrictMode>

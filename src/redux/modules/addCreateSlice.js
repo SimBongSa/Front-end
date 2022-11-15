@@ -1,27 +1,17 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import axios from "axios";
-import {
-  addCreateApi,
-  getCreateApi,
-  delCreateApi,
-  editCreateApi,
-} from "./Api/addCreateApi";
-
-const BASE_URL = process.env.REACT_APP_SERVER;
+import { apis } from "./APi/apis";
 
 export const __addCreate = createAsyncThunk(
   "addCreate",
   async (payload, thunkAPI) => {
     console.log(payload);
-
     const formData = new FormData();
-
     Object.entries(payload).forEach(([key, value]) => {
       formData.append(key, value);
     });
 
     try {
-      await addCreateApi(payload);
+      await apis.addCreate(payload);
       alert("봉사 등록이 완료되었습니다");
       return thunkAPI.fulfillWithValue(payload);
     } catch (error) {
@@ -34,7 +24,7 @@ export const __getCreate = createAsyncThunk(
   "getCreate",
   async (payload, thunkAPI) => {
     try {
-      const response = await getCreateApi(payload);
+      const response = await apis.getCreate(payload);
       return thunkAPI.fulfillWithValue(response);
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
@@ -47,7 +37,7 @@ export const __delCreate = createAsyncThunk(
   async (payload, thunkAPI) => {
     try {
       alert("삭제가 완료되었습니다.");
-      const response = await delCreateApi(payload);
+      const response = await apis.delCreate(payload);
       return thunkAPI.fulfillWithValue(response);
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
@@ -59,7 +49,7 @@ export const __editCreate = createAsyncThunk(
   "editBoard",
   async (payload, thunkAPI) => {
     try {
-      const response = await editCreateApi(payload);
+      const response = await apis.editCreate(payload);
       return thunkAPI.fulfillWithValue(response);
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
