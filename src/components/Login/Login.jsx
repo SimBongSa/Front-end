@@ -40,7 +40,9 @@ const Login = () => {
           <span>or Continue With</span>
 
           <SocialContainer>
-            <div>소셜1</div>
+            <div onClick={() => {
+              navigate("/https://kauth.kakao.com/oauth/authorize?client_id=e0fa0a29b6f980a77e6cad8b0f96639d&redirect_uri=http://3.39.193.27:8080/user/kakao/callback&response_type=code")
+            }}>ka</div>
             <div>소셜2</div>
             <div>소셜3</div>
           </SocialContainer>

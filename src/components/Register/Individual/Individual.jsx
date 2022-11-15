@@ -2,37 +2,42 @@ import { InputContainer, InputForm, InputBox } from "./Individual.styled";
 import Input from "../../common/input/Input";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { __register } from "../../../redux/modules/registerSlice"
+import { __registerUser } from "../../../redux/modules/registerSlice"
+import { useNavigate } from "react-router-dom";
 
 const Individual = () => {
 
   const init = {
-    member_id: "",
+    userType: 0,
+    username: "",
     nickname: "",
     password: "",
     passwordConfirm: "",
     email: "",
-    phone_num: "",
+    phoneNumber: "",
     name: "",
     gender: "",
     age: "",
   }
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [input, setInput] = useState(init);
 
   const onChangeHandler = (e) => {
     const { name, value } = e.target;
     setInput({ ...input, [name]: value });
   };
+  const onChangeAge = (e) => {
+    const { name, value } = e.target;
+    setInput({...input, [name]: +value });
+  }
   const onSubmitHandler = (e) => {
     e.preventDefault();
-    dispatch(__register(input))
+    dispatch(__registerUser(input))
     console.log(input);
     setInput(init);
   }
-
-  console.log(input);
 
   return(
     <InputContainer>
@@ -41,14 +46,16 @@ const Individual = () => {
         <InputBox>
           <form onSubmit={onSubmitHandler}>
             <Input 
+              dupleCheck={true}
               placeholder="Username"
               type="text"
-              name="member_id"
-              value={input.member_id}
+              name="username"
+              value={input.username}
               onChange={onChangeHandler}
             />
             <Input 
               placeholder="Nickname"
+              dupleCheck={true}
               type="text"
               name="nickname"
               value={input.nickname}
@@ -70,6 +77,7 @@ const Individual = () => {
             />
             <Input 
               placeholder="Email"
+              dupleCheck={true}
               type="email"
               name="email"
               value={input.email}
@@ -77,9 +85,9 @@ const Individual = () => {
             />
             <Input 
               placeholder="PhoneNumber"
-              type="text"
-              name="phone_num"
-              value={input.phone_num}
+              type="tel"
+              name="phoneNumber"
+              value={input.phoneNumber}
               onChange={onChangeHandler}
             />
             <Input 
@@ -89,17 +97,31 @@ const Individual = () => {
               value={input.name}
               onChange={onChangeHandler}
             />
+            <Input
+              id="male"
+              type="radio"
+              name="gender"
+              value="male"
+              onChange={onChangeHandler}
+            />
+            <Input
+              id="female"
+              type="radio"
+              name="gender"
+              value="female"
+              onChange={onChangeHandler}
+            />
             <Input 
               placeholder="Birth Date"
               type="text"
               name="age"
               value={input.age}
-              onChange={onChangeHandler}
+              onChange={onChangeAge}
             />
             <button type="submit">로구인</button>
           </form>
         </InputBox>
-        <span>You are already member? Log in Now</span>
+        <span onClick={() => navigate("/login")}>You are already member? Log in Now</span>
       </InputForm>
     </InputContainer>
   )

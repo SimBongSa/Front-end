@@ -10,7 +10,7 @@ import { MyPageUser } from "./../pages/MyPageUser";
 import CombinedMap from "../components/Map/CombinedMap";
 import List from "../components/List/List";
 import CustomerEdit from "../components/CustomerEdit/CustomerEdit";
-import TestCalenadr from "../components/Calendar/TestCalenadr";
+
 const Router = () => {
   return (
     <BrowserRouter>
@@ -26,7 +26,6 @@ const Router = () => {
             <Route path="/map" element={<CombinedMap />} />
             <Route path="/list" element={<List />} />
             <Route path="/customeredit" element={<CustomerEdit />} />
-            <Route path="/test" element={<TestCalenadr />} />
           </Routes>
         </Suspense>
       </ThemeProvider>
