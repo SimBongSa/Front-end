@@ -49,16 +49,17 @@ const MainCalendar = () => {
       },
     },
   ];
-  console.log(moment(new Date()).format("YYYY/MM/DD"));
+
   const onClickDayHandler = (e) => {
-    moment(date).format("DD");
     // console.log(e);
     setResult();
   };
+
   return (
     <>
       <CalendarContainer>
         <Calendar
+          // onClickMonth={(e) => onClickMonthHandler(e)}
           onClickDay={(e) => onClickDayHandler(e)}
           onChange={onChange} // useState로 포커스 변경 시 현재 날짜 받아오기
           formatDay={(locale, date) => moment(date).format("DD")} // 날'일' 제외하고 숫자만 보이도록 설정
@@ -80,13 +81,13 @@ const MainCalendar = () => {
               html.push(<div className="dot"></div>);
             }
             // 다른 조건을 주어서 html.push 에 추가적인 html 태그를 적용할 수 있음.
-            return (
-              <>
-                <div className="flex justify-center items-center absoluteDiv">
-                  {html}
-                </div>
-              </>
-            );
+            // return (
+            //   <>
+            //     <div className="flex justify-center items-center absoluteDiv">
+            //       {html}
+            //     </div>
+            //   </>
+            // );
           }}
         />
 

@@ -1,7 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { apis } from "./Api/api";
-
-const BASE_URL = process.env.REACT_APP_SERVER;
+import { apis } from "./APi/apis";
 
 export const __addCreate = createAsyncThunk(
   "addCreate",
