@@ -1,5 +1,7 @@
 import styled from "styled-components";
 
+export const Wrap = styled.form``;
+
 export const ImgWrap = styled.form``;
 
 export const UserName = styled.p`
@@ -37,4 +39,9 @@ export const ImagePreview = styled.img`
   width: 100%;
   height: 100%;
   object-fit: cover;
+`;
+
+export const ImgSize = styled.img`
+  width: 70px;
+  height: 70px;
 `;
