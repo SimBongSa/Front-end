@@ -32,7 +32,7 @@ export const apis = {
     axios.post(`${BASE_URL}/managers/signup`, payload),
 
   //customerSlice
-  customerlist: () => api.get(),
+  customerlist: (dueDate) => api.get(`${BASE_URL}/boards/${dueDate}`),
   edit: (payload) =>
     api.post(`http://localhost:8080/mypage`, payload, {
       headers: {

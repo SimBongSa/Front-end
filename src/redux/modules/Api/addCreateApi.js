@@ -1,23 +1,8 @@
 import axios from "axios";
-<<<<<<< HEAD
-// import Cookies from "universal-cookie";
-const BASE_URL = process.env.REACT_APP_SERVER;
-const authorization = localStorage.getItem("Authorization");
-
-// export const setCookie = (name, value, option) => {
-//   return Cookies.set(name, value, { ...option });
-// };
-
-// export const getCookie = (name) => {
-//   return Cookies.get(name);
-// };
-
-=======
 
 const BASE_URL = process.env.REACT_APP_SERVER;
 const authorization = localStorage.getItem("Authorization");
 
->>>>>>> 0a7ac19ef2f07fc0c07631e03853eaf99e7814c9
 export const addCreateApi = async (payload) => {
   console.log("BASE_URL => ", BASE_URL);
   const response = await axios.post(`${BASE_URL}/boards`, payload, {

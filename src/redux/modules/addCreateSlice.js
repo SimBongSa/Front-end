@@ -1,38 +1,17 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-<<<<<<< HEAD
-import {
-  addCreateApi,
-  getCreateApi,
-  delCreateApi,
-  editCreateApi,
-} from "./APi/addCreateApi";
-=======
 import { apis } from "./Api/api";
->>>>>>> 0a7ac19ef2f07fc0c07631e03853eaf99e7814c9
-
-const BASE_URL = process.env.REACT_APP_SERVER;
 
 export const __addCreate = createAsyncThunk(
   "addCreate",
   async (payload, thunkAPI) => {
     console.log(payload);
-<<<<<<< HEAD
-
     const formData = new FormData();
-
-=======
-    const formData = new FormData();
->>>>>>> 0a7ac19ef2f07fc0c07631e03853eaf99e7814c9
     Object.entries(payload).forEach(([key, value]) => {
       formData.append(key, value);
     });
 
     try {
-<<<<<<< HEAD
-      await addCreateApi(payload);
-=======
       await apis.addCreate(payload);
->>>>>>> 0a7ac19ef2f07fc0c07631e03853eaf99e7814c9
       alert("봉사 등록이 완료되었습니다");
       return thunkAPI.fulfillWithValue(payload);
     } catch (error) {
@@ -45,11 +24,7 @@ export const __getCreate = createAsyncThunk(
   "getCreate",
   async (payload, thunkAPI) => {
     try {
-<<<<<<< HEAD
-      const response = await getCreateApi(payload);
-=======
       const response = await apis.getCreate(payload);
->>>>>>> 0a7ac19ef2f07fc0c07631e03853eaf99e7814c9
       return thunkAPI.fulfillWithValue(response);
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
@@ -62,11 +37,7 @@ export const __delCreate = createAsyncThunk(
   async (payload, thunkAPI) => {
     try {
       alert("삭제가 완료되었습니다.");
-<<<<<<< HEAD
-      const response = await delCreateApi(payload);
-=======
       const response = await apis.delCreate(payload);
->>>>>>> 0a7ac19ef2f07fc0c07631e03853eaf99e7814c9
       return thunkAPI.fulfillWithValue(response);
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
@@ -78,11 +49,7 @@ export const __editCreate = createAsyncThunk(
   "editBoard",
   async (payload, thunkAPI) => {
     try {
-<<<<<<< HEAD
-      const response = await editCreateApi(payload);
-=======
       const response = await apis.editCreate(payload);
->>>>>>> 0a7ac19ef2f07fc0c07631e03853eaf99e7814c9
       return thunkAPI.fulfillWithValue(response);
     } catch (error) {
       return thunkAPI.rejectWithValue(error);

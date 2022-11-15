@@ -2,38 +2,28 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { apis } from "./Api/api";
 import { setCookie } from "../../utils/cookie";
 
-<<<<<<< HEAD
-const BASE_URL = process.env.REACT_APP_SERVER;
-
-export const __registerUser = createAsyncThunk(
-  "regitser",
-  async (payload, thunkAPI) => {
-    try {
-      const response = await axios.post(`${BASE_URL}/members/signup`, payload, {
-        "Content-Type": "application/json",
-      });
-      console.log(payload);
-      console.log(response.data);
-      return thunkAPI.fulfillWithValue(payload);
-=======
 export const __loginMember = createAsyncThunk(
   "loginMember",
-  async (payload, thunkAPI)=> {
+  async (payload, thunkAPI) => {
     try {
       const response = await apis.memberLogin(payload);
-      console.log(response)
-      if ( response.status === 200 ) {
-        localStorage.setItem('refresh-token', response.headers['refresh-token']); // refresh token은 로껄스토리지
-        setCookie("access-token", response.headers["access-token"], { // access token은 쿠키에
+      console.log(response);
+      if (response.status === 200) {
+        localStorage.setItem(
+          "refresh-token",
+          response.headers["refresh-token"]
+        ); // refresh token은 로껄스토리지
+        setCookie("access-token", response.headers["access-token"], {
+          // access token은 쿠키에
           path: "/",
           secure: true,
           sameSite: "none",
-        })
+        });
         setCookie("username", response.headers["username"], {
           path: "/",
           secure: true,
           sameSite: "none",
-        })
+        });
         // setCookie("userType", response.headers["userType"], {
         //   path: "/",
         //   secure: true,
@@ -41,18 +31,15 @@ export const __loginMember = createAsyncThunk(
         // })
       }
       return thunkAPI.fulfillWithValue(response.data);
->>>>>>> 0a7ac19ef2f07fc0c07631e03853eaf99e7814c9
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
     }
   }
 );
-<<<<<<< HEAD
-=======
 
 export const __loginManager = createAsyncThunk(
   "loginManager",
-  async (payload, thunkAPI)=> {
+  async (payload, thunkAPI) => {
     try {
       const response = await apis.managerLogin(payload);
       return thunkAPI.fulfillWithValue(response.data);
@@ -67,7 +54,7 @@ export const __registerMember = createAsyncThunk(
   async (payload, thunkAPI) => {
     try {
       const response = await apis.memberSignup(payload);
-      console.log(response)
+      console.log(response);
       // if ( response.status === 200 ) {
       //   navigator()
       // }
@@ -89,7 +76,6 @@ export const __registerManager = createAsyncThunk(
     }
   }
 );
->>>>>>> 0a7ac19ef2f07fc0c07631e03853eaf99e7814c9
 
 export const registerSlice = createSlice({
   name: "userInfo",
@@ -104,7 +90,6 @@ export const registerSlice = createSlice({
   reducers: {},
 
   extraReducers: (builder) => {
-
     //  Login
     builder
       // member
@@ -131,7 +116,7 @@ export const registerSlice = createSlice({
       .addCase(__loginManager.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.payload;
-      })
+      });
 
     // Register
     builder
