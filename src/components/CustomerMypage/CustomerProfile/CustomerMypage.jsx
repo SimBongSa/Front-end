@@ -1,6 +1,10 @@
 import styled from "styled-components";
+import { FiCheck } from "react-icons/fi";
+import { FaPen } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 
-const Mypage = () => {
+const CustomerMypage = () => {
+  const navigate = useNavigate();
   return (
     <ProfileContainer>
       <ProfileTag>개인</ProfileTag>
@@ -10,29 +14,37 @@ const Mypage = () => {
         alt="user"
       />
 
-      <h3>John Doe</h3>
-      <h5>john.doe@gmail.com</h5>
-      <h5>010.1234.5678</h5>
+      <h3>
+        John Doe{" "}
+        <FaPen className="edit" onClick={() => navigate("/customeredit")} />
+      </h3>
+      <h5>
+        <FiCheck /> male
+      </h5>
+
+      <h5>
+        <FiCheck /> 010.1234.5678
+      </h5>
+      <h5>
+        <FiCheck /> john.doe@gmail.com
+      </h5>
+
+      <ProfileIntroduction>Introduction</ProfileIntroduction>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+        tempor.
+      </p>
 
       <ProfileCategory>Volunteer History</ProfileCategory>
       <p>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
         tempor.
       </p>
-
-      <ProfileSkills>
-        <ProfileCategory>Skills</ProfileCategory>
-        <ProfileSkill>
-          <li>Piano</li>
-          <li>Good with Children</li>
-          <li>Chinese</li>
-        </ProfileSkill>
-      </ProfileSkills>
     </ProfileContainer>
   );
 };
 
-export default Mypage;
+export default CustomerMypage;
 
 export const ProfileContainer = styled.div`
   float: left;
@@ -41,7 +53,7 @@ export const ProfileContainer = styled.div`
   margin-left: 2rem;
   border-radius: 5px;
   padding: 30px 10px 10px 10px;
-  width: 200px;
+  width: 280px;
   max-width: 100%;
   text-align: center;
   background-color: #aaaaaa;
@@ -69,6 +81,13 @@ export const ProfileContainer = styled.div`
     border-radius: 50%;
     padding: 7px;
   }
+  .edit {
+    cursor: pointer;
+    transition: 0.4s;
+    &:hover {
+      transform: translateY(-5%);
+    }
+  }
 `;
 
 export const ProfileTag = styled.span`
@@ -84,35 +103,14 @@ export const ProfileTag = styled.span`
   z-index: 4;
 `;
 
-export const ProfileSkills = styled.div`
+export const ProfileCategory = styled.h4`
   text-align: left;
-  /* background-color: #232323; */
-  & h5 {
-    color: #ffffff;
-    margin: 10px 0;
-    margin-left: 10px;
-  }
-`;
-export const ProfileSkill = styled.ul`
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  & li {
-    display: flex;
-    border: 1px solid #232323;
-    border-radius: 4px;
-    display: inline-block;
-    font-size: 12px;
-    margin: 0 7px 7px 7px;
-    padding: 7px;
-    transition: all 0.3s;
-    &:hover {
-      transform: translateY(-3%);
-    }
-  }
+  color: black;
+  margin: 1rem;
+  margin-top: 2rem;
 `;
 
-export const ProfileCategory = styled.h4`
+export const ProfileIntroduction = styled.h4`
   text-align: left;
   color: black;
   margin: 1rem;
