@@ -2,8 +2,8 @@ import { InputContainer, InputForm, InputBox } from "../Individual/Individual.st
 import Input from "../../common/input/Input";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { __registerManager } from "../../../redux/modules/managerSlice";
 import { useNavigate } from "react-router-dom";
+import { __registerManager } from "../../../redux/modules/registerSlice";
 
 
 const Organization = () => {
