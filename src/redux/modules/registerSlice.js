@@ -35,13 +35,6 @@ export const registerSlice = createSlice({
     error: "",
   },
   reducers: {},
-<<<<<<< HEAD
-  extraReducers: {
-    [__register.fulfilled]: (state, action) => {
-      state.userInfo.push(action.payload);
-    },
-  },
-=======
   extraReducers: (builder) => {
     builder
       .addCase(__registerUser.pending, (state, action) => {
@@ -56,7 +49,6 @@ export const registerSlice = createSlice({
         state.error = action.payload;
       })
   }
->>>>>>> 81e37ec9527984565b5aee9861f5980c58285a8c
 });
 
 export const { register } = registerSlice.actions;
