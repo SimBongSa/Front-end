@@ -9,6 +9,7 @@ import { __registerManager } from "../../../redux/modules/registerSlice";
 const Organization = () => {
 
   const init = {
+    authority: "ROLE_ADMIN",
     username: "",
     password: "",
     passwordConfirm: "",
@@ -16,7 +17,7 @@ const Organization = () => {
     companyImage: "",
     companyNum: "",
     certificateImage: "",
-    companyPhoneNum: "",
+    phoneNumber: "",
     email: "",
   }
 
