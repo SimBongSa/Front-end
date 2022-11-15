@@ -1,7 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { apis } from "./APi/api";
+import { apis } from "./Api/api";
 import { setCookie } from "../../utils/cookie";
-import { useNavigate } from "react-router-dom";
 
 export const __loginMember = createAsyncThunk(
   "loginMember",
