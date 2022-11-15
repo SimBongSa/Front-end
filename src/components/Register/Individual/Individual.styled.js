@@ -5,6 +5,7 @@ export const InputContainer = styled.div`
   height: 1000px;
   position: relative;
   margin: auto;
+  margin-bottom: 10rem;
   box-shadow: 2px 10px 40px rgba(22,20,19,0.4);
   border-radius: 10px;
   margin-top: 50px;
