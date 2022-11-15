@@ -18,10 +18,13 @@ const Header = () => {
   })
 
   const isLogin = cookies['access-token'];
+  const authority = cookies['authority'];
+  const username = cookies['username'];
 
   const logOut = () => {
     removeCookie(['access-token'], { path: '/' });
     removeCookie(['username'], { path: '/' });
+    removeCookie(['authority'], { path: '/' });
     localStorage.removeItem("refresh-token");
     // navigate("/login");
   }
@@ -34,26 +37,36 @@ const Header = () => {
         <BsFillMoonFill/>
       </LightThemeBtn>
       {
-        isLogin ? (
+        isLogin && authority === "ROLE_MEMBER" ? (
           <>
             <HeaderMenuItem>Notice</HeaderMenuItem>
             <HeaderMenuItem>Messagse</HeaderMenuItem>
+            <HeaderMenuItem>{ username }</HeaderMenuItem>
             <HeaderMenuItem onClick={logOut}>Log out</HeaderMenuItem>
             <UserIcon onClick={() => {
               navigate("/mypage")
             }}/>
           </>
         ) : (
-          <HeaderRegister
-            onClick={() => {
-              navigate("/login");
-            }}
-          >Login</HeaderRegister>
+          isLogin && authority === "ROLE_MANAGER" ? (
+              <>
+                <HeaderMenuItem>Notice</HeaderMenuItem>
+                <HeaderMenuItem>Messagse</HeaderMenuItem>
+                <HeaderMenuItem>{ username } 님 방가방가</HeaderMenuItem>
+                <HeaderMenuItem onClick={logOut}>Log out</HeaderMenuItem>
+                <UserIcon onClick={() => {
+                  navigate("/mypage")
+                }}/>
+              </>
+            ) 
+            : <HeaderRegister
+                onClick={() => {
+                  navigate("/login");
+                }}
+              >Login</HeaderRegister>
         )
       }
       </HeaderMenu>
-
-
     </HeaderContainer>
   )
 };
