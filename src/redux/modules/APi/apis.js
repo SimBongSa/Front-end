@@ -41,7 +41,7 @@ export const apis = {
       },
     }),
 
-  // addCreateSlice
+  // registerActivity slice
   addCreate: (payload) =>
     axios.post(`${BASE_URL}/boards`, payload, {
       headers: {
