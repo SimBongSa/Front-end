@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { HeaderContainer, HeaderLogo, HeaderMenu, HeaderMenuItem, HeaderRegister, LightThemeBtn, UserIcon } from "./Header.styled";
+import { HeaderContainer, HeaderLogo, HeaderMenu, HeaderMenuItem, HeaderRegister, LightThemeBtn, UserIcon, AdminBtn } from "./Header.styled";
 import { BsFillMoonFill } from "react-icons/bs";
 import { useTheme } from "../../context/themeProvider";
 import { getCookieToken } from "../../utils/cookie";
@@ -42,20 +42,19 @@ const Header = () => {
             <HeaderMenuItem>Notice</HeaderMenuItem>
             <HeaderMenuItem>Messagse</HeaderMenuItem>
             <HeaderMenuItem>{ username }</HeaderMenuItem>
-            <HeaderMenuItem onClick={logOut}>Log out</HeaderMenuItem>
             <UserIcon onClick={() => {
               navigate("/mypage")
             }}/>
           </>
         ) : (
-          isLogin && authority === "ROLE_MANAGER" ? (
+          isLogin && authority === "ROLE_ADMIN" ? (
               <>
+                <AdminBtn>봉사등록</AdminBtn>
                 <HeaderMenuItem>Notice</HeaderMenuItem>
                 <HeaderMenuItem>Messagse</HeaderMenuItem>
-                <HeaderMenuItem>{ username } 님 방가방가</HeaderMenuItem>
-                <HeaderMenuItem onClick={logOut}>Log out</HeaderMenuItem>
+                <HeaderMenuItem>{ username }</HeaderMenuItem>
                 <UserIcon onClick={() => {
-                  navigate("/mypage")
+                  navigate("/companypage")
                 }}/>
               </>
             ) 
