@@ -41,6 +41,7 @@ export const ProfileContainer = styled.div`
 	max-width: 100%;
 	text-align: center;
   background-color: #aaaaaa;
+  z-index: 3;
   & h3 {
     margin: 10px 0
   }
@@ -64,6 +65,14 @@ export const ProfileContainer = styled.div`
     border: 1px solid #ffffff;
 	  border-radius: 50%;
 	  padding: 7px;
+  }
+  @media ( max-width: 768px) {
+    position: relative;
+    width: 70%;
+    margin: 0 auto;
+    margin-top: 15rem;
+    margin-left: 5rem;
+    z-index: 1;
   }
 `
 

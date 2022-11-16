@@ -12,6 +12,10 @@ export const HeaderContainer = styled.header`
   background-color: ${(props) => props.theme.bgColor};
   will-change: transform;
   transition: all 0.5s;
+  @media ( max-width: 768px) {
+    width: 100%;
+    overflow: hidden;
+  }
 `
 
 export const HeaderLogo = styled.span`
@@ -112,4 +116,29 @@ export const LightThemeBtn = styled.button`
   -o-transform: rotate(360deg);
   transform: rotate(360deg);
   }
+  @media ( max-width: 768px) {
+    position: fixed;
+    top: 25px;
+  }
+`
+
+export const AdminBtn = styled.button`
+  cursor: pointer;
+  display: inline-block;
+  border-radius: 30px;
+  background: ${(props) => props.theme.ctrColor};
+  color: ${(props) => props.theme.bgColor};
+  width: fit-content;
+  padding: 16px 25px 15px 25px;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  user-select: none;
+  border: none;
+  justify-content: center;
+  margin-top: 4px;
+  margin-right: 1rem;
+  text-decoration: none;
+  transition: all 0.3s;
+  transition: all 0.3s;
 `

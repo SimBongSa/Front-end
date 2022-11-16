@@ -27,9 +27,8 @@ export const apis = {
   // registerSlice
   memberLogin: (payload) => api.post(`${BASE_URL}/members/login`, payload),
   managerLogin: (payload) => api.post(`${BASE_URL}/managers/login`, payload),
-  memberSignup: (payload) => axios.post(`${BASE_URL}/members/signup`, payload),
-  managerSignup: (payload) =>
-    axios.post(`${BASE_URL}/managers/signup`, payload),
+  memberSignup: (payload) => axios.post(`${BASE_URL}/members/signup/individual`, payload),
+  managerSignup: (payload) => axios.post(`${BASE_URL}/members/signup/admin`, payload),
 
   //customerSlice
   customerlist: (dueDate) => api.get(`${BASE_URL}/boards/${dueDate}`),
@@ -50,16 +49,23 @@ export const apis = {
       },
     }),
   getCreate: () => axios.get(`${BASE_URL}/boards`),
+  editCreate: (payload) =>
+  axios.put(`${BASE_URL}/boards/${payload.id}`, payload.upData, {
+    headers: {
+      Authorization,
+    },
+  }),
   delCreate: (id) =>
     axios.delete(`${BASE_URL}/boards/${id}/remove`, {
       headers: {
         Authorization,
       },
     }),
-  editCreate: (payload) =>
-    axios.put(`${BASE_URL}/boards/${payload.id}`, payload.upData, {
-      headers: {
-        Authorization,
-      },
-    }),
+
+  // MyPage (Company)
+  getCompanyPage: () => axios.get(`${BASE_URL}/companypage`, {
+    headers: {
+      Authorization,
+    }
+  })
 };
