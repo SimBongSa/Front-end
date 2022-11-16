@@ -42,7 +42,7 @@ export const apis = {
   // boards
   getboards: () => api.get(`${BASE_URL}/boards`),
 
-  // addCreateSlice
+  // registerActivity slice
   addCreate: (payload) =>
     axios.post(`${BASE_URL}/boards`, payload, {
       headers: {
