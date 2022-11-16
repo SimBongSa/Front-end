@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { apis } from "./APi/apis";
+import { apis } from "./Api/apis";
 import { setCookie } from "../../utils/cookie";
 
 export const __loginMember = createAsyncThunk(

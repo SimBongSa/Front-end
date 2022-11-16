@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
-import { apis } from "./APi/apis";
+import { apis } from "./Api/apis";
 
 // yarn json-server --watch db.json --port 8080
 const initialState = {
