@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import Header from "../components/Header/Header"
 import Profile from "../components/MyPage/Profile/Profile"
+import CompanyPage from "../components/MyPage/CompanyPage/CompanyPage"
 import Cards from "../components/Cards/Cards"
 import Review from "../components/MyPage/Review/Review";
 
@@ -9,10 +10,11 @@ export const MyPageCompany = () => {
     <div>
       <Header />
       <Profile />
-      <Test>My Activity</Test>
+      <CompanyPage/>
+      {/* <Test>My Activity</Test>
       <Cards/>
       <Test>My Reviews</Test>
-      <Review/>
+      <Review/> */}
     </div>
   );
 };

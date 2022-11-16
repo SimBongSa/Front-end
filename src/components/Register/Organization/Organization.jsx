@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { __registerManager } from "../../../redux/modules/registerSlice";
+import { useRef } from "react";
 
 
 const Organization = () => {
@@ -13,12 +14,10 @@ const Organization = () => {
     username: "",
     password: "",
     passwordConfirm: "",
-    companyName: "",
-    companyImage: "",
-    companyNum: "",
-    certificateImage: "",
     phoneNumber: "",
     email: "",
+    licenseImage: "",
+    licenseNumber: "",
   }
 
   const dispatch = useDispatch();
@@ -36,7 +35,35 @@ const Organization = () => {
     setInput(init);
   }
 
+  const licenseImage = useRef();
+  const onImageBtnClick = (e) => {
+    e.preventDefault();
+    licenseImage.current.click();
+  }
+
   console.log(input);
+
+  // image State
+  const [imageToUpload, setImageToUpload] = useState("");
+  console.log(imageToUpload)
+  // image Preview State  
+  const [uploadpreview, setUploadpreview] = useState(null);
+
+  // image onChangeHandler
+  const onChangeImage = (e) => {
+    setImageToUpload(e.target.files[0]);
+    // image preview
+    let reader = new FileReader();
+    if (e.target.files[0]) {
+      reader.readAsDataURL(e.target.files[0]);
+    }
+    reader.onloadend = () => {
+      const previewImgUrl = reader.result;
+      if (previewImgUrl) {
+        setUploadpreview([...imageToUpload, previewImgUrl]);
+      }
+    };
+  };
 
   return(
     <InputContainer>
@@ -54,11 +81,23 @@ const Organization = () => {
             <Input 
               placeholder="License Number"
               type="text"
-              name="companyNum"
-              value={input.companyNum}
+              name="licenseNumber"
+              value={input.licenseNumber}
               onChange={onChangeHandler}
             />
-            <input type="file"/>
+            <input 
+              ref={licenseImage}
+              type="file"
+              accept="image/*"
+              name="licenseImage"
+              onChange={onChangeImage}
+            />
+            <button
+              onClick={onImageBtnClick}
+            >image Upload</button>
+            <div>
+              <img src={imageToUpload} alt="" />
+            </div>
             <Input 
               placeholder="Password"
               type="password"
@@ -83,22 +122,15 @@ const Organization = () => {
             <Input 
               placeholder="Phone Number"
               type="text"
-              name="companyPhoneNum"
-              value={input.companyPhoneNum}
-              onChange={onChangeHandler}
-            />
-            <Input 
-              placeholder="Name"
-              type="text"
-              name="name"
-              value={input.name}
+              name="phoneNumber"
+              value={input.phoneNumber}
               onChange={onChangeHandler}
             />
             <Input 
               placeholder="Otganization Name"
               type="text"
-              name="companyName"
-              value={input.companyName}
+              name="name"
+              value={input.name}
               onChange={onChangeHandler}
             />
             <button type="submit">로구인</button>

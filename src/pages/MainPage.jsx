@@ -16,8 +16,8 @@ export const MainPage = () => {
       <hr />
       <MainPageText>Urgent Activity</MainPageText>
       <Cards />
-      <MainPageText>Search by Date</MainPageText>
-      <MainCalendar />
+      {/* <MainPageText>Search by Date</MainPageText>
+      <MainCalendar /> */}
       <Footer />
     </>
   );
