@@ -34,7 +34,7 @@ const Footer = () => {
 export default Footer;
 
 export const FooterUl = styled.ul`
-  width: 33.333%;
+  width: 33.3333%;
   & li {
     /* text-align: center; */
     padding-bottom: 10px;
@@ -42,7 +42,7 @@ export const FooterUl = styled.ul`
       transition: all 0.5s;
       padding: 10px 0 5px 0;
       color: #fff;
-      font-size: 2vw;
+      font-size: 1.4rem;
     }
   }
 `
@@ -50,7 +50,7 @@ export const FooterUl = styled.ul`
 export const FooterItem = styled.li`
   cursor: pointer;
   width: fit-content;
-  font-size: 1vw;
+  font-size: 0.8rem;
   margin-left: 3px;
   color: #8DB9ED;
   transition: all 0.5s;
@@ -64,5 +64,5 @@ export const FooterBottom = styled.section`
   padding: 1rem;
   border-top: 1px solid #ccc;
   margin-top: 10px;
-  font-size: 1vw;
+  font-size: 1rem;
 `
