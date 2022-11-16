@@ -120,7 +120,7 @@ export const ProfileMisc = styled.div`
   & span {
     margin-top: 1rem;
     position: absolute;
-    width: 250px;
+    width: 230px;
     height: 1px;
     background: #aaaaaa;
   }

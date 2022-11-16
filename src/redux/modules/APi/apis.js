@@ -67,5 +67,10 @@ export const apis = {
     headers: {
       Authorization: token,
     }
-  })
+  }),
+  getCompanyBoards: () => api.get(`${BASE_URL}/companypage/boards`, {
+    headers: {
+      Authorization: token,
+    }
+  }),
 };

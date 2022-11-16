@@ -1,7 +1,16 @@
 import { ProfileContainer, ProfileBox, ProfileTag, ProfileCategory, ProfileSkills, ProfileSkill, ProfileMisc } from "./Profile.styled";
+import { removeCookie } from "../../../utils/cookie";
 import styled from "styled-components";
 
 const Profile = ({email, introduction, name, username, phoneNumber, profileImage}) => {
+
+  const logOut = () => {
+    removeCookie(['access-token'], { path: '/' });
+    removeCookie(['username'], { path: '/' });
+    removeCookie(['authority'], { path: '/' });
+    localStorage.removeItem("refresh-token");
+  }
+
   return (
     <ProfileContainer>
       <ProfileBox>
@@ -40,7 +49,7 @@ const Profile = ({email, introduction, name, username, phoneNumber, profileImage
         <h4>나의 봉사 관리</h4>
         <h4>캘린더</h4>
         <span/>
-        <h4>로그 아웃</h4>
+        <h4 onClick={logOut}>로그 아웃</h4>
       </ProfileMisc>
 
     </ProfileContainer>

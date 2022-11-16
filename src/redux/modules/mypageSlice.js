@@ -14,10 +14,23 @@ export const __getCompanyInfo = createAsyncThunk(
   }
 );
 
+export const __getCompanyBoards = createAsyncThunk(
+  "companyBoards",
+  async (payload, thunkAPI) => {
+    try {
+      const response = await apis.getCompanyBoards(payload);
+      return thunkAPI.fulfillWithValue(response.data.data)
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error);
+    }
+  }
+);
+
 export const mypageSlice = createSlice({
   name: "mypage",
   initialState: {
-    company: [],
+    companyInfo: [],
+    companyBoards: [],
     user: [],
     isLoading: false,
     error: null,
@@ -30,9 +43,22 @@ export const mypageSlice = createSlice({
       })
       .addCase(__getCompanyInfo.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.company = action.payload;
+        state.companyInfo = action.payload;
       })
       .addCase(__getCompanyInfo.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.payload;
+      })
+
+      // get company boards
+      .addCase(__getCompanyBoards.pending, (state, _) => {
+        state.isLoading = true;
+      })
+      .addCase(__getCompanyBoards.fulfilled, (state,action) => {
+        state.isLoading = false;
+        state.companyBoards = action.payload;
+      })
+      .addCase(__getCompanyBoards.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.payload;
       })

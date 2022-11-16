@@ -21,14 +21,6 @@ const Header = () => {
   const authority = cookies['authority'];
   const username = cookies['username'];
 
-  const logOut = () => {
-    removeCookie(['access-token'], { path: '/' });
-    removeCookie(['username'], { path: '/' });
-    removeCookie(['authority'], { path: '/' });
-    localStorage.removeItem("refresh-token");
-    // navigate("/login");
-  }
-
   return (
     <HeaderContainer>
       <HeaderLogo onClick={() => navigate("/")}>VONGOLE</HeaderLogo>
