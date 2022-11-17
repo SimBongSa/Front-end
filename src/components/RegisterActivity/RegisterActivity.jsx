@@ -25,7 +25,7 @@ const RegisterActivity = () => {
   const init = {
     title: "",
     content: "",
-    dueDate: "",
+    dueDay: "",
     startDate: "",
     endDate: "",
     area: "",
@@ -106,8 +106,8 @@ const RegisterActivity = () => {
         <p>행사 일</p>
         <input
           type="date"
-          name="dueDate"
-          value={input.dueDate}
+          name="dueDay"
+          value={input.dueDay}
           onChange={(e) => onChangeInput(e)}
         />
         <p>행사 장소</p>

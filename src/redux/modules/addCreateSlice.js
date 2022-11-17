@@ -16,8 +16,12 @@ export const __addCreate = createAsyncThunk(
     }
 
     try {
-      await apis.addCreate(payload);
-      alert("봉사 등록이 완료되었습니다");
+      const response = await apis.addCreate(payload);
+      console.log("response => ", response);
+      if (response.status === 200) {
+        alert("봉사 등록이 완료되었습니다.");
+      }
+
       return thunkAPI.fulfillWithValue(payload);
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
@@ -65,6 +69,7 @@ export const __editCreate = createAsyncThunk(
 export const addCreateSlice = createSlice({
   name: "boards",
   initialState: {
+    boards: [],
     isLoading: false,
     error: null,
   },
@@ -77,7 +82,8 @@ export const addCreateSlice = createSlice({
     });
     bulider.addCase(__addCreate.fulfilled, (state, action) => {
       state.isLoading = false;
-      state.courses.push(action.payload);
+      console.log("action.payload =>", action.payload);
+      state.boards.push(action.payload);
     });
     bulider.addCase(__addCreate.rejected, (state, action) => {
       state.isLoading = false;
@@ -92,7 +98,7 @@ export const addCreateSlice = createSlice({
     bulider.addCase(__getCreate.fulfilled, (state, action) => {
       state.isLoading = false;
       state.isDone = true;
-      state.courses = action.payload;
+      state.boards = action.payload;
     });
     bulider.addCase(__getCreate.rejected, (state, action) => {
       state.isLoading = false;
@@ -119,8 +125,8 @@ export const addCreateSlice = createSlice({
     bulider.addCase(__editCreate.fulfilled, (state, action) => {
       state.isLoading = false;
       console.log(action.payload);
-      state.courses = state.courses.map((courses) => {
-        return courses.id === action.payload.id ? action.payload : courses;
+      state.boards = state.boards.map((item) => {
+        return item.id === action.payload.id ? action.payload : item;
       });
     });
     bulider.addCase(__editCreate.rejected, (state, action) => {

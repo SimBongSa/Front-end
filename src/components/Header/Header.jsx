@@ -28,6 +28,7 @@ const Header = () => {
   const isLogin = cookies["access-token"];
   const authority = cookies["authority"];
   const username = cookies["username"];
+<<<<<<< HEAD
   const logOut = () => {
     removeCookie(["access-token"], { path: "/" });
     removeCookie(["username"], { path: "/" });
@@ -35,6 +36,8 @@ const Header = () => {
     localStorage.removeItem("refresh-token");
     // navigate("/login");
   };
+=======
+>>>>>>> seokwon
 
   return (
     <HeaderContainer>
