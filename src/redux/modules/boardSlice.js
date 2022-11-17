@@ -6,6 +6,20 @@ export const __getBoards = createAsyncThunk(
   async (payload, thunkAPI) => {
     try {
       const response = await apis.getboards(payload);
+      console.log("response => ", response.data.data);
+      return thunkAPI.fulfillWithValue(response.data.data);
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error);
+    }
+  }
+);
+
+export const __getBoardsId = createAsyncThunk(
+  "companyInfoId",
+  async (payload, thunkAPI) => {
+    try {
+      const response = await apis.getboardsId(payload);
+      console.log("getboardsId =>", response);
       return thunkAPI.fulfillWithValue(response.data.data);
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
@@ -35,7 +49,19 @@ export const boardSlice = createSlice({
         state.isLoading = false;
         state.error = action.payload;
       })
-  }
+
+      .addCase(__getBoardsId.pending, (state, _) => {
+        state.isLoading = true;
+      })
+      .addCase(__getBoardsId.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.boardsId = action.payload;
+      })
+      .addCase(__getBoardsId.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.payload;
+      });
+  },
 });
 
 export const { boards } = boardSlice.actions;

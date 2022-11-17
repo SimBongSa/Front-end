@@ -6,7 +6,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { __getBoards } from "../../redux/modules/boardSlice";
 
 const Board = () => {
-
   const dispatch = useDispatch();
   const boards = useSelector((state) => state.boards.boards);
 
@@ -14,14 +13,14 @@ const Board = () => {
     dispatch(__getBoards());
   }, [dispatch]);
 
-  return(
+  return (
     <BoardContainer>
-      <SearchBar/>
+      <SearchBar />
       <BoardContent>
         <CardGrid boards={boards} />
       </BoardContent>
     </BoardContainer>
-  )
+  );
 };
 
 export default Board;
