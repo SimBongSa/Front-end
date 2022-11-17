@@ -4,15 +4,15 @@ const SearchBar = () => {
   return (
     <SearchBarContainer>
       <form>
-        <input/>
+        <input />
         <input type="date" />
         <input type="date" />
-        <input/>
+        <input />
         <SearchBarBtn>asd</SearchBarBtn>
       </form>
     </SearchBarContainer>
-  )
-}
+  );
+};
 
 export default SearchBar;
 
@@ -31,7 +31,7 @@ export const SearchBarContainer = styled.div`
   & input {
     width: 100px;
   }
-`
+`;
 
 export const SearchBarBtn = styled.button`
   border-radius: 50%;
@@ -40,4 +40,4 @@ export const SearchBarBtn = styled.button`
   margin: 0px 0px 0px 20px;
   border: none;
   background-color: whitesmoke;
-`
+`;

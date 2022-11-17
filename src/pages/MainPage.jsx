@@ -6,8 +6,12 @@ import Header from "../components/Header/Header";
 import MainBg from "../components/MainBg/MainBg";
 import SearchBar from "../components/SearchBar/SearchBar";
 import KaMap from "../components/Map/KaMap";
+import { useSelector, useDispatch } from "react-redux";
 
 export const MainPage = () => {
+  const dispatch = useDispatch();
+  const maindate = useSelector((state) => state.customerList.customerList);
+  console.log(maindate);
   return (
     <>
       <Header />
@@ -15,9 +19,9 @@ export const MainPage = () => {
       <SearchBar />
       <hr />
       <MainPageText>Urgent Activity</MainPageText>
-      <Cards />
-      {/* <MainPageText>Search by Date</MainPageText>
-      <MainCalendar /> */}
+      <Cards maindate={maindate.data} key={maindate.boardId} />
+      <MainPageText>Search by Date</MainPageText>
+      <MainCalendar />
       <Footer />
     </>
   );

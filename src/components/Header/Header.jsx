@@ -29,6 +29,14 @@ const Header = () => {
   const authority = cookies["authority"];
   const username = cookies["username"];
 
+  const logOut = () => {
+    removeCookie(["access-token"], { path: "/" });
+    removeCookie(["username"], { path: "/" });
+    removeCookie(["authority"], { path: "/" });
+    localStorage.removeItem("refresh-token");
+    // navigate("/login");
+  };
+
   return (
     <HeaderContainer>
       <HeaderLogo onClick={() => navigate("/")}>VONGOLE</HeaderLogo>
@@ -38,7 +46,9 @@ const Header = () => {
         </LightThemeBtn>
         {isLogin && authority === "ROLE_MEMBER" ? (
           <>
-            <HeaderMenuItem onClick={() => navigate("/boards")}>Boards</HeaderMenuItem>
+            <HeaderMenuItem onClick={() => navigate("/boards")}>
+              Boards
+            </HeaderMenuItem>
             <HeaderMenuItem>Notice</HeaderMenuItem>
             <HeaderMenuItem>Messagse</HeaderMenuItem>
             <HeaderMenuItem>{username}</HeaderMenuItem>
