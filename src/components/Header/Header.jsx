@@ -44,6 +44,9 @@ const Header = () => {
         <LightThemeBtn onClick={toggleTheme}>
           <BsFillMoonFill />
         </LightThemeBtn>
+        <HeaderMenuItem onClick={() => navigate("/boards")}>
+          Boards
+        </HeaderMenuItem>
         {isLogin && authority === "ROLE_MEMBER" ? (
           <>
             <HeaderMenuItem onClick={() => navigate("/boards")}>
