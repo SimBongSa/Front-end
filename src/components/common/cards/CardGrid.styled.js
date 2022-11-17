@@ -1,29 +1,26 @@
 import styled from "styled-components"
 
-export const MyActivityContainer = styled.section`
-  padding: 4rem 0;
+export const CardGridContainer = styled.section`
   display: grid;
   grid-template-columns: 1fr repeat(12, minmax(auto, 60px)) 1fr;
-  grid-gap: 2rem;
+  grid-gap: 0.1rem;
+  margin: 1rem;
 `
 
-export const MyActivityCards = styled.div`
-  grid-column: 2 / span 12;
+export const Cards = styled.div`
   display: grid;
+  grid-column: 2 / span 12;
   grid-template-columns: repeat(12, minmax(auto, 60px));
-  grid-gap: 2rem;
+  grid-gap: 1.5rem;
 `
 
 export const Card = styled.div`
-  grid-column-end: span 4;
+  grid-column-end: span 6;
   background-color: #39393b;
   border-radius: 6px;
   cursor: pointer;
   transition: all 0.5s ease;
   @media screen and (max-width: 768px) {
-    grid-column-end: span 6;
-  }
-  @media screen and (max-width: 425px) {
     grid-column-end: span 12;
   }
   &:hover {
@@ -33,11 +30,15 @@ export const Card = styled.div`
 
 export const ImgWrapper = styled.div`
   width: 100%;
-  padding-top: 56.5%;
   overflow: hidden;
   border-radius: 6px 6px 0 0;
   position: relative;
-  background: #aaaaaa;
+  background: #232323;
+  & img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+  }
 `
 
 export const Content = styled.div`

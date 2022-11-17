@@ -28,8 +28,6 @@ const Header = () => {
   const isLogin = cookies["access-token"];
   const authority = cookies["authority"];
   const username = cookies["username"];
-
-<<<<<<< HEAD
   const logOut = () => {
     removeCookie(["access-token"], { path: "/" });
     removeCookie(["username"], { path: "/" });
@@ -38,8 +36,6 @@ const Header = () => {
     // navigate("/login");
   };
 
-=======
->>>>>>> e5ecbc76f6eb0dec8d736cfe261c50cd34872f80
   return (
     <HeaderContainer>
       <HeaderLogo onClick={() => navigate("/")}>VONGOLE</HeaderLogo>
@@ -49,6 +45,7 @@ const Header = () => {
         </LightThemeBtn>
         {isLogin && authority === "ROLE_MEMBER" ? (
           <>
+            <HeaderMenuItem onClick={() => navigate("/boards")}>Boards</HeaderMenuItem>
             <HeaderMenuItem>Notice</HeaderMenuItem>
             <HeaderMenuItem>Messagse</HeaderMenuItem>
             <HeaderMenuItem>{username}</HeaderMenuItem>
@@ -85,6 +82,23 @@ const Header = () => {
             Login
           </HeaderRegister>
         )}
+          isLogin && authority === "ROLE_ADMIN" ? (
+              <>
+                <AdminBtn>봉사등록</AdminBtn>
+                <HeaderMenuItem onClick={() => navigate("/boards")}>Boards</HeaderMenuItem>
+                <HeaderMenuItem>Notice</HeaderMenuItem>
+                <HeaderMenuItem>Messagse</HeaderMenuItem>
+                <HeaderMenuItem>{ username }</HeaderMenuItem>
+                <UserIcon onClick={() => {
+                  navigate("/companypage")
+                }}/>
+              </>
+            ) 
+            : <HeaderRegister
+                onClick={() => {
+                  navigate("/login");
+                }}
+              >Login</HeaderRegister>
       </HeaderMenu>
     </HeaderContainer>
   );
