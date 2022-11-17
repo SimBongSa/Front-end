@@ -28,7 +28,7 @@ const Header = () => {
   const isLogin = cookies["access-token"];
   const authority = cookies["authority"];
   const username = cookies["username"];
-<<<<<<< HEAD
+
   const logOut = () => {
     removeCookie(["access-token"], { path: "/" });
     removeCookie(["username"], { path: "/" });
@@ -36,8 +36,6 @@ const Header = () => {
     localStorage.removeItem("refresh-token");
     // navigate("/login");
   };
-=======
->>>>>>> seokwon
 
   return (
     <HeaderContainer>
@@ -48,7 +46,9 @@ const Header = () => {
         </LightThemeBtn>
         {isLogin && authority === "ROLE_MEMBER" ? (
           <>
-            <HeaderMenuItem onClick={() => navigate("/boards")}>Boards</HeaderMenuItem>
+            <HeaderMenuItem onClick={() => navigate("/boards")}>
+              Boards
+            </HeaderMenuItem>
             <HeaderMenuItem>Notice</HeaderMenuItem>
             <HeaderMenuItem>Messagse</HeaderMenuItem>
             <HeaderMenuItem>{username}</HeaderMenuItem>
@@ -85,23 +85,6 @@ const Header = () => {
             Login
           </HeaderRegister>
         )}
-          isLogin && authority === "ROLE_ADMIN" ? (
-              <>
-                <AdminBtn>봉사등록</AdminBtn>
-                <HeaderMenuItem onClick={() => navigate("/boards")}>Boards</HeaderMenuItem>
-                <HeaderMenuItem>Notice</HeaderMenuItem>
-                <HeaderMenuItem>Messagse</HeaderMenuItem>
-                <HeaderMenuItem>{ username }</HeaderMenuItem>
-                <UserIcon onClick={() => {
-                  navigate("/companypage")
-                }}/>
-              </>
-            ) 
-            : <HeaderRegister
-                onClick={() => {
-                  navigate("/login");
-                }}
-              >Login</HeaderRegister>
       </HeaderMenu>
     </HeaderContainer>
   );
