@@ -28,9 +28,11 @@ const Header = () => {
       <LightThemeBtn onClick={toggleTheme}>
         <BsFillMoonFill/>
       </LightThemeBtn>
+      <HeaderMenuItem onClick={() => navigate("/boards")}>Boards</HeaderMenuItem>
       {
         isLogin && authority === "ROLE_MEMBER" ? (
           <>
+            <HeaderMenuItem onClick={() => navigate("/boards")}>Boards</HeaderMenuItem>
             <HeaderMenuItem>Notice</HeaderMenuItem>
             <HeaderMenuItem>Messagse</HeaderMenuItem>
             <HeaderMenuItem>{ username }</HeaderMenuItem>
@@ -42,6 +44,7 @@ const Header = () => {
           isLogin && authority === "ROLE_ADMIN" ? (
               <>
                 <AdminBtn>봉사등록</AdminBtn>
+                <HeaderMenuItem onClick={() => navigate("/boards")}>Boards</HeaderMenuItem>
                 <HeaderMenuItem>Notice</HeaderMenuItem>
                 <HeaderMenuItem>Messagse</HeaderMenuItem>
                 <HeaderMenuItem>{ username }</HeaderMenuItem>

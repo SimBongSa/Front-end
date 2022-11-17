@@ -17,7 +17,7 @@ const Individual = () => {
     phoneNumber: "",
     name: "",
     gender: "",
-    age: "",
+    birthdate: "",
   }
 
   const dispatch = useDispatch();
@@ -28,10 +28,6 @@ const Individual = () => {
     const { name, value } = e.target;
     setInput({ ...input, [name]: value });
   };
-  const onChangeAge = (e) => {
-    const { name, value } = e.target;
-    setInput({...input, [name]: +value });
-  }
   const onSubmitHandler = (e) => {
     e.preventDefault();
     dispatch(__registerMember(input))
@@ -113,10 +109,10 @@ const Individual = () => {
             />
             <Input 
               placeholder="Birth Date"
-              type="text"
-              name="age"
-              value={input.age}
-              onChange={onChangeAge}
+              type="date"
+              name="birthdate"
+              value={input.birthdate}
+              onChange={onChangeHandler}
             />
             <button type="submit">로구인</button>
           </form>
