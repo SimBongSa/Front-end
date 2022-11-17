@@ -122,7 +122,7 @@ const RegisterActivity = () => {
           우편번호 검색
         </button>
         {/* // 팝업 생성 기준 div */}
-        <div id="popupDom">
+        <div id="popupDom" style={{ position: "fixed" }}>
           {isPopupOpen && (
             <PopupDom>
               <PopupPostCode setAddress={setAddress} onClose={closePostCode} />
