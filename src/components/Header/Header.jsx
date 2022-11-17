@@ -28,10 +28,6 @@ const Header = () => {
   const isLogin = cookies["access-token"];
   const authority = cookies["authority"];
   const username = cookies["username"];
-<<<<<<< HEAD
-
-=======
->>>>>>> fb22616 (detailPage routing, listPage 작업 완료, 날짜계산까지)
   const logOut = () => {
     removeCookie(["access-token"], { path: "/" });
     removeCookie(["username"], { path: "/" });
