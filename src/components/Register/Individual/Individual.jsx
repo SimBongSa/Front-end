@@ -2,11 +2,10 @@ import { InputContainer, InputForm, InputBox } from "./Individual.styled";
 import Input from "../../common/input/Input";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { __registerMember } from "../../../redux/modules/registerSlice"
+import { __registerMember } from "../../../redux/modules/registerSlice";
 import { useNavigate } from "react-router-dom";
 
 const Individual = () => {
-
   const init = {
     authority: "ROLE_MEMBER",
     username: "",
@@ -18,7 +17,7 @@ const Individual = () => {
     name: "",
     gender: "",
     birthdate: "",
-  }
+  };
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -30,18 +29,18 @@ const Individual = () => {
   };
   const onSubmitHandler = (e) => {
     e.preventDefault();
-    dispatch(__registerMember(input))
+    dispatch(__registerMember(input));
     console.log(input);
     setInput(init);
-  }
+  };
 
-  return(
+  return (
     <InputContainer>
       <h1>You are almost done!</h1>
       <InputForm>
         <InputBox>
           <form onSubmit={onSubmitHandler}>
-            <Input 
+            <Input
               dupleCheck={true}
               placeholder="Username"
               type="text"
@@ -49,7 +48,7 @@ const Individual = () => {
               value={input.username}
               onChange={onChangeHandler}
             />
-            <Input 
+            <Input
               placeholder="Nickname"
               dupleCheck={true}
               type="text"
@@ -57,21 +56,21 @@ const Individual = () => {
               value={input.nickname}
               onChange={onChangeHandler}
             />
-            <Input 
+            <Input
               placeholder="Password"
               type="password"
               name="password"
               value={input.password}
               onChange={onChangeHandler}
             />
-            <Input 
+            <Input
               placeholder="Confirm Password"
               type="password"
               name="passwordConfirm"
               value={input.passwordConfirm}
               onChange={onChangeHandler}
             />
-            <Input 
+            <Input
               placeholder="Email"
               dupleCheck={true}
               type="email"
@@ -79,14 +78,14 @@ const Individual = () => {
               value={input.email}
               onChange={onChangeHandler}
             />
-            <Input 
+            <Input
               placeholder="PhoneNumber"
               type="tel"
               name="phoneNumber"
               value={input.phoneNumber}
               onChange={onChangeHandler}
             />
-            <Input 
+            <Input
               placeholder="Name"
               type="text"
               name="name"
@@ -107,7 +106,7 @@ const Individual = () => {
               value="female"
               onChange={onChangeHandler}
             />
-            <Input 
+            <Input
               placeholder="Birth Date"
               type="date"
               name="birthdate"
@@ -117,10 +116,12 @@ const Individual = () => {
             <button type="submit">로구인</button>
           </form>
         </InputBox>
-        <span onClick={() => navigate("/login")}>You are already member? Log in Now</span>
+        <span onClick={() => navigate("/login")}>
+          You are already member? Log in Now
+        </span>
       </InputForm>
     </InputContainer>
-  )
+  );
 };
 
 export default Individual;

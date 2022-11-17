@@ -1,3 +1,4 @@
+import Comment from "../components/Comment/Comment";
 import Header from "../components/Header/Header";
 import Footer from "../components/Footer/Footer";
 import Detail from "../components/Detail/Detail";
@@ -5,11 +6,12 @@ import Detail from "../components/Detail/Detail";
 export const BoardListPage = () => {
   return (
     <>
-      <Header/>
-      <Detail/>
-      <Footer/>
+      <Header />
+      <Detail />
+      <Comment />
+      <Footer />
     </>
-  )
+  );
 };
 
 export default BoardListPage;

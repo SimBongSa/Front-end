@@ -33,13 +33,13 @@ export const apis = {
     axios.post(`${BASE_URL}/members/signup/admin`, payload),
 
   //customerSlice
-  customerlist: (dueDay) => api.get(`${BASE_URL}/boards/${dueDay}`),
+  mainlist: (boardId) => api.get(`${BASE_URL}/boards/${boardId}`),
+  customerlist: (dueDay) => api.get(`${BASE_URL}/boards/date/${dueDay}`),
   edit: (payload) =>
-    api.post(`http://localhost:8080/mypage`, payload, {
-      headers: {
-        Authorization: token,
-        "Content-Type": "multipart/form-data",
-      },
+    api.put(`${BASE_URL}/mypage`, payload, {
+      // headers: {
+      //   "Content-Type": "multipart/form-data",
+      // },
     }),
   // boards
   getboards: () => api.get(`${BASE_URL}/boards`),
@@ -79,4 +79,21 @@ export const apis = {
         Authorization: token,
       },
     }),
+
+  //commentSlice
+  getComment: (payload) =>
+    axios.get(`${BASE_URL}/boards/${1}`, payload, {
+      headers: {
+        Authorization: token,
+      },
+    }),
+  postComment: (payload) =>
+    axios.post(`${BASE_URL}/comments/${1}`, payload, {
+      headers: {
+        Authorization: token,
+      },
+    }),
+  putComment: (payload) =>
+    axios.put(`${BASE_URL}/comments/${payload.id}`, payload),
+  deleteComment: (payload) => axios.delete(`${BASE_URL}/comments/${payload}`),
 };

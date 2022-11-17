@@ -14,6 +14,7 @@ function CustomerEdit() {
     gender: "",
     age: "",
     introduction: "",
+    images: "",
   });
   const [imageSrc, setImageSrc] = useState(null);
   const [prevImage, setPrevImage] = useState("");
@@ -26,7 +27,7 @@ function CustomerEdit() {
   };
 
   const onChangeImage = (e) => {
-    setImageSrc(e.target.files);
+    setImageSrc(e.target.files[0]);
     let reader = new FileReader();
     if (e.target.files[0]) {
       reader.readAsDataURL(e.target.files[0]);
@@ -38,10 +39,13 @@ function CustomerEdit() {
       }
     };
   };
-
+  console.log(imageSrc);
   const onSubmitHandler = (e) => {
     e.preventDefault();
-    dispatch(__putCutomer(input, imageSrc));
+    setInput((prev) => {
+      return { ...prev, images: { imageSrc } };
+    });
+    dispatch(__putCutomer(input));
   };
 
   return (
