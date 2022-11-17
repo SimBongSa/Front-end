@@ -33,12 +33,8 @@ export const apis = {
     axios.post(`${BASE_URL}/members/signup/admin`, payload),
 
   //customerSlice
-<<<<<<< HEAD
   mainlist: (boardId) => api.get(`${BASE_URL}/boards/${boardId}`),
   customerlist: (dueDay) => api.get(`${BASE_URL}/boards/date/${dueDay}`),
-=======
-  customerlist: (dueDay) => api.get(`${BASE_URL}/boards/${dueDay}`),
->>>>>>> 42ca578544c7c310a57c2f2b253adf54ca85a840
   edit: (payload) =>
     api.put(`${BASE_URL}/mypage`, payload, {
       // headers: {
@@ -83,7 +79,6 @@ export const apis = {
         Authorization: token,
       },
     }),
-<<<<<<< HEAD
 
   //commentSlice
   getComment: (payload) =>
@@ -101,6 +96,4 @@ export const apis = {
   putComment: (payload) =>
     axios.put(`${BASE_URL}/comments/${payload.id}`, payload),
   deleteComment: (payload) => axios.delete(`${BASE_URL}/comments/${payload}`),
-=======
->>>>>>> 42ca578544c7c310a57c2f2b253adf54ca85a840
 };
