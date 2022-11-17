@@ -41,10 +41,12 @@ const Header = () => {
     <HeaderContainer>
       <HeaderLogo onClick={() => navigate("/")}>VONGOLE</HeaderLogo>
       <HeaderMenu>
-        <LightThemeBtn onClick={toggleTheme}>
-          <BsFillMoonFill />
-        </LightThemeBtn>
-        {isLogin && authority === "ROLE_MEMBER" ? (
+      <LightThemeBtn onClick={toggleTheme}>
+        <BsFillMoonFill/>
+      </LightThemeBtn>
+      <HeaderMenuItem onClick={() => navigate("/boards")}>Boards</HeaderMenuItem>
+      {
+        isLogin && authority === "ROLE_MEMBER" ? (
           <>
             <HeaderMenuItem onClick={() => navigate("/boards")}>Boards</HeaderMenuItem>
             <HeaderMenuItem>Notice</HeaderMenuItem>
@@ -75,6 +77,14 @@ const Header = () => {
             />
           </>
         ) : (
+          <HeaderRegister
+            onClick={() => {
+              navigate("/login");
+            }}
+          >
+            Login
+          </HeaderRegister>
+        )}
           isLogin && authority === "ROLE_ADMIN" ? (
               <>
                 <AdminBtn>봉사등록</AdminBtn>
@@ -92,8 +102,6 @@ const Header = () => {
                   navigate("/login");
                 }}
               >Login</HeaderRegister>
-        )
-      }
       </HeaderMenu>
     </HeaderContainer>
   );
