@@ -11,7 +11,6 @@ const SearchBar = () => {
         <input placeholder="Category" />
         <Search onClick={() => setModal(!modal)}>Dates</Search>
         <input placeholder="Location" />
-        <input placeholder="Participants" />
         <Button>검색하기</Button>
       </SearchBarContainer>
       <>{modal === true ? <SearchCalendar /> : null}</>

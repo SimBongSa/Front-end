@@ -18,8 +18,8 @@
 .env.test.local
 .env.production.local
 db.json
-kki123
-asdf1234!
+"username": "kim123456",
+"password": "tjdals123"
 
 npm-debug.log*
 yarn-debug.log*

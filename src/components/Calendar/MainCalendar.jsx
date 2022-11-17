@@ -23,14 +23,14 @@ const MainCalendar = () => {
   const [mark, setMark] = useState([]);
 
   useEffect(() => {
-    dispatch(__getCustomer(moment(value).format("YYYYMMDD")));
+    dispatch(__getCustomer(moment(value).format("YYYY-MM-DD")));
   }, [dispatch]);
 
   const onClickDayHandler = (e) => {
     // console.log(moment(value).format("YYYYMMDD"));
     // console.log(typeof moment(value).format("YYYYMMDD"));
     // console.log(value);
-    dispatch(__getCustomer(moment(value).format("YYYYMMDD")));
+    dispatch(__getCustomer(moment(value).format("YYYY-MM-DD")));
   };
 
   return (
@@ -55,7 +55,7 @@ const MainCalendar = () => {
             // 추가할 html 태그를 변수 초기화
             let html = [];
             // 현재 날짜가 post 작성한 날짜 배열(mark)에 있다면, dot div 추가
-            if (mark.find((x) => x === moment(date).format("YYYYMMDD"))) {
+            if (mark.find((x) => x === moment(date).format("YYYY-MM-DD"))) {
               html.push(<div className="dot" key={date}></div>);
             }
             // 다른 조건을 주어서 html.push 에 추가적인 html 태그를 적용할 수 있음.
