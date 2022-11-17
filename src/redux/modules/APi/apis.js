@@ -1,6 +1,5 @@
 import axios from "axios";
 import { getCookieToken } from "../../../utils/cookie";
-
 const BASE_URL = process.env.REACT_APP_SERVER;
 const token = getCookieToken("access-token");
 
