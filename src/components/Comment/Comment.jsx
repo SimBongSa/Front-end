@@ -8,6 +8,7 @@ import {
 } from "./../../redux/modules/commentSlice";
 import { useSelector, useDispatch } from "react-redux";
 import styled from "styled-components";
+import { useParams } from "react-router-dom";
 
 function Comment() {
   const commentlist = useSelector((state) => state.commentList.commentList);
@@ -15,12 +16,23 @@ function Comment() {
   const [content, setContent] = useState({
     content: "",
   });
+  const [newList, setNewList] = useState([]);
+  // const params = useParams();
+  // console.log(params);
+  const { id } = useParams();
 
   console.log(commentlist);
 
   useEffect(() => {
-    dispatch(__getComment(commentlist));
+    dispatch(__getComment(id));
   }, [dispatch]);
+
+  // useEffect(() => {
+  //   // 계정ID
+  //   // 내용
+  //   // if (commentlist) setNewList(commentlist);
+  //   // console.log(3);
+  // }, [commentlist]);
 
   return (
     <>
@@ -34,27 +46,24 @@ function Comment() {
       />
       <button
         onClick={() => {
-          dispatch(__postComment({ content }));
+          dispatch(__postComment({ content, id }));
           setContent("");
         }}
       >
         댓글쓰기
       </button>
       {commentlist && commentlist.length > 0
-        ? commentlist.map((commentlist, commentId) => {
+        ? commentlist.map((commentlist, id) => {
+            // console.log(commentlist.commentId);
+
             return (
-              <Box key={commentId}>
+              <Box key={id}>
                 <h2>{commentlist.author}</h2>
                 <div>{commentlist.content}</div>
                 <div>{commentlist.createdAt}</div>
                 <button
                   onClick={() => {
-                    dispatch(
-                      __putComment({
-                        comment_id: 1,
-                        content: { content: content },
-                      })
-                    );
+                    dispatch(__putComment(commentlist.commentId, content));
                     setContent("");
                   }}
                 >
@@ -62,7 +71,7 @@ function Comment() {
                 </button>
                 <button
                   onClick={() => {
-                    dispatch(__deleteComment(commentId));
+                    dispatch(__deleteComment(commentlist.commentId));
                     setContent("");
                   }}
                 >

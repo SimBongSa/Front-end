@@ -81,14 +81,14 @@ export const apis = {
     }),
 
   //commentSlice
-  getComment: (payload) =>
-    axios.get(`${BASE_URL}/boards/${1}`, payload, {
+  getComment: (board_id) =>
+    axios.get(`${BASE_URL}/boards/${board_id}`, {
       headers: {
         Authorization: token,
       },
     }),
   postComment: (payload) =>
-    axios.post(`${BASE_URL}/comments/${1}`, payload, {
+    axios.post(`${BASE_URL}/comments/${payload.id}`, payload, {
       headers: {
         Authorization: token,
       },
