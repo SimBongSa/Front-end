@@ -32,13 +32,14 @@ export const apis = {
     axios.post(`${BASE_URL}/managers/signup`, payload),
 
   //customerSlice
-  customerlist: (dueDate) => api.get(`${BASE_URL}/boards/${dueDate}`),
+
+  mainlist: (boardId) => api.get(`${BASE_URL}/boards/${boardId}`),
+  customerlist: (dueDay) => api.get(`${BASE_URL}/boards/date/${dueDay}`),
   edit: (payload) =>
-    api.post(`http://localhost:8080/mypage`, payload, {
-      headers: {
-        Authorization,
-        "Content-Type": "multipart/form-data",
-      },
+    api.put(`${BASE_URL}/mypage`, payload, {
+      // headers: {
+      //   "Content-Type": "multipart/form-data",
+      // },
     }),
 
   // addCreateSlice

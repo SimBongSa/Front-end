@@ -1,20 +1,31 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import axios from "axios";
 import { apis } from "./APi/apis";
 
 // yarn json-server --watch db.json --port 8080
 const initialState = {
   customerList: {},
+  mainList: {},
   isLoading: false,
   error: null,
 };
 
 export const __getCustomer = createAsyncThunk(
   "getCustomer",
-  async (payload, thunkAPI) => {
+  async (dueDay, thunkAPI) => {
     try {
-      const response = await axios.get("http://localhost:8080/list");
+      const response = await apis.customerlist(dueDay);
+      return thunkAPI.fulfillWithValue(response.data);
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.data);
+    }
+  }
+);
 
+export const __getmainlist = createAsyncThunk(
+  "getmainlist",
+  async (boardId, thunkAPI) => {
+    try {
+      const response = await apis.mainlist(boardId);
       return thunkAPI.fulfillWithValue(response.data);
     } catch (error) {
       return thunkAPI.rejectWithValue(error.data);
@@ -26,6 +37,8 @@ export const __putCutomer = createAsyncThunk(
   "putCustomer",
   async (payload, thunkAPI) => {
     const formData = new FormData();
+    // formData.append("images", blob);
+
     Object.entries(payload).forEach(([key, value]) => {
       formData.append(key, value);
     });
@@ -54,6 +67,17 @@ const customerSlice = createSlice({
         state.customerList = action.payload;
       })
       .addCase(__getCustomer.rejected, (state) => {
+        state.isLoading = false;
+      });
+    builder
+      .addCase(__getmainlist.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(__getmainlist.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.mainList = action.payload;
+      })
+      .addCase(__getmainlist.rejected, (state) => {
         state.isLoading = false;
       });
     builder

@@ -1,58 +1,36 @@
-import { useState, useQuery } from "react";
+import { useState, useQuery, useEffect } from "react";
 import Calendar from "react-calendar";
 // import "react-calendar/dist/Calendar.css";
 import moment from "moment";
 import { CalendarContainer } from "./MainCalendar.styled";
 import axios from "axios";
 import Serverlist from "../Serverlist/Serverlist";
+import styled from "styled-components";
+import { useSelector, useDispatch } from "react-redux";
+import { __getCustomer } from "../../redux/modules/customerSlice";
 
 const MainCalendar = () => {
-  const [value, onChange] = useState(new Date());
+  const dispatch = useDispatch();
+  const maindate = useSelector((state) => state.customerList.customerList);
+  // let markday = maindate.data.dueDay;
+  // console.log(markday);
+
+  const [value, setValue] = useState(new Date());
   const [date, setDate] = useState(new Date());
 
   const [result, setResult] = useState([]);
 
-  const [mark, setMark] = useState([
-    "2022-11-10",
-    "2022-11-12",
-    "2022-11-15",
-    "2022-11-16",
-  ]);
+  const [mark, setMark] = useState([]);
 
-  const array = [
-    {
-      date: "2022-11-10",
-      list: {
-        name: "나다",
-        location: "너냐",
-      },
-    },
-    {
-      date: "2022-11-12",
-      list: {
-        name: "너니",
-        location: "나다",
-      },
-    },
-    {
-      date: "2022-11-15",
-      list: {
-        name: "나네",
-        location: "너구나",
-      },
-    },
-    {
-      date: "2022-11-16",
-      list: {
-        name: "너니",
-        location: "그래",
-      },
-    },
-  ];
+  useEffect(() => {
+    dispatch(__getCustomer(moment(value).format("YYYYMMDD")));
+  }, [dispatch]);
 
   const onClickDayHandler = (e) => {
-    // console.log(e);
-    setResult();
+    // console.log(moment(value).format("YYYYMMDD"));
+    // console.log(typeof moment(value).format("YYYYMMDD"));
+    // console.log(value);
+    // dispatch(__getCustomer(moment(value).format("YYYYMMDD")));
   };
 
   return (
@@ -61,7 +39,7 @@ const MainCalendar = () => {
         <Calendar
           // onClickMonth={(e) => onClickMonthHandler(e)}
           onClickDay={(e) => onClickDayHandler(e)}
-          onChange={onChange} // useState로 포커스 변경 시 현재 날짜 받아오기
+          onChange={setValue} // useState로 포커스 변경 시 현재 날짜 받아오기
           formatDay={(locale, date) => moment(date).format("DD")} // 날'일' 제외하고 숫자만 보이도록 설정
           locale="en-EN"
           value={value}
@@ -77,23 +55,23 @@ const MainCalendar = () => {
             // 추가할 html 태그를 변수 초기화
             let html = [];
             // 현재 날짜가 post 작성한 날짜 배열(mark)에 있다면, dot div 추가
-            if (mark.find((x) => x === moment(date).format("YYYY-MM-DD"))) {
-              html.push(<div className="dot"></div>);
+            if (mark.find((x) => x === moment(date).format("YYYYMMDD"))) {
+              html.push(<div className="dot" key={date}></div>);
             }
             // 다른 조건을 주어서 html.push 에 추가적인 html 태그를 적용할 수 있음.
-            // return (
-            //   <>
-            //     <div className="flex justify-center items-center absoluteDiv">
-            //       {html}
-            //     </div>
-            //   </>
-            // );
+            return (
+              <>
+                <div className="flex justify-center items-center absoluteDiv">
+                  {html}
+                </div>
+              </>
+            );
           }}
         />
 
         <div className="text-gray-500 mt-4">
-          {/* {moment(value).format("YYYY년 MM월 DD일")} */}
-          <Serverlist result={array} key={date} mark={mark} />
+          <div>ToDay : {moment(value).format("YYYY년 MM월 DD일")}</div>
+          <Serverlist result={maindate.data} key={date} mark={mark} />
         </div>
       </CalendarContainer>
     </>

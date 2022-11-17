@@ -18,7 +18,7 @@ export const CalendarContainer = styled.div`
     border-style: outset;
   }
   .react-calendar__month-view__days__day--neighboringMonth {
-    opacity: 0.7;
+    opacity: 0.3;
   }
 
   /* .react-calendar--doubleView {
