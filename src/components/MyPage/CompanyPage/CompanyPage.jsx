@@ -5,8 +5,8 @@ import { getCookieToken } from "../../../utils/cookie";
 import { OrganizationPageContainer, BtnContainer } from "./CompanyPage.styled";
 import styled from "styled-components";
 import Profile from "../Profile/Profile";
-import MyActivity from "./MyActivity/MyActivity";
 import NewActivity from "./NewActivity/NewActivity";
+import CardGrid from "../../common/cards/CardGrid";
 
 const OrganizationPage = () => {
 
@@ -46,7 +46,11 @@ const OrganizationPage = () => {
         </BtnContainer>
 
         {
-          option !== null && option === "newActivity" ? <NewActivity/> : <MyActivity companyBoards={companyBoards} />
+          option !== null && option === "newActivity" ? <NewActivity/> : null
+        }
+
+        {
+          option !== null && option === "myActivity" ? <CardGrid companyBoards={companyBoards} /> : null
         }
 
       </OrganizationPageContainer>

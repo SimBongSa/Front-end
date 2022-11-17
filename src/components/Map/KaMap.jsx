@@ -10,7 +10,7 @@ const KaMap = () => {
   const { kakao } = window;
   const geocoder = new kakao.maps.services.Geocoder();
 
-  console.log("주소 =>", schedule);
+  // console.log("주소 =>", schedule);
 
   const onAddScheduleHandler = (e) => {
     e.preventDefault();

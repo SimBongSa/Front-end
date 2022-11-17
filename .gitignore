@@ -18,6 +18,8 @@
 .env.test.local
 .env.production.local
 db.json
+"username": "kim123456",
+"password": "tjdals123"
 
 npm-debug.log*
 yarn-debug.log*
