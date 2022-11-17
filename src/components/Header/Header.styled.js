@@ -1,6 +1,5 @@
 import styled from "styled-components"
 import { FaRegUserCircle } from "react-icons/fa";
-import { GoPerson } from "react-icons/go";
 
 export const HeaderContainer = styled.header`
   position: fixed;

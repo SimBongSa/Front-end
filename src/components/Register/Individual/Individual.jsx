@@ -16,8 +16,13 @@ const Individual = () => {
     phoneNumber: "",
     name: "",
     gender: "",
+<<<<<<< HEAD
     age: "",
   };
+=======
+    birthdate: "",
+  }
+>>>>>>> 42ca578544c7c310a57c2f2b253adf54ca85a840
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -27,10 +32,13 @@ const Individual = () => {
     const { name, value } = e.target;
     setInput({ ...input, [name]: value });
   };
+<<<<<<< HEAD
   const onChangeAge = (e) => {
     const { name, value } = e.target;
     setInput({ ...input, [name]: +value });
   };
+=======
+>>>>>>> 42ca578544c7c310a57c2f2b253adf54ca85a840
   const onSubmitHandler = (e) => {
     e.preventDefault();
     dispatch(__registerMember(input));
@@ -112,10 +120,10 @@ const Individual = () => {
             />
             <Input
               placeholder="Birth Date"
-              type="text"
-              name="age"
-              value={input.age}
-              onChange={onChangeAge}
+              type="date"
+              name="birthdate"
+              value={input.birthdate}
+              onChange={onChangeHandler}
             />
             <button type="submit">로구인</button>
           </form>

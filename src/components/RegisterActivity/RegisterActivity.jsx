@@ -25,7 +25,7 @@ const RegisterActivity = () => {
   const init = {
     title: "",
     content: "",
-    dueDate: "",
+    dueDay: "",
     startDate: "",
     endDate: "",
     area: "",
@@ -106,8 +106,8 @@ const RegisterActivity = () => {
         <p>행사 일</p>
         <input
           type="date"
-          name="dueDate"
-          value={input.dueDate}
+          name="dueDay"
+          value={input.dueDay}
           onChange={(e) => onChangeInput(e)}
         />
         <p>행사 장소</p>
@@ -122,7 +122,7 @@ const RegisterActivity = () => {
           우편번호 검색
         </button>
         {/* // 팝업 생성 기준 div */}
-        <div id="popupDom">
+        <div id="popupDom" style={{ position: "fixed" }}>
           {isPopupOpen && (
             <PopupDom>
               <PopupPostCode setAddress={setAddress} onClose={closePostCode} />
