@@ -29,6 +29,7 @@ const Header = () => {
   const authority = cookies["authority"];
   const username = cookies["username"];
 
+<<<<<<< HEAD
   const logOut = () => {
     removeCookie(["access-token"], { path: "/" });
     removeCookie(["username"], { path: "/" });
@@ -37,6 +38,8 @@ const Header = () => {
     // navigate("/login");
   };
 
+=======
+>>>>>>> e5ecbc76f6eb0dec8d736cfe261c50cd34872f80
   return (
     <HeaderContainer>
       <HeaderLogo onClick={() => navigate("/")}>VONGOLE</HeaderLogo>

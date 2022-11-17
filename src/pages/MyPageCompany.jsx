@@ -9,12 +9,7 @@ export const MyPageCompany = () => {
   return (
     <div>
       <Header />
-      <Profile />
       <CompanyPage/>
-      {/* <Test>My Activity</Test>
-      <Cards/>
-      <Test>My Reviews</Test>
-      <Review/> */}
     </div>
   );
 };
