@@ -4,11 +4,16 @@ import { apis } from "./Api/apis";
 export const __addCreate = createAsyncThunk(
   "addCreate",
   async (payload, thunkAPI) => {
-    console.log(payload);
+    console.log("페이로드 =>", payload);
     const formData = new FormData();
+
     Object.entries(payload).forEach(([key, value]) => {
       formData.append(key, value);
     });
+
+    for (let key of formData.keys()) {
+      console.log("formData ===>", key, ":", formData.get(key));
+    }
 
     try {
       await apis.addCreate(payload);
@@ -58,16 +63,12 @@ export const __editCreate = createAsyncThunk(
 );
 
 export const addCreateSlice = createSlice({
-  name: "courses",
+  name: "boards",
   initialState: {
-    courses: [],
-
-    course: null,
-    review: {},
-
     isLoading: false,
     error: null,
   },
+
   reducers: {},
   extraReducers: (bulider) => {
     // POST Request board Item(__addCreate)

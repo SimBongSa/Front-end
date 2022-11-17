@@ -1,5 +1,14 @@
 import { useNavigate } from "react-router-dom";
-import { HeaderContainer, HeaderLogo, HeaderMenu, HeaderMenuItem, HeaderRegister, LightThemeBtn, UserIcon, AdminBtn } from "./Header.styled";
+import {
+  HeaderContainer,
+  HeaderLogo,
+  HeaderMenu,
+  HeaderMenuItem,
+  HeaderRegister,
+  LightThemeBtn,
+  UserIcon,
+  AdminBtn,
+} from "./Header.styled";
 import { BsFillMoonFill } from "react-icons/bs";
 import { useTheme } from "../../context/themeProvider";
 import { getCookieToken } from "../../utils/cookie";
@@ -8,66 +17,77 @@ import { useCookies } from "react-cookie";
 import { removeCookie } from "../../utils/cookie";
 
 const Header = () => {
-
   const navigate = useNavigate();
   const [ThemeMode, toggleTheme] = useTheme();
-  const [cookies] = useCookies(["Authorization"])
+  const [cookies] = useCookies(["Authorization"]);
 
   useEffect(() => {
     getCookieToken();
-  })
+  });
 
-  const isLogin = cookies['access-token'];
-  const authority = cookies['authority'];
-  const username = cookies['username'];
+  const isLogin = cookies["access-token"];
+  const authority = cookies["authority"];
+  const username = cookies["username"];
 
+<<<<<<< HEAD
   const logOut = () => {
-    removeCookie(['access-token'], { path: '/' });
-    removeCookie(['username'], { path: '/' });
-    removeCookie(['authority'], { path: '/' });
+    removeCookie(["access-token"], { path: "/" });
+    removeCookie(["username"], { path: "/" });
+    removeCookie(["authority"], { path: "/" });
     localStorage.removeItem("refresh-token");
     // navigate("/login");
-  }
+  };
 
+=======
+>>>>>>> e5ecbc76f6eb0dec8d736cfe261c50cd34872f80
   return (
     <HeaderContainer>
       <HeaderLogo onClick={() => navigate("/")}>VONGOLE</HeaderLogo>
       <HeaderMenu>
-      <LightThemeBtn onClick={toggleTheme}>
-        <BsFillMoonFill/>
-      </LightThemeBtn>
-      {
-        isLogin && authority === "ROLE_MEMBER" ? (
+        <LightThemeBtn onClick={toggleTheme}>
+          <BsFillMoonFill />
+        </LightThemeBtn>
+        {isLogin && authority === "ROLE_MEMBER" ? (
           <>
             <HeaderMenuItem>Notice</HeaderMenuItem>
             <HeaderMenuItem>Messagse</HeaderMenuItem>
-            <HeaderMenuItem>{ username }</HeaderMenuItem>
-            <UserIcon onClick={() => {
-              navigate("/mypage")
-            }}/>
+            <HeaderMenuItem>{username}</HeaderMenuItem>
+            <UserIcon
+              onClick={() => {
+                navigate("/mypage");
+              }}
+            />
+          </>
+        ) : isLogin && authority === "ROLE_ADMIN" ? (
+          <>
+            <AdminBtn
+              onClick={() => {
+                navigate("/registeractivity");
+              }}
+            >
+              봉사등록
+            </AdminBtn>
+            <HeaderMenuItem>Notice</HeaderMenuItem>
+            <HeaderMenuItem>Messagse</HeaderMenuItem>
+            <HeaderMenuItem>{username}</HeaderMenuItem>
+            <UserIcon
+              onClick={() => {
+                navigate("/companypage");
+              }}
+            />
           </>
         ) : (
-          isLogin && authority === "ROLE_ADMIN" ? (
-              <>
-                <AdminBtn>봉사등록</AdminBtn>
-                <HeaderMenuItem>Notice</HeaderMenuItem>
-                <HeaderMenuItem>Messagse</HeaderMenuItem>
-                <HeaderMenuItem>{ username }</HeaderMenuItem>
-                <UserIcon onClick={() => {
-                  navigate("/companypage")
-                }}/>
-              </>
-            ) 
-            : <HeaderRegister
-                onClick={() => {
-                  navigate("/login");
-                }}
-              >Login</HeaderRegister>
-        )
-      }
+          <HeaderRegister
+            onClick={() => {
+              navigate("/login");
+            }}
+          >
+            Login
+          </HeaderRegister>
+        )}
       </HeaderMenu>
     </HeaderContainer>
-  )
+  );
 };
 
 export default Header;
