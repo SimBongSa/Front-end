@@ -7,10 +7,15 @@ import {
   CardMoveLeftBtn,
   CardMoveRightBtn,
 } from "./Cards.styled";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { __getmainlist } from "../../redux/modules/customerSlice";
+import { useSelector, useDispatch } from "react-redux";
 
-const Cards = () => {
+const Cards = ({ maindate, boardId }) => {
   const [moveIndex, setMoveIndex] = useState(0);
+  const dispatch = useDispatch();
+  const mainlist = useSelector((state) => state.customerList.mainList);
+  console.log(mainlist);
 
   const moveLeft = () => {
     setMoveIndex((prev) => prev - 20);
@@ -23,53 +28,31 @@ const Cards = () => {
     setMoveIndex((prev) => prev + 20);
   };
 
+  // useEffect(() => {
+  //   dispatch(__getmainlist(boardId));
+  // }, [dispatch]);
   return (
     <>
       <CardMoveLeftBtn onClick={moveLeft}>왼쪽</CardMoveLeftBtn>
       <CardContainer style={{ transform: `translateX(${moveIndex}%)` }}>
-        <Card>
-          <CardImg>
-            {/* <img src="https://i.redd.it/b3esnz5ra34y.jpg" alt="test"/> */}
-          </CardImg>
-          <CardTitle>
-            <p>W Children Hospital</p>
-            <span>100 Smart Street, Gangnam-gu</span>
-          </CardTitle>
-          {/* <CardContent>Children Christmas Santa Volunteer</CardContent> */}
-        </Card>
-
-        <Card>
-          <CardImg>
-            {/* <img src="https://i.redd.it/b3esnz5ra34y.jpg" alt="test"/> */}
-          </CardImg>
-          <CardTitle>
-            <p>W Children Hospital</p>
-            <span>100 Smart Street, Gangnam-gu</span>
-          </CardTitle>
-          {/* <CardContent>Children Christmas Santa Volunteer</CardContent> */}
-        </Card>
-
-        <Card>
-          <CardImg>
-            {/* <img src="https://i.redd.it/b3esnz5ra34y.jpg" alt="test"/> */}
-          </CardImg>
-          <CardTitle>
-            <p>W Children Hospital</p>
-            <span>100 Smart Street, Gangnam-gu</span>
-          </CardTitle>
-          {/* <CardContent>Children Christmas Santa Volunteer</CardContent> */}
-        </Card>
-
-        <Card>
-          <CardImg>
-            {/* <img src="https://i.redd.it/b3esnz5ra34y.jpg" alt="test"/> */}
-          </CardImg>
-          <CardTitle>
-            <p>W Children Hospital</p>
-            <span>100 Smart Street, Gangnam-gu</span>
-          </CardTitle>
-          {/* <CardContent>Children Christmas Santa Volunteer</CardContent> */}
-        </Card>
+        {maindate && maindate.length > 0
+          ? maindate.map((obj, boardId) => {
+              return (
+                <Card key={boardId}>
+                  <div>D-4</div>
+                  {obj.boardId}
+                  <CardImg>
+                    {/* <img src="https://i.redd.it/b3esnz5ra34y.jpg" alt="test"/> */}
+                  </CardImg>
+                  <CardTitle>
+                    <p>{obj.area}</p>
+                    <span>{obj.detailArea}</span>
+                  </CardTitle>
+                  {/* <CardContent>Children Christmas Santa Volunteer</CardContent> */}
+                </Card>
+              );
+            })
+          : ""}
       </CardContainer>
       {moveIndex === 0 ? null : (
         <CardMoveRightBtn onClick={moveRight}>오른쪽</CardMoveRightBtn>
