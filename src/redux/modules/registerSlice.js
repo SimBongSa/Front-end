@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { apis } from "./APi/apis";
+import { apis } from "./Api/apis";
 import { setCookie } from "../../utils/cookie";
 
 export const __loginMember = createAsyncThunk(
@@ -18,17 +18,17 @@ export const __loginMember = createAsyncThunk(
           path: "/",
           secure: true,
           sameSite: "none",
-        });
-        setCookie("username", response.headers["username"], {
+        })
+        setCookie("username", response.data.data["username"], {
           path: "/",
           secure: true,
           sameSite: "none",
-        });
-        // setCookie("userType", response.headers["userType"], {
-        //   path: "/",
-        //   secure: true,
-        //   sameSite: "none",
-        // })
+        })
+        setCookie("authority", response.data.data["authority"], {
+          path: "/",
+          secure: true,
+          sameSite: "none",
+        })
       }
       return thunkAPI.fulfillWithValue(response.data);
     } catch (error) {

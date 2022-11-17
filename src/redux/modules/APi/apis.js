@@ -2,7 +2,7 @@ import axios from "axios";
 import { getCookieToken } from "../../../utils/cookie";
 
 const BASE_URL = process.env.REACT_APP_SERVER;
-const Authorization = getCookieToken("access-token");
+const token = getCookieToken("access-token");
 
 const api = axios.create({
   baseURL: BASE_URL,
@@ -17,7 +17,7 @@ api.interceptors.request.use(function (config) {
   // .find((row) => row.startsWith("Authorization"))
   // .split("=")
   // .find((row) => row.startsWith("Bearer"));
-  const accessToken = localStorage.getItem("Authorization");
+  const accessToken = getCookieToken("access-token");
   // console.log(accessToken);
   config.headers.Authorization = accessToken;
   return config;
@@ -25,42 +25,61 @@ api.interceptors.request.use(function (config) {
 
 export const apis = {
   // registerSlice
-  memberLogin: (payload) => api.post(`${BASE_URL}/members/login`, payload),
-  managerLogin: (payload) => api.post(`${BASE_URL}/managers/login`, payload),
-  memberSignup: (payload) => axios.post(`${BASE_URL}/members/signup`, payload),
-  managerSignup: (payload) =>
-    axios.post(`${BASE_URL}/managers/signup`, payload),
+  memberLogin: (payload) => axios.post(`${BASE_URL}/members/login`, payload),
+  managerLogin: (payload) => axios.post(`${BASE_URL}/managers/login`, payload),
+  memberSignup: (payload) => axios.post(`${BASE_URL}/members/signup/individual`, payload),
+  managerSignup: (payload) => axios.post(`${BASE_URL}/members/signup/admin`, payload),
 
   //customerSlice
 
   mainlist: (boardId) => api.get(`${BASE_URL}/boards/${boardId}`),
   customerlist: (dueDay) => api.get(`${BASE_URL}/boards/date/${dueDay}`),
   edit: (payload) =>
+<<<<<<< HEAD
     api.put(`${BASE_URL}/mypage`, payload, {
       // headers: {
       //   "Content-Type": "multipart/form-data",
       // },
+=======
+    api.post(`http://localhost:8080/mypage`, payload, {
+      headers: {
+        Authorization: token,
+        "Content-Type": "multipart/form-data",
+      },
+>>>>>>> e5ecbc76f6eb0dec8d736cfe261c50cd34872f80
     }),
 
-  // addCreateSlice
+  // registerActivity slice
   addCreate: (payload) =>
     axios.post(`${BASE_URL}/boards`, payload, {
       headers: {
-        Authorization,
+        Authorization: token,
         "Content-Type": "multipart/form-data",
       },
     }),
   getCreate: () => axios.get(`${BASE_URL}/boards`),
+  editCreate: (payload) =>
+  axios.put(`${BASE_URL}/boards/${payload.id}`, payload.upData, {
+    headers: {
+      Authorization: token,
+    },
+  }),
   delCreate: (id) =>
     axios.delete(`${BASE_URL}/boards/${id}/remove`, {
       headers: {
-        Authorization,
+        Authorization: token,
       },
     }),
-  editCreate: (payload) =>
-    axios.put(`${BASE_URL}/boards/${payload.id}`, payload.upData, {
-      headers: {
-        Authorization,
-      },
-    }),
+
+  // MyPage (Company)
+  getCompanyPage: () => api.get(`${BASE_URL}/companypage`, {
+    headers: {
+      Authorization: token,
+    }
+  }),
+  getCompanyBoards: () => api.get(`${BASE_URL}/companypage/boards`, {
+    headers: {
+      Authorization: token,
+    }
+  }),
 };

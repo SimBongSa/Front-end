@@ -29,25 +29,27 @@ const RegisterActivity = () => {
     startDate: "",
     endDate: "",
     area: "",
+    detailArea: "",
   };
 
   //폼데이터 전송 스테이트
   const [input, setInput] = useState(init);
-  const [imageToUpload, setImageToUpload] = useState(null);
+  const [boardImage, setBoardImage] = useState(null);
+  const [address, setAddress] = useState("");
 
   // 이미지 미리보기 스테이트
   const [uploadpreview, setUploadpreview] = useState("");
 
   //텍스트데이터 스테이즈 저장
   const onChangeInput = (e) => {
-    console.log(input);
+    console.log("인풋=>", input);
     const { name, value } = e.target;
-    setInput({ ...input, [name]: value });
+    setInput({ ...input, [name]: value, area: address });
   };
 
   //이미지 스테이트저장, 미리보기 온체인지 핸들러
   const onChangeImage = (e) => {
-    setImageToUpload(e.target.files[0]);
+    setBoardImage(e.target.files[0]);
     let reader = new FileReader();
 
     if (e.target.files[0]) {
@@ -63,7 +65,8 @@ const RegisterActivity = () => {
 
   const submitHandler = (e) => {
     e.preventDefault();
-    dispatch(__addCreate({ ...input, imageToUpload }));
+    console.log("등록 직전=>", input);
+    dispatch(__addCreate({ ...input, boardImage }));
   };
 
   // //formData는 콘솔에 찍히지 않아 이 방법으로 찍어야함 2번째
@@ -72,7 +75,8 @@ const RegisterActivity = () => {
   // }
 
   // 주소값
-  const [address, setAddress] = useState("");
+
+  console.log("address=>", address);
 
   return (
     <div>
@@ -112,7 +116,6 @@ const RegisterActivity = () => {
           type="text"
           name="area"
           value={address}
-          onChange={(e) => onChangeInput(e)}
         />
         {/* // 버튼 클릭 시 팝업 생성 */}
         <button type="button" onClick={openPostCode}>
@@ -126,6 +129,13 @@ const RegisterActivity = () => {
             </PopupDom>
           )}
         </div>
+        <p>행사 상세 주소</p>
+        <input
+          type="text"
+          name="detailArea"
+          value={input.detailArea}
+          onChange={(e) => onChangeInput(e)}
+        />
         <p>봉사 내용 및 설명</p>
         <input
           placeholder="봉사 내용 및 설명"
