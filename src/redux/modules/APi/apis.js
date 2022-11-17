@@ -27,26 +27,20 @@ export const apis = {
   // registerSlice
   memberLogin: (payload) => axios.post(`${BASE_URL}/members/login`, payload),
   managerLogin: (payload) => axios.post(`${BASE_URL}/managers/login`, payload),
-  memberSignup: (payload) => axios.post(`${BASE_URL}/members/signup/individual`, payload),
-  managerSignup: (payload) => axios.post(`${BASE_URL}/members/signup/admin`, payload),
+  memberSignup: (payload) =>
+    axios.post(`${BASE_URL}/members/signup/individual`, payload),
+  managerSignup: (payload) =>
+    axios.post(`${BASE_URL}/members/signup/admin`, payload),
 
   //customerSlice
 
   mainlist: (boardId) => api.get(`${BASE_URL}/boards/${boardId}`),
   customerlist: (dueDay) => api.get(`${BASE_URL}/boards/date/${dueDay}`),
   edit: (payload) =>
-<<<<<<< HEAD
     api.put(`${BASE_URL}/mypage`, payload, {
       // headers: {
       //   "Content-Type": "multipart/form-data",
       // },
-=======
-    api.post(`http://localhost:8080/mypage`, payload, {
-      headers: {
-        Authorization: token,
-        "Content-Type": "multipart/form-data",
-      },
->>>>>>> e5ecbc76f6eb0dec8d736cfe261c50cd34872f80
     }),
 
   // registerActivity slice
@@ -59,11 +53,11 @@ export const apis = {
     }),
   getCreate: () => axios.get(`${BASE_URL}/boards`),
   editCreate: (payload) =>
-  axios.put(`${BASE_URL}/boards/${payload.id}`, payload.upData, {
-    headers: {
-      Authorization: token,
-    },
-  }),
+    axios.put(`${BASE_URL}/boards/${payload.id}`, payload.upData, {
+      headers: {
+        Authorization: token,
+      },
+    }),
   delCreate: (id) =>
     axios.delete(`${BASE_URL}/boards/${id}/remove`, {
       headers: {
@@ -72,14 +66,16 @@ export const apis = {
     }),
 
   // MyPage (Company)
-  getCompanyPage: () => api.get(`${BASE_URL}/companypage`, {
-    headers: {
-      Authorization: token,
-    }
-  }),
-  getCompanyBoards: () => api.get(`${BASE_URL}/companypage/boards`, {
-    headers: {
-      Authorization: token,
-    }
-  }),
+  getCompanyPage: () =>
+    api.get(`${BASE_URL}/companypage`, {
+      headers: {
+        Authorization: token,
+      },
+    }),
+  getCompanyBoards: () =>
+    api.get(`${BASE_URL}/companypage/boards`, {
+      headers: {
+        Authorization: token,
+      },
+    }),
 };

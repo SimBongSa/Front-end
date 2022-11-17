@@ -19,15 +19,9 @@ export const MainPage = () => {
       <SearchBar />
       <hr />
       <MainPageText>Urgent Activity</MainPageText>
-<<<<<<< HEAD
       <Cards maindate={maindate.data} key={maindate.boardId} />
       <MainPageText>Search by Date</MainPageText>
       <MainCalendar />
-=======
-      <Cards />
-      {/* <MainPageText>Search by Date</MainPageText>
-      <MainCalendar /> */}
->>>>>>> e5ecbc76f6eb0dec8d736cfe261c50cd34872f80
       <Footer />
     </>
   );

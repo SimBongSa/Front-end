@@ -30,7 +30,7 @@ const MainCalendar = () => {
     // console.log(moment(value).format("YYYYMMDD"));
     // console.log(typeof moment(value).format("YYYYMMDD"));
     // console.log(value);
-    // dispatch(__getCustomer(moment(value).format("YYYYMMDD")));
+    dispatch(__getCustomer(moment(value).format("YYYYMMDD")));
   };
 
   return (
