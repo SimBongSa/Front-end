@@ -12,6 +12,8 @@ export const MainSlider = styled.div`
     width: 100%;
     height: 100%;
     object-fit: cover;
-    border: none;
+    border-radius: 15px;
+    display: inline-block;
+    content: "";
   }
 `

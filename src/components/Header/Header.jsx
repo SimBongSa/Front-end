@@ -14,7 +14,6 @@ import { useTheme } from "../../context/themeProvider";
 import { getCookieToken } from "../../utils/cookie";
 import { useEffect } from "react";
 import { useCookies } from "react-cookie";
-import { removeCookie } from "../../utils/cookie";
 
 const Header = () => {
   const navigate = useNavigate();
@@ -29,21 +28,13 @@ const Header = () => {
   const authority = cookies["authority"];
   const username = cookies["username"];
 
-  const logOut = () => {
-    removeCookie(["access-token"], { path: "/" });
-    removeCookie(["username"], { path: "/" });
-    removeCookie(["authority"], { path: "/" });
-    localStorage.removeItem("refresh-token");
-    // navigate("/login");
-  };
-
   return (
     <HeaderContainer>
       <HeaderLogo onClick={() => navigate("/")}>VONGOLE</HeaderLogo>
+      <LightThemeBtn onClick={toggleTheme}>
+        <BsFillMoonFill>Theme</BsFillMoonFill>
+      </LightThemeBtn>
       <HeaderMenu>
-        <LightThemeBtn onClick={toggleTheme}>
-          <BsFillMoonFill />
-        </LightThemeBtn>
         <HeaderMenuItem onClick={() => navigate("/boards")}>Boards</HeaderMenuItem>
         {isLogin && authority === "ROLE_MEMBER" ? (
           <>

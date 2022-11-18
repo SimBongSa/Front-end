@@ -36,7 +36,7 @@ const Detail = () => {
             <h5>내가 만든 쿠키 너를 위해 구웠지</h5>
             <h5>내가 만든 쿠키 너를 위해 구웠지</h5>
             <MapWrapper>
-              <KaMap area={boardsId?.area} mapHeight="400px" />
+              <KaMap input="false" area={boardsId?.area} mapHeight="400px" />
             </MapWrapper>
           </DetailContent>
 

@@ -27,6 +27,8 @@ export const apis = {
   managerLogin: (payload) => axios.post(`${BASE_URL}/managers/login`, payload),
   memberSignup: (payload) => axios.post(`${BASE_URL}/members/signup/individual`, payload),
   managerSignup: (payload) => axios.post(`${BASE_URL}/members/signup/admin`, payload),
+  checkUsername: (payload) => axios.get(`${BASE_URL}/members/check_username/${payload}`),
+  checkNickname: (payload) => axios.get(`${BASE_URL}/members/check_nickname/${payload}`),
 
   //customerSlice
   mainlist: (boardId) => api.get(`${BASE_URL}/boards/${boardId}`),
