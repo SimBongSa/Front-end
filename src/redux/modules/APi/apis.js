@@ -41,6 +41,7 @@ export const apis = {
     }),
   // boards
   getboards: () => api.get(`${BASE_URL}/boards`),
+  getboardsId: (boardId) => api.get(`${BASE_URL}/boards/${boardId}`),
 
   // registerActivity slice
   addCreate: (payload) =>
