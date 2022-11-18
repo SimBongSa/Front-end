@@ -4,9 +4,8 @@ import Cards from "../components/Cards/Cards";
 import Footer from "../components/Footer/Footer";
 import Header from "../components/Header/Header";
 import MainBg from "../components/MainBg/MainBg";
-import SearchBar from "../components/SearchBar/SearchBar";
-import KaMap from "../components/Map/KaMap";
 import { useSelector, useDispatch } from "react-redux";
+import SearchBar from "../components/SearchBar/SearchBar";
 
 export const MainPage = () => {
   const dispatch = useDispatch();
@@ -15,9 +14,8 @@ export const MainPage = () => {
   return (
     <>
       <Header />
+      <SearchBar/>
       <MainBg />
-      <SearchBar />
-      <hr />
       <MainPageText>Urgent Activity</MainPageText>
       <Cards maindate={maindate.data} key={maindate.boardId} />
       <MainPageText>Search by Date</MainPageText>

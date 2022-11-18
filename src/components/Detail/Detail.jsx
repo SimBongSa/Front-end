@@ -30,21 +30,21 @@ const Detail = () => {
     <>
       <MainBg image={boardsId?.boardImage} />
 
-      <DetailContainer>
-        <DetailContent>
-          <h1>{boardsId?.title}</h1>
-          <hr />
-          <h3>봉사 활동 내용</h3>
-          <span>{boardsId?.content}</span>
-          <h3>봉사 요청 사항</h3>
-          <h5>내가 만든 쿠키 너를 위해 구웠지</h5>
-          <h5>내가 만든 쿠키 너를 위해 구웠지</h5>
-          <h5>내가 만든 쿠키 너를 위해 구웠지</h5>
-          <h5>내가 만든 쿠키 너를 위해 구웠지</h5>
-          <MapWrapper>
-            <KaMap area={boardsId?.area} mapHeight="400px" />
-          </MapWrapper>
-        </DetailContent>
+        <DetailContainer>
+          <DetailContent>
+            <h1>{ boardsId?.title }</h1>
+            <hr/>
+            <h3>봉사 활동 내용</h3>
+            <span>{ boardsId?.content }</span>
+            <h3>봉사 요청 사항</h3>
+            <h5>내가 만든 쿠키 너를 위해 구웠지</h5>
+            <h5>내가 만든 쿠키 너를 위해 구웠지</h5>
+            <h5>내가 만든 쿠키 너를 위해 구웠지</h5>
+            <h5>내가 만든 쿠키 너를 위해 구웠지</h5>
+            <MapWrapper>
+              <KaMap input="false" area={boardsId?.area} mapHeight="400px" />
+            </MapWrapper>
+          </DetailContent>
 
         <DetailNav>
           <h2>

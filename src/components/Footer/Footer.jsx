@@ -18,14 +18,11 @@ const Footer = () => {
         <FooterItem>개인정보처리방침</FooterItem>
       </FooterUl>
 
-      <FooterUl>
+      {/* <FooterUl>
         <li><h4>고객지원</h4></li>
         <FooterItem>이용 가이드</FooterItem>
         <FooterItem>FAQ</FooterItem>
-      </FooterUl>
-
-      <FooterBottom>
-      </FooterBottom>
+      </FooterUl> */}
 
     </FooterContainer>
   )
@@ -36,7 +33,6 @@ export default Footer;
 export const FooterUl = styled.ul`
   width: 33.3333%;
   & li {
-    /* text-align: center; */
     padding-bottom: 10px;
     & h4 {
       transition: all 0.5s;

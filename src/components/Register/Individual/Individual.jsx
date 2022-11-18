@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { __registerMember } from "../../../redux/modules/registerSlice";
 import { useNavigate } from "react-router-dom";
+import styled from "styled-components";
 
 const Individual = () => {
   const init = {
@@ -92,20 +93,22 @@ const Individual = () => {
               value={input.name}
               onChange={onChangeHandler}
             />
-            <Input
-              id="male"
-              type="radio"
-              name="gender"
-              value="male"
-              onChange={onChangeHandler}
-            />
-            <Input
-              id="female"
-              type="radio"
-              name="gender"
-              value="female"
-              onChange={onChangeHandler}
-            />
+            <Gender>
+              <Input
+                id="male"
+                type="radio"
+                name="gender"
+                value="male"
+                onChange={onChangeHandler}
+              />
+              <Input
+                id="female"
+                type="radio"
+                name="gender"
+                value="female"
+                onChange={onChangeHandler}
+              />
+            </Gender>
             <Input
               placeholder="Birth Date"
               type="date"
@@ -125,3 +128,9 @@ const Individual = () => {
 };
 
 export default Individual;
+
+export const Gender = styled.div`
+  display: flex;
+  margin: 0 auto;
+  flex-direction: row;
+`
