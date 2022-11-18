@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { __getCustomer } from "../../../redux/modules/customerSlice";
+import { __getCustomer } from "../../../redux/modules/calendarSlice";
 
 import {
   More,
@@ -13,7 +13,7 @@ import {
 
 function CustomerCard() {
   const dispatch = useDispatch();
-  const { customerList } = useSelector((state) => state.customerList);
+  const { customerList } = useSelector((state) => state.calendarList);
 
   useEffect(() => {
     dispatch(__getCustomer());

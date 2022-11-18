@@ -3,7 +3,7 @@ import { apis } from "./Api/apis";
 
 // yarn json-server --watch db.json --port 8080
 const initialState = {
-  customerList: {},
+  calendarList: {},
   mainList: {},
   isLoading: false,
   error: null,
@@ -13,7 +13,7 @@ export const __getCustomer = createAsyncThunk(
   "getCustomer",
   async (dueDay, thunkAPI) => {
     try {
-      const response = await apis.customerlist(dueDay);
+      const response = await apis.calendarList(dueDay);
       return thunkAPI.fulfillWithValue(response.data);
     } catch (error) {
       return thunkAPI.rejectWithValue(error.data);
@@ -53,8 +53,8 @@ export const __putCutomer = createAsyncThunk(
   }
 );
 
-const customerSlice = createSlice({
-  name: "customerList",
+const calendarSlice = createSlice({
+  name: "calendarList",
   initialState,
   reducers: {},
   extraReducers: (builder) => {
@@ -64,7 +64,7 @@ const customerSlice = createSlice({
       })
       .addCase(__getCustomer.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.customerList = action.payload;
+        state.calendarList = action.payload;
       })
       .addCase(__getCustomer.rejected, (state) => {
         state.isLoading = false;
@@ -86,7 +86,7 @@ const customerSlice = createSlice({
       })
       .addCase(__putCutomer.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.customerList = action.payload;
+        state.calendarList = action.payload;
       })
       .addCase(__putCutomer.rejected, (state) => {
         state.isLoading = false;
@@ -94,5 +94,5 @@ const customerSlice = createSlice({
   },
 });
 
-export const {} = customerSlice.actions;
-export default customerSlice.reducer;
+export const {} = calendarSlice.actions;
+export default calendarSlice.reducer;

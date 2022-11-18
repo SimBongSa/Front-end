@@ -7,11 +7,11 @@ import axios from "axios";
 import Serverlist from "../Serverlist/Serverlist";
 import styled from "styled-components";
 import { useSelector, useDispatch } from "react-redux";
-import { __getCustomer } from "../../redux/modules/customerSlice";
+import { __getCustomer } from "../../redux/modules/calendarSlice";
 
 const MainCalendar = () => {
   const dispatch = useDispatch();
-  const maindate = useSelector((state) => state.customerList.customerList);
+  const maindate = useSelector((state) => state.calendarList.calendarList);
   // let markday = maindate.data.dueDay;
   // console.log(markday);
 

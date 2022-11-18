@@ -25,12 +25,14 @@ export const apis = {
   // registerSlice
   memberLogin: (payload) => axios.post(`${BASE_URL}/members/login`, payload),
   managerLogin: (payload) => axios.post(`${BASE_URL}/managers/login`, payload),
-  memberSignup: (payload) => axios.post(`${BASE_URL}/members/signup/individual`, payload),
-  managerSignup: (payload) => axios.post(`${BASE_URL}/members/signup/admin`, payload),
+  memberSignup: (payload) =>
+    axios.post(`${BASE_URL}/members/signup/individual`, payload),
+  managerSignup: (payload) =>
+    axios.post(`${BASE_URL}/members/signup/admin`, payload),
 
-  //customerSlice
+  //callendarSlice
   mainlist: (boardId) => api.get(`${BASE_URL}/boards/${boardId}`),
-  customerlist: (dueDay) => api.get(`${BASE_URL}/boards/date/${dueDay}`),
+  calendarList: (dueDay) => api.get(`${BASE_URL}/boards/date/${dueDay}`),
   edit: (payload) =>
     api.put(`${BASE_URL}/mypage`, payload, {
       // headers: {
@@ -79,8 +81,8 @@ export const apis = {
     }),
 
   //commentSlice
-  getComment: (board_id) =>
-    axios.get(`${BASE_URL}/boards/${board_id}`, {
+  getComment: (payload) =>
+    axios.get(`${BASE_URL}/boards/${payload}`, {
       headers: {
         Authorization: token,
       },
@@ -92,6 +94,19 @@ export const apis = {
       },
     }),
   putComment: (payload) =>
-    axios.put(`${BASE_URL}/comments/${payload.id}`, payload),
-  deleteComment: (payload) => axios.delete(`${BASE_URL}/comments/${payload}`),
+    axios.put(
+      `${BASE_URL}/comments/${payload.commentId}`,
+      { content: payload.content },
+      {
+        headers: {
+          Authorization: token,
+        },
+      }
+    ),
+  deleteComment: (id) =>
+    axios.delete(`${BASE_URL}/comments/${id}`, {
+      headers: {
+        Authorization: token,
+      },
+    }),
 };

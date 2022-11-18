@@ -9,10 +9,11 @@ const initialState = {
 
 export const __getComment = createAsyncThunk(
   "getComment",
-  async (board_id, thunkAPI) => {
+  async (payload, thunkAPI) => {
+    console.log(payload);
     try {
-      const response = await apis.getComment(board_id);
-      return thunkAPI.fulfillWithValue(response.data.data.comments);
+      const { data } = await apis.getComment(payload);
+      return thunkAPI.fulfillWithValue(data.data.comments);
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
     }
@@ -22,9 +23,10 @@ export const __getComment = createAsyncThunk(
 export const __postComment = createAsyncThunk(
   "postComment",
   async (payload, thunkAPI) => {
+    console.log(payload);
     try {
-      const response = await apis.postComment(payload);
-      return thunkAPI.fulfillWithValue(response);
+      const { data } = await apis.postComment(payload);
+      return thunkAPI.fulfillWithValue(data);
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
     }
@@ -35,8 +37,8 @@ export const __putComment = createAsyncThunk(
   "putComment",
   async (payload, thunkAPI) => {
     try {
-      const response = await apis.putComment(payload);
-      return thunkAPI.fulfillWithValue(response);
+      const { data } = await apis.putComment(payload);
+      return thunkAPI.fulfillWithValue(data);
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
     }
@@ -47,8 +49,8 @@ export const __deleteComment = createAsyncThunk(
   "deleteComment",
   async (payload, thunkAPI) => {
     try {
-      const response = await apis.deleteComment(payload);
-      return thunkAPI.fulfillWithValue(response);
+      const { data } = await apis.deleteComment(payload);
+      return thunkAPI.fulfillWithValue(data);
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
     }
@@ -77,6 +79,7 @@ const commentSlice = createSlice({
       })
       .addCase(__postComment.fulfilled, (state, action) => {
         state.isLoading = false;
+        // console.log("action.payload =>", action.payload);
         state.commentList.push(action.payload);
       })
       .addCase(__postComment.rejected, (state) => {
@@ -99,8 +102,12 @@ const commentSlice = createSlice({
       })
       .addCase(__deleteComment.fulfilled, (state, action) => {
         state.isLoading = false;
+        // state.commentList = action.payload;
+        // console.log("action.payload =>", action.payload);
+        // console.log("commentList =>", initialState);
+        // state.commentList = action.payload;
         state.commentList = state.commentList.filter(
-          (data) => data.id !== action.payload
+          (item) => item.id !== action.payload
         );
       })
       .addCase(__deleteComment.rejected, (state) => {
