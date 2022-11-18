@@ -8,13 +8,13 @@ import {
   CardMoveRightBtn,
 } from "./Cards.styled";
 import { useState, useEffect } from "react";
-import { __getmainlist } from "../../redux/modules/customerSlice";
+import { __getmainlist } from "../../redux/modules/calendarSlice";
 import { useSelector, useDispatch } from "react-redux";
 
 const Cards = ({ maindate, boardId }) => {
   const [moveIndex, setMoveIndex] = useState(0);
   const dispatch = useDispatch();
-  const mainlist = useSelector((state) => state.customerList.mainList);
+  const mainlist = useSelector((state) => state.calendarList.mainList);
   console.log(mainlist);
 
   const moveLeft = () => {

@@ -9,49 +9,40 @@ const Input = ({
   value,
   onChange,
 }) => {
-
-  return(
+  return (
     <StInputContainer>
+      {type === "text" || "password" ? (
+        <StInputContainer>
+          <StInput
+            placeholder={placeholder}
+            type={type}
+            name={name}
+            value={value}
+            onChange={onChange}
+          />
+          {/* <StErrorMsg>아이디 대충 몇 글자임</StErrorMsg> */}
+        </StInputContainer>
+      ) : null}
 
-      {
-        type === "text" || "password" ? (
-          <StInputContainer>
-            <StInput 
-              placeholder={placeholder}
-              type={type}
-              name={name}
-              value={value}
-              onChange={onChange}
-            />
-            {/* <StErrorMsg>아이디 대충 몇 글자임</StErrorMsg> */}
-          </StInputContainer>
-        ) : null
-      }
+      {dupleCheck ? (
+        // <StCheckContainer>
+        <>
+          <input id={id} type="checkbox" />
+          <label htmlFor={id}></label>
+        </>
+      ) : // </StCheckContainer>
+      null}
 
-      {
-        dupleCheck ? (
-          // <StCheckContainer>
-            <>
-              <input id={id} type="checkbox"/>
-              <label htmlFor={id}></label>
-            </>
-          // </StCheckContainer>
-        ) : null
-      }
-
-      {
-        type === "radio" ? <span>{value}</span> : null
-      }
-
+      {type === "radio" ? <span>{value}</span> : null}
     </StInputContainer>
-  )
+  );
 };
 
 export default Input;
 
 export const StInputContainer = styled.div`
   display: flex;
-`
+`;
 
 export const StInput = styled.input`
   margin: 12px;
@@ -64,11 +55,11 @@ export const StInput = styled.input`
   outline: none;
   background: ${(props) => props.theme.WHITE};
   color: ${(props) => props.theme.BLACK};
-`
+`;
 
 export const StErrorMsg = styled.span`
   color: tomato;
-`
+`;
 
 export const StCheckContainer = styled.div`
   display: block;
@@ -79,7 +70,7 @@ export const StCheckContainer = styled.div`
   background: #182029;
   padding: 3px 0 0;
   margin: 0 auto;
-  margin-top: .8rem;
+  margin-top: 0.8rem;
   perspective: 50px;
   -webkit-perspective: 50px;
   -moz-perspective: 50px;
@@ -103,7 +94,7 @@ export const StCheckContainer = styled.div`
     -webkit-appearance: none;
     background: none;
     border: none;
-	  transform-style: preserve-3d;
+    transform-style: preserve-3d;
     -webkit-transform-style: preserve-3d;
     -moz-transform-style: preserve-3d;
     border-radius: inherit;
@@ -115,8 +106,9 @@ export const StCheckContainer = styled.div`
     box-shadow: none;
     -webkit-box-shadow: none;
     -moz-box-shadow: none;
-    &:before, &:after {
-      content: '';
+    &:before,
+    &:after {
+      content: "";
       position: absolute;
       top: 0;
       left: 0;
@@ -135,13 +127,13 @@ export const StCheckContainer = styled.div`
       transform: rotateY(0deg);
       -webkit-transform: rotateY(0deg);
       -moz-transform: rotateY(0deg);
-      background: #E65757;
+      background: #e65757;
     }
     &:after {
       transform: rotateY(180deg);
       -webkit-transform: rotateY(180deg);
       -moz-transform: rotateY(180deg);
-      background: #77E371;
+      background: #77e371;
     }
   }
   input:checked + label {
@@ -154,107 +146,108 @@ export const StCheckContainer = styled.div`
   }
   &.flip-switch-icon {
     label {
-      &:before, &:after {
+      &:before,
+      &:after {
         color: white;
         line-height: 32px;
         font-weight: 900;
         font-size: 1.3rem;
       }
       &:before {
-        content: 'OFF';
+        content: "OFF";
       }
       &:after {
-        content: 'ON';
+        content: "ON";
       }
     }
   }
-@keyframes check {
-  0% {
-    transform: rotateY(0deg);
+  @keyframes check {
+    0% {
+      transform: rotateY(0deg);
+    }
+    50% {
+      transform: rotateY(195deg);
+    }
+    75% {
+      transform: rotateY(165deg);
+    }
+    100% {
+      transform: rotateY(180deg);
+    }
   }
-  50% {
-    transform: rotateY(195deg);
-  }
-  75% {
-    transform: rotateY(165deg);
-  }
-  100% {
-    transform: rotateY(180deg);
-  }
-}
 
-@-webkit-keyframes check {
-  0% {
-    -webkit-transform: rotateY(0deg);
+  @-webkit-keyframes check {
+    0% {
+      -webkit-transform: rotateY(0deg);
+    }
+    50% {
+      -webkit-transform: rotateY(195deg);
+    }
+    75% {
+      -webkit-transform: rotateY(165deg);
+    }
+    100% {
+      -webkit-transform: rotateY(180deg);
+    }
   }
-  50% {
-    -webkit-transform: rotateY(195deg);
-  }
-  75% {
-    -webkit-transform: rotateY(165deg);
-  }
-  100% {
-    -webkit-transform: rotateY(180deg);
-  }
-}
 
-@-moz-keyframes check {
-  0% {
-    -moz-transform: rotateY(0deg);
+  @-moz-keyframes check {
+    0% {
+      -moz-transform: rotateY(0deg);
+    }
+    50% {
+      -moz-transform: rotateY(195deg);
+    }
+    75% {
+      -moz-transform: rotateY(165deg);
+    }
+    100% {
+      -moz-transform: rotateY(180deg);
+    }
   }
-  50% {
-    -moz-transform: rotateY(195deg);
-  }
-  75% {
-    -moz-transform: rotateY(165deg);
-  }
-  100% {
-    -moz-transform: rotateY(180deg);
-  }
-}
 
-@keyframes uncheck {
-  0% {
-    transform: rotateY(180deg);
+  @keyframes uncheck {
+    0% {
+      transform: rotateY(180deg);
+    }
+    50% {
+      transform: rotateY(-15deg);
+    }
+    75% {
+      transform: rotateY(15deg);
+    }
+    100% {
+      transform: rotateY(0deg);
+    }
   }
-  50% {
-    transform: rotateY(-15deg);
-  }
-  75% {
-    transform: rotateY(15deg);
-  }
-  100% {
-    transform: rotateY(0deg);
-  }
-}
 
-@-webkit-keyframes uncheck {
-  0% {
-    -webkit-transform: rotateY(180deg);
+  @-webkit-keyframes uncheck {
+    0% {
+      -webkit-transform: rotateY(180deg);
+    }
+    50% {
+      -webkit-transform: rotateY(-15deg);
+    }
+    75% {
+      -webkit-transform: rotateY(15deg);
+    }
+    100% {
+      -webkit-transform: rotateY(0deg);
+    }
   }
-  50% {
-    -webkit-transform: rotateY(-15deg);
-  }
-  75% {
-    -webkit-transform: rotateY(15deg);
-  }
-  100% {
-    -webkit-transform: rotateY(0deg);
-  }
-}
 
-@-moz-keyframes uncheck {
-  0% {
-    -moz-transform: rotateY(180deg);
+  @-moz-keyframes uncheck {
+    0% {
+      -moz-transform: rotateY(180deg);
+    }
+    50% {
+      -moz-transform: rotateY(-15deg);
+    }
+    75% {
+      -moz-transform: rotateY(15deg);
+    }
+    100% {
+      -moz-transform: rotateY(0deg);
+    }
   }
-  50% {
-    -moz-transform: rotateY(-15deg);
-  }
-  75% {
-    -moz-transform: rotateY(15deg);
-  }
-  100% {
-    -moz-transform: rotateY(0deg);
-  }
-}
-`
+`;
