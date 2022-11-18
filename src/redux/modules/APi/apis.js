@@ -1,6 +1,5 @@
 import axios from "axios";
 import { getCookieToken } from "../../../utils/cookie";
-
 const BASE_URL = process.env.REACT_APP_SERVER;
 const token = getCookieToken("access-token");
 
@@ -18,7 +17,6 @@ api.interceptors.request.use(function (config) {
   // .split("=")
   // .find((row) => row.startsWith("Bearer"));
   const accessToken = getCookieToken("access-token");
-  // console.log(accessToken);
   config.headers.Authorization = accessToken;
   return config;
 });

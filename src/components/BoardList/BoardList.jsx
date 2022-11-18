@@ -9,6 +9,8 @@ const Board = () => {
   const dispatch = useDispatch();
   const boards = useSelector((state) => state.boards.boards);
 
+  console.log(boards)
+
   useEffect(() => {
     dispatch(__getBoards());
   }, [dispatch]);

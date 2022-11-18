@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import styled from "styled-components";
+import MainBg from "../MainBg/MainBg";
 import { __getBoardsId } from "../../redux/modules/boardSlice";
 import CardGrid from "../common/cards/CardGrid";
 
