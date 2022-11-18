@@ -9,9 +9,10 @@ import KaMap from "../Map/KaMap";
 
 const Board = () => {
   const dispatch = useDispatch();
-  const boards = useSelector((state) => state.boards.boards);
 
-  console.log(boards)
+  const boards = useSelector((state) => state.boards.boards);
+  const area = useSelector((state) => state.boards.area);
+  console.log(area)
 
   useEffect(() => {
     dispatch(__getBoards());
@@ -35,7 +36,7 @@ export default Board;
 export const ListMap = styled.div`
   display: grid;
   width: 50%;
-  height: 109.85vh;
+  height: 107vh;
   margin-top: 10rem;
   float: right;
 `

@@ -37,6 +37,7 @@ export const apis = {
       //   "Content-Type": "multipart/form-data",
       // },
     }),
+
   // boards
   getboards: () => api.get(`${BASE_URL}/boards`),
   getboardId: (boardId) => api.get(`${BASE_URL}/boards/${boardId}`),

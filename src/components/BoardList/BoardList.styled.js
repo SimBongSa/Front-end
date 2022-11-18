@@ -9,6 +9,7 @@ export const BoardContent = styled.div`
   place-items: center;
   width: 50%;
   margin-top: 10rem;
+  height: 100%;
   float: left;
   /* background: #aaaaaa; */
 `

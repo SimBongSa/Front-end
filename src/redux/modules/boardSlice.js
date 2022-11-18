@@ -6,7 +6,6 @@ export const __getBoards = createAsyncThunk(
   async (payload, thunkAPI) => {
     try {
       const response = await apis.getboards(payload);
-      console.log("response => ", response.data.data);
       return thunkAPI.fulfillWithValue(response.data.data);
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
@@ -17,9 +16,9 @@ export const __getBoards = createAsyncThunk(
 export const __getBoardsId = createAsyncThunk(
   "companyInfoId",
   async (payload, thunkAPI) => {
+    console.log(payload)
     try {
       const response = await apis.getboardId(payload);
-      console.log("getboardsId =>", response);
       return thunkAPI.fulfillWithValue(response.data.data);
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
@@ -27,11 +26,26 @@ export const __getBoardsId = createAsyncThunk(
   }
 );
 
+export const __getArea = createAsyncThunk(
+  "getArea",
+  async (payload, thunkAPI) => {
+    try {
+      const response = await payload
+      console.log(payload)
+      console.log(response);
+      return thunkAPI.fulfillWithValue(response);
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error);
+    }
+  }
+)
+
 export const boardSlice = createSlice({
   name: "boards",
   initialState: {
     boards: [],
     board: [],
+    area: [],
     isLoading: false,
     error: null,
   },
@@ -60,7 +74,11 @@ export const boardSlice = createSlice({
       .addCase(__getBoardsId.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.payload;
-      });
+      })
+      .addCase(__getArea.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.area = action.payload;
+      })
   },
 });
 

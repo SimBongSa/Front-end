@@ -10,19 +10,10 @@ const KaMap = ({ area, mapHeight }) => {
   const { kakao } = window;
   const geocoder = new kakao.maps.services.Geocoder();
   // console.log("주소 =>", schedule);
-  console.log(mapHeight)
 
-  // 지도 크기 동적 변경 함수
-  // const resizeMap =() =>  {
-  //   const mapContainer = document.getElementById('map');
-  //   mapContainer.style.width = '100%';
-  //   mapContainer.style.height = { mapHeight }; 
-  // }
-
-  // useEffect(() => {
-  //   resizeMap();
-  //   map.relayout();
-  // })
+  useEffect((e) => {
+    setSchedule(area);
+  }, [setSchedule, area])
 
   const onAddScheduleHandler = (e) => {
     e.preventDefault();
@@ -79,9 +70,6 @@ const KaMap = ({ area, mapHeight }) => {
           lat: 37.566826,
           lng: 126.9786567,
         }}
-        style={{
-          width: "100%",
-        }}
         level={3}
         onCreate={setMap}
         height={mapHeight}
@@ -105,5 +93,6 @@ const KaMap = ({ area, mapHeight }) => {
 export default KaMap;
 
 export const StMap = styled(Map)`
+  width: 100%;
   height: ${(props) => props};
 `
