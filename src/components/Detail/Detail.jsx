@@ -1,8 +1,12 @@
 import styled from "styled-components";
+import MainBg from "../MainBg/MainBg";
 
 const Detail = () => {
   return (
-    <div>디테일 페이지임</div>
+    <div>
+      <MainBg/>
+      
+    </div>
   )
 };
 
