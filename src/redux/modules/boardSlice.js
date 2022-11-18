@@ -18,7 +18,7 @@ export const __getBoardsId = createAsyncThunk(
   "companyInfoId",
   async (payload, thunkAPI) => {
     try {
-      const response = await apis.getboardsId(payload);
+      const response = await apis.getboardId(payload);
       console.log("getboardsId =>", response);
       return thunkAPI.fulfillWithValue(response.data.data);
     } catch (error) {

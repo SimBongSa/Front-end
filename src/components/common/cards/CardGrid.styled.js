@@ -54,6 +54,7 @@ export const CardInfo = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  color: ${(props) => props.theme.textColor};
   & .price {
     padding: 0.5rem 1rem;
     border-radius: 12rem;

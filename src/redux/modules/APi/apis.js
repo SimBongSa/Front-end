@@ -25,10 +25,8 @@ export const apis = {
   // registerSlice
   memberLogin: (payload) => axios.post(`${BASE_URL}/members/login`, payload),
   managerLogin: (payload) => axios.post(`${BASE_URL}/managers/login`, payload),
-  memberSignup: (payload) =>
-    axios.post(`${BASE_URL}/members/signup/individual`, payload),
-  managerSignup: (payload) =>
-    axios.post(`${BASE_URL}/members/signup/admin`, payload),
+  memberSignup: (payload) => axios.post(`${BASE_URL}/members/signup/individual`, payload),
+  managerSignup: (payload) => axios.post(`${BASE_URL}/members/signup/admin`, payload),
 
   //customerSlice
   mainlist: (boardId) => api.get(`${BASE_URL}/boards/${boardId}`),
@@ -41,7 +39,7 @@ export const apis = {
     }),
   // boards
   getboards: () => api.get(`${BASE_URL}/boards`),
-  getboardsId: (boardId) => api.get(`${BASE_URL}/boards/${boardId}`),
+  getboardId: (boardId) => api.get(`${BASE_URL}/boards/${boardId}`),
 
   // registerActivity slice
   addCreate: (payload) =>

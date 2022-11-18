@@ -4,6 +4,8 @@ import { BoardContainer, BoardContent } from "./BoardList.styled";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { __getBoards } from "../../redux/modules/boardSlice";
+import styled from "styled-components";
+import KaMap from "../Map/KaMap";
 
 const Board = () => {
   const dispatch = useDispatch();
@@ -21,8 +23,19 @@ const Board = () => {
       <BoardContent>
         <CardGrid boards={boards} />
       </BoardContent>
+      <ListMap>
+        <KaMap mapHeight="100%" />
+      </ListMap>
     </BoardContainer>
   );
 };
 
 export default Board;
+
+export const ListMap = styled.div`
+  display: grid;
+  width: 50%;
+  height: 109.85vh;
+  margin-top: 10rem;
+  float: right;
+`
