@@ -30,9 +30,9 @@ export const apis = {
   checkUsername: (payload) => axios.get(`${BASE_URL}/members/check_username/${payload}`),
   checkNickname: (payload) => axios.get(`${BASE_URL}/members/check_nickname/${payload}`),
 
-  //customerSlice
+  //callendarSlice
   mainlist: (boardId) => api.get(`${BASE_URL}/boards/${boardId}`),
-  customerlist: (dueDay) => api.get(`${BASE_URL}/boards/date/${dueDay}`),
+  calendarList: (dueDay) => api.get(`${BASE_URL}/boards/date/${dueDay}`),
   edit: (payload) =>
     api.put(`${BASE_URL}/mypage`, payload, {
       // headers: {
@@ -82,18 +82,31 @@ export const apis = {
 
   //commentSlice
   getComment: (payload) =>
-    axios.get(`${BASE_URL}/boards/${1}`, payload, {
+    axios.get(`${BASE_URL}/boards/${payload}`, {
       headers: {
         Authorization: token,
       },
     }),
   postComment: (payload) =>
-    axios.post(`${BASE_URL}/comments/${1}`, payload, {
+    axios.post(`${BASE_URL}/comments/${payload.id}`, payload, {
       headers: {
         Authorization: token,
       },
     }),
   putComment: (payload) =>
-    axios.put(`${BASE_URL}/comments/${payload.id}`, payload),
-  deleteComment: (payload) => axios.delete(`${BASE_URL}/comments/${payload}`),
+    axios.put(
+      `${BASE_URL}/comments/${payload.commentId}`,
+      { content: payload.content },
+      {
+        headers: {
+          Authorization: token,
+        },
+      }
+    ),
+  deleteComment: (commentId) =>
+    axios.delete(`${BASE_URL}/comments/${commentId}`, {
+      headers: {
+        Authorization: token,
+      },
+    }),
 };

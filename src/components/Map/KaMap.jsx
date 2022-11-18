@@ -11,6 +11,7 @@ const KaMap = ({ area, mapHeight, input }) => {
   const geocoder = new kakao.maps.services.Geocoder();
   // console.log("주소 =>", schedule);
 
+
   useEffect(() => {
     const onAddScheduleHandler = (e) => {
       // e.preventDefault();
@@ -100,4 +101,4 @@ export default KaMap;
 export const StMap = styled(Map)`
   width: 100%;
   height: ${(props) => props};
-`
+`;

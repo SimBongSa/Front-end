@@ -4,7 +4,13 @@ import { useNavigate, useParams } from "react-router-dom";
 import { __getBoardsId } from "../../redux/modules/boardSlice";
 
 import styled from "styled-components";
-import { DetailContainer, DetailContent, MapWrapper, DetailNav, DetailNavBtn } from "./Detail.styled";
+import {
+  DetailContainer,
+  DetailContent,
+  MapWrapper,
+  DetailNav,
+  DetailNavBtn,
+} from "./Detail.styled";
 import MainBg from "../MainBg/MainBg";
 import KaMap from "../Map/KaMap";
 
@@ -18,7 +24,7 @@ const Detail = () => {
     dispatch(__getBoardsId(id));
   }, [dispatch, id]);
 
-  console.log("Detail.jsx boardsId =>", boardsId);
+  // console.log("Detail.jsx boardsId =>", boardsId);
 
   return (
     <>
@@ -41,11 +47,12 @@ const Detail = () => {
           </DetailContent>
 
         <DetailNav>
-          <h2>{ boardsId?.startDate } - { boardsId?.endDate }</h2>
+          <h2>
+            {boardsId?.startDate} - {boardsId?.endDate}
+          </h2>
           <DetailNavBtn>봉사자 신청하기</DetailNavBtn>
           <DetailNavBtn>봉사 단체 연락하기</DetailNavBtn>
         </DetailNav>
-
       </DetailContainer>
     </>
   );
