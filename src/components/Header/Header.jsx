@@ -14,6 +14,7 @@ import { useTheme } from "../../context/themeProvider";
 import { getCookieToken } from "../../utils/cookie";
 import { useEffect } from "react";
 import { useCookies } from "react-cookie";
+import SearchBar from "../SearchBar/SearchBar";
 
 const Header = () => {
   const navigate = useNavigate();
@@ -30,6 +31,7 @@ const Header = () => {
 
   return (
     <HeaderContainer>
+      <SearchBar/>
       <HeaderLogo onClick={() => navigate("/")}>VONGOLE</HeaderLogo>
       <LightThemeBtn onClick={toggleTheme}>
         <BsFillMoonFill>Theme</BsFillMoonFill>
@@ -46,7 +48,7 @@ const Header = () => {
             <HeaderMenuItem>{username}</HeaderMenuItem>
             <UserIcon
               onClick={() => {
-                navigate("/mypage");
+                navigate("/usermypage");
               }}
             />
           </>

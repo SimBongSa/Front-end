@@ -5,7 +5,6 @@ import Footer from "../components/Footer/Footer";
 import Header from "../components/Header/Header";
 import MainBg from "../components/MainBg/MainBg";
 import { useSelector, useDispatch } from "react-redux";
-import SearchBar from "../components/SearchBar/SearchBar";
 
 export const MainPage = () => {
   const dispatch = useDispatch();
@@ -14,7 +13,6 @@ export const MainPage = () => {
   return (
     <>
       <Header />
-      <SearchBar/>
       <MainBg />
       <MainPageText>Urgent Activity</MainPageText>
       <Cards maindate={maindate.data} key={maindate.boardId} />
