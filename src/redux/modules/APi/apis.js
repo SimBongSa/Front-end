@@ -1,6 +1,5 @@
 import axios from "axios";
 import { getCookieToken } from "../../../utils/cookie";
-
 const BASE_URL = process.env.REACT_APP_SERVER;
 const token = getCookieToken("access-token");
 
@@ -18,7 +17,6 @@ api.interceptors.request.use(function (config) {
   // .split("=")
   // .find((row) => row.startsWith("Bearer"));
   const accessToken = getCookieToken("access-token");
-  // console.log(accessToken);
   config.headers.Authorization = accessToken;
   return config;
 });
@@ -27,10 +25,8 @@ export const apis = {
   // registerSlice
   memberLogin: (payload) => axios.post(`${BASE_URL}/members/login`, payload),
   managerLogin: (payload) => axios.post(`${BASE_URL}/managers/login`, payload),
-  memberSignup: (payload) =>
-    axios.post(`${BASE_URL}/members/signup/individual`, payload),
-  managerSignup: (payload) =>
-    axios.post(`${BASE_URL}/members/signup/admin`, payload),
+  memberSignup: (payload) => axios.post(`${BASE_URL}/members/signup/individual`, payload),
+  managerSignup: (payload) => axios.post(`${BASE_URL}/members/signup/admin`, payload),
 
   //customerSlice
   mainlist: (boardId) => api.get(`${BASE_URL}/boards/${boardId}`),
@@ -41,9 +37,10 @@ export const apis = {
       //   "Content-Type": "multipart/form-data",
       // },
     }),
+
   // boards
   getboards: () => api.get(`${BASE_URL}/boards`),
-  getboardsId: (boardId) => api.get(`${BASE_URL}/boards/${boardId}`),
+  getboardId: (boardId) => api.get(`${BASE_URL}/boards/${boardId}`),
 
   // registerActivity slice
   addCreate: (payload) =>

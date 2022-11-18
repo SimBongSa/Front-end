@@ -1,13 +1,16 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
-import styled from "styled-components";
 import { __getBoardsId } from "../../redux/modules/boardSlice";
-import CardGrid from "../common/cards/CardGrid";
+
+import styled from "styled-components";
+import { DetailContainer, DetailContent, MapWrapper, DetailNav, DetailNavBtn } from "./Detail.styled";
+import MainBg from "../MainBg/MainBg";
+import KaMap from "../Map/KaMap";
 
 const Detail = () => {
   const dispatch = useDispatch();
-  const boardsId = useSelector((state) => state.boards.boardsId);
+  const boardsId = useSelector((state) => state?.boards?.boardsId);
 
   const { id } = useParams();
 
@@ -18,18 +21,34 @@ const Detail = () => {
   console.log("Detail.jsx boardsId =>", boardsId);
 
   return (
-    <div style={{ margin: "300px" }}>
-      <p>{boardsId?.title}</p>
-      <p>{boardsId?.area}</p>
-      <IMG src={boardsId?.boardImage} alt="" />
-      <p>{boardsId?.dueDay}</p>
-      <p>{boardsId?.startDate}</p>
-      <p>{boardsId?.endDate}</p>
-      <p>{boardsId?.content}</p>
-    </div>
+    <>
+      <MainBg image={boardsId?.boardImage} />
+
+        <DetailContainer>
+          <DetailContent>
+            <h1>{ boardsId?.title }</h1>
+            <hr/>
+            <h3>봉사 활동 내용</h3>
+            <span>{ boardsId?.content }</span>
+            <h3>봉사 요청 사항</h3>
+            <h5>내가 만든 쿠키 너를 위해 구웠지</h5>
+            <h5>내가 만든 쿠키 너를 위해 구웠지</h5>
+            <h5>내가 만든 쿠키 너를 위해 구웠지</h5>
+            <h5>내가 만든 쿠키 너를 위해 구웠지</h5>
+            <MapWrapper>
+              <KaMap area={boardsId?.area} mapHeight="400px" />
+            </MapWrapper>
+          </DetailContent>
+
+        <DetailNav>
+          <h2>{ boardsId?.startDate } - { boardsId?.endDate }</h2>
+          <DetailNavBtn>봉사자 신청하기</DetailNavBtn>
+          <DetailNavBtn>봉사 단체 연락하기</DetailNavBtn>
+        </DetailNav>
+
+      </DetailContainer>
+    </>
   );
 };
 
 export default Detail;
-
-const IMG = styled.img``;
