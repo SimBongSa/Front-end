@@ -103,8 +103,8 @@ export const apis = {
         },
       }
     ),
-  deleteComment: (id) =>
-    axios.delete(`${BASE_URL}/comments/${id}`, {
+  deleteComment: (commentId) =>
+    axios.delete(`${BASE_URL}/comments/${commentId}`, {
       headers: {
         Authorization: token,
       },

@@ -26,7 +26,7 @@ export const __postComment = createAsyncThunk(
     console.log(payload);
     try {
       const { data } = await apis.postComment(payload);
-      return thunkAPI.fulfillWithValue(data);
+      return thunkAPI.fulfillWithValue(data.data);
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
     }
@@ -38,7 +38,7 @@ export const __putComment = createAsyncThunk(
   async (payload, thunkAPI) => {
     try {
       const { data } = await apis.putComment(payload);
-      return thunkAPI.fulfillWithValue(data);
+      return thunkAPI.fulfillWithValue(data.data);
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
     }
@@ -50,7 +50,7 @@ export const __deleteComment = createAsyncThunk(
   async (payload, thunkAPI) => {
     try {
       const { data } = await apis.deleteComment(payload);
-      return thunkAPI.fulfillWithValue(data);
+      return thunkAPI.fulfillWithValue(data.data);
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
     }
@@ -79,7 +79,6 @@ const commentSlice = createSlice({
       })
       .addCase(__postComment.fulfilled, (state, action) => {
         state.isLoading = false;
-        // console.log("action.payload =>", action.payload);
         state.commentList.push(action.payload);
       })
       .addCase(__postComment.rejected, (state) => {
@@ -91,7 +90,11 @@ const commentSlice = createSlice({
       })
       .addCase(__putComment.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.commentList = action.payload;
+        state.commentList = state.commentList.map((item) => {
+          return item.commentId === action.payload.commentId
+            ? action.payload
+            : item;
+        });
       })
       .addCase(__putComment.rejected, (state) => {
         state.isLoading = false;
@@ -102,12 +105,8 @@ const commentSlice = createSlice({
       })
       .addCase(__deleteComment.fulfilled, (state, action) => {
         state.isLoading = false;
-        // state.commentList = action.payload;
-        // console.log("action.payload =>", action.payload);
-        // console.log("commentList =>", initialState);
-        // state.commentList = action.payload;
         state.commentList = state.commentList.filter(
-          (item) => item.id !== action.payload
+          (item) => item.commentId !== action.commentId
         );
       })
       .addCase(__deleteComment.rejected, (state) => {

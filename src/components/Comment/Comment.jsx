@@ -13,7 +13,8 @@ import { useCookies } from "react-cookie";
 
 function Comment() {
   const commentlist = useSelector((state) => state.commentList.commentList);
-  const [result, setResult] = useState([]);
+
+  console.log(commentlist);
   const dispatch = useDispatch();
   const [content, setContent] = useState("");
   // boardId
@@ -31,7 +32,6 @@ function Comment() {
   return (
     <>
       <h1>댓글</h1>
-
       <Input
         type="text"
         placeholder="댓글을 남겨주세요"
@@ -43,7 +43,6 @@ function Comment() {
       <button
         onClick={(e) => {
           dispatch(__postComment({ content, id }));
-          e.preventDefault();
           setContent("");
         }}
       >
@@ -68,11 +67,9 @@ function Comment() {
                         setContent(e.target.value);
                       }}
                     />
-
                     <button
                       onClick={(e) => {
                         dispatch(__putComment({ commentId, content }));
-
                         setContent("");
                       }}
                     >
@@ -81,7 +78,6 @@ function Comment() {
                     <button
                       onClick={(e) => {
                         dispatch(__deleteComment(commentlist.commentId));
-
                         setContent("");
                       }}
                     >
