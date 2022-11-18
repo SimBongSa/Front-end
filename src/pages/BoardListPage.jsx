@@ -5,11 +5,11 @@ import BoardList from "../components/BoardList/BoardList";
 export const BoardListPage = () => {
   return (
     <>
-      <Header/>
-      <BoardList/>
-      <Footer/>
+      <Header />
+      <BoardList />
+      <Footer />
     </>
-  )
+  );
 };
 
 export default BoardListPage;

@@ -22,6 +22,7 @@ const CardGrid = ({ companyBoards, boards }) => {
   return (
     <CardGridContainer>
       <Cards>
+        {/* companyBoards 기업 상세페이지 */}
         {companyBoards?.map((item) => {
           return (
             <Card key={item.boardId}>
@@ -38,12 +39,13 @@ const CardGrid = ({ companyBoards, boards }) => {
             </Card>
           );
         })}
-
+        {/* boards 전체 게시물 리스트  */}
         {boards?.map((item) => {
           const dDay = getDateDiff(item.dueDay, today);
           return (
             <Card
               key={item.boardId}
+              // onClick={(item) => getArea(item?.area)}
               onClick={() => navigate(`/boards/${item.boardId}`)}
             >
               <ImgWrapper>
