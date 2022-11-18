@@ -8,8 +8,8 @@ export const BoardContent = styled.div`
   display: grid;
   place-items: center;
   width: 50%;
-  /* height: 100vh; */
-  margin-top: 1rem;
+  margin-top: 10rem;
+  height: 100%;
   float: left;
-  background: #aaaaaa;
+  /* background: #aaaaaa; */
 `
