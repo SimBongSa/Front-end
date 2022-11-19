@@ -85,10 +85,7 @@ const commentSlice = createSlice({
         state.isLoading = true;
       })
       .addCase(__putComment.fulfilled, (state, action) => {
-        console.log(state);
-        console.log(action);
         state.isLoading = false;
-
         state.commentList = state.commentList.map((item) => {
           return item.commentId === action.payload.commentId
             ? action.payload
