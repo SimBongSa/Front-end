@@ -38,7 +38,7 @@ const CardGrid = ({ companyBoards, boards, userEnroll }) => {
                 </CardInfo>
               </Content>
             </Card>
-          );
+          )
         })}
 
         {/* boards 전체 게시물 리스트  */}

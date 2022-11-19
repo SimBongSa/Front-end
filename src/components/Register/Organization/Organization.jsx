@@ -55,7 +55,6 @@ const Organization = () => {
   };
 
   const [step, setStep] = useState(0);
-  console.log("step => ",step)
 
   return(
     <InputContainer>
@@ -158,7 +157,6 @@ const Organization = () => {
                 </>
               ) : null
             }
-
           </form>
           <BtnContainer>
             <button onClick={() => {

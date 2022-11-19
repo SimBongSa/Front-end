@@ -7,7 +7,6 @@ const ProcessBar = ({ step }) => {
   return (
     <ProcessContainer>
       <ProcessWrap>
-        
         <ProcessItem>
           <ProcessStepCont>
             {
@@ -87,7 +86,6 @@ const ProcessBar = ({ step }) => {
             }
           </ProcessStepCont>
         </ProcessItem>
-
       </ProcessWrap>
     </ProcessContainer>
   )
