@@ -5,6 +5,8 @@ import { useDispatch } from "react-redux";
 import { __registerMember } from "../../../redux/modules/registerSlice";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import ProcessBar from "../ProcessBar/ProcessBar";
+import { BtnContainer } from "../Organization/Organization";
 
 const Individual = () => {
   const init = {
@@ -35,89 +37,125 @@ const Individual = () => {
     setInput(init);
   };
 
+  const [step, setStep] = useState(0);
+
   return (
     <InputContainer>
       <h1>You are almost done!</h1>
+      <ProcessBar step={step} />
       <InputForm>
         <InputBox>
           <form onSubmit={onSubmitHandler}>
-            <Input
-              dupleCheck={true}
-              placeholder="Username"
-              type="text"
-              name="username"
-              value={input.username}
-              onChange={onChangeHandler}
-            />
-            <Input
-              placeholder="Nickname"
-              dupleCheck={true}
-              type="text"
-              name="nickname"
-              value={input.nickname}
-              onChange={onChangeHandler}
-            />
-            <Input
-              placeholder="Password"
-              type="password"
-              name="password"
-              value={input.password}
-              onChange={onChangeHandler}
-            />
-            <Input
-              placeholder="Confirm Password"
-              type="password"
-              name="passwordConfirm"
-              value={input.passwordConfirm}
-              onChange={onChangeHandler}
-            />
-            <Input
-              placeholder="Email"
-              dupleCheck={true}
-              type="email"
-              name="email"
-              value={input.email}
-              onChange={onChangeHandler}
-            />
-            <Input
-              placeholder="PhoneNumber"
-              type="tel"
-              name="phoneNumber"
-              value={input.phoneNumber}
-              onChange={onChangeHandler}
-            />
-            <Input
-              placeholder="Name"
-              type="text"
-              name="name"
-              value={input.name}
-              onChange={onChangeHandler}
-            />
-            <Gender>
-              <Input
-                id="male"
-                type="radio"
-                name="gender"
-                value="male"
-                onChange={onChangeHandler}
-              />
-              <Input
-                id="female"
-                type="radio"
-                name="gender"
-                value="female"
-                onChange={onChangeHandler}
-              />
-            </Gender>
-            <Input
-              placeholder="Birth Date"
-              type="date"
-              name="birthdate"
-              value={input.birthdate}
-              onChange={onChangeHandler}
-            />
-            <button type="submit">로구인</button>
+          {
+              step === 0 ? (
+                <>
+                  <Input 
+                  placeholder="Username"
+                  type="text"
+                  name="username"
+                  value={input.username}
+                  onChange={onChangeHandler}
+                  />
+                  <Input 
+                    placeholder="Nickname"
+                    type="text"
+                    name="nickname"
+                    value={input.nickname}
+                    onChange={onChangeHandler}
+                  />
+      
+                  <Input 
+                    placeholder="Password"
+                    type="password"
+                    name="password"
+                    value={input.password}
+                    onChange={onChangeHandler}
+                  />
+                  <Input 
+                    placeholder="Confirm Password"
+                    type="password"
+                    name="passwordConfirm"
+                    value={input.passwordConfirm}
+                    onChange={onChangeHandler}
+                  />
+                </>
+              ) : null
+            }
+            {
+              step === 1 ? (
+                <>
+                  <Input
+                    placeholder="Email"
+                    dupleCheck={true}
+                    type="email"
+                    name="email"
+                    value={input.email}
+                    onChange={onChangeHandler}
+                  />
+                  <Input
+                    placeholder="PhoneNumber"
+                    type="tel"
+                    name="phoneNumber"
+                    value={input.phoneNumber}
+                    onChange={onChangeHandler}
+                  />
+                </>
+              ) : null
+            }
+
+            {
+              step === 2 ? (
+                <>
+                  <Input
+                    placeholder="Name"
+                    type="text"
+                    name="name"
+                    value={input.name}
+                    onChange={onChangeHandler}
+                  />
+                  <Input
+                    placeholder="Birth Date"
+                    type="date"
+                    name="birthdate"
+                    value={input.birthdate}
+                    onChange={onChangeHandler}
+                  />
+                  <Input
+                    id="male"
+                    type="radio"
+                    name="gender"
+                    value="male"
+                    onChange={onChangeHandler}
+                  />
+                  <Input
+                    id="female"
+                    type="radio"
+                    name="gender"
+                    value="female"
+                    onChange={onChangeHandler}
+                  />
+                </>
+              ) : null
+            }
+
+            {
+              step === 3 ? (
+                <>
+                  <h4>추카합니당 이제 봉사활동 해보셈</h4>
+                  <button type="submit">로구인</button>
+                </>
+              ) : null
+            }
           </form>
+          <BtnContainer>
+            <button onClick={() => {
+              setStep(step + 1)
+            }}>다음</button>
+            {
+              step === 0 
+                ? null : <button onClick={() => {setStep(step - 1)}}>이전</button>
+            }
+          </BtnContainer>
         </InputBox>
         <span onClick={() => navigate("/login")}>
           You are already member? Log in Now

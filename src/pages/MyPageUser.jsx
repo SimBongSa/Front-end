@@ -1,18 +1,13 @@
 import Header from "../components/Header/Header";
-import CustomerCalendr from "../components/Calendar/CustomerCalendar";
 import styled from "styled-components";
-import CustomerCard from "../components/CustomerMypage/CustomerCard/CustomerCard";
 import Footer from "../components/Footer/Footer";
-import CustomerMypage from "./../components/CustomerMypage/CustomerProfile/CustomerMypage";
+import UserPage from "../components/MyPage/UserPage/UserPage";
 
 export const MyPageUser = () => {
   return (
     <>
       <Header />
-      <CustomerMypage />
-      <CustomerCalendr />
-      <Text>Upcoming Activity</Text>
-      <CustomerCard />
+      <UserPage/>
       <Footer />
     </>
   );

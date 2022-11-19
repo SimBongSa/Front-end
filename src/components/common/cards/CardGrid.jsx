@@ -8,7 +8,7 @@ import {
   CardInfo,
 } from "./CardGrid.styled";
 
-const CardGrid = ({ companyBoards, boards }) => {
+const CardGrid = ({ companyBoards, boards, userEnroll }) => {
   const navigate = useNavigate();
 
   const getDateDiff = (d1, d2) => {
@@ -22,6 +22,7 @@ const CardGrid = ({ companyBoards, boards }) => {
   return (
     <CardGridContainer>
       <Cards>
+
         {/* companyBoards 기업 상세페이지 */}
         {companyBoards?.map((item) => {
           return (
@@ -37,8 +38,9 @@ const CardGrid = ({ companyBoards, boards }) => {
                 </CardInfo>
               </Content>
             </Card>
-          );
+          )
         })}
+
         {/* boards 전체 게시물 리스트  */}
         {boards?.map((item) => {
           const dDay = getDateDiff(item.dueDay, today);
@@ -61,6 +63,30 @@ const CardGrid = ({ companyBoards, boards }) => {
             </Card>
           );
         })}
+
+        {
+          userEnroll?.map((item) => {
+            const dDay = getDateDiff(item.dueDay, today);
+            return (
+              <Card
+                key={item.boardId}
+                onClick={() => navigate(`/boards/${item.boardId}`)}
+              >
+                <ImgWrapper>
+                  <img src={item.boardImage} alt="enrollImage" />
+                </ImgWrapper>
+                <Content>
+                  <p className="title">{ item.title }</p>
+                  <CardInfo>
+                    <p>{ item.area }</p>
+                    <p className="price">D - {dDay}</p>
+                  </CardInfo>
+                </Content>
+              </Card>
+            )
+          })
+        }
+
       </Cards>
     </CardGridContainer>
   );

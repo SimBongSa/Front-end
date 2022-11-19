@@ -1,12 +1,62 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { apis } from "./Api/apis";
 
+export const __getUserInfo = createAsyncThunk(
+  "userInfo",
+  async (payload, thunkAPI) => {
+    try {
+      const response = await apis.getUserPage(payload);
+      return thunkAPI.fulfillWithValue(response.data.data);
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error);
+    }
+  }
+);
+
+export const __getUserEnroll = createAsyncThunk(
+  "enroll",
+  async (payload, thunkAPI) => {
+    try {
+      const response = await apis.getUserEnroll(payload);
+      console.log(response)
+      return thunkAPI.fulfillWithValue(response.data.data);
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error);
+    }
+  }
+);
+
+export const __getUserWait = createAsyncThunk(
+  "wait",
+  async (payload, thunkAPI) => {
+    try {
+      const response = await apis.getUserWait(payload);
+      console.log(response)
+      return thunkAPI.fulfillWithValue(response.data.data)
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error);
+    }
+  }
+);
+
+export const __getUserPass = createAsyncThunk(
+  "pass",
+  async (payload, thunkAPI) => {
+    try {
+      const response = await apis.getUserPass(payload);
+      console.log(response);
+      return thunkAPI.fulfillWithValue(response.data.data);
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error);
+    }
+  }
+);
+
 export const __getCompanyInfo = createAsyncThunk(
   "companyInfo",
   async (payload, thunkAPI) => {
     try {
       const response = await apis.getCompanyPage(payload);
-      // console.log(response.data.data);
       return thunkAPI.fulfillWithValue(response.data.data);
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
@@ -31,13 +81,55 @@ export const mypageSlice = createSlice({
   initialState: {
     companyInfo: [],
     companyBoards: [],
-    user: [],
+    userInfo: [],
+    userEnroll: [],
+    userWait: [],
+    userPass: [],
     isLoading: false,
     error: null,
   },
   reducers: {},
   extraReducers: (builder) => {
     builder
+      // USer
+      .addCase(__getUserInfo.pending, (state,_) => {
+        state.isLoading = true;
+      })
+      .addCase(__getUserInfo.fulfilled, (state,action) => {
+        state.isLoading = false;
+        state.userInfo = action.payload;
+      })
+      .addCase(__getUserInfo.rejected, (state,action) => {
+        state.isLoading = false;
+        state.error = action.payload;
+      })
+
+      .addCase(__getUserEnroll.pending, (state, _) => {
+        state.isLoading = true;
+      })
+      .addCase(__getUserEnroll.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.userEnroll = action.payload;
+      })
+      .addCase(__getUserEnroll.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.payload;
+      })
+
+      .addCase(__getUserWait.pending, (state, _) => {
+        state.isLoading = true;
+      })
+      .addCase(__getUserWait.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.userWait = action.payload;
+      })
+      .addCase(__getUserWait.rejected, (state, action) => {
+        state.isLoading = false;
+        state.userWait = action.payload;
+      })
+
+
+      // Company
       .addCase(__getCompanyInfo.pending, (state, _) => {
         state.isLoading = true;
       })

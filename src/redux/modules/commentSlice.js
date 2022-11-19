@@ -10,7 +10,6 @@ const initialState = {
 export const __getComment = createAsyncThunk(
   "getComment",
   async (payload, thunkAPI) => {
-    console.log(payload);
     try {
       const { data } = await apis.getComment(payload);
       return thunkAPI.fulfillWithValue(data.data.comments);

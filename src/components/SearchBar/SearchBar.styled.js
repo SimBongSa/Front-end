@@ -36,6 +36,7 @@ export const SearchModal = styled.div`
   margin-top: 81px;
   left: 50%;
   top: 10px;
+  z-index: 5;
   background: ${(props) => props.theme.bgColor};
   animation: ${(props) => (props.animation ? fadeOut : fadeIn)} 0.6s;
   transform: translate(-50%, 0%);

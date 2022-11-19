@@ -19,3 +19,36 @@ export const FooterContainer = styled.section`
     bottom: -120px;
   }
 `
+
+export const FooterUl = styled.ul`
+  width: 33.3333%;
+  & li {
+    padding-bottom: 10px;
+    & h4 {
+      transition: all 0.5s;
+      padding: 10px 0 5px 0;
+      color: #fff;
+      font-size: 1.4rem;
+    }
+  }
+`
+
+export const FooterItem = styled.li`
+  cursor: pointer;
+  width: fit-content;
+  font-size: 0.8rem;
+  margin-left: 3px;
+  color: #8DB9ED;
+  transition: all 0.5s;
+  &:hover {
+    color: #ccc
+  }
+`
+
+export const FooterBottom = styled.section`
+  width: 100%;
+  padding: 1rem;
+  border-top: 1px solid #ccc;
+  margin-top: 10px;
+  font-size: 1rem;
+`

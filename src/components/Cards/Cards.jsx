@@ -15,8 +15,7 @@ const Cards = ({ maindate, boardId }) => {
   const [moveIndex, setMoveIndex] = useState(0);
   const dispatch = useDispatch();
   const mainlist = useSelector((state) => state.calendarList.mainList);
-  console.log(mainlist);
-
+  
   const moveLeft = () => {
     setMoveIndex((prev) => prev - 20);
   };
