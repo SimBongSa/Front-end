@@ -5,6 +5,7 @@ export const CardGridContainer = styled.section`
   grid-template-columns: 1fr repeat(12, minmax(auto, 60px)) 1fr;
   grid-gap: 0.1rem;
   margin: 1rem;
+  margin-bottom: 5rem;
 `
 
 export const Cards = styled.div`

@@ -54,9 +54,6 @@ export const __registerMember = createAsyncThunk(
     try {
       const response = await apis.memberSignup(payload);
       console.log(response);
-      // if ( response.status === 200 ) {
-      //   navigator()
-      // }
       return thunkAPI.fulfillWithValue(response.data);
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
@@ -67,9 +64,20 @@ export const __registerMember = createAsyncThunk(
 export const __registerManager = createAsyncThunk(
   "registerManager",
   async (payload, thunkAPI) => {
+    const formData = new FormData();
+    Object.entries(payload).forEach(([key, value]) => {
+      formData.append(key, value);
+    })
+    // console.log(formData);
+    // for (let key of formData.keys()) {
+    //   console.log("formData ==>", key, ":", formData.get(key));
+    // }
     try {
       const response = await apis.managerSignup(payload);
-      return thunkAPI.fulfillWithValue(response.data);
+      console.log(response)
+      if (response.status === 200) {
+        return thunkAPI.fulfillWithValue(response.data);
+      }
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
     }
