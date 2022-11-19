@@ -3,14 +3,14 @@ import styled from "styled-components"
 export const ProfileContainer = styled.div`
   float: left;
   position: fixed;
-  margin-top: 10rem;
+  margin-top: 2rem;
   margin-left: 2rem;
   border-radius: 5px;
   padding: 30px 10px 10px 10px;
   width: 200px;
 	max-width: 100%;
 	text-align: center;
-  z-index: 3;
+  z-index: 1;
   & h3 {
     font-size: 1.2rem;
     margin: 10px 0
@@ -36,7 +36,7 @@ export const ProfileContainer = styled.div`
 	  border-radius: 50%;
 	  padding: 7px;
   }
-  @media ( max-width: 768px) {
+  @media ( max-width: 1024px) {
     position: relative;
     width: 70%;
     margin: 0 auto;
@@ -50,8 +50,9 @@ export const ProfileBox = styled.div`
   background: #aaaaaa;
   padding: 30px 10px 10px 10px;
   width: 120%;
-  @media ( max-width: 768px) {
-    width: 300px;
+  @media ( max-width: 1024px) {
+    margin-top: -15rem;
+    width: 600px;
   }
 `
 
