@@ -2,7 +2,7 @@ import { configureStore } from "@reduxjs/toolkit";
 import { registerSlice } from "../modules/registerSlice";
 import { mypageSlice } from "../modules/mypageSlice";
 import calendarList from "../modules/calendarSlice";
-import commentList from "../modules/commentSlice";
+import comment from "../modules/commentSlice";
 import courses from "../modules/addCreateSlice";
 import { boardSlice } from "../modules/boardSlice";
 
@@ -12,7 +12,7 @@ export const store = configureStore({
     boards: boardSlice.reducer,
     mypage: mypageSlice.reducer,
     calendarList,
-    commentList,
+    comment,
     courses,
   },
 });

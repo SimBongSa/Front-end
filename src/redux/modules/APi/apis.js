@@ -94,15 +94,11 @@ export const apis = {
       },
     }),
   putComment: (payload) =>
-    axios.put(
-      `${BASE_URL}/comments/${payload.commentId}`,
-      { content: payload.content },
-      {
-        headers: {
-          Authorization: token,
-        },
-      }
-    ),
+    axios.put(`${BASE_URL}/comments/${payload.commentId}`, payload, {
+      headers: {
+        Authorization: token,
+      },
+    }),
   deleteComment: (commentId) =>
     axios.delete(`${BASE_URL}/comments/${commentId}`, {
       headers: {
