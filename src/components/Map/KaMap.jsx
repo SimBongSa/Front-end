@@ -13,10 +13,10 @@ const KaMap = ({ area, mapHeight, input }) => {
 
 
   useEffect(() => {
-    const onAddScheduleHandler = (e) => {
+    const onAddScheduleHandler = (area) => {
       // e.preventDefault();
       if (!map) return;
-      const ps = new kakao.maps.services.Places();
+      // const ps = new kakao.maps.services.Places();
       geocoder.addressSearch(`${area}`, (data, status, _pagination) => {
         if (status === kakao.maps.services.Status.OK) {
           // 검색된 장소 위치를 기준으로 지도 범위를 재설정하기위해
@@ -44,8 +44,8 @@ const KaMap = ({ area, mapHeight, input }) => {
       setSchedule("");
     };
     setSchedule(area);
-    return () => onAddScheduleHandler();
-  }, [setSchedule, area, geocoder])
+    return () => onAddScheduleHandler(area);
+  }, [setSchedule, area, schedule, map, kakao.maps.LatLng])
 
   const onChangeHandler = (e) => {
     setSchedule(e.target.value);

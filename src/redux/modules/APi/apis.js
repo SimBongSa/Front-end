@@ -66,6 +66,14 @@ export const apis = {
       },
     }),
 
+  // 봉사 신청
+  applyBoard: (id) => 
+    api.post(`${BASE_URL}/boards/${id}/apply`, {
+      headers: {
+        Authorization: token,
+      }
+    }),
+
   // MyPage (User)
   getUserPage: () =>
     api.get(`${BASE_URL}/mypage`, {
@@ -75,6 +83,18 @@ export const apis = {
     }),
   getUserEnroll: () => 
     api.get(`${BASE_URL}/mypage/enroll`, {
+      headers: {
+        Authorization: token,
+      }
+    }),
+  getUserWait: () =>
+    api.get(`${BASE_URL}/mypage/enroll/wait`, {
+      headers: {
+        Authorization: token,
+      }
+    }),
+  getUserPass: () =>
+    api.get(`${BASE_URL}/enroll/pass`, {
       headers: {
         Authorization: token,
       }

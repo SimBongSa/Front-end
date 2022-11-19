@@ -1,9 +1,8 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { useNavigate, useParams } from "react-router-dom";
-import { __getBoardsId } from "../../redux/modules/boardSlice";
+import { useParams } from "react-router-dom";
+import { __getBoardsId, __postApply } from "../../redux/modules/boardSlice";
 
-import styled from "styled-components";
 import {
   DetailContainer,
   DetailContent,
@@ -23,8 +22,6 @@ const Detail = () => {
   useEffect(() => {
     dispatch(__getBoardsId(id));
   }, [dispatch, id]);
-
-  // console.log("Detail.jsx boardsId =>", boardsId);
 
   return (
     <>
@@ -50,7 +47,9 @@ const Detail = () => {
           <h2>
             {boardsId?.startDate} - {boardsId?.endDate}
           </h2>
-          <DetailNavBtn>봉사자 신청하기</DetailNavBtn>
+          <DetailNavBtn onClick={() => {
+            dispatch(__postApply(id))
+          }}>봉사자 신청하기</DetailNavBtn>
           <DetailNavBtn>봉사 단체 연락하기</DetailNavBtn>
         </DetailNav>
       </DetailContainer>

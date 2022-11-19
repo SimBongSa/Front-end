@@ -3,7 +3,7 @@ import { removeCookie } from "../../../utils/cookie";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 
-const Profile = ({ companyInfo, userInfo, isEdit }) => {
+const Profile = ({ companyInfo, userInfo, isEdit, setUserPageOpt }) => {
 
   const navigate = useNavigate();
 
@@ -13,12 +13,12 @@ const Profile = ({ companyInfo, userInfo, isEdit }) => {
     removeCookie(['authority'], { path: '/' });
     localStorage.removeItem("refresh-token");
   }
-  console.log(userInfo);
 
   return (
     <ProfileContainer>
       <ProfileBox>
 
+        {/* 이거 삼항연산자 넘 그지같아서 수정해야 함 - 성호 */}
         {
           companyInfo && companyInfo.profileImage || userInfo && userInfo.profileImage ? 
             <img src={companyInfo.profileImage} alt="user" /> : 
@@ -55,8 +55,12 @@ const Profile = ({ companyInfo, userInfo, isEdit }) => {
           <ProfileMisc>
             <h2>봉사 현황</h2>
             <span/>
-            <h4>봉사 신청 내역</h4>
-            <h4>참여 봉사 관리</h4>
+            <h4 onClick={() => {
+              setUserPageOpt("wait")
+            }}>봉사 신청 내역</h4>
+            <h4 onClick={() => {
+              setUserPageOpt("pass")
+            }}>참여 봉사 관리</h4>
             <h4>캘린더</h4>
             <span/>
             <h4 onClick={() => {

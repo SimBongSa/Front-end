@@ -20,7 +20,7 @@ export const Card = styled.div`
   border-radius: 6px;
   cursor: pointer;
   transition: all 0.5s ease;
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 1024px) {
     grid-column-end: span 12;
   }
   &:hover {

@@ -2,7 +2,7 @@ import styled from "styled-components"
 
 export const ProfileContainer = styled.div`
   float: left;
-  position: fixed;
+  position: absolute;
   margin-top: 10rem;
   margin-left: 2rem;
   border-radius: 5px;
@@ -36,7 +36,7 @@ export const ProfileContainer = styled.div`
 	  border-radius: 50%;
 	  padding: 7px;
   }
-  @media ( max-width: 768px) {
+  @media ( max-width: 1024px) {
     position: relative;
     width: 70%;
     margin: 0 auto;
@@ -50,8 +50,9 @@ export const ProfileBox = styled.div`
   background: #aaaaaa;
   padding: 30px 10px 10px 10px;
   width: 120%;
-  @media ( max-width: 768px) {
-    width: 300px;
+  @media ( max-width: 1024px) {
+    margin-top: -15rem;
+    width: 600px;
   }
 `
 
