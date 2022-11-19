@@ -66,6 +66,20 @@ export const apis = {
       },
     }),
 
+  // MyPage (User)
+  getUserPage: () =>
+    api.get(`${BASE_URL}/mypage`, {
+      headers: {
+        Authorization: token,
+      }
+    }),
+  getUserEnroll: () => 
+    api.get(`${BASE_URL}/mypage/enroll`, {
+      headers: {
+        Authorization: token,
+      }
+    }),
+
   // MyPage (Company)
   getCompanyPage: () =>
     api.get(`${BASE_URL}/companypage`, {

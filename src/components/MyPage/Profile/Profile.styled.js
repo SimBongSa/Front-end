@@ -10,7 +10,7 @@ export const ProfileContainer = styled.div`
   width: 200px;
 	max-width: 100%;
 	text-align: center;
-  z-index: 3;
+  z-index: 1;
   & h3 {
     font-size: 1.2rem;
     margin: 10px 0

@@ -7,7 +7,6 @@ export const __loginMember = createAsyncThunk(
   async (payload, thunkAPI) => {
     try {
       const response = await apis.memberLogin(payload);
-      console.log(response);
       if (response.status === 200) {
         localStorage.setItem(
           "refresh-token",
@@ -99,6 +98,7 @@ export const registerSlice = createSlice({
       .addCase(__loginMember.fulfilled, (state, action) => {
         state.isLoading = false;
         state.statusCode = action.payload.success;
+        console.log(action.payload)
         state.loginInfo.concat(action.payload);
       })
       .addCase(__loginMember.rejected, (state, action) => {
@@ -117,6 +117,7 @@ export const registerSlice = createSlice({
         state.isLoading = false;
         state.error = action.payload;
       });
+
 
     // Register
     builder

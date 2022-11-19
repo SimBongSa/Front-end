@@ -40,12 +40,8 @@ const Header = () => {
         <HeaderMenuItem onClick={() => navigate("/boards")}>Boards</HeaderMenuItem>
         {isLogin && authority === "ROLE_MEMBER" ? (
           <>
-            <HeaderMenuItem onClick={() => navigate("/boards")}>
-              Boards
-            </HeaderMenuItem>
             <HeaderMenuItem>Notice</HeaderMenuItem>
             <HeaderMenuItem>Messagse</HeaderMenuItem>
-            <HeaderMenuItem>{username}</HeaderMenuItem>
             <UserIcon
               onClick={() => {
                 navigate("/usermypage");
@@ -63,7 +59,6 @@ const Header = () => {
             </AdminBtn>
             <HeaderMenuItem>Notice</HeaderMenuItem>
             <HeaderMenuItem>Messagse</HeaderMenuItem>
-            <HeaderMenuItem>{username}</HeaderMenuItem>
             <UserIcon
               onClick={() => {
                 navigate("/companypage");

@@ -1,8 +1,11 @@
-import { ProfileContainer, ProfileBox, ProfileTag, ProfileCategory, ProfileSkills, ProfileSkill, ProfileMisc } from "./Profile.styled";
+import { ProfileContainer, ProfileBox, ProfileCategory, ProfileMisc } from "./Profile.styled";
 import { removeCookie } from "../../../utils/cookie";
 import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
 
-const Profile = ({email, introduction, name, username, phoneNumber, profileImage}) => {
+const Profile = ({ companyInfo, userInfo, isEdit }) => {
+
+  const navigate = useNavigate();
 
   const logOut = () => {
     removeCookie(['access-token'], { path: '/' });
@@ -10,47 +13,76 @@ const Profile = ({email, introduction, name, username, phoneNumber, profileImage
     removeCookie(['authority'], { path: '/' });
     localStorage.removeItem("refresh-token");
   }
+  console.log(userInfo);
 
   return (
     <ProfileContainer>
       <ProfileBox>
-        <ProfileTag>기업</ProfileTag>
 
         {
-          profileImage ? 
-            <img src={profileImage} alt="user" /> : 
+          companyInfo && companyInfo.profileImage || userInfo && userInfo.profileImage ? 
+            <img src={companyInfo.profileImage} alt="user" /> : 
             <img src="https://play-lh.googleusercontent.com/38AGKCqmbjZ9OuWx4YjssAz3Y0DTWbiM5HB0ove1pNBq_o9mtWfGszjZNxZdwt_vgHo=w240-h480-rw" alt="user"/>
         }
 
+        {
+          companyInfo ? (
+            <>
+              <h3>{ companyInfo.name }</h3>
+              <h5>{ companyInfo.email }</h5>
+              <h5>{ companyInfo.phoneNumber }</h5>
+              <ProfileCategory>Description</ProfileCategory>
+              <p>{ companyInfo.introduction }</p>
+            </>
+          ) : null
+        }
 
-        <h3>{ name }</h3>
-        <h5>{ email }</h5>
-        <h5>폰번호임 : { phoneNumber }</h5>
-        
-        <ProfileCategory>Description</ProfileCategory>
-        <p>{ introduction }</p>
-
-        {/* <ProfileSkills>
-          <ProfileCategory>Skills</ProfileCategory>
-          <ProfileSkill>
-            <li>React</li>
-            <li>Git</li>
-            <li>Spring</li>
-            <li>CSS</li>
-            <li>JavaScript</li>
-          </ProfileSkill>
-        </ProfileSkills> */}
+        {
+          userInfo ? (
+            <>
+              <h3>{ userInfo.name }</h3>
+              <h5>{ userInfo.email }</h5>
+              <h5>{ userInfo.phoneNumber }</h5>
+              <ProfileCategory>Description</ProfileCategory>
+              <p>{ userInfo.introduction }</p>
+            </>
+          ) : null
+        }
       </ProfileBox>
 
-      <ProfileMisc>
-        <h2>봉사 현황</h2>
-        <span/>
-        <h4>봉사자 신청 내역</h4>
-        <h4>나의 봉사 관리</h4>
-        <h4>캘린더</h4>
-        <span/>
-        <h4 onClick={logOut}>로그 아웃</h4>
-      </ProfileMisc>
+      {
+        userInfo ? (
+          <ProfileMisc>
+            <h2>봉사 현황</h2>
+            <span/>
+            <h4>봉사 신청 내역</h4>
+            <h4>참여 봉사 관리</h4>
+            <h4>캘린더</h4>
+            <span/>
+            <h4 onClick={() => {
+              logOut();
+              navigate('/login')
+            }}>로그 아웃</h4>
+          </ProfileMisc>
+        ) : null
+      }
+
+      {
+        companyInfo ? (
+          <ProfileMisc>
+            <h2>봉사 현황</h2>
+            <span/>
+            <h4>봉사자 신청 내역</h4>
+            <h4>나의 봉사 관리</h4>
+            <h4>캘린더</h4>
+            <span/>
+            <h4 onClick={() => {
+              logOut();
+              navigate('/login')
+            }}>로그 아웃</h4>
+          </ProfileMisc>
+        ) : null
+      }
 
     </ProfileContainer>
   )

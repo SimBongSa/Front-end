@@ -99,6 +99,7 @@ const KaMap = ({ area, mapHeight, input }) => {
 export default KaMap;
 
 export const StMap = styled(Map)`
+  /* position: fixed; */
   width: 100%;
   height: ${(props) => props};
 `;
