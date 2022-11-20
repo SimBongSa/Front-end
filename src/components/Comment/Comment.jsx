@@ -5,77 +5,154 @@ import {
   __postComment,
   __putComment,
   __deleteComment,
-} from "./../../redux/modules/commentSlice";
+} from "../../redux/modules/commentSlice";
 import { useSelector, useDispatch } from "react-redux";
 import styled from "styled-components";
+import { useParams } from "react-router-dom";
+import { useCookies } from "react-cookie";
 
 function Comment() {
-  const commentlist = useSelector((state) => state.commentList.commentList);
-  const dispatch = useDispatch();
-  const [content, setContent] = useState({
-    content: "",
-  });
+  const [cookies] = useCookies(["Authorization"]);
+  const userName = cookies["username"];
 
-  console.log(commentlist);
+  const commentList = useSelector((state) => state.comment.commentList);
+  const dispatch = useDispatch();
+
+  const { id } = useParams();
+
+  const [editCommentId, setEditCommentId] = useState([]);
+  const [content, setContent] = useState();
+  const [comment, setComment] = useState({ comment: content });
 
   useEffect(() => {
-    dispatch(__getComment(commentlist));
-  }, [dispatch]);
+    dispatch(__getComment(id));
+  }, [dispatch, id]);
 
   return (
-    <>
-      <h1>댓글</h1>
-      <Input
-        placeholder="댓글을 남겨주세요"
-        value={content.content}
-        onChange={(e) => {
-          setContent(e.target.value);
-        }}
-      />
-      <button
-        onClick={() => {
-          dispatch(__postComment({ content }));
-          setContent("");
-        }}
-      >
-        댓글쓰기
-      </button>
-      {commentlist && commentlist.length > 0
-        ? commentlist.map((commentlist, commentId) => {
+    <MainComponent>
+      <CommentWriteWrap>
+        <Input
+          type="text"
+          placeholder="댓글을 남겨주세요"
+          value={content}
+          onChange={(e) => setContent(e.target.value)}
+        />
+        <div
+          onClick={() => {
+            dispatch(__postComment({ content, id }));
+            setContent("");
+          }}
+        >
+          댓글쓰기
+        </div>
+      </CommentWriteWrap>
+      {commentList && commentList.length > 0
+        ? commentList.map((item, index) => {
+            const commentId = item.commentId;
+            let isEditState =
+              editCommentId.indexOf(commentId) === -1 ? false : true;
+
             return (
-              <Box key={commentId}>
-                <h2>{commentlist.author}</h2>
-                <div>{commentlist.content}</div>
-                <div>{commentlist.createdAt}</div>
-                <button
-                  onClick={() => {
-                    dispatch(
-                      __putComment({
-                        comment_id: 1,
-                        content: { content: content },
-                      })
-                    );
-                    setContent("");
-                  }}
-                >
-                  수정
-                </button>
-                <button
-                  onClick={() => {
-                    dispatch(__deleteComment(commentId));
-                    setContent("");
-                  }}
-                >
-                  삭제
-                </button>
+              <Box key={index}>
+                <CommentTitleWrap>
+                  <h2>{item.author}</h2>
+                  <CommentBtnWrap>
+                    {userName === item.author ? (
+                      <>
+                        {!isEditState ? (
+                          <div
+                            onClick={() => {
+                              if (editCommentId.indexOf(commentId) === -1)
+                                setEditCommentId((prev) => [
+                                  ...prev,
+                                  commentId,
+                                ]);
+                            }}
+                          >
+                            수정
+                          </div>
+                        ) : (
+                          <div
+                            onClick={() => {
+                              if (editCommentId.indexOf(commentId) !== -1) {
+                                setEditCommentId(
+                                  editCommentId.filter((el) => el !== commentId)
+                                );
+                                dispatch(
+                                  __putComment({ commentId, content: comment })
+                                );
+                              }
+                            }}
+                          >
+                            완료
+                          </div>
+                        )}
+                        <div
+                          onClick={() => {
+                            dispatch(__deleteComment(commentId));
+                          }}
+                        >
+                          삭제
+                        </div>
+                      </>
+                    ) : (
+                      <>
+                        <div>좋아요</div>
+                        <div>신고</div>
+                      </>
+                    )}
+                    <div>{item.createdAt}</div>
+                  </CommentBtnWrap>
+                </CommentTitleWrap>
+                {isEditState ? (
+                  <>
+                    <input
+                      type="text"
+                      defaultValue={item.content}
+                      value={comment.content?.content}
+                      onChange={(e) => {
+                        setComment(e.target.value);
+                      }}
+                    />
+                  </>
+                ) : (
+                  <div>{item.content}</div>
+                )}
               </Box>
             );
           })
         : ""}
-    </>
+    </MainComponent>
   );
 }
 
-export default Comment;
+const MainComponent = styled.div`
+  margin: 2.5rem;
+`;
+const CommentWriteWrap = styled.div`
+  display: flex;
+  align-items: center;
 
-const Box = styled.div``;
+  & > div {
+    cursor: pointer;
+  }
+`;
+const CommentTitleWrap = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 0 8px 0;
+`;
+const CommentBtnWrap = styled.div`
+  display: flex;
+  align-items: center;
+
+  & > div {
+    cursor: pointer;
+  }
+`;
+const Box = styled.div`
+  margin: 16px 0;
+`;
+
+export default Comment;

@@ -43,12 +43,14 @@ export const HeaderMenuItem = styled.span`
   cursor: pointer;
   display: inline-block;
   justify-content: center;
-  margin-top: 4px;
   padding: 13px 10px 13px 10px;
   text-decoration: none;
   transition: all 0.3s;
   &:hover {
     transform: translateY(-10%);
+  }
+  @media ( max-width: 768px) {
+    display: none;
   }
 `
 
@@ -61,7 +63,7 @@ export const HeaderRegister = styled.div`
   padding: 15px;
   width: fit-content;
   margin-left: 50px;
-  padding: 16px 25px 15px 25px;
+  padding: 15px 25px 15px 25px;
   float: right;
   justify-content: center;
   text-align: center;
@@ -70,6 +72,9 @@ export const HeaderRegister = styled.div`
   transition: all 0.3s;
   &:hover {
     transform: translateY(-10%);
+  }
+  @media ( max-width: 768px) {
+    display: none;
   }
 `
 
@@ -90,7 +95,7 @@ export const UserIcon = styled(FaRegUserCircle)`
 export const LightThemeBtn = styled.button`
   cursor: pointer;
   position: fixed;
-  bottom: 25px;
+  bottom: 22px;
   left: 200px;
   border-radius: 50%;
   background-color: ${(props) => props.theme.ctrColor};
@@ -117,7 +122,7 @@ export const LightThemeBtn = styled.button`
   }
   @media ( max-width: 768px) {
     position: fixed;
-    top: 25px;
+    top: 24px;
   }
 `
 
