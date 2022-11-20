@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { __postApply } from "../../redux/modules/boardSlice";
 import { useNavigate } from "react-router-dom";
@@ -17,6 +17,7 @@ import KaMap from "../Map/KaMap";
 import Comment from "../Comment/Comment"
 
 const Detail = () => {
+  const focusTarget = useRef([]);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const boardsId = useSelector((state) => state?.boards?.boardsId);

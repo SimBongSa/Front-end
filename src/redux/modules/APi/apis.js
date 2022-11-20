@@ -69,6 +69,7 @@ export const apis = {
     axios.delete(`${BASE_URL}/boards/${payload}`, {
       headers: {
         Authorization: token,
+        "Content-Type": "multipart/form-data",
       },
     }),
 

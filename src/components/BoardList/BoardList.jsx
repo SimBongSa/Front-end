@@ -13,8 +13,6 @@ const Board = () => {
   const boards = useSelector((state) => state.boards.boards);
   const [page, setPage] = useState(1);
 
-  console.log(page)
-
   const area = useSelector((state) => state.boards.area);
   useEffect(() => {
     dispatch(__getBoard(page));
@@ -50,7 +48,5 @@ export const ListMap = styled.div`
   display: grid;
   width: 100%;
   height: 50vh;
-
   margin-top: 10rem;
-
 `;
