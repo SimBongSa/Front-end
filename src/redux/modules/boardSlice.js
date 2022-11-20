@@ -44,7 +44,7 @@ export const __getBoard = createAsyncThunk(
 );
 
 export const __getBoardId = createAsyncThunk(
-  "getBoardId",
+  "getBoardsId",
   async (payload, thunkAPI) => {
     try {
       const response = await apis.getBoardId(payload);
@@ -117,7 +117,6 @@ export const boardSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
-      // POST (__createBoard)
       .addCase(__createBoard.pending, (state, _) => {
         state.isLoading = true;
       })

@@ -71,7 +71,6 @@ const Detail = () => {
             삭제하기
           </DetailNavBtn>
         </DetailSide>
-
       </DetailContainer>
     </>
   );
