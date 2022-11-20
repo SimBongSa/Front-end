@@ -50,6 +50,7 @@ export const DetailSide = styled.div`
   height: 350px;
   margin: 0rem 1rem 1rem 1rem;
   padding: 1rem;
+  overflow: auto;
   background: #aaaaaa;
   & h2 {
     font-size: 1.4rem;
