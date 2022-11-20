@@ -1,7 +1,9 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { __postApply } from "../../redux/modules/boardSlice";
+import { useNavigate } from "react-router-dom";
+import { __delBoard, __getBoardId } from "../../redux/modules/boardSlice";
 import { useParams } from "react-router-dom";
-import { __getBoardsId, __postApply } from "../../redux/modules/boardSlice";
 
 import {
   DetailContainer,
@@ -15,14 +17,15 @@ import KaMap from "../Map/KaMap";
 import Comment from "../Comment/Comment"
 
 const Detail = () => {
-
   const dispatch = useDispatch();
-  const boardsId = useSelector((state) => state?.boards?.boardsId);
+  const navigate = useNavigate();
 
+  const boardsId = useSelector((state) => state?.boards?.boardsId);
+  console.log(boardsId);
   const { id } = useParams();
 
   useEffect(() => {
-    dispatch(__getBoardsId(id));
+    dispatch(__getBoardId(id));
   }, [dispatch, id]);
 
   return (
@@ -44,7 +47,6 @@ const Detail = () => {
           </MapWrapper>
           <Comment/>
         </DetailContent>
-
         <DetailSide>
           <h2>
             {boardsId?.startDate} - {boardsId?.endDate}
@@ -53,8 +55,22 @@ const Detail = () => {
             dispatch(__postApply(id))
           }}>봉사자 신청하기</DetailNavBtn>
           <DetailNavBtn>봉사 단체 연락하기</DetailNavBtn>
+          <DetailNavBtn
+            onClick={() => {
+              navigate(`/edit/${id}`);
+            }}
+          >
+            수정하기
+          </DetailNavBtn>
+          <DetailNavBtn
+            onClick={() => {
+              dispatch(__delBoard(id));
+              navigate("/boards");
+            }}
+          >
+            삭제하기
+          </DetailNavBtn>
         </DetailSide>
-
       </DetailContainer>
     </>
   );
