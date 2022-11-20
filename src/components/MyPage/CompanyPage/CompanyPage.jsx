@@ -3,12 +3,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { __getCompanyBoards, __getCompanyInfo } from "../../../redux/modules/mypageSlice";
 import { getCookieToken } from "../../../utils/cookie";
 import { OrganizationPageContainer, BtnContainer } from "./CompanyPage.styled";
-import styled from "styled-components";
 import Profile from "../Profile/Profile";
 import NewActivity from "./NewActivity/NewActivity";
 import CardGrid from "../../common/cards/CardGrid";
 
-const OrganizationPage = () => {
+const CompanyPage = () => {
 
   const token = getCookieToken("access-token");
   const dispatch = useDispatch();
@@ -18,21 +17,15 @@ const OrganizationPage = () => {
     dispatch(__getCompanyBoards(token));
   }, [dispatch, token])
 
-  const companyInfo = useSelector((state) => state.mypage?.companyInfo)
+  const companyInfo = useSelector((state) => state.mypage?.companyInfo);
   const companyBoards = useSelector((state) => state.mypage.companyBoards);
-  console.log(companyBoards)
 
   const [option, setOption] = useState(null);
   console.log(option)
   return (
     <>
       <Profile 
-        email={companyInfo?.email} 
-        name={companyInfo?.name} 
-        phoneNumber={companyInfo?.phoneNumber} 
-        username={companyInfo?.username}
-        introduction={companyInfo?.introduction}
-        profileImage={companyInfo?.profileImage}
+        companyInfo={companyInfo}
       />
 
       <OrganizationPageContainer>
@@ -54,15 +47,8 @@ const OrganizationPage = () => {
         }
 
       </OrganizationPageContainer>
-
-
-
     </>
   )
 };
 
-export default OrganizationPage;
-
-export const Test = styled.div`
-  margin-top: 1rem;
-`
+export default CompanyPage;

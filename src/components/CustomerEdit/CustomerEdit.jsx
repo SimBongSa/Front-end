@@ -2,7 +2,7 @@ import styled from "styled-components";
 import Input from "../common/input/Input";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { __putCutomer } from "../../redux/modules/customerSlice";
+import { __putCutomer } from "../../redux/modules/calendarSlice";
 
 function CustomerEdit() {
   const dispatch = useDispatch();

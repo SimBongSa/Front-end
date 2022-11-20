@@ -1,4 +1,4 @@
-import { FooterContainer } from "./Footer.styled";
+import { FooterContainer, FooterUl, FooterItem } from "./Footer.styled";
 import styled from "styled-components";
 
 const Footer = () => {
@@ -18,51 +18,8 @@ const Footer = () => {
         <FooterItem>개인정보처리방침</FooterItem>
       </FooterUl>
 
-      <FooterUl>
-        <li><h4>고객지원</h4></li>
-        <FooterItem>이용 가이드</FooterItem>
-        <FooterItem>FAQ</FooterItem>
-      </FooterUl>
-
-      <FooterBottom>
-      </FooterBottom>
-
     </FooterContainer>
   )
 };
 
 export default Footer;
-
-export const FooterUl = styled.ul`
-  width: 33.3333%;
-  & li {
-    /* text-align: center; */
-    padding-bottom: 10px;
-    & h4 {
-      transition: all 0.5s;
-      padding: 10px 0 5px 0;
-      color: #fff;
-      font-size: 1.4rem;
-    }
-  }
-`
-
-export const FooterItem = styled.li`
-  cursor: pointer;
-  width: fit-content;
-  font-size: 0.8rem;
-  margin-left: 3px;
-  color: #8DB9ED;
-  transition: all 0.5s;
-  &:hover {
-    color: #ccc
-  }
-`
-
-export const FooterBottom = styled.section`
-  width: 100%;
-  padding: 1rem;
-  border-top: 1px solid #ccc;
-  margin-top: 10px;
-  font-size: 1rem;
-`

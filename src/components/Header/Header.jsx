@@ -14,7 +14,7 @@ import { useTheme } from "../../context/themeProvider";
 import { getCookieToken } from "../../utils/cookie";
 import { useEffect } from "react";
 import { useCookies } from "react-cookie";
-import { removeCookie } from "../../utils/cookie";
+import SearchBar from "../SearchBar/SearchBar";
 
 const Header = () => {
   const navigate = useNavigate();
@@ -29,33 +29,22 @@ const Header = () => {
   const authority = cookies["authority"];
   const username = cookies["username"];
 
-  const logOut = () => {
-    removeCookie(["access-token"], { path: "/" });
-    removeCookie(["username"], { path: "/" });
-    removeCookie(["authority"], { path: "/" });
-    localStorage.removeItem("refresh-token");
-    // navigate("/login");
-  };
-
   return (
     <HeaderContainer>
+      <SearchBar/>
       <HeaderLogo onClick={() => navigate("/")}>VONGOLE</HeaderLogo>
+      <LightThemeBtn onClick={toggleTheme}>
+        <BsFillMoonFill>Theme</BsFillMoonFill>
+      </LightThemeBtn>
       <HeaderMenu>
-        <LightThemeBtn onClick={toggleTheme}>
-          <BsFillMoonFill />
-        </LightThemeBtn>
         <HeaderMenuItem onClick={() => navigate("/boards")}>Boards</HeaderMenuItem>
         {isLogin && authority === "ROLE_MEMBER" ? (
           <>
-            <HeaderMenuItem onClick={() => navigate("/boards")}>
-              Boards
-            </HeaderMenuItem>
             <HeaderMenuItem>Notice</HeaderMenuItem>
             <HeaderMenuItem>Messagse</HeaderMenuItem>
-            <HeaderMenuItem>{username}</HeaderMenuItem>
             <UserIcon
               onClick={() => {
-                navigate("/mypage");
+                navigate("/usermypage");
               }}
             />
           </>
@@ -70,7 +59,6 @@ const Header = () => {
             </AdminBtn>
             <HeaderMenuItem>Notice</HeaderMenuItem>
             <HeaderMenuItem>Messagse</HeaderMenuItem>
-            <HeaderMenuItem>{username}</HeaderMenuItem>
             <UserIcon
               onClick={() => {
                 navigate("/companypage");

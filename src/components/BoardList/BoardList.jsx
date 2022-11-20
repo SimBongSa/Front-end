@@ -3,7 +3,7 @@ import CardGrid from "../common/cards/CardGrid";
 import { BoardContainer, BoardContent } from "./BoardList.styled";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { __getBoards } from "../../redux/modules/boardSlice";
+import { __getBoard } from "../../redux/modules/boardSlice";
 import styled from "styled-components";
 import KaMap from "../Map/KaMap";
 
@@ -12,10 +12,14 @@ const Board = () => {
 
   const boards = useSelector((state) => state.boards.boards);
   const area = useSelector((state) => state.boards.area);
-  console.log(area)
+<<<<<<< HEAD
+  console.log(area);
 
+=======
+  
+>>>>>>> 3ebd3b932d6a72c9c1a47d6717f040bfed8042fb
   useEffect(() => {
-    dispatch(__getBoards());
+    dispatch(__getBoard());
   }, [dispatch]);
 
   return (
@@ -39,4 +43,4 @@ export const ListMap = styled.div`
   height: 107vh;
   margin-top: 10rem;
   float: right;
-`
+`;

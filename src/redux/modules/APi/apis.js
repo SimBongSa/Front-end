@@ -25,12 +25,25 @@ export const apis = {
   // registerSlice
   memberLogin: (payload) => axios.post(`${BASE_URL}/members/login`, payload),
   managerLogin: (payload) => axios.post(`${BASE_URL}/managers/login`, payload),
+<<<<<<< HEAD
+  memberSignup: (payload) =>
+    axios.post(`${BASE_URL}/members/signup/individual`, payload),
+  managerSignup: (payload) =>
+    axios.post(`${BASE_URL}/members/signup/admin`, payload),
+=======
   memberSignup: (payload) => axios.post(`${BASE_URL}/members/signup/individual`, payload),
-  managerSignup: (payload) => axios.post(`${BASE_URL}/members/signup/admin`, payload),
+  managerSignup: (payload) => api.post(`${BASE_URL}/members/signup/admin`, payload, {
+    headers: {
+      "Content-Type": "multipart/form-data",
+    }
+  }),
+  checkUsername: (payload) => axios.get(`${BASE_URL}/members/check_username/${payload}`),
+  checkNickname: (payload) => axios.get(`${BASE_URL}/members/check_nickname/${payload}`),
+>>>>>>> 3ebd3b932d6a72c9c1a47d6717f040bfed8042fb
 
-  //customerSlice
+  //callendarSlice
   mainlist: (boardId) => api.get(`${BASE_URL}/boards/${boardId}`),
-  customerlist: (dueDay) => api.get(`${BASE_URL}/boards/date/${dueDay}`),
+  calendarList: (dueDay) => api.get(`${BASE_URL}/boards/date/${dueDay}`),
   edit: (payload) =>
     api.put(`${BASE_URL}/mypage`, payload, {
       // headers: {
@@ -39,29 +52,65 @@ export const apis = {
     }),
 
   // boards
-  getboards: () => api.get(`${BASE_URL}/boards`),
-  getboardId: (boardId) => api.get(`${BASE_URL}/boards/${boardId}`),
+  getBoard: () => api.get(`${BASE_URL}/boards`),
+  getBoardId: (boardId) => api.get(`${BASE_URL}/boards/${boardId}`),
 
   // registerActivity slice
-  addCreate: (payload) =>
+  createBoard: (payload) =>
     axios.post(`${BASE_URL}/boards`, payload, {
       headers: {
         Authorization: token,
         "Content-Type": "multipart/form-data",
       },
     }),
-  getCreate: () => axios.get(`${BASE_URL}/boards`),
-  editCreate: (payload) =>
-    axios.put(`${BASE_URL}/boards/${payload.id}`, payload.upData, {
+
+  editBoard: (payload) =>
+    api.put(`${BASE_URL}/boards/${payload.id}`, payload.upDate, {
+      headers: {
+        Authorization: token,
+        "Content-Type": "multipart/form-data",
+      },
+    }),
+
+  delBoard: (payload) =>
+    axios.delete(`${BASE_URL}/boards/${payload}`, {
       headers: {
         Authorization: token,
       },
     }),
-  delCreate: (id) =>
-    axios.delete(`${BASE_URL}/boards/${id}/remove`, {
+
+  // 봉사 신청
+  applyBoard: (id) => 
+    api.post(`${BASE_URL}/boards/${id}/apply`, {
       headers: {
         Authorization: token,
-      },
+      }
+    }),
+
+  // MyPage (User)
+  getUserPage: () =>
+    api.get(`${BASE_URL}/mypage`, {
+      headers: {
+        Authorization: token,
+      }
+    }),
+  getUserEnroll: () => 
+    api.get(`${BASE_URL}/mypage/enroll`, {
+      headers: {
+        Authorization: token,
+      }
+    }),
+  getUserWait: () =>
+    api.get(`${BASE_URL}/mypage/enroll/wait`, {
+      headers: {
+        Authorization: token,
+      }
+    }),
+  getUserPass: () =>
+    api.get(`${BASE_URL}/enroll/pass`, {
+      headers: {
+        Authorization: token,
+      }
     }),
 
   // MyPage (Company)
@@ -80,18 +129,27 @@ export const apis = {
 
   //commentSlice
   getComment: (payload) =>
-    axios.get(`${BASE_URL}/boards/${1}`, payload, {
+    axios.get(`${BASE_URL}/boards/${payload}`, {
       headers: {
         Authorization: token,
       },
     }),
   postComment: (payload) =>
-    axios.post(`${BASE_URL}/comments/${1}`, payload, {
+    axios.post(`${BASE_URL}/comments/${payload.id}`, payload, {
       headers: {
         Authorization: token,
       },
     }),
   putComment: (payload) =>
-    axios.put(`${BASE_URL}/comments/${payload.id}`, payload),
-  deleteComment: (payload) => axios.delete(`${BASE_URL}/comments/${payload}`),
+    axios.put(`${BASE_URL}/comments/${payload.commentId}`, payload, {
+      headers: {
+        Authorization: token,
+      },
+    }),
+  deleteComment: (commentId) =>
+    axios.delete(`${BASE_URL}/comments/${commentId}`, {
+      headers: {
+        Authorization: token,
+      },
+    }),
 };

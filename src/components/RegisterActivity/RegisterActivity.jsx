@@ -1,9 +1,9 @@
 import axios from "axios";
 import { useState, useRef } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
-import { __addCreate } from "../../redux/modules/addCreateSlice";
+import { __createBoard } from "../../redux/modules/boardSlice";
 import { Wrap, ImgSize } from "./RegisterActivity.styled";
 import PopupDom from "../Map/PopupDom";
 import PopupPostCode from "../Map/PopupPostCode";
@@ -11,7 +11,7 @@ import PopupPostCode from "../Map/PopupPostCode";
 const RegisterActivity = () => {
   const dispatch = useDispatch();
   const [isPopupOpen, setIsPopupOpen] = useState(false);
-
+  const navigate = useNavigate();
   // 팝업창 열기
   const openPostCode = () => {
     setIsPopupOpen(true);
@@ -47,18 +47,19 @@ const RegisterActivity = () => {
     setInput({ ...input, [name]: value, area: address });
   };
 
-  //이미지 스테이트저장, 미리보기 온체인지 핸들러
+  //이미지 스테이트저장
   const onChangeImage = (e) => {
     setBoardImage(e.target.files[0]);
-    let reader = new FileReader();
 
+    // 미리보기 온체인지 핸들러
+    let reader = new FileReader();
     if (e.target.files[0]) {
       reader.readAsDataURL(e.target.files[0]);
     }
     reader.onloadend = () => {
       const previewImgUrl = reader.result;
       if (previewImgUrl) {
-        setUploadpreview([...uploadpreview, previewImgUrl]);
+        setUploadpreview(previewImgUrl);
       }
     };
   };
@@ -66,7 +67,7 @@ const RegisterActivity = () => {
   const submitHandler = (e) => {
     e.preventDefault();
     console.log("등록 직전=>", input);
-    dispatch(__addCreate({ ...input, boardImage }));
+    dispatch(__createBoard({ ...input, boardImage }));
   };
 
   // //formData는 콘솔에 찍히지 않아 이 방법으로 찍어야함 2번째
@@ -76,14 +77,14 @@ const RegisterActivity = () => {
 
   // 주소값
 
-  console.log("address=>", address);
+  console.log("address =>", address);
 
   return (
     <div>
       <Wrap onSubmit={submitHandler}>
-        <p>봉사 단체</p>
+        <p>봉사 활동 주제</p>
         <input
-          placeholder="봉사 단체 명"
+          placeholder="봉사 활동 주제"
           type="text"
           name="title"
           value={input.title}
@@ -110,6 +111,7 @@ const RegisterActivity = () => {
           value={input.dueDay}
           onChange={(e) => onChangeInput(e)}
         />
+
         <p>행사 장소</p>
         <input
           placeholder="행사 장소"
@@ -129,6 +131,7 @@ const RegisterActivity = () => {
             </PopupDom>
           )}
         </div>
+
         <p>행사 상세 주소</p>
         <input
           type="text"
