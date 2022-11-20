@@ -162,7 +162,6 @@ export const RecruitContainer = styled.div`
   margin: 0 auto;
   margin-left: 20rem;
   margin-top: 10rem;
-  /* margin: 10rem 5rem 5rem 5rem; */
   & legend {
     font-size: 1.4rem;
     margin-bottom: 1.5rem;
