@@ -19,7 +19,6 @@ import Comment from "../Comment/Comment"
 const Detail = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
   const boardsId = useSelector((state) => state?.boards?.boardsId);
   const { id } = useParams();
 
@@ -70,7 +69,6 @@ const Detail = () => {
             삭제하기
           </DetailNavBtn>
         </DetailSide>
-
       </DetailContainer>
     </>
   );
