@@ -11,9 +11,9 @@ const initialState = {
 
 export const __getCustomer = createAsyncThunk(
   "getCustomer",
-  async (dueDay, thunkAPI) => {
+  async (payload, thunkAPI) => {
     try {
-      const response = await apis.calendarList(dueDay);
+      const response = await apis.calendarList(payload);
       return thunkAPI.fulfillWithValue(response.data);
     } catch (error) {
       return thunkAPI.rejectWithValue(error.data);
@@ -23,9 +23,9 @@ export const __getCustomer = createAsyncThunk(
 
 export const __getmainlist = createAsyncThunk(
   "getmainlist",
-  async (boardId, thunkAPI) => {
+  async (payload, thunkAPI) => {
     try {
-      const response = await apis.mainlist(boardId);
+      const response = await apis.mainlist(payload);
       return thunkAPI.fulfillWithValue(response.data);
     } catch (error) {
       return thunkAPI.rejectWithValue(error.data);

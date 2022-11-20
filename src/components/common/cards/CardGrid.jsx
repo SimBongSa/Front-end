@@ -22,7 +22,6 @@ const CardGrid = ({ companyBoards, boards, userEnroll }) => {
   return (
     <CardGridContainer>
       <Cards>
-
         {/* companyBoards 기업 상세페이지 */}
         {companyBoards?.map((item) => {
           return (
@@ -38,7 +37,7 @@ const CardGrid = ({ companyBoards, boards, userEnroll }) => {
                 </CardInfo>
               </Content>
             </Card>
-          )
+          );
         })}
 
         {/* boards 전체 게시물 리스트  */}
@@ -64,29 +63,26 @@ const CardGrid = ({ companyBoards, boards, userEnroll }) => {
           );
         })}
 
-        {
-          userEnroll?.map((item) => {
-            const dDay = getDateDiff(item.dueDay, today);
-            return (
-              <Card
-                key={item.boardId}
-                onClick={() => navigate(`/boards/${item.boardId}`)}
-              >
-                <ImgWrapper>
-                  <img src={item.boardImage} alt="enrollImage" />
-                </ImgWrapper>
-                <Content>
-                  <p className="title">{ item.title }</p>
-                  <CardInfo>
-                    <p>{ item.area }</p>
-                    <p className="price">D - {dDay}</p>
-                  </CardInfo>
-                </Content>
-              </Card>
-            )
-          })
-        }
-
+        {userEnroll?.map((item) => {
+          const dDay = getDateDiff(item.dueDay, today);
+          return (
+            <Card
+              key={item.boardId}
+              onClick={() => navigate(`/boards/${item.boardId}`)}
+            >
+              <ImgWrapper>
+                <img src={item.boardImage} alt="enrollImage" />
+              </ImgWrapper>
+              <Content>
+                <p className="title">{item.title}</p>
+                <CardInfo>
+                  <p>{item.area}</p>
+                  <p className="price">D - {dDay}</p>
+                </CardInfo>
+              </Content>
+            </Card>
+          );
+        })}
       </Cards>
     </CardGridContainer>
   );
