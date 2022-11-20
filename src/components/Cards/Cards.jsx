@@ -11,7 +11,7 @@ import { useState, useEffect } from "react";
 import { __getmainlist } from "../../redux/modules/calendarSlice";
 import { useSelector, useDispatch } from "react-redux";
 
-const Cards = ({ maindate, boardId }) => {
+const Cards = ({ maindate, boardList }) => {
   const [moveIndex, setMoveIndex] = useState(0);
   const dispatch = useDispatch();
   const mainlist = useSelector((state) => state.calendarList.mainList);
@@ -27,9 +27,6 @@ const Cards = ({ maindate, boardId }) => {
     setMoveIndex((prev) => prev + 20);
   };
 
-  // useEffect(() => {
-  //   dispatch(__getmainlist(boardId));
-  // }, [dispatch]);
   return (
     <>
       <CardMoveLeftBtn onClick={moveLeft}>왼쪽</CardMoveLeftBtn>

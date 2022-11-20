@@ -1,6 +1,5 @@
 import { ProfileContainer, ProfileBox, ProfileCategory, ProfileMisc } from "./Profile.styled";
 import { removeCookie } from "../../../utils/cookie";
-import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 
 const Profile = ({ companyInfo, userInfo, isEdit, setUserPageOpt }) => {
@@ -17,7 +16,6 @@ const Profile = ({ companyInfo, userInfo, isEdit, setUserPageOpt }) => {
   return (
     <ProfileContainer>
       <ProfileBox>
-
         {/* 이거 삼항연산자 넘 그지같아서 수정해야 함 - 성호 */}
         {
           companyInfo && companyInfo.profileImage || userInfo && userInfo.profileImage ? 
@@ -49,7 +47,6 @@ const Profile = ({ companyInfo, userInfo, isEdit, setUserPageOpt }) => {
           ) : null
         }
       </ProfileBox>
-
       {
         userInfo ? (
           <ProfileMisc>
@@ -70,7 +67,6 @@ const Profile = ({ companyInfo, userInfo, isEdit, setUserPageOpt }) => {
           </ProfileMisc>
         ) : null
       }
-
       {
         companyInfo ? (
           <ProfileMisc>
@@ -87,7 +83,6 @@ const Profile = ({ companyInfo, userInfo, isEdit, setUserPageOpt }) => {
           </ProfileMisc>
         ) : null
       }
-
     </ProfileContainer>
   )
 };

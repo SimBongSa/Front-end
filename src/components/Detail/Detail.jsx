@@ -12,8 +12,10 @@ import {
 } from "./Detail.styled";
 import MainBg from "../MainBg/MainBg";
 import KaMap from "../Map/KaMap";
+import Comment from "../Comment/Comment"
 
 const Detail = () => {
+
   const dispatch = useDispatch();
   const boardsId = useSelector((state) => state?.boards?.boardsId);
 
@@ -40,6 +42,7 @@ const Detail = () => {
           <MapWrapper>
             <KaMap input="false" area={boardsId?.area} mapWidth="100%" mapHeight="400px" />
           </MapWrapper>
+          <Comment/>
         </DetailContent>
 
         <DetailSide>
@@ -51,6 +54,7 @@ const Detail = () => {
           }}>봉사자 신청하기</DetailNavBtn>
           <DetailNavBtn>봉사 단체 연락하기</DetailNavBtn>
         </DetailSide>
+
       </DetailContainer>
     </>
   );

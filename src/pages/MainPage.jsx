@@ -9,6 +9,8 @@ import { useSelector, useDispatch } from "react-redux";
 export const MainPage = () => {
   const dispatch = useDispatch();
   const maindate = useSelector((state) => state.calendarList.calendarList);
+  const boardList = useSelector((state) => state.boards.boards);
+  console.log(boardList)
 
   return (
     <>

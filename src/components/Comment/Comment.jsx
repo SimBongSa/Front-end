@@ -16,6 +16,7 @@ function Comment() {
   const userName = cookies["username"];
 
   const commentList = useSelector((state) => state.comment.commentList);
+  console.log(commentList)
   const dispatch = useDispatch();
 
   const { id } = useParams();
@@ -49,13 +50,11 @@ function Comment() {
       {commentList && commentList.length > 0
         ? commentList.map((item, index) => {
             const commentId = item.commentId;
-            let isEditState =
-              editCommentId.indexOf(commentId) === -1 ? false : true;
-
+            let isEditState = editCommentId.indexOf(commentId) === -1 ? false : true;
             return (
               <Box key={index}>
                 <CommentTitleWrap>
-                  <h2>{item.author}</h2>
+                  <h2>{item?.nickname}</h2>
                   <CommentBtnWrap>
                     {userName === item.author ? (
                       <>
@@ -97,11 +96,11 @@ function Comment() {
                       </>
                     ) : (
                       <>
-                        <div>좋아요</div>
+                        {/* <div>좋아요</div> */}
                         <div>신고</div>
                       </>
                     )}
-                    <div>{item.createdAt}</div>
+                    <div>{item.createdAt.split("T")[0]}</div>
                   </CommentBtnWrap>
                 </CommentTitleWrap>
                 {isEditState ? (
@@ -132,7 +131,6 @@ const MainComponent = styled.div`
 const CommentWriteWrap = styled.div`
   display: flex;
   align-items: center;
-
   & > div {
     cursor: pointer;
   }

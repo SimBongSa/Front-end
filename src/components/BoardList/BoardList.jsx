@@ -8,8 +8,8 @@ import styled from "styled-components";
 import KaMap from "../Map/KaMap";
 
 const Board = () => {
+  
   const dispatch = useDispatch();
-
   const boards = useSelector((state) => state.boards.boards);
   const area = useSelector((state) => state.boards.area);
   

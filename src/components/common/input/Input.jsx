@@ -49,6 +49,7 @@ export const StInput = styled.input`
   border: none;
   border-radius: 15px;
   outline: none;
+  margin-bottom: 1rem;
   background: ${(props) => props.theme.WHITE};
   color: ${(props) => props.theme.BLACK};
 `;

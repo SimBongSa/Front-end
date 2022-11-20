@@ -6,7 +6,9 @@ export const DetailContainer = styled.div`
   justify-content: space-between;
   margin: 3rem;
   min-height: 100vh;
-  @media screen and (width: 1024px) {
+  @media screen and (max-width: 1024px) {
+    display: flex;
+    justify-content: space-around;
     flex-direction: column-reverse;
   }
 `
@@ -14,7 +16,7 @@ export const DetailContainer = styled.div`
 export const DetailContent = styled.div`
   float: left;
   width: 60%;
-  min-width: 800px;
+  min-width: 600px;
   background: #aaaaaa;
   padding: 2rem;
   & h1 {
@@ -25,6 +27,9 @@ export const DetailContent = styled.div`
     font-size: 1.6rem;
     margin: 3rem 1rem 2rem 0rem;
     color: black;
+  }
+  @media screen and (max-width: 1024px) {
+    margin-top: 5rem;
   }
 `
 
@@ -40,6 +45,7 @@ export const DetailSide = styled.div`
   right: 1rem;
   bottom: 10rem;
   float: right;
+  min-width: 300px;
   width: 400px;
   height: 300px;
   margin: 0rem 1rem 1rem 1rem;
@@ -52,9 +58,10 @@ export const DetailSide = styled.div`
     padding: 1rem;
     border-bottom: 1px solid #232323;
   }
-  @media screen and (width: 1024px) {
+  @media screen and (max-width: 1024px) {
     position: relative;
-    float: left;
+    width: 600px;
+    margin-bottom: 5rem;
   }
 `
 
