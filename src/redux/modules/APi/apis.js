@@ -25,8 +25,10 @@ export const apis = {
   // registerSlice
   memberLogin: (payload) => axios.post(`${BASE_URL}/members/login`, payload),
   managerLogin: (payload) => axios.post(`${BASE_URL}/managers/login`, payload),
-  memberSignup: (payload) => axios.post(`${BASE_URL}/members/signup/individual`, payload),
-  managerSignup: (payload) => axios.post(`${BASE_URL}/members/signup/admin`, payload),
+  memberSignup: (payload) =>
+    axios.post(`${BASE_URL}/members/signup/individual`, payload),
+  managerSignup: (payload) =>
+    axios.post(`${BASE_URL}/members/signup/admin`, payload),
 
   //customerSlice
   mainlist: (boardId) => api.get(`${BASE_URL}/boards/${boardId}`),
@@ -39,26 +41,28 @@ export const apis = {
     }),
 
   // boards
-  getboards: () => api.get(`${BASE_URL}/boards`),
-  getboardId: (boardId) => api.get(`${BASE_URL}/boards/${boardId}`),
+  getBoard: () => api.get(`${BASE_URL}/boards`),
+  getBoardId: (boardId) => api.get(`${BASE_URL}/boards/${boardId}`),
 
   // registerActivity slice
-  addCreate: (payload) =>
+  createBoard: (payload) =>
     axios.post(`${BASE_URL}/boards`, payload, {
       headers: {
         Authorization: token,
         "Content-Type": "multipart/form-data",
       },
     }),
-  getCreate: () => axios.get(`${BASE_URL}/boards`),
-  editCreate: (payload) =>
-    axios.put(`${BASE_URL}/boards/${payload.id}`, payload.upData, {
+
+  editBoard: (payload) =>
+    api.put(`${BASE_URL}/boards/${payload.id}`, payload.upDate, {
       headers: {
         Authorization: token,
+        "Content-Type": "multipart/form-data",
       },
     }),
-  delCreate: (id) =>
-    axios.delete(`${BASE_URL}/boards/${id}/remove`, {
+
+  delBoard: (payload) =>
+    axios.delete(`${BASE_URL}/boards/${payload}`, {
       headers: {
         Authorization: token,
       },

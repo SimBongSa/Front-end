@@ -19,6 +19,7 @@ const KaPost = ({}) => {
     //fullAddress -> 전체 주소반환하기
     console.log(fullAddress);
   };
+
   return (
     <div>
       <PostWrap>

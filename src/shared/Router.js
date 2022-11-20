@@ -14,6 +14,7 @@ import CustomerEdit from "../components/CustomerEdit/CustomerEdit";
 import BoardListPage from "../pages/BoardListPage";
 import DetailPage from "../pages/DetailPage";
 import ListPage from "../pages/ListPage";
+import DetailEdit from "../components/Detail/DetailEdit";
 
 const Router = () => {
   return (
@@ -25,6 +26,7 @@ const Router = () => {
             <Route path="/" element={<MainPage />} />
             <Route path="/boards" element={<BoardListPage />} />
             <Route path="/boards/:id" element={<DetailPage />} />
+            <Route path="/edit/:id" element={<DetailEdit />} />
             <Route path="/login" element={<LoginPage />} />
             <Route path="/register" element={<RegisterPage />} />
             <Route path="/companypage" element={<MyPageCompany />} />

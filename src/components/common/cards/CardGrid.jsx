@@ -9,7 +9,6 @@ import {
 } from "./CardGrid.styled";
 
 const CardGrid = ({ companyBoards, boards }) => {
-
   const navigate = useNavigate();
 
   const getDateDiff = (d1, d2) => {
@@ -19,8 +18,6 @@ const CardGrid = ({ companyBoards, boards }) => {
     return Math.round(Math.abs(diffDate / (1000 * 60 * 60 * 24)));
   };
   const today = new Date().toISOString().split("T")[0];
-
-
 
   return (
     <CardGridContainer>
