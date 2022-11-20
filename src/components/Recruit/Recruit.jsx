@@ -1,12 +1,10 @@
-import axios from "axios";
-import { useState, useRef } from "react";
+import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
-import { Link } from "react-router-dom";
 import { __addCreate } from "../../redux/modules/addCreateSlice";
-import { Wrap, ImgSize } from "./RegisterActivity.styled";
+import { Wrap, ImgSize } from "./Recruit.styled";
 import PopupDom from "../Map/PopupDom";
 import PopupPostCode from "../Map/PopupPostCode";
+import styled from "styled-components";
 
 const RegisterActivity = () => {
   const dispatch = useDispatch();
@@ -68,15 +66,6 @@ const RegisterActivity = () => {
     console.log("등록 직전=>", input);
     dispatch(__addCreate({ ...input, boardImage }));
   };
-
-  // //formData는 콘솔에 찍히지 않아 이 방법으로 찍어야함 2번째
-  // for (const value of formData.values()) {
-  // console.log("폼데이터:", value);
-  // }
-
-  // 주소값
-
-  console.log("address=>", address);
 
   return (
     <div>

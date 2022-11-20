@@ -8,10 +8,10 @@ import { GloblaStyle } from "../theme/GlobalStyle";
 import { ThemeProvider } from "../context/themeProvider";
 import { MyPageUser } from "./../pages/MyPageUser";
 import CombinedMap from "../components/Map/CombinedMap";
-import RegisterActivity from "../components/RegisterActivity/RegisterActivity";
 import CustomerEdit from "../components/CustomerEdit/CustomerEdit";
 import BoardListPage from "../pages/BoardListPage";
 import DetailPage from "../pages/DetailPage";
+import { RecruitPage } from "../pages/RecruitPage";
 
 const Router = () => {
   return (
@@ -27,10 +27,10 @@ const Router = () => {
             <Route path="/register" element={<RegisterPage />} />
             <Route path="/companypage" element={<MyPageCompany />} />
             <Route path="/usermypage" element={<MyPageUser />} />
-            <Route path="/map" element={<CombinedMap />} />
-            <Route path="/registeractivity" element={<RegisterActivity />} />
+            {/* <Route path="/map" element={<CombinedMap />} /> */}
+            <Route path="/recruit" element={<RecruitPage />} />
             <Route path="/customeredit" element={<CustomerEdit />} />
-            <Route path="/detail" element={<DetailPage />} />
+            {/* <Route path="/detail" element={<DetailPage />} /> */}
           </Routes>
         </Suspense>
       </ThemeProvider>

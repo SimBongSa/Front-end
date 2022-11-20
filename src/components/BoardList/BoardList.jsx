@@ -24,7 +24,7 @@ const Board = () => {
         <CardGrid boards={boards} />
       </BoardContent>
       <ListMap>
-        <KaMap mapHeight="100%" />
+        <KaMap mapWidth="48%" mapHeight="60%" position="fixed" />
       </ListMap>
     </BoardContainer>
   );

@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import {
   HeaderContainer,
   HeaderLogo,
@@ -7,7 +7,6 @@ import {
   HeaderRegister,
   LightThemeBtn,
   UserIcon,
-  AdminBtn,
 } from "./Header.styled";
 import { BsFillMoonFill } from "react-icons/bs";
 import { useTheme } from "../../context/themeProvider";
@@ -50,15 +49,11 @@ const Header = () => {
           </>
         ) : isLogin && authority === "ROLE_ADMIN" ? (
           <>
-            <AdminBtn
-              onClick={() => {
-                navigate("/registeractivity");
-              }}
-            >
-              봉사등록
-            </AdminBtn>
             <HeaderMenuItem>Notice</HeaderMenuItem>
             <HeaderMenuItem>Messagse</HeaderMenuItem>
+            <HeaderMenuItem onClick={() => {
+              navigate("/recruit")
+            }}>봉사활동 등록하기</HeaderMenuItem>
             <UserIcon
               onClick={() => {
                 navigate("/companypage");

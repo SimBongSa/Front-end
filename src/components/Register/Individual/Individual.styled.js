@@ -31,8 +31,8 @@ export const InputBox = styled.div`
   width: calc(385px - 50px * 2);
   height: 100%;
   display: flex;
-  justify-content: center;
   flex-direction: column;
+  justify-content: space-around;
   align-items: center;
   padding: 0px 50px;
   text-align: center;

@@ -2,7 +2,7 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { apis } from "./Api/apis";
 
 export const __getBoards = createAsyncThunk(
-  "companyInfo",
+  "getBoards",
   async (payload, thunkAPI) => {
     try {
       const response = await apis.getboards(payload);
@@ -14,7 +14,7 @@ export const __getBoards = createAsyncThunk(
 );
 
 export const __getBoardsId = createAsyncThunk(
-  "companyInfoId",
+  "getBoardsId",
   async (payload, thunkAPI) => {
     try {
       const response = await apis.getboardId(payload);

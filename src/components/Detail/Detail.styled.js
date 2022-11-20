@@ -2,14 +2,19 @@ import styled from "styled-components";
 
 export const DetailContainer = styled.div`
   display: flex;
-  position: relative;
-  margin: 2.5rem;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 3rem;
   min-height: 100vh;
+  @media screen and (width: 1024px) {
+    flex-direction: column-reverse;
+  }
 `
 
 export const DetailContent = styled.div`
   float: left;
   width: 60%;
+  min-width: 800px;
   background: #aaaaaa;
   padding: 2rem;
   & h1 {
@@ -28,21 +33,28 @@ export const MapWrapper = styled.div`
   margin-top: 2rem;
 `
 
-export const DetailNav = styled.div`
-  display: flex;
-  flex-direction: column;
+export const DetailSide = styled.div`
+  position: sticky;
+  position: -webkit-sticky; 
+  top: 7rem;
+  right: 1rem;
+  bottom: 10rem;
   float: right;
-  width: 40%;
-  z-index: 1;
+  width: 400px;
   height: 300px;
-  margin: 1rem;
+  margin: 0rem 1rem 1rem 1rem;
   padding: 1rem;
+  overflow: auto;
   background: #aaaaaa;
   & h2 {
     font-size: 1.4rem;
     text-align: center;
     padding: 1rem;
     border-bottom: 1px solid #232323;
+  }
+  @media screen and (width: 1024px) {
+    position: relative;
+    float: left;
   }
 `
 

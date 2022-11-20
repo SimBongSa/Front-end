@@ -1,5 +1,4 @@
 import { NewActivityContainer, NewActivityWrap, NewActivityCard, CardSymbol } from "./NewActivity.styled";
-import styled from "styled-components";
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { __getAppliList } from "../../../../redux/modules/mypageSlice";

@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { MapMarker, Map } from "react-kakao-maps-sdk";
 import styled from "styled-components";
 
-const KaMap = ({ area, mapHeight, input }) => {
+const KaMap = ({ area, mapWidth, mapHeight, position, input }) => {
   const [info, setInfo] = useState();
   const [markers, setMarkers] = useState([]);
   const [map, setMap] = useState();
@@ -78,7 +78,9 @@ const KaMap = ({ area, mapHeight, input }) => {
         }}
         level={3}
         onCreate={setMap}
+        width={mapWidth}
         height={mapHeight}
+        position={position}
       >
         {markers.map((marker) => (
           <MapMarker
@@ -99,7 +101,21 @@ const KaMap = ({ area, mapHeight, input }) => {
 export default KaMap;
 
 export const StMap = styled(Map)`
-  /* position: fixed; */
-  width: 100%;
-  height: ${(props) => props};
+  width: ${(props) => props.width};
+  height: ${(props) => props.height};
+  position: ${(props) => props.position};
+  top: ${(props) => {
+    if (props.position) {
+      return '21rem';
+    } else {
+      return '0';
+    }
+  }};
+  right: ${(props) => {
+    if (props.position) {
+      return '1rem';
+    } else {
+      return '0';
+    }
+  }};
 `;
