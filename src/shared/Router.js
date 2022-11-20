@@ -11,6 +11,7 @@ import CustomerEdit from "../components/CustomerEdit/CustomerEdit";
 import BoardListPage from "../pages/BoardListPage";
 import DetailPage from "../pages/DetailPage";
 import { RecruitPage } from "../pages/RecruitPage";
+import DetailEdit from "../components/Detail/DetailEdit";
 
 const Router = () => {
   return (
