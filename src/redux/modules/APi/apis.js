@@ -117,6 +117,12 @@ export const apis = {
         Authorization: token,
       },
     }),
+  getAppliList: (id) =>
+    api.get(`${BASE_URL}/companypage/boards/${id}`, {
+      headers: {
+        Authorization: token,
+      }
+    }),
 
   //commentSlice
   getComment: (payload) =>

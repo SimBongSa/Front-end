@@ -1,6 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { apis } from "./Api/apis";
 
+// User
 export const __getUserInfo = createAsyncThunk(
   "userInfo",
   async (payload, thunkAPI) => {
@@ -12,7 +13,6 @@ export const __getUserInfo = createAsyncThunk(
     }
   }
 );
-
 export const __getUserEnroll = createAsyncThunk(
   "enroll",
   async (payload, thunkAPI) => {
@@ -25,7 +25,6 @@ export const __getUserEnroll = createAsyncThunk(
     }
   }
 );
-
 export const __getUserWait = createAsyncThunk(
   "wait",
   async (payload, thunkAPI) => {
@@ -38,7 +37,6 @@ export const __getUserWait = createAsyncThunk(
     }
   }
 );
-
 export const __getUserPass = createAsyncThunk(
   "pass",
   async (payload, thunkAPI) => {
@@ -52,6 +50,8 @@ export const __getUserPass = createAsyncThunk(
   }
 );
 
+
+// Company
 export const __getCompanyInfo = createAsyncThunk(
   "companyInfo",
   async (payload, thunkAPI) => {
@@ -63,12 +63,23 @@ export const __getCompanyInfo = createAsyncThunk(
     }
   }
 );
-
 export const __getCompanyBoards = createAsyncThunk(
   "companyBoards",
   async (payload, thunkAPI) => {
     try {
       const response = await apis.getCompanyBoards(payload);
+      return thunkAPI.fulfillWithValue(response.data.data);
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error);
+    }
+  }
+);
+export const __getAppliList = createAsyncThunk(
+  "appliList",
+  async (payload, thunkAPI) => {
+    try {
+      const response = await apis.getAppliList(payload);
+      console.log(response)
       return thunkAPI.fulfillWithValue(response.data.data);
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
@@ -85,6 +96,7 @@ export const mypageSlice = createSlice({
     userEnroll: [],
     userWait: [],
     userPass: [],
+    appliList: [],
     isLoading: false,
     error: null,
   },
@@ -153,7 +165,19 @@ export const mypageSlice = createSlice({
       .addCase(__getCompanyBoards.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.payload;
-      });
+      })
+
+      .addCase(__getAppliList.pending, (state, _) => {
+        state.isLoading = true;
+      })
+      .addCase(__getAppliList.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.appliList = action.payload;
+      })
+      .addCase(__getAppliList.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.payload;
+      })
   },
 });
 
