@@ -2,7 +2,7 @@ import { ProfileContainer, ProfileBox, ProfileCategory, ProfileMisc } from "./Pr
 import { removeCookie } from "../../../utils/cookie";
 import { useNavigate } from "react-router-dom";
 
-const Profile = ({ companyInfo, userInfo, isEdit, setUserPageOpt }) => {
+const Profile = ({ companyInfo, userInfo, isEdit, setUserPageOpt, setCompanyPageOpt }) => {
 
   const navigate = useNavigate();
 
@@ -53,13 +53,14 @@ const Profile = ({ companyInfo, userInfo, isEdit, setUserPageOpt }) => {
             <h2>봉사 현황</h2>
             <span/>
             <h4 onClick={() => {
-              setUserPageOpt("wait")
+              setUserPageOpt("wait");
             }}>봉사 신청 내역</h4>
             <h4 onClick={() => {
-              setUserPageOpt("pass")
+              setUserPageOpt("pass");
             }}>참여 봉사 관리</h4>
             <h4>캘린더</h4>
             <span/>
+            <h4>프로필 수정</h4>
             <h4 onClick={() => {
               logOut();
               navigate('/login')
@@ -72,10 +73,15 @@ const Profile = ({ companyInfo, userInfo, isEdit, setUserPageOpt }) => {
           <ProfileMisc>
             <h2>봉사 현황</h2>
             <span/>
-            <h4>봉사자 신청 내역</h4>
-            <h4>나의 봉사 관리</h4>
+            <h4 onClick={() => {
+              setCompanyPageOpt("newActivity");
+            }}>봉사자 신청 내역</h4>
+            <h4 onClick={() => {
+              setCompanyPageOpt("myActivity");
+            }}>나의 봉사 관리</h4>
             <h4>캘린더</h4>
             <span/>
+            <h4>프로필 수정</h4>
             <h4 onClick={() => {
               logOut();
               navigate('/login')

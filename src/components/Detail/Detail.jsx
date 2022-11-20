@@ -21,7 +21,6 @@ const Detail = () => {
   const navigate = useNavigate();
 
   const boardsId = useSelector((state) => state?.boards?.boardsId);
-  console.log(boardsId);
   const { id } = useParams();
 
   useEffect(() => {
@@ -53,7 +52,7 @@ const Detail = () => {
           </h2>
           <DetailNavBtn onClick={() => {
             dispatch(__postApply(id))
-          }}>봉사자 신청하기</DetailNavBtn>
+          }}>봉사 신청하기</DetailNavBtn>
           <DetailNavBtn>봉사 단체 연락하기</DetailNavBtn>
           <DetailNavBtn
             onClick={() => {

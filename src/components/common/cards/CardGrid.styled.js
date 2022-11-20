@@ -2,7 +2,7 @@ import styled from "styled-components"
 
 export const CardGridContainer = styled.section`
   display: grid;
-  grid-template-columns: 1fr repeat(12, minmax(auto, 60px)) 1fr;
+  grid-template-columns: 2fr repeat(6, minmax(auto, 60px)) 12fr;
   grid-gap: 0.1rem;
   margin: 1rem;
   margin-bottom: 5rem;
@@ -22,6 +22,9 @@ export const Card = styled.div`
   cursor: pointer;
   transition: all 0.5s ease;
   @media screen and (max-width: 1024px) {
+    grid-column-end: span 6;
+  }
+  @media screen and (max-width: 768px) {
     grid-column-end: span 12;
   }
   &:hover {

@@ -3,7 +3,7 @@ import styled from "styled-components"
 export const ProfileContainer = styled.div`
   float: left;
   position: fixed;
-  margin-top: 10rem;
+  margin-top: 5rem;
   margin-left: 2rem;
   border-radius: 5px;
   padding: 30px 10px 10px 10px;
@@ -130,5 +130,11 @@ export const ProfileMisc = styled.div`
     width: 230px;
     height: 1px;
     background: #aaaaaa;
+  }
+  @media ( max-width: 1024px) {
+    flex-direction: column;
+    margin: 0 auto;
+    margin-top: 5rem;
+    width: 500px;
   }
 `

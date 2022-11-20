@@ -1,11 +1,11 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { __addCreate } from "../../redux/modules/addCreateSlice";
 import { Wrap, ImgSize } from "./Recruit.styled";
 import PopupDom from "../Map/PopupDom";
 import PopupPostCode from "../Map/PopupPostCode";
 import styled from "styled-components";
 import Input from "../common/input/Input";
+import { __createBoard } from "../../redux/modules/boardSlice";
 
 const Recruit = () => {
   const dispatch = useDispatch();
@@ -65,7 +65,7 @@ const Recruit = () => {
   const submitHandler = (e) => {
     e.preventDefault();
     console.log("등록 직전=>", input);
-    dispatch(__addCreate({ ...input, boardImage }));
+    dispatch(__createBoard({ ...input, boardImage }));
   };
 
   return (

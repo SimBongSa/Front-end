@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { __getUserEnroll, __getUserInfo, __getUserPass, __getUserWait } from "../../../redux/modules/mypageSlice";
+import { __getUserEnroll, __getUserInfo, __getUserPass, __getUserReject, __getUserWait } from "../../../redux/modules/mypageSlice";
 
 import Profile from "../Profile/Profile";
 import CardGrid from "../../common/cards/CardGrid"
 import styled from "styled-components";
+import MyProcess from "../MyProcess/MyProcess";
+import { MyPageCards } from "./UserPage.styled";
 
 const UserPage = () => {
 
@@ -14,18 +16,20 @@ const UserPage = () => {
   const userEnroll = useSelector((state) => state.mypage?.userEnroll);
   const userWait = useSelector((state) => state.mypage?.userWait);
   const userPass = useSelector((state) => state.mypage?.userPass);
-  console.log("/enroll", userEnroll)
-  console.log("/enroll/wait =>", userWait)
-  console.log("/enroll/pass => ", userPass)
+  const userReject = useSelector((state) => state.mypage?.userReject);
+
+  console.log(userPass.length)
+  console.log(userReject.length)
 
   useEffect(() => {
     dispatch(__getUserInfo());
     dispatch(__getUserEnroll());
     dispatch(__getUserWait());
     dispatch(__getUserPass());
+    dispatch(__getUserReject());
   }, [dispatch])
 
-  const [userPageOpt, setUserPageOpt] = useState(null);
+  const [userPageOpt, setUserPageOpt] = useState("wait");
   console.log(userPageOpt)
 
   return (
@@ -35,52 +39,50 @@ const UserPage = () => {
         userPageOpt={userPageOpt}
         setUserPageOpt={setUserPageOpt}
       />
-      <Test/>
-      {
-        userPageOpt === "wait" ? (
-          <MyPageCards>
-            <h1>봉사 신청 내역</h1>
-            <CardGrid
-              userEnroll={userWait}
-            />
-          </MyPageCards>
-        ) : null
-      }
+      <UserPageContainer>
+        <MyProcess
+          userEnroll={userEnroll.length}
+          userWait={userWait.length}
+          userPass={userPass.length}
+          userReject={userReject.length}
+        />
+        {
+          userPageOpt === "wait" ? (
+            <MyPageCards>
+              <h1>봉사 신청 내역</h1>
+              <CardGrid
+                userEnroll={userWait}
+              />
+            </MyPageCards>
+          ) : null
+        }
 
-      {
-        userPageOpt === "pass" ? (
-          <MyPageCards>
-            <h1>참여 봉사 관리</h1>
-            <CardGrid
-              userEnroll={userPass}
-            />
-          </MyPageCards>
-        ) : null
-      }
-
+        {
+          userPageOpt === "pass" ? (
+            <MyPageCards>
+              <h1>참여 봉사 관리</h1>
+              <CardGrid
+                userEnroll={userPass}
+              />
+            </MyPageCards>
+          ) : null
+        }
+      </UserPageContainer>
     </>
   )
 };
 
 export default UserPage;
 
-export const MyPageCards = styled.div`
+export const UserPageContainer = styled.div`
   display: flex;
   flex-direction: column;
-  float: right;
-  margin-top: 5rem;
-  margin-right: 10rem;
-  & h1 {
-    font-size: 2rem;
-    margin: 1rem;
-  }
+  margin: 0 auto;
+  margin-top: 10rem;
+  margin-left: 5rem;
   @media ( max-width: 1024px) {
     margin: 0 auto;
     margin-top: 10rem;
-    align-items: center;
+    float: right;
   }
-`
-
-export const Test = styled.div`
-  margin-top: 10rem;
 `

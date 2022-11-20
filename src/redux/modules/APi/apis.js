@@ -100,11 +100,17 @@ export const apis = {
       }
     }),
   getUserPass: () =>
-    api.get(`${BASE_URL}/enroll/pass`, {
+    api.get(`${BASE_URL}/mypage/enroll/pass`, {
       headers: {
         Authorization: token,
       }
     }),
+  getUserReject: () =>
+  api.get(`${BASE_URL}/mypage/enroll/fail`, {
+    headers: {
+      Authorization: token,
+    }
+  }),
 
   // MyPage (Company)
   getCompanyPage: () =>
@@ -125,6 +131,7 @@ export const apis = {
         Authorization: token,
       }
     }),
+  
 
   //commentSlice
   getComment: (payload) =>

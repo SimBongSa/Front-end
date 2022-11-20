@@ -29,7 +29,7 @@ export const __getBoard = createAsyncThunk(
   "getBoards",
   async (payload, thunkAPI) => {
     try {
-      const response = await apis.getboards(payload);
+      const response = await apis.getBoard(payload);
       console.log(response)
       return thunkAPI.fulfillWithValue(response.data.data);
     } catch (error) {
