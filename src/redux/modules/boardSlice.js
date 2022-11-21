@@ -12,9 +12,9 @@ export const __createBoard = createAsyncThunk(
       formData.append(key, value);
     });
 
-    //formData console.log
+    //formData console.logc
     // for (let key of formData.keys()) {
-    //   console.log("formData ===>", key, ":", formData.get(key));
+    //   console.log("formData ==>", key, ":", formData.get(key));
     // }
 
     try {
@@ -46,7 +46,6 @@ export const __getBoard = createAsyncThunk(
 export const __getBoardId = createAsyncThunk(
   "getBoardId",
   async (payload, thunkAPI) => {
-    console.log("__getBoardId => ", payload);
     try {
       const response = await apis.getBoardId(payload);
       return thunkAPI.fulfillWithValue(response.data.data);
@@ -101,9 +100,24 @@ export const __getArea = createAsyncThunk(
   async (payload, thunkAPI) => {
     try {
       const response = await payload;
-      console.log(payload);
-      console.log(response);
       return thunkAPI.fulfillWithValue(response);
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error);
+    }
+  }
+);
+
+export const __postApply = createAsyncThunk(
+  "apply",
+  async (payload, thunkAPI) => {
+    console.log(payload);
+    try {
+      const response = await apis.applyBoard(payload);
+      if (response.status === 200) {
+        alert(response.data.data.msg);
+        console.log(response.data.data.msg);
+        return thunkAPI.fulfillWithValue(response.data.data.msg);
+      }
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
     }
@@ -197,6 +211,13 @@ export const boardSlice = createSlice({
       .addCase(__delBoard.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.payload;
+      })
+
+      // 봉사 신청 post
+      .addCase(__postApply.fulfilled, (state, action) => {
+        state.isLoading = false;
+        console.log();
+        state.apply = action.payload;
       });
   },
 });
