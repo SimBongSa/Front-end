@@ -1,14 +1,14 @@
 import styled from "styled-components";
 import MainCalendar from "../components/Calendar/MainCalendar";
-import Cards from "../components/Cards/Cards";
+// import Cards from "../components/Cards/Cards";
 import Footer from "../components/Footer/Footer";
 import Header from "../components/Header/Header";
 import MainBg from "../components/MainBg/MainBg";
 import { useSelector } from "react-redux";
+import MainCard from "../components/MainCard/MainCard";
 
 export const MainPage = () => {
 
-  const maindate = useSelector((state) => state.calendarList.calendarList);
   const boardList = useSelector((state) => state.boards.boards);
   console.log(boardList)
 
@@ -16,8 +16,9 @@ export const MainPage = () => {
     <>
       <Header />
       <MainBg />
-      <MainPageText>Urgent Activity</MainPageText>
-      <Cards />
+      <MainCard/>
+      {/* <MainPageText>Urgent Activity</MainPageText>
+      <Cards /> */}
       <MainPageText>Search by Date</MainPageText>
       <MainCalendar />
       <Footer />

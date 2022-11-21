@@ -60,12 +60,12 @@ const Individual = () => {
                   />
                   <Input 
                     placeholder="Nickname"
+                    dupleCheck={true}
                     type="text"
                     name="nickname"
                     value={input.nickname}
                     onChange={onChangeHandler}
                   />
-      
                   <Input 
                     placeholder="Password"
                     type="password"

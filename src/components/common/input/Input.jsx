@@ -1,4 +1,6 @@
+import { useDispatch } from "react-redux";
 import styled from "styled-components";
+import { __checkUsername } from "../../../redux/modules/registerSlice";
 
 const Input = ({
   id,
@@ -9,6 +11,7 @@ const Input = ({
   value,
   onChange,
 }) => {
+  const dispatch = useDispatch();
   return (
     <StInputContainer>
       {type === "text" || "password" ? (
@@ -25,7 +28,10 @@ const Input = ({
       ) : null}
 
       {dupleCheck ? (
-          <DupleCheck>중복</DupleCheck>
+          <DupleCheck onClick={() => {
+            console.log(value)
+            dispatch(__checkUsername(value))
+          }}>중복체크</DupleCheck>
       ) : null}
 
       {type === "radio" ? <span>{value}</span> : null}
@@ -61,4 +67,5 @@ export const StErrorMsg = styled.span`
 export const DupleCheck = styled.button` 
   width: 100px;
   position: absolute;
+  right: 10px;
 `

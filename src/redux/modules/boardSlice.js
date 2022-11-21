@@ -35,6 +35,8 @@ export const __getBoard = createAsyncThunk(
   async (payload, thunkAPI) => {
     try {
       const response = await apis.getBoard(payload);
+      console.log("size@@",payload.size)
+      console.log("page@@", payload.page)
       console.log(response)
       return thunkAPI.fulfillWithValue(response.data.data);
     } catch (error) {
@@ -154,6 +156,7 @@ export const boardSlice = createSlice({
       .addCase(__getBoard.fulfilled, (state, action) => {
         state.isLoading = false;
         state.boards = action.payload;
+        console.log(state.boards)
       })
       .addCase(__getBoard.rejected, (state, action) => {
         state.isLoading = false;
@@ -166,7 +169,7 @@ export const boardSlice = createSlice({
       })
       .addCase(__getBoardId.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.boardsId = action.payload;
+        state.board = action.payload;
       })
       .addCase(__getBoardId.rejected, (state, action) => {
         state.isLoading = false;

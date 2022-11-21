@@ -11,12 +11,14 @@ const Board = () => {
   
   const dispatch = useDispatch();
   const boards = useSelector((state) => state.boards.boards);
-  const [page, setPage] = useState(1);
-
   const area = useSelector((state) => state.boards.area);
+
+  const [page, setPage] = useState(1);
+  const size = 10;
+
   useEffect(() => {
-    dispatch(__getBoard(page));
-  }, [dispatch, page]);
+    dispatch(__getBoard({page, size}));
+  }, [dispatch, size, page]);
 
   return (
     <BoardContainer>
@@ -24,20 +26,21 @@ const Board = () => {
         <KaMap mapWidth="100%" mapHeight="100%"/>
       </ListMap>
       <BoardContent>
-        <CardGrid boards={boards} />
         {
           page === 1 ? <button></button> : (
             <button onClick={() => {
               setPage((prev) => prev - 1);
-              dispatch(__getBoard(page));
+              dispatch(__getBoard({page, size}));
             }}>이전</button>
           )
         }
         <button onClick={() => {
           setPage((prev) => prev + 1);
-          dispatch(__getBoard(page));
+          dispatch(__getBoard({page, size}));
         }}>다음</button>
+        <CardGrid boards={boards} gridColumn={5} />
       </BoardContent>
+
     </BoardContainer>
   );
 };
