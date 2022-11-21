@@ -11,7 +11,7 @@ import { useState, useEffect } from "react";
 
 import { useSelector, useDispatch } from "react-redux";
 
-const Cards = ({ maindate, boardId }) => {
+const Cards = ({ maindate, boardList }) => {
   const [moveIndex, setMoveIndex] = useState(0);
 
   const moveLeft = () => {
@@ -24,15 +24,6 @@ const Cards = ({ maindate, boardId }) => {
     }
     setMoveIndex((prev) => prev + 20);
   };
-
-  const getDateDiff = (d1, d2) => {
-    const dueDay = new Date(d1);
-    const today = new Date(d2);
-    const diffDate = dueDay.getTime() - today.getTime();
-    return Math.round(Math.abs(diffDate / (1000 * 60 * 60 * 24)));
-  };
-  const today = new Date().toISOString().split("T")[0];
-
   return (
     <>
       <CardMoveLeftBtn onClick={moveLeft}>왼쪽</CardMoveLeftBtn>

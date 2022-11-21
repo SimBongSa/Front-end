@@ -61,6 +61,7 @@ export const ProcessActive = styled.div`
   font-weight: 700;
   margin-bottom: 7px;
   z-index: 2;
+  transition: color 0.5s;
 `
 
 export const ProcessItem = styled.div`

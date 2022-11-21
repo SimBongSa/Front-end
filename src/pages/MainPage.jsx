@@ -4,8 +4,14 @@ import Cards from "../components/Cards/Cards";
 import Footer from "../components/Footer/Footer";
 import Header from "../components/Header/Header";
 import MainBg from "../components/MainBg/MainBg";
+import { useSelector } from "react-redux";
 
 export const MainPage = () => {
+
+  const maindate = useSelector((state) => state.calendarList.calendarList);
+  const boardList = useSelector((state) => state.boards.boards);
+  console.log(boardList)
+
   return (
     <>
       <Header />

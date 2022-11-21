@@ -49,8 +49,10 @@ const Individual = () => {
           {
               step === 0 ? (
                 <>
+                  <StLegend>Your Basic Info</StLegend>
                   <Input 
                   placeholder="Username"
+                  dupleCheck={true}
                   type="text"
                   name="username"
                   value={input.username}
@@ -148,12 +150,16 @@ const Individual = () => {
             }
           </form>
           <BtnContainer>
-            <button onClick={() => {
-              setStep(step + 1)
-            }}>다음</button>
+            {
+              step === 3 ? <button>.</button> : (
+                <button onClick={() => {
+                  setStep(step + 1)
+                }}>다음</button>
+              )
+            }
             {
               step === 0 
-                ? null : <button onClick={() => {setStep(step - 1)}}>이전</button>
+                ? <button>.</button> : <button onClick={() => {setStep(step - 1)}}>이전</button>
             }
           </BtnContainer>
         </InputBox>
@@ -171,4 +177,10 @@ export const Gender = styled.div`
   display: flex;
   margin: 0 auto;
   flex-direction: row;
+`
+
+export const StLegend = styled.legend`
+  font-size: 1.4em;
+  margin-bottom: 10px;
+  text-align: left;
 `

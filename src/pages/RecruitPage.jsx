@@ -1,12 +1,12 @@
 import Header from "../components/Header/Header";
 import Footer from "../components/Footer/Footer";
-import UserPage from "../components/MyPage/UserPage/UserPage";
+import Recruit from "../components/Recruit/Recruit"
 
-export const MyPageUser = () => {
+export const RecruitPage = () => {
   return (
     <>
       <Header />
-      <UserPage/>
+      <Recruit/>
       <Footer />
     </>
   );

@@ -1,6 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { apis } from "./Api/apis";
 
+// User
 export const __getUserInfo = createAsyncThunk(
   "userInfo",
   async (payload, thunkAPI) => {
@@ -12,7 +13,6 @@ export const __getUserInfo = createAsyncThunk(
     }
   }
 );
-
 export const __getUserEnroll = createAsyncThunk(
   "enroll",
   async (payload, thunkAPI) => {
@@ -25,7 +25,6 @@ export const __getUserEnroll = createAsyncThunk(
     }
   }
 );
-
 export const __getUserWait = createAsyncThunk(
   "wait",
   async (payload, thunkAPI) => {
@@ -38,7 +37,6 @@ export const __getUserWait = createAsyncThunk(
     }
   }
 );
-
 export const __getUserPass = createAsyncThunk(
   "pass",
   async (payload, thunkAPI) => {
@@ -52,6 +50,20 @@ export const __getUserPass = createAsyncThunk(
   }
 );
 
+export const __getUserReject = createAsyncThunk(
+  "reject",
+  async (payload, thunkAPI) => {
+    try {
+      const response = await apis.getUserReject(payload);
+      console.log(response);
+      return thunkAPI.fulfillWithValue(response.data.data);
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error);
+    }
+  }
+)
+
+// Company
 export const __getCompanyInfo = createAsyncThunk(
   "companyInfo",
   async (payload, thunkAPI) => {
@@ -63,12 +75,23 @@ export const __getCompanyInfo = createAsyncThunk(
     }
   }
 );
-
 export const __getCompanyBoards = createAsyncThunk(
   "companyBoards",
   async (payload, thunkAPI) => {
     try {
       const response = await apis.getCompanyBoards(payload);
+      return thunkAPI.fulfillWithValue(response.data.data);
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error);
+    }
+  }
+);
+export const __getAppliList = createAsyncThunk(
+  "appliList",
+  async (payload, thunkAPI) => {
+    try {
+      const response = await apis.getAppliList(payload);
+      console.log(response)
       return thunkAPI.fulfillWithValue(response.data.data);
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
@@ -85,6 +108,8 @@ export const mypageSlice = createSlice({
     userEnroll: [],
     userWait: [],
     userPass: [],
+    userReject: [],
+    appliList: [],
     isLoading: false,
     error: null,
   },
@@ -128,6 +153,30 @@ export const mypageSlice = createSlice({
         state.userWait = action.payload;
       })
 
+      .addCase(__getUserPass.pending, (state, _) => {
+        state.isLoading = true;
+      })
+      .addCase(__getUserPass.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.userPass = action.payload;
+      })
+      .addCase(__getUserPass.rejected, (state, action) => {
+        state.isLoading = false;
+        state.userPass = action.payload;
+      })
+
+      .addCase(__getUserReject.pending, (state, _) => {
+        state.isLoading = true;
+      })
+      .addCase(__getUserReject.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.userReject = action.payload;
+      })
+      .addCase(__getUserReject.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.payload;
+      })
+
 
       // Company
       .addCase(__getCompanyInfo.pending, (state, _) => {
@@ -153,7 +202,19 @@ export const mypageSlice = createSlice({
       .addCase(__getCompanyBoards.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.payload;
-      });
+      })
+
+      .addCase(__getAppliList.pending, (state, _) => {
+        state.isLoading = true;
+      })
+      .addCase(__getAppliList.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.appliList = action.payload;
+      })
+      .addCase(__getAppliList.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.payload;
+      })
   },
 });
 

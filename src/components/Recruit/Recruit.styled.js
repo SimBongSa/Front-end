@@ -1,6 +1,15 @@
 import styled from "styled-components";
 
-export const Wrap = styled.form``;
+export const Wrap = styled.form`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  @media screen and (max-width: 1024px) {
+    flex-direction: column;
+    margin: 0 auto;
+    margin-bottom: 15rem;
+  }
+`;
 
 export const ImgWrap = styled.form``;
 
@@ -42,6 +51,7 @@ export const ImagePreview = styled.img`
 `;
 
 export const ImgSize = styled.img`
-  width: 70px;
-  height: 70px;
+  width: 350px;
+  height: 150px;
+  margin: 1rem;
 `;
