@@ -1,12 +1,12 @@
 import Footer from "../components/Footer/Footer";
 import Header from "../components/Header/Header"
-import CompanyPage from "../components/MyPage/CompanyPage/CompanyPage"
+import ProfileEdit from "../components/MyPage/ProfileEdit/ProfileEdit"
 
-export const MyPageCompany = () => {
+export const MyPageEdit = () => {
   return (
     <div>
       <Header />
-      <CompanyPage/>
+      <ProfileEdit/>
       <Footer/>
     </div>
   );
