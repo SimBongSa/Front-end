@@ -80,12 +80,40 @@ export const __registerManager = createAsyncThunk(
   }
 );
 
+export const __checkUsername = createAsyncThunk(
+  "checkUsername",
+  async (payload, thunkAPI) => {
+    try {
+      const response = await apis.checkUsername(payload);
+      console.log(response)
+      return thunkAPI.fulfillWithValue(response.data);
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error);
+    }
+  }
+);
+
+export const __checkNickname = createAsyncThunk(
+  "checkNickname",
+  async (payload, thunkAPI) => {
+    try {
+      const response = await apis.checkNickname(payload);
+      console.log(response);
+      return thunkAPI.fulfillWithValue(response.data);
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error)
+    }
+  }
+)
+
 export const registerSlice = createSlice({
   name: "userInfo",
   initialState: {
     memberInfo: [],
     managerInfo: [],
     loginInfo: [],
+    usernameCheck: false,
+    nicknameCheck: false,
     statusCode: null,
     isLoading: false,
     error: "",
@@ -102,13 +130,13 @@ export const registerSlice = createSlice({
       .addCase(__loginMember.fulfilled, (state, action) => {
         state.isLoading = false;
         state.statusCode = action.payload.success;
-        console.log(action.payload)
         state.loginInfo.concat(action.payload);
       })
       .addCase(__loginMember.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.payload;
       })
+
       // manager
       .addCase(__loginManager.pending, (state, _) => {
         state.isLoading = true;
@@ -125,6 +153,31 @@ export const registerSlice = createSlice({
 
     // Register
     builder
+      //Duplicate Check(username)
+      .addCase(__checkUsername.pending, (state, _) => {
+        state.isLoading = true;
+      })
+      .addCase(__checkUsername.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.usernameCheck = action.payload;
+      })
+      .addCase(__checkUsername.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.payload;
+      })
+      //Duplicate Check(nickname)
+      .addCase(__checkNickname.pending, (state, _) => {
+        state.isLoading = true;
+      })
+      .addCase(__checkNickname.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.nicknameCheck = action.payload;
+      })
+      .addCase(__checkNickname.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.payload;
+      })
+
       //Member
       .addCase(__registerMember.pending, (state, _) => {
         state.isLoading = true;

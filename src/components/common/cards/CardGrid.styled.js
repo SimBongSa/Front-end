@@ -3,16 +3,23 @@ import styled from "styled-components"
 export const CardGridContainer = styled.section`
   display: grid;
   grid-template-columns: 2fr repeat(6, minmax(auto, 60px)) 12fr;
-  grid-gap: 0.1rem;
+  grid-gap: 1rem;
   margin: 1rem;
   margin-bottom: 5rem;
+  justify-items: center;
 `
 
 export const Cards = styled.div`
   display: grid;
-  grid-column: 2 / span 4;
-  grid-template-columns: repeat(12, minmax(auto, 60px));
+  grid-column: ${(props) => props.gridColumn} / span 10;
+  grid-template-columns: repeat(20, minmax(auto, 120px));
   grid-gap: 1.5rem;
+  @media screen and (max-width: 1550px) {
+    grid-template-columns: repeat(8, minmax(auto, 60px));
+  }
+  @media screen and (max-width: 1024px) {
+    grid-template-columns: repeat(12, minmax(auto, 60px));
+  }
 `
 
 export const Card = styled.div`
@@ -20,7 +27,7 @@ export const Card = styled.div`
   background-color: #39393b;
   border-radius: 6px;
   cursor: pointer;
-  min-width: 250px;
+  min-width: 300px;
   transition: all 0.5s ease;
   @media screen and (max-width: 1024px) {
     grid-column-end: span 6;
@@ -41,7 +48,7 @@ export const ImgWrapper = styled.div`
   background: #232323;
   & img {
     width: 100%;
-    height: 150px;
+    height: 250px;
     object-fit: cover;
   }
 `

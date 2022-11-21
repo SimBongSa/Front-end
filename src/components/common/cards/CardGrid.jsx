@@ -8,7 +8,7 @@ import {
   CardInfo,
 } from "./CardGrid.styled";
 
-const CardGrid = ({ companyBoards, boards, userEnroll }) => {
+const CardGrid = ({ gridColumn, companyBoards, boards, userEnroll }) => {
   const navigate = useNavigate();
 
   const getDateDiff = (d1, d2) => {
@@ -21,7 +21,9 @@ const CardGrid = ({ companyBoards, boards, userEnroll }) => {
 
   return (
     <CardGridContainer>
-      <Cards>
+      <Cards
+        gridColumn={gridColumn}
+      >
         {/* companyBoards 기업 상세페이지 */}
         {companyBoards?.map((item) => {
           return (
