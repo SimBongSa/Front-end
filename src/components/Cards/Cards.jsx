@@ -45,6 +45,7 @@ const Cards = ({ maindate, boardList }) => {
               );
             })
           : ""}
+
       </CardContainer>
       {moveIndex === 0 ? null : (
         <CardMoveRightBtn onClick={moveRight}>오른쪽</CardMoveRightBtn>
