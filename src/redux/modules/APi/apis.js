@@ -133,7 +133,6 @@ export const apis = {
       }
     }),
   
-
   //commentSlice
   getComment: (payload) =>
     axios.get(`${BASE_URL}/boards/${payload}`, {

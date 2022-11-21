@@ -104,6 +104,24 @@ export const __getArea = createAsyncThunk(
   }
 );
 
+export const __postApply = createAsyncThunk(
+  "apply",
+  async (payload, thunkAPI) => {
+    console.log(payload);
+    try {
+      const response = await apis.applyBoard(payload);
+      if (response.status === 200) {
+        alert(response.data.data.msg);
+        console.log(response.data.data.msg);
+        return thunkAPI.fulfillWithValue(response.data.data.msg);
+      }
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error);
+    }
+  }
+);
+
+
 export const boardSlice = createSlice({
   name: "boards",
   initialState: {
