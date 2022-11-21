@@ -12,11 +12,7 @@ import RegisterActivity from "../components/RegisterActivity/RegisterActivity";
 import CustomerEdit from "../components/CustomerEdit/CustomerEdit";
 import BoardListPage from "../pages/BoardListPage";
 import DetailPage from "../pages/DetailPage";
-<<<<<<< HEAD
-import ListPage from "../pages/ListPage";
 import DetailEdit from "../components/Detail/DetailEdit";
-=======
->>>>>>> 3ebd3b932d6a72c9c1a47d6717f040bfed8042fb
 
 const Router = () => {
   return (
