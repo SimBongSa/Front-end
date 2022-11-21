@@ -101,17 +101,16 @@ const Recruit = () => {
           <>
             <CustomeDatePicker
               locale={ko}
-              dateFormat="yyyy년-MM월-dd일"
+              dateFormat="📅 yyyy년-MM월-dd일"
               selected={startDate}
               onChange={(date) => setStartDate(date)}
               selectsStart
               startDate={startDate}
               endDate={endDate}
             />
-
             <CustomeDatePicker
               locale={ko}
-              dateFormat="yyyy년-MM월-dd일"
+              dateFormat="📅 yyyy년-MM월-dd일 "
               selected={endDate}
               onChange={(date) => setEndDate(date)}
               selectsEnd

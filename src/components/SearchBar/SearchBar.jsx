@@ -1,6 +1,12 @@
 import { useEffect } from "react";
 import { useRef, useState } from "react";
-
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import moment from "moment";
+import { ko } from "date-fns/esm/locale";
+import styled from "styled-components";
+import { useDispatch } from "react-redux";
+import { __postSearch } from "../../redux/modules/calendarSlice";
 import {
   SearchBarContainer,
   SearchBarOpen,
@@ -12,14 +18,21 @@ import {
 } from "./SearchBar.styled";
 
 const SearchBar = () => {
+  const dispatch = useDispatch;
   const [modal, setModal] = useState(false);
   const [animation, setAnimation] = useState(false);
   const node = useRef();
 
+  // date picker
+  const today = new Date();
+  const [startDate, setStartDate] = useState(today);
+  const [endDate, setEndDate] = useState(today);
+
   //search state
   const [search, setSearch] = useState({
     category: "",
-    date: "",
+    startDate: moment(startDate).format("YYYY-MM-DD"),
+    endDate: moment(startDate).format("YYYY-MM-DD"),
     location: "",
   });
 
@@ -43,6 +56,7 @@ const SearchBar = () => {
 
   const onSubmitHandler = (e) => {
     e.preventDefault();
+    dispatch(__postSearch(search));
     setSearch();
   };
 
@@ -60,22 +74,48 @@ const SearchBar = () => {
                 <SearchList>
                   <li>
                     <h4>Category</h4>
-                    <input
+                    <select
                       value={search.category?.search.category}
                       onChange={(e) => {
                         setSearch(e.target.value);
                       }}
-                    />
+                    >
+                      <option>서울</option>
+                      <option>경기</option>
+                      <option>인천</option>
+                      <option>강원</option>
+                      <option>충북</option>
+                      <option>충남</option>
+                      <option>세종</option>
+                      <option>전북</option>
+                      <option>전남</option>
+                      <option>경북</option>
+                      <option>경남</option>
+                      <option>제주</option>
+                    </select>
                   </li>
                   <li>
-                    <h4>Date</h4>
-                    <input
-                      type="date"
-                      value={search.date?.search.date}
-                      onChange={(e) => {
-                        setSearch(e.target.value);
-                      }}
-                    />
+                    <>
+                      <CustomeDatePicker
+                        locale={ko}
+                        dateFormat="📅 yyyy년-MM월-dd일"
+                        selected={startDate}
+                        onChange={(date) => setStartDate(date)}
+                        selectsStart
+                        startDate={startDate}
+                        endDate={endDate}
+                      />
+                      <CustomeDatePicker
+                        locale={ko}
+                        dateFormat="📅 yyyy년-MM월-dd일 "
+                        selected={endDate}
+                        onChange={(date) => setEndDate(date)}
+                        selectsEnd
+                        startDate={startDate}
+                        endDate={endDate}
+                        minDate={startDate}
+                      />
+                    </>
                   </li>
                   <li>
                     <h4>Location</h4>
@@ -111,3 +151,15 @@ const SearchBar = () => {
 };
 
 export default SearchBar;
+
+const CustomeDatePicker = styled(DatePicker)({
+  display: "flex",
+  fontSize: "15px",
+  width: "50rem",
+  paddingLeft: "20px",
+  border: "none",
+  borderRadius: "15px",
+  outline: "none",
+  marginBottom: "1rem",
+  background: "whitesmoke",
+});
