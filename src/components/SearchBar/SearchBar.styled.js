@@ -1,6 +1,6 @@
 import styled, { keyframes } from "styled-components";
 
-export const SearchBarContainer = styled.form`
+export const SearchBarContainer = styled.div`
   display: flex;
   width: 100%;
   position: relative;
