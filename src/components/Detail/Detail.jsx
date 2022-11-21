@@ -8,7 +8,6 @@ import {
 } from "../../redux/modules/boardSlice";
 
 import styled from "styled-components";
-import { __getBoardId, __postApply } from "../../redux/modules/boardSlice";
 
 import {
   DetailContainer,
