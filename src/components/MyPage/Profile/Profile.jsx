@@ -18,7 +18,12 @@ const Profile = ({ companyInfo, userInfo, isEdit, setUserPageOpt, setCompanyPage
       <ProfileBox>
         {/* 이거 삼항연산자 넘 그지같아서 수정해야 함 - 성호 */}
         {
-          companyInfo && companyInfo.profileImage || userInfo && userInfo.profileImage ? 
+          companyInfo && companyInfo.profileImage ? 
+            <img src={companyInfo.profileImage} alt="user" /> : 
+            <img src="https://play-lh.googleusercontent.com/38AGKCqmbjZ9OuWx4YjssAz3Y0DTWbiM5HB0ove1pNBq_o9mtWfGszjZNxZdwt_vgHo=w240-h480-rw" alt="user"/>
+        }
+        {
+          userInfo && userInfo.profileImage ? 
             <img src={companyInfo.profileImage} alt="user" /> : 
             <img src="https://play-lh.googleusercontent.com/38AGKCqmbjZ9OuWx4YjssAz3Y0DTWbiM5HB0ove1pNBq_o9mtWfGszjZNxZdwt_vgHo=w240-h480-rw" alt="user"/>
         }
