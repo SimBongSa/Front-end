@@ -28,7 +28,7 @@ const Cards = ({ maindate, boardList }) => {
     <>
       <CardMoveLeftBtn onClick={moveLeft}>왼쪽</CardMoveLeftBtn>
       <CardContainer style={{ transform: `translateX(${moveIndex}%)` }}>
-        <Card key={boardId}>
+        <Card>
           <p className="price">D - 1</p>
           <CardImg>{/* <img src={obj.boardImage} alt="test" /> */}</CardImg>
           <CardTitle>
