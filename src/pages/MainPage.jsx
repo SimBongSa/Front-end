@@ -17,7 +17,7 @@ export const MainPage = () => {
       <Header />
       <MainBg />
       <MainPageText>Urgent Activity</MainPageText>
-      <Cards maindate={maindate.data} key={maindate.boardId} />
+      <Cards />
       <MainPageText>Search by Date</MainPageText>
       <MainCalendar />
       <Footer />

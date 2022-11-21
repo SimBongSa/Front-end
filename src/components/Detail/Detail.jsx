@@ -4,7 +4,6 @@ import { useNavigate } from "react-router-dom";
 import { __postApply } from "../../redux/modules/boardSlice";
 import { __delBoard, __getBoardId } from "../../redux/modules/boardSlice";
 import { useParams } from "react-router-dom";
-
 import {
   DetailContainer,
   DetailContent,

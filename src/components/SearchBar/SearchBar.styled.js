@@ -1,12 +1,12 @@
 import styled, { keyframes } from "styled-components";
 
-export const SearchBarContainer = styled.div`
+export const SearchBarContainer = styled.form`
   display: flex;
   width: 100%;
   position: relative;
   margin: 0 auto;
   z-index: 3;
-`
+`;
 
 export const SearchBarOpen = styled.button`
   display: ${(props) => (props.modal ? "none" : "block")};
@@ -22,12 +22,12 @@ export const SearchBarOpen = styled.button`
   animation: ${(props) => (props.animation ? fadeOut : fadeIn)} 0.6s;
   transform: translate(-50%, 0%);
   transition: all 0.5s;
-  @media ( max-width: 768px) {
+  @media (max-width: 768px) {
     top: 24px;
     width: 120px;
     right: 0px;
   }
-`
+`;
 
 export const SearchModal = styled.div`
   position: fixed;
@@ -41,7 +41,7 @@ export const SearchModal = styled.div`
   animation: ${(props) => (props.animation ? fadeOut : fadeIn)} 0.6s;
   transform: translate(-50%, 0%);
   transition: all 0.4s;
-`
+`;
 
 export const SearchBarWrapper = styled.div`
   display: flex;
@@ -49,7 +49,7 @@ export const SearchBarWrapper = styled.div`
   align-items: center;
   width: 100%;
   background: transparent;
-`
+`;
 export const SearchLabel = styled.label`
   align-items: center;
   background: white;
@@ -70,7 +70,7 @@ export const SearchLabel = styled.label`
   top: 20%;
   width: 100%;
   color: black;
-`
+`;
 export const SearchList = styled.ul`
   list-style-type: none;
   display: flex;
@@ -108,9 +108,9 @@ export const SearchList = styled.ul`
     }
     & input {
       width: 100%;
-    };
+    }
   }
-`
+`;
 
 export const SearchBtn = styled.button`
   cursor: pointer;
@@ -127,7 +127,7 @@ export const SearchBtn = styled.button`
   margin: 0 0.5em;
   z-index: 1;
   transition: all 0.25s;
-`
+`;
 
 const fadeIn = keyframes`
   from {
@@ -136,7 +136,7 @@ const fadeIn = keyframes`
   to {
     opacity: 1;
   }
-`
+`;
 
 const fadeOut = keyframes`
   from {
@@ -145,4 +145,4 @@ const fadeOut = keyframes`
   to {
     opacity: 0;
   }
-`
+`;

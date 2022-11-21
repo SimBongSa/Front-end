@@ -3,7 +3,6 @@ import Calendar from "react-calendar";
 // import "react-calendar/dist/Calendar.css";
 import moment from "moment";
 import { CalendarContainer } from "./MainCalendar.styled";
-import axios from "axios";
 import Serverlist from "../Serverlist/Serverlist";
 import styled from "styled-components";
 import { useSelector, useDispatch } from "react-redux";
@@ -12,8 +11,6 @@ import { __getCustomer } from "../../redux/modules/calendarSlice";
 const MainCalendar = () => {
   const dispatch = useDispatch();
   const maindate = useSelector((state) => state.calendarList.calendarList);
-  // let markday = maindate.data.dueDay;
-  // console.log(markday);
 
   const [value, setValue] = useState(new Date());
   const [date, setDate] = useState(new Date());
@@ -24,21 +21,21 @@ const MainCalendar = () => {
 
   useEffect(() => {
     dispatch(__getCustomer(moment(value).format("YYYY-MM-DD")));
-  }, [dispatch]);
+  }, [dispatch, value]);
 
-  const onClickDayHandler = (e) => {
-    // console.log(moment(value).format("YYYYMMDD"));
-    // console.log(typeof moment(value).format("YYYYMMDD"));
-    // console.log(value);
-    dispatch(__getCustomer(moment(value).format("YYYY-MM-DD")));
-  };
+  useEffect(() => {
+    if (maindate.constructor === Object && Object.keys(maindate).length !== 0) {
+      maindate.data.map((item) => {
+        setMark((prev) => [...prev, item.dueDay]);
+      });
+    }
+  }, [maindate]);
 
   return (
     <>
       <CalendarContainer>
         <Calendar
-          // onClickMonth={(e) => onClickMonthHandler(e)}
-          onClickDay={(e) => onClickDayHandler(e)}
+          // onClickDay={(e) => onClickDayHandler(e)}
           onChange={setValue} // useState로 포커스 변경 시 현재 날짜 받아오기
           formatDay={(locale, date) => moment(date).format("DD")} // 날'일' 제외하고 숫자만 보이도록 설정
           locale="en-EN"
@@ -55,8 +52,15 @@ const MainCalendar = () => {
             // 추가할 html 태그를 변수 초기화
             let html = [];
             // 현재 날짜가 post 작성한 날짜 배열(mark)에 있다면, dot div 추가
-            if (mark.find((x) => x === moment(date).format("YYYY-MM-DD"))) {
-              html.push(<div className="dot" key={date}></div>);
+            if (
+              mark.find((item) => item === moment(date).format("YYYY-MM-DD"))
+            ) {
+              // console.log(mark);
+              html.push(
+                <div className="dot" key={date}>
+                  {/* {maindate.data[value].length} */}
+                </div>
+              );
             }
             // 다른 조건을 주어서 html.push 에 추가적인 html 태그를 적용할 수 있음.
             return (

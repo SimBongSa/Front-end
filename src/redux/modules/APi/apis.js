@@ -25,16 +25,20 @@ export const apis = {
   // registerSlice
   memberLogin: (payload) => axios.post(`${BASE_URL}/members/login`, payload),
   managerLogin: (payload) => axios.post(`${BASE_URL}/managers/login`, payload),
-  memberSignup: (payload) => axios.post(`${BASE_URL}/members/signup/individual`, payload),
-  managerSignup: (payload) => api.post(`${BASE_URL}/members/signup/admin`, payload, {
-    headers: {
-      "Content-Type": "multipart/form-data",
-    }
-  }),
-  checkUsername: (payload) => axios.get(`${BASE_URL}/members/check_username/${payload}`),
-  checkNickname: (payload) => axios.get(`${BASE_URL}/members/check_nickname/${payload}`),
+  memberSignup: (payload) =>
+    axios.post(`${BASE_URL}/members/signup/individual`, payload),
+  managerSignup: (payload) =>
+    api.post(`${BASE_URL}/members/signup/admin`, payload, {
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    }),
+  checkUsername: (payload) =>
+    axios.get(`${BASE_URL}/members/check_username/${payload}`),
+  checkNickname: (payload) =>
+    axios.get(`${BASE_URL}/members/check_nickname/${payload}`),
 
-  //callendarSlice
+  //calendarSlice
   mainlist: (boardId) => api.get(`${BASE_URL}/boards/${boardId}`),
   calendarList: (dueDay) => api.get(`${BASE_URL}/boards/date/${dueDay}`),
   edit: (payload) =>
