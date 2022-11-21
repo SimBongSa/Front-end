@@ -39,17 +39,19 @@ export const apis = {
     axios.get(`${BASE_URL}/members/signup/check_nickname/${payload}`),
 
   //calendarSlice
-  mainlist: (boardId) => api.get(`${BASE_URL}/boards/${boardId}`),
+  // mainlist: (boardId) => api.get(`${BASE_URL}/boards/${boardId}`),
   calendarList: (dueDay) => api.get(`${BASE_URL}/boards/date/${dueDay}`),
-  edit: (payload) =>
-    api.put(`${BASE_URL}/mypage`, payload, {
-      // headers: {
-      //   "Content-Type": "multipart/form-data",
-      // },
-    }),
+  search: (payload) => api.post(`${BASE_URL}/boards/date/${payload}`),
+  // edit: (payload) =>
+  //   api.put(`${BASE_URL}/mypage`, payload, {
+  //     // headers: {
+  //     //   "Content-Type": "multipart/form-data",
+  //     // },
+  //   }),
 
   // boards
-  getBoard: (payload) => axios.get(`${BASE_URL}/boards?page=${payload.page}&size=${payload.size}`),
+  getBoard: (payload) =>
+    axios.get(`${BASE_URL}/boards?page=${payload.page}&size=${payload.size}`),
   getBoardId: (boardId) => axios.get(`${BASE_URL}/boards/${boardId}`),
 
   // registerActivity slice
@@ -111,11 +113,11 @@ export const apis = {
       },
     }),
   getUserReject: () =>
-  api.get(`${BASE_URL}/mypage/enroll/fail`, {
-    headers: {
-      Authorization: token,
-    }
-  }),
+    api.get(`${BASE_URL}/mypage/enroll/fail`, {
+      headers: {
+        Authorization: token,
+      },
+    }),
 
   // MyPage (Company)
   getCompanyPage: () =>
@@ -134,9 +136,9 @@ export const apis = {
     api.get(`${BASE_URL}/companypage/boards/${id}`, {
       headers: {
         Authorization: token,
-      }
+      },
     }),
-  
+
   //commentSlice
   getComment: (payload) =>
     axios.get(`${BASE_URL}/boards/${payload}`, {
