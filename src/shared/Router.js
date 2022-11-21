@@ -7,11 +7,11 @@ import { RegisterPage } from "../pages/RegisterPage";
 import { GloblaStyle } from "../theme/GlobalStyle";
 import { ThemeProvider } from "../context/themeProvider";
 import { MyPageUser } from "./../pages/MyPageUser";
-import CustomerEdit from "../components/CustomerEdit/CustomerEdit";
 import BoardListPage from "../pages/BoardListPage";
 import DetailPage from "../pages/DetailPage";
 import { RecruitPage } from "../pages/RecruitPage";
 import DetailEdit from "../components/Detail/DetailEdit";
+import { MyPageEdit } from "../pages/MyPageEdit";
 
 const Router = () => {
   return (
@@ -28,8 +28,8 @@ const Router = () => {
             <Route path="/register" element={<RegisterPage />} />
             <Route path="/companypage" element={<MyPageCompany />} />
             <Route path="/usermypage" element={<MyPageUser />} />
+            <Route path="/mypageedit" element={<MyPageEdit/>} />
             <Route path="/recruit" element={<RecruitPage />} />
-            <Route path="/customeredit" element={<CustomerEdit />} />
           </Routes>
         </Suspense>
       </ThemeProvider>

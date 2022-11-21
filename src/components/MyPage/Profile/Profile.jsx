@@ -5,7 +5,6 @@ import { useNavigate } from "react-router-dom";
 const Profile = ({ companyInfo, userInfo, isEdit, setUserPageOpt, setCompanyPageOpt }) => {
 
   const navigate = useNavigate();
-
   const logOut = () => {
     removeCookie(['access-token'], { path: '/' });
     removeCookie(['username'], { path: '/' });
@@ -86,7 +85,9 @@ const Profile = ({ companyInfo, userInfo, isEdit, setUserPageOpt, setCompanyPage
             }}>나의 봉사 관리</h4>
             <h4>캘린더</h4>
             <span/>
-            <h4>프로필 수정</h4>
+            <h4 onClick={() => {
+              navigate("/mypageedit")
+            }}>프로필 수정</h4>
             <h4 onClick={() => {
               logOut();
               navigate('/login')
