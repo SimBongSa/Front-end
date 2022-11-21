@@ -7,9 +7,11 @@ import {
   CardMoveLeftBtn,
   CardMoveRightBtn,
 } from "./Cards.styled";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
-const Cards = () => {
+import { useSelector, useDispatch } from "react-redux";
+
+const Cards = ({ maindate, boardId }) => {
   const [moveIndex, setMoveIndex] = useState(0);
 
   const moveLeft = () => {
@@ -23,52 +25,25 @@ const Cards = () => {
     setMoveIndex((prev) => prev + 20);
   };
 
+  const getDateDiff = (d1, d2) => {
+    const dueDay = new Date(d1);
+    const today = new Date(d2);
+    const diffDate = dueDay.getTime() - today.getTime();
+    return Math.round(Math.abs(diffDate / (1000 * 60 * 60 * 24)));
+  };
+  const today = new Date().toISOString().split("T")[0];
+
   return (
     <>
       <CardMoveLeftBtn onClick={moveLeft}>왼쪽</CardMoveLeftBtn>
       <CardContainer style={{ transform: `translateX(${moveIndex}%)` }}>
-        <Card>
-          <CardImg>
-            {/* <img src="https://i.redd.it/b3esnz5ra34y.jpg" alt="test"/> */}
-          </CardImg>
+        <Card key={boardId}>
+          <p className="price">D - 1</p>
+          <CardImg>{/* <img src={obj.boardImage} alt="test" /> */}</CardImg>
           <CardTitle>
-            <p>W Children Hospital</p>
-            <span>100 Smart Street, Gangnam-gu</span>
+            <p>지역</p>
+            <span>상세 지역</span>
           </CardTitle>
-          {/* <CardContent>Children Christmas Santa Volunteer</CardContent> */}
-        </Card>
-
-        <Card>
-          <CardImg>
-            {/* <img src="https://i.redd.it/b3esnz5ra34y.jpg" alt="test"/> */}
-          </CardImg>
-          <CardTitle>
-            <p>W Children Hospital</p>
-            <span>100 Smart Street, Gangnam-gu</span>
-          </CardTitle>
-          {/* <CardContent>Children Christmas Santa Volunteer</CardContent> */}
-        </Card>
-
-        <Card>
-          <CardImg>
-            {/* <img src="https://i.redd.it/b3esnz5ra34y.jpg" alt="test"/> */}
-          </CardImg>
-          <CardTitle>
-            <p>W Children Hospital</p>
-            <span>100 Smart Street, Gangnam-gu</span>
-          </CardTitle>
-          {/* <CardContent>Children Christmas Santa Volunteer</CardContent> */}
-        </Card>
-
-        <Card>
-          <CardImg>
-            {/* <img src="https://i.redd.it/b3esnz5ra34y.jpg" alt="test"/> */}
-          </CardImg>
-          <CardTitle>
-            <p>W Children Hospital</p>
-            <span>100 Smart Street, Gangnam-gu</span>
-          </CardTitle>
-          {/* <CardContent>Children Christmas Santa Volunteer</CardContent> */}
         </Card>
       </CardContainer>
       {moveIndex === 0 ? null : (

@@ -60,9 +60,8 @@ export const LoginBox = styled.div`
   padding: 50px;
   max-width: 500px;
   min-width: 500px;
-  width: 30%;
   height: 40vh;
-  min-height: 55vh;
+  min-height: 600px;
   overflow: hidden;
   flex-direction: column;
   justify-content: space-around;
@@ -70,8 +69,9 @@ export const LoginBox = styled.div`
   color: ${(props) => props.theme.bgColor};
   background-color: ${(props) => props.theme.ctrColor};;
   transition: all 0.5s;
-  @media (max-width: 980px) {
+  @media (max-width: 768px) {
     width: 100%;
+    margin-bottom: 10rem;
   }
   & span {
     display: flex;

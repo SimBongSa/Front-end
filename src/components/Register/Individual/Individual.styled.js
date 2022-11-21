@@ -2,9 +2,10 @@ import styled from "styled-components"
 
 export const InputContainer = styled.div`
   width: 600px;
-  height: 1000px;
+  height: 800px;
   position: relative;
   margin: auto;
+  margin-bottom: 10rem;
   box-shadow: 2px 10px 40px rgba(22,20,19,0.4);
   border-radius: 10px;
   margin-top: 50px;
@@ -35,5 +36,10 @@ export const InputBox = styled.div`
   align-items: center;
   padding: 0px 50px;
   text-align: center;
-  margin-top: -250px;
+  margin-top: -550px;
+  & img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+  }
 `

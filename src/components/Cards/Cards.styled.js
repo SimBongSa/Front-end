@@ -14,6 +14,7 @@ export const CardContainer = styled.div`
   overflow: auto;
   white-space: nowrap;
   transition: all 0.5s;
+  overflow: hidden;
 `
 
 export const Card = styled.article`

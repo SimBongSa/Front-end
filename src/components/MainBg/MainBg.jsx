@@ -1,8 +1,10 @@
 import { MainSlider } from "./MainBg.styled";
 
-const MainBg = () => {
+const MainBg = ({ image }) => {
   return (
-    <MainSlider/>
+    <MainSlider>
+      <img src={image} alt="" />
+    </MainSlider>
   )
 };
 
