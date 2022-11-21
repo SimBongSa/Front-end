@@ -26,6 +26,8 @@ const Detail = () => {
     dispatch(__getBoardId(id));
   }, [dispatch, id]);
 
+  console.log("Detail.jsx boardsId =>", boardsId);
+
   return (
     <>
       <MainBg image={boardsId?.boardImage}/>
