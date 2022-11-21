@@ -12,12 +12,7 @@ const Board = () => {
 
   const boards = useSelector((state) => state.boards.boards);
   const area = useSelector((state) => state.boards.area);
-<<<<<<< HEAD
-  console.log(area);
 
-=======
-  
->>>>>>> 3ebd3b932d6a72c9c1a47d6717f040bfed8042fb
   useEffect(() => {
     dispatch(__getBoard());
   }, [dispatch]);

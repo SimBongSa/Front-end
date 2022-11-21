@@ -1,15 +1,11 @@
 import React, { useEffect, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
-<<<<<<< HEAD
 import { useNavigate, useParams } from "react-router-dom";
 import { __delBoard, __getBoardId } from "../../redux/modules/boardSlice";
 
 import styled from "styled-components";
-=======
-import { useParams } from "react-router-dom";
 import { __getBoardsId, __postApply } from "../../redux/modules/boardSlice";
 
->>>>>>> 3ebd3b932d6a72c9c1a47d6717f040bfed8042fb
 import {
   DetailContainer,
   DetailContent,
@@ -33,11 +29,12 @@ const Detail = () => {
     dispatch(__getBoardId(id));
   }, [dispatch, id]);
 
+  console.log("Detail.jsx boardsId =>", boardsId);
+
   return (
     <>
       <MainBg image={boardsId?.boardImage} />
 
-<<<<<<< HEAD
       <DetailContainer>
         <DetailContent>
           <h1>{boardsId?.title}</h1>
@@ -53,35 +50,21 @@ const Detail = () => {
             <KaMap area={boardsId?.area} mapHeight="400px" />
           </MapWrapper>
         </DetailContent>
-=======
-        <DetailContainer>
-          <DetailContent>
-            <h1>{ boardsId?.title }</h1>
-            <hr/>
-            <h3>봉사 활동 내용</h3>
-            <span>{ boardsId?.content }</span>
-            <h3>봉사 요청 사항</h3>
-            <h5>내가 만든 쿠키 너를 위해 구웠지</h5>
-            <h5>내가 만든 쿠키 너를 위해 구웠지</h5>
-            <h5>내가 만든 쿠키 너를 위해 구웠지</h5>
-            <h5>내가 만든 쿠키 너를 위해 구웠지</h5>
-            <MapWrapper>
-              <KaMap input="false" area={boardsId?.area} mapHeight="400px" />
-            </MapWrapper>
-          </DetailContent>
->>>>>>> 3ebd3b932d6a72c9c1a47d6717f040bfed8042fb
 
         <DetailNav>
           <h2>
             {boardsId?.startDate} - {boardsId?.endDate}
           </h2>
-<<<<<<< HEAD
+
           <DetailNavBtn>봉사자 신청하기</DetailNavBtn>
-=======
-          <DetailNavBtn onClick={() => {
-            dispatch(__postApply(id))
-          }}>봉사자 신청하기</DetailNavBtn>
->>>>>>> 3ebd3b932d6a72c9c1a47d6717f040bfed8042fb
+
+          <DetailNavBtn
+            onClick={() => {
+              dispatch(__postApply(id));
+            }}
+          >
+            봉사자 신청하기
+          </DetailNavBtn>
           <DetailNavBtn>봉사 단체 연락하기</DetailNavBtn>
           <DetailNavBtn
             onClick={() => {
