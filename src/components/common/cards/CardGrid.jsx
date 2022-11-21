@@ -22,7 +22,6 @@ const CardGrid = ({ companyBoards, boards, userEnroll }) => {
   return (
     <CardGridContainer>
       <Cards>
-
         {/* companyBoards 기업 상세페이지 */}
         {companyBoards?.map((item) => {
           return (

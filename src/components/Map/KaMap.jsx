@@ -103,19 +103,4 @@ export default KaMap;
 export const StMap = styled(Map)`
   width: ${(props) => props.width};
   height: ${(props) => props.height};
-  position: ${(props) => props.position};
-  top: ${(props) => {
-    if (props.position) {
-      return '21rem';
-    } else {
-      return '0';
-    }
-  }};
-  right: ${(props) => {
-    if (props.position) {
-      return '1rem';
-    } else {
-      return '0';
-    }
-  }};
 `;

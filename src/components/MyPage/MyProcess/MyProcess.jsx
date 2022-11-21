@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const MyProcess = ({ userEnroll, userWait, userPass, userReject }) => {
+const MyProcess = ({ userEnroll, userWait, userPass, userReject, setUserPageOpt }) => {
   return (
     <MyProcessContainer>
       <h1>봉사 현황</h1>

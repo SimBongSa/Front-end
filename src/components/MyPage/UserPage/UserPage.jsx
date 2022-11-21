@@ -45,6 +45,7 @@ const UserPage = () => {
           userWait={userWait.length}
           userPass={userPass.length}
           userReject={userReject.length}
+          setUserPageOpt={setUserPageOpt}
         />
         {
           userPageOpt === "wait" ? (

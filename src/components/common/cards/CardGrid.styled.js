@@ -10,16 +10,17 @@ export const CardGridContainer = styled.section`
 
 export const Cards = styled.div`
   display: grid;
-  grid-column: 2 / span 12;
+  grid-column: 2 / span 4;
   grid-template-columns: repeat(12, minmax(auto, 60px));
   grid-gap: 1.5rem;
 `
 
 export const Card = styled.div`
-  grid-column-end: span 6;
+  grid-column-end: span 4;
   background-color: #39393b;
   border-radius: 6px;
   cursor: pointer;
+  min-width: 250px;
   transition: all 0.5s ease;
   @media screen and (max-width: 1024px) {
     grid-column-end: span 6;
