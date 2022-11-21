@@ -53,6 +53,7 @@ const UserPage = () => {
               <h1>봉사 신청 내역</h1>
               <CardGrid
                 userEnroll={userWait}
+                gridColumn={1}
               />
             </MyPageCards>
           ) : null
@@ -64,6 +65,7 @@ const UserPage = () => {
               <h1>참여 봉사 관리</h1>
               <CardGrid
                 userEnroll={userPass}
+                gridColumn={1}
               />
             </MyPageCards>
           ) : null

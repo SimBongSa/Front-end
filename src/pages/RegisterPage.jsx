@@ -5,7 +5,8 @@ import Footer from "../components/Footer/Footer";
 export const RegisterPage = () => {
   return (
     <>
-      <Header/>
+      {/* <Header/> */}
+      <div>로고 들어갈거임</div>
       <Register/>
       <Footer />
     </>

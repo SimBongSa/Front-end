@@ -34,9 +34,9 @@ export const apis = {
       },
     }),
   checkUsername: (payload) =>
-    axios.get(`${BASE_URL}/members/check_username/${payload}`),
+    axios.get(`${BASE_URL}/members/signup/check_username/${payload}`),
   checkNickname: (payload) =>
-    axios.get(`${BASE_URL}/members/check_nickname/${payload}`),
+    axios.get(`${BASE_URL}/members/signup/check_nickname/${payload}`),
 
   //calendarSlice
   mainlist: (boardId) => api.get(`${BASE_URL}/boards/${boardId}`),
@@ -49,8 +49,8 @@ export const apis = {
     }),
 
   // boards
-  getBoard: (page) => api.get(`${BASE_URL}/boards?page=${page}`),
-  getBoardId: (boardId) => api.get(`${BASE_URL}/boards/${boardId}`),
+  getBoard: (payload) => axios.get(`${BASE_URL}/boards?page=${payload.page}&size=${payload.size}`),
+  getBoardId: (boardId) => axios.get(`${BASE_URL}/boards/${boardId}`),
 
   // registerActivity slice
   createBoard: (payload) =>
