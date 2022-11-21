@@ -6,9 +6,12 @@ import { MyPageCompany } from "../pages/MyPageCompany";
 import { RegisterPage } from "../pages/RegisterPage";
 import { GloblaStyle } from "../theme/GlobalStyle";
 import { ThemeProvider } from "../context/themeProvider";
-import CombinedMap from "../components/Map/CombinedMap";
-import List from "../components/List/List";
-import { MyPageUser } from "../pages/MyPageUser";
+import { MyPageUser } from "./../pages/MyPageUser";
+import CustomerEdit from "../components/CustomerEdit/CustomerEdit";
+import BoardListPage from "../pages/BoardListPage";
+import DetailPage from "../pages/DetailPage";
+import { RecruitPage } from "../pages/RecruitPage";
+import DetailEdit from "../components/Detail/DetailEdit";
 
 const Router = () => {
   return (
@@ -18,12 +21,15 @@ const Router = () => {
         <Suspense fallback={<div>...loading</div>}>
           <Routes>
             <Route path="/" element={<MainPage />} />
+            <Route path="/boards" element={<BoardListPage />} />
+            <Route path="/boards/:id" element={<DetailPage />} />
+            <Route path="/edit/:id" element={<DetailEdit />} />
             <Route path="/login" element={<LoginPage />} />
             <Route path="/register" element={<RegisterPage />} />
-            <Route path="/mypage" element={<MyPageCompany />} />
-            <Route path="/usermypage" element={ <MyPageUser/> } />
-            <Route path="/map" element={<CombinedMap />} />
-            <Route path="/list" element={<List />} />
+            <Route path="/companypage" element={<MyPageCompany />} />
+            <Route path="/usermypage" element={<MyPageUser />} />
+            <Route path="/recruit" element={<RecruitPage />} />
+            <Route path="/customeredit" element={<CustomerEdit />} />
           </Routes>
         </Suspense>
       </ThemeProvider>

@@ -1,31 +1,54 @@
 import styled from "styled-components";
 
 export const FooterContainer = styled.section`
-  width: 80%;
   display: flex;
+  position: fixed;
+  bottom: -110px;
+  flex-flow: row wrap;
   margin: 0 auto;
-  margin-top: 5rem;
-  height: 350px;
-  background-color: #aaaaaa;
-  border-radius: 15px;
-`
-
-export const FooterContent = styled.div`
-  width: 55%;
-  padding: 80px 0 0 30px;
-`
-
-export const FooterBtn = styled.button`
-  cursor: pointer;
-  width: 250px;
+  background: rgb(55,55,55);
+  width: 100%;
   padding: 1rem;
-  border-radius: 15px;
-  border: none;
-  background-color: #232323;
-  color: #fff;
-  margin-top: 1rem;
-  transition: all 0.4s;
+  transition: all 0.3s;
+  z-index: 4;
   &:hover {
-    transform: translateY(-5%);
+    bottom: 0;
   }
+  @media ( max-width: 768px) {
+    position: fixed;
+    bottom: -120px;
+  }
+`
+
+export const FooterUl = styled.ul`
+  width: 33.3333%;
+  & li {
+    padding-bottom: 10px;
+    & h4 {
+      transition: all 0.5s;
+      padding: 10px 0 5px 0;
+      color: #fff;
+      font-size: 1.4rem;
+    }
+  }
+`
+
+export const FooterItem = styled.li`
+  cursor: pointer;
+  width: fit-content;
+  font-size: 0.8rem;
+  margin-left: 3px;
+  color: #8DB9ED;
+  transition: all 0.5s;
+  &:hover {
+    color: #ccc
+  }
+`
+
+export const FooterBottom = styled.section`
+  width: 100%;
+  padding: 1rem;
+  border-top: 1px solid #ccc;
+  margin-top: 10px;
+  font-size: 1rem;
 `

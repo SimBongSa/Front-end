@@ -1,15 +1,29 @@
-import { ServerlistContainer } from "./Serverlist.styled";
+import { ServerListContainer, ServerListImg, Body } from "./Serverlist.styled";
+import { useState } from "react";
 
 function Serverlist({ result, mark }) {
+  const [moveIndex, setMoveIndex] = useState(0);
   return (
     <>
       {result && result.length > 0
-        ? result.map((obj) => {
+        ? result.map((obj, boardId) => {
             return (
-              <ServerlistContainer>
-                <h3>Children Christmas Santa Volunteer</h3>
-                <div>W chidren Hospital 100 smart street, Gannam-gu</div>
-              </ServerlistContainer>
+              <ServerListContainer
+                key={boardId}
+                style={{ transform: `translateX(${moveIndex}%)` }}
+              >
+                <ServerListImg>
+                  <img src={obj.boardImage} alt="test" />
+                </ServerListImg>
+                <Body>
+                  <div>{obj.title}</div>
+                  <div>{obj.area}</div>
+                  <div>{obj.detailArea}</div>
+                  <div>
+                    {obj.startDate} ~ {obj.endDate}
+                  </div>
+                </Body>
+              </ServerListContainer>
             );
           })
         : ""}

@@ -11,6 +11,10 @@ export const HeaderContainer = styled.header`
   background-color: ${(props) => props.theme.bgColor};
   will-change: transform;
   transition: all 0.5s;
+  @media ( max-width: 768px) {
+    width: 100%;
+    overflow: hidden;
+  }
 `
 
 export const HeaderLogo = styled.span`
@@ -39,12 +43,14 @@ export const HeaderMenuItem = styled.span`
   cursor: pointer;
   display: inline-block;
   justify-content: center;
-  margin-top: 4px;
   padding: 13px 10px 13px 10px;
   text-decoration: none;
   transition: all 0.3s;
   &:hover {
     transform: translateY(-10%);
+  }
+  @media ( max-width: 768px) {
+    display: none;
   }
 `
 
@@ -57,29 +63,39 @@ export const HeaderRegister = styled.div`
   padding: 15px;
   width: fit-content;
   margin-left: 50px;
-  padding: 16px 25px 15px 25px;
+  padding: 15px 25px 15px 25px;
   float: right;
   justify-content: center;
   text-align: center;
   align-items: center;
+  user-select: none;
   transition: all 0.3s;
   &:hover {
     transform: translateY(-10%);
   }
+  @media ( max-width: 768px) {
+    display: none;
+  }
 `
 
 export const UserIcon = styled(FaRegUserCircle)`
+  cursor: pointer;
   display: flex;
   float: right;
   justify-content: right;
   font-size: 3rem;
   color: grey;
+  margin-left: 1rem;
+  transition: all 0.5s;
+  &:hover {
+    transform: translateY(-10%);
+  }
 `
 
 export const LightThemeBtn = styled.button`
   cursor: pointer;
   position: fixed;
-  bottom: 25px;
+  bottom: 22px;
   left: 200px;
   border-radius: 50%;
   background-color: ${(props) => props.theme.ctrColor};
@@ -104,4 +120,29 @@ export const LightThemeBtn = styled.button`
   -o-transform: rotate(360deg);
   transform: rotate(360deg);
   }
+  @media ( max-width: 768px) {
+    position: fixed;
+    top: 24px;
+  }
+`
+
+export const AdminBtn = styled.button`
+  cursor: pointer;
+  display: inline-block;
+  border-radius: 30px;
+  background: ${(props) => props.theme.ctrColor};
+  color: ${(props) => props.theme.bgColor};
+  width: fit-content;
+  padding: 16px 25px 15px 25px;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  user-select: none;
+  border: none;
+  justify-content: center;
+  margin-top: 4px;
+  margin-right: 1rem;
+  text-decoration: none;
+  transition: all 0.3s;
+  transition: all 0.3s;
 `
