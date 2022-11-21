@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { Wrap, ImgSize } from "./Recruit.styled";
 import PopupDom from "../Map/PopupDom";
@@ -99,7 +99,7 @@ const Recruit = () => {
 
           <p>봉사 날짜 선택</p>
           <>
-            <DatePicker
+            <CustomeDatePicker
               locale={ko}
               dateFormat="yyyy년-MM월-dd일"
               selected={startDate}
@@ -108,7 +108,8 @@ const Recruit = () => {
               startDate={startDate}
               endDate={endDate}
             />
-            <DatePicker
+
+            <CustomeDatePicker
               locale={ko}
               dateFormat="yyyy년-MM월-dd일"
               selected={endDate}
@@ -250,3 +251,16 @@ export const RecruitTA = styled.textarea`
   border-radius: 2px;
   height: 150px;
 `;
+
+const CustomeDatePicker = styled(DatePicker)({
+  margin: "12px",
+  fontSize: "15px",
+  padding: "20px",
+  width: "360px",
+  paddingLeft: "20px",
+  border: "none",
+  borderRadius: "15px",
+  outline: "none",
+  marginBottom: "1rem",
+  background: "whitesmoke",
+});
