@@ -8,6 +8,7 @@ import {
 } from "../../redux/modules/boardSlice";
 
 import styled from "styled-components";
+import { __getBoardId, __postApply } from "../../redux/modules/boardSlice";
 
 import {
   DetailContainer,
@@ -31,6 +32,8 @@ const Detail = () => {
   useEffect(() => {
     dispatch(__getBoardId(id));
   }, [dispatch, id]);
+
+  console.log("Detail.jsx boardsId =>", boardsId);
 
   return (
     <>
@@ -56,6 +59,9 @@ const Detail = () => {
           <h2>
             {boardsId?.startDate} - {boardsId?.endDate}
           </h2>
+
+          <DetailNavBtn>봉사자 신청하기</DetailNavBtn>
+
           <DetailNavBtn
             onClick={() => {
               dispatch(__postApply(id));
