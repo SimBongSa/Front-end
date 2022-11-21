@@ -25,7 +25,6 @@ export const apis = {
   // registerSlice
   memberLogin: (payload) => axios.post(`${BASE_URL}/members/login`, payload),
   managerLogin: (payload) => axios.post(`${BASE_URL}/managers/login`, payload),
-
   memberSignup: (payload) =>
     axios.post(`${BASE_URL}/members/signup/individual`, payload),
   managerSignup: (payload) =>

@@ -1,9 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { registerSlice } from "../modules/registerSlice";
 import { mypageSlice } from "../modules/mypageSlice";
-import customerList from "../modules/customerSlice";
-import commentList from "../modules/commentSlice";
-
 import calendarList from "../modules/calendarSlice";
 import comment from "../modules/commentSlice";
 import courses from "../modules/addCreateSlice";
@@ -14,10 +11,6 @@ export const store = configureStore({
     register: registerSlice.reducer,
     boards: boardSlice.reducer,
     mypage: mypageSlice.reducer,
-
-    customerList,
-    commentList,
-
     calendarList,
     comment,
     courses,

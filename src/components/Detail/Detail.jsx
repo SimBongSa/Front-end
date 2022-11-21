@@ -1,10 +1,13 @@
 import React, { useEffect, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
-import { __delBoard, __getBoardId } from "../../redux/modules/boardSlice";
+import {
+  __delBoard,
+  __getBoardId,
+  __postApply,
+} from "../../redux/modules/boardSlice";
 
 import styled from "styled-components";
-import { __getBoardsId, __postApply } from "../../redux/modules/boardSlice";
 
 import {
   DetailContainer,
@@ -47,7 +50,7 @@ const Detail = () => {
           <h5>내가 만든 쿠키 너를 위해 구웠지</h5>
           <h5>내가 만든 쿠키 너를 위해 구웠지</h5>
           <MapWrapper>
-            <KaMap area={boardsId?.area} mapHeight="400px" />
+            <KaMap input="false" area={boardsId?.area} mapHeight="400px" />
           </MapWrapper>
         </DetailContent>
 
