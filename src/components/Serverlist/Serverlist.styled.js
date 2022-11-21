@@ -1,16 +1,33 @@
 import styled from "styled-components";
 
-export const ServerlistContainer = styled.div`
-  width: 25rem;
-  height: 5.5rem;
-  background-color: #ffffff;
-  border-radius: 15px;
-  border-style: outset;
-  margin-top: 1rem;
-  margin-bottom: 1rem;
+export const ServerListContainer = styled.div`
+  width: 30rem;
+  height: 8rem;
+  margin-top: 3rem;
+  display: flex;
+  border-bottom: 1px solid black;
   cursor: pointer;
   transition: 0.4s;
   &:hover {
     transform: translateY(-5%);
   }
+`;
+
+export const ServerListImg = styled.div`
+  width: 6rem;
+  height: 6rem;
+  border-radius: 10px;
+
+  & img {
+    width: inherit;
+    height: inherit;
+    object-fit: cover;
+    border-radius: 10px;
+  }
+`;
+
+export const Body = styled.div`
+  margin-left: 2rem;
+  height: 2rem;
+  flex-wrap: wrap;
 `;

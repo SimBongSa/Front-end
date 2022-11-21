@@ -1,4 +1,4 @@
-import { ServerlistContainer } from "./Serverlist.styled";
+import { ServerListContainer, ServerListImg, Body } from "./Serverlist.styled";
 import { useState } from "react";
 
 function Serverlist({ result, mark }) {
@@ -8,16 +8,22 @@ function Serverlist({ result, mark }) {
       {result && result.length > 0
         ? result.map((obj, boardId) => {
             return (
-              <ServerlistContainer
+              <ServerListContainer
                 key={boardId}
                 style={{ transform: `translateX(${moveIndex}%)` }}
               >
-                {obj.startDate} ~ {obj.endDate}
-                <div>{obj.dueDay}</div>
-                <h3>{obj.title}</h3>
-                <div>{obj.area}</div>
-                <div>{obj.detailArea}</div>
-              </ServerlistContainer>
+                <ServerListImg>
+                  <img src={obj.boardImage} alt="test" />
+                </ServerListImg>
+                <Body>
+                  <div>{obj.title}</div>
+                  <div>{obj.area}</div>
+                  <div>{obj.detailArea}</div>
+                  <div>
+                    {obj.startDate} ~ {obj.endDate}
+                  </div>
+                </Body>
+              </ServerListContainer>
             );
           })
         : ""}

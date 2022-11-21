@@ -8,15 +8,11 @@ import {
   CardMoveRightBtn,
 } from "./Cards.styled";
 import { useState, useEffect } from "react";
-import { __getmainlist } from "../../redux/modules/calendarSlice";
+
 import { useSelector, useDispatch } from "react-redux";
-import { __getBoards } from "../../redux/modules/boardSlice";
 
 const Cards = ({ maindate, boardId }) => {
   const [moveIndex, setMoveIndex] = useState(0);
-  const dispatch = useDispatch();
-  const mainlist = useSelector((state) => state.calendarList.mainList);
-  const boards = useSelector((state) => state.boards.boards);
 
   const moveLeft = () => {
     setMoveIndex((prev) => prev - 20);
@@ -36,32 +32,19 @@ const Cards = ({ maindate, boardId }) => {
     return Math.round(Math.abs(diffDate / (1000 * 60 * 60 * 24)));
   };
   const today = new Date().toISOString().split("T")[0];
-  // useEffect(() => {
-  //   dispatch(__getBoards());
-  // }, [dispatch]);
-  // console.log(boards);
+
   return (
     <>
       <CardMoveLeftBtn onClick={moveLeft}>왼쪽</CardMoveLeftBtn>
       <CardContainer style={{ transform: `translateX(${moveIndex}%)` }}>
-        {maindate && maindate.length > 0
-          ? maindate.map((obj, boardId) => {
-              const dDay = getDateDiff(obj.dueDay, today);
-              return (
-                <Card key={boardId}>
-                  <p className="price">D - {dDay}</p>
-                  <CardImg>
-                    <img src={obj.boardImage} alt="test" />
-                  </CardImg>
-                  <CardTitle>
-                    <p>{obj.area}</p>
-                    <span>{obj.detailArea}</span>
-                  </CardTitle>
-                  {/* <CardContent>Children Christmas Santa Volunteer</CardContent> */}
-                </Card>
-              );
-            })
-          : ""}
+        <Card key={boardId}>
+          <p className="price">D - 1</p>
+          <CardImg>{/* <img src={obj.boardImage} alt="test" /> */}</CardImg>
+          <CardTitle>
+            <p>지역</p>
+            <span>상세 지역</span>
+          </CardTitle>
+        </Card>
       </CardContainer>
       {moveIndex === 0 ? null : (
         <CardMoveRightBtn onClick={moveRight}>오른쪽</CardMoveRightBtn>
