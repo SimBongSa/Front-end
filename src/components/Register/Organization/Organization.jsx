@@ -159,12 +159,16 @@ const Organization = () => {
             }
           </form>
           <BtnContainer>
-            <button onClick={() => {
-              setStep(step + 1)
-            }}>다음</button>
+            {
+              step === 3 ? <button>.</button> : (
+                <button onClick={() => {
+                  setStep(step + 1)
+                }}>다음</button>
+              )
+            }
             {
               step === 0 
-                ? null : <button onClick={() => {setStep(step - 1)}}>이전</button>
+                ? <button>.</button> : <button onClick={() => {setStep(step - 1)}}>이전</button>
             }
           </BtnContainer>
         </InputBox>
@@ -178,7 +182,20 @@ export default Organization;
 
 export const BtnContainer = styled.div`
   display: flex;
+  width: 200px;
+  flex-direction: row;
+  justify-content: space-between;
   position: absolute;
   flex-direction: row-reverse;
-  bottom: 60%;
+  bottom: 450px;
+  & button {
+    cursor: pointer;
+    border: none;
+    background: transparent;
+    font-size: 2rem;
+    transition: all 0.3s;
+    &:hover {
+      transform: translateY(-7%);
+    }
+  }
 `

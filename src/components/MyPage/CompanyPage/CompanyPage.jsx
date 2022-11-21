@@ -20,18 +20,19 @@ const CompanyPage = () => {
   const companyInfo = useSelector((state) => state.mypage?.companyInfo);
   const companyBoards = useSelector((state) => state.mypage.companyBoards);
 
-  const [option, setOption] = useState(null);
-  console.log(option)
+  const [companyPageOpt, setCompanyPageOpt] = useState(null);
+  console.log(companyPageOpt)
   return (
     <>
       <Profile 
         companyInfo={companyInfo}
+        setCompanyPageOpt={setCompanyPageOpt}
       />
 
       <OrganizationPageContainer>
         <BtnContainer>
-        <input type="radio" name="option" id="newActivity" onClick={() => setOption("newActivity")}/>
-        <input type="radio" name="option" id="myActivity" onClick={() => setOption("myActivity")}/>
+        <input type="radio" name="option" id="newActivity" onClick={() => setCompanyPageOpt("newActivity")}/>
+        <input type="radio" name="option" id="myActivity" onClick={() => setCompanyPageOpt("myActivity")}/>
           <nav>
             <label htmlFor="newActivity">새로운 봉사자 신청</label>
             <label htmlFor="myActivity">나의 봉사</label>
@@ -39,11 +40,11 @@ const CompanyPage = () => {
         </BtnContainer>
 
         {
-          option !== null && option === "newActivity" ? <NewActivity/> : null
+          companyPageOpt !== null && companyPageOpt === "newActivity" ? <NewActivity/> : null
         }
 
         {
-          option !== null && option === "myActivity" ? <CardGrid companyBoards={companyBoards} /> : null
+          companyPageOpt !== null && companyPageOpt === "myActivity" ? <CardGrid companyBoards={companyBoards} /> : null
         }
 
       </OrganizationPageContainer>

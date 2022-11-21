@@ -103,7 +103,6 @@ function CustomerEdit() {
           onChange={onChangeImage}
           placeholder={"memberImage"}
         />
-
         <button>Edit</button>
       </form>
     </>

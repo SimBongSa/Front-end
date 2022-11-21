@@ -3,7 +3,7 @@ import styled from "styled-components"
 export const ProfileContainer = styled.div`
   float: left;
   position: fixed;
-  margin-top: 2rem;
+  margin-top: 5rem;
   margin-left: 2rem;
   border-radius: 5px;
   padding: 30px 10px 10px 10px;
@@ -22,6 +22,9 @@ export const ProfileContainer = styled.div`
     text-align: left;
     margin: 1rem;
     color: gray;
+    @media ( max-width: 1024px) {
+      text-align: center;
+    }
   }
   & p {
     text-align: left;
@@ -37,11 +40,12 @@ export const ProfileContainer = styled.div`
 	  padding: 7px;
   }
   @media ( max-width: 1024px) {
+    display: flex;
+    position: sticky;
+    flex-direction: column;
     position: relative;
-    width: 70%;
-    margin: 0 auto;
-    margin-top: 15rem;
-    margin-left: 5rem;
+    width: 90%;
+    margin-top: 25rem;
     z-index: 1;
   }
 `
@@ -51,8 +55,10 @@ export const ProfileBox = styled.div`
   padding: 30px 10px 10px 10px;
   width: 120%;
   @media ( max-width: 1024px) {
+    flex-direction: column;
+    margin: 0 auto;
     margin-top: -15rem;
-    width: 600px;
+    width: 500px;
   }
 `
 
@@ -124,5 +130,11 @@ export const ProfileMisc = styled.div`
     width: 230px;
     height: 1px;
     background: #aaaaaa;
+  }
+  @media ( max-width: 1024px) {
+    flex-direction: column;
+    margin: 0 auto;
+    margin-top: 5rem;
+    width: 500px;
   }
 `

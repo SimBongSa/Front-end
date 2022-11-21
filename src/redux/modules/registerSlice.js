@@ -68,10 +68,6 @@ export const __registerManager = createAsyncThunk(
     Object.entries(payload).forEach(([key, value]) => {
       formData.append(key, value);
     })
-    // console.log(formData);
-    // for (let key of formData.keys()) {
-    //   console.log("formData ==>", key, ":", formData.get(key));
-    // }
     try {
       const response = await apis.managerSignup(payload);
       console.log(response)

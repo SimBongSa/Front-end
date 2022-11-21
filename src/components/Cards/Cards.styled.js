@@ -29,7 +29,7 @@ export const Card = styled.article`
   &:hover {
     transform: translateY(-5%);
   }
-  /* @media ( max-width: 1610px) {
+  @media ( max-width: 1610px) {
     width: 250px;
     height: 250px;
     margin-top: 1.4rem;
@@ -48,7 +48,7 @@ export const Card = styled.article`
     width: 350px;
     height: 250px;
     margin-top: 1.4rem;
-  } */
+  }
 `
 
 export const CardImg = styled.div`
