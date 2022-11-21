@@ -25,21 +25,18 @@ export const apis = {
   // registerSlice
   memberLogin: (payload) => axios.post(`${BASE_URL}/members/login`, payload),
   managerLogin: (payload) => axios.post(`${BASE_URL}/managers/login`, payload),
-<<<<<<< HEAD
   memberSignup: (payload) =>
     axios.post(`${BASE_URL}/members/signup/individual`, payload),
   managerSignup: (payload) =>
-    axios.post(`${BASE_URL}/members/signup/admin`, payload),
-=======
-  memberSignup: (payload) => axios.post(`${BASE_URL}/members/signup/individual`, payload),
-  managerSignup: (payload) => api.post(`${BASE_URL}/members/signup/admin`, payload, {
-    headers: {
-      "Content-Type": "multipart/form-data",
-    }
-  }),
-  checkUsername: (payload) => axios.get(`${BASE_URL}/members/check_username/${payload}`),
-  checkNickname: (payload) => axios.get(`${BASE_URL}/members/check_nickname/${payload}`),
->>>>>>> 3ebd3b932d6a72c9c1a47d6717f040bfed8042fb
+    api.post(`${BASE_URL}/members/signup/admin`, payload, {
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    }),
+  checkUsername: (payload) =>
+    axios.get(`${BASE_URL}/members/check_username/${payload}`),
+  checkNickname: (payload) =>
+    axios.get(`${BASE_URL}/members/check_nickname/${payload}`),
 
   //callendarSlice
   mainlist: (boardId) => api.get(`${BASE_URL}/boards/${boardId}`),
@@ -80,11 +77,11 @@ export const apis = {
     }),
 
   // 봉사 신청
-  applyBoard: (id) => 
+  applyBoard: (id) =>
     api.post(`${BASE_URL}/boards/${id}/apply`, {
       headers: {
         Authorization: token,
-      }
+      },
     }),
 
   // MyPage (User)
@@ -92,25 +89,25 @@ export const apis = {
     api.get(`${BASE_URL}/mypage`, {
       headers: {
         Authorization: token,
-      }
+      },
     }),
-  getUserEnroll: () => 
+  getUserEnroll: () =>
     api.get(`${BASE_URL}/mypage/enroll`, {
       headers: {
         Authorization: token,
-      }
+      },
     }),
   getUserWait: () =>
     api.get(`${BASE_URL}/mypage/enroll/wait`, {
       headers: {
         Authorization: token,
-      }
+      },
     }),
   getUserPass: () =>
     api.get(`${BASE_URL}/enroll/pass`, {
       headers: {
         Authorization: token,
-      }
+      },
     }),
 
   // MyPage (Company)
