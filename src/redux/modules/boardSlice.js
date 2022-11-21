@@ -32,7 +32,7 @@ export const __createBoard = createAsyncThunk(
 );
 
 export const __getBoard = createAsyncThunk(
-  "getBoards",
+  "getBoard",
   async (payload, thunkAPI) => {
     try {
       const response = await apis.getBoard(payload);
@@ -44,8 +44,9 @@ export const __getBoard = createAsyncThunk(
 );
 
 export const __getBoardId = createAsyncThunk(
-  "getBoardsId",
+  "getBoardId",
   async (payload, thunkAPI) => {
+    console.log("__getBoardId => ", payload);
     try {
       const response = await apis.getBoardId(payload);
       return thunkAPI.fulfillWithValue(response.data.data);
@@ -100,6 +101,8 @@ export const __getArea = createAsyncThunk(
   async (payload, thunkAPI) => {
     try {
       const response = await payload;
+      console.log(payload);
+      console.log(response);
       return thunkAPI.fulfillWithValue(response);
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
@@ -137,7 +140,6 @@ export const boardSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
-
       // POST (__createBoard)
       .addCase(__createBoard.pending, (state, _) => {
         state.isLoading = true;
