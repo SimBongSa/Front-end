@@ -24,9 +24,7 @@ const Input = ({
         </StInputContainer>
       ) : null}
 
-      {dupleCheck ? (
-          <DupleCheck>중복</DupleCheck>
-      ) : null}
+      {dupleCheck ? <DupleCheck>중복</DupleCheck> : null}
 
       {type === "radio" ? <span>{value}</span> : null}
     </StInputContainer>
@@ -58,7 +56,7 @@ export const StErrorMsg = styled.span`
   color: tomato;
 `;
 
-export const DupleCheck = styled.button` 
+export const DupleCheck = styled.button`
   width: 100px;
   position: absolute;
-`
+`;

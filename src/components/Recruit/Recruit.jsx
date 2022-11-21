@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { Wrap, ImgSize } from "./Recruit.styled";
 import PopupDom from "../Map/PopupDom";
@@ -6,10 +6,19 @@ import PopupPostCode from "../Map/PopupPostCode";
 import styled from "styled-components";
 import Input from "../common/input/Input";
 import { __createBoard } from "../../redux/modules/boardSlice";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import moment from "moment";
+import { ko } from "date-fns/esm/locale";
 
 const Recruit = () => {
   const dispatch = useDispatch();
   const [isPopupOpen, setIsPopupOpen] = useState(false);
+
+  // date picker
+  const today = new Date();
+  const [startDate, setStartDate] = useState(today);
+  const [endDate, setEndDate] = useState(today);
 
   // 팝업창 열기
   const openPostCode = () => {
@@ -41,7 +50,6 @@ const Recruit = () => {
 
   //텍스트데이터 스테이즈 저장
   const onChangeInput = (e) => {
-    console.log("인풋=>", input);
     const { name, value } = e.target;
     setInput({ ...input, [name]: value, area: address });
   };
@@ -64,8 +72,14 @@ const Recruit = () => {
 
   const submitHandler = (e) => {
     e.preventDefault();
-    console.log("등록 직전=>", input);
-    dispatch(__createBoard({ ...input, boardImage }));
+    dispatch(
+      __createBoard({
+        ...input,
+        boardImage,
+        startDate: moment(startDate).format("YYYY-MM-DD"),
+        endDate: moment(endDate).format("YYYY-MM-DD"),
+      })
+    );
   };
 
   return (
@@ -82,20 +96,29 @@ const Recruit = () => {
             value={input.title}
             onChange={(e) => onChangeInput(e)}
           />
-          <p>봉사 모집 시작일</p>
-          <Input
-            type="date"
-            name="startDate"
-            value={input.startDate}
-            onChange={(e) => onChangeInput(e)}
-          />
-          <p>봉사 모집 마감일</p>
-          <Input
-            type="date"
-            name="endDate"
-            value={input.endDate}
-            onChange={(e) => onChangeInput(e)}
-          />
+
+          <p>봉사 날짜 선택</p>
+          <>
+            <DatePicker
+              locale={ko}
+              dateFormat="yyyy년-MM월-dd일"
+              selected={startDate}
+              onChange={(date) => setStartDate(date)}
+              selectsStart
+              startDate={startDate}
+              endDate={endDate}
+            />
+            <DatePicker
+              locale={ko}
+              dateFormat="yyyy년-MM월-dd일"
+              selected={endDate}
+              onChange={(date) => setEndDate(date)}
+              selectsEnd
+              startDate={startDate}
+              endDate={endDate}
+              minDate={startDate}
+            />
+          </>
           <p>행사 일</p>
           <Input
             type="date"
@@ -114,13 +137,13 @@ const Recruit = () => {
         </RecruitLeft>
         <RecruitRight>
           <ImgSize src={uploadpreview} alt="" />
-            <Input
-              name="thumbNail"
-              type={"file"}
-              accept={"image/*"}
-              placeholder="이미지업로드"
-              onChange={onChangeImage}
-            />
+          <Input
+            name="thumbNail"
+            type={"file"}
+            accept={"image/*"}
+            placeholder="이미지업로드"
+            onChange={onChangeImage}
+          />
           <p>행사 장소</p>
           <Input
             placeholder="행사 장소"
@@ -136,7 +159,10 @@ const Recruit = () => {
           <div id="popupDom" style={{ position: "fixed" }}>
             {isPopupOpen && (
               <PopupDom>
-                <PopupPostCode setAddress={setAddress} onClose={closePostCode} />
+                <PopupPostCode
+                  setAddress={setAddress}
+                  onClose={closePostCode}
+                />
               </PopupDom>
             )}
           </div>
@@ -170,12 +196,12 @@ export const RecruitContainer = styled.div`
   @media screen and (max-width: 1024px) {
     margin: 0;
   }
-`
+`;
 
 export const RecruitTitle = styled.h1`
   font-size: 3rem;
   margin-bottom: 4rem;
-`
+`;
 
 export const RecruitLeft = styled.div`
   width: 50%;
@@ -185,7 +211,7 @@ export const RecruitLeft = styled.div`
     width: 100%;
     float: none;
   }
-`
+`;
 
 export const RecruitRight = styled.div`
   display: flex;
@@ -197,7 +223,7 @@ export const RecruitRight = styled.div`
     width: 100%;
     float: none;
   }
-`
+`;
 
 export const RecruitBtn = styled.button`
   cursor: pointer;
@@ -210,12 +236,12 @@ export const RecruitBtn = styled.button`
   @media screen and (max-width: 1024px) {
     bottom: -42rem;
   }
-`
+`;
 
 export const AreaBtn = styled.button`
   width: 150px;
   margin-bottom: 1rem;
-`
+`;
 
 export const RecruitTA = styled.textarea`
   margin: 1rem;
@@ -223,4 +249,4 @@ export const RecruitTA = styled.textarea`
   border: none;
   border-radius: 2px;
   height: 150px;
-`
+`;

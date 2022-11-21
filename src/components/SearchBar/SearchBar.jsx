@@ -41,7 +41,6 @@ const SearchBar = () => {
     };
   }, [modal]);
 
-  console.log(search);
   const onSubmitHandler = (e) => {
     e.preventDefault();
     setSearch();
