@@ -16,7 +16,6 @@ function Comment() {
   const userName = cookies["username"];
 
   const commentList = useSelector((state) => state.comment.commentList);
-  console.log(commentList)
   const dispatch = useDispatch();
 
   const { id } = useParams();
@@ -50,7 +49,8 @@ function Comment() {
       {commentList && commentList.length > 0
         ? commentList.map((item, index) => {
             const commentId = item.commentId;
-            let isEditState = editCommentId.indexOf(commentId) === -1 ? false : true;
+            let isEditState =
+              editCommentId.indexOf(commentId) === -1 ? false : true;
             return (
               <Box key={index}>
                 <CommentTitleWrap>
