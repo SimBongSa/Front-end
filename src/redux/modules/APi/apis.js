@@ -49,8 +49,8 @@ export const apis = {
     }),
 
   // boards
-  getBoard: (page) => api.get(`${BASE_URL}/boards?page=${page}`),
-  getBoardId: (boardId) => api.get(`${BASE_URL}/boards/${boardId}`),
+  getBoard: (page) => axios.get(`${BASE_URL}/boards?page=${page}`),
+  getBoardId: (boardId) => axios.get(`${BASE_URL}/boards/${boardId}`),
 
   // registerActivity slice
   createBoard: (payload) =>
@@ -62,7 +62,7 @@ export const apis = {
     }),
 
   editBoard: (payload) =>
-    api.put(`${BASE_URL}/boards/${payload.id}`, payload.upDate, {
+    axios.put(`${BASE_URL}/boards/${payload.id}`, payload.upDate, {
       headers: {
         Authorization: token,
         "Content-Type": "multipart/form-data",
@@ -79,7 +79,7 @@ export const apis = {
 
   // 봉사 신청
   applyBoard: (id) =>
-    api.post(`${BASE_URL}/boards/${id}/apply`, {
+    axios.post(`${BASE_URL}/boards/${id}/apply`, {
       headers: {
         Authorization: token,
       },
@@ -111,11 +111,11 @@ export const apis = {
       },
     }),
   getUserReject: () =>
-  api.get(`${BASE_URL}/mypage/enroll/fail`, {
-    headers: {
-      Authorization: token,
-    }
-  }),
+    api.get(`${BASE_URL}/mypage/enroll/fail`, {
+      headers: {
+        Authorization: token,
+      },
+    }),
 
   // MyPage (Company)
   getCompanyPage: () =>
@@ -134,9 +134,25 @@ export const apis = {
     api.get(`${BASE_URL}/companypage/boards/${id}`, {
       headers: {
         Authorization: token,
-      }
+      },
     }),
-  
+
+  putUserPage: () =>
+    api.put(`${BASE_URL}/mypage`, {
+      headers: {
+        Authorization: token,
+        "Content-Type": "multipart/form-data",
+      },
+    }),
+
+  putCompanyPage: (payload) =>
+    api.put(`${BASE_URL}/companypage`, {
+      headers: {
+        Authorization: token,
+        "Content-Type": "multipart/form-data",
+      },
+    }),
+
   //commentSlice
   getComment: (payload) =>
     axios.get(`${BASE_URL}/boards/${payload}`, {

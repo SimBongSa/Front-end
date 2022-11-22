@@ -57,7 +57,7 @@ const Recruit = () => {
     reader.onloadend = () => {
       const previewImgUrl = reader.result;
       if (previewImgUrl) {
-        setUploadpreview([...uploadpreview, previewImgUrl]);
+        setUploadpreview(previewImgUrl);
       }
     };
   };
@@ -114,13 +114,13 @@ const Recruit = () => {
         </RecruitLeft>
         <RecruitRight>
           <ImgSize src={uploadpreview} alt="" />
-            <Input
-              name="thumbNail"
-              type={"file"}
-              accept={"image/*"}
-              placeholder="이미지업로드"
-              onChange={onChangeImage}
-            />
+          <Input
+            name="thumbNail"
+            type={"file"}
+            accept={"image/*"}
+            placeholder="이미지업로드"
+            onChange={onChangeImage}
+          />
           <p>행사 장소</p>
           <Input
             placeholder="행사 장소"
@@ -136,7 +136,10 @@ const Recruit = () => {
           <div id="popupDom" style={{ position: "fixed" }}>
             {isPopupOpen && (
               <PopupDom>
-                <PopupPostCode setAddress={setAddress} onClose={closePostCode} />
+                <PopupPostCode
+                  setAddress={setAddress}
+                  onClose={closePostCode}
+                />
               </PopupDom>
             )}
           </div>
@@ -170,12 +173,12 @@ export const RecruitContainer = styled.div`
   @media screen and (max-width: 1024px) {
     margin: 0;
   }
-`
+`;
 
 export const RecruitTitle = styled.h1`
   font-size: 3rem;
   margin-bottom: 4rem;
-`
+`;
 
 export const RecruitLeft = styled.div`
   width: 50%;
@@ -185,7 +188,7 @@ export const RecruitLeft = styled.div`
     width: 100%;
     float: none;
   }
-`
+`;
 
 export const RecruitRight = styled.div`
   display: flex;
@@ -197,7 +200,7 @@ export const RecruitRight = styled.div`
     width: 100%;
     float: none;
   }
-`
+`;
 
 export const RecruitBtn = styled.button`
   cursor: pointer;
@@ -210,12 +213,12 @@ export const RecruitBtn = styled.button`
   @media screen and (max-width: 1024px) {
     bottom: -42rem;
   }
-`
+`;
 
 export const AreaBtn = styled.button`
   width: 150px;
   margin-bottom: 1rem;
-`
+`;
 
 export const RecruitTA = styled.textarea`
   margin: 1rem;
@@ -223,4 +226,4 @@ export const RecruitTA = styled.textarea`
   border: none;
   border-radius: 2px;
   height: 150px;
-`
+`;

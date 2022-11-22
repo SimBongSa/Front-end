@@ -35,7 +35,7 @@ export const __getBoard = createAsyncThunk(
   async (payload, thunkAPI) => {
     try {
       const response = await apis.getBoard(payload);
-      console.log(response)
+      console.log(response);
       return thunkAPI.fulfillWithValue(response.data.data);
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
@@ -44,7 +44,7 @@ export const __getBoard = createAsyncThunk(
 );
 
 export const __getBoardId = createAsyncThunk(
-  "getBoardsId",
+  "getBoardId",
   async (payload, thunkAPI) => {
     try {
       const response = await apis.getBoardId(payload);
@@ -120,7 +120,6 @@ export const __postApply = createAsyncThunk(
     }
   }
 );
-
 
 export const boardSlice = createSlice({
   name: "boards",
@@ -202,7 +201,7 @@ export const boardSlice = createSlice({
         state.isLoading = false;
         state.boards = state.boards.filter(
           (item) => item.id !== action.payload
-        )
+        );
       })
       .addCase(__delBoard.rejected, (state, action) => {
         state.isLoading = false;
