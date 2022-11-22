@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { Wrap, ImgSize } from "./Recruit.styled";
+import { ImgSize } from "./Recruit.styled";
 import PopupDom from "../Map/PopupDom";
 import PopupPostCode from "../Map/PopupPostCode";
 import styled from "styled-components";
@@ -168,8 +168,8 @@ const Recruit = () => {
               placeholder="행사 장소"
               type="text"
               name="area"
-              defaultValue={address}
-              // readOnly
+              value={address}
+              readOnly
             />
             <AreaBtn type="button" onClick={openPostCode}>
               우편번호 검색
@@ -451,44 +451,6 @@ export const ScrollDown = styled(IoIosArrowDown)`
 //   }
 // `;
 
-export const RecruitTitle = styled.h1`
-  text-align: center;
-  font-size: 3rem;
-  margin-bottom: 4rem;
-`;
-
-export const RecruitLeft = styled.div`
-  width: 50%;
-  @media screen and (max-width: 1024px) {
-    width: 100%;
-    float: none;
-  }
-`;
-
-export const RecruitRight = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: 50%;
-  margin: 0 auto;
-  @media screen and (max-width: 1024px) {
-    width: 100%;
-    float: none;
-  }
-`;
-
-export const RecruitBtn = styled.button`
-  cursor: pointer;
-  border: none;
-  border-radius: 25px;
-  width: 150px;
-  padding: 1rem;
-  font-size: 1rem;
-  margin-left: 7.5rem;
-  @media screen and (max-width: 1024px) {
-    bottom: -42rem;
-  }
-`;
-
 export const AreaBtn = styled.button`
   width: 150px;
   margin-bottom: 1rem;
@@ -501,16 +463,3 @@ export const RecruitTA = styled.textarea`
   border-radius: 2px;
   height: 150px;
 `;
-
-const CustomeDatePicker = styled(DatePicker)({
-  margin: "12px",
-  fontSize: "15px",
-  padding: "20px",
-  width: "360px",
-  paddingLeft: "20px",
-  border: "none",
-  borderRadius: "15px",
-  outline: "none",
-  marginBottom: "1rem",
-  background: "whitesmoke",
-});
