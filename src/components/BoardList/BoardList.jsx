@@ -42,6 +42,7 @@ const Board = () => {
         ) : (
           <button
             onClick={() => {
+              setShowPopup(false);
               setPage((prev) => prev - 1);
               dispatch(__getBoard({ page, size }));
             }}

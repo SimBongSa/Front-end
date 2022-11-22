@@ -4,8 +4,8 @@ import { MapMarker, Map } from "react-kakao-maps-sdk";
 
 const KaMarker = ({ boards }) => {
   console.log(boards);
-  console.log(1);
-  const positions = [{}];
+
+  const positions = [];
 
   console.log(5);
   return (
