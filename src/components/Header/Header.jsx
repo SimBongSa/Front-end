@@ -26,7 +26,7 @@ const Header = () => {
 
   const isLogin = cookies["access-token"];
   const authority = cookies["authority"];
-  const username = cookies["username"];
+  // const username = cookies["username"];
 
   return (
     <HeaderContainer>
@@ -39,8 +39,8 @@ const Header = () => {
         <HeaderMenuItem onClick={() => navigate("/boards")}>Boards</HeaderMenuItem>
         {isLogin && authority === "ROLE_MEMBER" ? (
           <>
-            <HeaderMenuItem>Notice</HeaderMenuItem>
-            <HeaderMenuItem>Messagse</HeaderMenuItem>
+            <HeaderMenuItem>메시지</HeaderMenuItem>
+            <HeaderMenuItem>알림</HeaderMenuItem>
             <UserIcon
               onClick={() => {
                 navigate("/usermypage");
@@ -49,8 +49,8 @@ const Header = () => {
           </>
         ) : isLogin && authority === "ROLE_ADMIN" ? (
           <>
-            <HeaderMenuItem>Notice</HeaderMenuItem>
-            <HeaderMenuItem>Messagse</HeaderMenuItem>
+            <HeaderMenuItem>메시지</HeaderMenuItem>
+            <HeaderMenuItem>알림</HeaderMenuItem>
             <HeaderMenuItem onClick={() => {
               navigate("/recruit")
             }}>봉사활동 등록하기</HeaderMenuItem>
@@ -61,13 +61,13 @@ const Header = () => {
             />
           </>
         ) : (
-          <HeaderRegister
+          <HeaderMenuItem
             onClick={() => {
               navigate("/login");
             }}
           >
             Login
-          </HeaderRegister>
+          </HeaderMenuItem>
         )}
       </HeaderMenu>
     </HeaderContainer>

@@ -14,7 +14,7 @@ export const Cards = styled.div`
   grid-column: ${(props) => props.gridColumn} / span 10;
   grid-template-columns: repeat(20, minmax(auto, 120px));
   grid-gap: 1.5rem;
-  @media screen and (max-width: 1550px) {
+  @media screen and (max-width: 1440px) {
     grid-template-columns: repeat(8, minmax(auto, 60px));
   }
   @media screen and (max-width: 1024px) {
@@ -69,6 +69,8 @@ export const CardInfo = styled.div`
   justify-content: space-between;
   color: ${(props) => props.theme.textColor};
   & .price {
+    width: 60px;
+    text-align: center;
     padding: 0.5rem 1rem;
     border-radius: 12rem;
     background-color: #303032;

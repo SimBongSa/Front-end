@@ -136,7 +136,25 @@ export const apis = {
     api.get(`${BASE_URL}/companypage/boards/${id}`, {
       headers: {
         Authorization: token,
-      },
+      }
+  }),
+  getAllAppliList: (payload) => 
+    axios.get(`${BASE_URL}/companypage/applicants?page=${payload.page}&size=${payload.size}`, {
+      headers: {
+        Authorization: token,
+      }
+    }),
+  putApprove: (payload) =>
+    axios.put(`${BASE_URL}/companypage/approve/${payload}`, {
+      headers: {
+        Authorization: token,
+      }
+    }),
+  putDisapprove: (payload) =>
+    axios.put(`${BASE_URL}/companypage/disapprove/${payload}`, {
+      headers: {
+        Authorization: token,
+      }
     }),
 
   //commentSlice
