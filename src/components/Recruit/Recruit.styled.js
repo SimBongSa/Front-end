@@ -2,11 +2,12 @@ import styled from "styled-components";
 
 export const Wrap = styled.form`
   display: flex;
+  margin: 0 auto;
+  width: 100%;
   flex-direction: row;
-  justify-content: space-between;
+  flex-wrap: wrap;
   @media screen and (max-width: 1024px) {
     flex-direction: column;
-    margin: 0 auto;
     margin-bottom: 15rem;
   }
 `;

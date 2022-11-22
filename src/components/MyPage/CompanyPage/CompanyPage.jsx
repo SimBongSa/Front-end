@@ -1,10 +1,8 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { __getAllAppliList, __getCompanyBoards, __getCompanyInfo } from "../../../redux/modules/mypageSlice";
-import { getCookieToken } from "../../../utils/cookie";
 import { CompanyPageContainer, BtnContainer } from "./CompanyPage.styled";
 import Profile from "../Profile/Profile";
-import NewActivity from "./NewActivity/NewActivity";
 import CardGrid from "../../common/cards/CardGrid";
 import MyApplicant from "../MyApplicant/MyApplicant";
 
