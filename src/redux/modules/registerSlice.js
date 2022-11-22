@@ -86,7 +86,7 @@ export const __checkUsername = createAsyncThunk(
     try {
       const response = await apis.checkUsername(payload);
       console.log(response)
-      return thunkAPI.fulfillWithValue(response.data);
+      return thunkAPI.fulfillWithValue(response.data.data);
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
     }
@@ -99,7 +99,7 @@ export const __checkNickname = createAsyncThunk(
     try {
       const response = await apis.checkNickname(payload);
       console.log(response);
-      return thunkAPI.fulfillWithValue(response.data);
+      return thunkAPI.fulfillWithValue(response.data.data);
     } catch (error) {
       return thunkAPI.rejectWithValue(error)
     }
@@ -112,8 +112,8 @@ export const registerSlice = createSlice({
     memberInfo: [],
     managerInfo: [],
     loginInfo: [],
-    usernameCheck: false,
-    nicknameCheck: false,
+    usernameCheck: "",
+    nicknameCheck: "",
     statusCode: null,
     isLoading: false,
     error: "",

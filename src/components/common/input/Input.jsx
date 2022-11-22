@@ -1,6 +1,6 @@
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
-import { __checkUsername } from "../../../redux/modules/registerSlice";
+import { __checkNickname, __checkUsername } from "../../../redux/modules/registerSlice";
 
 const Input = ({
   id,
@@ -11,7 +11,10 @@ const Input = ({
   value,
   onChange,
 }) => {
+
   const dispatch = useDispatch();
+  const checkMsg = useSelector((state) => state)
+
   return (
     <StInputContainer>
       {type === "text" || "password" ? (
@@ -27,10 +30,17 @@ const Input = ({
         </StInputContainer>
       ) : null}
 
-      {dupleCheck ? (
+      {dupleCheck === "username" ? (
           <DupleCheck onClick={() => {
             console.log(value)
             dispatch(__checkUsername(value))
+          }}>중복체크</DupleCheck>
+      ) : null}
+
+      {dupleCheck === "nickname" ? (
+          <DupleCheck onClick={() => {
+            console.log(value)
+            dispatch(__checkNickname(value))
           }}>중복체크</DupleCheck>
       ) : null}
 
@@ -64,7 +74,7 @@ export const StErrorMsg = styled.span`
   color: tomato;
 `;
 
-export const DupleCheck = styled.button` 
+export const DupleCheck = styled.span` 
   width: 100px;
   position: absolute;
   right: 10px;
