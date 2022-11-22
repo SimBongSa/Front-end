@@ -181,7 +181,8 @@ export const MagnityingBtn = styled(HiMagnifyingGlass)`
   width: 35px;
   height: 35px;
   right: 10px;
+`;
 
 const PickerBox = styled.div`
   display: flex;
-`;
+`
