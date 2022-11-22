@@ -54,9 +54,9 @@ function Comment() {
             return (
               <Box key={index}>
                 <CommentTitleWrap>
-                  <h2>{item?.nickname}</h2>
+                  <h2>{item?.username}</h2>
                   <CommentBtnWrap>
-                    {userName === item.author ? (
+                    {userName === item.username ? (
                       <>
                         {!isEditState ? (
                           <div

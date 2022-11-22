@@ -65,7 +65,6 @@ export const SearchLabel = styled.label`
   display: flex;
   height: 3em;
   left: 50%;
-  overflow: hidden;
   padding: 0 0 0 0.5em;
   position: absolute;
   top: 10%;

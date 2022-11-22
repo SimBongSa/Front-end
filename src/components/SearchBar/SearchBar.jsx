@@ -88,41 +88,38 @@ const SearchBar = () => {
                         setSearch(e.target.value);
                       }}
                     >
-                      <option>서울</option>
-                      <option>경기</option>
-                      <option>인천</option>
-                      <option>강원</option>
-                      <option>충북</option>
-                      <option>충남</option>
-                      <option>세종</option>
-                      <option>전북</option>
-                      <option>전남</option>
-                      <option>경북</option>
-                      <option>경남</option>
-                      <option>제주</option>
+                      <option>전체</option>
+                      <option>아동,청소년</option>
+                      <option>장애인</option>
+                      <option>노인</option>
+                      <option>다문화가정</option>
+                      <option>환경</option>
+                      <option>유기동물</option>
                     </select>
                   </li>
                   <li>
                     <>
-                      <CustomeDatePicker
-                        locale={ko}
-                        dateFormat="📅 yyyy년-MM월-dd일"
-                        selected={startDate}
-                        onChange={(date) => setStartDate(date)}
-                        selectsStart
-                        startDate={startDate}
-                        endDate={endDate}
-                      />
-                      <CustomeDatePicker
-                        locale={ko}
-                        dateFormat="📅 yyyy년-MM월-dd일 "
-                        selected={endDate}
-                        onChange={(date) => setEndDate(date)}
-                        selectsEnd
-                        startDate={startDate}
-                        endDate={endDate}
-                        minDate={startDate}
-                      />
+                      <PickerBox>
+                        <CustomeDatePicker
+                          locale={ko}
+                          dateFormat="📅 yyyy년-MM월-dd일"
+                          selected={startDate}
+                          onChange={(date) => setStartDate(date)}
+                          selectsStart
+                          startDate={startDate}
+                          endDate={endDate}
+                        />
+                        <CustomeDatePicker
+                          locale={ko}
+                          dateFormat="📅 yyyy년-MM월-dd일 "
+                          selected={endDate}
+                          onChange={(date) => setEndDate(date)}
+                          selectsEnd
+                          startDate={startDate}
+                          endDate={endDate}
+                          minDate={startDate}
+                        />
+                      </PickerBox>
                     </>
                   </li>
                   <li>
@@ -164,11 +161,9 @@ const CustomeDatePicker = styled(DatePicker)({
   display: "flex",
   fontSize: "15px",
   width: "50rem",
-  paddingLeft: "20px",
   border: "none",
   borderRadius: "15px",
   outline: "none",
-  marginBottom: "1rem",
   background: "whitesmoke",
 });
 export const StMagnifying = styled(HiMagnifyingGlass)`
@@ -186,4 +181,7 @@ export const MagnityingBtn = styled(HiMagnifyingGlass)`
   width: 35px;
   height: 35px;
   right: 10px;
-`
+
+const PickerBox = styled.div`
+  display: flex;
+`;
