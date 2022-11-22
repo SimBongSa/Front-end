@@ -5,19 +5,27 @@ const MyProcess = ({ userEnroll, userWait, userPass, userReject, setUserPageOpt 
     <MyProcessContainer>
       <h1>봉사 현황</h1>
       <ProcessStepWrap>
-        <ProcessStep>
+        <ProcessStep onClick={() => {
+          setUserPageOpt("enroll")
+        }}>
           <ProcessCircle><span>{ userEnroll }</span></ProcessCircle>
-          <StepTitle>봉사 신청</StepTitle>
+          <StepTitle>봉사 신청 내역</StepTitle>
         </ProcessStep>
-        <ProcessStep>
+        <ProcessStep onClick={() => {
+          setUserPageOpt("wait")
+        }}>
           <ProcessCircle><span>{ userWait }</span></ProcessCircle>
-          <StepTitle>진행중인 봉사</StepTitle>
+          <StepTitle>승인 대기중</StepTitle>
         </ProcessStep>
-        <ProcessStep>
+        <ProcessStep onClick={() => {
+          setUserPageOpt("pass")
+        }}>
           <ProcessCircle><span>{ userPass }</span></ProcessCircle>
-          <StepTitle>완료된 봉사</StepTitle>
+          <StepTitle>참여 봉사 관리</StepTitle>
         </ProcessStep>
-        <ProcessStep>
+        <ProcessStep onClick={() => {
+          setUserPageOpt("reject")
+        }}>
           <ProcessCircle><span>{ userReject }</span></ProcessCircle>
           <StepTitle>거절된 봉사</StepTitle>
         </ProcessStep>
@@ -46,6 +54,7 @@ export const MyProcessContainer = styled.div`
 
 export const ProcessStepWrap = styled.div`
 	display: table;
+  position: sticky;
 	width: 100%;
 	margin: 0 auto;
   margin-left: 10rem;
@@ -55,6 +64,8 @@ export const ProcessStepWrap = styled.div`
     float: left;
   }
 `
+
+
 
 export const ProcessStep = styled.div`
   cursor: pointer;

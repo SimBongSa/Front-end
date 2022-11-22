@@ -56,13 +56,19 @@ const Profile = ({ companyInfo, userInfo, isEdit, setUserPageOpt, setCompanyPage
           <ProfileMisc>
             <h2>봉사 현황</h2>
             <span/>
+            <h4>캘린더</h4>
+            <h4 onClick={() => {
+              setUserPageOpt("enroll");
+            }}>봉사 신청 내역</h4>
             <h4 onClick={() => {
               setUserPageOpt("wait");
-            }}>봉사 신청 내역</h4>
+            }}>승인 대기중</h4>
             <h4 onClick={() => {
               setUserPageOpt("pass");
             }}>참여 봉사 관리</h4>
-            <h4>캘린더</h4>
+            <h4 onClick={() => {
+              setUserPageOpt("reject");
+            }}>거절된 봉사</h4>
             <span/>
             <h4>프로필 수정</h4>
             <h4 onClick={() => {

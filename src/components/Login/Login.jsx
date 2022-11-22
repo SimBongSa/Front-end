@@ -138,4 +138,5 @@ export default Login;
 
 export const LoginTitle = styled.h4`
   cursor: pointer;
+  color: ${(props) => props.theme.textColor};
 `

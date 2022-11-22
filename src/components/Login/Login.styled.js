@@ -66,8 +66,8 @@ export const LoginBox = styled.div`
   flex-direction: column;
   justify-content: space-around;
   font-size: 3rem;
-  color: ${(props) => props.theme.bgColor};
-  background-color: ${(props) => props.theme.ctrColor};;
+  color: ${(props) => props.theme.textColor};
+  background-color: ${(props) => props.theme.btnColor};;
   transition: all 0.5s;
   @media (max-width: 768px) {
     width: 100%;
@@ -92,6 +92,7 @@ export const LoginArrowBack = styled(BiArrowBack)`
   cursor: pointer;
   display: flex;
   font-size: 1.8rem;
+  color: ${(props) => props.theme.textColor};;
   transition: all 0.3s;
   &:hover {
     transform: translateX(-10%);
@@ -124,8 +125,8 @@ export const LoginBtn = styled.button`
   border-radius: 25px;
   outline: none;
   padding: 15px;
-  background-color: ${(props) => props.theme.bgColor};
-  color: ${(props) => props.theme.textColor};
+  background-color: ${(props) => props.theme.textColor};
+  color: ${(props) => props.theme.bgColor};
   transition: all 0.3s;
   &:hover {
     transform: translateY(-7%);

@@ -1,15 +1,22 @@
 import styled from "styled-components";
 
-export const OrganizationPageContainer = styled.div`
-  margin-top: 15rem;
-  margin-left: 5rem;
-  width: 70%;
-  float: right;
+export const CompanyPageContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  margin-top: 10rem;
+  margin-left: 25rem;
+  @media ( max-width: 1024px) {
+    margin: 0 auto;
+    margin-top: 10rem;
+    float: right;
+  }
 `
 
 export const BtnContainer = styled.div`
   display: flex;
   flex-direction: row;
+  width: 80%;
   overflow: hidden;
   & input[type="radio"] {
     display: none;
@@ -28,7 +35,7 @@ export const BtnContainer = styled.div`
     & label {
       display: table-cell;
       cursor: pointer;
-      width: 50%;
+      width: 350px;
       line-height: 3;
       text-align: center;
       text-transform: uppercase;

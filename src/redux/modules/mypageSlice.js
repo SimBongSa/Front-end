@@ -63,6 +63,7 @@ export const __getUserReject = createAsyncThunk(
   }
 )
 
+
 // Company
 export const __getCompanyInfo = createAsyncThunk(
   "companyInfo",
@@ -80,6 +81,7 @@ export const __getCompanyBoards = createAsyncThunk(
   async (payload, thunkAPI) => {
     try {
       const response = await apis.getCompanyBoards(payload);
+      console.log(response)
       return thunkAPI.fulfillWithValue(response.data.data);
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
@@ -99,6 +101,45 @@ export const __getAppliList = createAsyncThunk(
   }
 );
 
+export const __getAllAppliList = createAsyncThunk(
+  "allAppliList",
+  async (payload, thunkAPI) => {
+    try {
+      const response = await apis.getAllAppliList(payload);
+      console.log(response)
+      return thunkAPI.fulfillWithValue(response.data.data);
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error);
+    }
+  }
+);
+
+export const __putApprove = createAsyncThunk(
+  "approve",
+  async (payload, thunkAPI) => {
+    try {
+      const response = await apis.putApprove(payload);
+      console.log(response);
+      return thunkAPI.fulfillWithValue(response.data.data);
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error);
+    }
+  }
+);
+
+export const __putDisapprove = createAsyncThunk(
+  "disapprove",
+  async (payload, thunkAPI) => {
+    try {
+      const response = await apis.putDisapprove(payload);
+      console.log(response);
+      return thunkAPI.fulfillWithValue(response.data.data);
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error);
+    }
+  }
+);
+
 export const mypageSlice = createSlice({
   name: "mypage",
   initialState: {
@@ -109,7 +150,9 @@ export const mypageSlice = createSlice({
     userWait: [],
     userPass: [],
     userReject: [],
+    allAppliList: [],
     appliList: [],
+    approve: [],
     isLoading: false,
     error: null,
   },
@@ -204,6 +247,20 @@ export const mypageSlice = createSlice({
         state.error = action.payload;
       })
 
+      //get All Applicants List
+      .addCase(__getAllAppliList.pending, (state, _) => {
+        state.isLoading = true;
+      })
+      .addCase(__getAllAppliList.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.allAppliList = action.payload;
+      })
+      .addCase(__getAllAppliList.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.payload;
+      })
+
+      // get Applicant
       .addCase(__getAppliList.pending, (state, _) => {
         state.isLoading = true;
       })
@@ -215,6 +272,31 @@ export const mypageSlice = createSlice({
         state.isLoading = false;
         state.error = action.payload;
       })
+
+      // approve & disapprove
+      .addCase(__putApprove.pending, (state, _) => {
+        state.isLoading = true;
+      })
+      .addCase(__putApprove.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.approve = action.payload;
+      })
+      .addCase(__putApprove.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.payload;
+      })
+      .addCase(__putDisapprove.pending, (state, _) => {
+        state.isLoading = true;
+      })
+      .addCase(__putDisapprove.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.approve = action.payload;
+      })
+      .addCase(__putDisapprove.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.payload;
+      })
+
   },
 });
 

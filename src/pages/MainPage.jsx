@@ -4,21 +4,19 @@ import MainCalendar from "../components/Calendar/MainCalendar";
 import Footer from "../components/Footer/Footer";
 import Header from "../components/Header/Header";
 import MainBg from "../components/MainBg/MainBg";
-import { useSelector } from "react-redux";
 import MainCard from "../components/MainCard/MainCard";
+import Carousel from "../components/common/carousel/Carousel";
 
 export const MainPage = () => {
 
-  const boardList = useSelector((state) => state.boards.boards);
-  console.log(boardList)
+  // const boardList = useSelector((state) => state.boards.boards);
 
   return (
     <>
       <Header />
       <MainBg />
-      <MainCard/>
-      {/* <MainPageText>Urgent Activity</MainPageText>
-      <Cards /> */}
+      <Carousel />
+      {/* <MainCard/> */}
       <MainPageText>Search by Date</MainPageText>
       <MainCalendar />
       <Footer />

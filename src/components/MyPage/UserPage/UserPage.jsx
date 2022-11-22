@@ -48,9 +48,21 @@ const UserPage = () => {
           setUserPageOpt={setUserPageOpt}
         />
         {
-          userPageOpt === "wait" ? (
+          userPageOpt === "enroll" ? (
             <MyPageCards>
               <h1>봉사 신청 내역</h1>
+              <CardGrid
+                userEnroll={userEnroll}
+                gridColumn={1}
+              />
+            </MyPageCards>
+          ) : null
+        }
+
+        {
+          userPageOpt === "wait" ? (
+            <MyPageCards>
+              <h1>승인 대기중</h1>
               <CardGrid
                 userEnroll={userWait}
                 gridColumn={1}
@@ -65,6 +77,18 @@ const UserPage = () => {
               <h1>참여 봉사 관리</h1>
               <CardGrid
                 userEnroll={userPass}
+                gridColumn={1}
+              />
+            </MyPageCards>
+          ) : null
+        }
+
+        {
+          userPageOpt === "reject" ? (
+            <MyPageCards>
+              <h1>거절된 봉사 내역</h1>
+              <CardGrid
+                userEnroll={userReject}
                 gridColumn={1}
               />
             </MyPageCards>

@@ -7,14 +7,11 @@ export const HeaderContainer = styled.header`
   left: 0;
   width: 100%;
   padding: .5rem 0;
-  z-index: 3;
-  background-color: ${(props) => props.theme.bgColor};
+  z-index: 5;
+  background: ${(props) => props.theme.bgColor};
+  /* background: white; */
   will-change: transform;
   transition: all 0.5s;
-  @media ( max-width: 768px) {
-    width: 100%;
-    overflow: hidden;
-  }
 `
 
 export const HeaderLogo = styled.span`
@@ -25,6 +22,7 @@ export const HeaderLogo = styled.span`
   font-size: 2.25rem;
   line-height: inherit;
   font-weight: 500;
+  color: ${(props) => props.theme.btnColor};
   &::after {
     content: '';
     display: table;
@@ -45,6 +43,7 @@ export const HeaderMenuItem = styled.span`
   justify-content: center;
   padding: 13px 10px 13px 10px;
   text-decoration: none;
+  color: ${(props) => props.theme.textColor};
   transition: all 0.3s;
   &:hover {
     transform: translateY(-10%);
@@ -58,7 +57,7 @@ export const HeaderRegister = styled.div`
   cursor: pointer;
   display: flex;
   border-radius: 30px;
-  background: ${(props) => props.theme.ctrColor};
+  background: ${(props) => props.theme.textColor};
   color: ${(props) => props.theme.bgColor};
   padding: 15px;
   width: fit-content;
@@ -98,7 +97,7 @@ export const LightThemeBtn = styled.button`
   bottom: 22px;
   left: 200px;
   border-radius: 50%;
-  background-color: ${(props) => props.theme.ctrColor};
+  background-color: ${(props) => props.theme.textColor};
   color: ${(props) => props.theme.bgColor};
   padding: 1rem;
   text-align: center;
