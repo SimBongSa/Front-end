@@ -52,7 +52,7 @@ const Individual = () => {
                   <StLegend>Your Basic Info</StLegend>
                   <Input 
                   placeholder="Username"
-                  dupleCheck={true}
+                  dupleCheck="username"
                   type="text"
                   name="username"
                   value={input.username}
@@ -60,7 +60,7 @@ const Individual = () => {
                   />
                   <Input 
                     placeholder="Nickname"
-                    dupleCheck={true}
+                    dupleCheck="nickname"
                     type="text"
                     name="nickname"
                     value={input.nickname}
