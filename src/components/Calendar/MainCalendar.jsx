@@ -11,7 +11,7 @@ import { __getCustomer } from "../../redux/modules/calendarSlice";
 const MainCalendar = () => {
   const dispatch = useDispatch();
   const maindate = useSelector((state) => state.calendarList.calendarList);
-
+  console.log(maindate.data);
   const [value, setValue] = useState(new Date());
   const [date, setDate] = useState(new Date());
 

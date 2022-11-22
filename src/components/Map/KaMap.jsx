@@ -11,7 +11,6 @@ const KaMap = ({ area, mapWidth, mapHeight, position, input }) => {
   const geocoder = new kakao.maps.services.Geocoder();
   // console.log("주소 =>", schedule);
 
-
   useEffect(() => {
     const onAddScheduleHandler = (area) => {
       // e.preventDefault();
@@ -23,7 +22,7 @@ const KaMap = ({ area, mapWidth, mapHeight, position, input }) => {
           // LatLngBounds 객체에 좌표를 추가합니다
           const bounds = new kakao.maps.LatLngBounds();
           let markers = [];
-  
+
           for (let i = 0; i < data.length; i++) {
             // @ts-ignore
             markers.push({
@@ -45,7 +44,7 @@ const KaMap = ({ area, mapWidth, mapHeight, position, input }) => {
     };
     setSchedule(area);
     return () => onAddScheduleHandler(area);
-  }, [setSchedule, area, schedule, map, kakao.maps.LatLng])
+  }, [setSchedule, area, schedule, map, kakao.maps.LatLng]);
 
   const onChangeHandler = (e) => {
     setSchedule(e.target.value);
@@ -53,23 +52,20 @@ const KaMap = ({ area, mapWidth, mapHeight, position, input }) => {
 
   return (
     <div>
-      <form >
-        {
-          input === true ? (
-            <>
-              <input
-                type="text"
-                placeholder="주소"
-                name="address"
-                // value={area}
-                value={schedule}
-                onChange={onChangeHandler}
-              />
-              <button type="submit">작성</button>
-            </>
-          ) : null
-        }
-
+      <form>
+        {input === true ? (
+          <>
+            <input
+              type="text"
+              placeholder="주소"
+              name="address"
+              // value={area}
+              value={schedule}
+              onChange={onChangeHandler}
+            />
+            <button type="submit">작성</button>
+          </>
+        ) : null}
       </form>
       <StMap // 로드뷰를 표시할 Container
         center={{
