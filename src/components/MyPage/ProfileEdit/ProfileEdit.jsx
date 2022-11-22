@@ -24,18 +24,11 @@ const ProfileEdit = () => {
 		dispatch(__getUserInfo());
 	}, [dispatch]);
 
-	const companyInfo = useSelector(state => state.mypage.companyInfo);
+	const companyInfo = useSelector(state => state);
 	console.log("companyInfo =>", companyInfo);
 
-	const userInfo = useSelector(state => state.mypage.userInfo);
+	const userInfo = useSelector(state => state);
 	console.log("userInfo =>", userInfo);
-
-	const onChangeHandler = e => {
-		console.log("인풋=>", input);
-		const { name, value } = e.target;
-		// setInput({ ...input, [name]: value, area: address });
-		setInput({ ...input, [name]: value });
-	};
 
 	const onChangeImage = e => {
 		setProfileImage(e.target.files[0]);
@@ -51,6 +44,13 @@ const ProfileEdit = () => {
 				setUploadpreview(previewImgUrl);
 			}
 		};
+	};
+
+	const onChangeHandler = e => {
+		console.log("인풋=>", input);
+		const { name, value } = e.target;
+		// setInput({ ...input, [name]: value, area: address });
+		setInput({ ...input, [name]: value });
 	};
 
 	const onSubmitHandler = e => {
@@ -118,10 +118,10 @@ const ProfileEdit = () => {
 							기관 프로필 수정:
 							<ImgSize src={uploadpreview} alt="" />
 							<input
+								name="profileImage"
 								type={"file"}
 								accept={"image/*"}
 								placeholder="프로필 업로드"
-								name="profileImage"
 								onChange={onChangeImage}
 							/>
 						</Content>
