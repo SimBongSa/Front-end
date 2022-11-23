@@ -80,13 +80,12 @@ const SearchBar = () => {
                         setSearch(e.target.value);
                       }}
                     >
-                      <option>전체</option>
-                      <option>아동,청소년</option>
-                      <option>장애인</option>
-                      <option>노인</option>
-                      <option>다문화가정</option>
-                      <option>환경</option>
-                      <option>유기동물</option>
+                      <option>CHILD</option>
+                      <option>DISABLED</option>
+                      <option>SENIOR</option>
+                      <option>MULTICULTURAL_FAMILY</option>
+                      <option>ENVIRONMENT</option>
+                      <option>ABANDONED_ANIMAL</option>
                     </select>
                   </li>
                   <li>

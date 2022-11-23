@@ -10,7 +10,6 @@ const Board = () => {
   const dispatch = useDispatch();
   const boards = useSelector((state) => state.boards.boards);
   const area = useSelector((state) => state.boards.area);
-  console.log(boards);
 
   const [page, setPage] = useState(1);
   const size = 10;
