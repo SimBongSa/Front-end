@@ -3,14 +3,23 @@ import { useDispatch } from "react-redux";
 import { ImgSize } from "./Recruit.styled";
 import PopupDom from "../Map/PopupDom";
 import PopupPostCode from "../Map/PopupPostCode";
-import styled from "styled-components";
 import Input from "../common/input/Input";
 import { __createBoard } from "../../redux/modules/boardSlice";
-import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import moment from "moment";
 import { ko } from "date-fns/esm/locale";
-import { RecruitContainer, RecruitNav, ScrollDown, RecruitSec, TagWrap, TagColumn, AreaBtn, RecruitTA } from "./Recruit.styled";
+import {
+  RecruitContainer,
+  RecruitNav,
+  ScrollDown,
+  RecruitSec,
+  TagWrap,
+  TagColumn,
+  AreaBtn,
+  RecruitTA,
+  CustomeDatePicker,
+  PickerBox,
+} from "./Recruit.styled";
 
 const Recruit = () => {
   const dispatch = useDispatch();
@@ -47,8 +56,7 @@ const Recruit = () => {
   const [boardImage, setBoardImage] = useState(null);
   const [address, setAddress] = useState("");
 
-
-  console.log("input =>", input)
+  console.log("input =>", input);
 
   // 이미지 미리보기 스테이트
   const [uploadpreview, setUploadpreview] = useState("");
@@ -60,10 +68,10 @@ const Recruit = () => {
   };
 
   const onChangeTags = (e) => {
-    const {name, value} = e.target;
-    setTags({...tags, [name]: value});
-  }
-  console.log("tags",tags)
+    const { name, value } = e.target;
+    setTags({ ...tags, [name]: value });
+  };
+  console.log("tags", tags);
 
   //이미지 스테이트저장, 미리보기 온체인지 핸들러
   const onChangeImage = (e) => {
@@ -130,7 +138,7 @@ const Recruit = () => {
               </a>
             </li>
           </ul>
-          <ScrollDown/>
+          <ScrollDown />
         </RecruitNav>
         <form onSubmit={submitHandler}>
           <RecruitSec className="section section1" id="section1">
@@ -140,27 +148,63 @@ const Recruit = () => {
                 <h2>Category :</h2>
                 <ul>
                   <li>
-                    <input type="radio" id="CHILD" name="category" value="CHILD" onChange={onChangeTags}/>
+                    <input
+                      type="radio"
+                      id="CHILD"
+                      name="category"
+                      value="CHILD"
+                      onChange={onChangeTags}
+                    />
                     <label htmlFor="CHILD">어린이</label>
                   </li>
                   <li>
-                    <input type="radio" id="DISABLED" name="category" value="DISABLED" onChange={onChangeTags}/>
+                    <input
+                      type="radio"
+                      id="DISABLED"
+                      name="category"
+                      value="DISABLED"
+                      onChange={onChangeTags}
+                    />
                     <label htmlFor="DISABLED">장애인</label>
                   </li>
                   <li>
-                    <input type="radio" id="SENIOR" name="category" value="SENIOR" onChange={onChangeTags}/>
+                    <input
+                      type="radio"
+                      id="SENIOR"
+                      name="category"
+                      value="SENIOR"
+                      onChange={onChangeTags}
+                    />
                     <label htmlFor="SENIOR">노인</label>
                   </li>
                   <li>
-                    <input type="radio" id="MULTICULTURAL_FAMILY" name="category" value="MULTICULTURAL_FAMILY" onChange={onChangeTags}/>
+                    <input
+                      type="radio"
+                      id="MULTICULTURAL_FAMILY"
+                      name="category"
+                      value="MULTICULTURAL_FAMILY"
+                      onChange={onChangeTags}
+                    />
                     <label htmlFor="MULTICULTURAL_FAMILY">다문화가정</label>
                   </li>
                   <li>
-                    <input type="radio" id="ENVIROMENT" name="category" value="ENVIROMENT" onChange={onChangeTags}/>
+                    <input
+                      type="radio"
+                      id="ENVIROMENT"
+                      name="category"
+                      value="ENVIROMENT"
+                      onChange={onChangeTags}
+                    />
                     <label htmlFor="ENVIROMENT">환경</label>
                   </li>
                   <li>
-                    <input type="radio" id="animal" name="category" value="ABANDONED_ANIMAL" onChange={onChangeTags}/>
+                    <input
+                      type="radio"
+                      id="animal"
+                      name="category"
+                      value="ABANDONED_ANIMAL"
+                      onChange={onChangeTags}
+                    />
                     <label htmlFor="animal">유기동물</label>
                   </li>
                 </ul>
@@ -184,7 +228,8 @@ const Recruit = () => {
 
           <RecruitSec className="section section2" id="section2">
             <h1>언제, 어디서 열리나요?</h1>
-            {/* <CustomeDatePicker
+            <PickerBox>
+              <CustomeDatePicker
                 locale={ko}
                 dateFormat="📅 yyyy년-MM월-dd일"
                 selected={startDate}
@@ -193,16 +238,17 @@ const Recruit = () => {
                 startDate={startDate}
                 endDate={endDate}
               />
-            <CustomeDatePicker
-              locale={ko}
-              dateFormat="📅 yyyy년-MM월-dd일 "
-              selected={endDate}
-              onChange={(date) => setEndDate(date)}
-              selectsEnd
-              startDate={startDate}
-              endDate={endDate}
-              minDate={startDate}
-            /> */}
+              <CustomeDatePicker
+                locale={ko}
+                dateFormat="📅 yyyy년-MM월-dd일 "
+                selected={endDate}
+                onChange={(date) => setEndDate(date)}
+                selectsEnd
+                startDate={startDate}
+                endDate={endDate}
+                minDate={startDate}
+              />
+            </PickerBox>
             <Input
               type="date"
               name="dueDay"
@@ -257,41 +303,89 @@ const Recruit = () => {
                 {/* <h2>Conditions :</h2> */}
                 <ul>
                   <li>
-                    <input type="radio" id="adult" name="conditions" value="ADULT" onChange={onChangeTags}/>
+                    <input
+                      type="radio"
+                      id="adult"
+                      name="conditions"
+                      value="ADULT"
+                      onChange={onChangeTags}
+                    />
                     <label htmlFor="adult">성인</label>
                   </li>
                   <li>
-                    <input type="radio" id="male" name="conditions" value="MALE" onChange={onChangeTags}/>
+                    <input
+                      type="radio"
+                      id="male"
+                      name="conditions"
+                      value="MALE"
+                      onChange={onChangeTags}
+                    />
                     <label htmlFor="male">남성</label>
                   </li>
                   <li>
-                    <input type="radio" id="female" name="conditions" value="FEMALE" onChange={onChangeTags}/>
+                    <input
+                      type="radio"
+                      id="female"
+                      name="conditions"
+                      value="FEMALE"
+                      onChange={onChangeTags}
+                    />
                     <label htmlFor="female">여성</label>
                   </li>
                 </ul>
               </TagColumn>
-              
+
               <TagColumn>
                 {/* <h2>Skills :</h2> */}
                 <ul>
                   <li>
-                    <input type="radio" id="ACTIVE" name="skills" value="ACTIVE" onChange={onChangeTags}/>
+                    <input
+                      type="radio"
+                      id="ACTIVE"
+                      name="skills"
+                      value="ACTIVE"
+                      onChange={onChangeTags}
+                    />
                     <label htmlFor="ACTIVE">활발한 사람이면 좋아요</label>
                   </li>
                   <li>
-                    <input type="radio" id="CAREFUL" name="skills" value="CAREFUL" onChange={onChangeTags}/>
+                    <input
+                      type="radio"
+                      id="CAREFUL"
+                      name="skills"
+                      value="CAREFUL"
+                      onChange={onChangeTags}
+                    />
                     <label htmlFor="CAREFUL">꼼꼼한 사람을 원해요</label>
                   </li>
                   <li>
-                    <input type="radio" id="MILITARY" name="skills" value="MILITARY" onChange={onChangeTags}/>
+                    <input
+                      type="radio"
+                      id="MILITARY"
+                      name="skills"
+                      value="MILITARY"
+                      onChange={onChangeTags}
+                    />
                     <label htmlFor="MILITARY">군필자 우대</label>
                   </li>
                   <li>
-                    <input type="radio" id="LIKE_CHILD" name="skills" value="LIKE_CHILD" onChange={onChangeTags}/>
+                    <input
+                      type="radio"
+                      id="LIKE_CHILD"
+                      name="skills"
+                      value="LIKE_CHILD"
+                      onChange={onChangeTags}
+                    />
                     <label htmlFor="LIKE_CHILD">아이랑 잘 놀아줘야해요</label>
                   </li>
                   <li>
-                    <input type="radio" id="LIKE_ANIMAL" name="skills" value="LIKE_ANIMAL" onChange={onChangeTags}/>
+                    <input
+                      type="radio"
+                      id="LIKE_ANIMAL"
+                      name="skills"
+                      value="LIKE_ANIMAL"
+                      onChange={onChangeTags}
+                    />
                     <label htmlFor="LIKE_ANIMAL">동물을 사랑하는 분</label>
                   </li>
                 </ul>

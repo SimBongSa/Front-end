@@ -1,12 +1,12 @@
 import styled from "styled-components";
 import { IoIosArrowDown } from "react-icons/io";
-
+import DatePicker from "react-datepicker";
 
 export const RecruitContainer = styled.div`
   min-height: 80vh;
   font-weight: 300;
   color: ${(props) => props.theme.textColor};
-  position: relative; 
+  position: relative;
   margin-top: -3rem;
 `;
 
@@ -17,7 +17,7 @@ export const RecruitNav = styled.nav`
   display: flex;
   flex-flow: column nowrap;
   justify-content: flex-end;
-  margin: 0 0 100px 30px; 
+  margin: 0 0 100px 30px;
   & a {
     text-decoration: none;
   }
@@ -45,7 +45,7 @@ export const RecruitNav = styled.nav`
     transition: all 0.3s ease-out;
     margin-bottom: 3rem;
     &:after {
-      content: '';
+      content: "";
       display: block;
       border-left: 2px solid ${(props) => props.theme.textColor};
       border-top: 2px solid ${(props) => props.theme.textColor};
@@ -61,7 +61,7 @@ export const RecruitNav = styled.nav`
       color: ${(props) => props.theme.textColor};
       transition: all 0.15s ease-out;
       &:hover {
-        padding-left: 1em
+        padding-left: 1em;
       }
     }
     & .active {
@@ -87,7 +87,7 @@ export const RecruitNav = styled.nav`
       }
     }
   }
-`
+`;
 
 export const RecruitSec = styled.section`
   height: 100vh;
@@ -100,14 +100,14 @@ export const RecruitSec = styled.section`
   & h1 {
     margin-bottom: 3rem;
   }
-`
+`;
 
 export const TagWrap = styled.div`
   display: flex;
-	justify-content: center;
-	align-items: center;
-	flex-direction: row;
-`
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+`;
 
 export const TagColumn = styled.div`
   display: block;
@@ -123,14 +123,14 @@ export const TagColumn = styled.div`
     padding: 0;
     overflow: auto;
     & li {
-      color: #AAAAAA;
+      color: #aaaaaa;
       display: block;
       position: relative;
       float: left;
       width: 100%;
       height: 100px;
       user-select: none;
-      & input[type=radio] {
+      & input[type="radio"] {
         position: absolute;
         visibility: hidden;
         &:checked ~ label {
@@ -154,13 +154,13 @@ export const TagColumn = styled.div`
       }
     }
   }
-`
+`;
 
 export const ScrollDown = styled(IoIosArrowDown)`
   position: fixed;
   left: 48%;
   font-size: 3rem;
-`
+`;
 
 export const AreaBtn = styled.button`
   width: 150px;
@@ -179,4 +179,22 @@ export const ImgSize = styled.img`
   width: 350px;
   height: 150px;
   margin: 1rem;
+`;
+
+export const CustomeDatePicker = styled(DatePicker)({
+  margin: "12px",
+  fontSize: "15px",
+  padding: "20px",
+  width: "360px",
+  paddingLeft: "20px",
+  border: "none",
+  borderRadius: "15px",
+  outline: "none",
+  marginBottom: "1rem",
+  background: "whitesmoke",
+});
+
+export const PickerBox = styled.div`
+  display: flex;
+  flex-direction: column;
 `;
