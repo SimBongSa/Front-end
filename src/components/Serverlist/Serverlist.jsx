@@ -3,6 +3,7 @@ import { useState } from "react";
 
 function Serverlist({ result, mark }) {
   const [moveIndex, setMoveIndex] = useState(0);
+  console.log(result);
   return (
     <>
       {result && result.length > 0 ? (
