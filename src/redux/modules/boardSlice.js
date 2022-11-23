@@ -12,11 +12,6 @@ export const __createBoard = createAsyncThunk(
       formData.append(key, value);
     });
 
-    //formData console.log
-    // for (let key of formData.keys()) {
-    //   console.log("formData ===>", key, ":", formData.get(key));
-    // }
-
     try {
       const response = await apis.createBoard(payload);
       console.log("createBoard response =>", response);

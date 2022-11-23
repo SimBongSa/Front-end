@@ -3,7 +3,7 @@ import styled from "styled-components"
 export const ProfileContainer = styled.div`
   float: left;
   position: fixed;
-  margin-top: 5rem;
+  margin-top: 0rem;
   margin-left: 2rem;
   border-radius: 5px;
   padding: 30px 10px 10px 10px;

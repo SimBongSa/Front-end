@@ -7,6 +7,7 @@ import { ko } from "date-fns/esm/locale";
 import styled from "styled-components";
 import { useDispatch } from "react-redux";
 import { __postSearch } from "../../redux/modules/calendarSlice";
+import { HiMagnifyingGlass } from "react-icons/hi2";
 import {
   SearchBarContainer,
   SearchBarOpen,
@@ -61,10 +62,17 @@ const SearchBar = () => {
   };
 
   return (
-    <SearchBarContainer ref={node} modal={modal} animation={animation}>
+    <SearchBarContainer
+      ref={node}
+      modal={modal}
+      animation={animation}
+      onSubmit={onSubmitHandler}  
+    >
       {modal === false ? (
         <SearchBarOpen onClick={() => setModal((prev) => !prev)}>
-          봉사 검색하기
+          <StMagnifying/>
+          <span>어떤 봉사활동을 찾고 계세요?</span>
+          <MagnityingBtn/>
         </SearchBarOpen>
       ) : (
         <form onSubmit={(e) => onSubmitHandler(e)}>
@@ -157,7 +165,23 @@ const CustomeDatePicker = styled(DatePicker)({
   outline: "none",
   background: "whitesmoke",
 });
+export const StMagnifying = styled(HiMagnifyingGlass)`
+  font-size: 1.5rem;
+  margin: 15px;
+`
+
+export const MagnityingBtn = styled(HiMagnifyingGlass)`
+  position: fixed;
+  font-size: 1rem;
+  background: ${(props) => props.theme.btnColor};
+  color: ${(props) => props.theme.bgColor};
+  border-radius: 50%;
+  padding: 3px;
+  width: 35px;
+  height: 35px;
+  right: 10px;
+`;
 
 const PickerBox = styled.div`
   display: flex;
-`;
+`

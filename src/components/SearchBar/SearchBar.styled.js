@@ -9,10 +9,14 @@ export const SearchBarContainer = styled.div`
 `;
 
 export const SearchBarOpen = styled.button`
-  display: ${(props) => (props.modal ? "none" : "block")};
+  display: ${(props) => (props.modal ? "none" : "flex")};
+  flex-direction: row;
   cursor: pointer;
   position: fixed;
-  width: 200px;
+  width: 350px;
+  height: 50px;
+  float: left;
+  align-items: center;
   margin-top: 1rem;
   top: 5px;
   left: 50%;
@@ -22,10 +26,12 @@ export const SearchBarOpen = styled.button`
   animation: ${(props) => (props.animation ? fadeOut : fadeIn)} 0.6s;
   transform: translate(-50%, 0%);
   transition: all 0.5s;
+  & span {
+    margin: 0;
+  }
   @media (max-width: 768px) {
-    top: 24px;
-    width: 120px;
-    right: 0px;
+    top: 8px;
+    width: 200px;
   }
 `;
 
