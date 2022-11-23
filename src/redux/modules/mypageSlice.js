@@ -65,6 +65,10 @@ export const __putUserInfo = createAsyncThunk("__putUserInfo", async (payload, t
 	});
 	try {
 		const response = await axios.putUserPage(payload);
+		if (response.status === 200) {
+			alert(response.data.data.msg);
+			return thunkAPI.fulfillWithValue(response);
+		}
 		return thunkAPI.fulfillWithValue(response);
 	} catch (error) {
 		return thunkAPI.rejectWithValue(error);
@@ -101,7 +105,7 @@ export const __getAppliList = createAsyncThunk("appliList", async (payload, thun
 
 export const __putCompanyInfo = createAsyncThunk("putCompanyInfo", async (payload, thunkAPI) => {
 	const formData = new FormData();
-
+	console.log("__putCompanyInfo payload", payload);
 	// formData append
 	Object.entries(payload).forEach(([key, value]) => {
 		formData.append(key, value);
@@ -230,6 +234,7 @@ export const mypageSlice = createSlice({
 			})
 			.addCase(__putCompanyInfo.fulfilled, (state, action) => {
 				state.isLoading = false;
+				console.log("__putCompanyInfo payload=> ", action.payload);
 				state.data = state.data.map(item => {
 					return item.username === action.payload.username ? action.payload : item;
 				});

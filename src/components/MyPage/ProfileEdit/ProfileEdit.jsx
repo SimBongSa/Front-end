@@ -11,8 +11,7 @@ import {
 
 const ProfileEdit = () => {
 	const role = getCookieToken(["authority"]);
-	const [profileImage, setProfileImage] = useState(null);
-	const [uploadpreview, setUploadpreview] = useState("");
+
 	const [input, setInput] = useState("");
 	const dispatch = useDispatch();
 
@@ -24,14 +23,26 @@ const ProfileEdit = () => {
 		dispatch(__getUserInfo());
 	}, [dispatch]);
 
-	const companyInfo = useSelector(state => state);
+	const companyInfo = useSelector(state => state?.mypage?.companyInfo);
 	console.log("companyInfo =>", companyInfo);
+
+	const [profileImage, setProfileImage] = useState(companyInfo.profileImage);
+	const [uploadpreview, setUploadpreview] = useState(companyInfo.profileImage);
+
+	const [remainInfo, setRemainInfo] = useState(companyInfo);
+	console.log("remainInfo =>", remainInfo);
 
 	const userInfo = useSelector(state => state);
 	console.log("userInfo =>", userInfo);
 
 	const onChangeImage = e => {
-		setProfileImage(e.target.files[0]);
+		if (setProfileImage == null) {
+			setProfileImage(remainInfo.profileImage);
+		} else {
+			setProfileImage(e.target.files[0]);
+		}
+
+		console.log("profileImage =>", profileImage);
 
 		// 미리보기 온체인지 핸들러
 		let reader = new FileReader();
@@ -47,20 +58,18 @@ const ProfileEdit = () => {
 	};
 
 	const onChangeHandler = e => {
-		console.log("인풋=>", input);
 		const { name, value } = e.target;
-		// setInput({ ...input, [name]: value, area: address });
-		setInput({ ...input, [name]: value });
+		setRemainInfo({ ...remainInfo, [name]: value });
+		console.log("!!!remainInfo=>", remainInfo);
 	};
 
 	const onSubmitHandler = e => {
 		e.preventDefault();
 		if (role === "ROLE_ADMIN") {
-			dispatch(__putCompanyInfo({ ...input, profileImage }));
+			dispatch(__putCompanyInfo({ ...remainInfo, profileImage }));
 		} else {
-			dispatch(__putUserInfo({ ...input, profileImage }));
+			dispatch(__putUserInfo({ ...remainInfo, profileImage }));
 		}
-
 		// navigate(`/detail/${id}`);
 	};
 
@@ -74,6 +83,7 @@ const ProfileEdit = () => {
 							<input
 								type="password"
 								defaultValue={companyInfo?.password}
+								key={companyInfo?.password}
 								name="password"
 								onChange={onChangeHandler}
 							/>
@@ -83,6 +93,7 @@ const ProfileEdit = () => {
 							<input
 								type="password"
 								defaultValue={companyInfo?.passwordConfirm}
+								key={companyInfo?.passwordConfirm}
 								name="passwordConfirm"
 								onChange={onChangeHandler}
 							/>
@@ -91,7 +102,9 @@ const ProfileEdit = () => {
 							이메일:
 							<input
 								type="text"
+								required
 								defaultValue={companyInfo?.email}
+								key={companyInfo?.email}
 								name="email"
 								onChange={onChangeHandler}
 							/>
@@ -101,6 +114,7 @@ const ProfileEdit = () => {
 							<input
 								type="text"
 								defaultValue={companyInfo?.phoneNumber}
+								key={companyInfo?.phoneNumber}
 								name="phoneNumber"
 								onChange={onChangeHandler}
 							/>
@@ -110,16 +124,18 @@ const ProfileEdit = () => {
 							<input
 								type="text"
 								defaultValue={companyInfo?.introduction}
+								key={companyInfo?.introduction}
 								name="introduction"
 								onChange={onChangeHandler}
 							/>
 						</Content>
 						<Content>
-							기관 프로필 수정:
+							기관 프로필 이미지 수정:
 							<ImgSize src={uploadpreview} alt="" />
 							<input
 								name="profileImage"
 								type={"file"}
+								key={profileImage}
 								accept={"image/*"}
 								placeholder="프로필 업로드"
 								onChange={onChangeImage}
@@ -181,6 +197,7 @@ const ProfileEdit = () => {
 							<input
 								name="profileImage"
 								type={"file"}
+								key={profileImage}
 								accept="image/*"
 								placeholder="프로필 업로드"
 								onChange={onChangeImage}
