@@ -136,35 +136,6 @@ const Recruit = () => {
           <RecruitSec className="section section1" id="section1">
             <h1>어떤 봉사활동을 등록하시나요?</h1>
             <TagWrap>
-              <TagColumn>
-                <h2>Category :</h2>
-                <ul>
-                  <li>
-                    <input type="radio" id="CHILD" name="category" value="CHILD" onChange={onChangeTags}/>
-                    <label htmlFor="CHILD">어린이</label>
-                  </li>
-                  <li>
-                    <input type="radio" id="DISABLED" name="category" value="DISABLED" onChange={onChangeTags}/>
-                    <label htmlFor="DISABLED">장애인</label>
-                  </li>
-                  <li>
-                    <input type="radio" id="SENIOR" name="category" value="SENIOR" onChange={onChangeTags}/>
-                    <label htmlFor="SENIOR">노인</label>
-                  </li>
-                  <li>
-                    <input type="radio" id="MULTICULTURAL_FAMILY" name="category" value="MULTICULTURAL_FAMILY" onChange={onChangeTags}/>
-                    <label htmlFor="MULTICULTURAL_FAMILY">다문화가정</label>
-                  </li>
-                  <li>
-                    <input type="radio" id="ENVIROMENT" name="category" value="ENVIROMENT" onChange={onChangeTags}/>
-                    <label htmlFor="ENVIROMENT">환경</label>
-                  </li>
-                  <li>
-                    <input type="radio" id="animal" name="category" value="ABANDONED_ANIMAL" onChange={onChangeTags}/>
-                    <label htmlFor="animal">유기동물</label>
-                  </li>
-                </ul>
-              </TagColumn>
               <Input
                 placeholder="제목"
                 type="text"
@@ -253,6 +224,36 @@ const Recruit = () => {
           <RecruitSec className="section section4" id="section4">
             <h1>마지막으로, 어떤 자원봉사자를 희망하시나요?</h1>
             <TagWrap>
+
+            <TagColumn>
+                <h2>Category :</h2>
+                <ul>
+                  <li>
+                    <input type="radio" id="CHILD" name="category" value="CHILD" onChange={onChangeTags}/>
+                    <label htmlFor="CHILD">어린이</label>
+                  </li>
+                  <li>
+                    <input type="radio" id="DISABLED" name="category" value="DISABLED" onChange={onChangeTags}/>
+                    <label htmlFor="DISABLED">장애인</label>
+                  </li>
+                  <li>
+                    <input type="radio" id="SENIOR" name="category" value="SENIOR" onChange={onChangeTags}/>
+                    <label htmlFor="SENIOR">노인</label>
+                  </li>
+                  <li>
+                    <input type="radio" id="MULTICULTURAL_FAMILY" name="category" value="MULTICULTURAL_FAMILY" onChange={onChangeTags}/>
+                    <label htmlFor="MULTICULTURAL_FAMILY">다문화가정</label>
+                  </li>
+                  <li>
+                    <input type="radio" id="ENVIROMENT" name="category" value="ENVIROMENT" onChange={onChangeTags}/>
+                    <label htmlFor="ENVIROMENT">환경</label>
+                  </li>
+                  <li>
+                    <input type="radio" id="animal" name="category" value="ABANDONED_ANIMAL" onChange={onChangeTags}/>
+                    <label htmlFor="animal">유기동물</label>
+                  </li>
+                </ul>
+              </TagColumn>
               <TagColumn>
                 {/* <h2>Conditions :</h2> */}
                 <ul>
