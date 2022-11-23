@@ -1,12 +1,12 @@
 import { useNavigate } from "react-router-dom";
 import {
-  HeaderContainer,
-  HeaderLogo,
-  HeaderMenu,
-  HeaderMenuItem,
-  HeaderRegister,
-  LightThemeBtn,
-  UserIcon,
+	HeaderContainer,
+	HeaderLogo,
+	HeaderMenu,
+	HeaderMenuItem,
+	HeaderRegister,
+	LightThemeBtn,
+	UserIcon,
 } from "./Header.styled";
 import { BsFillMoonFill } from "react-icons/bs";
 import { useTheme } from "../../context/themeProvider";
@@ -16,13 +16,17 @@ import { useCookies } from "react-cookie";
 import SearchBar from "../SearchBar/SearchBar";
 
 const Header = () => {
-  const navigate = useNavigate();
-  const [ThemeMode, toggleTheme] = useTheme();
-  const [cookies] = useCookies(["Authorization"]);
+	const navigate = useNavigate();
+	const [ThemeMode, toggleTheme] = useTheme();
+	const [cookies] = useCookies(["Authorization"]);
 
-  useEffect(() => {
-    getCookieToken();
-  });
+	useEffect(() => {
+		getCookieToken();
+	});
+	const isLogin = cookies["access-token"];
+	const authority = cookies["authority"];
+	const username = cookies["username"];
+
 
   const isLogin = cookies["access-token"];
   const authority = cookies["authority"];
@@ -72,6 +76,7 @@ const Header = () => {
       </HeaderMenu>
     </HeaderContainer>
   );
+
 };
 
 export default Header;

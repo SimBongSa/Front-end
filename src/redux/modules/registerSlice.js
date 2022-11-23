@@ -1,6 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { apis } from "./Api/apis";
 import { setCookie } from "../../utils/cookie";
+import axios from "axios";
 
 export const __loginMember = createAsyncThunk(
   "loginMember",
@@ -67,10 +68,10 @@ export const __registerManager = createAsyncThunk(
     const formData = new FormData();
     Object.entries(payload).forEach(([key, value]) => {
       formData.append(key, value);
-    })
+    });
     try {
       const response = await apis.managerSignup(payload);
-      console.log(response)
+      console.log(response);
       if (response.status === 200) {
         return thunkAPI.fulfillWithValue(response.data);
       }
@@ -80,6 +81,7 @@ export const __registerManager = createAsyncThunk(
   }
 );
 
+
 export const __checkUsername = createAsyncThunk(
   "checkUsername",
   async (payload, thunkAPI) => {
@@ -87,6 +89,14 @@ export const __checkUsername = createAsyncThunk(
       const response = await apis.checkUsername(payload);
       console.log(response)
       return thunkAPI.fulfillWithValue(response.data.data);
+
+export const __getCompanyInfo = createAsyncThunk(
+  "getCompanyInfo",
+  async (payload, thunkAPI) => {
+    try {
+      const response = await apis.getCompanyPage(payload);
+      return thunkAPI.fulfillWithValue(response);
+
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
     }
@@ -105,6 +115,7 @@ export const __checkNickname = createAsyncThunk(
     }
   }
 )
+
 
 export const registerSlice = createSlice({
   name: "userInfo",
@@ -130,6 +141,7 @@ export const registerSlice = createSlice({
       .addCase(__loginMember.fulfilled, (state, action) => {
         state.isLoading = false;
         state.statusCode = action.payload.success;
+
         state.loginInfo.concat(action.payload);
       })
       .addCase(__loginMember.rejected, (state, action) => {
@@ -149,7 +161,6 @@ export const registerSlice = createSlice({
         state.isLoading = false;
         state.error = action.payload;
       });
-
 
     // Register
     builder
