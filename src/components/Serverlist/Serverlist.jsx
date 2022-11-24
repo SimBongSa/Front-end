@@ -25,9 +25,7 @@ function Serverlist({ result, mark }) {
 					);
 				})
 			) : (
-				<Body>
-					<div>봉사 내역이 없습니다.</div>
-				</Body>
+				<Body>{/* <div>봉사 내역이 없습니다.</div> */}</Body>
 			)}
 		</>
 	);
