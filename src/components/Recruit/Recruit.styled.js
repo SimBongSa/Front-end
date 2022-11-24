@@ -87,6 +87,9 @@ export const RecruitNav = styled.nav`
       }
     }
   }
+  @media ( max-width: 1024px) {
+    display: none;
+  }
 `;
 
 export const RecruitSec = styled.section`
@@ -99,60 +102,6 @@ export const RecruitSec = styled.section`
   align-items: center;
   & h1 {
     margin-bottom: 3rem;
-  }
-`;
-
-export const TagWrap = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: row;
-`;
-
-export const TagColumn = styled.div`
-  display: block;
-  position: relative;
-  margin: 40px auto;
-  height: auto;
-  font-size: 20px;
-  width: 400px;
-  padding: 20px;
-  & ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    overflow: auto;
-    & li {
-      color: #aaaaaa;
-      display: block;
-      position: relative;
-      float: left;
-      width: 100%;
-      height: 100px;
-      user-select: none;
-      & input[type="radio"] {
-        position: absolute;
-        visibility: hidden;
-        &:checked ~ label {
-          color: ${(props) => props.theme.btnColor};
-        }
-      }
-      & label {
-        display: block;
-        position: relative;
-        font-weight: 300;
-        font-size: 1.35em;
-        padding: 25px 25px 25px 80px;
-        margin: 10px auto;
-        height: 30px;
-        z-index: 9;
-        cursor: pointer;
-        transition: all 0.25s linear;
-      }
-      &:hover label {
-        color: ${(props) => props.theme.btnColor};
-      }
-    }
   }
 `;
 
