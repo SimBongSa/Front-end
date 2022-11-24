@@ -85,7 +85,7 @@ const Recruit = () => {
     reader.onloadend = () => {
       const previewImgUrl = reader.result;
       if (previewImgUrl) {
-        setUploadpreview([...uploadpreview, previewImgUrl]);
+        setUploadpreview(previewImgUrl);
       }
     };
   };
@@ -240,6 +240,7 @@ const Recruit = () => {
         </form>
       </RecruitContainer>
     </div>
+
   );
 };
 

@@ -4,24 +4,25 @@ const BASE_URL = process.env.REACT_APP_SERVER;
 const token = getCookieToken("access-token");
 
 const api = axios.create({
-  baseURL: BASE_URL,
-  headers: {
-    "Content-Type": "application/json",
-    accept: "*/*",
-  },
+	baseURL: BASE_URL,
+	headers: {
+		"Content-Type": "application/json",
+		accept: "*/*",
+	},
 });
 
 api.interceptors.request.use(function (config) {
-  // const accessToken = document.cookie.split(";")[0].split["="][1];
-  // .find((row) => row.startsWith("Authorization"))
-  // .split("=")
-  // .find((row) => row.startsWith("Bearer"));
-  const accessToken = getCookieToken("access-token");
-  config.headers.Authorization = accessToken;
-  return config;
+	// const accessToken = document.cookie.split(";")[0].split["="][1];
+	// .find((row) => row.startsWith("Authorization"))
+	// .split("=")
+	// .find((row) => row.startsWith("Bearer"));
+	const accessToken = getCookieToken("access-token");
+	config.headers.Authorization = accessToken;
+	return config;
 });
 
 export const apis = {
+
   // registerSlice
   memberLogin: (payload) => axios.post(`${BASE_URL}/members/login`, payload),
   managerLogin: (payload) => axios.post(`${BASE_URL}/managers/login`, payload),
@@ -54,38 +55,40 @@ export const apis = {
     axios.get(`${BASE_URL}/boards?page=${payload.page}&size=${payload.size}`),
   getBoardId: (boardId) => axios.get(`${BASE_URL}/boards/${boardId}`),
 
-  // registerActivity slice
-  createBoard: (payload) =>
-    axios.post(`${BASE_URL}/boards`, payload, {
-      headers: {
-        Authorization: token,
-        "Content-Type": "multipart/form-data",
-      },
-    }),
 
-  editBoard: (payload) =>
-    api.put(`${BASE_URL}/boards/${payload.id}`, payload.upDate, {
-      headers: {
-        Authorization: token,
-        "Content-Type": "multipart/form-data",
-      },
-    }),
+	// registerActivity slice
+	createBoard: payload =>
+		axios.post(`${BASE_URL}/boards`, payload, {
+			headers: {
+				Authorization: token,
+				"Content-Type": "multipart/form-data",
+			},
+		}),
 
-  delBoard: (payload) =>
-    axios.delete(`${BASE_URL}/boards/${payload}`, {
-      headers: {
-        Authorization: token,
-        "Content-Type": "multipart/form-data",
-      },
-    }),
+	editBoard: payload =>
+		axios.put(`${BASE_URL}/boards/${payload.id}`, payload.upDate, {
+			headers: {
+				Authorization: token,
+				"Content-Type": "multipart/form-data",
+			},
+		}),
 
-  // 봉사 신청
-  applyBoard: (id) =>
-    api.post(`${BASE_URL}/boards/${id}/apply`, {
-      headers: {
-        Authorization: token,
-      },
-    }),
+	delBoard: payload =>
+		axios.delete(`${BASE_URL}/boards/${payload}`, {
+			headers: {
+				Authorization: token,
+				"Content-Type": "multipart/form-data",
+			},
+		}),
+
+	// 봉사 신청
+	applyBoard: id =>
+		axios.post(`${BASE_URL}/boards/${id}/apply`, {
+			headers: {
+				Authorization: token,
+			},
+		}),
+
 
   // MyPage (User)
   getUserPage: () =>
@@ -182,4 +185,25 @@ export const apis = {
         Authorization: token,
       },
     }),
+
+
+	putUserPage: payload =>
+		api.put(`${BASE_URL}/mypage`, payload, {
+			headers: {
+				Authorization: token,
+				"Content-Type": "multipart/form-data",
+			},
+		}),
+
+
+
+	putCompanyPage: payload =>
+		axios.put(`${BASE_URL}/companypage`, payload, {
+			headers: {
+				Authorization: token,
+				"Content-Type": "multipart/form-data",
+			},
+		}),
+
+
 };

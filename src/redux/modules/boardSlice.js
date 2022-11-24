@@ -38,7 +38,7 @@ export const __getBoard = createAsyncThunk(
 );
 
 export const __getBoardId = createAsyncThunk(
-  "getBoardsId",
+  "getBoardId",
   async (payload, thunkAPI) => {
     try {
       const response = await apis.getBoardId(payload);

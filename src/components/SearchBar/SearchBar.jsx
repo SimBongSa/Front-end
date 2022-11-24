@@ -1,6 +1,5 @@
 import { useEffect } from "react";
 import { useRef, useState } from "react";
-import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import moment from "moment";
 import { ko } from "date-fns/esm/locale";
@@ -16,6 +15,8 @@ import {
   SearchLabel,
   SearchList,
   SearchBtn,
+  CustomeDatePicker,
+  PickerBox,
 } from "./SearchBar.styled";
 
 const SearchBar = () => {
@@ -66,13 +67,13 @@ const SearchBar = () => {
       ref={node}
       modal={modal}
       animation={animation}
-      onSubmit={onSubmitHandler}  
+      onSubmit={onSubmitHandler}
     >
       {modal === false ? (
         <SearchBarOpen onClick={() => setModal((prev) => !prev)}>
-          <StMagnifying/>
+          <StMagnifying />
           <span>어떤 봉사활동을 찾고 계세요?</span>
-          <MagnityingBtn/>
+          <MagnityingBtn />
         </SearchBarOpen>
       ) : (
         <form onSubmit={(e) => onSubmitHandler(e)}>
@@ -156,19 +157,10 @@ const SearchBar = () => {
 
 export default SearchBar;
 
-const CustomeDatePicker = styled(DatePicker)({
-  display: "flex",
-  fontSize: "15px",
-  width: "50rem",
-  border: "none",
-  borderRadius: "15px",
-  outline: "none",
-  background: "whitesmoke",
-});
 export const StMagnifying = styled(HiMagnifyingGlass)`
   font-size: 1.5rem;
   margin: 15px;
-`
+`;
 
 export const MagnityingBtn = styled(HiMagnifyingGlass)`
   position: fixed;
@@ -181,7 +173,3 @@ export const MagnityingBtn = styled(HiMagnifyingGlass)`
   height: 35px;
   right: 10px;
 `;
-
-const PickerBox = styled.div`
-  display: flex;
-`
