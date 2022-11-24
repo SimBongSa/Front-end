@@ -1,27 +1,24 @@
 import styled from "styled-components";
 
 export const CalendarContainer = styled.div`
-  /* display: flex;
-  justify-content: space-evenly;
-  margin-top: 30rem; */
-  z-index: 0;
-  width: 75%;
-  min-width: 1160px;
-  display: flex;
-  margin: 0 auto;
-  justify-content: space-around;
-  flex-wrap: wrap;
-  padding: 1rem;
-  margin-bottom: 5rem;
-  float: right;
-  overflow: auto;
-  white-space: nowrap;
+	margin: auto;
+  margin-top: 5rem;
+  margin-bottom: 10rem;
+  width: 80%;
+  justify-content: center;
+	overflow: hidden;
   transition: all 0.5s;
+  & h1 {
+    font-size: 2rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    color: ${(props) => props.theme.textColor};
+  }
 
   .react-calendar {
-    width: 40rem;
+    /* width: 55rem; */
     height: 40rem;
-    max-width: 100%;
+    max-width: 60%;
     background: #ffffff;
     font-family: Arial, Helvetica, sans-serif;
     line-height: 3.5rem;

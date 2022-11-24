@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
 import { __getBoard } from "../../../redux/modules/boardSlice";
+import { TagBox } from "../../MyPage/MyApplicant/MyApplicant";
 import { Card, CardInfo, Content, ImgWrapper } from "../cards/CardGrid.styled";
 
 const Carousel = () => {
@@ -40,6 +41,15 @@ const Carousel = () => {
                         <p className="price">D-4</p>
                       </CardInfo>
                     </Content>
+                    <TagBox>
+                      {
+                        item.tags.map((tag) => {
+                          return (
+                            <li>{tag}</li>
+                          )
+                        })
+                      }
+                    </TagBox>
                   </Card>
                 </Slide>  
               )
@@ -56,7 +66,7 @@ export default Carousel;
 export const CarouselContainer = styled.div`
 	margin: auto;
   margin-top: 5rem;
-  height: 410px;
+  min-height: fit-content;
   width: 80%;
   justify-content: center;
 	overflow: hidden;
@@ -94,7 +104,6 @@ export const SlideTrack = styled.div`
 
 export const Slide = styled.div`
   margin: 1rem;
-  height: 250px;
   width: 350px;
   color: black;
 `

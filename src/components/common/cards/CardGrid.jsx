@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+import { TagBox } from "../../MyPage/MyApplicant/MyApplicant";
 import {
   CardGridContainer,
   Cards,
@@ -19,6 +20,8 @@ const CardGrid = ({ gridColumn, companyBoards, boards, userEnroll }) => {
   };
   const today = new Date().toISOString().split("T")[0];
 
+  console.log(userEnroll)
+
   return (
     <CardGridContainer>
       <Cards
@@ -37,6 +40,15 @@ const CardGrid = ({ gridColumn, companyBoards, boards, userEnroll }) => {
                   </p>
                   <p className="price">D-4</p>
                 </CardInfo>
+                <TagBox>
+                  {
+                    item?.tags?.map((tag) => {
+                      return (
+                        <li>{tag}</li>
+                      )
+                    })
+                  }
+                </TagBox>
               </Content>
             </Card>
           );
@@ -52,7 +64,7 @@ const CardGrid = ({ gridColumn, companyBoards, boards, userEnroll }) => {
               onClick={() => navigate(`/boards/${item.boardId}`)}
             >
               <ImgWrapper>
-                <img src={item.boardImage} alt="thumbnail" />
+                <img src={item.boardImage} loading="lazy" alt="thumbnail" />
               </ImgWrapper>
               <Content>
                 <p className="title">{item.title}</p>
@@ -60,6 +72,15 @@ const CardGrid = ({ gridColumn, companyBoards, boards, userEnroll }) => {
                   <p>{item.area}</p>
                   <p className="price">D - {dDay}</p>
                 </CardInfo>
+                <TagBox>
+                  {
+                    item?.tags?.map((tag) => {
+                      return (
+                        <li>{tag}</li>
+                      )
+                    })
+                  }
+                </TagBox>
               </Content>
             </Card>
           );
@@ -81,6 +102,15 @@ const CardGrid = ({ gridColumn, companyBoards, boards, userEnroll }) => {
                   <p>{item.area}</p>
                   <p className="price">D - {dDay}</p>
                 </CardInfo>
+                <TagBox>
+                  {
+                    item?.tags?.map((tag) => {
+                      return (
+                        <li>{tag}</li>
+                      )
+                    })
+                  }
+                </TagBox>
               </Content>
             </Card>
           );
