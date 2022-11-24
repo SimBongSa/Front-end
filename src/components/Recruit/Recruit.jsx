@@ -52,7 +52,7 @@ const Recruit = () => {
   //폼데이터 전송 스테이트
   const [input, setInput] = useState(init);
   console.log(input)
-  const [tags, setTags] = useState(new Set());
+  const [tags, setTags] = useState([]);
   const [boardImage, setBoardImage] = useState(null);
   const [address, setAddress] = useState("");
 
@@ -69,9 +69,10 @@ const Recruit = () => {
   };
 
   const onChangeTags = (e) => {
-    const tag = e.target.value;
-    setTags(Array.from(new Set([...tags, tag])));
+    const tag = e;
+    setTags([...tags, tag]);
   };
+
 
   //이미지 스테이트저장, 미리보기 온체인지 핸들러
   const onChangeImage = (e) => {
@@ -143,6 +144,7 @@ const Recruit = () => {
         <form onSubmit={submitHandler}>
           <RecruitSec className="section section1" id="section1">
             <h1>어떤 봉사활동을 등록하시나요?</h1>
+            <Tags category={true} onChangeTags={onChangeTags} />
             <Input
                 placeholder="제목"
                 type="text"
@@ -218,7 +220,12 @@ const Recruit = () => {
           </RecruitSec>
 
           <RecruitSec className="section section3" id="section3">
-            <h1>봉사활동을 잘 나타내 줄 이미지를 올려보세요</h1>
+            <h1>어떤 자원봉사자를 희망하시나요?</h1>
+              <Tags category={false} onChangeTags={onChangeTags} />
+          </RecruitSec>
+
+          <RecruitSec className="section section4" id="section4">
+            <h1>마지막으로, 봉사활동을 잘 나타내 줄 이미지를 올려보세요</h1>
             <ImgSize src={uploadpreview} alt="" />
             <Input
               name="thumbNail"
@@ -227,13 +234,9 @@ const Recruit = () => {
               placeholder="이미지업로드"
               onChange={onChangeImage}
             />
-          </RecruitSec>
-
-          <RecruitSec className="section section4" id="section4">
-            <h1>마지막으로, 어떤 자원봉사자를 희망하시나요?</h1>
-              <Tags onChangeTags={onChangeTags} />
             <button>봉사활동 등록하기</button>
           </RecruitSec>
+
         </form>
       </RecruitContainer>
     </div>

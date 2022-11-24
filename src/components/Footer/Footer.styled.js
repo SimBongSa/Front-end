@@ -10,7 +10,7 @@ export const FooterContainer = styled.section`
   width: 100%;
   padding: 1rem;
   transition: all 0.3s;
-  z-index: 4;
+  z-index: 10;
   &:hover {
     bottom: 0;
   }
