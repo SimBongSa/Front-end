@@ -51,6 +51,7 @@ function Comment() {
 					value={content}
 					onChange={e => setContent(e.target.value)}
 				/>
+
 				<Button
 					onClick={() => {
 						dispatch(__postComment({ content, id }));

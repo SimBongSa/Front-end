@@ -1,11 +1,9 @@
 import CardGrid from "../common/cards/CardGrid";
-import { BoardContainer, BoardContent, BtnBox, Button } from "./BoardList.styled";
+import { BoardContainer, BoardContent, BtnBox, Button, ListMap } from "./BoardList.styled";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { __getBoard } from "../../redux/modules/boardSlice";
-import styled from "styled-components";
 import KaMarker from "./../Map/KaMarker";
-import { TbMapPin, TbChevronRight, TbChevronLeft } from "react-icons/tb";
 
 const Board = () => {
 	const dispatch = useDispatch();
@@ -18,6 +16,11 @@ const Board = () => {
 	//popup btn
 	const [showPopup, setShowPopup] = useState(false);
 	const togglePopup = event => {
+		console.log(event);
+		event.preventDefault();
+		console.log(event);
+		console.log(event.target);
+		console.log(event.target.value);
 		setShowPopup(event.target.value);
 	};
 
@@ -35,8 +38,8 @@ const Board = () => {
 			<BoardContent>
 				{/* show popup btn */}
 				<BtnBox>
-					<Button onClick={togglePopup} value="false">
-						<TbMapPin />
+					<Button onClick={e => togglePopup(e)} value="false">
+						지도
 					</Button>
 					{page === 1 ? (
 						""
@@ -48,7 +51,7 @@ const Board = () => {
 								dispatch(__getBoard({ page, size }));
 							}}
 						>
-							<TbChevronLeft />
+							이전
 						</Button>
 					)}
 					<Button
@@ -58,7 +61,7 @@ const Board = () => {
 							dispatch(__getBoard({ page, size }));
 						}}
 					>
-						<TbChevronRight />
+						다음
 					</Button>
 				</BtnBox>
 				<CardGrid boards={boards} gridColumn={5} />
@@ -68,10 +71,3 @@ const Board = () => {
 };
 
 export default Board;
-
-export const ListMap = styled.div`
-	display: grid;
-	width: 100%;
-	height: 50vh;
-	margin-top: 10rem;
-`;

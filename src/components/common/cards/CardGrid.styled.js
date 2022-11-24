@@ -23,23 +23,23 @@ export const Cards = styled.div`
 `;
 
 export const Card = styled.div`
-  grid-column-end: span 4;
-  background-color: #39393b;
-  border-radius: 6px;
-  cursor: pointer;
-  min-width: 300px;
-  transition: all 0.5s ease;
-  min-height: 450px;
-  @media screen and (max-width: 1024px) {
-    grid-column-end: span 6;
-  }
-  @media screen and (max-width: 768px) {
-    grid-column-end: span 12;
-  }
-  &:hover {
-    transform: translateY(-0.5rem);
-  }
-`
+	grid-column-end: span 4;
+	background-color: #39393b;
+	border-radius: 6px;
+	cursor: pointer;
+	min-width: 300px;
+	transition: all 0.5s ease;
+	min-height: 450px;
+	@media screen and (max-width: 1024px) {
+		grid-column-end: span 6;
+	}
+	@media screen and (max-width: 768px) {
+		grid-column-end: span 12;
+	}
+	&:hover {
+		transform: translateY(-0.5rem);
+	}
+`;
 
 export const ImgWrapper = styled.div`
 	width: 100%;
@@ -55,13 +55,13 @@ export const ImgWrapper = styled.div`
 `;
 
 export const Content = styled.div`
-  padding: 1.5rem;
-  & .title {
-    font-size: 1.4rem;
-    color: #fff;
-    margin-bottom: 1rem;
-  }
-`
+	padding: 1.5rem;
+	& .title {
+		font-size: 1.4rem;
+		color: #fff;
+		margin-bottom: 1rem;
+	}
+`;
 
 export const CardInfo = styled.div`
   display: flex;
