@@ -72,6 +72,7 @@ export const CardInfo = styled.div`
 	& p {
 		max-width: 180px;
 		overflow: hidden;
+		color: #fff;
 	}
 	& .price {
 		width: 65px;

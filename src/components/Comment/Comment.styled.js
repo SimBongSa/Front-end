@@ -8,7 +8,8 @@ export const CommentWriteWrap = styled.div`
 	display: flex;
 	align-items: center;
 	background: #ffffff;
-	border-radius: 24px;
+	border-radius: 30px;
+	height: 4rem;
 	& > div {
 		cursor: pointer;
 	}
@@ -54,7 +55,6 @@ export const UserIcon = styled(FaRegUserCircle)`
 	justify-content: right;
 	font-size: 3rem;
 	color: grey;
-	margin-left: 1rem;
 	width: 5rem;
 `;
 

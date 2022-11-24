@@ -7,16 +7,15 @@ import MainCard from "../components/MainCard/MainCard";
 import Carousel from "../components/common/carousel/Carousel";
 
 export const MainPage = () => {
+	// const boardList = useSelector((state) => state.boards.boards);
 
-  // const boardList = useSelector((state) => state.boards.boards);
-
-  return (
-    <>
-      <Header />
-      <MainBg image={"image/banner.png"} />
-      <Carousel />
-      <MainCalendar />
-      <Footer />
-    </>
-  );
+	return (
+		<>
+			<Header />
+			<MainBg image={"image/banner.png"} />
+			<Carousel />
+			<MainCalendar />
+			<Footer />
+		</>
+	);
 };
