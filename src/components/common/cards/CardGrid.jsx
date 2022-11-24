@@ -1,11 +1,11 @@
 import { useNavigate } from "react-router-dom";
-import { TagBox } from "../../MyPage/MyApplicant/MyApplicant";
 import {
   CardGridContainer,
   Cards,
   Card,
   ImgWrapper,
   Content,
+  TagBox,
   CardInfo,
 } from "./CardGrid.styled";
 const CardGrid = ({ gridColumn, companyBoards, boards, userEnroll }) => {
@@ -57,7 +57,6 @@ const CardGrid = ({ gridColumn, companyBoards, boards, userEnroll }) => {
           return (
             <Card
               key={item.boardId}
-              // onClick={(item) => getArea(item?.area)}
               onClick={() => navigate(`/boards/${item.boardId}`)}
             >
               <ImgWrapper>
@@ -91,7 +90,7 @@ const CardGrid = ({ gridColumn, companyBoards, boards, userEnroll }) => {
               onClick={() => navigate(`/boards/${item.boardId}`)}
             >
               <ImgWrapper>
-                <img src={item.boardImage} alt="enrollImage" />
+                <img src={item.boardImage} loading="lazy" alt="enrollImage" />
               </ImgWrapper>
               <Content>
                 <p className="title">{item.title}</p>

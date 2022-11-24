@@ -19,7 +19,6 @@ const UserPage = () => {
   const userReject = useSelector((state) => state.mypage?.userReject);
 
   console.log(userPass.length)
-  console.log(userReject.length)
 
   useEffect(() => {
     dispatch(__getUserInfo());

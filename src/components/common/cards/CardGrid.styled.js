@@ -64,22 +64,46 @@ export const Content = styled.div`
 `;
 
 export const CardInfo = styled.div`
-	display: flex;
-	font-size: 0.8rem;
-	align-items: center;
-	justify-content: space-between;
-	color: ${props => props.theme.textColor};
-	& p {
-		max-width: 180px;
-		overflow: hidden;
-		color: #fff;
-	}
-	& .price {
-		width: 65px;
-		text-align: center;
-		padding: 0.5rem 1rem;
-		border-radius: 12rem;
-		color: ${props => props.theme.notiColor};
-		background-color: #303032;
-	}
-`;
+  display: flex;
+  font-size: .8rem;
+  align-items: center;
+  justify-content: space-between;
+  color: ${(props) => props.theme.textColor};
+  & p {
+    max-width: 180px;
+    overflow: hidden;
+  }
+  & .price {
+    width: 65px;
+    text-align: center;
+    padding: 0.5rem 1rem;
+    border-radius: 12rem;
+    color: ${(props) => props.theme.notiColor};
+    background-color: #303032;
+  }
+`
+
+export const TagBox = styled.ul`
+  display: flex;
+  flex-flow: row wrap;
+  font-size: 12px;
+  margin: 10px 0 0 0;
+  padding: 0;
+  justify-content: center;
+  margin-top: 1rem;
+  & li {
+    display: inline-block;
+    background: ${(props) => props.theme.subTextColor};
+    color: ${(props) => props.theme.textColor};
+    border-radius: 3px;
+    padding: 2.5px 10px;
+    margin: 0 10px 10px 0;
+    cursor: pointer;
+    user-select: none;
+    transition: background-color 0.3s;
+    &:hover {
+      background: ${(props) => props.theme.btnColor};
+      color: ${(props) => props.theme.bgColor};
+    }
+  }
+`

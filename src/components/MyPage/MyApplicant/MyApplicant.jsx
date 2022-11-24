@@ -3,6 +3,7 @@ import { FcCalendar } from "react-icons/fc";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { __putApprove, __putDisapprove } from "../../../redux/modules/mypageSlice";
+import { TagBox } from "../../common/cards/CardGrid.styled";
 
 const MyApplicant = ({ list }) => {
 
@@ -157,29 +158,6 @@ export const PreviewText = styled.div`
   text-overflow: ellipsis;
   text-align: justify;
   height: 100%;
-`
-
-export const TagBox = styled.ul`
-  display: flex;
-  flex-flow: row wrap;
-  font-size: 12px;
-  margin: 20px 0 0 0;
-  padding: 0;
-  justify-content: center;
-  & li {
-    display: inline-block;
-    background: ${(props) => props.theme.subTextColor};
-    color: ${(props) => props.theme.textColor};
-    border-radius: 3px;
-    padding: 2.5px 10px;
-    margin: 0 5px 5px 0;
-    cursor: pointer;
-    user-select: none;
-    transition: background-color 0.3s;
-    &:hover {
-      background: rgba(83, 83, 83, 0.8);
-    }
-  }
 `
 
 export const AppliBtnWrap = styled.div`
