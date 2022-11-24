@@ -12,6 +12,7 @@ const DetailEdit = () => {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [address, setAddress] = useState("");
   const [boardImage, setBoardImage] = useState(null);
+  const [input, setInput] = useState("");
   const [uploadpreview, setUploadpreview] = useState("");
 
   const boardsId = useSelector((state) => state?.boards?.boardsId);
@@ -19,7 +20,6 @@ const DetailEdit = () => {
   useEffect(() => {
     DetailEdit();
   }, [DetailEdit]);
-  const [input, setInput] = useState("");
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -160,7 +160,7 @@ const DetailEdit = () => {
             행사 상세 주소:
             <input
               type="text"
-              name="detailArea"
+              name={"detailArea"}
               defaultValue={boardsId?.detailArea}
               onChange={onChangeHandler}
             />
