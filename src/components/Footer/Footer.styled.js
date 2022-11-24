@@ -6,11 +6,12 @@ export const FooterContainer = styled.section`
   bottom: -110px;
   flex-flow: row wrap;
   margin: 0 auto;
-  background: rgb(55,55,55);
+  background: ${(props) => props.theme.bgColor};
+  color: ${(props) => props.theme.textColor};
   width: 100%;
   padding: 1rem;
   transition: all 0.3s;
-  z-index: 4;
+  z-index: 10;
   &:hover {
     bottom: 0;
   }
@@ -27,7 +28,6 @@ export const FooterUl = styled.ul`
     & h4 {
       transition: all 0.5s;
       padding: 10px 0 5px 0;
-      color: #fff;
       font-size: 1.4rem;
     }
   }

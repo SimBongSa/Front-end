@@ -28,20 +28,25 @@ const Profile = ({
         {/* 이거 삼항연산자 넘 그지같아서 수정해야 함 - 성호 */}
         {companyInfo && companyInfo.profileImage ? (
           <img src={companyInfo.profileImage} alt="user" />
-        ) : (
-          <img
-            src="https://play-lh.googleusercontent.com/38AGKCqmbjZ9OuWx4YjssAz3Y0DTWbiM5HB0ove1pNBq_o9mtWfGszjZNxZdwt_vgHo=w240-h480-rw"
-            alt="user"
-          />
-        )}
-        {userInfo && userInfo.profileImage ? (
+        ) : null }
+
+        { userInfo && userInfo.profileImage ? (
           <img src={companyInfo.profileImage} alt="user" />
-        ) : (
-          <img
-            src="https://play-lh.googleusercontent.com/38AGKCqmbjZ9OuWx4YjssAz3Y0DTWbiM5HB0ove1pNBq_o9mtWfGszjZNxZdwt_vgHo=w240-h480-rw"
-            alt="user"
-          />
-        )}
+        ) : null}
+
+        <img
+          src="https://play-lh.googleusercontent.com/38AGKCqmbjZ9OuWx4YjssAz3Y0DTWbiM5HB0ove1pNBq_o9mtWfGszjZNxZdwt_vgHo=w240-h480-rw"
+          alt="user"
+        />
+
+        {/* {
+          !userInfo.profileImage && !companyInfo.profileImage ? (
+            <img
+              src="https://play-lh.googleusercontent.com/38AGKCqmbjZ9OuWx4YjssAz3Y0DTWbiM5HB0ove1pNBq_o9mtWfGszjZNxZdwt_vgHo=w240-h480-rw"
+              alt="user"
+            />
+          ) : null
+        } */}
 
         {companyInfo ? (
           <>
@@ -82,7 +87,13 @@ const Profile = ({
               setUserPageOpt("reject");
             }}>거절된 봉사</h4>
             <span/>
-            <h4>프로필 수정</h4>
+            <h4
+              onClick={() => {
+                navigate("/mypageedit");
+              }}
+            >
+              프로필 수정
+            </h4>
             <h4 onClick={() => {
 
               logOut();

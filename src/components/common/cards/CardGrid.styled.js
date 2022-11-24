@@ -68,15 +68,15 @@ export const CardInfo = styled.div`
 	align-items: center;
 	justify-content: space-between;
 	color: ${props => props.theme.textColor};
-	& .pride {
-		color: #fff;
+	& p {
+		max-width: 180px;
+		overflow: hidden;
 	}
 	& .price {
-		width: 60px;
+		width: 65px;
 		text-align: center;
 		padding: 0.5rem 1rem;
 		border-radius: 12rem;
 		background-color: #303032;
-		color: #fff;
 	}
 `;

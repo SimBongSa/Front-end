@@ -13,7 +13,7 @@ export const __createBoard = createAsyncThunk(
     });
 
     try {
-      const response = await apis.createBoard(payload);
+      const response = await apis.createBoard(formData);
       console.log("createBoard response =>", response);
       if (response.status === 200) {
         alert(response.data.data.msg);
@@ -30,8 +30,6 @@ export const __getBoard = createAsyncThunk(
   async (payload, thunkAPI) => {
     try {
       const response = await apis.getBoard(payload);
-      console.log(response);
-
       return thunkAPI.fulfillWithValue(response.data.data);
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
