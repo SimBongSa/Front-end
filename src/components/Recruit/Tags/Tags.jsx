@@ -10,9 +10,6 @@ const Tags = ({ category, onChangeTags }) => {
   const [skills] = useState([{ACTIVE: "활발한 사람이 좋아요"}, {LIKE_CHILD : "아이를 좋아하는 분"}, {CAREFUL: "꼼꼼한 사람이 좋아요"}, {MILITARY: "군필자를 우대해요"}, {LIKE_ANIMAL: "동물을 사랑하는 분"}])
 
   const checkHandler = ({ target }) => {
-    // setChecked(!target.checked);
-    console.log(target.id)
-    console.log(target.checked)
     onChangeTags(target.id)
   }
 
