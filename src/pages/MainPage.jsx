@@ -1,4 +1,3 @@
-import styled from "styled-components";
 import MainCalendar from "../components/Calendar/MainCalendar";
 // import Cards from "../components/Cards/Cards";
 import Footer from "../components/Footer/Footer";
@@ -14,23 +13,10 @@ export const MainPage = () => {
   return (
     <>
       <Header />
-      <MainBg />
+      <MainBg image={"image/banner.png"} />
       <Carousel />
-      {/* <MainCard/> */}
-      <MainPageText>Search by Date</MainPageText>
       <MainCalendar />
       <Footer />
     </>
   );
 };
-
-export const MainPageText = styled.span`
-  display: flex;
-  align-items: center;
-  margin: 1rem;
-  float: left;
-  width: 15%;
-  font-size: 2.8rem;
-  vertical-align: middle;
-  height: 350px;
-`;

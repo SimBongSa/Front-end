@@ -168,7 +168,8 @@ export const TagBox = styled.ul`
   justify-content: center;
   & li {
     display: inline-block;
-    background: rgba(83, 83, 83, 0.4);
+    background: ${(props) => props.theme.subTextColor};
+    color: ${(props) => props.theme.textColor};
     border-radius: 3px;
     padding: 2.5px 10px;
     margin: 0 5px 5px 0;
