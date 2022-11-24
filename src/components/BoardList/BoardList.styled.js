@@ -13,14 +13,12 @@ export const BtnBox = styled.div`
 `;
 
 export const Button = styled.button`
-	display: flex;
 	justify-items: center;
 	justify-content: center;
-	font-size: 20pt;
+	font-size: 15px;
 	border: 1px solid ${props => props.theme.btnColor};
 	border-radius: 50px;
 	margin-left: 1rem;
-	padding-top: 0.5rem;
 	width: 50px;
 	height: 50px;
 	background: ${props => props.theme.subBtnColor};
@@ -30,4 +28,11 @@ export const Button = styled.button`
 	&:hover {
 		transform: translateY(-0.5rem);
 	}
+`;
+
+export const ListMap = styled.div`
+	display: grid;
+	width: 100%;
+	height: 50vh;
+	margin-top: 10rem;
 `;

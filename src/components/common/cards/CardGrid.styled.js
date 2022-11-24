@@ -71,6 +71,7 @@ export const CardInfo = styled.div`
 	& p {
 		max-width: 180px;
 		overflow: hidden;
+		color: #fff;
 	}
 	& .price {
 		width: 65px;
@@ -78,5 +79,6 @@ export const CardInfo = styled.div`
 		padding: 0.5rem 1rem;
 		border-radius: 12rem;
 		background-color: #303032;
+		color: #fff;
 	}
 `;

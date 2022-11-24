@@ -7,6 +7,8 @@ export const MainComponent = styled.div`
 export const CommentWriteWrap = styled.div`
 	display: flex;
 	align-items: center;
+	background: #ffffff;
+	border-radius: 24px;
 	& > div {
 		cursor: pointer;
 	}
@@ -14,8 +16,9 @@ export const CommentWriteWrap = styled.div`
 export const CommentTitleWrap = styled.div`
 	display: flex;
 	align-items: center;
+
 	/* justify-content: space-between; */
-	margin: 0 0 8px 0;
+	margin-top: 2rem;
 	& > h2 {
 		margin-left: 0.5rem;
 	}
@@ -38,8 +41,10 @@ export const Button = styled.button`
 	border: 1px solid ${props => props.theme.btnColor};
 	color: ${props => props.theme.subTextColor};
 	border-radius: 24px;
-	width: 108px;
-	height: 40px;
+	width: 10rem;
+	height: 3rem;
+	margin-left: auto;
+	margin-right: 0.5rem;
 	cursor: pointer;
 `;
 
@@ -50,6 +55,7 @@ export const UserIcon = styled(FaRegUserCircle)`
 	font-size: 3rem;
 	color: grey;
 	margin-left: 1rem;
+	width: 5rem;
 `;
 
 export const CommentIcon = styled(FaRegUserCircle)`
