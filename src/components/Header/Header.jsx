@@ -23,60 +23,58 @@ const Header = () => {
 	useEffect(() => {
 		getCookieToken();
 	});
+
 	const isLogin = cookies["access-token"];
 	const authority = cookies["authority"];
-	const username = cookies["username"];
 
-
-  const isLogin = cookies["access-token"];
-  const authority = cookies["authority"];
-  // const username = cookies["username"];
-
-  return (
-    <HeaderContainer>
-      <SearchBar/>
-      <HeaderLogo onClick={() => navigate("/")}>VONGOLE</HeaderLogo>
-      <LightThemeBtn onClick={toggleTheme}>
-        <BsFillMoonFill>Theme</BsFillMoonFill>
-      </LightThemeBtn>
-      <HeaderMenu>
-        <HeaderMenuItem onClick={() => navigate("/boards")}>Boards</HeaderMenuItem>
-        {isLogin && authority === "ROLE_MEMBER" ? (
-          <>
-            <HeaderMenuItem>메시지</HeaderMenuItem>
-            <HeaderMenuItem>알림</HeaderMenuItem>
-            <UserIcon
-              onClick={() => {
-                navigate("/usermypage");
-              }}
-            />
-          </>
-        ) : isLogin && authority === "ROLE_ADMIN" ? (
-          <>
-            <HeaderMenuItem>메시지</HeaderMenuItem>
-            <HeaderMenuItem>알림</HeaderMenuItem>
-            <HeaderMenuItem onClick={() => {
-              navigate("/recruit")
-            }}>봉사활동 등록하기</HeaderMenuItem>
-            <UserIcon
-              onClick={() => {
-                navigate("/companypage");
-              }}
-            />
-          </>
-        ) : (
-          <HeaderMenuItem
-            onClick={() => {
-              navigate("/login");
-            }}
-          >
-            Login
-          </HeaderMenuItem>
-        )}
-      </HeaderMenu>
-    </HeaderContainer>
-  );
-
+	return (
+		<HeaderContainer>
+			<SearchBar />
+			<HeaderLogo onClick={() => navigate("/")}>VONGOLE</HeaderLogo>
+			<LightThemeBtn onClick={toggleTheme}>
+				<BsFillMoonFill>Theme</BsFillMoonFill>
+			</LightThemeBtn>
+			<HeaderMenu>
+				<HeaderMenuItem onClick={() => navigate("/boards")}>Boards</HeaderMenuItem>
+				{isLogin && authority === "ROLE_MEMBER" ? (
+					<>
+						<HeaderMenuItem>메시지</HeaderMenuItem>
+						<HeaderMenuItem>알림</HeaderMenuItem>
+						<UserIcon
+							onClick={() => {
+								navigate("/usermypage");
+							}}
+						/>
+					</>
+				) : isLogin && authority === "ROLE_ADMIN" ? (
+					<>
+						<HeaderMenuItem>메시지</HeaderMenuItem>
+						<HeaderMenuItem>알림</HeaderMenuItem>
+						<HeaderMenuItem
+							onClick={() => {
+								navigate("/recruit");
+							}}
+						>
+							봉사활동 등록하기
+						</HeaderMenuItem>
+						<UserIcon
+							onClick={() => {
+								navigate("/companypage");
+							}}
+						/>
+					</>
+				) : (
+					<HeaderMenuItem
+						onClick={() => {
+							navigate("/login");
+						}}
+					>
+						Login
+					</HeaderMenuItem>
+				)}
+			</HeaderMenu>
+		</HeaderContainer>
+	);
 };
 
 export default Header;
