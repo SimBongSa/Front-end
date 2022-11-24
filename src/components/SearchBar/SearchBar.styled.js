@@ -1,4 +1,5 @@
 import styled, { keyframes } from "styled-components";
+import DatePicker from "react-datepicker";
 
 export const SearchBarContainer = styled.div`
   display: flex;
@@ -150,4 +151,18 @@ const fadeOut = keyframes`
   to {
     opacity: 0;
   }
+`;
+
+export const CustomeDatePicker = styled(DatePicker)({
+  display: "flex",
+  fontSize: "15px",
+  width: "50rem",
+  border: "none",
+  borderRadius: "15px",
+  outline: "none",
+  background: `${(props) => props.theme.subTextColor}`,
+});
+
+export const PickerBox = styled.div`
+  display: flex;
 `;

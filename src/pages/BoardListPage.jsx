@@ -5,7 +5,7 @@ import BoardList from "../components/BoardList/BoardList";
 export const BoardListPage = () => {
   return (
     <>
-      {/* <Header /> */}
+      <Header />
       <BoardList />
       <Footer />
     </>

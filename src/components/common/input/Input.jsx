@@ -1,6 +1,9 @@
 import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
-import { __checkNickname, __checkUsername } from "../../../redux/modules/registerSlice";
+import {
+  __checkNickname,
+  __checkUsername,
+} from "../../../redux/modules/registerSlice";
 
 const Input = ({
   id,
@@ -11,9 +14,8 @@ const Input = ({
   value,
   onChange,
 }) => {
-
   const dispatch = useDispatch();
-  const checkMsg = useSelector((state) => state)
+  const checkMsg = useSelector((state) => state);
 
   return (
     <StInputContainer>
@@ -31,17 +33,25 @@ const Input = ({
       ) : null}
 
       {dupleCheck === "username" ? (
-          <DupleCheck onClick={() => {
-            console.log(value)
-            dispatch(__checkUsername(value))
-          }}>중복체크</DupleCheck>
+        <DupleCheck
+          onClick={() => {
+            console.log(value);
+            dispatch(__checkUsername(value));
+          }}
+        >
+          중복체크
+        </DupleCheck>
       ) : null}
 
       {dupleCheck === "nickname" ? (
-          <DupleCheck onClick={() => {
-            console.log(value)
-            dispatch(__checkNickname(value))
-          }}>중복체크</DupleCheck>
+        <DupleCheck
+          onClick={() => {
+            console.log(value);
+            dispatch(__checkNickname(value));
+          }}
+        >
+          중복체크
+        </DupleCheck>
       ) : null}
 
       {type === "radio" ? <span>{value}</span> : null}
@@ -74,7 +84,7 @@ export const StErrorMsg = styled.span`
   color: tomato;
 `;
 
-export const DupleCheck = styled.span` 
+export const DupleCheck = styled.span`
   width: 100px;
   position: absolute;
   right: 10px;
