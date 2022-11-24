@@ -23,6 +23,9 @@ export const FooterContainer = styled.section`
 
 export const FooterUl = styled.ul`
   width: 33.3333%;
+  &:last-child {
+    color: ${(props) => props.theme.btnColor};
+  }
   & li {
     padding-bottom: 10px;
     & h4 {

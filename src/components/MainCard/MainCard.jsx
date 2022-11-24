@@ -4,7 +4,6 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { __getBoard } from "../../redux/modules/boardSlice";
 import CardGrid from "../common/cards/CardGrid";
-import { TagBox } from "../MyPage/MyApplicant/MyApplicant";
 
 const MainCard = () => {
 
@@ -26,12 +25,6 @@ const MainCard = () => {
           boards={mainBoard}
           gridColumn={2}
         />
-        <TagBox>
-          <li>태그1</li>
-          <li>적당한 길이의 태그</li>
-          <li>짧은 태그</li>
-          <li>엄청나게 길고 긴 이름의 태그</li>
-        </TagBox>
       </CardWrapper>
     </MainCardContainer>
   )
