@@ -1,26 +1,26 @@
-import styled from "styled-components"
+import styled from "styled-components";
 
 export const CardGridContainer = styled.section`
-  display: grid;
-  grid-template-columns: 2fr repeat(6, minmax(auto, 60px)) 12fr;
-  grid-gap: 1rem;
-  margin: 1rem;
-  margin-bottom: 5rem;
-  justify-items: center;
-`
+	display: grid;
+	grid-template-columns: 2fr repeat(6, minmax(auto, 60px)) 12fr;
+	grid-gap: 1rem;
+	margin: 1rem;
+	margin-bottom: 5rem;
+	justify-items: center;
+`;
 
 export const Cards = styled.div`
-  display: grid;
-  grid-column: ${(props) => props.gridColumn} / span 10;
-  grid-template-columns: repeat(20, minmax(auto, 120px));
-  grid-gap: 1.5rem;
-  @media screen and (max-width: 1440px) {
-    grid-template-columns: repeat(8, minmax(auto, 60px));
-  }
-  @media screen and (max-width: 1024px) {
-    grid-template-columns: repeat(12, minmax(auto, 60px));
-  }
-`
+	display: grid;
+	grid-column: ${props => props.gridColumn} / span 10;
+	grid-template-columns: repeat(20, minmax(auto, 120px));
+	grid-gap: 1.5rem;
+	@media screen and (max-width: 1440px) {
+		grid-template-columns: repeat(8, minmax(auto, 60px));
+	}
+	@media screen and (max-width: 1024px) {
+		grid-template-columns: repeat(12, minmax(auto, 60px));
+	}
+`;
 
 export const Card = styled.div`
   grid-column-end: span 4;
@@ -42,17 +42,17 @@ export const Card = styled.div`
 `
 
 export const ImgWrapper = styled.div`
-  width: 100%;
-  overflow: hidden;
-  border-radius: 6px 6px 0 0;
-  position: relative;
-  background: #232323;
-  & img {
-    width: 100%;
-    height: 250px;
-    object-fit: cover;
-  }
-`
+	width: 100%;
+	overflow: hidden;
+	border-radius: 6px 6px 0 0;
+	position: relative;
+	background: #232323;
+	& img {
+		width: 100%;
+		height: 250px;
+		object-fit: cover;
+	}
+`;
 
 export const Content = styled.div`
   padding: 1.5rem;

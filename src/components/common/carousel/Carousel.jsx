@@ -6,18 +6,15 @@ import { TagBox } from "../../MyPage/MyApplicant/MyApplicant";
 import { Card, CardInfo, Content, ImgWrapper } from "../cards/CardGrid.styled";
 
 const Carousel = () => {
+	const dispatch = useDispatch();
+	const [size, setSize] = useState(10);
+	const [page, setPage] = useState(1);
 
-  const dispatch = useDispatch();
-  const [size, setSize] = useState(10);
-  const [page, setPage] = useState(1);
+	useEffect(() => {
+		dispatch(__getBoard({ page, size }));
+	}, [dispatch, page, size]);
 
-  useEffect(() => {
-    dispatch(__getBoard({page, size}));
-  }, [dispatch, page, size]);
-
-  const boardList = useSelector((state) => state.boards?.boards)
-
-  console.log(boardList)
+	const boardList = useSelector(state => state.boards?.boards);
 
   return (
     <>
@@ -70,37 +67,41 @@ export const CarouselContainer = styled.div`
   width: 80%;
   justify-content: center;
 	overflow: hidden;
-  & h1 {
-    font-size: 1.8rem;
-    color: ${(props) => props.theme.textColor};
-  }
-  &::before,
-  &::after {
-    /* margin-top: 50rem; */
+	& h1 {
+		font-size: 1.8rem;
+		color: ${props => props.theme.textColor};
+	}
+	&::before,
+	&::after {
+		/* margin-top: 50rem; */
 		content: "";
 		height: 410px;
 		position: absolute;
-  }
-  &::after {
-    right: 0;
+	}
+	&::after {
+		right: 0;
 		top: 0;
 		transform: rotateZ(180deg);
-  }
-  &::before {
+	}
+	&::before {
 		left: 0;
 		top: 0;
 	}
-`
+`;
 
 export const SlideTrack = styled.div`
-  animation: scroll 40s linear infinite;
-  display: flex;
-  width: calc(250px * 10);
-  @keyframes scroll {
-    0% { transform: translateX(0); }
-	  100% { transform: translateX(calc(-250px * 5))}
-  }
-`
+	animation: scroll 40s linear infinite;
+	display: flex;
+	width: calc(250px * 10);
+	@keyframes scroll {
+		0% {
+			transform: translateX(0);
+		}
+		100% {
+			transform: translateX(calc(-250px * 5));
+		}
+	}
+`;
 
 export const Slide = styled.div`
   margin: 1rem;

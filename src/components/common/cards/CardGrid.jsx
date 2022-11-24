@@ -8,19 +8,16 @@ import {
   Content,
   CardInfo,
 } from "./CardGrid.styled";
-
 const CardGrid = ({ gridColumn, companyBoards, boards, userEnroll }) => {
-  const navigate = useNavigate();
+	const navigate = useNavigate();
 
-  const getDateDiff = (d1, d2) => {
-    const dueDay = new Date(d1);
-    const today = new Date(d2);
-    const diffDate = dueDay.getTime() - today.getTime();
-    return Math.round(Math.abs(diffDate / (1000 * 60 * 60 * 24)));
-  };
-  const today = new Date().toISOString().split("T")[0];
-
-  console.log(userEnroll)
+	const getDateDiff = (d1, d2) => {
+		const dueDay = new Date(d1);
+		const today = new Date(d2);
+		const diffDate = dueDay.getTime() - today.getTime();
+		return Math.round(Math.abs(diffDate / (1000 * 60 * 60 * 24)));
+	};
+	const today = new Date().toISOString().split("T")[0];
 
   return (
     <CardGridContainer>
