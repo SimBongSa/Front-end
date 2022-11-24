@@ -95,7 +95,6 @@ const Profile = ({
               프로필 수정
             </h4>
             <h4 onClick={() => {
-
               logOut();
               navigate("/login");
             }}

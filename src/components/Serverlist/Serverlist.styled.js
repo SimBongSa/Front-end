@@ -1,10 +1,10 @@
 import styled from "styled-components";
 
 export const ServerListContainer = styled.div`
-  width: 30rem;
-  height: 8rem;
-  margin-top: 3rem;
   display: flex;
+  /* width: 30rem; */
+  height: 7.5rem;
+  margin-top: 2rem;
   border-bottom: 1px solid ${(props) => props.theme.textColor};
   cursor: pointer;
   color: ${(props) => props.theme.textColor};

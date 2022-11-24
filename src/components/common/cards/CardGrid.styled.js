@@ -29,6 +29,7 @@ export const Card = styled.div`
 	cursor: pointer;
 	min-width: 300px;
 	transition: all 0.5s ease;
+	min-height: 450px;
 	@media screen and (max-width: 1024px) {
 		grid-column-end: span 6;
 	}
@@ -58,7 +59,7 @@ export const Content = styled.div`
 	& .title {
 		font-size: 1.4rem;
 		color: #fff;
-		margin-bottom: 1.5rem;
+		margin-bottom: 1rem;
 	}
 `;
 
@@ -71,14 +72,13 @@ export const CardInfo = styled.div`
 	& p {
 		max-width: 180px;
 		overflow: hidden;
-		color: #fff;
 	}
 	& .price {
 		width: 65px;
 		text-align: center;
 		padding: 0.5rem 1rem;
 		border-radius: 12rem;
+		color: ${props => props.theme.notiColor};
 		background-color: #303032;
-		color: #fff;
 	}
 `;
