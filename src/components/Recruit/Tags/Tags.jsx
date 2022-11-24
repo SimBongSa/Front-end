@@ -1,46 +1,69 @@
 import { useState } from "react";
 import styled from "styled-components";
 
-const Tags = ({ onChangeTags }) => {
+const Tags = ({ category, onChangeTags }) => {
 
-  const [category, setCategory] = useState([{CHILD : "어린이"}, {DISABLED : "장애인"}, {SENIOR : "노인"}, {MULTICULTURAL_FAMILY : "다문화가정"}, {ENVIRONMENT : "환경"}, {ABONDONED_ANIMAL : "유기동물"}]);
-  const [conditions, setConditions] = useState([{ADULT: "성인"}, {MALE: "남성"}, {FEMALE: "여성"}]);
-  const [skills, setSkills] = useState([{ACTIVE: "활발한 사람이 좋아요"}, {LIKE_CHILD : "아이를 좋아하는 분"}, {CAREFUL: "꼼꼼한 사람이 좋아요"}, {MILITARY: "군필자를 우대해요"}, {LIKE_ANIMAL: "동물을 사랑하는 분"}])
+  const [check, setChecked] = useState(false);
+
+  const [categories] = useState([{CHILD : "어린이"}, {DISABLED : "장애인"}, {SENIOR : "노인"}, {MULTICULTURAL_FAMILY : "다문화가정"}, {ENVIRONMENT : "환경"}, {ABONDONED_ANIMAL : "유기동물"}]);
+  const [conditions] = useState([{ADULT: "성인"}, {MALE: "남성"}, {FEMALE: "여성"}]);
+  const [skills] = useState([{ACTIVE: "활발한 사람이 좋아요"}, {LIKE_CHILD : "아이를 좋아하는 분"}, {CAREFUL: "꼼꼼한 사람이 좋아요"}, {MILITARY: "군필자를 우대해요"}, {LIKE_ANIMAL: "동물을 사랑하는 분"}])
+
+  const checkHandler = ({ target }) => {
+    // setChecked(!target.checked);
+    console.log(target.id)
+    console.log(target.checked)
+    onChangeTags(target.id)
+  }
 
   return (
     <TagWrap>
-    <TagColumn>
-        <h2>Category :</h2>
-        {
-          category.map((item) => {
-            return(
-              <li key={Object.keys(item)}>
-                <input type="checkbox" id={Object.keys(item)} value={Object.keys(item)} onChange={onChangeTags} name="tags" />
-                <label htmlFor={Object.keys(item)}>{Object.values(item)}</label>
-              </li>
-            )
-          })
-        }
-        {
-          conditions.map((item) => {
-            return (
-              <li key={Object.keys(item)}>
-                <input type="checkbox" id={Object.keys(item)} value={Object.keys(item)} onChange={onChangeTags} name="tags"/>
-                <label htmlFor={Object.keys(item)}>{Object.values(item)}</label>
-              </li>
-            )
-          })
-        }
-        {
-          skills.map((item) => {
-            return (
-              <li>
-                <input type="checkbox" id={Object.keys(item)} value={Object.keys(item)} onChange={onChangeTags} name="tags" />
-                <label htmlFor={Object.keys(item)}>{Object.values(item)}</label>
-              </li>
-            )
-          })
-        }
+      <TagColumn>
+        <ul>
+          {
+            category === true ? (
+              <>
+                {
+                  categories.map((item) => {
+                    return(
+                      <li key={Object.keys(item)}>
+                        <input type="checkbox" id={Object.keys(item)} value={Object.keys(item)} onChange={(e) => checkHandler(e)} name="tags" />
+                        <label htmlFor={Object.keys(item)}>{Object.values(item)}</label>
+                      </li>
+                    )
+                  })
+                }
+              </>
+            ) : null
+          }
+
+          {
+            category === false ? (
+              <>
+                {
+                  conditions.map((item) => {
+                    return (
+                      <li key={Object.keys(item)}>
+                        <input type="checkbox" id={Object.keys(item)} value={Object.keys(item)} onChange={(e) => checkHandler(e)} name="tags"/>
+                        <label htmlFor={Object.keys(item)}>{Object.values(item)}</label>
+                      </li>
+                    )
+                  })
+                }
+                {
+                  skills.map((item) => {
+                    return (
+                      <li key={Object.keys(item)}>
+                        <input type="checkbox" id={Object.keys(item)} value={Object.keys(item)} onChange={(e) => checkHandler(e)} name="tags" />
+                        <label htmlFor={Object.keys(item)}>{Object.values(item)}</label>
+                      </li>
+                    )
+                  })
+                }
+              </>
+            ) : null
+          }
+        </ul>
       </TagColumn>
     </TagWrap>
   )
@@ -58,23 +81,23 @@ export const TagWrap = styled.div`
 export const TagColumn = styled.div`
   display: block;
   position: relative;
-  margin: 40px auto;
   height: auto;
   font-size: 20px;
-  width: 400px;
-  padding: 20px;
   & ul {
     list-style: none;
-    margin: 0;
+    margin: 0rem 15rem 5rem 15rem;
     padding: 0;
-    overflow: auto;
+    @media ( max-width: 1024px) {
+      margin: 0;
+    }
     & li {
-      color: #aaaaaa;
       display: block;
       position: relative;
       float: left;
-      width: 100%;
-      height: 100px;
+      justify-content: center;
+      align-items: center;   
+      width: auto;
+      height: 80px;
       user-select: none;
       & input[type="checkbox"] {
         position: absolute;

@@ -5,7 +5,6 @@ export const MainSlider = styled.div`
   margin: 0 auto;
   margin-top: 10rem;
   height: 40rem;
-  background: gray;
   & img {
     width: 100%;
     height: 100%;
