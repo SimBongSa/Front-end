@@ -1,5 +1,5 @@
 import CardGrid from "../common/cards/CardGrid";
-import { BoardContainer, BoardContent } from "./BoardList.styled";
+import { BoardContainer, BoardContent, BtnBox } from "./BoardList.styled";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { __getBoard } from "../../redux/modules/boardSlice";
@@ -33,31 +33,33 @@ const Board = () => {
       ) : null}
       <BoardContent>
         {/* show popup btn */}
-        <button onClick={togglePopup} value="false">
-          지도보기
-        </button>
-        {page === 1 ? (
-          <button></button>
-        ) : (
+        <BtnBox>
+          <button onClick={togglePopup} value="false">
+            지도보기
+          </button>
+          {page === 1 ? (
+            <button></button>
+          ) : (
+            <button
+              onClick={() => {
+                setShowPopup(false);
+                setPage((prev) => prev - 1);
+                dispatch(__getBoard({ page, size }));
+              }}
+            >
+              이전
+            </button>
+          )}
           <button
             onClick={() => {
               setShowPopup(false);
-              setPage((prev) => prev - 1);
+              setPage((prev) => prev + 1);
               dispatch(__getBoard({ page, size }));
             }}
           >
-            이전
+            다음
           </button>
-        )}
-        <button
-          onClick={() => {
-            setShowPopup(false);
-            setPage((prev) => prev + 1);
-            dispatch(__getBoard({ page, size }));
-          }}
-        >
-          다음
-        </button>
+        </BtnBox>
         <CardGrid boards={boards} gridColumn={5} />
       </BoardContent>
     </BoardContainer>

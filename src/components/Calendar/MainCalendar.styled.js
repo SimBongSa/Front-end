@@ -99,6 +99,7 @@ export const CalendarContainer = styled.div`
     text-transform: uppercase;
     font-weight: bold;
     font-size: 1rem;
+    color: ${(props) => props.theme.subTextColor};
   }
   .react-calendar__month-view__weekdays__weekday abbr {
     text-decoration: none;

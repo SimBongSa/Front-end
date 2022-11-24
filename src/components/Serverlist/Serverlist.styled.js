@@ -5,8 +5,9 @@ export const ServerListContainer = styled.div`
   height: 8rem;
   margin-top: 3rem;
   display: flex;
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid ${(props) => props.theme.textColor};
   cursor: pointer;
+  color: ${(props) => props.theme.textColor};
   transition: 0.4s;
   &:hover {
     transform: translateY(-5%);

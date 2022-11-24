@@ -191,7 +191,7 @@ export const CustomeDatePicker = styled(DatePicker)({
   borderRadius: "15px",
   outline: "none",
   marginBottom: "1rem",
-  background: "whitesmoke",
+  background: `${(props) => props.theme.textColor}`,
 });
 
 export const PickerBox = styled.div`
