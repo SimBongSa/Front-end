@@ -70,7 +70,7 @@ export const apis = {
 
 	// 봉사 신청
 	applyBoard: id =>
-		axios.post(`${BASE_URL}/boards/${id}/apply`, {
+		axios.post(`${BASE_URL}/boards/${id}/apply`, id, {
 			headers: {
 				Authorization: token,
 			},
