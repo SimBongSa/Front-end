@@ -5,7 +5,9 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { __registerManager } from "../../../redux/modules/registerSlice";
 import ProcessBar from "../ProcessBar/ProcessBar";
+import { BtnContainer } from "../ProcessBar/ProcessBar.styld";
 import styled from "styled-components";
+import { InputContainers, InputHeader } from "../Register.styled";
 
 
 const Organization = () => {
@@ -57,9 +59,11 @@ const Organization = () => {
   const [step, setStep] = useState(0);
 
   return(
-    <InputContainer>
-      <h1>You are almost done!</h1>
-      <ProcessBar step={step} />
+    <InputContainers>
+      <InputHeader>
+        <h1>You are almost done!</h1>
+        <ProcessBar step={step} />
+      </InputHeader>
       <InputForm>
         <InputBox>
           <form onSubmit={onSubmitHandler}>
@@ -153,7 +157,7 @@ const Organization = () => {
               step === 3 ? (
                 <>
                   <h4>추카합니당 이제 봉사활동 올려보셈</h4>
-                  <button type="submit">로구인</button>
+                  <button type="submit">회원가입</button>
                 </>
               ) : null
             }
@@ -174,28 +178,8 @@ const Organization = () => {
         </InputBox>
         <span onClick={() => navigate("/login")}>You are already member? Log in Now</span>
       </InputForm>
-    </InputContainer>
+    </InputContainers>
   )
 };
 
 export default Organization;
-
-export const BtnContainer = styled.div`
-  display: flex;
-  width: 200px;
-  flex-direction: row;
-  justify-content: space-between;
-  position: absolute;
-  flex-direction: row-reverse;
-  bottom: 450px;
-  & button {
-    cursor: pointer;
-    border: none;
-    background: transparent;
-    font-size: 2rem;
-    transition: all 0.3s;
-    &:hover {
-      transform: translateY(-7%);
-    }
-  }
-`

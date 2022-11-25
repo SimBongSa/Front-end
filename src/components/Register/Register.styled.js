@@ -112,11 +112,9 @@ export const OptionOrganization = styled(VscOrganization)`
 
 export const RegisterFormContainer = styled.div`
   display: flex;
-  flex-direction: column;
-  width: 80%;
-  max-width: 1180px;
-  margin: 0 auto;
-  margin-top: 10vh;
+  align-items: center;
+  justify-content: center;
+  min-height: 90vh;
   background-color: ${(props) => props.theme.bgColor};
   color: ${(props) => props.theme.textColor};
   transition: all 0.5s;
@@ -128,5 +126,25 @@ export const RegisterFormContainer = styled.div`
     font-size: 2rem;
     padding: 2rem;
     margin-top: 1.5rem;
+  }
+`
+
+export const InputContainers = styled.div`
+  display: flex;
+  flex-direction: column;
+  border-radius: .1rem;
+  box-shadow: 0 .75rem 1.5rem rgba(0,0,0,0.2), 0 .25rem .25rem rgba(0,0,0,0.2);
+  position: relative;
+  width: 100%;
+  min-width: 320px;
+  max-width: 45%;
+  align-items: center;
+  overflow: hidden;
+`
+
+export const InputHeader = styled.div`
+  height: 20rem;
+  & h1 {
+    text-align: center;
   }
 `
