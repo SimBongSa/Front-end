@@ -34,10 +34,10 @@ export const RegisterCover = styled.div`
 
 export const RegisterBtn = styled.button`
   cursor: pointer;
-  border: 1px solid ${(props) => props.theme.bgColor};
+  border: 1px solid ${(props) => props.theme.btnColor};
   background: transparent;
   border-radius: 20px;
-  color: ${(props) => props.theme.bgColor};
+  color: ${(props) => props.theme.textColor};
   font-size: 11px;
   font-weight: 500;
   letter-spacing: 1px;
@@ -51,8 +51,8 @@ export const RegisterBtn = styled.button`
 `
 
 export const RegisterIndividual = styled.div`
-  background: ${(props) => props.theme.ctrColor};
-  color: ${(props) => props.theme.bgColor};
+  background: ${(props) => props.theme.subTextColor};
+  color: ${(props) => props.theme.textColor};
   float: left;
   height: 100%;
   position: relative;
@@ -75,8 +75,8 @@ export const RegisterIndividual = styled.div`
 `
 
 export const RegisterOrganization = styled.div`
-  background: ${(props) => props.theme.ctrColor};
-  color: ${(props) => props.theme.bgColor};
+  background: ${(props) => props.theme.subTextColor};
+  color: ${(props) => props.theme.textColor};
   float: right;
   height: 100%;
   position: relative;
