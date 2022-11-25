@@ -1,10 +1,9 @@
 import { useDispatch, useSelector } from "react-redux";
-import styled from "styled-components";
 import {
   __checkNickname,
   __checkUsername,
 } from "../../../redux/modules/registerSlice";
-import { StInputContainer, StInput, StErrorMsg, DupleCheck } from "./Input.styled";
+import { StInputContainer, StInput, DupleCheck } from "./Input.styled";
 
 const Input = ({ id, placeholder, dupleCheck, type, name, value, onChange }) => {
 	const dispatch = useDispatch();
@@ -21,7 +20,6 @@ const Input = ({ id, placeholder, dupleCheck, type, name, value, onChange }) => 
 						value={value}
 						onChange={onChange}
 					/>
-					{/* <StErrorMsg>아이디 대충 몇 글자임</StErrorMsg> */}
 				</StInputContainer>
 			) : null}
 

@@ -23,10 +23,10 @@ const Carousel = () => {
       <h1>모집 종료 예정인 봉사활동</h1>
         <SlideTrack>
           {
-            boardList.map((item) => {
+            boardList.map((item, idx) => {
               return (
-                <Slide key={item.boardId}>
-                  <Card key={item.boardId}>
+                <Slide key={idx}>
+                  <Card>
                     <ImgWrapper>
                       <img src={item.boardImage} loading="lazy" alt="thumbnail" />
                     </ImgWrapper>

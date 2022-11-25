@@ -2,16 +2,14 @@ import styled from "styled-components";
 
 export const CardGridContainer = styled.section`
 	display: grid;
-	grid-template-columns: 2fr repeat(6, minmax(auto, 60px)) 12fr;
-	grid-gap: 1rem;
-	margin: 1rem;
-	margin-bottom: 5rem;
+	grid-template-columns: 0fr repeat(0, minmax(auto, 60px)) 10fr;
+	margin: 1rem 7rem 10rem 7rem;
 	justify-items: center;
 `;
 
 export const Cards = styled.div`
 	display: grid;
-	grid-column: ${props => props.gridColumn} / span 10;
+	grid-column: ${props => props.gridColumn} / span 12;
 	grid-template-columns: repeat(20, minmax(auto, 120px));
 	grid-gap: 1.5rem;
 	@media screen and (max-width: 1440px) {
@@ -74,9 +72,9 @@ export const CardInfo = styled.div`
     overflow: hidden;
   }
   & .price {
-    width: 65px;
+    width: 60px;
     text-align: center;
-    padding: 0.5rem 1rem;
+    padding: 0.5rem 0.5rem;
     border-radius: 12rem;
     color: ${(props) => props.theme.notiColor};
     background-color: #303032;

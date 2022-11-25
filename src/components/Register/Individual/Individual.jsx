@@ -1,13 +1,12 @@
 import { InputContainer, InputForm, InputBox } from "./Individual.styled";
 import Input from "../../common/input/Input";
-import { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useState, useEffect, useCallback } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { __registerMember } from "../../../redux/modules/registerSlice";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import ProcessBar from "../ProcessBar/ProcessBar";
 import { BtnContainer } from "../Organization/Organization";
-import { StErrorMsg } from "../../common/input/Input";
 
 const Individual = () => {
   const init = {
@@ -27,22 +26,86 @@ const Individual = () => {
   const navigate = useNavigate();
   const [input, setInput] = useState(init);
 
+  const [step, setStep] = useState(0);
+
+  const nicknameCheck = useSelector((state) => state.register.nicknameCheck)
+  const usernameCheck = useSelector((state) => state.register.usernameCheck)
+  // console.log("nickname", nicknameCheck)
+  // console.log("username", usernameCheck)
+
+  // 오류메시지 상태 저장
+  const [nameMessage, setNameMessage] = useState('')
+  const [nicknameMessage, setNicknameMessage] = useState('');
+  const [passwordMessage, setPasswordMessage] = useState('');
+  const [pwConfirmMessage, setPwConfirmMessage] = useState('');
+
+  // 유효성 검사
+  const [isName, setIsName] = useState(false);
+  const [isNickname, setIsNickname] = useState(false);
+  const [isPw, setIsPw] = useState(false);
+  const [isPwConfirm, setIsPwConfirm] = useState(false);
+
   const onChangeHandler = (e) => {
     const { name, value } = e.target;
+    console.log(value)
     setInput({ ...input, [name]: value });
   };
+
+  const onUsernameChange = useCallback((e) => {
+    const usernameRegex = /^[a-zA-Z0-9]{4,16}$/;
+    const { name, value } = e.target;
+    console.log(value)
+    setInput({ ...input, [name]: value });
+    if (value.length < 4 || value.length > 12) {
+      setNameMessage('4글자 이상 12글자 미만으로 입력해주세요.');
+      setIsName(false);
+      if (!usernameRegex.test(value)) {
+        setNameMessage('형식이 틀렸읍니다. 확인 바랍니다.');
+      }
+    } else {
+      setNameMessage('사용 가능합니다.');
+      setIsName(true);
+    }
+  }, []);
+
+  const onNicknameChange = (e) => {
+    const { name, value } = e.target;
+    console.log(value)
+    setInput({ ...input, [name]: value });
+    if (value < 4 || value > 12) {
+      setNicknameMessage('4글자 이상 12글자 미만으로 입력해주세요.');
+      setIsNickname(false);
+    } else {
+      setNicknameMessage('사용 가능합니다.');
+      setIsNickname(true);
+    }
+  };
+
+  const onPwChange = (e) => {
+    const { name, value } = e.target;
+    console.log(value)
+    setInput({ ...input, [name]: value });
+    if (value < 4 || value > 12) {
+      setPasswordMessage('4글자 이상 12글자 미만으로 입력해주세요.');
+      setIsPw(false);
+    } else {
+      setPasswordMessage('사용 가능합니다.');
+      setIsPw(true);
+    }
+  };
+
+  const onPwConfirmChange = (e) => {
+    const { name, value } = e.target;
+    console.log(value)
+    setInput({ ...input, [name]: value });
+  };
+
+
   const onSubmitHandler = (e) => {
     e.preventDefault();
     dispatch(__registerMember(input));
-    console.log(input);
     setInput(init);
   };
-
-  useEffect(() => {
-    console.log(input);
-  }, [input]);
-
-  const [step, setStep] = useState(0);
 
   return (
     <InputContainer>
@@ -56,33 +119,36 @@ const Individual = () => {
                 <StLegend>Your Basic Info</StLegend>
                 <Input
                   placeholder="Username"
+                  autoComplete="off"
                   dupleCheck="username"
                   type="text"
                   name="username"
                   value={input.username}
-                  onChange={onChangeHandler}
+                  onChange={onUsernameChange}
                 />
+                <span>{nameMessage}</span>
                 <Input
                   placeholder="Nickname"
                   dupleCheck="nickname"
                   type="text"
                   name="nickname"
                   value={input.nickname}
-                  onChange={onChangeHandler}
+                  onChange={onNicknameChange}
                 />
+                <span>{nicknameMessage}</span>
                 <Input
                   placeholder="Password"
                   type="password"
                   name="password"
                   value={input.password}
-                  onChange={onChangeHandler}
+                  onChange={onPwChange}
                 />
                 <Input
                   placeholder="Confirm Password"
                   type="password"
                   name="passwordConfirm"
                   value={input.passwordConfirm}
-                  onChange={onChangeHandler}
+                  onChange={onPwConfirmChange}
                 />
               </>
             ) : null}
