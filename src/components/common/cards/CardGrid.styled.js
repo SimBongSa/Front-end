@@ -66,7 +66,8 @@ export const CardInfo = styled.div`
   font-size: .8rem;
   align-items: center;
   justify-content: space-between;
-  color: ${(props) => props.theme.textColor};
+  /* color: ${(props) => props.theme.textColor}; */
+  color: white;
   & p {
     max-width: 180px;
     overflow: hidden;
@@ -92,7 +93,8 @@ export const TagBox = styled.ul`
   & li {
     display: inline-block;
     background: ${(props) => props.theme.subTextColor};
-    color: ${(props) => props.theme.textColor};
+    /* color: ${(props) => props.theme.textColor}; */
+    color: white;
     border-radius: 3px;
     padding: 2.5px 10px;
     margin: 0 10px 10px 0;

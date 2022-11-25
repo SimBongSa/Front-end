@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import PopupDom from "../Map/PopupDom";
 import PopupPostCode from "../Map/PopupPostCode";
 import Input from "../common/input/Input";
@@ -19,9 +19,22 @@ import {
 	ImgSize,
 } from "./Recruit.styled";
 import Tags from "./Tags/Tags";
+import { useNavigate } from "react-router-dom";
 
 const Recruit = () => {
+
 	const dispatch = useDispatch();
+	const navigate = useNavigate();
+
+	const status = useSelector((state) => state.boards.statusCode);
+	console.log(status);
+
+	useEffect(() => {
+		if(status === 200) {
+			navigate("/boards")			
+		} 
+	}, [status, navigate])
+
 	const [isPopupOpen, setIsPopupOpen] = useState(false);
 
 	// date picker
@@ -51,13 +64,10 @@ const Recruit = () => {
 
 	//폼데이터 전송 스테이트
 	const [input, setInput] = useState(init);
-	console.log(input);
 	const [tags, setTags] = useState([]);
 	const [boardImage, setBoardImage] = useState(null);
 	const [address, setAddress] = useState("");
 
-	// console.log("input =>", input);
-	console.log("tags", tags);
 
 	// 이미지 미리보기 스테이트
 	const [uploadpreview, setUploadpreview] = useState("");

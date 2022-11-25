@@ -71,7 +71,7 @@ export const CardTitle = styled.div`
 		color: white;
 	}
 	& span {
-		color: gray;
+		color: ${(props) => props.theme.bgColor};
 	}
 `;
 
