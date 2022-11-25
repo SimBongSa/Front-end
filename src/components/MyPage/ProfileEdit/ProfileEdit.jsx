@@ -26,7 +26,7 @@ const ProfileEdit = () => {
 	const companyInfo = useSelector(state => state?.mypage?.companyInfo);
 	console.log("companyInfo =>", companyInfo);
 
-	const [profileImage, setProfileImage] = useState(companyInfo.profileImage);
+	const [profileImage, setProfileImage] = useState(null);
 	const [uploadpreview, setUploadpreview] = useState(companyInfo.profileImage);
 
 	const [remainInfo, setRemainInfo] = useState(companyInfo);
@@ -35,12 +35,9 @@ const ProfileEdit = () => {
 	const userInfo = useSelector(state => state);
 	console.log("userInfo =>", userInfo);
 
+	// 이미지 upload
 	const onChangeImage = e => {
-		if (setProfileImage == null) {
-			setProfileImage(remainInfo.profileImage);
-		} else {
-			setProfileImage(e.target.files[0]);
-		}
+		setProfileImage(e.target.files[0]);
 
 		console.log("profileImage =>", profileImage);
 
@@ -141,6 +138,7 @@ const ProfileEdit = () => {
 								onChange={onChangeImage}
 							/>
 						</Content>
+						<h1>기업 페이지임!</h1>
 					</div>
 				) : null}
 
@@ -203,6 +201,7 @@ const ProfileEdit = () => {
 								onChange={onChangeImage}
 							/>
 						</Content>
+						<h1>개인 페이지임!</h1>
 					</div>
 				) : null}
 			</MyPageEditContainer>

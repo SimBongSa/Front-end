@@ -79,8 +79,9 @@ export const __putUserInfo = createAsyncThunk("__putUserInfo", async (payload, t
 
 export const __getCompanyInfo = createAsyncThunk("companyInfo", async (payload, thunkAPI) => {
 	try {
+		console.log("__getCompanyInfo payload =>", payload);
 		const response = await apis.getCompanyPage(payload);
-		console.log("companyInfo =>", response);
+		console.log("__getCompanyInfo response =>", response);
 		return thunkAPI.fulfillWithValue(response.data.data);
 	} catch (error) {
 		return thunkAPI.rejectWithValue(error);
@@ -106,7 +107,7 @@ export const __getAppliList = createAsyncThunk("appliList", async (payload, thun
 
 export const __putCompanyInfo = createAsyncThunk("putCompanyInfo", async (payload, thunkAPI) => {
 	const formData = new FormData();
-	console.log("__putCompanyInfo payload", payload);
+
 	// formData append
 	Object.entries(payload).forEach(([key, value]) => {
 		formData.append(key, value);
@@ -115,11 +116,13 @@ export const __putCompanyInfo = createAsyncThunk("putCompanyInfo", async (payloa
 	for (let key of formData.keys()) {
 		console.log("formData ===>", key, ":", formData.get(key));
 	}
-
 	try {
 		const response = await apis.putCompanyPage(payload);
-		console.log("putCompanyInfo =>", payload);
-		return thunkAPI.fulfillWithValue(response);
+
+		if (response.status === 200) {
+			alert(response.data.data.msg);
+			return thunkAPI.fulfillWithValue(response);
+		}
 	} catch (error) {
 		return thunkAPI.rejectWithValue(error);
 	}
