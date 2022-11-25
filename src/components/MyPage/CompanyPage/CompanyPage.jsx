@@ -51,7 +51,7 @@ const CompanyPage = () => {
         }
 
         {
-          companyPageOpt !== null && companyPageOpt === "myActivity" ? <CardGrid companyBoards={companyBoards} /> : null
+          companyPageOpt !== null && companyPageOpt === "myActivity" ? <CardGrid companyBoards={companyBoards} gridColumn={5} /> : null
         }
 
       </CompanyPageContainer>

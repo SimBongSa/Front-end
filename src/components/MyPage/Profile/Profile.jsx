@@ -38,10 +38,10 @@ const Profile = ({
           <img src={companyInfo.profileImage} alt="user" />
         ) : null}
 
-        <img
+        {/* <img
           src="https://play-lh.googleusercontent.com/38AGKCqmbjZ9OuWx4YjssAz3Y0DTWbiM5HB0ove1pNBq_o9mtWfGszjZNxZdwt_vgHo=w240-h480-rw"
           alt="user"
-        />
+        /> */}
 
         {/* {
           !userInfo.profileImage && !companyInfo.profileImage ? (
