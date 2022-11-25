@@ -122,6 +122,7 @@ export const boardSlice = createSlice({
     board: [],
     area: [],
     apply: "",
+    statusCode: "",
     isLoading: false,
     error: null,
   },
@@ -133,7 +134,9 @@ export const boardSlice = createSlice({
       })
       .addCase(__createBoard.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.boards.push(action.payload);
+        state.statusCode = action.payload.status;
+        console.log(action.payload)
+        state.boards.push(action.payload.data.data);
       })
       .addCase(__createBoard.rejected, (state, action) => {
         state.isLoading = false;
