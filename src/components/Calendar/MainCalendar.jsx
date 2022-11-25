@@ -6,7 +6,6 @@ import Serverlist from "../Serverlist/Serverlist";
 import { useSelector, useDispatch } from "react-redux";
 import { __getCustomer } from "../../redux/modules/calendarSlice";
 import styled from "styled-components";
-import DropDown from "../common/dropDown/DropDown";
 
 const MainCalendar = () => {
   const dispatch = useDispatch();
@@ -34,7 +33,7 @@ const MainCalendar = () => {
     <>
       <CalendarContainer>
         <h1>날짜별 봉사활동</h1>
-        <DropDown/>
+        {/* <DropDown/> */}
         <CalendarWrap>
           <StCalendar
             onChange={setValue}

@@ -1,14 +1,15 @@
 import { useDispatch, useSelector } from "react-redux";
-import styled from "styled-components";
 import {
   __checkNickname,
   __checkUsername,
 } from "../../../redux/modules/registerSlice";
-import { StInputContainer, StInput, StErrorMsg, DupleCheck } from "./Input.styled";
+import { StInputContainer, StInput, DupleCheck } from "./Input.styled";
 
 const Input = ({ id, placeholder, dupleCheck, type, name, value, onChange }) => {
 	const dispatch = useDispatch();
-	const checkMsg = useSelector(state => state);
+
+	const nicknameCheck = useSelector((state) => state.register.nicknameCheck)
+  const usernameCheck = useSelector((state) => state.register.usernameCheck)
 
 	return (
 		<StInputContainer>
@@ -21,19 +22,22 @@ const Input = ({ id, placeholder, dupleCheck, type, name, value, onChange }) => 
 						value={value}
 						onChange={onChange}
 					/>
-					{/* <StErrorMsg>아이디 대충 몇 글자임</StErrorMsg> */}
 				</StInputContainer>
 			) : null}
 
 			{dupleCheck === "username" ? (
-				<DupleCheck
-					onClick={() => {
-						console.log(value);
-						dispatch(__checkUsername(value));
-					}}
-				>
-					중복체크
-				</DupleCheck>
+				<>
+					<DupleCheck
+						onClick={() => {
+							console.log(value);
+							dispatch(__checkUsername(value));
+						}}
+					>
+						중복체크
+						<h6>{usernameCheck}</h6>
+					</DupleCheck>
+
+				</>
 			) : null}
 
 			{dupleCheck === "nickname" ? (
@@ -44,6 +48,7 @@ const Input = ({ id, placeholder, dupleCheck, type, name, value, onChange }) => 
 					}}
 				>
 					중복체크
+					<h6>{nicknameCheck}</h6>
 				</DupleCheck>
 			) : null}
 

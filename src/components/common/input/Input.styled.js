@@ -27,4 +27,5 @@ export const DupleCheck = styled.span`
   width: 100px;
   position: absolute;
   right: 10px;
+  cursor: pointer;
 `;
