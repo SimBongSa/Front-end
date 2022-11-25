@@ -6,6 +6,7 @@ import {
 } from "./Profile.styled";
 import { removeCookie } from "../../../utils/cookie";
 import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const Profile = ({
   companyInfo,
@@ -21,6 +22,9 @@ const Profile = ({
     removeCookie(["authority"], { path: "/" });
     localStorage.removeItem("refresh-token");
   };
+
+  const userPass = useSelector((state) => state.mypage?.userPass);
+  console.log("@@=>",userPass.length)
 
   return (
     <ProfileContainer>

@@ -77,7 +77,9 @@ const SearchBar = () => {
         </SearchBarOpen>
       ) : (
         <form onSubmit={(e) => onSubmitHandler(e)}>
+
           <SearchModal animation={animation}>
+          <h1>활동 검색하기</h1>
             <SearchBarWrapper>
               <SearchLabel>
                 <SearchList>

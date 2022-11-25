@@ -1,6 +1,4 @@
-import styled from "styled-components";
 import { useState } from "react";
-import { VscAccount, VscOrganization } from "react-icons/vsc";
 import { RegisterContainer, RegisterCover, RegisterBtn, RegisterIndividual, RegisterOrganization, OptionProfile, OptionOrganization, RegisterFormContainer } from "./Register.styled";
 import Individual from "../Register/Individual/Individual"
 import Organization from "../Register/Organization/Organization"
