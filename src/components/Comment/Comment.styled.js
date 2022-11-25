@@ -17,18 +17,19 @@ export const CommentWriteWrap = styled.div`
 export const CommentTitleWrap = styled.div`
 	display: flex;
 	align-items: center;
-
-	/* justify-content: space-between; */
+	justify-content: space-between;
 	margin-top: 2rem;
-	& > h2 {
-		margin-left: 0.5rem;
+	& > div {
+		display: flex;
+		align-items: center;
+	}
+	& > div > div {
+		flex-wrap: wrap;
 	}
 `;
 export const CommentBtnWrap = styled.div`
 	display: flex;
-	float: right;
 	align-items: center;
-	/* justify-content: space-between; */
 	& > div {
 		cursor: pointer;
 	}
@@ -61,6 +62,7 @@ export const UserIcon = styled(FaRegUserCircle)`
 export const CommentIcon = styled(FaRegUserCircle)`
 	font-size: 3rem;
 	color: grey;
+	margin-right: 0.5rem;
 `;
 
 export const CommentInput = styled.input`
@@ -82,12 +84,13 @@ export const Div = styled.div`
 `;
 
 export const Date = styled.div`
-	margin-left: 1rem;
+	margin-top: 0.5rem;
 `;
 
 export const CommentDiv = styled.div`
-	margin-top: 2rem;
+	margin-top: 1rem;
+	margin-left: 3.5rem;
 	height: 2rem;
 	flex-wrap: wrap;
-	border-bottom: 1px solid ${props => props.theme.textColor};
+	border-bottom: 0.5px solid ${props => props.theme.textColor};
 `;
