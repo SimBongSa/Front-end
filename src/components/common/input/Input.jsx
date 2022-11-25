@@ -7,7 +7,9 @@ import { StInputContainer, StInput, DupleCheck } from "./Input.styled";
 
 const Input = ({ id, placeholder, dupleCheck, type, name, value, onChange }) => {
 	const dispatch = useDispatch();
-	const checkMsg = useSelector(state => state);
+
+	const nicknameCheck = useSelector((state) => state.register.nicknameCheck)
+  const usernameCheck = useSelector((state) => state.register.usernameCheck)
 
 	return (
 		<StInputContainer>
@@ -24,14 +26,18 @@ const Input = ({ id, placeholder, dupleCheck, type, name, value, onChange }) => 
 			) : null}
 
 			{dupleCheck === "username" ? (
-				<DupleCheck
-					onClick={() => {
-						console.log(value);
-						dispatch(__checkUsername(value));
-					}}
-				>
-					중복체크
-				</DupleCheck>
+				<>
+					<DupleCheck
+						onClick={() => {
+							console.log(value);
+							dispatch(__checkUsername(value));
+						}}
+					>
+						중복체크
+						<h6>{usernameCheck}</h6>
+					</DupleCheck>
+
+				</>
 			) : null}
 
 			{dupleCheck === "nickname" ? (
@@ -42,6 +48,7 @@ const Input = ({ id, placeholder, dupleCheck, type, name, value, onChange }) => 
 					}}
 				>
 					중복체크
+					<h6>{nicknameCheck}</h6>
 				</DupleCheck>
 			) : null}
 

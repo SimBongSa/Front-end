@@ -1,8 +1,6 @@
 import { ProcessContainer, ProcessWrap, ProcessStepCont, ProcessStep, ProcessActive, ProcessItem, ProcessLabel } from "./ProcessBar.styld";
 
-const ProcessBar = ({ step }) => {
-
-  console.log(step)
+const ProcessBar = ({ step, setStep }) => {
 
   return (
     <ProcessContainer>
