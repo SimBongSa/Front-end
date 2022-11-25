@@ -199,7 +199,13 @@ const Recruit = () => {
 							value={input.dueDay}
 							onChange={e => onChangeInput(e)}
 						/>
-						<Input placeholder="행사 장소" type="text" name="area" value={address} readOnly />
+						<Input
+							placeholder="행사 장소(우편번호 검색 클릭)"
+							type="text"
+							name="area"
+							value={address}
+							readOnly
+						/>
 						<AreaBtn type="button" onClick={openPostCode}>
 							우편번호 검색
 						</AreaBtn>
