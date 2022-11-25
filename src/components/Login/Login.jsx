@@ -1,24 +1,30 @@
-import { LoginContainer, LoginBackLeft, LoginOverlay, LoginBox, LoginBoxTitle, LoginArrowBack, LoginForm, LoginInput, LoginBtn, SocialContainer } from "./Login.styled";
+import { LoginContainer, LoginBackLeft, LoginOverlay, LoginBox, LoginBoxTitle, LoginArrowBack, LoginForm, LoginInput, LoginBtn, SocialContainer, LoginTitle } from "./Login.styled";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { __loginManager, __loginMember } from "../../redux/modules/registerSlice";
 import { useState } from "react";
 import styled from "styled-components";
 import { useEffect } from "react";
+import { getCookieToken } from "../../utils/cookie";
 
 const Login = () => {
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const token = getCookieToken(['access-token']);
+
   const init = {
     "username": "",
     "password": "",
   }
+
   const [input, setInput] = useState(init);
+
   const onChangeHandler = (e) => {
     const { name, value } = e.target;
     setInput({ ...input, [name]: value });
   };
+
   const onSubmitHandler = (e) => {
     e.preventDefault();
     dispatch(__loginMember(input))
@@ -29,6 +35,10 @@ const Login = () => {
   const isSuccess = useSelector(state => state.register.statusCode);
 
   useEffect(() => {
+    if (token) {
+      alert("올바른 접근이 아닙니다.")
+      navigate("/")
+    }
     if (isSuccess) {
       navigate("/")
     }
@@ -135,8 +145,3 @@ const Login = () => {
 };
 
 export default Login;
-
-export const LoginTitle = styled.h4`
-  cursor: pointer;
-  color: ${(props) => props.theme.bgColor};
-`

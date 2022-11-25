@@ -149,3 +149,8 @@ export const SocialContainer = styled.div`
     width: 50px;
   }
 `
+
+export const LoginTitle = styled.h4`
+  cursor: pointer;
+  color: ${(props) => props.theme.bgColor};
+`
