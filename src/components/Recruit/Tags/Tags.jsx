@@ -7,7 +7,7 @@ const Tags = ({ category, onChangeTags }) => {
 
   const [categories] = useState([{CHILD : "어린이"}, {DISABLED : "장애인"}, {SENIOR : "노인"}, {MULTICULTURAL_FAMILY : "다문화가정"}, {ENVIRONMENT : "환경"}, {ABONDONED_ANIMAL : "유기동물"}]);
   const [conditions] = useState([{ADULT: "성인"}, {MALE: "남성"}, {FEMALE: "여성"}]);
-  const [skills] = useState([{ACTIVE: "활발한 사람이 좋아요"}, {LIKE_CHILD : "아이를 좋아하는 분"}, {CAREFUL: "꼼꼼한 사람이 좋아요"}, {MILITARY: "군필자를 우대해요"}, {LIKE_ANIMAL: "동물을 사랑하는 분"}])
+  const [skills] = useState([{GOOD_AT_CLEANING: "청소에 일가견이 있으신 분"}, {FUNNY: "성격이 유쾌하신 분"}, {PLAY_THE_INSTRUMENT: "악기 연주 가능한 사람"}, {ACTIVE: "활발한 사람이 좋아요"}, {LIKE_CHILD : "아이를 좋아하는 분"}, {CAREFUL: "꼼꼼한 사람이 좋아요"}, {MILITARY: "군필자를 우대해요"}, {LIKE_ANIMAL: "동물을 사랑하는 분"}])
 
   const checkHandler = ({ target }) => {
     onChangeTags(target.id)

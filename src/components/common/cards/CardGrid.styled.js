@@ -13,7 +13,7 @@ export const Cards = styled.div`
 	grid-template-columns: repeat(20, minmax(auto, 120px));
 	grid-gap: 1.5rem;
 	@media screen and (max-width: 1440px) {
-		grid-template-columns: repeat(8, minmax(auto, 60px));
+		grid-template-columns: repeat(16, minmax(auto, 60px));
 	}
 	@media screen and (max-width: 1024px) {
 		grid-template-columns: repeat(12, minmax(auto, 60px));
