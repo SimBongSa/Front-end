@@ -37,7 +37,11 @@ const ProfileEdit = () => {
 
 	// 이미지 upload
 	const onChangeImage = e => {
+		// if (e.target.files[0] === null) {
+		// 	setProfileImage(null);
+		// } else {
 		setProfileImage(e.target.files[0]);
+		// }
 
 		console.log("profileImage =>", profileImage);
 
