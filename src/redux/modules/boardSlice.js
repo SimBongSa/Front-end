@@ -17,7 +17,7 @@ export const __createBoard = createAsyncThunk(
       console.log("createBoard response =>", response);
       if (response.status === 200) {
         alert(response.data.data.msg);
-        return thunkAPI.fulfillWithValue(response.data.data.boardId);
+        return thunkAPI.fulfillWithValue(response);
       }
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
@@ -122,7 +122,7 @@ export const boardSlice = createSlice({
     board: [],
     area: [],
     apply: "",
-    statusCode: "",
+    status: null,
     isLoading: false,
     error: null,
   },
@@ -134,8 +134,7 @@ export const boardSlice = createSlice({
       })
       .addCase(__createBoard.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.statusCode = action.payload.status;
-        console.log(action.payload)
+        state.status = action.payload.status;
         state.boards.push(action.payload.data.data);
       })
       .addCase(__createBoard.rejected, (state, action) => {

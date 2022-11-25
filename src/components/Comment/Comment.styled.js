@@ -17,8 +17,6 @@ export const CommentWriteWrap = styled.div`
 export const CommentTitleWrap = styled.div`
 	display: flex;
 	align-items: center;
-
-	/* justify-content: space-between; */
 	margin-top: 2rem;
 	& > h2 {
 		margin-left: 0.5rem;
@@ -28,7 +26,6 @@ export const CommentBtnWrap = styled.div`
 	display: flex;
 	float: right;
 	align-items: center;
-	/* justify-content: space-between; */
 	& > div {
 		cursor: pointer;
 	}
