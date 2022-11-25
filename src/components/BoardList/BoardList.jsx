@@ -1,52 +1,73 @@
 import CardGrid from "../common/cards/CardGrid";
-import { BoardContainer, BoardContent } from "./BoardList.styled";
-import { useEffect } from "react";
+import { BoardContainer, BoardContent, BtnBox, Button, ListMap } from "./BoardList.styled";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { __getBoard } from "../../redux/modules/boardSlice";
-import styled from "styled-components";
-import KaMap from "../Map/KaMap";
-import { useState } from "react";
+import KaMarker from "./../Map/KaMarker";
 
 const Board = () => {
-  
-  const dispatch = useDispatch();
-  const boards = useSelector((state) => state.boards.boards);
-  const [page, setPage] = useState(1);
+	const dispatch = useDispatch();
+	const boards = useSelector(state => state.boards.boards);
+	const area = useSelector(state => state.boards.area);
 
-  const area = useSelector((state) => state.boards.area);
-  useEffect(() => {
-    dispatch(__getBoard(page));
-  }, [dispatch, page]);
+	const [page, setPage] = useState(1);
+	const size = 10;
 
-  return (
-    <BoardContainer>
-      <ListMap>
-        <KaMap mapWidth="100%" mapHeight="100%"/>
-      </ListMap>
-      <BoardContent>
-        <CardGrid boards={boards} />
-        {
-          page === 1 ? <button></button> : (
-            <button onClick={() => {
-              setPage((prev) => prev - 1);
-              dispatch(__getBoard(page));
-            }}>이전</button>
-          )
-        }
-        <button onClick={() => {
-          setPage((prev) => prev + 1);
-          dispatch(__getBoard(page));
-        }}>다음</button>
-      </BoardContent>
-    </BoardContainer>
-  );
+	//popup btn
+	const [showPopup, setShowPopup] = useState(false);
+	const togglePopup = event => {
+		console.log(event);
+		event.preventDefault();
+		console.log(event);
+		console.log(event.target);
+		console.log(event.target.value);
+		setShowPopup(event.target.value);
+	};
+
+	useEffect(() => {
+		dispatch(__getBoard({ page, size }));
+	}, [dispatch, size, page]);
+
+	return (
+		<BoardContainer>
+			{showPopup ? (
+				<ListMap>
+					<KaMarker boards={boards} />
+				</ListMap>
+			) : null}
+			<BoardContent>
+				{/* show popup btn */}
+				<BtnBox>
+					<Button onClick={e => togglePopup(e)} value="false">
+						지도
+					</Button>
+					{page === 1 ? (
+						""
+					) : (
+						<Button
+							onClick={() => {
+								setShowPopup(false);
+								setPage(prev => prev - 1);
+								dispatch(__getBoard({ page, size }));
+							}}
+						>
+							이전
+						</Button>
+					)}
+					<Button
+						onClick={() => {
+							setShowPopup(false);
+							setPage(prev => prev + 1);
+							dispatch(__getBoard({ page, size }));
+						}}
+					>
+						다음
+					</Button>
+				</BtnBox>
+				<CardGrid boards={boards} gridColumn={5} />
+			</BoardContent>
+		</BoardContainer>
+	);
 };
 
 export default Board;
-
-export const ListMap = styled.div`
-  display: grid;
-  width: 100%;
-  height: 50vh;
-  margin-top: 10rem;
-`;

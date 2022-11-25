@@ -1,22 +1,20 @@
-import { useState, useQuery, useEffect } from "react";
+import { useState, useEffect } from "react";
 import Calendar from "react-calendar";
-// import "react-calendar/dist/Calendar.css";
 import moment from "moment";
 import { CalendarContainer } from "./MainCalendar.styled";
 import Serverlist from "../Serverlist/Serverlist";
-import styled from "styled-components";
 import { useSelector, useDispatch } from "react-redux";
 import { __getCustomer } from "../../redux/modules/calendarSlice";
+import styled from "styled-components";
 
 const MainCalendar = () => {
   const dispatch = useDispatch();
   const maindate = useSelector((state) => state.calendarList.calendarList);
+  console.log(maindate)
 
   const [value, setValue] = useState(new Date());
   const [date, setDate] = useState(new Date());
-
   const [result, setResult] = useState([]);
-
   const [mark, setMark] = useState([]);
 
   useEffect(() => {
@@ -34,52 +32,78 @@ const MainCalendar = () => {
   return (
     <>
       <CalendarContainer>
-        <Calendar
-          // onClickDay={(e) => onClickDayHandler(e)}
-          onChange={setValue} // useState로 포커스 변경 시 현재 날짜 받아오기
-          formatDay={(locale, date) => moment(date).format("DD")} // 날'일' 제외하고 숫자만 보이도록 설정
-          locale="en-EN"
-          value={value}
-          next2Label={null}
-          prev2Label={null}
-          minDetail="month" // 상단 네비게이션에서 '월' 단위만 보이게 설정
-          maxDetail="month" // 상단 네비게이션에서 '월' 단위만 보이게 설정
-          calendarType="US" // 일요일 부터 start
-          navigationLabel={null}
-          // showNeighboringMonth={false} //  이전, 이후 달의 날짜는 보이지 않도록 설정
-          tileContent={({ date, view }) => {
-            // 날짜 타일에 컨텐츠 추가하기 (html 태그)
-            // 추가할 html 태그를 변수 초기화
-            let html = [];
-            // 현재 날짜가 post 작성한 날짜 배열(mark)에 있다면, dot div 추가
-            if (
-              mark.find((item) => item === moment(date).format("YYYY-MM-DD"))
-            ) {
-              // console.log(mark);
-              html.push(
-                <div className="dot" key={date}>
-                  {/* {maindate.data[value].length} */}
-                </div>
-              );
-            }
-            // 다른 조건을 주어서 html.push 에 추가적인 html 태그를 적용할 수 있음.
-            return (
-              <>
-                <div className="flex justify-center items-center absoluteDiv">
-                  {html}
-                </div>
-              </>
-            );
-          }}
-        />
+        <h1>날짜별 봉사활동</h1>
+        {/* <DropDown/> */}
+        <CalendarWrap>
+          <StCalendar
+            onChange={setValue}
+            formatDay={(locale, date) => moment(date).format("DD")}
+            locale="en-EN"
+            value={value}
+            next2Label={null}
+            prev2Label={null}
+            minDetail="month"
+            maxDetail="month"
+            calendarType="US"
+            navigationLabel={null}
+            tileContent={({ date, view }) => {
+              let html = [];
 
-        <div className="text-gray-500 mt-4">
-          <div>ToDay : {moment(value).format("YYYY년 MM월 DD일")}</div>
-          <Serverlist result={maindate.data} key={date} mark={mark} />
-        </div>
+              if (
+                mark.find((item) => item === moment(date).format("YYYY-MM-DD"))
+              ) {
+                html.push(
+                  <div className="dot" key={date}>
+                    {/* {maindate.data[value].length} */}
+                  </div>
+                );
+              }
+              return (
+                <>
+                  <div className="flex justify-center items-center absoluteDiv">
+                    {html}
+                  </div>
+                </>
+              );
+            }}
+          />
+          <CalendarList className="text-gray-500 mt-4">
+            {/* <h2>Today : {moment(value).format("YYYY년 MM월 DD일")}</h2> */}
+            <h2>봉사활동 : </h2>
+            <Serverlist result={maindate.data} key={date} mark={mark} />
+          </CalendarList>
+        </CalendarWrap>
       </CalendarContainer>
     </>
   );
 };
 
 export default MainCalendar;
+
+export const CalendarList = styled.div`
+  width: 35%;
+  & h2 {
+    font-size: 1.6rem;
+  }
+  @media (max-width: 1280px) {
+    margin-top: 5rem;
+    width: 100%;
+  }
+`
+
+export const CalendarWrap = styled.div`
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  justify-content: space-between;
+  @media (max-width: 1280px) {
+    flex-direction: column;
+  }
+`
+
+export const StCalendar = styled(Calendar)`
+  min-width: min-content;
+  @media (max-width: 1280px) {
+    min-width: fit-content;
+  }
+`

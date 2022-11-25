@@ -5,23 +5,25 @@ import {
   Card,
   ImgWrapper,
   Content,
+  TagBox,
   CardInfo,
 } from "./CardGrid.styled";
+const CardGrid = ({ gridColumn, companyBoards, boards, userEnroll }) => {
+	const navigate = useNavigate();
 
-const CardGrid = ({ companyBoards, boards, userEnroll }) => {
-  const navigate = useNavigate();
-
-  const getDateDiff = (d1, d2) => {
-    const dueDay = new Date(d1);
-    const today = new Date(d2);
-    const diffDate = dueDay.getTime() - today.getTime();
-    return Math.round(Math.abs(diffDate / (1000 * 60 * 60 * 24)));
-  };
-  const today = new Date().toISOString().split("T")[0];
+	const getDateDiff = (d1, d2) => {
+		const dueDay = new Date(d1);
+		const today = new Date(d2);
+		const diffDate = dueDay.getTime() - today.getTime();
+		return Math.round(Math.abs(diffDate / (1000 * 60 * 60 * 24)));
+	};
+	const today = new Date().toISOString().split("T")[0];
 
   return (
     <CardGridContainer>
-      <Cards>
+      <Cards
+        gridColumn={gridColumn}
+      >
         {/* companyBoards 기업 상세페이지 */}
         {companyBoards?.map((item) => {
           return (
@@ -35,6 +37,15 @@ const CardGrid = ({ companyBoards, boards, userEnroll }) => {
                   </p>
                   <p className="price">D-4</p>
                 </CardInfo>
+                <TagBox>
+                  {
+                    item?.tags?.map((tag) => {
+                      return (
+                        <li>{tag}</li>
+                      )
+                    })
+                  }
+                </TagBox>
               </Content>
             </Card>
           );
@@ -46,11 +57,10 @@ const CardGrid = ({ companyBoards, boards, userEnroll }) => {
           return (
             <Card
               key={item.boardId}
-              // onClick={(item) => getArea(item?.area)}
               onClick={() => navigate(`/boards/${item.boardId}`)}
             >
               <ImgWrapper>
-                <img src={item.boardImage} alt="thumbnail" />
+                <img src={item.boardImage} loading="lazy" alt="thumbnail" />
               </ImgWrapper>
               <Content>
                 <p className="title">{item.title}</p>
@@ -58,6 +68,15 @@ const CardGrid = ({ companyBoards, boards, userEnroll }) => {
                   <p>{item.area}</p>
                   <p className="price">D - {dDay}</p>
                 </CardInfo>
+                <TagBox>
+                  {
+                    item?.tags?.map((tag) => {
+                      return (
+                        <li>{tag}</li>
+                      )
+                    })
+                  }
+                </TagBox>
               </Content>
             </Card>
           );
@@ -71,7 +90,7 @@ const CardGrid = ({ companyBoards, boards, userEnroll }) => {
               onClick={() => navigate(`/boards/${item.boardId}`)}
             >
               <ImgWrapper>
-                <img src={item.boardImage} alt="enrollImage" />
+                <img src={item.boardImage} loading="lazy" alt="enrollImage" />
               </ImgWrapper>
               <Content>
                 <p className="title">{item.title}</p>
@@ -79,6 +98,15 @@ const CardGrid = ({ companyBoards, boards, userEnroll }) => {
                   <p>{item.area}</p>
                   <p className="price">D - {dDay}</p>
                 </CardInfo>
+                <TagBox>
+                  {
+                    item?.tags?.map((tag) => {
+                      return (
+                        <li>{tag}</li>
+                      )
+                    })
+                  }
+                </TagBox>
               </Content>
             </Card>
           );

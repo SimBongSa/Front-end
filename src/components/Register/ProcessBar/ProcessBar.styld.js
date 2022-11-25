@@ -95,10 +95,30 @@ export const ProcessItem = styled.div`
 `
 
 export const ProcessLabel = styled.span`
-  color: black;
+  color: ${(props) => props.theme.textColor};
   font-weight: 600;
   width: 100%;
   text-align: center;
   margin-top: 5rem;
   margin-left: -20px;
+`
+
+export const BtnContainer = styled.div`
+  display: flex;
+  width: 200px;
+  margin: 3rem;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-direction: row-reverse;
+  & button {
+    cursor: pointer;
+    border: none;
+    background: transparent;
+    font-size: 2rem;
+    color: ${(props) => props.theme.textColor};
+    transition: all 0.3s;
+    &:hover {
+      transform: translateY(-7%);
+    }
+  }
 `

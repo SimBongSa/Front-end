@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 export const NewActivityContainer = styled.section`
-  max-width: 1024px;
   margin-left: 1.5rem;
   margin-right: 1.5rem;
   display: grid;
@@ -12,6 +11,7 @@ export const NewActivityWrap = styled.div`
 `
 
 export const NewActivityCard = styled.article`
+  width: 80%;
   position: relative;
   background-color: #aaaaaa;
   padding: 2rem 1.5rem 2.5rem;

@@ -1,12 +1,13 @@
 import styled from "styled-components";
 
 export const ServerListContainer = styled.div`
-  width: 30rem;
-  height: 8rem;
-  margin-top: 3rem;
   display: flex;
-  border-bottom: 1px solid black;
+  /* width: 30rem; */
+  height: 7.5rem;
+  margin-top: 2rem;
+  border-bottom: 1px solid ${(props) => props.theme.textColor};
   cursor: pointer;
+  color: ${(props) => props.theme.textColor};
   transition: 0.4s;
   &:hover {
     transform: translateY(-5%);

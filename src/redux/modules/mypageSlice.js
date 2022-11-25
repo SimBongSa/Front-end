@@ -76,10 +76,12 @@ export const __putUserInfo = createAsyncThunk("__putUserInfo", async (payload, t
 });
 
 // Company
+
 export const __getCompanyInfo = createAsyncThunk("companyInfo", async (payload, thunkAPI) => {
 	try {
+		console.log("__getCompanyInfo payload =>", payload);
 		const response = await apis.getCompanyPage(payload);
-		console.log("companyInfo =>", response);
+		console.log("__getCompanyInfo response =>", response);
 		return thunkAPI.fulfillWithValue(response.data.data);
 	} catch (error) {
 		return thunkAPI.rejectWithValue(error);
@@ -105,7 +107,7 @@ export const __getAppliList = createAsyncThunk("appliList", async (payload, thun
 
 export const __putCompanyInfo = createAsyncThunk("putCompanyInfo", async (payload, thunkAPI) => {
 	const formData = new FormData();
-	console.log("__putCompanyInfo payload", payload);
+
 	// formData append
 	Object.entries(payload).forEach(([key, value]) => {
 		formData.append(key, value);
@@ -114,11 +116,43 @@ export const __putCompanyInfo = createAsyncThunk("putCompanyInfo", async (payloa
 	for (let key of formData.keys()) {
 		console.log("formData ===>", key, ":", formData.get(key));
 	}
-
 	try {
 		const response = await apis.putCompanyPage(payload);
-		console.log("putCompanyInfo =>", payload);
-		return thunkAPI.fulfillWithValue(response);
+
+		if (response.status === 200) {
+			alert(response.data.data.msg);
+			return thunkAPI.fulfillWithValue(response);
+		}
+	} catch (error) {
+		return thunkAPI.rejectWithValue(error);
+	}
+});
+
+export const __getAllAppliList = createAsyncThunk("allAppliList", async (payload, thunkAPI) => {
+	try {
+		const response = await apis.getAllAppliList(payload);
+		console.log(response);
+		return thunkAPI.fulfillWithValue(response.data.data);
+	} catch (error) {
+		return thunkAPI.rejectWithValue(error);
+	}
+});
+
+export const __putApprove = createAsyncThunk("approve", async (payload, thunkAPI) => {
+	try {
+		const response = await apis.putApprove(payload);
+		console.log(response);
+		return thunkAPI.fulfillWithValue(response.data.data);
+	} catch (error) {
+		return thunkAPI.rejectWithValue(error);
+	}
+});
+
+export const __putDisapprove = createAsyncThunk("disapprove", async (payload, thunkAPI) => {
+	try {
+		const response = await apis.putDisapprove(payload);
+		console.log(response);
+		return thunkAPI.fulfillWithValue(response.data.data);
 	} catch (error) {
 		return thunkAPI.rejectWithValue(error);
 	}
@@ -134,7 +168,9 @@ export const mypageSlice = createSlice({
 		userWait: [],
 		userPass: [],
 		userReject: [],
+		allAppliList: [],
 		appliList: [],
+		approve: [],
 		isLoading: false,
 		error: null,
 	},
@@ -202,6 +238,69 @@ export const mypageSlice = createSlice({
 				state.error = action.payload;
 			})
 
+			// get company boards
+			.addCase(__getCompanyBoards.pending, (state, _) => {
+				state.isLoading = true;
+			})
+			.addCase(__getCompanyBoards.fulfilled, (state, action) => {
+				state.isLoading = false;
+				state.companyBoards = action.payload;
+			})
+			.addCase(__getCompanyBoards.rejected, (state, action) => {
+				state.isLoading = false;
+				state.error = action.payload;
+			})
+
+			//get All Applicants List
+			.addCase(__getAllAppliList.pending, (state, _) => {
+				state.isLoading = true;
+			})
+			.addCase(__getAllAppliList.fulfilled, (state, action) => {
+				state.isLoading = false;
+				state.allAppliList = action.payload;
+			})
+			.addCase(__getAllAppliList.rejected, (state, action) => {
+				state.isLoading = false;
+				state.error = action.payload;
+			})
+
+			// get Applicant
+			.addCase(__getAppliList.pending, (state, _) => {
+				state.isLoading = true;
+			})
+			.addCase(__getAppliList.fulfilled, (state, action) => {
+				state.isLoading = false;
+				state.appliList = action.payload;
+			})
+			.addCase(__getAppliList.rejected, (state, action) => {
+				state.isLoading = false;
+				state.error = action.payload;
+			})
+
+			// approve & disapprove
+			.addCase(__putApprove.pending, (state, _) => {
+				state.isLoading = true;
+			})
+			.addCase(__putApprove.fulfilled, (state, action) => {
+				state.isLoading = false;
+				state.approve = action.payload;
+			})
+			.addCase(__putApprove.rejected, (state, action) => {
+				state.isLoading = false;
+				state.error = action.payload;
+			})
+			.addCase(__putDisapprove.pending, (state, _) => {
+				state.isLoading = true;
+			})
+			.addCase(__putDisapprove.fulfilled, (state, action) => {
+				state.isLoading = false;
+				state.approve = action.payload;
+			})
+			.addCase(__putDisapprove.rejected, (state, action) => {
+				state.isLoading = false;
+				state.error = action.payload;
+			})
+
 			.addCase(__putUserInfo.pending, (state, _) => {
 				state.isLoading = true;
 			})
@@ -240,31 +339,6 @@ export const mypageSlice = createSlice({
 				});
 			})
 			.addCase(__putCompanyInfo.rejected, (state, action) => {
-				state.isLoading = false;
-				state.error = action.payload;
-			})
-
-			// get company boards
-			.addCase(__getCompanyBoards.pending, (state, _) => {
-				state.isLoading = true;
-			})
-			.addCase(__getCompanyBoards.fulfilled, (state, action) => {
-				state.isLoading = false;
-				state.companyBoards = action.payload;
-			})
-			.addCase(__getCompanyBoards.rejected, (state, action) => {
-				state.isLoading = false;
-				state.error = action.payload;
-			})
-
-			.addCase(__getAppliList.pending, (state, _) => {
-				state.isLoading = true;
-			})
-			.addCase(__getAppliList.fulfilled, (state, action) => {
-				state.isLoading = false;
-				state.appliList = action.payload;
-			})
-			.addCase(__getAppliList.rejected, (state, action) => {
 				state.isLoading = false;
 				state.error = action.payload;
 			});
