@@ -5,7 +5,7 @@ import {
 } from "../../../redux/modules/registerSlice";
 import { StInputContainer, StInput, DupleCheck } from "./Input.styled";
 
-const Input = ({ id, placeholder, dupleCheck, type, name, value, onChange }) => {
+const Input = ({ id, placeholder, dupleCheck, nameMessage, type, name, value, onChange }) => {
 	const dispatch = useDispatch();
 
 	const nicknameCheck = useSelector((state) => state.register.nicknameCheck)
@@ -17,6 +17,7 @@ const Input = ({ id, placeholder, dupleCheck, type, name, value, onChange }) => 
 				<StInputContainer>
 					<StInput
 						placeholder={placeholder}
+						autoComplete="off"
 						type={type}
 						name={name}
 						value={value}
@@ -26,6 +27,7 @@ const Input = ({ id, placeholder, dupleCheck, type, name, value, onChange }) => 
 			) : null}
 
 			{dupleCheck === "username" ? (
+				nameMessage === "사용 가능합니다." ? 
 				<>
 					<DupleCheck
 						onClick={() => {
@@ -36,8 +38,7 @@ const Input = ({ id, placeholder, dupleCheck, type, name, value, onChange }) => 
 						중복체크
 						<h6>{usernameCheck}</h6>
 					</DupleCheck>
-
-				</>
+				</> : null
 			) : null}
 
 			{dupleCheck === "nickname" ? (

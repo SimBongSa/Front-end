@@ -1,11 +1,11 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { apis } from "./Api/apis";
 import { setCookie } from "../../utils/cookie";
-import axios from "axios";
 
 export const __loginMember = createAsyncThunk("loginMember", async (payload, thunkAPI) => {
 	try {
 		const response = await apis.memberLogin(payload);
+		console.log(response)
 		if (response.status === 200) {
 			localStorage.setItem("refresh-token", response.headers["refresh-token"]); // refresh token은 로껄스토리지
 			setCookie("access-token", response.headers["access-token"], {
@@ -127,9 +127,8 @@ export const registerSlice = createSlice({
 			})
 			.addCase(__loginMember.fulfilled, (state, action) => {
 				state.isLoading = false;
-				state.statusCode = action.payload.success;
-
-				state.loginInfo.concat(action.payload);
+				state.statusCode = action.payload;
+				state.loginInfo.concat(action.payload.data);
 			})
 			.addCase(__loginMember.rejected, (state, action) => {
 				state.isLoading = false;
@@ -142,6 +141,7 @@ export const registerSlice = createSlice({
 			})
 			.addCase(__loginManager.fulfilled, (state, action) => {
 				state.isLoading = false;
+				state.statusCode = action.payload;
 				state.loginInfo.concat(action.payload);
 			})
 			.addCase(__loginManager.rejected, (state, action) => {
