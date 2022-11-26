@@ -13,17 +13,14 @@ export const GloblaStyle = createGlobalStyle`
     background: ${({ theme }) => theme.bgColor};
     color: ${({ theme }) => theme.textColor};
     transition: all 0.5s;
-    /* ::-webkit-scrollbar {
-      width: 10px;
+    @media (prefers-color-scheme: dark) {
+      background-color: "#333333";
+      color: "#F9FAFB";
     }
-    
-    ::-webkit-scrollbar-track {
-      background: #eeeeee;
+    @media (prefers-reduced-motion) {
+      & * {
+        transform: none;
+      }
     }
-    
-    ::-webkit-scrollbar-thumb {
-      border-radius: 15px;
-      background: linear-gradient(${(props) => props.theme.btnColor}, ${(props) => props.theme.subBtnColor});
-    } */
   }
 `;
