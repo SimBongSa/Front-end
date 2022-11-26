@@ -29,12 +29,12 @@ const Profile = ({
     <ProfileContainer>
       <ProfileBox>
         {/* 이거 삼항연산자 넘 그지같아서 수정해야 함 - 성호 */}
-        {companyInfo && companyInfo.profileImage ? (
-          <img src={companyInfo.profileImage} alt="user" />
+        {companyInfo && companyInfo?.profileImage ? (
+          <img src={companyInfo?.profileImage} alt="user" />
         ) : null }
 
-        { userInfo && userInfo.profileImage ? (
-          <img src={companyInfo.profileImage} alt="user" />
+        { userInfo && userInfo?.profileImage ? (
+          <img src={companyInfo?.profileImage} alt="user" />
         ) : null}
 
         {/* <img

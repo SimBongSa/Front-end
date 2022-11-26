@@ -30,8 +30,8 @@ const Individual = () => {
   const [step, setStep] = useState(0);
 
   // 오류메시지 상태 저장
-  const [nameMessage, setNameMessage] = useState('')
-  const [passwordMessage, setPasswordMessage] = useState('');
+  const [nameMessage, setNameMessage] = useState('4 ~ 16글자, 알파벳 소문자, 대문자, 숫자만 가능합니다.')
+  const [passwordMessage, setPasswordMessage] = useState('8 ~ 20자, 알파벳 대소문자, 숫자, 특수문자로 구성됩니다.');
   const [pwConfirmMessage, setPwConfirmMessage] = useState('');
 
   // 유효성 검사
@@ -121,6 +121,7 @@ const Individual = () => {
                     placeholder="Username"
                     autoComplete="off"
                     dupleCheck="username"
+                    nameMessage={nameMessage}
                     type="text"
                     name="username"
                     value={input.username}
