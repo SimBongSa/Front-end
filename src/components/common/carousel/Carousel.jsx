@@ -4,8 +4,11 @@ import { __getBoard } from "../../../redux/modules/boardSlice";
 import { Card, CardInfo, Content, ImgWrapper } from "../cards/CardGrid.styled";
 import { CarouselContainer, SlideTrack, Slide } from "./Carousel.styled";
 import { TagBox } from "../cards/CardGrid.styled";
+import { useNavigate } from "react-router-dom";
 
 const Carousel = () => {
+
+  const navigate = useNavigate();
 	const dispatch = useDispatch();
 	const [size, setSize] = useState(10);
 	const [page, setPage] = useState(1);
@@ -25,7 +28,9 @@ const Carousel = () => {
             boardList.map((item, idx) => {
               return (
                 <Slide key={item.boardId}>
-                  <Card>
+                  <Card onClick={() => {
+                    navigate(`/boards/${item.boardId}`)
+                  }}>
                     <ImgWrapper>
                       <img src={item.boardImage} loading="lazy" alt="thumbnail" />
                     </ImgWrapper>
