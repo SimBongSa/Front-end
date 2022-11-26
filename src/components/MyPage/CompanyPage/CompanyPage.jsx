@@ -4,7 +4,7 @@ import { __getAllAppliList, __getCompanyBoards, __getCompanyInfo } from "../../.
 import { CompanyPageContainer, BtnContainer } from "./CompanyPage.styled";
 import Profile from "../Profile/Profile";
 import CardGrid from "../../common/cards/CardGrid";
-import MyApplicant from "../MyApplicant/MyApplicant";
+import MyApplicant from "./MyApplicant/MyApplicant";
 
 const CompanyPage = () => {
 
