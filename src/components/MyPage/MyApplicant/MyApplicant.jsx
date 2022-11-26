@@ -7,7 +7,9 @@ import { TagBox } from "../../common/cards/CardGrid.styled";
 
 const MyApplicant = ({ list }) => {
 
-  const [btnOpt, setBtnOpt] = useState(false);
+  console.log(list)
+
+  // const [btnOpt, setBtnOpt] = useState(false);
   const dispatch = useDispatch();
 
   return (
@@ -37,10 +39,13 @@ const MyApplicant = ({ list }) => {
                 <PreviewText>Name : {item.username}</PreviewText>
                 <PreviewText>Address : {item.area}</PreviewText>
                 <TagBox>
-                  <li>태그1</li>
-                  <li>적당한 길이의 태그</li>
-                  <li>짧은 태그</li>
-                  <li>엄청나게 길고 긴 이름의 태그</li>
+                  {
+                    list.tags?.map((item) => {
+                      return (
+                        <li>{item}</li>
+                      )
+                    })
+                  }
                 </TagBox>
               </AppliCardText>
       
