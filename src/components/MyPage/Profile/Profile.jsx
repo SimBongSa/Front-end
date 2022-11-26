@@ -11,7 +11,6 @@ import { useSelector } from "react-redux";
 const Profile = ({
   companyInfo,
   userInfo,
-  isEdit,
   setUserPageOpt,
   setCompanyPageOpt,
 }) => {

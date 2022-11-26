@@ -72,6 +72,7 @@ const Register = () => {
         ) : null
       }
 
+      {/* 게시물 등록할 때 */}
       {
         option === "individual" ? (
           <RegisterFormContainer>
@@ -80,6 +81,7 @@ const Register = () => {
         ) : null
       }
 
+      {/* 게시물 수정할 때 */}
       {
         option === "organization" ? (
           <RegisterFormContainer>
