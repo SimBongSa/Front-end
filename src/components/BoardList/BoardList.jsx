@@ -36,7 +36,7 @@ const Board = () => {
 				{/* show popup btn */}
 				<BtnBox>
 					<Button onClick={togglePopup} value="false">
-						<TbMapPin />
+						지도
 					</Button>
 					{page === 1 ? (
 						""

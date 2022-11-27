@@ -64,6 +64,7 @@ const ProfileEdit = () => {
 		e.preventDefault();
 		if (role === "ROLE_ADMIN") {
 			dispatch(__putCompanyInfo({ ...remainInfo, profileImage }));
+			console.log(profileImage);
 		} else {
 			dispatch(__putUserInfo({ ...remainInfo, profileImage }));
 		}

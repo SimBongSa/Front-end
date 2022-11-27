@@ -1,5 +1,5 @@
 import Input from "../common/input/Input";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { useParams } from "react-router-dom";
 import { useCookies } from "react-cookie";
 import {
@@ -53,8 +53,12 @@ function Comment() {
 				/>
 				<Button
 					onClick={() => {
-						dispatch(__postComment({ content, id }));
-						setContent("");
+						console.log("---------------------- 댓글작성 ---------------------");
+						console.log(cookies);
+						if (content !== "") {
+							dispatch(__postComment({ content, id }));
+							setContent("");
+						}
 					}}
 				>
 					댓글쓰기
