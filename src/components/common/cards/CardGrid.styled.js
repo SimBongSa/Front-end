@@ -3,7 +3,8 @@ import styled from "styled-components";
 export const CardGridContainer = styled.section`
 	display: grid;
 	grid-template-columns: 0fr repeat(0, minmax(auto, 60px)) 10fr;
-	margin: 1rem 7rem 10rem 7rem;
+	margin-bottom: 5rem;
+	/* margin: 0rem 2rem 10rem 2rem; */
 	justify-items: center;
 `;
 

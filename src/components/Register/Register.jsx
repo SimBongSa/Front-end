@@ -1,9 +1,14 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { RegisterContainer, RegisterCover, RegisterBtn, RegisterIndividual, RegisterOrganization, OptionProfile, OptionOrganization, RegisterFormContainer } from "./Register.styled";
 import Individual from "../Register/Individual/Individual"
 import Organization from "../Register/Organization/Organization"
+import { useNavigate } from "react-router-dom";
+import { getCookieToken } from "../../utils/cookie";
 
 const Register = () => {
+
+  const navigate = useNavigate();
+  const token = getCookieToken(['access-token']);
 
   const [moveIndex, setMoveIndex] = useState(0);
   const moveLeft = () => {
@@ -17,6 +22,13 @@ const Register = () => {
   };  
 
   const [option, setOption] = useState(null);
+
+  useEffect(() => {
+    if (token) {
+      alert("올바른 접근이 아닙니다.")
+      navigate("/")
+    }
+  });
 
   return (
     <>
@@ -60,6 +72,7 @@ const Register = () => {
         ) : null
       }
 
+      {/* 게시물 등록할 때 */}
       {
         option === "individual" ? (
           <RegisterFormContainer>
@@ -68,6 +81,7 @@ const Register = () => {
         ) : null
       }
 
+      {/* 게시물 수정할 때 */}
       {
         option === "organization" ? (
           <RegisterFormContainer>

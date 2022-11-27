@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import PopupDom from "../Map/PopupDom";
 import PopupPostCode from "../Map/PopupPostCode";
@@ -26,14 +26,8 @@ const Recruit = () => {
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
 
-	const status = useSelector((state) => state.boards.statusCode);
-	console.log(status);
-
-	useEffect(() => {
-		if(status === 200) {
-			navigate("/boards")			
-		} 
-	}, [status, navigate])
+	const status = useSelector((state) => state.boards.status)
+	console.log(status)
 
 	const [isPopupOpen, setIsPopupOpen] = useState(false);
 
@@ -109,6 +103,12 @@ const Recruit = () => {
 				endDate: moment(endDate).format("YYYY-MM-DD"),
 			})
 		);
+		if (status === 200) {
+			alert("게시물 등록 완료")
+			navigate("/boards");
+		} else {
+			alert("게시물 등록에 실패했습니다. 내용을 다시 확인해주세요")
+		}
 	};
 
 	return (

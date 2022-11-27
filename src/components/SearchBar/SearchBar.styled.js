@@ -24,7 +24,6 @@ export const SearchBarOpen = styled.button`
 	border: none;
 	border-radius: 35px;
 	padding: 1rem;
-	/* box-shadow: 0 2px 5px ${props => props.theme.textColor}; */
 	animation: ${props => (props.animation ? fadeOut : fadeIn)} 0.6s;
 	transform: translate(-50%, 0%);
 	transition: all 0.5s;

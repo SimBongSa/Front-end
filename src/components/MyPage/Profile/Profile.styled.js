@@ -35,6 +35,7 @@ export const ProfileContainer = styled.div`
   }
   & img {
     width: 10rem;
+    height: 10rem;
     border: 1px solid #ffffff;
 	  border-radius: 50%;
 	  padding: 7px;

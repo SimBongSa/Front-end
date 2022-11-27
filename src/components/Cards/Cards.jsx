@@ -1,7 +1,6 @@
 import {
   CardContainer,
   Card,
-  CardImg,
   CardTitle,
   CardMoveLeftBtn,
   CardMoveRightBtn,
@@ -28,7 +27,6 @@ const Cards = ({ maindate, boardList }) => {
       <CardContainer style={{ transform: `translateX(${moveIndex}%)` }}>
         <Card>
           <p className="price">D - 1</p>
-          <CardImg>{/* <img src={obj.boardImage} alt="test" /> */}</CardImg>
           <CardTitle>
             <p>지역</p>
             <span>상세 지역</span>
