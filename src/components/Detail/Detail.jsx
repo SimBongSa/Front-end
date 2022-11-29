@@ -39,17 +39,18 @@ const Detail = () => {
       <DetailContainer>
         <DetailContent>
           <h1>{ boardsId?.title }</h1>
-          <hr/>
           <h3>봉사 활동 내용</h3>
           <span>{ boardsId?.content }</span>
           <hr/>
           <h3>봉사 요청 사항</h3>
           {
-            boardsId?.tags?.map((item) => {
-              return (
-                <DetailTag>{item}</DetailTag>
-              )
-            })
+            boardsId.tag ? 
+              boardsId?.tags?.map((item) => {
+                return (
+                  <DetailTag>{item}</DetailTag>
+                )
+              })
+             : <h2>요청 사항이 없습니다</h2>
           }
           <hr/>
           <MapWrapper>
