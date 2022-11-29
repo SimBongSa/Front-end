@@ -39,9 +39,9 @@ export const Box = styled.div`
 `;
 
 export const Button = styled.button`
-	background: "#FFFFFF";
+	background: ${props => props.theme.btnColor};
 	border: 1px solid ${props => props.theme.btnColor};
-	color: ${props => props.theme.subTextColor};
+	color: ${props => props.theme.bgColor};
 	border-radius: 24px;
 	width: 10rem;
 	height: 3rem;
@@ -66,15 +66,12 @@ export const CommentIcon = styled(FaRegUserCircle)`
 `;
 
 export const CommentInput = styled.input`
-	margin: 12px;
-	font-size: 15px;
-	padding: 20px;
-	width: 360px;
-	padding-left: 20px;
-	border: none;
-	border-radius: 15px;
-	outline: none;
+	margin-top: 1rem;
+	margin-left: 3.5rem;
+	height: 2rem;
 	margin-bottom: 1rem;
+	font-size: 12px;
+	width: 25rem;
 	background: ${props => props.theme.WHITE};
 	color: ${props => props.theme.BLACK};
 `;

@@ -5,7 +5,7 @@ import { setCookie } from "../../utils/cookie";
 export const __loginMember = createAsyncThunk("loginMember", async (payload, thunkAPI) => {
 	try {
 		const response = await apis.memberLogin(payload);
-		console.log(response)
+		console.log(response);
 		if (response.status === 200) {
 			localStorage.setItem("refresh-token", response.headers["refresh-token"]); // refresh token은 로껄스토리지
 			setCookie("access-token", response.headers["access-token"], {
@@ -66,43 +66,34 @@ export const __registerManager = createAsyncThunk("registerManager", async (payl
 	}
 });
 
-export const __checkUsername = createAsyncThunk(
-	"checkUsername", 
-	async (payload, thunkAPI) => {
-		try {
-			const response = await apis.checkUsername(payload);
-			console.log(response);
-			return thunkAPI.fulfillWithValue(response.data.data);
-		} catch (error) {
-			return thunkAPI.rejectWithValue(error);
-		}
+export const __checkUsername = createAsyncThunk("checkUsername", async (payload, thunkAPI) => {
+	try {
+		const response = await apis.checkUsername(payload);
+		console.log(response);
+		return thunkAPI.fulfillWithValue(response.data.data);
+	} catch (error) {
+		return thunkAPI.rejectWithValue(error);
 	}
-);
+});
 
-export const __getCompanyInfo = createAsyncThunk(
-	"getCompanyInfo", 
-	async (payload, thunkAPI) => {
-		try {
-			const response = await apis.getCompanyPage(payload);
-			return thunkAPI.fulfillWithValue(response);
-		} catch (error) {
-			return thunkAPI.rejectWithValue(error);
-		}
+export const __getCompanyInfo = createAsyncThunk("getCompanyInfo", async (payload, thunkAPI) => {
+	try {
+		const response = await apis.getCompanyPage(payload);
+		return thunkAPI.fulfillWithValue(response);
+	} catch (error) {
+		return thunkAPI.rejectWithValue(error);
 	}
-);
+});
 
-export const __checkNickname = createAsyncThunk(
-	"checkNickname", 
-	async (payload, thunkAPI) => {
-		try {
-			const response = await apis.checkNickname(payload);
-			console.log(response);
-			return thunkAPI.fulfillWithValue(response.data.data);
-		} catch (error) {
-			return thunkAPI.rejectWithValue(error);
-		}
+export const __checkNickname = createAsyncThunk("checkNickname", async (payload, thunkAPI) => {
+	try {
+		const response = await apis.checkNickname(payload);
+		console.log(response);
+		return thunkAPI.fulfillWithValue(response.data.data);
+	} catch (error) {
+		return thunkAPI.rejectWithValue(error);
 	}
-);
+});
 
 export const registerSlice = createSlice({
 	name: "userInfo",

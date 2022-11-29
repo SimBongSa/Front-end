@@ -10,8 +10,8 @@ export const setCookie = (name, value, exp = 5, option) => {
 };
 
 export const getCookieToken = name => {
-	console.log(cookies);
-	console.log(name);
+	// console.log(cookies);
+	// console.log(name);
 	return cookies.get(name);
 };
 

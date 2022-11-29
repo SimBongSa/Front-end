@@ -41,6 +41,17 @@ function Comment() {
 		dispatch(__getComment(id));
 	}, [dispatch, id]);
 
+	const onChangeHalder = useCallback(
+		e => {
+			setContent(e.target.value);
+		},
+		[content]
+	);
+
+	useEffect(() => {
+		console.log("렌더링");
+	}, [content]);
+	console.log(content);
 	return (
 		<MainComponent>
 			<CommentWriteWrap>
@@ -49,7 +60,7 @@ function Comment() {
 					type="text"
 					placeholder="댓글을 남겨주세요!"
 					value={content}
-					onChange={e => setContent(e.target.value)}
+					onChange={onChangeHalder}
 				/>
 				<Button
 					onClick={() => {

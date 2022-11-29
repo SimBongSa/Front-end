@@ -6,16 +6,13 @@ const token = getCookieToken("access-token");
 const api = axios.create({
 	baseURL: BASE_URL,
 	headers: {
+		Authorization: token,
 		"Content-Type": "application/json",
 		accept: "*/*",
 	},
 });
 
 api.interceptors.request.use(function (config) {
-	// const accessToken = document.cookie.split(";")[0].split["="][1];
-	// .find((row) => row.startsWith("Authorization"))
-	// .split("=")
-	// .find((row) => row.startsWith("Bearer"));
 	const accessToken = getCookieToken("access-token");
 	config.headers.Authorization = accessToken;
 	return config;
@@ -154,11 +151,14 @@ export const apis = {
 			},
 		}),
 	postComment: payload =>
-		axios.post(`${BASE_URL}/comments/${payload.id}`, payload, {
-			headers: {
-				Authorization: token,
+		axios.post(
+			`${BASE_URL}/comments/${payload.id}`,
+			payload,
+			{
+				headers: { Authorization: token },
 			},
-		}),
+			console.log(token)
+		),
 	putComment: payload =>
 		axios.put(`${BASE_URL}/comments/${payload.commentId}`, payload, {
 			headers: {

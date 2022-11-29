@@ -6,19 +6,13 @@ export const ServerListContainer = styled.div`
 	height: 7.5rem;
 	margin-top: 2rem;
 	border-bottom: 1px solid ${props => props.theme.textColor};
-	cursor: pointer;
 	color: ${props => props.theme.textColor};
-	transition: 0.4s;
-	&:hover {
-		transform: translateY(-5%);
-	}
 `;
 
 export const ServerListImg = styled.div`
 	width: 6rem;
 	height: 6rem;
 	border-radius: 10px;
-
 	& img {
 		width: inherit;
 		height: inherit;
@@ -28,7 +22,7 @@ export const ServerListImg = styled.div`
 `;
 
 export const Body = styled.div`
-	margin-left: 2rem;
+	margin-left: 1.5rem;
 	height: 2rem;
 	flex-wrap: wrap;
 	& > div {
