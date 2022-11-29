@@ -1,7 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { apis } from "./Api/apis";
 import { setCookie } from "../../utils/cookie";
-import axios from "axios";
 
 export const __loginMember = createAsyncThunk("loginMember", async (payload, thunkAPI) => {
 	try {
@@ -10,6 +9,11 @@ export const __loginMember = createAsyncThunk("loginMember", async (payload, thu
 			localStorage.setItem("refresh-token", response.headers["refresh-token"]); // refresh token은 로껄스토리지
 			setCookie("access-token", response.headers["access-token"], {
 				// access token은 쿠키에
+				path: "/",
+				secure: true,
+				sameSite: "none",
+			});
+			setCookie("ID", response.data.data["id"], {
 				path: "/",
 				secure: true,
 				sameSite: "none",
@@ -31,14 +35,14 @@ export const __loginMember = createAsyncThunk("loginMember", async (payload, thu
 	}
 });
 
-export const __loginManager = createAsyncThunk("loginManager", async (payload, thunkAPI) => {
-	try {
-		const response = await apis.managerLogin(payload);
-		return thunkAPI.fulfillWithValue(response.data);
-	} catch (error) {
-		return thunkAPI.rejectWithValue(error);
-	}
-});
+// export const __loginManager = createAsyncThunk("loginManager", async (payload, thunkAPI) => {
+// 	try {
+// 		const response = await apis.managerLogin(payload);
+// 		return thunkAPI.fulfillWithValue(response.data);
+// 	} catch (error) {
+// 		return thunkAPI.rejectWithValue(error);
+// 	}
+// });
 
 export const __registerMember = createAsyncThunk("regitserMember", async (payload, thunkAPI) => {
 	try {
@@ -127,9 +131,8 @@ export const registerSlice = createSlice({
 			})
 			.addCase(__loginMember.fulfilled, (state, action) => {
 				state.isLoading = false;
-				state.statusCode = action.payload.success;
-
-				state.loginInfo.concat(action.payload);
+				state.statusCode = action.payload;
+				state.loginInfo.concat(action.payload.data);
 			})
 			.addCase(__loginMember.rejected, (state, action) => {
 				state.isLoading = false;
@@ -137,17 +140,18 @@ export const registerSlice = createSlice({
 			})
 
 			// manager
-			.addCase(__loginManager.pending, (state, _) => {
-				state.isLoading = true;
-			})
-			.addCase(__loginManager.fulfilled, (state, action) => {
-				state.isLoading = false;
-				state.loginInfo.concat(action.payload);
-			})
-			.addCase(__loginManager.rejected, (state, action) => {
-				state.isLoading = false;
-				state.error = action.payload;
-			});
+			// .addCase(__loginManager.pending, (state, _) => {
+			// 	state.isLoading = true;
+			// })
+			// .addCase(__loginManager.fulfilled, (state, action) => {
+			// 	state.isLoading = false;
+			// 	state.statusCode = action.payload;
+			// 	state.loginInfo.concat(action.payload);
+			// })
+			// .addCase(__loginManager.rejected, (state, action) => {
+			// 	state.isLoading = false;
+			// 	state.error = action.payload;
+			// });
 
 		// Register
 		builder

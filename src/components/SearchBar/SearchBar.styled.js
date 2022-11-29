@@ -40,7 +40,7 @@ export const SearchModal = styled.div`
   position: fixed;
   width: 100%;
   height: 200px;
-  margin-top: 81px;
+  margin-top: 80px;
   left: 50%;
   top: 10px;
   z-index: 5;

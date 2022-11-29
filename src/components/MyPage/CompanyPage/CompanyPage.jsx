@@ -4,7 +4,7 @@ import { __getAllAppliList, __getCompanyBoards, __getCompanyInfo } from "../../.
 import { CompanyPageContainer, BtnContainer } from "./CompanyPage.styled";
 import Profile from "../Profile/Profile";
 import CardGrid from "../../common/cards/CardGrid";
-import MyApplicant from "../MyApplicant/MyApplicant";
+import MyApplicant from "./MyApplicant/MyApplicant";
 
 const CompanyPage = () => {
 
@@ -51,7 +51,7 @@ const CompanyPage = () => {
         }
 
         {
-          companyPageOpt !== null && companyPageOpt === "myActivity" ? <CardGrid companyBoards={companyBoards} /> : null
+          companyPageOpt !== null && companyPageOpt === "myActivity" ? <CardGrid companyBoards={companyBoards} gridColumn={5} /> : null
         }
 
       </CompanyPageContainer>

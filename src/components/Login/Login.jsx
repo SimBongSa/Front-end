@@ -1,9 +1,8 @@
 import { LoginContainer, LoginBackLeft, LoginOverlay, LoginBox, LoginBoxTitle, LoginArrowBack, LoginForm, LoginInput, LoginBtn, SocialContainer, LoginTitle } from "./Login.styled";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { __loginManager, __loginMember } from "../../redux/modules/registerSlice";
+import { __loginMember } from "../../redux/modules/registerSlice";
 import { useState } from "react";
-import styled from "styled-components";
 import { useEffect } from "react";
 import { getCookieToken } from "../../utils/cookie";
 
@@ -11,7 +10,7 @@ const Login = () => {
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const token = getCookieToken(['access-token']);
+  const authority = getCookieToken(['username']);
 
   const init = {
     "username": "",
@@ -26,23 +25,26 @@ const Login = () => {
   };
 
   const onSubmitHandler = (e) => {
-    e.preventDefault();
+    e.preventDefault(); 
     dispatch(__loginMember(input))
-    console.log(input);
     setInput(init);
   }
 
   const isSuccess = useSelector(state => state.register.statusCode);
 
   useEffect(() => {
-    if (token) {
-      alert("올바른 접근이 아닙니다.")
-      navigate("/")
+    if (authority) {
+      alert(`${authority}님 환영합니다`)
+      navigate('/')
     }
-    if (isSuccess) {
-      navigate("/")
-    }
-  });
+  }, [authority]);
+
+  // useEffect(() => {
+  //   if (token) {
+  //     alert("올바른 접근이 아닙니다.")
+  //     navigate("/")
+  //   }
+  // }, [token])
 
   const [loginOption, setLoginOption] = useState("member");
 
@@ -128,7 +130,7 @@ const Login = () => {
                   onChange={onChangeHandler}
                 />
                 <LoginBtn onClick={() => {
-                  dispatch(__loginManager(input))
+                  dispatch(__loginMember(input))
                 }}>Manager Login</LoginBtn>
               </LoginForm>
     
@@ -138,7 +140,6 @@ const Login = () => {
             </LoginBox>
           ) : null
         }
-
       </LoginContainer>
     </>
   )

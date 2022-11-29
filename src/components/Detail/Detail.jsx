@@ -17,7 +17,6 @@ import Comment from "../Comment/Comment";
 import Tags from "../Recruit/Tags/Tags";
 import { getCookieToken } from "../../utils/cookie";
 import styled from "styled-components";
-import { ProfileBox } from "../MyPage/Profile/Profile.styled";
 
 const Detail = () => {
 	const navigate = useNavigate();

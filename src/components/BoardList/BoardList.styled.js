@@ -3,6 +3,7 @@ import styled from "styled-components";
 export const BoardContainer = styled.div`
 	display: flex;
 	flex-direction: column;
+	margin: 3rem;
 `;
 
 export const BoardContent = styled.div``;

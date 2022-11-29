@@ -13,9 +13,9 @@ export const Chat = () => {
   const [message, setMessage] = useState('');
   console.log(message)
 
-  ChattingServiceKit.onConnect('topic/greetings/1', (newMessage) => {
-    setReveiveMsg(newMessage.content)
-  })
+  // ChattingServiceKit.onConnect('topic/greetings/1', {}, (newMessage) => {
+  //   setReveiveMsg(newMessage.content)
+  // })
 
   useEffect(() => {
     setChatLog([...chatLog, receiveMsg]);
@@ -27,7 +27,7 @@ export const Chat = () => {
     e.preventDefault();
     ChattingServiceKit.sendMessage({
       action: 'MESSAGE',
-      chatRoomId: 8,
+      chatRoomId: 1,
       userName: "test",
       content: message,
       Authorization: token
@@ -36,15 +36,23 @@ export const Chat = () => {
   };
 
   const onChangeHandler = (e) => {
-    e.preventDefault();
     setMessage(e.target.value);
   }
 
   useEffect(() => {
+
+    const roomId = ChattingServiceKit.receiveRoomId(1);
+    console.log("@",roomId)
+
+    ChattingServiceKit.onConnect('topic/greetings/1', {}, (newMessage) => {
+      setReveiveMsg(newMessage.content)
+    })
     return () => {
       ChattingServiceKit.onDisconnect();
     }
   }, []);
+
+  console.log("@@",chatLog)
 
   return (
     <div>
@@ -53,7 +61,7 @@ export const Chat = () => {
         <hr/>
         {
           chatLog !== 0 &&
-            chatLog.map((item, idx) => {
+            chatLog?.map((item, idx) => {
               return <h4 key={idx}>{ item }</h4>
             })
         }

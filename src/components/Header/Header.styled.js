@@ -18,7 +18,7 @@ export const HeaderLogo = styled.span`
   cursor: pointer;
   float: left;
   padding: 13px 10px 13px 10px;
-  margin: 13px 0px 0px 15px;
+  margin: 10px 0px 0px 15px;
   font-size: 2.25rem;
   line-height: inherit;
   font-weight: 500;
@@ -95,7 +95,7 @@ export const LightThemeBtn = styled.button`
   cursor: pointer;
   position: fixed;
   bottom: 22px;
-  left: 200px;
+  left: 170px;
   border-radius: 50%;
   background-color: ${(props) => props.theme.textColor};
   color: ${(props) => props.theme.bgColor};
