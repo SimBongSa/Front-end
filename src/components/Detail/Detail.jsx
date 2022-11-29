@@ -72,9 +72,8 @@ const Detail = () => {
             dispatch(__postApply(id))
           }}>봉사 신청하기</DetailNavBtn>
           <DetailNavBtn>봉사 단체 연락하기</DetailNavBtn>
-          <DetailSideItem>신청 인원 : {boardsId.applicantCnt}명</DetailSideItem>
           {
-            boardsId === username ? (
+            boardsId.author === username ? (
               <>
                 <DetailNavBtn
                   onClick={() => {
@@ -94,6 +93,7 @@ const Detail = () => {
               </>
             ) : null
           }
+          <DetailSideItem>신청 인원 : {boardsId.applicantCnt}명</DetailSideItem>
         </DetailSide>
       </DetailContainer>
     </>

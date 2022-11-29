@@ -7,28 +7,27 @@ const ChattingServiceKit = new ChattingService();
 export const Chat = () => {
 
   const token = getCookieToken(["access-token"]);
+  const username = getCookieToken(["username"]);
   const [chatLog, setChatLog] = useState([]);
   const [receiveMsg, setReveiveMsg] = useState();
-
   const [message, setMessage] = useState('');
   console.log(message)
 
-  // ChattingServiceKit.onConnect('topic/greetings/1', {}, (newMessage) => {
-  //   setReveiveMsg(newMessage.content)
-  // })
+  ChattingServiceKit.onConnect('topic/greetings/1', {}, (newMessage) => {
+    setReveiveMsg(newMessage)
+  })
 
   useEffect(() => {
     setChatLog([...chatLog, receiveMsg]);
-  }, [setChatLog, receiveMsg]);
-
-  console.log("@@받은 메시지 => ",receiveMsg)
+  }, [receiveMsg, setChatLog]);
+  console.log("@@받은 메시지 => ", receiveMsg)
 
   const submitHandler = (e) => {
     e.preventDefault();
     ChattingServiceKit.sendMessage({
       action: 'MESSAGE',
+      userName: username,
       chatRoomId: 1,
-      userName: "test",
       content: message,
       Authorization: token
     });
@@ -40,19 +39,14 @@ export const Chat = () => {
   }
 
   useEffect(() => {
-
-    const roomId = ChattingServiceKit.receiveRoomId(1);
-    console.log("@",roomId)
-
-    ChattingServiceKit.onConnect('topic/greetings/1', {}, (newMessage) => {
-      setReveiveMsg(newMessage.content)
-    })
+    setChatLog([...chatLog, receiveMsg]);
+    
     return () => {
       ChattingServiceKit.onDisconnect();
     }
   }, []);
 
-  console.log("@@",chatLog)
+  console.log("채팅 기록",chatLog)
 
   return (
     <div>
@@ -68,7 +62,7 @@ export const Chat = () => {
       </div>
       <form onSubmit={submitHandler}>
         <input 
-          placeholder="소켓" 
+          placeholder="채팅을 입략하세요" 
           value={message}
           onChange={onChangeHandler}
         />

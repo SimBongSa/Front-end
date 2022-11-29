@@ -17,10 +17,6 @@ const DetailEdit = () => {
 
   const boardsId = useSelector((state) => state?.boards?.boardsId);
 
-  useEffect(() => {
-    DetailEdit();
-  }, [DetailEdit]);
-
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -130,32 +126,6 @@ const DetailEdit = () => {
             />
           </Content>
 
-          {/* <Content>
-            <p>행사 장소</p>
-            <input
-              placeholder="행사 장소"
-              type="text"
-              name="area"
-              value={address}
-              
-            />
-        
-            <button type="button" onClick={openPostCode}>
-              우편번호 검색
-            </button>
-         
-            <div id="popupDom" style={{ position: "fixed" }}>
-              {isPopupOpen && (
-                <PopupDom>
-                  <PopupPostCode
-                    setAddress={setAddress}
-                    onClose={closePostCode}
-                  />
-                </PopupDom>
-              )}
-            </div>
-          </Content> */}
-
           <Content>
             행사 상세 주소:
             <input
@@ -187,7 +157,6 @@ const DetailEdit = () => {
           </Content>
         </DetailContent>
       </DetailContainer>
-      {/* <button type={"submit"} onClick={() => navigate(`/boards/${id}`)}> */}
       <button type={"submit"}>수정 완료</button>
     </form>
   );

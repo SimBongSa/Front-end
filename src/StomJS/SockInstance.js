@@ -24,6 +24,7 @@ class ChattingService {
       console.log('연결 성공');
       this.stompClient.subscribe(roomAddress, (data) => {
         newMessage = JSON.parse(data.body);
+        console.log(JSON.newMessage)
         // 연결 성공시 발동시킬 콜백 넣기
         // 주로 메세지를 받는 로직을 여기에 넣는다
         // 리렌더링
@@ -33,8 +34,8 @@ class ChattingService {
     return newMessage;
   };
 
-  sendMessage = (messageObject, headers = {}) => {
-    this.stompClient.send('/app/hello', {}, JSON.stringify(messageObject));
+  sendMessage = (messageObject) => {
+    this.stompClient.send('/app/hello/1', {}, JSON.stringify(messageObject));
     // this.stompClient.send('/app/hello', {}, messageObject);
   };
 
