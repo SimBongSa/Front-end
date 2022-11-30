@@ -29,10 +29,13 @@ export const SearchBarOpen = styled.button`
 	transition: all 0.5s;
 	& span {
 		margin: 0;
+		@media (max-width: 768px) {
+			display: none;
+		}
 	}
 	@media (max-width: 768px) {
 		top: 8px;
-		width: 100px;
+		width: 55px;
 	}
 `;
 
