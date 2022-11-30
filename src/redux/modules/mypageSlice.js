@@ -117,7 +117,7 @@ export const __putCompanyInfo = createAsyncThunk("putCompanyInfo", async (payloa
 		console.log("formData ===>", key, ":", formData.get(key));
 	}
 	try {
-		const response = await apis.putCompanyPage(payload);
+		const response = await apis.putCompanyPage(formData);
 
 		if (response.status === 200) {
 			alert(response.data.data.msg);
