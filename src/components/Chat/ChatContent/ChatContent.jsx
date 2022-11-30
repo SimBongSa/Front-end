@@ -9,13 +9,13 @@ export const ChatContent = ({ chatLog }) => {
       {
         chatLog?.map((item, idx) => {
           return (
-            <div key={idx}>
+            <ul key={idx}>
               {
                 username === item.userName ? (
                   <StMyMessage>{item.content}</StMyMessage>
                 ) : <StReceiveMsg>{item.content}</StReceiveMsg>
               }
-            </div>
+            </ul>
           )
         })
       }
@@ -29,33 +29,39 @@ export const StChatContent = styled.div`
   float: right;
   height: 100%;
   width: 100%;
-  background: green;
+  background: #aaaaaa;
   overflow-y: scroll;
   &::-webkit-scrollbar {
     display: none;
   }
 `
 
-export const StMyMessage = styled.h2`
-  display: inline-block;
+export const StMyMessage = styled.li`
+  display: block;
+  clear: both;
   border-radius: 50px 0px 50px 50px;
-  min-width: 300px;
   width: fit-content;
   float: right;
-  height: 3rem;
-  padding: 1rem;
-  margin: 1rem;
-  background: #232323;
+  height: max-content;
+  padding: 15px;
+  margin: 15px 20px 0 0;
+  font-size: 12px;
+  color: ${(props) => props.theme.textColor};
+  background: ${(props) => props.theme.bgColor};
+  border: 3px solid ${(props) => props.theme.btnColor};
 `
 
-export const StReceiveMsg = styled.h2`
+export const StReceiveMsg = styled.li`
   display: block;
+  clear: both;
   border-radius: 0px 50px 50px 50px;
-  min-width: 300px;
   width: fit-content;
   float: left;
-  height: 3rem;
-  margin: 1rem;
-  padding: 1rem;
+  height: max-content;
+  margin: 15px 0px 0 20px;
+  padding: 15px;
+  font-size: 12px;
+  text-align: right;
   background: tomato;
+  border: 3px solid ${(props) => props.theme.subTextColor};
 `

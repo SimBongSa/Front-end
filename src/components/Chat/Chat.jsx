@@ -25,7 +25,7 @@ export const Chat = () => {
   }, [receiveMsg, setChatLog]);
 
   const onSubmitHandler = (e) => {
-    if (e.target.value !== '') {
+    if (message) {
       e.preventDefault();
       ChattingServiceKit.sendMessage({
         action: 'MESSAGE',
@@ -35,8 +35,6 @@ export const Chat = () => {
         Authorization: token
       });
       setMessage('');
-    } else {
-      return false;
     }
   };
 

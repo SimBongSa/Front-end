@@ -8,7 +8,7 @@ export const ChatInput = ({message, onSubmitHandler, onChangeHandler}) => {
         value={message}
         onChange={onChangeHandler}
       />
-      <StChatBtn>asd</StChatBtn>
+      <StChatBtn>전송</StChatBtn>
     </StChatForm>
   )
 };
