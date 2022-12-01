@@ -177,7 +177,7 @@ export const mypageSlice = createSlice({
 	reducers: {},
 	extraReducers: builder => {
 		builder
-			// USer
+			// User
 			.addCase(__getUserInfo.pending, (state, _) => {
 				state.isLoading = true;
 			})

@@ -7,16 +7,15 @@ const token = getCookieToken(['access-token'])
 class ChattingService {
   socket = new sockJS(`${process.env.REACT_APP_SERVER}/gs-guide-websocket`);
   stompClient = Stomp.over(this.socket);
-  roomId = 1;
+  roomId = '';
 
-  // 방 id 받기
-  receiveRoomId = (roomId) => {
-    this.roomId = roomId;
-  };
+  constructor(chatRoomId) {
+    this.chatRoomId = chatRoomId;
+  }
 
   // 웹소켓 연결 요청 & 구독 요청
   onConnect = (
-    roomAddress = '/topic/greetings/1',
+    roomAddress = `/topic/greetings/${this.chatRoomId}`,
     headers = {},
     callback = () => {}
   ) => {
@@ -34,7 +33,7 @@ class ChattingService {
   };
 
   sendMessage = (messageObject) => {
-    this.stompClient.send('/app/hello/1', {}, JSON.stringify(messageObject));
+    this.stompClient.send(`/app/hello/${messageObject.chatRoomId}`, {}, JSON.stringify(messageObject));
   };
 
   // receiveMessage = () => {};

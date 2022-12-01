@@ -13,6 +13,7 @@ import { RecruitPage } from "../pages/RecruitPage";
 import DetailEdit from "../components/Detail/DetailEdit";
 import { MyPageEdit } from "../pages/MyPageEdit";
 import { ChatPage } from "../pages/ChatPage";
+import ChatContent from "../components/Chat/ChatContent/ChatContent";
 
 const Router = () => {
   return (
@@ -31,7 +32,9 @@ const Router = () => {
             <Route path="/usermypage" element={<MyPageUser />} />
             <Route path="/mypageedit" element={<MyPageEdit/>} />
             <Route path="/recruit" element={<RecruitPage />} />
-            <Route path="/chat" element={<ChatPage />} />
+            <Route path="/chat" element={<ChatPage />}>
+              <Route path="/chat:id" element={<ChatContent />} />
+            </Route>
           </Routes>
         </Suspense>
       </ThemeProvider>
