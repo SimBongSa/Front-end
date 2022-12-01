@@ -43,8 +43,8 @@ export const Button = styled.button`
 	border: 1px solid ${props => props.theme.btnColor};
 	color: ${props => props.theme.bgColor};
 	border-radius: 24px;
-	width: 10rem;
-	height: 3rem;
+	min-width: 120px;
+	min-height: 40px;
 	margin-left: auto;
 	margin-right: 0.5rem;
 	cursor: pointer;
@@ -56,7 +56,7 @@ export const UserIcon = styled(FaRegUserCircle)`
 	justify-content: right;
 	font-size: 3rem;
 	color: grey;
-	width: 5rem;
+	min-width: 40px;
 `;
 
 export const CommentIcon = styled(FaRegUserCircle)`
@@ -70,10 +70,10 @@ export const CommentInput = styled.input`
 	margin-left: 3.5rem;
 	height: 2rem;
 	margin-bottom: 1rem;
-	font-size: 12px;
-	width: 25rem;
-	background: ${props => props.theme.WHITE};
-	color: ${props => props.theme.BLACK};
+	width: 95vh;
+	background-color: transparent;
+	border: transparent;
+	border-bottom: 0.5px solid ${props => props.theme.textColor};
 `;
 
 export const Div = styled.div`

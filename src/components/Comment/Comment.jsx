@@ -64,8 +64,8 @@ function Comment() {
 				/>
 				<Button
 					onClick={() => {
-						console.log("---------------------- 댓글작성 ---------------------");
-						console.log(cookies);
+						// console.log("---------------------- 댓글작성 ---------------------");
+						// console.log(cookies);
 						if (content !== "") {
 							dispatch(__postComment({ content, id }));
 							setContent("");

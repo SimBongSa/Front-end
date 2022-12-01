@@ -22,12 +22,11 @@ import Tags from "./Tags/Tags";
 import { useNavigate } from "react-router-dom";
 
 const Recruit = () => {
-
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
 
-	const status = useSelector((state) => state.boards.status)
-	console.log(status)
+	const status = useSelector(state => state.boards.status);
+	console.log(status);
 
 	const [isPopupOpen, setIsPopupOpen] = useState(false);
 
@@ -35,6 +34,12 @@ const Recruit = () => {
 	const today = new Date();
 	const [startDate, setStartDate] = useState(today);
 	const [endDate, setEndDate] = useState(today);
+
+	const onChange = dates => {
+		const [start, end] = dates;
+		setStartDate(start);
+		setEndDate(end);
+	};
 
 	// 팝업창 열기
 	const openPostCode = () => {
@@ -61,7 +66,6 @@ const Recruit = () => {
 	const [tags, setTags] = useState([]);
 	const [boardImage, setBoardImage] = useState(null);
 	const [address, setAddress] = useState("");
-
 
 	// 이미지 미리보기 스테이트
 	const [uploadpreview, setUploadpreview] = useState("");
@@ -104,10 +108,10 @@ const Recruit = () => {
 			})
 		);
 		if (status === 200) {
-			alert("게시물 등록 완료")
+			alert("게시물 등록 완료");
 			navigate("/boards");
 		} else {
-			alert("게시물 등록에 실패했습니다. 내용을 다시 확인해주세요")
+			alert("게시물 등록에 실패했습니다. 내용을 다시 확인해주세요");
 		}
 	};
 
@@ -177,12 +181,12 @@ const Recruit = () => {
 								locale={ko}
 								dateFormat="📅 yyyy년-MM월-dd일"
 								selected={startDate}
-								onChange={date => setStartDate(date)}
-								selectsStart
+								onChange={onChange}
 								startDate={startDate}
 								endDate={endDate}
+								selectsRange
 							/>
-							<CustomeDatePicker
+							{/* <CustomeDatePicker
 								locale={ko}
 								dateFormat="📅 yyyy년-MM월-dd일 "
 								selected={endDate}
@@ -191,7 +195,7 @@ const Recruit = () => {
 								startDate={startDate}
 								endDate={endDate}
 								minDate={startDate}
-							/>
+							/> */}
 						</PickerBox>
 						<Input
 							type="date"

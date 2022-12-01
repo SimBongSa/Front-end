@@ -1,7 +1,7 @@
 import { LoginContainer, LoginBackLeft, LoginOverlay, LoginBox, LoginBoxTitle, LoginArrowBack, LoginForm, LoginInput, LoginBtn, SocialContainer, LoginTitle } from "./Login.styled";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { __loginManager, __loginMember } from "../../redux/modules/registerSlice";
+import { __loginMember } from "../../redux/modules/registerSlice";
 import { useState } from "react";
 import { useEffect } from "react";
 import { getCookieToken } from "../../utils/cookie";
@@ -31,7 +31,6 @@ const Login = () => {
   }
 
   const isSuccess = useSelector(state => state.register.statusCode);
-  console.log(isSuccess)
 
   useEffect(() => {
     if (authority) {
@@ -131,7 +130,7 @@ const Login = () => {
                   onChange={onChangeHandler}
                 />
                 <LoginBtn onClick={() => {
-                  dispatch(__loginManager(input))
+                  dispatch(__loginMember(input))
                 }}>Manager Login</LoginBtn>
               </LoginForm>
     
