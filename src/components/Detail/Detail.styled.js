@@ -17,16 +17,14 @@ export const DetailContent = styled.div`
   float: left;
   width: 60%;
   min-width: 600px;
-  background: #aaaaaa;
   padding: 2rem;
+  color: ${(props) => props.theme.textColor};
   & h1 {
-    font-size: 2.3rem;
-    color: black;
+    font-size: 2rem;
   }
   & h3 {
     font-size: 1.6rem;
     margin: 3rem 1rem 2rem 0rem;
-    color: black;
   }
   @media screen and (max-width: 1024px) {
     margin-top: 5rem;
@@ -47,15 +45,21 @@ export const DetailSide = styled.div`
   float: right;
   min-width: 300px;
   width: 400px;
-  height: 350px;
+  height: fit-content;
   margin: 0rem 1rem 1rem 1rem;
   padding: 1rem;
   background: #aaaaaa;
   & h2 {
-    font-size: 1.4rem;
+    font-size: 1.2rem;
     text-align: center;
-    padding: 1rem;
+    padding: .4rem;
     border-bottom: 1px solid #232323;
+  }
+  & img {
+    display: flex;
+    border-radius: 50%;
+    width: 150px;
+    margin: 0 auto;
   }
   @media screen and (max-width: 1024px) {
     position: relative;

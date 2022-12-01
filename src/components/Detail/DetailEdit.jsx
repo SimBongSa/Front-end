@@ -17,9 +17,6 @@ const DetailEdit = () => {
 
 	const boardsId = useSelector(state => state?.boards?.boardsId);
 
-	useEffect(() => {
-		DetailEdit();
-	}, [DetailEdit]);
 
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
@@ -130,6 +127,7 @@ const DetailEdit = () => {
 						/>
 					</Content>
 
+
 					{/* <Content>
             <p>행사 장소</p>
             <input
@@ -155,6 +153,7 @@ const DetailEdit = () => {
               )}
             </div>
           </Content> */}
+
 
 					<Content>
 						행사 상세 주소:

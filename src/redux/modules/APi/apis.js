@@ -24,10 +24,12 @@ api.interceptors.request.use(function (config) {
 export const apis = {
 	// registerSlice
 	memberLogin: payload => axios.post(`${BASE_URL}/members/login`, payload),
-	managerLogin: payload => axios.post(`${BASE_URL}/managers/login`, payload),
+
+	// managerLogin: payload => axios.post(`${BASE_URL}/managers/login`, payload),
 	memberSignup: payload => axios.post(`${BASE_URL}/members/signup/individual`, payload),
 	managerSignup: payload =>
-		api.post(`${BASE_URL}/members/signup/admin`, payload, {
+		axios.post(`${BASE_URL}/members/signup/admin`, payload, {
+
 			headers: {
 				"Content-Type": "multipart/form-data",
 			},
@@ -36,15 +38,10 @@ export const apis = {
 	checkNickname: payload => axios.get(`${BASE_URL}/members/signup/check_nickname/${payload}`),
 
 	//calendarSlice
-	// mainlist: (boardId) => api.get(`${BASE_URL}/boards/${boardId}`),
+
 	calendarList: dueDay => api.get(`${BASE_URL}/boards/date/${dueDay}`),
 	search: payload => api.post(`${BASE_URL}/boards/date/${payload}`),
-	// edit: (payload) =>
-	//   api.put(`${BASE_URL}/mypage`, payload, {
-	//     // headers: {
-	//     //   "Content-Type": "multipart/form-data",
-	//     // },
-	//   }),
+
 
 	// boards
 	getBoard: payload => axios.get(`${BASE_URL}/boards?page=${payload.page}&size=${payload.size}`),
@@ -77,7 +74,7 @@ export const apis = {
 
 	// 봉사 신청
 	applyBoard: id =>
-		axios.post(`${BASE_URL}/boards/${id}/apply`, {
+		axios.post(`${BASE_URL}/boards/${id}/apply`, id, {
 			headers: {
 				Authorization: token,
 			},

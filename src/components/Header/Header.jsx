@@ -30,7 +30,7 @@ const Header = () => {
 	return (
 		<HeaderContainer>
 			<SearchBar />
-			<HeaderLogo onClick={() => navigate("/")}>VONGOLE</HeaderLogo>
+			<HeaderLogo onClick={() => navigate("/")}>Vongole</HeaderLogo>
 			<LightThemeBtn onClick={toggleTheme}>
 				<BsFillMoonFill>Theme</BsFillMoonFill>
 			</LightThemeBtn>

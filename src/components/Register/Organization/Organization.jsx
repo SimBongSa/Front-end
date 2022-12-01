@@ -1,4 +1,4 @@
-import { InputContainer, InputForm, InputBox } from "../Individual/Individual.styled";
+import { InputForm, InputBox } from "../Individual/Individual.styled";
 import Input from "../../common/input/Input";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
@@ -15,7 +15,6 @@ const Organization = () => {
   const init = {
     authority: "ROLE_ADMIN",
     username: "",
-    nickname: "",
     password: "",
     passwordConfirm: "",
     phoneNumber: "",
@@ -39,7 +38,6 @@ const Organization = () => {
   }
 
   const [licenseImage, setLicenseImage] = useState(null);
-  console.log(licenseImage)
   const [licensePreview, setLicensePreview] = useState("");
 
   const onChangeImage = (e) => {
@@ -77,14 +75,6 @@ const Organization = () => {
                   value={input.username}
                   onChange={onChangeHandler}
                   />
-                  <Input 
-                    placeholder="Nickname"
-                    type="text"
-                    name="nickname"
-                    value={input.nickname}
-                    onChange={onChangeHandler}
-                  />
-      
                   <Input 
                     placeholder="Password"
                     type="password"

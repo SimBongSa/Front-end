@@ -51,7 +51,6 @@ function Comment() {
 					value={content}
 					onChange={e => setContent(e.target.value)}
 				/>
-
 				<Button
 					onClick={() => {
 						dispatch(__postComment({ content, id }));
@@ -68,49 +67,52 @@ function Comment() {
 						return (
 							<Box key={index}>
 								<CommentTitleWrap>
-									<CommentIcon />
-									<h2>{item?.username}</h2>
+									<div>
+										<CommentIcon />
+										<div>
+											<h2>{item?.username}</h2>
+											<Date>{item.createdAt.split("T")[0]}</Date>
+										</div>
+									</div>
+									<CommentBtnWrap>
+										{userName === item.username ? (
+											<>
+												{!isEditState ? (
+													<Div
+														onClick={() => {
+															if (editCommentId.indexOf(commentId) === -1)
+																setEditCommentId(prev => [...prev, commentId]);
+														}}
+													>
+														수정 |
+													</Div>
+												) : (
+													<Div
+														onClick={() => {
+															if (editCommentId.indexOf(commentId) !== -1) {
+																setEditCommentId(editCommentId.filter(el => el !== commentId));
+																dispatch(__putComment({ commentId, content: comment }));
+															}
+														}}
+													>
+														완료 |
+													</Div>
+												)}
+												<Div
+													onClick={() => {
+														dispatch(__deleteComment(commentId));
+													}}
+												>
+													삭제
+												</Div>
+											</>
+										) : (
+											<>
+												<Div>신고</Div>
+											</>
+										)}
+									</CommentBtnWrap>
 								</CommentTitleWrap>
-								<CommentBtnWrap>
-									{userName === item.username ? (
-										<>
-											{!isEditState ? (
-												<Div
-													onClick={() => {
-														if (editCommentId.indexOf(commentId) === -1)
-															setEditCommentId(prev => [...prev, commentId]);
-													}}
-												>
-													수정 |
-												</Div>
-											) : (
-												<Div
-													onClick={() => {
-														if (editCommentId.indexOf(commentId) !== -1) {
-															setEditCommentId(editCommentId.filter(el => el !== commentId));
-															dispatch(__putComment({ commentId, content: comment }));
-														}
-													}}
-												>
-													완료 |
-												</Div>
-											)}
-											<Div
-												onClick={() => {
-													dispatch(__deleteComment(commentId));
-												}}
-											>
-												삭제
-											</Div>
-										</>
-									) : (
-										<>
-											<Div>신고</Div>
-										</>
-									)}
-									<Date>{item.createdAt.split("T")[0]}</Date>
-								</CommentBtnWrap>
-
 								{isEditState ? (
 									<>
 										<CommentInput

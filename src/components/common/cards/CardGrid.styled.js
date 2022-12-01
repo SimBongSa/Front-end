@@ -3,7 +3,8 @@ import styled from "styled-components";
 export const CardGridContainer = styled.section`
 	display: grid;
 	grid-template-columns: 0fr repeat(0, minmax(auto, 60px)) 10fr;
-	margin: 1rem 7rem 10rem 7rem;
+	margin-bottom: 5rem;
+	/* margin: 0rem 2rem 10rem 2rem; */
 	justify-items: center;
 `;
 
@@ -13,7 +14,7 @@ export const Cards = styled.div`
 	grid-template-columns: repeat(20, minmax(auto, 120px));
 	grid-gap: 1.5rem;
 	@media screen and (max-width: 1440px) {
-		grid-template-columns: repeat(8, minmax(auto, 60px));
+		grid-template-columns: repeat(16, minmax(auto, 60px));
 	}
 	@media screen and (max-width: 1024px) {
 		grid-template-columns: repeat(12, minmax(auto, 60px));
@@ -66,7 +67,8 @@ export const CardInfo = styled.div`
   font-size: .8rem;
   align-items: center;
   justify-content: space-between;
-  color: ${(props) => props.theme.textColor};
+  /* color: ${(props) => props.theme.textColor}; */
+  color: white;
   & p {
     max-width: 180px;
     overflow: hidden;
@@ -92,7 +94,8 @@ export const TagBox = styled.ul`
   & li {
     display: inline-block;
     background: ${(props) => props.theme.subTextColor};
-    color: ${(props) => props.theme.textColor};
+    /* color: ${(props) => props.theme.textColor}; */
+    color: white;
     border-radius: 3px;
     padding: 2.5px 10px;
     margin: 0 10px 10px 0;

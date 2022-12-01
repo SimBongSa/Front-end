@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import PopupDom from "../Map/PopupDom";
 import PopupPostCode from "../Map/PopupPostCode";
 // import InPut from "../common/input/Input";
@@ -20,9 +20,16 @@ import {
 	ImgSize,
 } from "./Recruit.styled";
 import Tags from "./Tags/Tags";
+import { useNavigate } from "react-router-dom";
 
 const Recruit = () => {
+
 	const dispatch = useDispatch();
+	const navigate = useNavigate();
+
+	const status = useSelector((state) => state.boards.status)
+	console.log(status)
+
 	const [isPopupOpen, setIsPopupOpen] = useState(false);
 
 	// date picker
@@ -65,13 +72,10 @@ const Recruit = () => {
 
 	//폼데이터 전송 스테이트
 	const [input, setInput] = useState(init);
-	console.log(input);
 	const [tags, setTags] = useState([]);
 	const [boardImage, setBoardImage] = useState(null);
 	const [address, setAddress] = useState("");
 
-	// console.log("input =>", input);
-	console.log("tags", tags);
 
 	// 이미지 미리보기 스테이트
 	const [uploadpreview, setUploadpreview] = useState("");
@@ -114,6 +118,12 @@ const Recruit = () => {
 				dueDay: moment(dueDay).format("YYYY-MM-DD"),
 			})
 		);
+		if (status === 200) {
+			alert("게시물 등록 완료")
+			navigate("/boards");
+		} else {
+			alert("게시물 등록에 실패했습니다. 내용을 다시 확인해주세요")
+		}
 	};
 
 	return (

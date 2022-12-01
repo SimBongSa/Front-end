@@ -24,16 +24,18 @@ export const SearchBarOpen = styled.button`
 	border: none;
 	border-radius: 35px;
 	padding: 1rem;
-	/* box-shadow: 0 2px 5px ${props => props.theme.textColor}; */
 	animation: ${props => (props.animation ? fadeOut : fadeIn)} 0.6s;
 	transform: translate(-50%, 0%);
 	transition: all 0.5s;
 	& span {
 		margin: 0;
+		@media (max-width: 768px) {
+			display: none;
+		}
 	}
 	@media (max-width: 768px) {
 		top: 8px;
-		width: 100px;
+		width: 55px;
 	}
 `;
 
@@ -41,7 +43,7 @@ export const SearchModal = styled.div`
   position: fixed;
   width: 100%;
   height: 200px;
-  margin-top: 81px;
+  margin-top: 80px;
   left: 50%;
   top: 10px;
   z-index: 5;
