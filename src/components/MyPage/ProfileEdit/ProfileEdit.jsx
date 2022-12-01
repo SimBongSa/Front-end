@@ -8,7 +8,6 @@ import {
 	__getUserInfo,
 	__putUserInfo,
 } from "../../../redux/modules/mypageSlice";
-import Input from "../../common/input/Input";
 import { MyPageEditSec } from "./ProfileEdit.styled";
 
 const ProfileEdit = () => {
@@ -158,69 +157,56 @@ const ProfileEdit = () => {
 				{role === "ROLE_MEMBER" ? (
 					<div>
 						<MyPageEditSec>
-							<Content>
-								회원 PW
-								<Input
-									type="password"
-									defaultValue={userInfo?.password}
-									key={companyInfo?.password}
-									name="password"
-									onChange={onChangeHandler}
-								/>
-							</Content>
-							<Content>
-								회원 PW 확인
-								<Input
-									type="password"
-									defaultValue={userInfo?.passwordConfirm}
-									key={companyInfo?.passwordConfirm}
-									name="passwordConfirm"
-									onChange={onChangeHandler}
-								/>
-							</Content>
-							<Content>
-								이메일
-								<Input
-									type="text"
-									required
-									defaultValue={userInfo?.email}
-									key={companyInfo?.email}
-									name="email"
-									onChange={onChangeHandler}
-								/>
-							</Content>
-							<Content>
-								전화번호
-								<Input
-									type="text"
-									defaultValue={userInfo?.phoneNumber}
-									key={companyInfo?.phoneNumber}
-									name="phoneNumber"
-									onChange={onChangeHandler}
-								/>
-							</Content>
-							<Content>
-								회원 소개
-								<Input
-									type="text"
-									defaultValue={userInfo?.introduction}
-									key={companyInfo?.introduction}
-									name="introduction"
-									onChange={onChangeHandler}
-								/>
-							</Content>
-							<Content>
-								회원 프로필 이미지 수정
-								<ImgSize src={uploadUserPreview} alt="" />
-								<Input
-									name="profileImage"
-									type={"file"}
-									key={profileImage}
-									accept={"image/*"}
-									placeholder="프로필 업로드"
-									onChange={onChangeImage}
-								/>
-							</Content>
+							<Input
+								type="password"
+								defaultValue={companyInfo?.password}
+								key={companyInfo?.password}
+								name="password"
+								onChange={onChangeHandler}
+							/>
+							<h4>기관 PW 확인</h4>
+							<Input
+								type="password"
+								defaultValue={companyInfo?.passwordConfirm}
+								key={companyInfo?.passwordConfirm}
+								name="passwordConfirm"
+								onChange={onChangeHandler}
+							/>
+							<h4>이메일</h4>
+							<Input
+								type="text"
+								required
+								defaultValue={companyInfo?.email}
+								key={companyInfo?.email}
+								name="email"
+								onChange={onChangeHandler}
+							/>
+							<h4>전화번호</h4>
+							<Input
+								type="text"
+								defaultValue={companyInfo?.phoneNumber}
+								key={companyInfo?.phoneNumber}
+								name="phoneNumber"
+								onChange={onChangeHandler}
+							/>
+							<h4>기관 소개</h4>
+							<Input
+								type="text"
+								defaultValue={companyInfo?.introduction}
+								key={companyInfo?.introduction}
+								name="introduction"
+								onChange={onChangeHandler}
+							/>
+							기관 프로필 이미지 수정
+							<ImgSize src={uploadCompanyPreview} alt="" />
+							<Input
+								name="profileImage"
+								type={"file"}
+								key={profileImage}
+								accept={"image/*"}
+								placeholder="프로필 업로드"
+								onChange={onChangeImage}
+							/>
 						</MyPageEditSec>
 						<h1>기관 페이지임!</h1>
 					</div>
@@ -238,10 +224,10 @@ const MyPageEditContainer = styled.div`
 `;
 
 const Content = styled.li`
-	text-align: center;
+	/* text-align: center;
 	margin-top: 20px;
+	padding-left: 0px; */
 	list-style: none;
-	padding-left: 0px;
 `;
 
 const ImgSize = styled.img`
@@ -254,4 +240,17 @@ const ImgSize = styled.img`
 const Button = styled.button`
 	z-index: 1000000;
 	position: absolute;
+`;
+
+const Input = styled.input`
+	display: block;
+	width: 590px;
+	height: 60px;
+	border-radius: 30px;
+	/* background-image: url(); */
+	background-position: center right 10px;
+	background-repeat: no-repeat;
+	margin-bottom: 10px;
+	border: 1px solid #66885d;
+	padding-left: 10px;
 `;
