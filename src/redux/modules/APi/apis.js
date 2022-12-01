@@ -191,4 +191,11 @@ export const apis = {
 				"Content-Type": "multipart/form-data",
 			},
 		}),
+
+	getChatList: () => 
+		axios.get(`${BASE_URL}/chatroom`, {
+			headers: {
+				Authorization: token,
+			}
+		})
 };

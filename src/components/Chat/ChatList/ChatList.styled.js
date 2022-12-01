@@ -20,12 +20,15 @@ export const StContact = styled.div`
   }
   & li {
     position: relative;
-    padding: 10px 0 15px 0;
-    font-size: 0.9em;
+    padding: 2rem;
+    font-size: 1.2em;
+    font-weight: 700;
     cursor: pointer;
     transition: all 0.5s;
+    border-bottom: 1px solid ${(props) => props.theme.subTextColor};
     &:hover {
-      background: green;
+      color: ${(props) => props.theme.btnColor};
+      background: #FBFBF9;
     }
     @media screen and (max-width: 768px) {
       padding: 6px 0 46px 8px;
@@ -40,7 +43,6 @@ export const StContactWrap = styled.div`
   width: 88%;
   margin: 0 auto;
   position: relative;
-  border-bottom: 1px solid #ccc;
   & img {
     width: 40px;
     border-radius: 50%;

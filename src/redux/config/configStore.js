@@ -4,6 +4,7 @@ import { mypageSlice } from "../modules/mypageSlice";
 import calendarList from "../modules/calendarSlice";
 import comment from "../modules/commentSlice";
 import { boardSlice } from "../modules/boardSlice";
+import chat from "../modules/chatSlice";
 
 export const store = configureStore({
   reducer: {
@@ -12,5 +13,6 @@ export const store = configureStore({
     mypage: mypageSlice.reducer,
     calendarList,
     comment,
+    chat,
   },
 });

@@ -1,26 +1,31 @@
 import styled from "styled-components";
-import ChatContent from "./ChatContent/ChatContent";
 import ChatInput from "./ChatInput/ChatInput";
 import ChatList from "./ChatList/ChatList";
-
 import { getCookieToken } from "../../utils/cookie";
 import ChattingService from "../../StomJS/SockInstance";
 import { useCallback, useEffect, useState } from "react";
-
+import { useDispatch, useSelector } from "react-redux";
+import { __getChatList } from "../../redux/modules/chatSlice";
+import { Outlet, useParams } from "react-router-dom";
 const ChattingServiceKit = new ChattingService();
 
 export const Chat = () => {
+
+  const dispatch = useDispatch();
+  const chatList = useSelector((state) => state.chat.chatList);
+  const id = useParams();
   const token = getCookieToken(["access-token"]);
   const username = getCookieToken(["username"]);
   const [chatLog, setChatLog] = useState([]);
-  const [receiveMsg, setReveiveMsg] = useState('OOO 님과의 대화입니다');
+  const [receiveMsg, setReceiveMsg] = useState('OOO 님과의 대화입니다');
   const [message, setMessage] = useState('');
 
-  ChattingServiceKit.onConnect('/topic/greetings/1', {}, (newMessage) => {
-    setReveiveMsg(newMessage)
+  ChattingServiceKit.onConnect(`/topic/greetings/${id.id}`, {}, (newMessage) => {
+    setReceiveMsg(newMessage)
   });
 
   useEffect(() => {
+    dispatch(__getChatList());
     setChatLog([...chatLog, receiveMsg]);
   }, [receiveMsg, setChatLog]);
 
@@ -30,7 +35,7 @@ export const Chat = () => {
       ChattingServiceKit.sendMessage({
         action: 'MESSAGE',
         userName: username,
-        chatRoomId: 1,
+        chatRoomId: id.id,
         content: message,
         Authorization: token
       });
@@ -50,9 +55,9 @@ export const Chat = () => {
 
   return (
     <StChatContainer>
-      <ChatList/>
+      <ChatList chatList={chatList}/>
       <StChatContentWrap>
-        <ChatContent chatLog={chatLog} />
+        <Outlet context={{chatLog, setReceiveMsg}} />
         <ChatInput message={message} onSubmitHandler={onSubmitHandler} onChangeHandler={onChangeHandler} />
       </StChatContentWrap>
     </StChatContainer>
