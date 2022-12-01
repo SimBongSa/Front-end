@@ -24,13 +24,18 @@ const ProfileEdit = () => {
 	}, [dispatch]);
 
 	const companyInfo = useSelector(state => state?.mypage?.companyInfo);
+	console.log("companyInfo => ", companyInfo);
 	const userInfo = useSelector(state => state?.mypage?.userInfo);
 	const [profileImage, setProfileImage] = useState(null);
 	const [uploadCompanyPreview, setUploadCompanyPreview] = useState(companyInfo.profileImage);
 	const [uploadUserPreview, setUploadUserPreview] = useState(userInfo.profileImage);
-
 	//기관
-	const [editCompany, setEditCompany] = useState(companyInfo);
+	const [editCompany, setEditCompany] = useState(prev => {
+		const { email, introduction, password, passwordConfirm, profileImage, phoneNumber } =
+			companyInfo;
+		return { ...prev, email, introduction, password, passwordConfirm, profileImage, phoneNumber };
+	});
+	console.log("editCompany 석원님 킹왕짱 =>", editCompany);
 	//회원
 	const [editUser, setUser] = useState(userInfo);
 
@@ -221,14 +226,14 @@ const ProfileEdit = () => {
 					</div>
 				) : null}
 			</MyPageEditContainer>
-			<button type={"submit"}>수정 완료</button>
+			<Button type={"submit"}>수정 완료</Button>
 		</form>
 	);
 };
 
 export default ProfileEdit;
 
-export const MyPageEditContainer = styled.div`
+const MyPageEditContainer = styled.div`
 	margin-top: 10rem;
 `;
 
@@ -239,9 +244,14 @@ const Content = styled.li`
 	padding-left: 0px;
 `;
 
-export const ImgSize = styled.img`
+const ImgSize = styled.img`
 	flex-direction: column;
 	width: 350px;
 	height: 150px;
 	margin: 1rem;
+`;
+
+const Button = styled.button`
+	z-index: 1000000;
+	position: absolute;
 `;
