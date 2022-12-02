@@ -39,14 +39,13 @@ function Comment() {
 	const [comment, setComment] = useState({ comment: content });
 
 	const [page, setPage] = useState(1);
-	const size = 4;
-	console.log(page, size);
+	const size = 20;
 	useEffect(() => {
 		dispatch(__getComment({ id, page, size }));
 	}, [dispatch, id, page, size]);
 
 	const onChangeHalder = useCallback(
-		e => {
+		(e) => {
 			setContent(e.target.value);
 		},
 		[content]
@@ -55,7 +54,7 @@ function Comment() {
 	useEffect(() => {
 		console.log("렌더링");
 	}, [content]);
-	console.log(content);
+
 	return (
 		<MainComponent>
 			<CommentWriteWrap>
