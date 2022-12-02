@@ -1,12 +1,15 @@
 import { useNavigate } from "react-router-dom";
 import {
-  CardGridContainer,
-  Cards,
-  Card,
-  ImgWrapper,
-  Content,
-  TagBox,
-  CardInfo,
+	StCardGridContainer,
+	StCards,
+	StCard,
+	StImgWrapper,
+	StContent,
+	StTagBox,
+	StCardInfo,
+	StDate,
+	StArea,
+	StDetailArea,
 } from "./CardGrid.styled";
 const CardGrid = ({ gridColumn, companyBoards, boards, userEnroll }) => {
 	const navigate = useNavigate();
@@ -19,101 +22,85 @@ const CardGrid = ({ gridColumn, companyBoards, boards, userEnroll }) => {
 	};
 	const today = new Date().toISOString().split("T")[0];
 
-  return (
-    <CardGridContainer>
-      <Cards
-        gridColumn={gridColumn}
-      >
-        {/* companyBoards 기업 상세페이지 */}
-        {companyBoards?.map((item) => {
-          return (
-            <Card key={item.boardId}>
-              <ImgWrapper />
-              <Content>
-                <p className="title">{item.title}</p>
-                <CardInfo>
-                  <p>
-                    {item.area} - {item.detailArea}
-                  </p>
-                  <p className="price">D-4</p>
-                </CardInfo>
-                <TagBox>
-                  {
-                    item?.tags?.map((tag) => {
-                      return (
-                        <li>{tag}</li>
-                      )
-                    })
-                  }
-                </TagBox>
-              </Content>
-            </Card>
-          );
-        })}
+	return (
+		<StCardGridContainer>
+			<StCards gridColumn={gridColumn}>
+				{/* companyBoards 기업 상세페이지 */}
+				{companyBoards?.map(item => {
+					const dDay = getDateDiff(item.dueDay, today);
+					return (
+						<StCard key={item.boardId}>
+							<StDate>D-{dDay}</StDate>
+							<StImgWrapper>
+								<img src={item.boardImage} loading="lazy" alt="thumbnail" />
+							</StImgWrapper>
+							<StContent>
+								<p className="title">{item.title}</p>
+								<StCardInfo>
+									<StArea>{item.area}</StArea>
+									<StDetailArea>{item.detailArea}</StDetailArea>
+								</StCardInfo>
+								<StTagBox>
+									{item?.tags?.map(tag => {
+										return <li>{tag}</li>;
+									})}
+								</StTagBox>
+							</StContent>
+						</StCard>
+					);
+				})}
 
-        {/* boards 전체 게시물 리스트  */}
-        {boards?.map((item) => {
-          const dDay = getDateDiff(item.dueDay, today);
-          return (
-            <Card
-              key={item.boardId}
-              onClick={() => navigate(`/boards/${item.boardId}`)}
-            >
-              <ImgWrapper>
-                <img src={item.boardImage} loading="lazy" alt="thumbnail" />
-              </ImgWrapper>
-              <Content>
-                <p className="title">{item.title}</p>
-                <CardInfo>
-                  <p>{item.area}</p>
-                  <p className="price">D - {dDay}</p>
-                </CardInfo>
-                <TagBox>
-                  {
-                    item?.tags?.map((tag) => {
-                      return (
-                        <li>{tag}</li>
-                      )
-                    })
-                  }
-                </TagBox>
-              </Content>
-            </Card>
-          );
-        })}
+				{/* boards 전체 게시물 리스트  */}
+				{boards?.map(item => {
+					const dDay = getDateDiff(item.dueDay, today);
+					return (
+						<StCard key={item.boardId} onClick={() => navigate(`/boards/${item.boardId}`)}>
+							<StDate>D-{dDay}</StDate>
+							<StImgWrapper>
+								<img src={item.boardImage} loading="lazy" alt="thumbnail" />
+							</StImgWrapper>
+							<StContent>
+								<p className="title">{item.title}</p>
+								<StCardInfo>
+									<StArea>{item.area}</StArea>
+									<StDetailArea>{item.detailArea}</StDetailArea>
+								</StCardInfo>
+								<StTagBox>
+									{item?.tags?.map(tag => {
+										return <li>{tag}</li>;
+									})}
+								</StTagBox>
+							</StContent>
+						</StCard>
+					);
+				})}
 
-        {userEnroll?.map((item) => {
-          const dDay = getDateDiff(item.dueDay, today);
-          return (
-            <Card
-              key={item.boardId}
-              onClick={() => navigate(`/boards/${item.boardId}`)}
-            >
-              <ImgWrapper>
-                <img src={item.boardImage} loading="lazy" alt="enrollImage" />
-              </ImgWrapper>
-              <Content>
-                <p className="title">{item.title}</p>
-                <CardInfo>
-                  <p>{item.area}</p>
-                  <p className="price">D - {dDay}</p>
-                </CardInfo>
-                <TagBox>
-                  {
-                    item?.tags?.map((tag) => {
-                      return (
-                        <li>{tag}</li>
-                      )
-                    })
-                  }
-                </TagBox>
-              </Content>
-            </Card>
-          );
-        })}
-      </Cards>
-    </CardGridContainer>
-  );
+				{userEnroll?.map(item => {
+					const dDay = getDateDiff(item.dueDay, today);
+					return (
+						<StCard key={item.boardId} onClick={() => navigate(`/boards/${item.boardId}`)}>
+							<StDate>D-{dDay}</StDate>
+							<StImgWrapper>
+								<img src={item.boardImage} loading="lazy" alt="enrollImage" />
+							</StImgWrapper>
+							<StContent>
+								<p className="title">{item.title}</p>
+								<StCardInfo>
+									<StArea>{item.area}</StArea>
+									<StDetailArea>{item.detailArea}</StDetailArea>
+								</StCardInfo>
+								<StTagBox>
+									{item?.tags?.map(tag => {
+										return <li>{tag}</li>;
+									})}
+								</StTagBox>
+							</StContent>
+						</StCard>
+					);
+				})}
+			</StCards>
+		</StCardGridContainer>
+	);
 };
 
 export default CardGrid;

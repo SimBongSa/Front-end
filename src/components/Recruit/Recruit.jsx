@@ -4,6 +4,7 @@ import PopupDom from "../Map/PopupDom";
 import PopupPostCode from "../Map/PopupPostCode";
 // import InPut from "../common/input/Input";
 import { __createBoard } from "../../redux/modules/boardSlice";
+import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import moment from "moment";
 import { ko } from "date-fns/esm/locale";
@@ -33,10 +34,10 @@ const Recruit = () => {
 
 	// date picker
 	const today = new Date();
+	const due = new Date();
 	const [startDate, setStartDate] = useState(today);
 	const [endDate, setEndDate] = useState(null);
-	const [dueDay, setDueDay] = useState(new Date());
-
+	const [dueDay, setDueDay] = useState(due.setHours(due.setMinutes(new Date(), 30), 17));
 	// 팝업창 열기
 	const openPostCode = () => {
 		setIsPopupOpen(true);
@@ -127,113 +128,88 @@ const Recruit = () => {
 			alert("게시물 등록에 실패했습니다. 내용을 다시 확인해주세요");
 		}
 	};
+	console.log("dueDay =>", dueDay);
 
 	return (
 		<div data-spy="scroll" data-target="#navbar">
 			<RecruitContainer>
-				{/* <form onSubmit={submitHandler}>
-					<RecruitSec className="section section1" id="section1">
-						<h1>봉사 등록하기</h1>
-						<h1>봉사 활동에 대해 궁금해요!</h1>
-						<Tags category={true} onChangeTags={onChangeTags} />
-						<Input
-							placeholder="봉사 활동 주제"
-							type="text"
-							name="title"
-							value={input.title}
-							onChange={e => onChangeInput(e)}
-						/>
-						<RecruitTA
-							placeholder="봉사 활동 내용"
-							type="text"
-							name="content"
-							value={input.content}
-							onChange={e => onChangeInput(e)}
-						/>
-					</RecruitSec>
-
-					<RecruitSec className="section section2" id="section2">
-						<h1>언제, 어디서 열리나요?</h1>
-						<PickerBox>
-							<CustomeDatePicker
-								locale={ko}
-								dateFormat="📅 yyyy년-MM월-dd일"
-								selected={startDate}
-								onChange={onChange}
-								startDate={startDate}
-								endDate={endDate}
-								selectsRange
-							/>
-							<CustomeDatePicker
-								locale={ko}
-								dateFormat="📅 yyyy년-MM월-dd일 "
-								selected={dueDay}
-								onChange={date => setDueDay(date)}
-							/>
-						</PickerBox>
-						<Input
-							placeholder="행사 장소(우편번호 검색 클릭)"
-							type="text"
-							name="area"
-							value={address}
-							readOnly
-						/>
-						<AreaBtn type="button" onClick={openPostCode}>
-							우편번호 검색
-						</AreaBtn>
-						<div id="popupDom">
-							{isPopupOpen && (
-								<PopupDom>
-									<PopupPostCode setAddress={setAddress} onClose={closePostCode} />
-								</PopupDom>
-							)}
-						</div>
-						<Input
-							placeholder="상세 주소"
-							type="text"
-							name="detailArea"
-							value={input.detailArea}
-							onChange={e => onChangeInput(e)}
-						/>
-					</RecruitSec>
-
-					<RecruitSec className="section section3" id="section3">
-						<h1>어떤 자원봉사자를 희망하시나요?</h1>
-						<Tags category={false} onChangeTags={onChangeTags} />
-					</RecruitSec>
-
-					<RecruitSec className="section section4" id="section4">
-						<h1>마지막으로, 봉사활동을 잘 나타내 줄 이미지를 올려보세요</h1>
-						<ImgSize src={uploadpreview} alt="" />
-						<Input
-							name="thumbNail"
-							type={"file"}
-							accept={"image/*"}
-							placeholder="이미지업로드"
-							onChange={onChangeImage}
-						/>
-						<button>봉사활동 등록하기</button>
-					</RecruitSec>
-				</form> */}
-
 				<Layout>
 					<h2>봉사 등록하기</h2>
-					<FormBox>
+					<FormBox onSubmit={submitHandler}>
 						<form action="submit">
 							<div class="leftBox">
 								<h3>
 									<span>봉사 활동</span>에 대해 궁금해요!
 								</h3>
-								<Input type="text" placeholder="내용" />
-								<Input type="text" placeholder="카테고리" />
-								<Input type="text" placeholder="봉사 기간" />
-								<Input type="text" placeholder="봉사 장소" />
-								<TextArea name="" id="" cols="30" rows="10"></TextArea>
-								<Input type="text" placeholder="이미지" />
+								<h4>봉사 내용 주제</h4>
+								<Input
+									placeholder="봉사 활동 주제"
+									type="text"
+									name="title"
+									value={input.title}
+									onChange={e => onChangeInput(e)}
+								/>
+								{/* 어린이 장애인 노인 다문화가정 환경 유기동물 */}
+								<Input type="text" placeholder="카테고리" name="caregory" />
+
+								<h4>봉사활동 날짜 및 시각</h4>
+								<RegisterDatePicker
+									locale={ko}
+									selected={dueDay}
+									onChange={date => setDueDay(date)}
+									showTimeSelect
+									minTime={due.setHours(due.setMinutes(new Date(), 0), 9)}
+									maxTime={due.setHours(due.setMinutes(new Date(), 0), 18)}
+									dateFormat="📅 yyyy년-MM월-dd일 / 🕜 aa h:mm "
+								/>
+
+								<Input
+									placeholder="행사 주소(우편번호 검색 클릭)"
+									type="text"
+									name="area"
+									value={address}
+									onClick={openPostCode}
+								/>
+								<div id="popupDom">
+									{isPopupOpen && (
+										<PopupDom>
+											<PopupPostCode setAddress={setAddress} onClose={closePostCode} />
+										</PopupDom>
+									)}
+								</div>
+								<Input
+									type="text"
+									placeholder="봉사활동 상세주소"
+									name="detailArea"
+									value={input.detailArea}
+									onChange={e => onChangeInput(e)}
+								/>
+								<h4>봉사 내용 상세</h4>
+								<TextArea
+									placeholder="봉사 활동 내용"
+									type="text"
+									name="content"
+									value={input.content}
+									onChange={e => onChangeInput(e)}
+									cols="30"
+									rows="10"
+								></TextArea>
+								<h1>봉사활동을 잘 나타내 줄 이미지를 올려보세요</h1>
+								<ImageInput type="text" placeholder="이미지" />
 							</div>
 							<div class="rightBox">
 								<h3>
 									<span>모집 활동</span>궁금해요!
+									<p>봉사활동 모집기간</p>
+									<RegisterDatePicker
+										locale={ko}
+										dateFormat="📅 yyyy년-MM월-dd일"
+										selected={startDate}
+										onChange={onChange}
+										startDate={startDate}
+										endDate={endDate}
+										selectsRange
+									/>
 								</h3>
 								<Input type="text" placeholder="기간" />
 								<Input type="text" placeholder="필수" />
@@ -270,6 +246,11 @@ const FormBox = styled.form`
 			flex-direction: column;
 			& h3 {
 				font-size: 30px;
+
+				& p {
+					font-size: 20px;
+				}
+
 				& span {
 					color: #66885d;
 				}
@@ -291,7 +272,25 @@ const Input = styled.input`
 	padding-left: 10px;
 `;
 
+const ImageInput = styled.input`
+	display: block;
+	width: 590px;
+	height: 300px;
+	border-radius: 30px;
+	/* background-image: url(); */
+	background-position: center right 10px;
+	background-repeat: no-repeat;
+	margin-bottom: 10px;
+	border: 1px solid #66885d;
+	padding-left: 10px;
+`;
+
 const TextArea = styled.textarea`
+	margin: 1rem;
+	width: 590x;
+	border-radius: 10px;
+	height: 300px;
+
 	border: 1px solid #66885d;
 	resize: none;
 	textarea:focus {
@@ -308,3 +307,16 @@ const TextArea = styled.textarea`
 		border: none;
 	}
 `;
+
+const RegisterDatePicker = styled(DatePicker)({
+	margin: "12px",
+	fontSize: "15px",
+	padding: "20px",
+	width: "590px",
+	paddingLeft: "20px",
+	border: "none",
+	borderRadius: "15px",
+	outline: "none",
+	marginBottom: "1rem",
+	background: `${props => props.theme.textColor}`,
+});
