@@ -237,7 +237,7 @@ const Recruit = () => {
 								</h3>
 								<Input type="text" placeholder="기간" />
 								<Input type="text" placeholder="필수" />
-								<div class="tag">
+								<div className="tag">
 									<p>
 										<span>#19세</span> <span>#남성</span>
 									</p>
