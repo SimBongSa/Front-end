@@ -28,6 +28,7 @@ export const Chat = () => {
     dispatch(__getChatList());
     setChatLog([...chatLog, receiveMsg]);
   }, [receiveMsg, setChatLog]);
+  console.log(chatLog)
 
   const onSubmitHandler = (e) => {
     if (message) {

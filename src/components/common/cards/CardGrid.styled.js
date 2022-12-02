@@ -67,6 +67,7 @@ export const StContent = styled.div`
 
 export const StCardInfo = styled.div`
 	display: flex;
+	justify-content: space-between;
 	font-size: 0.8rem;
 	align-items: center;
 	/* color: ${props => props.theme.textColor}; */
@@ -74,7 +75,7 @@ export const StCardInfo = styled.div`
 `;
 
 export const StArea = styled.div`
-	max-width: 250px;
+	max-width: 200px;
 	min-width: 50px;
 	color: ${props => props.theme.bgColor};
 	background-color: ${props => props.theme.subTextColor};
