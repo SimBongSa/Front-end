@@ -132,99 +132,96 @@ const Recruit = () => {
 
 	return (
 		<div data-spy="scroll" data-target="#navbar">
-			<RecruitContainer>
-				<Layout>
-					<h2>봉사 등록하기</h2>
-					<FormBox onSubmit={submitHandler}>
-						<form action="submit">
-							<div class="leftBox">
-								<h3>
-									<span>봉사 활동</span>에 대해 궁금해요!
-								</h3>
-								<h4>봉사 내용 주제</h4>
-								<Input
-									placeholder="봉사 활동 주제"
-									type="text"
-									name="title"
-									value={input.title}
-									onChange={e => onChangeInput(e)}
-								/>
-								{/* 어린이 장애인 노인 다문화가정 환경 유기동물 */}
-								<Input type="text" placeholder="카테고리" name="caregory" />
 
-								<h4>봉사활동 날짜 및 시각</h4>
-								<RegisterDatePicker
-									locale={ko}
-									selected={dueDay}
-									onChange={date => setDueDay(date)}
-									showTimeSelect
-									minTime={due.setHours(due.setMinutes(new Date(), 0), 9)}
-									maxTime={due.setHours(due.setMinutes(new Date(), 0), 18)}
-									dateFormat="📅 yyyy년-MM월-dd일 / 🕜 aa h:mm "
-								/>
+			<Layout>
+				<h2>봉사 등록하기</h2>
+				<FormBox onSubmit={submitHandler}>
+					<div className="leftBox">
+						<h3>
+							<span>봉사 활동</span>에 대해 궁금해요!
+						</h3>
+						<h4>봉사 내용 주제</h4>
+						<Input
+							placeholder="봉사 활동 주제"
+							type="text"
+							name="title"
+							value={input.title}
+							onChange={e => onChangeInput(e)}
+						/>
+						{/* 어린이 장애인 노인 다문화가정 환경 유기동물 */}
+						<Input type="text" placeholder="카테고리" name="caregory" />
 
-								<Input
-									placeholder="행사 주소(우편번호 검색 클릭)"
-									type="text"
-									name="area"
-									value={address}
-									onClick={openPostCode}
-								/>
-								<div id="popupDom">
-									{isPopupOpen && (
-										<PopupDom>
-											<PopupPostCode setAddress={setAddress} onClose={closePostCode} />
-										</PopupDom>
-									)}
-								</div>
-								<Input
-									type="text"
-									placeholder="봉사활동 상세주소"
-									name="detailArea"
-									value={input.detailArea}
-									onChange={e => onChangeInput(e)}
-								/>
-								<h4>봉사 내용 상세</h4>
-								<TextArea
-									placeholder="봉사 활동 내용"
-									type="text"
-									name="content"
-									value={input.content}
-									onChange={e => onChangeInput(e)}
-									cols="30"
-									rows="10"
-								></TextArea>
-								<h1>봉사활동을 잘 나타내 줄 이미지를 올려보세요</h1>
-								<ImageInput type="text" placeholder="이미지" />
-							</div>
-							<div class="rightBox">
-								<h3>
-									<span>모집 활동</span>궁금해요!
-									<p>봉사활동 모집기간</p>
-									<RegisterDatePicker
-										locale={ko}
-										dateFormat="📅 yyyy년-MM월-dd일"
-										selected={startDate}
-										onChange={onChange}
-										startDate={startDate}
-										endDate={endDate}
-										selectsRange
-									/>
-								</h3>
-								<Input type="text" placeholder="기간" />
-								<Input type="text" placeholder="필수" />
-								<div className="tag">
-									<p>
-										<span>#19세</span> <span>#남성</span>
-									</p>
-								</div>
-								<button>등록하기</button>
-							</div>
-							<div></div>
-						</form>
-					</FormBox>
-				</Layout>
-			</RecruitContainer>
+						<h4>봉사활동 날짜 및 시각</h4>
+						<RegisterDatePicker
+							locale={ko}
+							selected={dueDay}
+							onChange={due => setDueDay(due)}
+							showTimeSelect
+							minTime={due.setHours(due.setMinutes(new Date(), 0), 9)}
+							maxTime={due.setHours(due.setMinutes(new Date(), 0), 18)}
+							dateFormat="📅 yyyy년-MM월-dd일 / 🕜 aa h:mm "
+						/>
+
+						<Input
+							placeholder="행사 주소(우편번호 검색 클릭)"
+							type="text"
+							name="area"
+							value={address}
+							onClick={openPostCode}
+						/>
+						<div id="popupDom">
+							{isPopupOpen && (
+								<PopupDom>
+									<PopupPostCode setAddress={setAddress} onClose={closePostCode} />
+								</PopupDom>
+							)}
+						</div>
+						<Input
+							type="text"
+							placeholder="봉사활동 상세주소"
+							name="detailArea"
+							value={input.detailArea}
+							onChange={e => onChangeInput(e)}
+						/>
+						<h4>봉사 내용 상세</h4>
+						<TextArea
+							placeholder="봉사 활동 내용"
+							type="text"
+							name="content"
+							value={input.content}
+							onChange={e => onChangeInput(e)}
+							cols="30"
+							rows="10"
+						></TextArea>
+						<h1>봉사활동을 잘 나타내 줄 이미지를 올려보세요</h1>
+						<ImageInput type="text" placeholder="이미지" />
+					</div>
+					<div className="rightBox">
+						<h3>
+							<span>모집 활동</span>궁금해요!
+							<p>봉사활동 모집기간</p>
+							<RegisterDatePicker
+								locale={ko}
+								dateFormat="📅 yyyy년-MM월-dd일"
+								selected={startDate}
+								onChange={onChange}
+								startDate={startDate}
+								endDate={endDate}
+								selectsRange
+							/>
+						</h3>
+						<h1>어떤 자원봉사자를 희망하시나요?</h1>
+						<Input type="text" placeholder="선호하는 지원자" />
+
+						<div className="tag">
+							<p>
+								<span>#19세</span> <span>#남성</span>
+							</p>
+						</div>
+						<button>등록하기</button>
+					</div>
+				</FormBox>
+			</Layout>
 		</div>
 	);
 };
@@ -237,23 +234,21 @@ const Layout = styled.div`
 `;
 
 const FormBox = styled.form`
-	& form {
-		width: 100%;
-		display: flex;
-		justify-content: space-between;
-		& div {
-			display: flex;
-			flex-direction: column;
-			& h3 {
-				font-size: 30px;
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	& div {
+		/* display: flex;
+		flex-direction: column; */
+		& h3 {
+			font-size: 30px;
 
-				& p {
-					font-size: 20px;
-				}
+			& p {
+				font-size: 20px;
+			}
 
-				& span {
-					color: #66885d;
-				}
+			& span {
+				color: #66885d;
 			}
 		}
 	}
@@ -277,7 +272,7 @@ const ImageInput = styled.input`
 	width: 590px;
 	height: 300px;
 	border-radius: 30px;
-	/* background-image: url(); */
+	background-image: url();
 	background-position: center right 10px;
 	background-repeat: no-repeat;
 	margin-bottom: 10px;
@@ -286,10 +281,12 @@ const ImageInput = styled.input`
 `;
 
 const TextArea = styled.textarea`
-	margin: 1rem;
-	width: 590x;
-	border-radius: 10px;
+	margin: 1px;
+	margin-top: 10px;
+	width: 590px;
+	border-radius: 30px;
 	height: 300px;
+	padding-right: 10px;
 
 	border: 1px solid #66885d;
 	resize: none;
@@ -309,13 +306,13 @@ const TextArea = styled.textarea`
 `;
 
 const RegisterDatePicker = styled(DatePicker)({
-	margin: "12px",
+	margin: "1px",
 	fontSize: "15px",
 	padding: "20px",
 	width: "590px",
 	paddingLeft: "20px",
-	border: "none",
-	borderRadius: "15px",
+	border: "1px solid #66885d",
+	borderRadius: "30px",
 	outline: "none",
 	marginBottom: "1rem",
 	background: `${props => props.theme.textColor}`,
