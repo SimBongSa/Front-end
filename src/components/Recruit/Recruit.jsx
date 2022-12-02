@@ -211,10 +211,9 @@ const Recruit = () => {
 										selectsRange
 									/>
 								</h3>
-								<h1>어떤 자원봉사자를 희망하시나요?</h1>
-								<Input type="text" placeholder="선호하는 지원자" />
-
-								<div class="tag">
+								<Input type="text" placeholder="기간" />
+								<Input type="text" placeholder="필수" />
+								<div className="tag">
 									<p>
 										<span>#19세</span> <span>#남성</span>
 									</p>

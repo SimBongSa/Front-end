@@ -28,8 +28,20 @@ export const ChatContent = () => {
             <ul key={idx}>
               {
                 username === item.userName ? (
-                  <StMyMessage>{item.content}</StMyMessage>
-                ) : <StReceiveMsg>{item.content}</StReceiveMsg>
+                  <>
+                    <StMyMessage>
+                      <span>14:51</span>
+                      <h4>{item.content}</h4>
+                    </StMyMessage>
+                  </>
+                ) : (
+                  <>
+                    <StReceiveMsg>
+                      <span>14:51</span>
+                      <h4>{item.content}</h4>
+                    </StReceiveMsg>
+                  </>
+                )
               }
             </ul>
           )
@@ -53,30 +65,50 @@ export const StChatContent = styled.div`
 `
 
 export const StMyMessage = styled.li`
-  display: block;
+  display: inline-flex;
   clear: both;
-  border-radius: 50px 0px 50px 50px;
-  width: fit-content;
   float: right;
   height: max-content;
-  padding: 15px;
-  margin: 15px 20px 0 0;
-  font-size: 12px;
-  color: #232323;
-  border: 3px solid ${(props) => props.theme.btnColor};
+  width: fit-content;
+  max-width: 60%;
+  align-items: end;
+  & h4 {
+    border-radius: 50px 0px 50px 50px;
+    width: fit-content;
+    margin: 15px 20px 0px 0px;
+    padding: 15px;
+    font-size: 12px;
+    color: #232323;
+    border: 2px solid ${(props) => props.theme.btnColor};
+  }
+  & span {
+    color: #232323;
+    font-size: 0.7rem;
+    margin-right: 10px;
+  }
 `
 
 export const StReceiveMsg = styled.li`
-  display: block;
+  display: flex;
+  flex-direction: row-reverse;
   clear: both;
-  border-radius: 0px 50px 50px 50px;
-  width: fit-content;
   float: left;
   height: max-content;
-  margin: 15px 0px 0 20px;
-  padding: 15px;
-  font-size: 12px;
-  text-align: right;
-  color: #232323;
-  border: 3px solid ${(props) => props.theme.subTextColor};
+  width: fit-content;
+  max-width: 60%;
+  align-items: end;
+  & h4 {
+    border-radius: 0px 50px 50px 50px;
+    width: fit-content;
+    margin: 15px 0px 0px 20px;
+    padding: 15px;
+    font-size: 12px;
+    color: #232323;
+    border: 2px solid ${(props) => props.theme.subTextColor};
+  }
+  & span {
+    color: #232323;
+    font-size: 0.7rem;
+    margin-left: 10px;
+  }
 `
