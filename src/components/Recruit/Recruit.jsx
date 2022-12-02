@@ -136,7 +136,6 @@ const Recruit = () => {
 				<Layout>
 					<h2>봉사 등록하기</h2>
 					<FormBox onSubmit={submitHandler}>
-
 						<form action="submit">
 							<div class="leftBox">
 								<h3>
@@ -197,12 +196,10 @@ const Recruit = () => {
 								></TextArea>
 								<h1>봉사활동을 잘 나타내 줄 이미지를 올려보세요</h1>
 								<ImageInput type="text" placeholder="이미지" />
-
 							</div>
 							<div class="rightBox">
 								<h3>
 									<span>모집 활동</span>궁금해요!
-
 									<p>봉사활동 모집기간</p>
 									<RegisterDatePicker
 										locale={ko}
@@ -276,7 +273,6 @@ const Input = styled.input`
 	padding-left: 10px;
 `;
 
-
 const ImageInput = styled.input`
 	display: block;
 	width: 590px;
@@ -313,7 +309,6 @@ const TextArea = styled.textarea`
 	}
 `;
 
-
 const RegisterDatePicker = styled(DatePicker)({
 	margin: "12px",
 	fontSize: "15px",
@@ -326,4 +321,3 @@ const RegisterDatePicker = styled(DatePicker)({
 	marginBottom: "1rem",
 	background: `${props => props.theme.textColor}`,
 });
-
