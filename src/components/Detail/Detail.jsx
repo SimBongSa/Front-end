@@ -1,15 +1,17 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { __postApply } from "../../redux/modules/boardSlice";
 import { __delBoard, __getBoardId } from "../../redux/modules/boardSlice";
 import { useParams } from "react-router-dom";
+import MainBg from "../MainBg/MainBg";
+import KaMap from "../Map/KaMap";
+import Comment from "../Comment/Comment";
+import DetailSlideBar from "./DetailSlide/DetailSlideBar";
+import { getCookieToken } from "../../utils/cookie";
 import {
 	DetailContainer,
 	DetailContent,
 	MapWrapper,
-	DetailSide,
-	DetailNavBtn,
 	StDetailTag,
 	StTitleBox,
 	StAreaBox,
@@ -17,11 +19,6 @@ import {
 	StImgWrapper,
 	StContentBox,
 } from "./Detail.styled";
-import MainBg from "../MainBg/MainBg";
-import KaMap from "../Map/KaMap";
-import Comment from "../Comment/Comment";
-import { getCookieToken } from "../../utils/cookie";
-import styled from "styled-components";
 
 const Detail = () => {
 	const navigate = useNavigate();
@@ -90,50 +87,10 @@ const Detail = () => {
 					<hr />
 					<Comment />
 				</DetailContent>
-				<DetailSide>
-					<h2>
-						모집 기간 : {boardsId?.startDate} ~ {boardsId?.endDate}
-					</h2>
-
-					<DetailSideItem>등록기관 : {boardsId.author}</DetailSideItem>
-					<DetailNavBtn
-						onClick={() => {
-							dispatch(__postApply(id));
-						}}
-					>
-						봉사 신청하기
-					</DetailNavBtn>
-					<DetailNavBtn>봉사 단체 연락하기</DetailNavBtn>
-					<DetailSideItem>신청 인원 : {boardsId.applicantCnt}명</DetailSideItem>
-					{boardsId === username ? (
-						<>
-							<DetailNavBtn
-								onClick={() => {
-									navigate(`/edit/${id}`);
-								}}
-							>
-								수정하기
-							</DetailNavBtn>
-							<DetailNavBtn
-								onClick={() => {
-									dispatch(__delBoard(id));
-									navigate("/boards");
-								}}
-							>
-								삭제하기
-							</DetailNavBtn>
-						</>
-					) : null}
-				</DetailSide>
+				<DetailSlideBar boardsId={boardsId} username={username} id={id} />
 			</DetailContainer>
 		</>
 	);
 };
 
 export default Detail;
-
-export const DetailSideItem = styled.div`
-	margin: 1rem;
-	margin-top: 1rem;
-	text-align: center;
-`;

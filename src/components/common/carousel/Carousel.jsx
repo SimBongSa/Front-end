@@ -1,9 +1,16 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { __getBoard } from "../../../redux/modules/boardSlice";
-import { StCard, StCardInfo, StContent, StImgWrapper } from "../cards/CardGrid.styled";
-import { CarouselContainer, SlideTrack, Slide } from "./Carousel.styled";
-import { StTagBox } from "../cards/CardGrid.styled";
+import {
+	StCard,
+	StCardInfo,
+	StContent,
+	StImgWrapper,
+	StDate,
+	StArea,
+	StTagBox,
+} from "../cards/CardGrid.styled";
+import { CarouselContainer, SlideTrack, Slide, StDetailArea } from "./Carousel.styled";
 import { useNavigate } from "react-router-dom";
 
 const Carousel = () => {
@@ -18,12 +25,21 @@ const Carousel = () => {
 
 	const boardList = useSelector(state => state.boards?.boards);
 
+	const getDateDiff = (d1, d2) => {
+		const dueDay = new Date(d1);
+		const today = new Date(d2);
+		const diffDate = dueDay.getTime() - today.getTime();
+		return Math.round(Math.abs(diffDate / (1000 * 60 * 60 * 24)));
+	};
+	const today = new Date().toISOString().split("T")[0];
+
 	return (
 		<>
 			<CarouselContainer>
 				<h1>모집 종료 예정인 봉사활동</h1>
 				<SlideTrack>
 					{boardList.map((item, idx) => {
+						const dDay = getDateDiff(item.dueDay, today);
 						return (
 							<Slide key={item.boardId}>
 								<StCard
@@ -31,23 +47,22 @@ const Carousel = () => {
 										navigate(`/boards/${item.boardId}`);
 									}}
 								>
+									<StDate>D-{dDay}</StDate>
 									<StImgWrapper>
 										<img src={item.boardImage} loading="lazy" alt="thumbnail" />
 									</StImgWrapper>
 									<StContent>
 										<p className="title">{item.title}</p>
 										<StCardInfo>
-											<p>
-												{item.area} - {item.detailArea}
-											</p>
-											<p className="price">D-4</p>
+											<StArea>{item.area}</StArea>
+											<StDetailArea>{item.detailArea}</StDetailArea>
 										</StCardInfo>
+										<StTagBox>
+											{item.tags.map(tag => {
+												return <li>{tag}</li>;
+											})}
+										</StTagBox>
 									</StContent>
-									<StTagBox>
-										{item.tags.map(tag => {
-											return <li>{tag}</li>;
-										})}
-									</StTagBox>
 								</StCard>
 							</Slide>
 						);

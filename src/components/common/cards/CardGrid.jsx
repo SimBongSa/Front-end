@@ -27,16 +27,18 @@ const CardGrid = ({ gridColumn, companyBoards, boards, userEnroll }) => {
 			<StCards gridColumn={gridColumn}>
 				{/* companyBoards 기업 상세페이지 */}
 				{companyBoards?.map(item => {
+					const dDay = getDateDiff(item.dueDay, today);
 					return (
 						<StCard key={item.boardId}>
-							<StImgWrapper />
+							<StDate>D-{dDay}</StDate>
+							<StImgWrapper>
+								<img src={item.boardImage} loading="lazy" alt="thumbnail" />
+							</StImgWrapper>
 							<StContent>
 								<p className="title">{item.title}</p>
 								<StCardInfo>
-									<p>
-										{item.area} - {item.detailArea}
-									</p>
-									<p className="price">D-4</p>
+									<StArea>{item.area}</StArea>
+									<StDetailArea>{item.detailArea}</StDetailArea>
 								</StCardInfo>
 								<StTagBox>
 									{item?.tags?.map(tag => {
@@ -77,14 +79,15 @@ const CardGrid = ({ gridColumn, companyBoards, boards, userEnroll }) => {
 					const dDay = getDateDiff(item.dueDay, today);
 					return (
 						<StCard key={item.boardId} onClick={() => navigate(`/boards/${item.boardId}`)}>
+							<StDate>D-{dDay}</StDate>
 							<StImgWrapper>
 								<img src={item.boardImage} loading="lazy" alt="enrollImage" />
 							</StImgWrapper>
 							<StContent>
 								<p className="title">{item.title}</p>
 								<StCardInfo>
-									<p>{item.area}</p>
-									<p className="price">D - {dDay}</p>
+									<StArea>{item.area}</StArea>
+									<StDetailArea>{item.detailArea}</StDetailArea>
 								</StCardInfo>
 								<StTagBox>
 									{item?.tags?.map(tag => {
