@@ -145,7 +145,7 @@ export const apis = {
 
 	//commentSlice
 	getComment: payload =>
-		axios.get(`${BASE_URL}/boards/${payload}`, {
+		axios.get(`${BASE_URL}/boards/${payload.id}?page=${payload.page}&size=${payload.size}`, {
 			headers: {
 				Authorization: token,
 			},

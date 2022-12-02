@@ -38,23 +38,23 @@ function DetailSlideBar({ boardsId, username, id }) {
 					<StChatBtn>봉사 단체 연락하기</StChatBtn>
 				</StBtnBox>
 				{boardsId === username ? (
-					<>
-						<DetailNavBtn
+					<StBtnBox>
+						<StApplyBtn
 							onClick={() => {
 								navigate(`/edit/${id}`);
 							}}
 						>
 							수정하기
-						</DetailNavBtn>
-						<DetailNavBtn
+						</StApplyBtn>
+						<StChatBtn
 							onClick={() => {
 								dispatch(__delBoard(id));
 								navigate("/boards");
 							}}
 						>
 							삭제하기
-						</DetailNavBtn>
-					</>
+						</StChatBtn>
+					</StBtnBox>
 				) : null}
 			</DetailSide>
 		</>

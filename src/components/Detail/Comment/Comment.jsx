@@ -1,4 +1,4 @@
-import Input from "../common/input/Input";
+import Input from "../../../components/common/input/Input";
 import { useState, useEffect, useCallback } from "react";
 import { useParams } from "react-router-dom";
 import { useCookies } from "react-cookie";
@@ -7,7 +7,7 @@ import {
 	__postComment,
 	__putComment,
 	__deleteComment,
-} from "../../redux/modules/commentSlice";
+} from "../../../redux/modules/commentSlice";
 import { useSelector, useDispatch } from "react-redux";
 import {
 	MainComponent,
@@ -37,9 +37,12 @@ function Comment() {
 	const [content, setContent] = useState();
 	const [comment, setComment] = useState({ comment: content });
 
+	const [page, setPage] = useState(1);
+	const size = 20;
+	console.log(page, size);
 	useEffect(() => {
-		dispatch(__getComment(id));
-	}, [dispatch, id]);
+		dispatch(__getComment({ id, page, size }));
+	}, [dispatch, id, page, size]);
 
 	const onChangeHalder = useCallback(
 		e => {
@@ -146,6 +149,14 @@ function Comment() {
 						);
 				  })
 				: ""}
+			<button
+				onClick={() => {
+					setPage(prev => prev + 1);
+					dispatch(__getComment({ id, page, size }));
+				}}
+			>
+				더보기
+			</button>
 		</MainComponent>
 	);
 }

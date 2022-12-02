@@ -9,6 +9,7 @@ export const CommentWriteWrap = styled.div`
 	align-items: center;
 	background: #ffffff;
 	border-radius: 30px;
+	/* min-width: 600px; */
 	height: 4rem;
 	& > div {
 		cursor: pointer;
@@ -43,8 +44,8 @@ export const Button = styled.button`
 	border: 1px solid ${props => props.theme.btnColor};
 	color: ${props => props.theme.bgColor};
 	border-radius: 24px;
-	min-width: 120px;
-	min-height: 40px;
+	width: 8rem;
+	height: 2.5rem;
 	margin-left: auto;
 	margin-right: 0.5rem;
 	cursor: pointer;

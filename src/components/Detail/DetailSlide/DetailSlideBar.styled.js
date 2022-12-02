@@ -23,6 +23,7 @@ export const DetailSide = styled.div`
 export const StDateBox = styled.span`
 	display: flex;
 	justify-content: center;
+	align-items: center;
 	padding-top: 1rem;
 
 	& div {

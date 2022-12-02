@@ -1,11 +1,10 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
-import { __delBoard, __getBoardId } from "../../redux/modules/boardSlice";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+import { __getBoardId } from "../../redux/modules/boardSlice";
 import MainBg from "../MainBg/MainBg";
 import KaMap from "../Map/KaMap";
-import Comment from "../Comment/Comment";
+import Comment from "../Detail/Comment/Comment";
 import DetailSlideBar from "./DetailSlide/DetailSlideBar";
 import { getCookieToken } from "../../utils/cookie";
 import {
