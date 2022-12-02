@@ -1,79 +1,87 @@
-import { useEffect, useState } from "react";
-import ChattingService from "../../StomJS/SockInstance";
+import styled from "styled-components";
+import ChatInput from "./ChatInput/ChatInput";
+import ChatList from "./ChatList/ChatList";
 import { getCookieToken } from "../../utils/cookie";
-
+import ChattingService from "../../StomJS/SockInstance";
+import { useCallback, useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { __getChatList } from "../../redux/modules/chatSlice";
+import { Outlet, useParams } from "react-router-dom";
 const ChattingServiceKit = new ChattingService();
 
 export const Chat = () => {
 
+  const dispatch = useDispatch();
+  const chatList = useSelector((state) => state.chat.chatList);
+  const id = useParams();
   const token = getCookieToken(["access-token"]);
+  const username = getCookieToken(["username"]);
   const [chatLog, setChatLog] = useState([]);
-  const [receiveMsg, setReveiveMsg] = useState();
-
+  const [receiveMsg, setReceiveMsg] = useState('OOO 님과의 대화입니다');
   const [message, setMessage] = useState('');
-  console.log(message)
 
-  // ChattingServiceKit.onConnect('topic/greetings/1', {}, (newMessage) => {
-  //   setReveiveMsg(newMessage.content)
-  // })
+  ChattingServiceKit.onConnect(`/topic/greetings/${id.id}`, {}, (newMessage) => {
+    setReceiveMsg(newMessage)
+  });
 
   useEffect(() => {
+    dispatch(__getChatList());
     setChatLog([...chatLog, receiveMsg]);
-  }, [setChatLog, receiveMsg]);
+  }, [receiveMsg, setChatLog]);
 
-  console.log("@@받은 메시지 => ",receiveMsg)
-
-  const submitHandler = (e) => {
-    e.preventDefault();
-    ChattingServiceKit.sendMessage({
-      action: 'MESSAGE',
-      chatRoomId: 1,
-      userName: "test",
-      content: message,
-      Authorization: token
-    });
-    setMessage('');
+  const onSubmitHandler = (e) => {
+    if (message) {
+      e.preventDefault();
+      ChattingServiceKit.sendMessage({
+        action: 'MESSAGE',
+        userName: username,
+        chatRoomId: id.id,
+        content: message,
+        Authorization: token
+      });
+      setMessage('');
+    }
   };
 
-  const onChangeHandler = (e) => {
+  const onChangeHandler = useCallback((e) => {
     setMessage(e.target.value);
-  }
+  }, [])
 
-  useEffect(() => {
-
-    const roomId = ChattingServiceKit.receiveRoomId(1);
-    console.log("@",roomId)
-
-    ChattingServiceKit.onConnect('topic/greetings/1', {}, (newMessage) => {
-      setReveiveMsg(newMessage.content)
-    })
+  useEffect(() => {  
     return () => {
       ChattingServiceKit.onDisconnect();
     }
   }, []);
 
-  console.log("@@",chatLog)
-
   return (
-    <div>
-      <div>
-        여기 메시지 뜰거임
-        <hr/>
-        {
-          chatLog !== 0 &&
-            chatLog?.map((item, idx) => {
-              return <h4 key={idx}>{ item }</h4>
-            })
-        }
-      </div>
-      <form onSubmit={submitHandler}>
-        <input 
-          placeholder="소켓" 
-          value={message}
-          onChange={onChangeHandler}
-        />
-        <button>메시지 전송</button>
-      </form>
-    </div>
+    <StChatContainer>
+      <ChatList chatList={chatList}/>
+      <StChatContentWrap>
+        <Outlet context={{chatLog, setReceiveMsg}} />
+        <ChatInput message={message} onSubmitHandler={onSubmitHandler} onChangeHandler={onChangeHandler} />
+      </StChatContentWrap>
+    </StChatContainer>
   )
 };
+
+export const StChatContainer = styled.div`
+  display: flex;
+	align-items: center;
+	justify-content: center;
+  height: 90vh;
+  font-size: 1em;
+	letter-spacing: 0.1px;
+  text-rendering: optimizeLegibility;
+	width: 80%;
+  max-width: 1280px;
+  height: 75vh;
+  margin: 0 auto;
+  margin-top: 10rem;
+`
+
+export const StChatContentWrap = styled.div`
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 75%;
+`
