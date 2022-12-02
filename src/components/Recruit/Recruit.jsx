@@ -253,7 +253,6 @@ export const ImageUploadBox = styled.div`
 			margin-left: 1.5rem;
 		}
 		& .textBox {
-
 		}
 	}
 `
@@ -279,13 +278,13 @@ const TextArea = styled.textarea`
 `;
 
 const RegisterDatePicker = styled(DatePicker)({
-	margin: "12px",
+	margin: "1px",
 	fontSize: "15px",
 	padding: "20px",
 	width: "100%",
 	paddingLeft: "20px",
-	border: "none",
-	borderRadius: "15px",
+	border: "1px solid #66885d",
+	borderRadius: "30px",
 	outline: "none",
 	marginBottom: "1rem",
 	background: `${props => props.theme.textColor}`,

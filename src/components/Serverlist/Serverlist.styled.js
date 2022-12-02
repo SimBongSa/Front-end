@@ -27,5 +27,53 @@ export const Body = styled.div`
 	flex-wrap: wrap;
 	& > div {
 		margin-top: 0.5rem;
+		margin-bottom: 1rem;
+		font-weight: bolder;
+		font-size: 1.2rem;
+	}
+`;
+
+export const StCardInfo = styled.span`
+	display: flex;
+	font-size: 0.8rem;
+	align-items: center;
+	text-align: center;
+	line-height: 0.5rem;
+	margin-bottom: 0.5rem;
+`;
+
+export const StArea = styled.span`
+	max-width: 150px;
+	color: ${props => props.theme.bgColor};
+	background-color: ${props => props.theme.subTextColor};
+	border-radius: 17px;
+	padding: 5px 10px;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+`;
+
+export const StDetailArea = styled.span`
+	color: ${props => props.theme.textColor};
+	padding: 5px;
+	text-align: center;
+	margin-left: 1rem;
+`;
+
+export const StMoreBox = styled.div`
+	display: flex;
+	justify-content: center;
+	gap: 5px;
+`;
+
+export const StMore = styled.div`
+	width: 8px;
+	height: 8px;
+	margin-top: 1rem;
+	border: 1px solid gray;
+	border-radius: 50%;
+	cursor: pointer;
+	:hover {
+		background-color: gray;
 	}
 `;
