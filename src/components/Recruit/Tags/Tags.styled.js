@@ -14,7 +14,6 @@ export const TagColumn = styled.div`
   font-size: 20px;
   & ul {
     list-style: none;
-    margin: 0rem 15rem 5rem 15rem;
     padding: 0;
     @media ( max-width: 1024px) {
       margin: 0;
@@ -39,11 +38,10 @@ export const TagColumn = styled.div`
         display: block;
         position: relative;
         font-weight: 300;
-        font-size: 1.35em;
-        padding: 25px 25px 25px 80px;
+        padding: .5rem;
+        font-size: .8em;
         margin: 10px auto;
         height: 30px;
-        z-index: 9;
         cursor: pointer;
         transition: all 0.25s linear;
       }

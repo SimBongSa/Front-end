@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { useOutletContext, useParams } from "react-router-dom";
 import styled from "styled-components";
 import ChattingService from "../../../StomJS/SockInstance";
@@ -9,44 +9,48 @@ const ChattingServiceKit = new ChattingService();
 export const ChatContent = () => {
 
   const id = useParams();
-  const username = getCookieToken(["username"]);
+
+  ChattingServiceKit.onConnect(`/topic/greetings/${id.id}`, {}, (newMessage) => {
+    setReceiveMsg(newMessage)
+  });
+
   const props  = useOutletContext();
   const chatLog = props.chatLog;
   const setReceiveMsg = props.setReceiveMsg;
+  const username = getCookieToken(["username"]);
+
+  const scrollRef = useRef();
 
   useEffect(() => {
-    ChattingServiceKit.onConnect(`/topic/greetings/${id.id}`, {}, (newMessage) => {
-      setReceiveMsg(newMessage)
-    });
-  }, [id, setReceiveMsg])
+    scrollRef.current.scrollIntoView({ behavior: 'smooth', block: 'start', inline: 'nearest' })
+  }, [props])
 
   return (
     <StChatContent>
+      <ul>
       {
         chatLog?.map((item, idx) => {
           return (
-            <ul key={idx}>
+            <>
               {
                 username === item.userName ? (
-                  <>
                     <StMyMessage>
-                      <span>14:51</span>
+                      <span>{item?.createdAt?.split('T')[1].substr(0,5)}</span>
                       <h4>{item.content}</h4>
                     </StMyMessage>
-                  </>
                 ) : (
-                  <>
                     <StReceiveMsg>
-                      <span>14:51</span>
+                      <span>{item?.createdAt?.split('T')[1].substr(0,5)}</span>
                       <h4>{item.content}</h4>
                     </StReceiveMsg>
-                  </>
                 )
               }
-            </ul>
+              </>
           )
         })
       }
+      </ul>
+      <div ref={scrollRef}/>
     </StChatContent>  
   )
 };
@@ -70,7 +74,7 @@ export const StMyMessage = styled.li`
   float: right;
   height: max-content;
   width: fit-content;
-  max-width: 60%;
+  max-width: 100%;
   align-items: end;
   & h4 {
     border-radius: 50px 0px 50px 50px;
