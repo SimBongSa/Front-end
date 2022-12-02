@@ -18,10 +18,12 @@ export const RecruitNav = styled.nav`
 	flex-flow: column nowrap;
 	justify-content: flex-end;
 	margin: 0 0 100px 30px;
-	& a { //nav 안 a 태그
+	& a {
+		//nav 안 a 태그
 		text-decoration: none;
 	}
-	& .counter { //nav 안 classname = counter에게
+	& .counter {
+		//nav 안 classname = counter에게
 		font-size: 24px;
 		transition: all 0.15s ease-out;
 	}
