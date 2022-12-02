@@ -38,21 +38,12 @@ const Register = () => {
             <RegisterCover className="cover" style={{ transform: `translateX(${moveIndex}%)` }}>
               {
                 moveIndex === 0 ? (
-                  <>
-                    <h1 className="individual">Hello 개인</h1>
-                    <p className="individual">봉사에 참여하고 싶어요</p>
-                    <RegisterBtn onClick={moveLeft}>기관이에요</RegisterBtn>
-                  </>
+                  <h1 className="individual" onClick={moveLeft}>봉사 단체입니다 ←</h1>
                 ) : null
               }
-      
               {
                 moveIndex === -100 ? (
-                  <>
-                    <h1 className="organization">Hello 기관</h1>
-                    <p className="organization">함께할 봉사자가 필요해요</p>
-                    <RegisterBtn className="organization" onClick={moveRight}>개인이에요</RegisterBtn>
-                  </>
+                    <h1 className="organization" onClick={moveRight}>→ 개인 봉사자입니다</h1>
                 ) : null
               }
             </RegisterCover>
@@ -60,13 +51,13 @@ const Register = () => {
               <h1>봉사 지원자 가입</h1>
               <p>봉사활동을 하고싶어요</p>
               <OptionProfile/><br/>
-              <RegisterBtn onClick={() => setOption("individual")}>Register</RegisterBtn>
+              <RegisterBtn onClick={() => setOption("individual")}>가입하기</RegisterBtn>
             </RegisterIndividual>
             <RegisterOrganization>
               <h1>봉사 기관 가입</h1>
               <p>자원봉사자가 필요해요</p>
               <OptionOrganization/><br/>
-              <RegisterBtn onClick={() => setOption("organization")}>Register</RegisterBtn>
+              <RegisterBtn onClick={() => setOption("organization")}>가입하기</RegisterBtn>
             </RegisterOrganization>
           </RegisterContainer>    
         ) : null

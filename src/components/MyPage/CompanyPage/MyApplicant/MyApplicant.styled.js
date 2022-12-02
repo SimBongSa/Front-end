@@ -21,7 +21,7 @@ export const AppliCard = styled.article`
     right: 0;
     bottom: 0;
     left: 0;
-    background-image: linear-gradient(-70deg, #424242, transparent 50%);
+    /* background-image: linear-gradient(-70deg, #424242, transparent 50%); */
     opacity: 1;
     border-radius: 10px;
   }

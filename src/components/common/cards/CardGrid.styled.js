@@ -59,7 +59,7 @@ export const StContent = styled.div`
 	& .title {
 		text-align: start;
 		font-size: 1.5rem;
-		font-weight: bolder;
+		font-weight: 300;
 		color: ${props => props.theme.textColor};
 		margin-bottom: 20px;
 	}
@@ -96,16 +96,17 @@ export const StDetailArea = styled.div`
 export const StDate = styled.div`
 	width: 4rem;
 	height: 2rem;
+	font-weight: 350;
 	padding-top: 8px;
-	margin-top: 18px;
-	margin-left: 20px;
+	margin-top: 15px;
+	margin-left: 15px;
 	text-align: center;
 	border-radius: 12rem;
 	color: ${props => props.theme.notiColor};
 	background-color: ${props => props.theme.bgColor};
 	z-index: 1;
 	position: absolute;
-	font-weight: bolder;
+	padding-top: 10px;
 `;
 
 export const StTagBox = styled.ul`

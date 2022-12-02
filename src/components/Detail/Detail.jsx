@@ -71,8 +71,8 @@ const Detail = () => {
 					<h3>봉사 요청 사항</h3>
 					<StDetailTag>
 						{boardsId.tags && boardsId.tags.length > 0 ? (
-							boardsId.tags.map(item => {
-								return <div>#{item}</div>;
+							boardsId.tags.map((item, idx) => {
+								return <div key={idx}>#{item}</div>;
 							})
 						) : (
 							<h2>요청 사항이 없습니다</h2>
