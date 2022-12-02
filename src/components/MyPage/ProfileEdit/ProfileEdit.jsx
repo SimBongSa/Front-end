@@ -28,23 +28,21 @@ const ProfileEdit = () => {
 	const [profileImage, setProfileImage] = useState(null);
 	const [uploadCompanyPreview, setUploadCompanyPreview] = useState(companyInfo.profileImage);
 	const [uploadUserPreview, setUploadUserPreview] = useState(userInfo.profileImage);
+
 	//기관
 	const [editCompany, setEditCompany] = useState(prev => {
 		const { email, introduction, password, passwordConfirm, profileImage, phoneNumber } =
 			companyInfo;
 		return { ...prev, email, introduction, password, passwordConfirm, profileImage, phoneNumber };
 	});
-	console.log("editCompany 석원님 킹왕짱 =>", editCompany);
+	console.log("editCompany =>", editCompany);
+
 	//회원
 	const [editUser, setUser] = useState(userInfo);
 
 	// 이미지 upload
 	const onChangeImage = e => {
-		// if (e.target.files[0] === null) {
-		// 	setProfileImage(null);
-		// } else {
 		setProfileImage(e.target.files[0]);
-		// }
 
 		console.log("profileImage =>", profileImage);
 
@@ -86,77 +84,7 @@ const ProfileEdit = () => {
 				{role === "ROLE_ADMIN" ? (
 					<div>
 						<MyPageEditSec>
-							<Content>
-								기관 PW
-								<Input
-									type="password"
-									defaultValue={companyInfo?.password}
-									key={companyInfo?.password}
-									name="password"
-									onChange={onChangeHandler}
-								/>
-							</Content>
-							<Content>
-								기관 PW 확인
-								<Input
-									type="password"
-									defaultValue={companyInfo?.passwordConfirm}
-									key={companyInfo?.passwordConfirm}
-									name="passwordConfirm"
-									onChange={onChangeHandler}
-								/>
-							</Content>
-							<Content>
-								이메일
-								<Input
-									type="text"
-									required
-									defaultValue={companyInfo?.email}
-									key={companyInfo?.email}
-									name="email"
-									onChange={onChangeHandler}
-								/>
-							</Content>
-							<Content>
-								전화번호
-								<Input
-									type="text"
-									defaultValue={companyInfo?.phoneNumber}
-									key={companyInfo?.phoneNumber}
-									name="phoneNumber"
-									onChange={onChangeHandler}
-								/>
-							</Content>
-							<Content>
-								기관 소개
-								<Input
-									type="text"
-									defaultValue={companyInfo?.introduction}
-									key={companyInfo?.introduction}
-									name="introduction"
-									onChange={onChangeHandler}
-								/>
-							</Content>
-							<Content>
-								기관 프로필 이미지 수정
-								<ImgSize src={uploadCompanyPreview} alt="" />
-								<Input
-									name="profileImage"
-									type={"file"}
-									key={profileImage}
-									accept={"image/*"}
-									placeholder="프로필 업로드"
-									onChange={onChangeImage}
-								/>
-							</Content>
-						</MyPageEditSec>
-						<h1>기관 페이지임!</h1>
-					</div>
-				) : null}
-
-				{role === "ROLE_MEMBER" ? (
-					<div>
-						<MyPageEditSec>
+							<h4>기관 PW </h4>
 							<Input
 								type="password"
 								defaultValue={companyInfo?.password}
@@ -197,7 +125,7 @@ const ProfileEdit = () => {
 								name="introduction"
 								onChange={onChangeHandler}
 							/>
-							기관 프로필 이미지 수정
+							<p>기관 프로필 이미지 수정</p>
 							<ImgSize src={uploadCompanyPreview} alt="" />
 							<Input
 								name="profileImage"
@@ -208,7 +136,63 @@ const ProfileEdit = () => {
 								onChange={onChangeImage}
 							/>
 						</MyPageEditSec>
-						<h1>기관 페이지임!</h1>
+					</div>
+				) : null}
+
+				{role === "ROLE_MEMBER" ? (
+					<div>
+						<MyPageEditSec>
+							<Input
+								type="password"
+								defaultValue={userInfo?.password}
+								key={userInfo?.password}
+								name="password"
+								onChange={onChangeHandler}
+							/>
+							<h4>개인 PW 확인</h4>
+							<Input
+								type="password"
+								defaultValue={userInfo?.passwordConfirm}
+								key={userInfo?.passwordConfirm}
+								name="passwordConfirm"
+								onChange={onChangeHandler}
+							/>
+							<h4>이메일</h4>
+							<Input
+								type="text"
+								required
+								defaultValue={userInfo?.email}
+								key={userInfo?.email}
+								name="email"
+								onChange={onChangeHandler}
+							/>
+							<h4>전화번호</h4>
+							<Input
+								type="text"
+								defaultValue={userInfo?.phoneNumber}
+								key={userInfo?.phoneNumber}
+								name="phoneNumber"
+								onChange={onChangeHandler}
+							/>
+							<h4>개인 소개</h4>
+							<Input
+								type="text"
+								defaultValue={userInfo?.introduction}
+								key={userInfo?.introduction}
+								name="introduction"
+								onChange={onChangeHandler}
+							/>
+							<p>개인 프로필 이미지 수정</p>
+							<ImgSize src={uploadUserPreview} alt="" />
+							<Input
+								name="profileImage"
+								type={"file"}
+								key={profileImage}
+								accept={"image/*"}
+								placeholder="프로필 업로드"
+								onChange={onChangeImage}
+							/>
+						</MyPageEditSec>
 					</div>
 				) : null}
 			</MyPageEditContainer>
@@ -221,13 +205,6 @@ export default ProfileEdit;
 
 const MyPageEditContainer = styled.div`
 	margin-top: 10rem;
-`;
-
-const Content = styled.li`
-	/* text-align: center;
-	margin-top: 20px;
-	padding-left: 0px; */
-	list-style: none;
 `;
 
 const ImgSize = styled.img`
