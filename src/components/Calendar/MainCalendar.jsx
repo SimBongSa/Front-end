@@ -64,7 +64,7 @@ const MainCalendar = () => {
 					/>
 					<CalendarList className="text-gray-500 mt-4">
 						{/* <h2>Today : {moment(value).format("YYYY년 MM월 DD일")}</h2> */}
-						<h2>봉사활동 : </h2>
+						<h2>봉사활동 : {maindate.data.length}개</h2>
 						<Serverlist result={maindate.data} key={date} mark={mark} />
 					</CalendarList>
 				</CalendarWrap>

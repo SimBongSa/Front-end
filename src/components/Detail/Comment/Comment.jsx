@@ -22,6 +22,7 @@ import {
 	Date,
 	CommentDiv,
 	CommentIcon,
+	StPageBtn,
 } from "./Comment.styled";
 
 function Comment() {
@@ -38,7 +39,7 @@ function Comment() {
 	const [comment, setComment] = useState({ comment: content });
 
 	const [page, setPage] = useState(1);
-	const size = 20;
+	const size = 4;
 	console.log(page, size);
 	useEffect(() => {
 		dispatch(__getComment({ id, page, size }));
@@ -149,14 +150,14 @@ function Comment() {
 						);
 				  })
 				: ""}
-			<button
+			<StPageBtn
 				onClick={() => {
 					setPage(prev => prev + 1);
 					dispatch(__getComment({ id, page, size }));
 				}}
 			>
-				더보기
-			</button>
+				댓글 더보기
+			</StPageBtn>
 		</MainComponent>
 	);
 }

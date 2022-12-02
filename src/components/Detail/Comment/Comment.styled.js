@@ -92,3 +92,16 @@ export const CommentDiv = styled.div`
 	flex-wrap: wrap;
 	border-bottom: 0.5px solid ${props => props.theme.textColor};
 `;
+
+export const StPageBtn = styled.div`
+	margin-top: 3rem;
+	border: 1px solid ${props => props.theme.textColor};
+	color: ${props => props.theme.textColor};
+	border-radius: 24px;
+	width: 8rem;
+	height: 2.5rem;
+	text-align: center;
+	margin-left: 45%;
+	padding: 10px 10px;
+	cursor: pointer;
+`;
