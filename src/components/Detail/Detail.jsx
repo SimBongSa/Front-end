@@ -5,7 +5,7 @@ import { __getBoardId } from "../../redux/modules/boardSlice";
 import MainBg from "../MainBg/MainBg";
 import KaMap from "../Map/KaMap";
 import Comment from "../Detail/Comment/Comment";
-import DetailSlideBar from "./DetailSlide/DetailSlideBar";
+import DetailSlide from "./DetailSide/DetailSide";
 import { getCookieToken } from "../../utils/cookie";
 import {
 	DetailContainer,
@@ -20,6 +20,7 @@ import {
 } from "./Detail.styled";
 
 const Detail = () => {
+
 	const navigate = useNavigate();
 	const dispatch = useDispatch();
 	const boardsId = useSelector(state => state?.boards?.board);
@@ -38,9 +39,9 @@ const Detail = () => {
 		const diffDate = dueDay.getTime() - today.getTime();
 		return Math.round(Math.abs(diffDate / (1000 * 60 * 60 * 24)));
 	};
-
 	const today = new Date().toISOString().split("T")[0];
 	const dDay = getDateDiff(boardsId.dueDay, today);
+
 	return (
 		<>
 			<MainBg image={boardsId?.boardImage} />
@@ -85,7 +86,7 @@ const Detail = () => {
 					<hr />
 					<Comment />
 				</DetailContent>
-				<DetailSlideBar boardsId={boardsId} username={username} id={id} />
+				<DetailSlide boardsId={boardsId} username={username} id={id} />
 			</DetailContainer>
 		</>
 	);
