@@ -11,11 +11,10 @@ import { ko } from "date-fns/esm/locale";
 import styled from "styled-components";
 import { RecruitContainer } from "./Recruit.styled";
 import { useNavigate } from "react-router-dom";
-import Tags from "./Tags/Tags"
+import Tags from "./Tags/Tags";
 import ImageUpload from "./ImageUpload/ImageUpload";
 
 const Recruit = () => {
-
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
 	const status = useSelector(state => state.boards.status);
@@ -25,7 +24,7 @@ const Recruit = () => {
 
 	// Image
 	const [boardImage, setBoardImage] = useState(null);
-  const [uploadPreview, setUploadPreview] = useState([]);
+	const [uploadPreview, setUploadPreview] = useState([]);
 
 	const onChangeImage = e => {
 		setBoardImage(e.target.files[0]);
@@ -87,7 +86,6 @@ const Recruit = () => {
 	const [tags, setTags] = useState([]);
 	const [address, setAddress] = useState("");
 
-
 	//텍스트데이터 스테이즈 저장
 	const onChangeInput = e => {
 		const { name, value } = e.target;
@@ -98,7 +96,7 @@ const Recruit = () => {
 		const tag = e;
 		setTags([...tags, tag]);
 	};
-	console.log(tags)
+	console.log(tags);
 
 	const submitHandler = e => {
 		e.preventDefault();
@@ -123,18 +121,21 @@ const Recruit = () => {
 	return (
 		<RecruitContainer>
 			<form onSubmit={submitHandler}>
-			<h2>봉사 등록하기</h2>
+				<h2>봉사 등록하기</h2>
 				<StLeftWrap>
-					<h3><span>봉사 활동</span>에 대해 궁금해요!</h3>
+					<h3>
+						<span>봉사 활동</span>에 대해 궁금해요!
+					</h3>
 					<Input
-						placeholder="봉사 활동 내용"
+						placeholder="어떤 봉사활동인가요?"
 						type="text"
 						name="title"
 						value={input.title}
 						onChange={e => onChangeInput(e)}
 					/>
-					<Tags category={true} onChangeTags={onChangeTags}/>
-					<p>봉사활동 날짜 및 시각</p>
+					<p>카테고리를 선택해 주세요!</p>
+					<Tags category={true} onChangeTags={onChangeTags} />
+					<p>활동 날짜와 시간을 선택해주세요!</p>
 					<RegisterDatePicker
 						locale={ko}
 						selected={dueDay}
@@ -144,10 +145,13 @@ const Recruit = () => {
 						maxTime={due.setHours(due.setMinutes(new Date(), 0), 18)}
 						dateFormat="📅 yyyy년-MM월-dd일 / 🕜 aa h:mm "
 					/>
+
 					<label 
 						htmlFor="address"
 						onClick={openPostCode}
 					>우편번호 검색</label>
+
+					<p>봉사 기관에 대한 주소를 입력해주세요!</p>
 					<Input
 						id="address"
 						placeholder="행사 주소(우편번호 검색 클릭)"
@@ -168,7 +172,7 @@ const Recruit = () => {
 						placeholder="봉사활동 상세주소"
 						name="detailArea"
 						value={input.detailArea}
-						onChange={(e) => onChangeInput(e)}
+						onChange={e => onChangeInput(e)}
 					/>
 					<p>세부 내용</p>
 					<TextArea
@@ -176,13 +180,15 @@ const Recruit = () => {
 						type="text"
 						name="content"
 						value={input.content}
-						onChange={(e) => onChangeInput(e)}
+						onChange={e => onChangeInput(e)}
 					/>
 				</StLeftWrap>
 
 				<StRightWrap>
-					<h3><span>모집 내용</span>에 대해 궁금해요!</h3>
-					<p>봉사활동 모집기간</p>					
+					<h3>
+						<span>모집 내용</span>에 대해 궁금해요!
+					</h3>
+					<p>봉사활동 모집기간</p>
 					<RegisterDatePicker
 						locale={ko}
 						dateFormat="📅 yyyy년-MM월-dd일"
@@ -193,12 +199,12 @@ const Recruit = () => {
 						selectsRange
 					/>
 					<p>봉사활동을 잘 나타내 줄 이미지를 올려보세요</p>
-					
-					<ImageUpload onChangeImage={onChangeImage} uploadPreview={uploadPreview}/>
-					
-					<Tags category={false} onChangeTags={onChangeTags}/>
+					<ImageUpload onChangeImage={onChangeImage} uploadPreview={uploadPreview} />
 
-					<button>등록하기</button>
+					<p>이런 사람을 찾고 있어요!</p>
+					<Tags category={false} onChangeTags={onChangeTags} />
+
+					<Button>등록하기</Button>
 				</StRightWrap>
 			</form>
 		</RecruitContainer>
@@ -215,7 +221,7 @@ export const StLeftWrap = styled.div`
 		font-size: 1.2rem;
 		& span {
 			font-weight: 500;
-			color: ${(props) => props.theme.btnColor};
+			color: ${props => props.theme.btnColor};
 		}
 	}
 	& label {
@@ -225,7 +231,7 @@ export const StLeftWrap = styled.div`
 		width: 80%;
 		float: none;
 	}
-`
+`;
 
 export const StRightWrap = styled.div`
 	width: 40%;
@@ -235,14 +241,14 @@ export const StRightWrap = styled.div`
 		font-size: 1.2rem;
 		& span {
 			font-weight: 500;
-			color: ${(props) => props.theme.btnColor};
+			color: ${props => props.theme.btnColor};
 		}
 	}
 	@media (max-width: 1024px) {
 		width: 80%;
 		float: none;
 	}
-`
+`;
 
 export const ImageUploadBox = styled.div`
 	& input[type="file"] {
@@ -264,7 +270,7 @@ export const ImageUploadBox = styled.div`
 		& .textBox {
 		}
 	}
-`
+`;
 
 const TextArea = styled.textarea`
 	margin: 1rem;
@@ -275,7 +281,7 @@ const TextArea = styled.textarea`
 	resize: none;
 	padding: 1rem;
 	&:focus {
-		outline: 2px solid ${(props) => props.theme.btnColor};
+		outline: 2px solid ${props => props.theme.btnColor};
 	}
 	button {
 		width: 300px;
@@ -285,6 +291,7 @@ const TextArea = styled.textarea`
 		border: none;
 	}
 `;
+
 
 const RegisterDatePicker = styled(DatePicker)`
 	margin: 1rem;
@@ -297,3 +304,20 @@ const RegisterDatePicker = styled(DatePicker)`
 	outline: none;
 	background: ${props => props.theme.textColor};
 `;
+
+
+const Button = styled.button`
+	border: 0;
+	outline: none;
+	font-size: 20px;
+	margin: 20px;
+	color: ${props => props.theme.btnColor};
+	background: gainsboro;
+	padding: 10px;
+	cursor: pointer;
+	border-radius: 10px;
+	:hover {
+		color: ${props => props.theme.subBtnColor};
+	}
+`;
+

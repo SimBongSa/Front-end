@@ -1,30 +1,59 @@
 import styled from "styled-components";
+import Calendar from "react-calendar";
 
-export const CalendarContainer = styled.div`
+export const StCalendarList = styled.div`
+	width: 35%;
+	& h2 {
+		font-size: 1.6rem;
+	}
+	@media (max-width: 1280px) {
+		margin-top: 5rem;
+		width: 100%;
+	}
+`;
+
+export const StCalendarWrap = styled.div`
+	display: flex;
+	width: 100%;
+	flex-direction: row;
+	justify-content: space-between;
+	@media (max-width: 1280px) {
+		flex-direction: column;
+	}
+`;
+
+export const StCalendar = styled(Calendar)`
+	min-width: min-content;
+	@media (max-width: 1280px) {
+		min-width: fit-content;
+	}
+`;
+
+export const StCalendarContainer = styled.div`
 	margin: auto;
-  margin-top: 5rem;
-  margin-bottom: 10rem;
-  width: 80%;
-  justify-content: center;
+	margin-top: 5rem;
+	margin-bottom: 10rem;
+	width: 80%;
+	justify-content: center;
 	overflow: hidden;
-  transition: all 0.5s;
-  & h1 {
-    font-size: 2rem;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-    color: ${(props) => props.theme.textColor};
-  }
+	transition: all 0.5s;
+	& h1 {
+		font-size: 2rem;
+		margin-top: 1rem;
+		margin-bottom: 1rem;
+		color: ${props => props.theme.textColor};
+	}
 
-  .react-calendar {
-    /* width: 55rem; */
-    height: 40rem;
-    max-width: 60%;
-    background: #ffffff;
-    font-family: Arial, Helvetica, sans-serif;
-    line-height: 3.5rem;
-    border-radius: 12px;
-    border-style: outset;
-  }
+	.react-calendar {
+		/* width: 55rem; */
+		height: 40rem;
+		max-width: 60%;
+		background: #ffffff;
+		font-family: Arial, Helvetica, sans-serif;
+		line-height: 3.5rem;
+		border-radius: 12px;
+		border-style: outset;
+	}
 
 	.react-calendar__month-view__days__day--neighboringMonth {
 		opacity: 0.3;
