@@ -1,12 +1,7 @@
-import styled from "styled-components";
+import { Stbtn } from "./button.styled";
 
-const button = props => {
-	const { text } = props;
-
-	return (
-		//  <StGreenBtn {...props}>{text}</StGreenBtn>
-		<p>test</p>
-	);
+const Button = ({ children, ...props }) => {
+	return <Stbtn {...props}>{children}</Stbtn>;
 };
 
-export default button;
+export default Button;

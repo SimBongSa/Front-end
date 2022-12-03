@@ -26,56 +26,6 @@ export const StBtnBox = styled.div`
 	justify-content: center;
 `;
 
-export const Button = styled.button`
-	font-size: 15px;
-	margin-left: 1rem;
-	margin-right: 1rem;
-	width: 50px;
-	height: 50px;
-	background-color: transparent;
-	border: none;
-	color: ${props => props.theme.textColor};
-	cursor: pointer;
-	transition: all 0.5s ease;
-	&:hover {
-		transform: translateY(-0.5rem);
-	}
-`;
-
-export const StMapBtn = styled.button`
-	font-size: 16px;
-	border: 1px solid ${props => props.theme.btnColor};
-	border-radius: 50px;
-	width: 140px;
-	height: 40px;
-	margin-right: 2rem;
-	background: ${props => props.theme.bgColor};
-	color: ${props => props.theme.textColor};
-	cursor: pointer;
-	/* padding-top: 2.5px; */
-	transition: all 0.5s ease;
-	&:hover {
-		transform: translateY(-0.5rem);
-	}
-`;
-
-export const StCloseBtn = styled.button`
-	z-index: 99;
-	position: absolute;
-	color: #fff;
-	text-align: right;
-	right: 15%;
-	top: 10%;
-	font-size: 36px;
-	background-color: transparent;
-	border: none;
-	cursor: pointer;
-	transition: all 0.5s ease;
-	&:hover {
-		transform: translateY(-0.5rem);
-	}
-`;
-
 export const ListMap = styled.div`
 	position: fixed;
 	top: 50%;

@@ -1,249 +1,225 @@
-// import styled from "styled-components";
-// import button from "./button";
-
-// button.defaultProps = {
-//     width: "",
-//     height: "",
-//     onClick: () => {},
-// }
-
-// export const StGreenBtn = styled.div`
-// 	text-align: center;
-// 	padding: 15px 20px;
-// 	margin-bottom: 1rem;
-// 	width:  ${props => props.width};
-// 	height:  ${props => props.height};
-// 	border-radius: 24px;
-// 	color: ${props => props.theme.bgColor};
-// 	background-color: ${props => props.theme.btnColor};
-// 	cursor: pointer;
-// `;
-
-// export const stWhiteBtn = styled.div`
-// 	text-align: center;
-// 	padding: 15px 20px;
-// 	margin-bottom: 1rem;
-// 	width: 20rem;
-// 	height: 3rem;
-// 	border-radius: 24px;
-// 	color: ${props => props.theme.btnColor};
-// 	background-color: ${props => props.theme.bgColor};
-// 	border: 1px solid ${props => props.theme.btnColor};
-// 	cursor: pointer;
-// `;
-
 import styled, { css } from "styled-components";
 
-export const Button = styled.button`
+export const Stbtn = styled.button`
 	&:hover {
-		opacity: 0.8;
+		opacity: 0.7;
 	}
 	${({ variant }) => {
 		switch (variant) {
-			case "login":
+			//페이지(URL) -> 파일명(컴포넌트)
+			//recruit -> recruit.jsx
+			case "recruit-green":
 				return css`
-					width: 100px;
-					height: 50px;
-				`;
-			case "new-post":
-				return css`
-					height: 2rem;
-					padding-left: 0.9rem;
-					padding-right: 0.9rem;
-					font-size: 1rem;
-					letter-spacing: 0.01rem;
-					border-radius: 1rem;
-					font-weight: 600;
-					background-color: #f8f9fa;
-					border: 1px solid black;
+					text-align: center;
+					padding: 15px 20px;
+					margin-bottom: 1rem;
+					width: ${props => props.width};
+					height: ${props => props.height};
+					border-radius: 24px;
+					color: ${props => props.theme.bgColor};
+					background-color: ${props => props.theme.btnColor};
+					border: 1px solid ${props => props.theme.btnColor};
 					cursor: pointer;
-					transition: background-color 500ms, color 500ms;
+				`;
+			case "recruit-white":
+				return css`
+					text-align: center;
+					padding: 15px 20px;
+					margin-bottom: 1rem;
+					width: ${props => props.width};
+					height: ${props => props.height};
+					border-radius: 24px;
+					color: ${props => props.theme.btnColor};
+					background-color: ${props => props.theme.bgColor};
+					border: 1px solid ${props => props.theme.btnColor};
+					cursor: pointer;
+				`;
 
-					&:hover {
-						background-color: #000000;
-						color: #ffffff;
-					}
-				`;
-			case "new-post-login":
+			//boards -> DetailSide.jsx
+			case "boards-apply":
 				return css`
-					height: 2rem;
-					padding-left: 0.9rem;
-					padding-right: 0.9rem;
-					font-size: 1rem;
-					letter-spacing: 0.01rem;
-					border-radius: 1rem;
-					font-weight: 600;
-					border: 1px solid black;
-					cursor: pointer;
-					transition: opacity 500ms, color 500ms;
-					background-color: #000000;
-					color: #ffffff;
-					&:hover {
-						opacity: 0.8;
-					}
-				`;
-			case "main-new":
-				return css`
-					width: 110px;
-					font-size: 1.2rem;
-					color: #212529;
-					font-weight: 700;
-					background-color: transparent;
-					padding: 10px 5px 12px 0;
-					border-bottom: 2px solid #212529;
-					cursor: pointer;
-				`;
-			case "join-close":
-				return css`
-					background-color: transparent;
-					cursor: pointer;
-				`;
-			case "sign-in":
-				return css`
-					background-color: #21c997;
-					width: 96px;
-					height: 48px;
-					font-weight: 500;
-					font-size: 15px;
-					color: #ffffff;
-					border-radius: 2px;
-					position: absolute;
-					top: 40px;
-					left: 117px;
-					cursor: pointer;
-				`;
-			case "sign-up":
-				return css`
-					background-color: #21c997;
-					width: 96px;
-					height: 48px;
-					font-weight: 500;
-					font-size: 15px;
-					color: #ffffff;
-					border-radius: 2px;
-					position: absolute;
-					bottom: 40px;
-					left: 362px;
-					cursor: pointer;
-				`;
-			case "join-check":
-				return css`
-					background-color: #21c997;
-					width: 80px;
-					height: 43px;
-					margin-left: 6px;
-					font-weight: 500;
-					font-size: 15px;
-					color: #ffffff;
-					border-radius: 2px;
-					cursor: pointer;
-				`;
-			case "signin-signup":
-				return css`
-					color: #21c997;
-					font-size: 16px;
-					font-weight: 500;
-					background-color: transparent;
-				`;
-			case "write-left-btn":
-				return css`
-					height: 2.5rem;
-					padding: 0.5rem 1rem;
-					align-items: center;
-					background: none;
-					border-radius: 4px;
-					cursor: pointer;
-					border: none;
-					display: flex;
-					outline: none;
-					color: var(--text1);
 					text-align: center;
-					height: 40px;
-					font-weight: 400;
-					font-size: 1.125rem;
-					:hover {
-						background: #e9ecef;
-					}
-				`;
-			case "write-wrigth-btn":
-				return css`
-					margin-left: 0.75rem;
-					height: 2.5rem;
-					font-size: 1.125rem;
-					display: inline-flex;
-					align-items: center;
-					justify-content: center;
-					font-weight: bold;
+					padding: 15px 20px;
+					margin-bottom: 1rem;
+					width: 20rem;
+					height: 3rem;
+					border-radius: 24px;
+					background: ${props => props.theme.btnColor};
+					border: 1px solid ${props => props.theme.btnColor};
+					color: ${props => props.theme.bgColor};
 					cursor: pointer;
-					outline: none;
-					border: none;
-					border-radius: 4px;
-					padding: 0px 1.25rem;
-					appearance: auto;
-					background-attachment: scroll;
-					background-clip: border-box;
-					background-color: rgb(18, 184, 134);
-					color: white;
 				`;
-			case "user-edit-btn":
+			case "boards-chat":
 				return css`
-					max-width: 768px;
-					font-size: 0.875rem;
 					text-align: center;
-					font-weight: 400;
-					background-color: rgb(0, 0, 0, 0);
-					background-origin: padding-box;
+					padding: 15px 20px;
+					margin-bottom: 1rem;
+					width: 20rem;
+					height: 3rem;
+					border-radius: 24px;
+					color: ${props => props.theme.btnColor};
+					background-color: ${props => props.theme.bgColor};
+					border: 1px solid ${props => props.theme.btnColor};
+					cursor: pointer;
 				`;
-			case "user-edit-btn1":
-				return css`
-					max-width: 768px;
-					margin-left: 0.5rem;
-					font-size: 0.875rem;
-					text-align: center;
-					font-weight: 400;
-					background-color: rgb(0, 0, 0, 0);
-					background-origin: padding-box;
-				`;
-			case "un-like":
-				return css`
-					width: 25px;
-					height: 25px;
-					background-image: url("/images/heart.png");
-					background-position: center center;
-					background-size: contain;
-					background-color: transparent;
-					opacity: 0.6;
-					&:hover {
-						opacity: 0.6;
-					}
-				`;
-			case "like":
-				return css`
-					width: 25px;
-					height: 25px;
-					background-image: url("/images/like.png");
-					background-position: center center;
-					background-size: contain;
-					background-color: transparent;
-					opacity: 0.6;
-					&:hover {
-						opacity: 0.6;
-					}
-				`;
+
+			//boards -> Comment.jsx
 			case "comment":
 				return css`
-					width: 100px;
-					font-weight: 500;
-					outline: none;
-					border: none;
-					background: #12b886;
-					color: #ffffff;
-					border-radius: 4px;
-					padding: 0px 10px;
-					height: 2rem;
-					font-size: 15px;
+					background: ${props => props.theme.btnColor};
+					border: 1px solid ${props => props.theme.btnColor};
+					color: ${props => props.theme.bgColor};
+					border-radius: 24px;
+					width: 8rem;
+					height: 2.5rem;
+					margin-left: auto;
+					margin-right: 0.5rem;
 					cursor: pointer;
 				`;
+			//boards -> SearchBar.jsx
+			case "boards-map-open":
+				return css`
+					font-size: 16px;
+					border: 1px solid ${props => props.theme.btnColor};
+					border-radius: 50px;
+					width: 140px;
+					height: 40px;
+					margin-right: 2rem;
+					background: ${props => props.theme.bgColor};
+					color: ${props => props.theme.textColor};
+					cursor: pointer;
+					/* padding-top: 2.5px; */
+					transition: all 0.5s ease;
+					&:hover {
+						transform: translateY(-0.5rem);
+					}
+				`;
+			case "boards-map-close":
+				return css`
+					z-index: 99;
+					position: absolute;
+					color: #fff;
+					text-align: right;
+					right: 15%;
+					top: 10%;
+					font-size: 36px;
+					background-color: transparent;
+					border: none;
+					cursor: pointer;
+					transition: all 0.5s ease;
+					&:hover {
+						transform: translateY(-0.5rem);
+					}
+				`;
+			case "boards-prev-next":
+				return css`
+					font-size: 15px;
+					margin-left: 1rem;
+					margin-right: 1rem;
+					width: 50px;
+					height: 50px;
+					background-color: transparent;
+					border: none;
+					color: ${props => props.theme.textColor};
+					cursor: pointer;
+					transition: all 0.5s ease;
+				`;
+
+			//mypageedit -> ProfileEdit.jsx / edit -> DetailEdit.jsx
+			case "mypageedit":
+				return css`
+					z-index: 11;
+					position: absolute;
+					background: ${props => props.theme.btnColor};
+					border: 1px solid ${props => props.theme.btnColor};
+					color: ${props => props.theme.bgColor};
+					border-radius: 24px;
+					width: 8rem;
+					height: 2.5rem;
+					margin-left: auto;
+					margin-right: 0.5rem;
+					cursor: pointer;
+				`;
+			//searchbar -> SearchBar.jsx
+			case "searchbar-open":
+				return css``;
+			case "search":
+				return css`
+					cursor: pointer;
+					display: flex;
+					position: absolute;
+					width: 4.75em;
+					height: 4.75em;
+					right: 10px;
+					align-items: center;
+					background: ${props => props.theme.btnColor};
+					border: none;
+					border-radius: 50%;
+					justify-content: center;
+					margin: 0 0.5em;
+					z-index: 1;
+					transition: all 0.25s;
+				`;
+
+			//chat -> ChatInput.jsx
+			case "chat":
+				return css`
+					position: absolute;
+					cursor: pointer;
+					width: 45px;
+					height: 45px;
+					border: none;
+					border-radius: 50%;
+					top: 5.5px;
+					right: 11%;
+					font-size: 1.4rem;
+					padding: 11px;
+					color: ${props => props.theme.textColor};
+					background: ${props => props.theme.btnColor};
+				`;
+
+			// -> MyApplicant.jsx
+			case "applicant-approve":
+				return css`
+					text-align: center;
+					padding: 15px 20px;
+					margin-bottom: 1rem;
+					width: ${props => props.width};
+					height: ${props => props.height};
+					border-radius: 24px;
+					color: ${props => props.theme.bgColor};
+					background-color: ${props => props.theme.btnColor};
+					border: 1px solid ${props => props.theme.btnColor};
+					cursor: pointer;
+				`;
+			case "applicant-reject":
+				return css`
+					text-align: center;
+					padding: 15px 20px;
+					margin-bottom: 1rem;
+					width: ${props => props.width};
+					height: ${props => props.height};
+					border-radius: 24px;
+					color: ${props => props.theme.btnColor};
+					background-color: ${props => props.theme.bgColor};
+					border: 1px solid ${props => props.theme.btnColor};
+					cursor: pointer;
+				`;
+
+			// PostPopup -> PopupPostCode.jsx
+			case "post-popup-close":
+				return css`
+					position: absolute;
+					bottom: 5%;
+					left: 50%;
+					border-radius: 24px;
+					color: ${props => props.theme.btnColor};
+					background-color: ${props => props.theme.bgColor};
+					border: 1px solid ${props => props.theme.btnColor};
+					transform: translateX(-50%);
+					z-index: 10;
+				`;
+
 			default:
 				break;
 		}

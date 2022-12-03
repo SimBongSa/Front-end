@@ -13,6 +13,7 @@ import { RecruitContainer } from "./Recruit.styled";
 import { useNavigate } from "react-router-dom";
 import Tags from "./Tags/Tags";
 import ImageUpload from "./ImageUpload/ImageUpload";
+import Stbtn from "../common/button/Button";
 
 const Recruit = () => {
 	const dispatch = useDispatch();
@@ -141,15 +142,12 @@ const Recruit = () => {
 						selected={dueDay}
 						onChange={date => setDueDay(date)}
 						showTimeSelect
-						minTime={due.setHours(due.setMinutes(new Date(), 0), 9)}
-						maxTime={due.setHours(due.setMinutes(new Date(), 0), 18)}
-						dateFormat="📅 yyyy년-MM월-dd일 / 🕜 aa h:mm "
+						dateFormat="📅 yyyy년-MM월-dd일 "
 					/>
 
-					<label 
-						htmlFor="address"
-						onClick={openPostCode}
-					>우편번호 검색</label>
+					<label htmlFor="address" onClick={openPostCode}>
+						우편번호 검색
+					</label>
 
 					<p>봉사 기관에 대한 주소를 입력해주세요!</p>
 					<Input
@@ -204,7 +202,7 @@ const Recruit = () => {
 					<p>이런 사람을 찾고 있어요!</p>
 					<Tags category={false} onChangeTags={onChangeTags} />
 
-					<Button>등록하기</Button>
+					<Stbtn variant="recruit-green">봉사활동 등록하기</Stbtn>
 				</StRightWrap>
 			</form>
 		</RecruitContainer>
@@ -292,7 +290,6 @@ const TextArea = styled.textarea`
 	}
 `;
 
-
 const RegisterDatePicker = styled(DatePicker)`
 	margin: 1rem;
 	font-size: 15px;
@@ -305,19 +302,17 @@ const RegisterDatePicker = styled(DatePicker)`
 	background: ${props => props.theme.textColor};
 `;
 
-
-const Button = styled.button`
-	border: 0;
-	outline: none;
-	font-size: 20px;
-	margin: 20px;
-	color: ${props => props.theme.btnColor};
-	background: gainsboro;
-	padding: 10px;
-	cursor: pointer;
-	border-radius: 10px;
-	:hover {
-		color: ${props => props.theme.subBtnColor};
-	}
-`;
-
+// const Button = styled.button`
+// 	border: 0;
+// 	outline: none;
+// 	font-size: 20px;
+// 	margin: 20px;
+// 	color: ${props => props.theme.btnColor};
+// 	background: gainsboro;
+// 	padding: 10px;
+// 	cursor: pointer;
+// 	border-radius: 10px;
+// 	:hover {
+// 		color: ${props => props.theme.subBtnColor};
+// 	}
+// `;

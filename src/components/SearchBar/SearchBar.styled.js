@@ -40,22 +40,22 @@ export const SearchBarOpen = styled.button`
 `;
 
 export const SearchModal = styled.div`
-  position: fixed;
-  width: 100%;
-  height: 200px;
-  margin-top: 80px;
-  left: 50%;
-  top: 10px;
-  z-index: 5;
-  background: ${(props) => props.theme.bgColor};
-  animation: ${(props) => (props.animation ? fadeOut : fadeIn)} 0.6s;
-  transform: translate(-50%, 0%);
-  transition: all 0.4s;
-  & h1 {
-    font-size: 1.4rem;
-    font-weight: 300;
-    text-align: center;
-  }
+	position: fixed;
+	width: 100%;
+	height: 200px;
+	margin-top: 80px;
+	left: 50%;
+	top: 10px;
+	z-index: 5;
+	background: ${props => props.theme.bgColor};
+	animation: ${props => (props.animation ? fadeOut : fadeIn)} 0.6s;
+	transform: translate(-50%, 0%);
+	transition: all 0.4s;
+	& h1 {
+		font-size: 1.4rem;
+		font-weight: 300;
+		text-align: center;
+	}
 `;
 
 export const SearchBarWrapper = styled.div`
@@ -126,22 +126,22 @@ export const SearchList = styled.ul`
 	}
 `;
 
-export const SearchBtn = styled.button`
-  cursor: pointer;
-  display: flex;
-  position: absolute;
-  width: 4.75em;
-  height: 4.75em;
-  right: 10px;
-  align-items: center;
-  background: ${(props) => props.theme.btnColor};
-  border: none;
-  border-radius: 50%;
-  justify-content: center;
-  margin: 0 0.5em;
-  z-index: 1;
-  transition: all 0.25s;
-`;
+// export const SearchBtn = styled.button`
+//   cursor: pointer;
+//   display: flex;
+//   position: absolute;
+//   width: 4.75em;
+//   height: 4.75em;
+//   right: 10px;
+//   align-items: center;
+//   background: ${(props) => props.theme.btnColor};
+//   border: none;
+//   border-radius: 50%;
+//   justify-content: center;
+//   margin: 0 0.5em;
+//   z-index: 1;
+//   transition: all 0.25s;
+// `;
 
 const fadeIn = keyframes`
   from {
