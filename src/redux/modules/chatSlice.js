@@ -26,11 +26,25 @@ export const __createChatRoom = createAsyncThunk(
   }
 );
 
+export const __getChatHistory = createAsyncThunk(
+  "getChatHistory",
+  async (payload, thunkAPI) => {
+    try {
+      const response = await apis.getChatHistory(payload);
+      console.log(response);
+      return thunkAPI.fulfillWithValue(response.data.data);
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error);
+    }
+  }
+);
+
 export const chatSlice = createSlice({
   name: "chat",
   initialState: {
     chatRoom: [],
     chatList: [],
+    chatHistory: [],
     isLoading: false,
     error: null,
   },
@@ -59,6 +73,19 @@ export const chatSlice = createSlice({
         state.chatRoom = action.payload;
       })
       .addCase(__createChatRoom.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.payload;
+      })
+
+      // Get Chat History
+      .addCase(__getChatHistory.pending, (state, _) => {
+        state.isLoading = true;
+      })
+      .addCase(__getChatHistory.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.chatHistory = action.payload;
+      })
+      .addCase(__getChatHistory.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.payload;
       })

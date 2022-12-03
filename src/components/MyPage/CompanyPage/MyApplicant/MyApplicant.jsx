@@ -43,7 +43,7 @@ const MyApplicant = ({ list }) => {
 							<h1>{item.title}</h1>
 							<time>
 								<FcCalendar />
-								{item.dueDay}
+								{item.dueDay?.split('T')[0]}
 							</time>
 							<div className="bar" />
 							<PreviewText>StartDate : {item.startDate}</PreviewText>
