@@ -1,6 +1,8 @@
 import { useEffect, useRef } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useOutletContext, useParams } from "react-router-dom";
 import styled from "styled-components";
+import { __getChatHistory } from "../../../redux/modules/chatSlice";
 import ChattingService from "../../../StomJS/SockInstance";
 import { getCookieToken } from "../../../utils/cookie";
 
@@ -9,6 +11,7 @@ const ChattingServiceKit = new ChattingService();
 export const ChatContent = () => {
 
   const id = useParams();
+  const dispatch = useDispatch();
 
   ChattingServiceKit.onConnect(`/topic/greetings/${id.id}`, {}, (newMessage) => {
     setReceiveMsg(newMessage)
@@ -19,36 +22,57 @@ export const ChatContent = () => {
   const setReceiveMsg = props.setReceiveMsg;
   const username = getCookieToken(["username"]);
 
+  const chatHistory = useSelector((state) => state.chat.chatHistory);
+
   const scrollRef = useRef();
 
   useEffect(() => {
+    dispatch(__getChatHistory(id.id));
     scrollRef.current.scrollIntoView({ behavior: 'smooth', block: 'start', inline: 'nearest' })
-  }, [props])
+  }, [dispatch, props, id]);
 
   return (
     <StChatContent>
       <ul>
-      {
-        chatLog?.map((item, idx) => {
-          return (
-            <>
-              {
-                username === item.userName ? (
-                    <StMyMessage>
-                      <span>{item?.createdAt?.split('T')[1].substr(0,5)}</span>
-                      <h4>{item.content}</h4>
-                    </StMyMessage>
-                ) : (
-                    <StReceiveMsg>
-                      <span>{item?.createdAt?.split('T')[1].substr(0,5)}</span>
-                      <h4>{item.content}</h4>
-                    </StReceiveMsg>
-                )
-              }
+        {/* 채팅기록 불러오기 */}
+        {
+          chatHistory?.map((item) => {
+            return (
+              username === item.name ? (
+                <StMyMessage key={item.id}>
+                  <span>{item?.createdAt?.split('T')[1].substr(0,5)}</span>
+                  <h4>{item.content}</h4>
+                </StMyMessage>
+              ) : (
+                <StReceiveMsg key={item.id}>
+                  <span>{item?.createdAt?.split('T')[1].substr(0,5)}</span>
+                  <h4>{item.content}</h4>
+                </StReceiveMsg>
+              )
+            )
+          })
+        }
+        {
+          chatLog?.map((item, idx) => {
+            return (
+              <>
+                {
+                  username === item.userName ? (
+                      <StMyMessage key={idx}>
+                        <span>{item?.createdAt?.split('T')[1].substr(0,5)}</span>
+                        <h4>{item.content}</h4>
+                      </StMyMessage>
+                  ) : (
+                      <StReceiveMsg key={idx}>
+                        <span>{item?.createdAt?.split('T')[1].substr(0,5)}</span>
+                        <h4>{item.content}</h4>
+                      </StReceiveMsg>
+                  )
+                }
               </>
-          )
-        })
-      }
+            )
+          })
+        }
       </ul>
       <div ref={scrollRef}/>
     </StChatContent>  
