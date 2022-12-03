@@ -1,4 +1,4 @@
-import styled, { css } from "styled-components";
+import styled, { css, keyframes } from "styled-components";
 
 export const Stbtn = styled.button`
 	&:hover {
@@ -142,7 +142,35 @@ export const Stbtn = styled.button`
 				`;
 			//searchbar -> SearchBar.jsx
 			case "searchbar-open":
-				return css``;
+				return css`
+					display: ${props => (props.modal ? "none" : "flex")};
+					flex-direction: row;
+					cursor: pointer;
+					position: fixed;
+					width: 350px;
+					height: 50px;
+					float: left;
+					align-items: center;
+					margin-top: 1rem;
+					top: 5px;
+					left: 50%;
+					border: none;
+					border-radius: 35px;
+					padding: 1rem;
+					animation: ${props => (props.animation ? fadeOut : fadeIn)} 0.6s;
+					transform: translate(-50%, 0%);
+					transition: all 0.5s;
+					& span {
+						margin: 0;
+						@media (max-width: 768px) {
+							display: none;
+						}
+					}
+					@media (max-width: 768px) {
+						top: 8px;
+						width: 55px;
+					}
+				`;
 			case "search":
 				return css`
 					cursor: pointer;
@@ -224,4 +252,22 @@ export const Stbtn = styled.button`
 				break;
 		}
 	}}
+`;
+
+const fadeIn = keyframes`
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+`;
+
+const fadeOut = keyframes`
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
 `;

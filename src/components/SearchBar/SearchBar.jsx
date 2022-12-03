@@ -9,7 +9,6 @@ import { __postSearch } from "../../redux/modules/calendarSlice";
 import { HiMagnifyingGlass } from "react-icons/hi2";
 import {
 	SearchBarContainer,
-	SearchBarOpen,
 	SearchModal,
 	SearchBarWrapper,
 	SearchLabel,
@@ -65,11 +64,11 @@ const SearchBar = () => {
 	return (
 		<SearchBarContainer ref={node} modal={modal} animation={animation} onSubmit={onSubmitHandler}>
 			{modal === false ? (
-				<SearchBarOpen onClick={() => setModal(prev => !prev)}>
+				<Stbtn variant="searchbar-open" onClick={() => setModal(prev => !prev)}>
 					<StMagnifying />
 					<span>어떤 봉사활동을 찾고 계세요?</span>
 					<MagnityingBtn />
-				</SearchBarOpen>
+				</Stbtn>
 			) : (
 				<form onSubmit={e => onSubmitHandler(e)}>
 					<SearchModal animation={animation}>

@@ -126,22 +126,22 @@ export const SearchList = styled.ul`
 	}
 `;
 
-// export const SearchBtn = styled.button`
-//   cursor: pointer;
-//   display: flex;
-//   position: absolute;
-//   width: 4.75em;
-//   height: 4.75em;
-//   right: 10px;
-//   align-items: center;
-//   background: ${(props) => props.theme.btnColor};
-//   border: none;
-//   border-radius: 50%;
-//   justify-content: center;
-//   margin: 0 0.5em;
-//   z-index: 1;
-//   transition: all 0.25s;
-// `;
+export const SearchBtn = styled.button`
+	cursor: pointer;
+	display: flex;
+	position: absolute;
+	width: 4.75em;
+	height: 4.75em;
+	right: 10px;
+	align-items: center;
+	background: ${props => props.theme.btnColor};
+	border: none;
+	border-radius: 50%;
+	justify-content: center;
+	margin: 0 0.5em;
+	z-index: 1;
+	transition: all 0.25s;
+`;
 
 const fadeIn = keyframes`
   from {

@@ -47,7 +47,7 @@ const Recruit = () => {
 	const due = new Date();
 	const [startDate, setStartDate] = useState(today);
 	const [endDate, setEndDate] = useState(null);
-	const [dueDay, setDueDay] = useState(due.setHours(due.setMinutes(new Date(), 30), 17));
+	const [dueDay, setDueDay] = useState(due);
 
 	// 팝업창 열기
 	const openPostCode = () => {
@@ -158,6 +158,9 @@ const Recruit = () => {
 						value={address}
 						onClick={openPostCode}
 					/>
+					{/* <button onClick={openPostCode} type="button">
+						우편번호
+					</button> */}
 					<div id="popupDom">
 						{isPopupOpen && (
 							<PopupDom>
