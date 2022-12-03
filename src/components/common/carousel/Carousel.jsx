@@ -1,14 +1,20 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { __getBoard } from "../../../redux/modules/boardSlice";
-import { Card, CardInfo, Content, ImgWrapper } from "../cards/CardGrid.styled";
-import { CarouselContainer, SlideTrack, Slide } from "./Carousel.styled";
-import { TagBox } from "../cards/CardGrid.styled";
+import {
+	StCard,
+	StCardInfo,
+	StContent,
+	StImgWrapper,
+	StDate,
+	StArea,
+	StTagBox,
+} from "../cards/CardGrid.styled";
+import { CarouselContainer, SlideTrack, Slide, StDetailArea } from "./Carousel.styled";
 import { useNavigate } from "react-router-dom";
 
 const Carousel = () => {
-
-  const navigate = useNavigate();
+	const navigate = useNavigate();
 	const dispatch = useDispatch();
 	const [size, setSize] = useState(10);
 	const [page, setPage] = useState(1);
@@ -19,48 +25,52 @@ const Carousel = () => {
 
 	const boardList = useSelector(state => state.boards?.boards);
 
-  return (
-    <>
-      <CarouselContainer>
-      <h1>모집 종료 예정인 봉사활동</h1>
-        <SlideTrack>
-          {
-            boardList.map((item, idx) => {
-              return (
-                <Slide key={item.boardId}>
-                  <Card onClick={() => {
-                    navigate(`/boards/${item.boardId}`)
-                  }}>
-                    <ImgWrapper>
-                      <img src={item.boardImage} loading="lazy" alt="thumbnail" />
-                    </ImgWrapper>
-                    <Content>
-                      <p className="title">{item.title}</p>
-                      <CardInfo>
-                        <p>
-                          {item.area} - {item.detailArea}
-                        </p>
-                        <p className="price">D-4</p>
-                      </CardInfo>
-                    </Content>
-                    <TagBox>
-                      {
-                        item.tags.map((tag) => {
-                          return (
-                            <li>{tag}</li>
-                          )
-                        })
-                      }
-                    </TagBox>
-                  </Card>
-                </Slide>  
-              )
-            })
-          }
-        </SlideTrack>
-      </CarouselContainer>
-    </>
-  )
+	const getDateDiff = (d1, d2) => {
+		const dueDay = new Date(d1);
+		const today = new Date(d2);
+		const diffDate = dueDay.getTime() - today.getTime();
+		return Math.round(Math.abs(diffDate / (1000 * 60 * 60 * 24)));
+	};
+	const today = new Date().toISOString().split("T")[0];
+
+	return (
+		<>
+			<CarouselContainer>
+				<h1>모집 종료 예정인 봉사활동</h1>
+				<SlideTrack>
+					{boardList.map((item, idx) => {
+						const dDay = getDateDiff(item.dueDay, today);
+						return (
+							<Slide key={item.boardId}>
+								<StCard
+									onClick={() => {
+										navigate(`/boards/${item.boardId}`);
+									}}
+								>
+									<StDate>D-{dDay}</StDate>
+									<StImgWrapper>
+										<img src={item.boardImage} loading="lazy" alt="thumbnail" />
+									</StImgWrapper>
+									<StContent>
+										<p className="title">{item.title}</p>
+										<StCardInfo>
+											<StArea>{item.area}</StArea>
+											<StDetailArea>{item.detailArea}</StDetailArea>
+										</StCardInfo>
+										<StTagBox>
+											{item.tags.map(tag => {
+												return <li>{tag}</li>;
+											})}
+										</StTagBox>
+									</StContent>
+								</StCard>
+							</Slide>
+						);
+					})}
+				</SlideTrack>
+			</CarouselContainer>
+		</>
+	);
 };
 
 export default Carousel;

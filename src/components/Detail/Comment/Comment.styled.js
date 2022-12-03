@@ -9,6 +9,7 @@ export const CommentWriteWrap = styled.div`
 	align-items: center;
 	background: #ffffff;
 	border-radius: 30px;
+	/* min-width: 600px; */
 	height: 4rem;
 	& > div {
 		cursor: pointer;
@@ -39,12 +40,12 @@ export const Box = styled.div`
 `;
 
 export const Button = styled.button`
-	background: "#FFFFFF";
+	background: ${props => props.theme.btnColor};
 	border: 1px solid ${props => props.theme.btnColor};
-	color: ${props => props.theme.subTextColor};
+	color: ${props => props.theme.bgColor};
 	border-radius: 24px;
-	width: 10rem;
-	height: 3rem;
+	width: 8rem;
+	height: 2.5rem;
 	margin-left: auto;
 	margin-right: 0.5rem;
 	cursor: pointer;
@@ -56,7 +57,7 @@ export const UserIcon = styled(FaRegUserCircle)`
 	justify-content: right;
 	font-size: 3rem;
 	color: grey;
-	width: 5rem;
+	min-width: 40px;
 `;
 
 export const CommentIcon = styled(FaRegUserCircle)`
@@ -66,17 +67,14 @@ export const CommentIcon = styled(FaRegUserCircle)`
 `;
 
 export const CommentInput = styled.input`
-	margin: 12px;
-	font-size: 15px;
-	padding: 20px;
-	width: 360px;
-	padding-left: 20px;
-	border: none;
-	border-radius: 15px;
-	outline: none;
+	margin-top: 1rem;
+	margin-left: 3.5rem;
+	height: 2rem;
 	margin-bottom: 1rem;
-	background: ${props => props.theme.WHITE};
-	color: ${props => props.theme.BLACK};
+	width: 95vh;
+	background-color: transparent;
+	border: transparent;
+	border-bottom: 0.5px solid ${props => props.theme.textColor};
 `;
 
 export const Div = styled.div`
@@ -93,4 +91,17 @@ export const CommentDiv = styled.div`
 	height: 2rem;
 	flex-wrap: wrap;
 	border-bottom: 0.5px solid ${props => props.theme.textColor};
+`;
+
+export const StPageBtn = styled.div`
+	margin-top: 3rem;
+	border: 1px solid ${props => props.theme.textColor};
+	color: ${props => props.theme.textColor};
+	border-radius: 24px;
+	width: 8rem;
+	height: 2.5rem;
+	text-align: center;
+	margin-left: 45%;
+	padding: 10px 10px;
+	cursor: pointer;
 `;

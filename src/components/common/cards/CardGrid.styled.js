@@ -1,14 +1,13 @@
 import styled from "styled-components";
 
-export const CardGridContainer = styled.section`
+export const StCardGridContainer = styled.section`
 	display: grid;
 	grid-template-columns: 0fr repeat(0, minmax(auto, 60px)) 10fr;
-	margin-bottom: 5rem;
-	/* margin: 0rem 2rem 10rem 2rem; */
+	margin: 3rem 1rem 1rem 1rem;
 	justify-items: center;
 `;
 
-export const Cards = styled.div`
+export const StCards = styled.div`
 	display: grid;
 	grid-column: ${props => props.gridColumn} / span 12;
 	grid-template-columns: repeat(20, minmax(auto, 120px));
@@ -21,14 +20,16 @@ export const Cards = styled.div`
 	}
 `;
 
-export const Card = styled.div`
-	grid-column-end: span 4;
-	background-color: #39393b;
+export const StCard = styled.div`
+	grid-column-end: span 5;
 	border-radius: 6px;
+	min-width: 280px;
+	min-height: 300px;
+	margin-bottom: 2rem;
 	cursor: pointer;
-	min-width: 300px;
 	transition: all 0.5s ease;
-	min-height: 450px;
+	background-color: ${props => props.theme.bgColor};
+
 	@media screen and (max-width: 1024px) {
 		grid-column-end: span 6;
 	}
@@ -40,71 +41,94 @@ export const Card = styled.div`
 	}
 `;
 
-export const ImgWrapper = styled.div`
+export const StImgWrapper = styled.div`
 	width: 100%;
 	overflow: hidden;
-	border-radius: 6px 6px 0 0;
+	border-radius: 12px;
 	position: relative;
-	background: #232323;
 	& img {
 		width: 100%;
-		height: 250px;
+		height: 300px;
 		object-fit: cover;
 	}
 `;
 
-export const Content = styled.div`
-	padding: 1.5rem;
+export const StContent = styled.div`
+	padding-top: 12px;
+	background-color: transparent;
 	& .title {
-		font-size: 1.4rem;
-		color: #fff;
-		margin-bottom: 1rem;
+		text-align: start;
+		font-size: 1.5rem;
+		font-weight: 300;
+		color: ${props => props.theme.textColor};
+		margin-bottom: 20px;
 	}
 `;
 
-export const CardInfo = styled.div`
-  display: flex;
-  font-size: .8rem;
-  align-items: center;
-  justify-content: space-between;
-  /* color: ${(props) => props.theme.textColor}; */
-  color: white;
-  & p {
-    max-width: 180px;
-    overflow: hidden;
-  }
-  & .price {
-    width: 60px;
-    text-align: center;
-    padding: 0.5rem 0.5rem;
-    border-radius: 12rem;
-    color: ${(props) => props.theme.notiColor};
-    background-color: #303032;
-  }
-`
+export const StCardInfo = styled.div`
+	display: flex;
+	justify-content: space-between;
+	font-size: 0.8rem;
+	align-items: center;
+	/* color: ${props => props.theme.textColor}; */
+	text-align: center;
+`;
 
-export const TagBox = styled.ul`
-  display: flex;
-  flex-flow: row wrap;
-  font-size: 12px;
-  margin: 10px 0 0 0;
-  padding: 0;
-  justify-content: center;
-  margin-top: 1rem;
-  & li {
-    display: inline-block;
-    background: ${(props) => props.theme.subTextColor};
-    /* color: ${(props) => props.theme.textColor}; */
-    color: white;
-    border-radius: 3px;
-    padding: 2.5px 10px;
-    margin: 0 10px 10px 0;
-    cursor: pointer;
-    user-select: none;
-    transition: background-color 0.3s;
-    &:hover {
-      background: ${(props) => props.theme.btnColor};
-      color: ${(props) => props.theme.bgColor};
-    }
-  }
-`
+export const StArea = styled.div`
+	max-width: 200px;
+	min-width: 50px;
+	color: ${props => props.theme.bgColor};
+	background-color: ${props => props.theme.subTextColor};
+	border-radius: 17px;
+	padding: 5px 10px;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+`;
+
+export const StDetailArea = styled.div`
+	color: ${props => props.theme.textColor};
+	padding: 5px;
+	text-align: center;
+	margin-left: 1rem;
+`;
+
+export const StDate = styled.div`
+	width: 4rem;
+	height: 2rem;
+	font-weight: 350;
+	padding-top: 8px;
+	margin-top: 15px;
+	margin-left: 15px;
+	text-align: center;
+	border-radius: 12rem;
+	color: ${props => props.theme.notiColor};
+	background-color: ${props => props.theme.bgColor};
+	z-index: 1;
+	position: absolute;
+	padding-top: 10px;
+`;
+
+export const StTagBox = styled.ul`
+	display: flex;
+	font-size: 12px;
+	margin: 10px 0 0 0;
+	padding: 0;
+	margin-top: 1rem;
+	& li {
+		display: inline-block;
+		background-color: ${props => props.theme.subTextColor};
+		/* color: ${props => props.theme.textColor}; */
+		color: white;
+		border-radius: 3px;
+		padding: 2.5px 10px;
+		margin: 0 10px 10px 0;
+		cursor: pointer;
+		user-select: none;
+		transition: background-color 0.3s;
+		&:hover {
+			background-color: ${props => props.theme.btnColor};
+			color: ${props => props.theme.bgColor};
+		}
+	}
+`;

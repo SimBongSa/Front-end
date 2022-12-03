@@ -2,11 +2,12 @@ import styled from "styled-components";
 import ChatInput from "./ChatInput/ChatInput";
 import ChatList from "./ChatList/ChatList";
 import { getCookieToken } from "../../utils/cookie";
-import ChattingService from "../../StomJS/SockInstance";
 import { useCallback, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { __getChatList } from "../../redux/modules/chatSlice";
 import { Outlet, useParams } from "react-router-dom";
+
+import ChattingService from "../../StomJS/SockInstance";
 const ChattingServiceKit = new ChattingService();
 
 export const Chat = () => {
@@ -16,8 +17,9 @@ export const Chat = () => {
   const id = useParams();
   const token = getCookieToken(["access-token"]);
   const username = getCookieToken(["username"]);
+
   const [chatLog, setChatLog] = useState([]);
-  const [receiveMsg, setReceiveMsg] = useState('OOO 님과의 대화입니다');
+  const [receiveMsg, setReceiveMsg] = useState('');
   const [message, setMessage] = useState('');
 
   ChattingServiceKit.onConnect(`/topic/greetings/${id.id}`, {}, (newMessage) => {
@@ -28,6 +30,7 @@ export const Chat = () => {
     dispatch(__getChatList());
     setChatLog([...chatLog, receiveMsg]);
   }, [receiveMsg, setChatLog]);
+  console.log(chatLog)
 
   const onSubmitHandler = (e) => {
     if (message) {

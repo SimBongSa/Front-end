@@ -3,11 +3,30 @@ import { IoIosArrowDown } from "react-icons/io";
 import DatePicker from "react-datepicker";
 
 export const RecruitContainer = styled.div`
-	min-height: 80vh;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	margin: 0 auto;
+	width: 100%;
 	font-weight: 300;
-	color: ${props => props.theme.textColor};
 	position: relative;
-	margin-top: -3rem;
+	margin-top: 10rem;
+	margin-bottom: 10rem;
+	color: ${props => props.theme.textColor};
+	& form {
+		width: 80%;
+		& h2 {
+			font-size: 2rem;
+			margin-bottom: 1rem;
+		}
+	}
+	& p {
+		margin: 1rem;
+	}
+	@media (max-width: 1024px) {
+		flex-direction: column;
+	}
 `;
 
 export const RecruitNav = styled.nav`
@@ -18,10 +37,12 @@ export const RecruitNav = styled.nav`
 	flex-flow: column nowrap;
 	justify-content: flex-end;
 	margin: 0 0 100px 30px;
-	& a { //nav 안 a 태그
+	& a {
+		//nav 안 a 태그
 		text-decoration: none;
 	}
-	& .counter { //nav 안 classname = counter에게
+	& .counter {
+		//nav 안 classname = counter에게
 		font-size: 24px;
 		transition: all 0.15s ease-out;
 	}

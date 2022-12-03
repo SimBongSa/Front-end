@@ -9,7 +9,6 @@ const initialState = {
 };
 
 export const __getCustomer = createAsyncThunk("getCustomer", async (payload, thunkAPI) => {
-	console.log(payload);
 	try {
 		const response = await apis.calendarList(payload);
 		return thunkAPI.fulfillWithValue(response.data);

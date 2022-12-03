@@ -1,7 +1,6 @@
 import sockJS from 'sockjs-client';
 import { Stomp } from '@stomp/stompjs';
 import { getCookieToken } from '../utils/cookie';
-
 const token = getCookieToken(['access-token'])
 
 class ChattingService {

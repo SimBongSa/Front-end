@@ -6,16 +6,13 @@ const token = getCookieToken("access-token");
 const api = axios.create({
 	baseURL: BASE_URL,
 	headers: {
+		Authorization: token,
 		"Content-Type": "application/json",
 		accept: "*/*",
 	},
 });
 
 api.interceptors.request.use(function (config) {
-	// const accessToken = document.cookie.split(";")[0].split["="][1];
-	// .find((row) => row.startsWith("Authorization"))
-	// .split("=")
-	// .find((row) => row.startsWith("Bearer"));
 	const accessToken = getCookieToken("access-token");
 	config.headers.Authorization = accessToken;
 	return config;
@@ -125,25 +122,25 @@ export const apis = {
 				Authorization: token,
 			},
 		}),
-	getAppliList: id =>
+	getAppliList: (id) =>
 		api.get(`${BASE_URL}/companypage/boards/${id}`, {
 			headers: {
 				Authorization: token,
 			},
 		}),
-	getAllAppliList: payload =>
+	getAllAppliList: (payload) =>
 		axios.get(`${BASE_URL}/companypage/applicants?page=${payload.page}&size=${payload.size}`, {
 			headers: {
 				Authorization: token,
 			},
 		}),
-	putApprove: payload =>
+	putApprove: (payload) =>
 		axios.put(`${BASE_URL}/companypage/approve/${payload}`, {
 			headers: {
 				Authorization: token,
 			},
 		}),
-	putDisapprove: payload =>
+	putDisapprove: (payload) =>
 		axios.put(`${BASE_URL}/companypage/disapprove/${payload}`, {
 			headers: {
 				Authorization: token,
@@ -151,32 +148,35 @@ export const apis = {
 		}),
 
 	//commentSlice
-	getComment: payload =>
-		axios.get(`${BASE_URL}/boards/${payload}`, {
+	getComment: (payload) =>
+		axios.get(`${BASE_URL}/boards/${payload.id}?page=${payload.page}&size=${payload.size}`, {
 			headers: {
 				Authorization: token,
 			},
 		}),
-	postComment: payload =>
-		axios.post(`${BASE_URL}/comments/${payload.id}`, payload, {
-			headers: {
-				Authorization: token,
+	postComment: (payload) =>
+		axios.post(
+			`${BASE_URL}/comments/${payload.id}`,
+			payload,
+			{
+				headers: { Authorization: token },
 			},
-		}),
-	putComment: payload =>
+			console.log(token)
+		),
+	putComment: (payload) =>
 		axios.put(`${BASE_URL}/comments/${payload.commentId}`, payload, {
 			headers: {
 				Authorization: token,
 			},
 		}),
-	deleteComment: commentId =>
+	deleteComment: (commentId) =>
 		axios.delete(`${BASE_URL}/comments/${commentId}`, {
 			headers: {
 				Authorization: token,
 			},
 		}),
 
-	putUserPage: payload =>
+	putUserPage: (payload) =>
 		api.put(`${BASE_URL}/mypage`, payload, {
 			headers: {
 				Authorization: token,
@@ -184,7 +184,7 @@ export const apis = {
 			},
 		}),
 
-	putCompanyPage: payload =>
+	putCompanyPage: (payload) =>
 		axios.put(`${BASE_URL}/companypage`, payload, {
 			headers: {
 				Authorization: token,
@@ -194,6 +194,13 @@ export const apis = {
 
 	getChatList: () => 
 		axios.get(`${BASE_URL}/chatroom`, {
+			headers: {
+				Authorization: token,
+			}
+		}),
+	
+	createChatRoom: (payload) => 
+		axios.post(`${BASE_URL}/chatroom`, payload, {
 			headers: {
 				Authorization: token,
 			}

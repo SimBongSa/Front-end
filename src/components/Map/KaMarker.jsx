@@ -37,8 +37,14 @@ const KaMarker = ({ boards }) => {
 				lng: 126.978652258309,
 			}}
 			style={{
-				width: "100%",
-				height: "100%",
+				width: "70%",
+				height: "70%",
+				position: "fixed",
+				top: "50%",
+				left: "50%",
+				transform: "translate(-50%, -50%)",
+				backgroundColor: "gray",
+				zIndex: "999",
 			}}
 			level={13}
 		>

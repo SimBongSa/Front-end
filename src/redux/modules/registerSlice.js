@@ -70,43 +70,34 @@ export const __registerManager = createAsyncThunk("registerManager", async (payl
 	}
 });
 
-export const __checkUsername = createAsyncThunk(
-	"checkUsername", 
-	async (payload, thunkAPI) => {
-		try {
-			const response = await apis.checkUsername(payload);
-			console.log(response);
-			return thunkAPI.fulfillWithValue(response.data.data);
-		} catch (error) {
-			return thunkAPI.rejectWithValue(error);
-		}
+export const __checkUsername = createAsyncThunk("checkUsername", async (payload, thunkAPI) => {
+	try {
+		const response = await apis.checkUsername(payload);
+		console.log(response);
+		return thunkAPI.fulfillWithValue(response.data.data);
+	} catch (error) {
+		return thunkAPI.rejectWithValue(error);
 	}
-);
+});
 
-export const __getCompanyInfo = createAsyncThunk(
-	"getCompanyInfo", 
-	async (payload, thunkAPI) => {
-		try {
-			const response = await apis.getCompanyPage(payload);
-			return thunkAPI.fulfillWithValue(response);
-		} catch (error) {
-			return thunkAPI.rejectWithValue(error);
-		}
+export const __getCompanyInfo = createAsyncThunk("getCompanyInfo", async (payload, thunkAPI) => {
+	try {
+		const response = await apis.getCompanyPage(payload);
+		return thunkAPI.fulfillWithValue(response);
+	} catch (error) {
+		return thunkAPI.rejectWithValue(error);
 	}
-);
+});
 
-export const __checkNickname = createAsyncThunk(
-	"checkNickname", 
-	async (payload, thunkAPI) => {
-		try {
-			const response = await apis.checkNickname(payload);
-			console.log(response);
-			return thunkAPI.fulfillWithValue(response.data.data);
-		} catch (error) {
-			return thunkAPI.rejectWithValue(error);
-		}
+export const __checkNickname = createAsyncThunk("checkNickname", async (payload, thunkAPI) => {
+	try {
+		const response = await apis.checkNickname(payload);
+		console.log(response);
+		return thunkAPI.fulfillWithValue(response.data.data);
+	} catch (error) {
+		return thunkAPI.rejectWithValue(error);
 	}
-);
+});
 
 export const registerSlice = createSlice({
 	name: "userInfo",
@@ -137,21 +128,21 @@ export const registerSlice = createSlice({
 			.addCase(__loginMember.rejected, (state, action) => {
 				state.isLoading = false;
 				state.error = action.payload;
-			})
+			});
 
-			// manager
-			// .addCase(__loginManager.pending, (state, _) => {
-			// 	state.isLoading = true;
-			// })
-			// .addCase(__loginManager.fulfilled, (state, action) => {
-			// 	state.isLoading = false;
-			// 	state.statusCode = action.payload;
-			// 	state.loginInfo.concat(action.payload);
-			// })
-			// .addCase(__loginManager.rejected, (state, action) => {
-			// 	state.isLoading = false;
-			// 	state.error = action.payload;
-			// });
+		// manager
+		// .addCase(__loginManager.pending, (state, _) => {
+		// 	state.isLoading = true;
+		// })
+		// .addCase(__loginManager.fulfilled, (state, action) => {
+		// 	state.isLoading = false;
+		// 	state.statusCode = action.payload;
+		// 	state.loginInfo.concat(action.payload);
+		// })
+		// .addCase(__loginManager.rejected, (state, action) => {
+		// 	state.isLoading = false;
+		// 	state.error = action.payload;
+		// });
 
 		// Register
 		builder

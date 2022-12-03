@@ -9,14 +9,15 @@ export const StInput = styled.input`
 	margin: 12px;
 	font-size: 15px;
 	padding: 20px;
-	width: 360px;
+	width: 100%;
 	padding-left: 20px;
-	border: none;
+	border: 1px solid ${(props) => props.theme.textColor};
 	border-radius: 30px;
 	outline: none;
 	margin-bottom: 1rem;
-	background: ${props => props.theme.WHITE};
-	color: ${props => props.theme.BLACK};
+	&:focus {
+		border: 1px solid ${props => props.theme.btnColor};
+	}
 `;
 
 export const StErrorMsg = styled.span`

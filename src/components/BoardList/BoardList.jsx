@@ -1,25 +1,29 @@
 import CardGrid from "../common/cards/CardGrid";
-import { BoardContainer, BoardContent, BtnBox, Button } from "./BoardList.styled";
+import {
+	BoardContainer,
+	BoardContent,
+	Button,
+	StTitle,
+	StMapBtn,
+	StCloseBtn,
+	ListMap,
+	StBtnBox,
+} from "./BoardList.styled";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { __getBoard } from "../../redux/modules/boardSlice";
-import styled from "styled-components";
 import KaMarker from "./../Map/KaMarker";
-import { TbMapPin, TbChevronRight, TbChevronLeft } from "react-icons/tb";
+import { ImMap2 } from "react-icons/im";
+import styled from "styled-components";
 
 const Board = () => {
 	const dispatch = useDispatch();
 	const boards = useSelector(state => state.boards.boards);
-	const area = useSelector(state => state.boards.area);
 
 	const [page, setPage] = useState(1);
-	const size = 10;
+	const size = 12;
 
-	//popup btn
-	const [showPopup, setShowPopup] = useState(false);
-	const togglePopup = event => {
-		setShowPopup(event.target.value);
-	};
+	const [modal, setModal] = useState(false);
 
 	useEffect(() => {
 		dispatch(__getBoard({ page, size }));
@@ -27,41 +31,44 @@ const Board = () => {
 
 	return (
 		<BoardContainer>
-			{showPopup ? (
-				<ListMap>
-					<KaMarker boards={boards} />
-				</ListMap>
-			) : null}
+			<StTitle>
+				<div>봉사 검색 결과</div>
+				<div>{boards.length}개</div>
+			</StTitle>
 			<BoardContent>
-				{/* show popup btn */}
-				<BtnBox>
-					<Button onClick={togglePopup} value="false">
-						<TbMapPin />
-					</Button>
+				<div>
+					<StMapBtn onClick={() => setModal(!modal)}>지도 보기 <StMap/></StMapBtn>
+				</div>
+				{modal ? (
+					<ListMap>
+						<StCloseBtn onClick={() => setModal(false)}>X</StCloseBtn>
+						<KaMarker boards={boards} />
+					</ListMap>
+				) : null}
+				<CardGrid boards={boards} gridColumn={5} />
+				<StBtnBox>
 					{page === 1 ? (
-						""
+						<Button>❮</Button>
 					) : (
 						<Button
 							onClick={() => {
-								setShowPopup(false);
 								setPage(prev => prev - 1);
 								dispatch(__getBoard({ page, size }));
 							}}
 						>
-							<TbChevronLeft />
+							❮
 						</Button>
 					)}
+					<div>{page}/14</div>
 					<Button
 						onClick={() => {
-							setShowPopup(false);
 							setPage(prev => prev + 1);
 							dispatch(__getBoard({ page, size }));
 						}}
 					>
-						<TbChevronRight />
+						❯
 					</Button>
-				</BtnBox>
-				<CardGrid boards={boards} gridColumn={5} />
+				</StBtnBox>
 			</BoardContent>
 		</BoardContainer>
 	);
@@ -69,9 +76,6 @@ const Board = () => {
 
 export default Board;
 
-export const ListMap = styled.div`
-	display: grid;
-	width: 100%;
-	height: 50vh;
-	margin-top: 10rem;
-`;
+export const StMap = styled(ImMap2)`
+	font-size: .9rem;
+`
