@@ -48,7 +48,7 @@ export const StMapBtn = styled.button`
 	border-radius: 50px;
 	width: 140px;
 	height: 40px;
-	margin-right: 1rem;
+	margin-right: 2rem;
 	background: ${props => props.theme.bgColor};
 	color: ${props => props.theme.textColor};
 	cursor: pointer;

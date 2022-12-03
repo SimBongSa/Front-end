@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const StCardGridContainer = styled.section`
 	display: grid;
 	grid-template-columns: 0fr repeat(0, minmax(auto, 60px)) 10fr;
-	margin: 3rem 1rem 1rem 1rem;
+	margin: 3rem 0px 2rem 2rem;
 	justify-items: center;
 `;
 
@@ -23,6 +23,7 @@ export const StCards = styled.div`
 export const StCard = styled.div`
 	grid-column-end: span 5;
 	border-radius: 6px;
+	max-width: 25rem;
 	min-width: 280px;
 	min-height: 300px;
 	margin-bottom: 2rem;

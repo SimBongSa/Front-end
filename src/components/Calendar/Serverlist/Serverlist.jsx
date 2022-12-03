@@ -1,7 +1,7 @@
 import {
-	ServerListContainer,
-	ServerListImg,
-	Body,
+	StServerListContainer,
+	StServerListImg,
+	StBody,
 	StArea,
 	StDetailArea,
 	StCardInfo,
@@ -15,11 +15,11 @@ function Serverlist({ result, mark }) {
 			{result && result.length > 0
 				? result.map((obj, boardId) => {
 						return (
-							<ServerListContainer key={boardId}>
-								<ServerListImg>
+							<StServerListContainer key={boardId}>
+								<StServerListImg>
 									<img src={obj.boardImage} alt="test" />
-								</ServerListImg>
-								<Body>
+								</StServerListImg>
+								<StBody>
 									<div>{obj.title}</div>
 									<StCardInfo>
 										<StArea>{obj.area}</StArea>
@@ -28,15 +28,19 @@ function Serverlist({ result, mark }) {
 									<span>
 										{obj.startDate} - {obj.endDate}
 									</span>
-								</Body>
-							</ServerListContainer>
+								</StBody>
+							</StServerListContainer>
 						);
 				  })
 				: null}
-			<StMoreBox>
-				<StMore></StMore>
-				<StMore></StMore>
-			</StMoreBox>
+			{result?.length === 4 ? (
+				<StMoreBox>
+					<StMore></StMore>
+					<StMore></StMore>
+				</StMoreBox>
+			) : (
+				""
+			)}
 		</>
 	);
 }

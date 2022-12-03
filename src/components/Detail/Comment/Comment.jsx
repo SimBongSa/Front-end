@@ -150,14 +150,16 @@ function Comment() {
 						);
 				  })
 				: ""}
-			<StPageBtn
-				onClick={() => {
-					setPage(prev => prev + 1);
-					dispatch(__getComment({ id, page, size }));
-				}}
-			>
-				댓글 더보기
-			</StPageBtn>
+			{commentList?.length === 4 ? (
+				<StPageBtn
+					onClick={() => {
+						setPage(prev => prev + 1);
+						dispatch(__getComment({ id, page, size }));
+					}}
+				>
+					댓글 더보기
+				</StPageBtn>
+			) : null}
 		</MainComponent>
 	);
 }

@@ -1,11 +1,14 @@
 import { useState, useEffect } from "react";
-import Calendar from "react-calendar";
-import moment from "moment";
-import { CalendarContainer } from "./MainCalendar.styled";
-import Serverlist from "../Serverlist/Serverlist";
 import { useSelector, useDispatch } from "react-redux";
 import { __getCustomer } from "../../redux/modules/calendarSlice";
-import styled from "styled-components";
+import Serverlist from "../Calendar/Serverlist/Serverlist";
+import moment from "moment";
+import {
+	StCalendarContainer,
+	StCalendarList,
+	StCalendarWrap,
+	StCalendar,
+} from "./MainCalendar.styled";
 
 const MainCalendar = () => {
 	const dispatch = useDispatch();
@@ -30,10 +33,10 @@ const MainCalendar = () => {
 
 	return (
 		<>
-			<CalendarContainer>
+			<StCalendarContainer>
 				<h1>날짜별 봉사활동</h1>
 				{/* <DropDown /> */}
-				<CalendarWrap>
+				<StCalendarWrap>
 					<StCalendar
 						onChange={setValue}
 						formatDay={(locale, date) => moment(date).format("DD")}
@@ -51,7 +54,7 @@ const MainCalendar = () => {
 							if (mark.find(item => item === moment(date).format("YYYY-MM-DD"))) {
 								html.push(
 									<div className="dot" key={date}>
-										{/* {maindate.data[value].length} */}
+										{maindate.data[value]?.length}
 									</div>
 								);
 							}
@@ -62,43 +65,14 @@ const MainCalendar = () => {
 							);
 						}}
 					/>
-					<CalendarList className="text-gray-500 mt-4">
-						{/* <h2>Today : {moment(value).format("YYYY년 MM월 DD일")}</h2> */}
-						<h2>봉사활동 : {maindate.data.length}개</h2>
+					<StCalendarList className="text-gray-500 mt-4">
+						<h2>봉사활동 : {maindate.data?.length}개</h2>
 						<Serverlist result={maindate.data} key={date} mark={mark} />
-					</CalendarList>
-				</CalendarWrap>
-			</CalendarContainer>
+					</StCalendarList>
+				</StCalendarWrap>
+			</StCalendarContainer>
 		</>
 	);
 };
 
 export default MainCalendar;
-
-export const CalendarList = styled.div`
-	width: 35%;
-	& h2 {
-		font-size: 1.6rem;
-	}
-	@media (max-width: 1280px) {
-		margin-top: 5rem;
-		width: 100%;
-	}
-`;
-
-export const CalendarWrap = styled.div`
-	display: flex;
-	width: 100%;
-	flex-direction: row;
-	justify-content: space-between;
-	@media (max-width: 1280px) {
-		flex-direction: column;
-	}
-`;
-
-export const StCalendar = styled(Calendar)`
-	min-width: min-content;
-	@media (max-width: 1280px) {
-		min-width: fit-content;
-	}
-`;
