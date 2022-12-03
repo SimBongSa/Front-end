@@ -1,6 +1,15 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { apis } from "./Api/apis";
 
+export const __getTotalComment = createAsyncThunk("getTotalComment", async (payload, thunkAPI) => {
+	try {
+		const { data } = await apis.getTotalComment(payload);
+		return thunkAPI.fulfillWithValue(data.data.comments);
+	} catch (error) {
+		return thunkAPI.rejectWithValue(error);
+	}
+});
+
 export const __getComment = createAsyncThunk("getComment", async (payload, thunkAPI) => {
 	try {
 		const { data } = await apis.getComment(payload);
@@ -40,12 +49,24 @@ export const __deleteComment = createAsyncThunk("deleteComment", async (payload,
 const commentSlice = createSlice({
 	name: "comment",
 	initialState: {
+		commentTotalList: [],
 		commentList: [],
 		isLoading: false,
 		error: null,
 	},
 	reducers: {},
 	extraReducers: builder => {
+		builder
+			.addCase(__getTotalComment.pending, state => {
+				state.isLoading = true;
+			})
+			.addCase(__getTotalComment.fulfilled, (state, action) => {
+				state.isLoading = false;
+				state.commentTotalList = action.payload;
+			})
+			.addCase(__getTotalComment.rejected, state => {
+				state.isLoading = false;
+			});
 		builder
 			.addCase(__getComment.pending, state => {
 				state.isLoading = true;

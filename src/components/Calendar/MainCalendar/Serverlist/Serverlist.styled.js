@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const ServerListContainer = styled.div`
+export const StServerListContainer = styled.div`
 	display: flex;
 	/* width: 30rem; */
 	height: 7.5rem;
@@ -9,8 +9,8 @@ export const ServerListContainer = styled.div`
 	color: ${props => props.theme.textColor};
 `;
 
-export const ServerListImg = styled.div`
-	width: 6rem;
+export const StServerListImg = styled.div`
+	width: 8rem;
 	height: 6rem;
 	border-radius: 10px;
 	& img {
@@ -21,7 +21,7 @@ export const ServerListImg = styled.div`
 	}
 `;
 
-export const Body = styled.div`
+export const StBody = styled.div`
 	margin-left: 1.5rem;
 	height: 2rem;
 	flex-wrap: wrap;
@@ -39,6 +39,7 @@ export const StCardInfo = styled.span`
 	align-items: center;
 	text-align: center;
 	line-height: 0.5rem;
+	margin-top: 1.5rem;
 	margin-bottom: 0.5rem;
 `;
 

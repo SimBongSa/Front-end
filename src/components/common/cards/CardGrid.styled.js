@@ -1,9 +1,9 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 export const StCardGridContainer = styled.section`
 	display: grid;
 	grid-template-columns: 0fr repeat(0, minmax(auto, 60px)) 10fr;
-	margin: 3rem 1rem 1rem 1rem;
+	margin: 3rem 0px 2rem 2rem;
 	justify-items: center;
 `;
 
@@ -21,24 +21,53 @@ export const StCards = styled.div`
 `;
 
 export const StCard = styled.div`
-	grid-column-end: span 5;
-	border-radius: 6px;
-	min-width: 280px;
-	min-height: 300px;
-	margin-bottom: 2rem;
-	cursor: pointer;
-	transition: all 0.5s ease;
-	background-color: ${props => props.theme.bgColor};
-
-	@media screen and (max-width: 1024px) {
-		grid-column-end: span 6;
-	}
-	@media screen and (max-width: 768px) {
-		grid-column-end: span 12;
-	}
-	&:hover {
-		transform: translateY(-0.5rem);
-	}
+	${({ variant }) => {
+		switch (variant) {
+			case "StBoardCard":
+				return css`
+					grid-column-end: span 5;
+					border-radius: 6px;
+					max-width: 25rem;
+					min-width: 280px;
+					min-height: 300px;
+					margin-bottom: 2rem;
+					cursor: pointer;
+					transition: all 0.5s ease;
+					background-color: ${props => props.theme.bgColor};
+					@media screen and (max-width: 1024px) {
+						grid-column-end: span 6;
+					}
+					@media screen and (max-width: 768px) {
+						grid-column-end: span 12;
+					}
+					&:hover {
+						transform: translateY(-0.5rem);
+					}
+				`;
+			case "StCompanyCard":
+				return css`
+					grid-column-end: span 5;
+					border-radius: 6px;
+					width: 15rem;
+					height: fit-content;
+					margin-bottom: 2rem;
+					cursor: pointer;
+					transition: all 0.5s ease;
+					background-color: ${props => props.theme.bgColor};
+					@media screen and (max-width: 1024px) {
+						grid-column-end: span 6;
+					}
+					@media screen and (max-width: 768px) {
+						grid-column-end: span 12;
+					}
+					&:hover {
+						transform: translateY(-0.5rem);
+					}
+				`;
+			default:
+				break;
+		}
+	}}
 `;
 
 export const StImgWrapper = styled.div`
@@ -106,7 +135,6 @@ export const StDate = styled.div`
 	background-color: ${props => props.theme.bgColor};
 	z-index: 1;
 	position: absolute;
-	padding-top: 10px;
 `;
 
 export const StTagBox = styled.ul`
