@@ -108,6 +108,13 @@ export const apis = {
 				Authorization: token,
 			},
 		}),
+	putUserPage: (payload) =>
+		api.put(`${BASE_URL}/mypage`, payload, {
+			headers: {
+				Authorization: token,
+				"Content-Type": "multipart/form-data",
+			},
+		}),
 
 	// MyPage (Company)
 	getCompanyPage: () =>
@@ -120,6 +127,13 @@ export const apis = {
 		api.get(`${BASE_URL}/companypage/boards`, {
 			headers: {
 				Authorization: token,
+			},
+		}),
+	putCompanyPage: (payload) =>
+		axios.put(`${BASE_URL}/companypage`, payload, {
+			headers: {
+				Authorization: token,
+				"Content-Type": "multipart/form-data",
 			},
 		}),
 	getAppliList: (id) =>
@@ -176,22 +190,9 @@ export const apis = {
 			},
 		}),
 
-	putUserPage: (payload) =>
-		api.put(`${BASE_URL}/mypage`, payload, {
-			headers: {
-				Authorization: token,
-				"Content-Type": "multipart/form-data",
-			},
-		}),
+	
 
-	putCompanyPage: (payload) =>
-		axios.put(`${BASE_URL}/companypage`, payload, {
-			headers: {
-				Authorization: token,
-				"Content-Type": "multipart/form-data",
-			},
-		}),
-
+	// Chat Apis
 	getChatList: () => 
 		axios.get(`${BASE_URL}/chatroom`, {
 			headers: {
@@ -201,6 +202,13 @@ export const apis = {
 	
 	createChatRoom: (payload) => 
 		axios.post(`${BASE_URL}/chatroom`, payload, {
+			headers: {
+				Authorization: token,
+			}
+		}),
+	
+	getChatHistory: (id) =>
+		axios.get(`${BASE_URL}/chatroom/${id}/history`, {
 			headers: {
 				Authorization: token,
 			}

@@ -4,6 +4,7 @@ export const StSidePanel = styled.div`
   float: left;
   width: 25%;
   height: 100%;
+  overflow: hidden;
   background: #232323;
   & h1 {
     font-size: 2rem;

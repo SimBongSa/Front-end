@@ -21,6 +21,7 @@ const Recruit = () => {
 	const status = useSelector(state => state.boards.status);
 
 	const [isPopupOpen, setIsPopupOpen] = useState(false);
+	console.log(isPopupOpen);
 
 	// Image
 	const [boardImage, setBoardImage] = useState(null);
@@ -143,7 +144,12 @@ const Recruit = () => {
 						maxTime={due.setHours(due.setMinutes(new Date(), 0), 18)}
 						dateFormat="📅 yyyy년-MM월-dd일 / 🕜 aa h:mm "
 					/>
+					<label 
+						htmlFor="address"
+						onClick={openPostCode}
+					>우편번호 검색</label>
 					<Input
+						id="address"
 						placeholder="행사 주소(우편번호 검색 클릭)"
 						type="text"
 						name="area"
@@ -212,6 +218,9 @@ export const StLeftWrap = styled.div`
 			color: ${(props) => props.theme.btnColor};
 		}
 	}
+	& label {
+		margin: 1rem;
+	}
 	@media (max-width: 1024px) {
 		width: 80%;
 		float: none;
@@ -277,15 +286,14 @@ const TextArea = styled.textarea`
 	}
 `;
 
-const RegisterDatePicker = styled(DatePicker)({
-	margin: "1px",
-	fontSize: "15px",
-	padding: "20px",
-	width: "100%",
-	paddingLeft: "20px",
-	border: "1px solid #66885d",
-	borderRadius: "30px",
-	outline: "none",
-	marginBottom: "1rem",
-	background: `${props => props.theme.textColor}`,
-});
+const RegisterDatePicker = styled(DatePicker)`
+	margin: 1rem;
+	font-size: 15px;
+	padding: 20px;
+	width: 100%;
+	// paddingLeft: "20px",
+	border: 1px solid #66885d;
+	border-radius: 30px;
+	outline: none;
+	background: ${props => props.theme.textColor};
+`;

@@ -11,10 +11,11 @@ export const ChatList = ({ chatList }) => {
       <StContact>
         <ul>
           {
-            chatList?.map((item) => {
+            chatList?.map((item, idx) => {
               return(
                 <li 
-                  key={item.chatRoomId}
+                  // key={item.chatRoomId}
+                  key={idx}
                   onClick={() => navigate(`/chat/${item.chatRoomId}`)}
                 >
                   <StContactWrap>
