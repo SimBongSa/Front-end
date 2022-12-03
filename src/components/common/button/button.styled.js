@@ -126,7 +126,7 @@ export const Stbtn = styled.button`
 				`;
 
 			//mypageedit -> ProfileEdit.jsx / edit -> DetailEdit.jsx
-			case "mypageedit":
+			case "mypage-edit":
 				return css`
 					z-index: 11;
 					position: absolute;
