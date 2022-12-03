@@ -1,8 +1,8 @@
-import Input from "../../../components/common/input/Input";
 import { useState, useEffect, useCallback } from "react";
 import { useParams } from "react-router-dom";
 import { useCookies } from "react-cookie";
 import {
+	__getTotalComment,
 	__getComment,
 	__postComment,
 	__putComment,
@@ -23,12 +23,14 @@ import {
 	CommentDiv,
 	CommentIcon,
 	StPageBtn,
+	StComment,
 } from "./Comment.styled";
 
 function Comment() {
 	const [cookies] = useCookies(["Authorization"]);
 	const userName = cookies["username"];
 
+	const commentTotalList = useSelector(state => state.comment.commentTotalList);
 	const commentList = useSelector(state => state.comment.commentList);
 	const dispatch = useDispatch();
 
@@ -40,10 +42,15 @@ function Comment() {
 
 	const [page, setPage] = useState(1);
 	const size = 4;
-	console.log(page, size);
+
 	useEffect(() => {
 		dispatch(__getComment({ id, page, size }));
 	}, [dispatch, id, page, size]);
+
+	useEffect(() => {
+		dispatch(__getTotalComment(id));
+	}, [dispatch, id]);
+	console.log(commentTotalList);
 
 	const onChangeHalder = useCallback(
 		e => {
@@ -52,15 +59,11 @@ function Comment() {
 		[content]
 	);
 
-	useEffect(() => {
-		console.log("렌더링");
-	}, [content]);
-	console.log(content);
 	return (
 		<MainComponent>
 			<CommentWriteWrap>
 				<UserIcon />
-				<Input
+				<StComment
 					type="text"
 					placeholder="댓글을 남겨주세요!"
 					value={content}
@@ -150,7 +153,7 @@ function Comment() {
 						);
 				  })
 				: ""}
-			{commentList?.length === 4 ? (
+			{commentTotalList?.length > 4 ? (
 				<StPageBtn
 					onClick={() => {
 						setPage(prev => prev + 1);

@@ -5,7 +5,7 @@ import Recruit from "../components/Recruit/Recruit";
 export const RecruitPage = () => {
 	return (
 		<>
-			{/* <Header /> */}
+			<Header />
 			<Recruit />
 			<Footer />
 		</>

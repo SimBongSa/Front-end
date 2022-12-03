@@ -8,22 +8,23 @@ export const RegisterContainer = styled.div`
   margin-top: 15rem;
   overflow: hidden;
   width: 1000px;
+  box-shadow: 0rem 0rem 1.5rem rgba(0,0,0,0.2), 0rem 0rem .2rem rgba(0,0,0,0.2);
 `
 
 export const RegisterCover = styled.div`
-  /* background: ${(props) => props.theme.bgColor}; */
-  background: tomato;
-  color: ${(props) => props.theme.textColor};
+  background: ${(props) => props.theme.subBgColor};
+  color: #232323;
   height: 550px;
   margin: 0 0 0 50%;
   position: relative;
   text-align: center;
   width: 50%;
-  z-index: 2;
+  z-index: 3;
   transition: all 0.7s;
   & h1 {
-    padding-top: 38%;
+    padding-top: 50%;
     font-size: 2rem;
+    cursor: pointer;
   }
   & p {
     font-weight: 300;
@@ -34,7 +35,7 @@ export const RegisterCover = styled.div`
 
 export const RegisterBtn = styled.button`
   cursor: pointer;
-  border: 1px solid ${(props) => props.theme.btnColor};
+  border: 1px solid ${(props) => props.theme.textColor};
   background: transparent;
   border-radius: 20px;
   color: ${(props) => props.theme.textColor};
@@ -51,7 +52,7 @@ export const RegisterBtn = styled.button`
 `
 
 export const RegisterIndividual = styled.div`
-  background: ${(props) => props.theme.subTextColor};
+  background: ${(props) => props.theme.subBtnColor};
   color: ${(props) => props.theme.textColor};
   float: left;
   height: 100%;
@@ -62,7 +63,6 @@ export const RegisterIndividual = styled.div`
   z-index: 1;
   transition: all 0.5s;
   & h1 {
-    color: tomato;
     margin-top: 4rem;
     font-size: 2rem;
   }
@@ -75,7 +75,7 @@ export const RegisterIndividual = styled.div`
 `
 
 export const RegisterOrganization = styled.div`
-  background: ${(props) => props.theme.subTextColor};
+  background: ${(props) => props.theme.subBtnColor};
   color: ${(props) => props.theme.textColor};
   float: right;
   height: 100%;
@@ -86,7 +86,6 @@ export const RegisterOrganization = styled.div`
   z-index: 1;
   transition: all 0.5s;
   & h1 {
-    color: tomato;
     margin-top: 4rem;
     font-size: 2rem;
   }

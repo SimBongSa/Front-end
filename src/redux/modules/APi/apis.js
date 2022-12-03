@@ -34,6 +34,7 @@ export const apis = {
 	checkNickname: payload => axios.get(`${BASE_URL}/members/signup/check_nickname/${payload}`),
 
 	//calendarSlice
+	TotalcalendarList: dueDay => api.get(`${BASE_URL}/boards/date/${dueDay}`),
 	calendarList: dueDay => api.get(`${BASE_URL}/boards/date/${dueDay}`),
 	search: payload => api.post(`${BASE_URL}/boards/date/${payload}`),
 
@@ -145,6 +146,12 @@ export const apis = {
 		}),
 
 	//commentSlice
+	getTotalComment: payload =>
+		axios.get(`${BASE_URL}/boards/${payload}`, {
+			headers: {
+				Authorization: token,
+			},
+		}),
 	getComment: payload =>
 		axios.get(`${BASE_URL}/boards/${payload.id}?page=${payload.page}&size=${payload.size}`, {
 			headers: {
@@ -191,6 +198,13 @@ export const apis = {
 
 	getChatList: () =>
 		axios.get(`${BASE_URL}/chatroom`, {
+			headers: {
+				Authorization: token,
+			},
+		}),
+
+	createChatRoom: payload =>
+		axios.post(`${BASE_URL}/chatroom`, payload, {
 			headers: {
 				Authorization: token,
 			},

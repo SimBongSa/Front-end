@@ -7,6 +7,8 @@ import { DetailContainer, DetailContent } from "./Detail.styled";
 import MainBg from "../MainBg/MainBg";
 import PopupDom from "../Map/PopupDom";
 import PopupPostCode from "../Map/PopupPostCode";
+import DatePicker from "react-datepicker";
+import { ko } from "date-fns/esm/locale";
 
 const DetailEdit = () => {
 	const [isPopupOpen, setIsPopupOpen] = useState(false);
@@ -17,11 +19,23 @@ const DetailEdit = () => {
 
 	const boardsId = useSelector(state => state?.boards?.boardsId);
 
+	const today = new Date();
+	const due = new Date();
+	const [startDate, setStartDate] = useState(today);
+	const [endDate, setEndDate] = useState(null);
+	const [dueDay, setDueDay] = useState(due.setHours(due.setMinutes(new Date(), 30), 17));
 
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
 
 	const { id } = useParams();
+
+	const onChange = dates => {
+		const [start, end, due] = dates;
+		setStartDate(start);
+		setEndDate(end);
+		setDueDay(due);
+	};
 
 	// 팝업창 열기
 	const openPostCode = () => {
@@ -73,117 +87,75 @@ const DetailEdit = () => {
 
 	return (
 		<form onSubmit={onSubmitHandler}>
-			<MainBg image={boardsId?.boardImage} />
-
+			{/* <MainBg image={boardsId?.boardImage} /> */}
 			<DetailContainer>
 				<DetailContent>
-					<Content>
-						봉사 활동 주제:
-						<input
-							type="text"
-							defaultValue={boardsId?.title}
-							name={"title"}
-							onChange={onChangeHandler}
-						/>
-					</Content>
-
-					<Content>
-						봉사 모집 시작일:
-						<input
-							type="date"
-							defaultValue={boardsId?.startDate}
-							name={"startDate"}
-							onChange={onChangeHandler}
-						/>
-					</Content>
-
-					<Content>
-						봉사 모집 마감일:
-						<input
-							type="date"
-							defaultValue={boardsId?.endDate}
-							name={"endDate"}
-							onChange={onChangeHandler}
-						/>
-					</Content>
-
-					<Content>
-						행사 일:
-						<input
-							type="date"
-							defaultValue={boardsId?.dueDay}
-							name={"dueDay"}
-							onChange={onChangeHandler}
-						/>
-					</Content>
-
-					<Content>
-						봉사 활동 장소:
-						<input
-							type="text"
-							defaultValue={boardsId?.area}
-							name={"area"}
-							onChange={onChangeHandler}
-						/>
-					</Content>
-
-
-					{/* <Content>
-            <p>행사 장소</p>
-            <input
-              placeholder="행사 장소"
-              type="text"
-              name="area"
-              value={address}
-              
-            />
-        
-            <button type="button" onClick={openPostCode}>
-              우편번호 검색
-            </button>
-         
-            <div id="popupDom" style={{ position: "fixed" }}>
-              {isPopupOpen && (
-                <PopupDom>
-                  <PopupPostCode
-                    setAddress={setAddress}
-                    onClose={closePostCode}
-                  />
-                </PopupDom>
-              )}
-            </div>
-          </Content> */}
-
-
-					<Content>
-						행사 상세 주소:
-						<input
-							type="text"
-							name={"detailArea"}
-							defaultValue={boardsId?.detailArea}
-							onChange={onChangeHandler}
-						/>
-					</Content>
-
-					<Content>
-						봉사 내용 및 설명:
-						<input
-							type="text"
-							defaultValue={boardsId?.content}
-							name={"content"}
-							onChange={onChangeHandler}
-						/>
-					</Content>
-					<Content>
-						<ImgSize src={uploadpreview} alt="" />
-						<input
-							name="thumbNail"
-							type={"file"}
-							accept={"image/*"}
-							placeholder="이미지업로드"
-							onChange={onChangeImage}
-						/>
-					</Content>
+					<h4>봉사 내용 주제</h4>
+					<Input
+						placeholder="봉사 활동 주제"
+						type="text"
+						name="title"
+						defaultValue={boardsId?.title}
+						onChange={onChangeHandler}
+					/>
+					<h4>봉사활동 모집기간</h4>
+					<RegisterDatePicker
+						locale={ko}
+						dateFormat="📅 yyyy년-MM월-dd일"
+						selected={startDate}
+						onChange={onChange}
+						startDate={startDate}
+						endDate={endDate}
+						selectsRange
+					/>
+					<h4>봉사활동 날짜 및 시각</h4>
+					<RegisterDatePicker
+						locale={ko}
+						selected={dueDay}
+						onChange={due => setDueDay(due)}
+						showTimeSelect
+						minTime={due.setHours(due.setMinutes(new Date(), 0), 9)}
+						maxTime={due.setHours(due.setMinutes(new Date(), 0), 18)}
+						dateFormat="📅 yyyy년-MM월-dd일 / 🕜 aa h:mm "
+					/>
+					<h4>행사 주소</h4>
+					<Input
+						placeholder="클릭 시 우편번호 검색"
+						type="text"
+						name="area"
+						value={address}
+						onClick={openPostCode}
+					/>
+					<div id="popupDom">
+						{isPopupOpen && (
+							<PopupDom>
+								<PopupPostCode setAddress={setAddress} onClose={closePostCode} />
+							</PopupDom>
+						)}
+					</div>
+					<h4>상세 주소</h4>
+					<Input
+						type="text"
+						placeholder="봉사활동 상세 주소"
+						name="detailArea"
+						value={boardsId?.detailArea}
+						onChange={onChangeHandler}
+					/>
+					봉사 내용 및 설명:
+					<TextArea
+						type="text"
+						defaultValue={boardsId?.content}
+						name={"content"}
+						onChange={onChangeHandler}
+					/>
+					<ImgSize src={uploadpreview} alt="" />
+					<Input
+						name="thumbNail"
+						type={"file"}
+						accept={"image/*"}
+						placeholder="이미지업로드"
+						onChange={onChangeImage}
+					/>
 				</DetailContent>
 			</DetailContainer>
 			{/* <button type={"submit"} onClick={() => navigate(`/boards/${id}`)}> */}
@@ -204,4 +176,43 @@ const Content = styled.li`
 export const ImgSize = styled.img`
 	width: 70px;
 	height: 70px;
+`;
+
+const Input = styled.input`
+	display: block;
+	width: 590px;
+	height: 60px;
+	border-radius: 30px;
+	/* background-image: url(); */
+	background-position: center right 10px;
+	background-repeat: no-repeat;
+	margin-bottom: 10px;
+	border: 1px solid #66885d;
+	margin-top: 10px;
+	padding-left: 10px;
+`;
+
+const RegisterDatePicker = styled(DatePicker)({
+	margin: "1px",
+	fontSize: "15px",
+	padding: "20px",
+	width: "590px",
+	paddingLeft: "20px",
+	border: "1px solid #66885d",
+	borderRadius: "30px",
+	outline: "none",
+	marginBottom: "1rem",
+	background: `${props => props.theme.textColor}`,
+});
+
+const TextArea = styled.textarea`
+	margin: 1px;
+	margin-top: 10px;
+	width: 590px;
+	border-radius: 30px;
+	height: 300px;
+	padding-right: 10px;
+
+	border: 1px solid #66885d;
+	resize: none;
 `;

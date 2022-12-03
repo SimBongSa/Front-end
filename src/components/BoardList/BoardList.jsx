@@ -13,6 +13,8 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { __getBoard } from "../../redux/modules/boardSlice";
 import KaMarker from "./../Map/KaMarker";
+import { ImMap2 } from "react-icons/im";
+import styled from "styled-components";
 
 const Board = () => {
 	const dispatch = useDispatch();
@@ -35,7 +37,7 @@ const Board = () => {
 			</StTitle>
 			<BoardContent>
 				<div>
-					<StMapBtn onClick={() => setModal(true)}>지도 보기 🗺️</StMapBtn>
+					<StMapBtn onClick={() => setModal(!modal)}>지도 보기 <StMap/></StMapBtn>
 				</div>
 				{modal ? (
 					<ListMap>
@@ -73,3 +75,7 @@ const Board = () => {
 };
 
 export default Board;
+
+export const StMap = styled(ImMap2)`
+	font-size: .9rem;
+`

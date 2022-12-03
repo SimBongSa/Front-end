@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 export const StCardGridContainer = styled.section`
 	display: grid;
@@ -21,25 +21,53 @@ export const StCards = styled.div`
 `;
 
 export const StCard = styled.div`
-	grid-column-end: span 5;
-	border-radius: 6px;
-	max-width: 25rem;
-	min-width: 280px;
-	min-height: 300px;
-	margin-bottom: 2rem;
-	cursor: pointer;
-	transition: all 0.5s ease;
-	background-color: ${props => props.theme.bgColor};
-
-	@media screen and (max-width: 1024px) {
-		grid-column-end: span 6;
-	}
-	@media screen and (max-width: 768px) {
-		grid-column-end: span 12;
-	}
-	&:hover {
-		transform: translateY(-0.5rem);
-	}
+	${({ variant }) => {
+		switch (variant) {
+			case "StBoardCard":
+				return css`
+					grid-column-end: span 5;
+					border-radius: 6px;
+					max-width: 25rem;
+					min-width: 280px;
+					min-height: 300px;
+					margin-bottom: 2rem;
+					cursor: pointer;
+					transition: all 0.5s ease;
+					background-color: ${props => props.theme.bgColor};
+					@media screen and (max-width: 1024px) {
+						grid-column-end: span 6;
+					}
+					@media screen and (max-width: 768px) {
+						grid-column-end: span 12;
+					}
+					&:hover {
+						transform: translateY(-0.5rem);
+					}
+				`;
+			case "StCompanyCard":
+				return css`
+					grid-column-end: span 5;
+					border-radius: 6px;
+					width: 15rem;
+					height: fit-content;
+					margin-bottom: 2rem;
+					cursor: pointer;
+					transition: all 0.5s ease;
+					background-color: ${props => props.theme.bgColor};
+					@media screen and (max-width: 1024px) {
+						grid-column-end: span 6;
+					}
+					@media screen and (max-width: 768px) {
+						grid-column-end: span 12;
+					}
+					&:hover {
+						transform: translateY(-0.5rem);
+					}
+				`;
+			default:
+				break;
+		}
+	}}
 `;
 
 export const StImgWrapper = styled.div`
@@ -60,7 +88,7 @@ export const StContent = styled.div`
 	& .title {
 		text-align: start;
 		font-size: 1.5rem;
-		font-weight: bolder;
+		font-weight: 300;
 		color: ${props => props.theme.textColor};
 		margin-bottom: 20px;
 	}
@@ -68,6 +96,7 @@ export const StContent = styled.div`
 
 export const StCardInfo = styled.div`
 	display: flex;
+	justify-content: space-between;
 	font-size: 0.8rem;
 	align-items: center;
 	/* color: ${props => props.theme.textColor}; */
@@ -75,7 +104,7 @@ export const StCardInfo = styled.div`
 `;
 
 export const StArea = styled.div`
-	max-width: 250px;
+	max-width: 200px;
 	min-width: 50px;
 	color: ${props => props.theme.bgColor};
 	background-color: ${props => props.theme.subTextColor};
@@ -96,16 +125,16 @@ export const StDetailArea = styled.div`
 export const StDate = styled.div`
 	width: 4rem;
 	height: 2rem;
+	font-weight: 350;
 	padding-top: 8px;
-	margin-top: 18px;
-	margin-left: 20px;
+	margin-top: 15px;
+	margin-left: 15px;
 	text-align: center;
 	border-radius: 12rem;
 	color: ${props => props.theme.notiColor};
 	background-color: ${props => props.theme.bgColor};
 	z-index: 1;
 	position: absolute;
-	font-weight: bolder;
 `;
 
 export const StTagBox = styled.ul`

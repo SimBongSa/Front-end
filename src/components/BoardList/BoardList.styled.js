@@ -43,7 +43,7 @@ export const Button = styled.button`
 `;
 
 export const StMapBtn = styled.button`
-	font-size: 15px;
+	font-size: 16px;
 	border: 1px solid ${props => props.theme.btnColor};
 	border-radius: 50px;
 	width: 140px;
@@ -52,6 +52,7 @@ export const StMapBtn = styled.button`
 	background: ${props => props.theme.bgColor};
 	color: ${props => props.theme.textColor};
 	cursor: pointer;
+	/* padding-top: 2.5px; */
 	transition: all 0.5s ease;
 	&:hover {
 		transform: translateY(-0.5rem);

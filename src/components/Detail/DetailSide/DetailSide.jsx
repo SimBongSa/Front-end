@@ -1,20 +1,30 @@
 import {
 	DetailSide,
-	DetailNavBtn,
 	DetailSideItem,
 	StDateBox,
 	StApplyBtn,
 	StBtnBox,
 	StChatBtn,
-} from "../DetailSlide/DetailSlideBar.styled";
+} from "../DetailSide/DetailSide.styled";
 import { __postApply } from "../../../redux/modules/boardSlice";
 import { __delBoard } from "../../../redux/modules/boardSlice";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { __createChatRoom } from "../../../redux/modules/chatSlice";
 
 function DetailSlideBar({ boardsId, username, id }) {
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
+	console.log(boardsId.authorId)
+
+	const chatRoom = useSelector((state) => state.chat.chatRoom)
+	console.log(chatRoom)
+
+	const createChatRoom = (chatRoomInfo) => {
+		dispatch(__createChatRoom(chatRoomInfo));
+		navigate(`/chat/${chatRoom}`)
+	}
+
 
 	return (
 		<>
@@ -35,7 +45,15 @@ function DetailSlideBar({ boardsId, username, id }) {
 					>
 						봉사자 신청하기
 					</StApplyBtn>
-					<StChatBtn>봉사 단체 연락하기</StChatBtn>
+					<StChatBtn
+						onClick={() => {
+							createChatRoom({
+								"userIdList": boardsId.authorId,
+								"userNameList": boardsId.author,
+								"roomName": boardsId.title
+							});
+						}}
+					>봉사 단체 연락하기</StChatBtn>
 				</StBtnBox>
 				{boardsId === username ? (
 					<StBtnBox>

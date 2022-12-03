@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { FaRegUserCircle } from "react-icons/fa";
+import Input from "../../common/input/Input";
 
 export const MainComponent = styled.div`
 	margin: 2.5rem;
@@ -104,4 +105,8 @@ export const StPageBtn = styled.div`
 	margin-left: 45%;
 	padding: 10px 10px;
 	cursor: pointer;
+`;
+
+export const StComment = styled(Input)`
+	background-color: black;
 `;

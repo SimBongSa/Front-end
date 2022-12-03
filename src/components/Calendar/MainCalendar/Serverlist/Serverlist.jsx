@@ -9,7 +9,7 @@ import {
 	StMoreBox,
 } from "./Serverlist.styled";
 
-function Serverlist({ result, mark }) {
+function Serverlist({ result, mark, totallist }) {
 	return (
 		<>
 			{result && result.length > 0
@@ -33,7 +33,7 @@ function Serverlist({ result, mark }) {
 						);
 				  })
 				: null}
-			{result?.length === 4 ? (
+			{totallist?.length > 4 ? (
 				<StMoreBox>
 					<StMore></StMore>
 					<StMore></StMore>
