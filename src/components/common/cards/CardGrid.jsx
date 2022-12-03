@@ -25,8 +25,9 @@ const CardGrid = ({ gridColumn, companyBoards, boards, userEnroll }) => {
 	return (
 		<StCardGridContainer>
 			<StCards gridColumn={gridColumn}>
-				{/* companyBoards 기업 상세페이지 */}
-				{companyBoards?.map(item => {
+
+				{/* boards 전체 게시물 리스트  */}
+				{boards?.map(item => {
 					const dDay = getDateDiff(item.dueDay, today);
 					return (
 						<StCard variant="StCompanyCard" key={item.boardId}>
@@ -50,8 +51,8 @@ const CardGrid = ({ gridColumn, companyBoards, boards, userEnroll }) => {
 					);
 				})}
 
-				{/* boards 전체 게시물 리스트  */}
-				{boards?.map(item => {
+				{/* companyBoards 기업 상세페이지 */}
+				{companyBoards?.map(item => {
 					const dDay = getDateDiff(item.dueDay, today);
 					return (
 						<StCard
@@ -102,6 +103,7 @@ const CardGrid = ({ gridColumn, companyBoards, boards, userEnroll }) => {
 						</StCard>
 					);
 				})}
+				
 			</StCards>
 		</StCardGridContainer>
 	);
