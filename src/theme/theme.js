@@ -18,6 +18,7 @@ export const darkTheme = {
 	notiColor: "#FF8155",
 };
 
+
 export const theme = {
 	lightTheme,
 	darkTheme,
