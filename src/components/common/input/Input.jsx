@@ -24,6 +24,7 @@ const Input = ({
 			{type === "text" || "password" ? (
 				<StInputContainer>
 					<StInput
+						id={id}
 						placeholder={placeholder}
 						autoComplete="off"
 						type={type}
