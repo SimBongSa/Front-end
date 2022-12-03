@@ -370,6 +370,7 @@ export const StTagBox = styled.ul`
 			color: ${props => props.theme.bgColor};
 		}
 	}
+<<<<<<< HEAD
 `;
 
 export const StHoverBox = styled.div`
@@ -412,3 +413,6 @@ export const StHoverBox = styled.div`
 		background: ${props => props.theme.notiColor};
 	}
 `;
+=======
+`;
+>>>>>>> 03a54747a2fc9dfe65cb57eea0dda0d10e0bbbf8
