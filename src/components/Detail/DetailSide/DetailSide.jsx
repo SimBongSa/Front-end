@@ -25,7 +25,6 @@ function DetailSlideBar({ boardsId, username, id }) {
 		navigate(`/chat/${chatRoom}`)
 	}
 
-
 	return (
 		<>
 			<DetailSide>
