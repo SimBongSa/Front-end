@@ -10,7 +10,7 @@ export const DetailSide = styled.div`
 	height: 25rem;
 	margin: 0rem 5rem 1rem 1rem;
 	padding: 1rem;
-	background: ${props => props.theme.bgColor};
+	background: ${props => props.theme.subBgColor};
 	@media screen and (max-width: 1024px) {
 		position: relative;
 		width: 600px;
@@ -25,10 +25,9 @@ export const StDateBox = styled.span`
 	justify-content: center;
 	align-items: center;
 	padding-top: 1rem;
-
 	& div {
-		font-size: 1.5rem;
-		font-weight: 500;
+		font-size: 1.2rem;
+		font-weight: 300;
 		margin-right: 1rem;
 		margin-left: 1rem;
 		padding: 5px 12px;

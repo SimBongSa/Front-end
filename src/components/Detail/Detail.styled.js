@@ -77,8 +77,9 @@ export const StAreaBox = styled.span`
 
 export const StArea = styled.span`
 	padding: 5px 10px;
-	border-radius: 16px;
+	border-radius: 15px;
 	background-color: gray;
+	font-weight: 300;
 	color: ${props => props.theme.bgColor};
 `;
 

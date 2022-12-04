@@ -20,7 +20,7 @@ export const StChatForm = styled.form`
   position: relative;
   width: 100%;
   height: 5rem;
-  background: #FBFBF9;
+  background: ${(props) => props.theme.subBgColor};
 `
 
 export const StChatInput = styled.input`
@@ -30,6 +30,7 @@ export const StChatInput = styled.input`
   border-radius: 30px;
   outline: none;
   margin-left: 10%;
+  margin-top: 7.5px;
 `
 export const StChatBtn = styled.button`
   position: absolute;
@@ -38,7 +39,7 @@ export const StChatBtn = styled.button`
   height: 45px;
   border: none;
   border-radius: 50%;
-  top: 5.5px;
+  top: 14px;
   right: 11%;
   font-size: 1.4rem;
   padding: 11px;

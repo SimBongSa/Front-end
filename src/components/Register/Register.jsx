@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { RegisterContainer, RegisterCover, RegisterBtn, RegisterIndividual, RegisterOrganization, OptionProfile, OptionOrganization, RegisterFormContainer } from "./Register.styled";
+import { RegisterContainer, RegisterCover, RegisterBtn, RegisterIndividual, RegisterOrganization, OptionProfile, OptionOrganization, StRegisterForm } from "./Register.styled";
 import Individual from "../Register/Individual/Individual"
 import Organization from "../Register/Organization/Organization"
 import { useNavigate } from "react-router-dom";
@@ -63,21 +63,19 @@ const Register = () => {
         ) : null
       }
 
-      {/* 게시물 등록할 때 */}
       {
         option === "individual" ? (
-          <RegisterFormContainer>
+          <StRegisterForm>
             <Individual/>
-          </RegisterFormContainer>
+          </StRegisterForm>
         ) : null
       }
 
-      {/* 게시물 수정할 때 */}
       {
         option === "organization" ? (
-          <RegisterFormContainer>
+          <StRegisterForm>
             <Organization/>
-          </RegisterFormContainer>
+          </StRegisterForm>
         ) : null
       }
     </>

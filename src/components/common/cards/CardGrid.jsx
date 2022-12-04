@@ -73,7 +73,6 @@ const CardGrid = ({ gridColumn, companyBoards, boards, userEnroll }) => {
 							const dDay = getDateDiff(item.dueDay, today);
 							const boardId = item.boardId;
 							// let isEditState = hoveritem.indexOf(boardId) === -1 ? false : true;
-
 							console.log(boardId);
 							return (
 								<StCard

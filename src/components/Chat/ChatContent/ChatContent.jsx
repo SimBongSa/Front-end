@@ -33,7 +33,7 @@ export const ChatContent = () => {
   useEffect(() => {
     dispatch(__getChatHistory(id.id));
     dispatch(__getBoardId(id.id));
-    scrollRef.current.scrollIntoView({ behavior: 'smooth', block: 'start', inline: 'nearest' })
+    scrollRef.current.scrollIntoView({ behavior: 'smooth', block: 'end', inline: 'nearest' })
   }, [dispatch, id, props]);
 
   return (
@@ -104,7 +104,8 @@ export const StChatContent = styled.div`
   position: relative;
   height: 100%;
   width: 100%;
-  background: #FBFBF9;
+  color: ${(props) => props.theme.textColor};
+  background: ${(props) => props.theme.subBgColor};
   overflow-y: scroll;
   &::-webkit-scrollbar {
     display: none;
@@ -125,6 +126,7 @@ export const StMyMessage = styled.li`
     margin: 15px 20px 0px 0px;
     padding: 15px;
     font-size: 12px;
+    background: white;
     color: #232323;
     border: 2px solid ${(props) => props.theme.btnColor};
   }
@@ -150,6 +152,7 @@ export const StReceiveMsg = styled.li`
     margin: 15px 0px 0px 20px;
     padding: 15px;
     font-size: 12px;
+    background: white;
     color: #232323;
     border: 2px solid ${(props) => props.theme.subTextColor};
   }
@@ -176,8 +179,8 @@ export const ChatCard = styled.div`
   height: 3rem;
   border: none;
   border-radius: 20px;
-  color: ${(props) => props.theme.textColor};
-  background: ${(props) => props.theme.bgColor};
+  color: #ccc;
+  background: #232323;
   transition: all 0.3s;
   & img {
     display: none;
