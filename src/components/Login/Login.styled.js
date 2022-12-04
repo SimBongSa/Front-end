@@ -125,3 +125,39 @@ export const LoginTitle = styled.h4`
   cursor: pointer;
   color: ${(props) => props.theme.bgColor};
 `
+
+export const StLoginOptions = styled.div`
+  display: flex;
+  width: 40%;
+  flex-direction: row;
+  justify-content: space-evenly;
+  > .selected { 
+      border-bottom: 4px solid ${(props) => props.theme.btnColor};
+  }
+  > .not-selected { 
+      border-bottom: 4px solid ${(props) => props.theme.subTextColor};
+  } 
+  & span {
+    cursor: pointer;
+    min-width: 5rem;
+    text-align: center;
+    margin: 1rem;
+    padding-bottom: 5px;
+    transition: all 0.4s;
+    &:hover {
+      transform: translateY(-5%);
+      border-bottom: 4px solid ${(props) => props.theme.btnColor};
+    }
+  }
+`
+
+export const StToRegister = styled.span`
+  font-weight: 300;
+  font-size: 1.2rem;
+  margin-top: 2rem;
+  margin-bottom: 15rem;
+  & b {
+    cursor: pointer;
+    color: orange;
+  }
+`
