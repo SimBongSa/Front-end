@@ -9,6 +9,7 @@ import {
 	__putUserInfo,
 } from "../../../redux/modules/mypageSlice";
 import { MyPageEditSec } from "./ProfileEdit.styled";
+import Stbtn from "../../common/button/Button";
 
 const ProfileEdit = () => {
 	const role = getCookieToken(["authority"]);
@@ -196,7 +197,9 @@ const ProfileEdit = () => {
 					</div>
 				) : null}
 			</MyPageEditContainer>
-			<Button type={"submit"}>수정 완료</Button>
+			<Stbtn variant="mypageedit" type={"submit"}>
+				수정 완료
+			</Stbtn>
 		</form>
 	);
 };
@@ -212,11 +215,6 @@ const ImgSize = styled.img`
 	width: 350px;
 	height: 150px;
 	margin: 1rem;
-`;
-
-const Button = styled.button`
-	z-index: 1000000;
-	position: absolute;
 `;
 
 const Input = styled.input`

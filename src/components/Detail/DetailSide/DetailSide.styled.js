@@ -52,31 +52,6 @@ export const StBtnBox = styled.div`
 	justify-content: center;
 `;
 
-export const StApplyBtn = styled.div`
-	text-align: center;
-	padding: 15px 20px;
-	margin-bottom: 1rem;
-	width: 20rem;
-	height: 3rem;
-	border-radius: 24px;
-	color: ${props => props.theme.bgColor};
-	background-color: ${props => props.theme.btnColor};
-	cursor: pointer;
-`;
-
-export const StChatBtn = styled.div`
-	text-align: center;
-	padding: 15px 20px;
-	margin-bottom: 1rem;
-	width: 20rem;
-	height: 3rem;
-	border-radius: 24px;
-	color: ${props => props.theme.btnColor};
-	background-color: ${props => props.theme.bgColor};
-	border: 1px solid ${props => props.theme.btnColor};
-	cursor: pointer;
-`;
-
 export const DetailSideItem = styled.div`
 	margin: 1rem;
 	margin-top: 1rem;

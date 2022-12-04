@@ -1,6 +1,7 @@
 import React from "react";
 import DaumPostcode from "react-daum-postcode";
 import styled from "styled-components";
+import Stbtn from "../common/button/Button";
 const PopupPostCode = ({ setAddress, onClose, ...props }) => {
 	// 우편번호 검색 후 주소 클릭 시 실행될 함수, data callback 용
 	const handlePostCode = data => {
@@ -27,7 +28,8 @@ const PopupPostCode = ({ setAddress, onClose, ...props }) => {
 		<PopupWrap>
 			<DaumPostcode style={postCodeStyle} onComplete={handlePostCode} />
 			{/* // 닫기 버튼 생성 */}
-			<CloseBtn
+			<Stbtn
+				variant="post-popup-close"
 				type="button"
 				onClick={() => {
 					onClose();
@@ -35,7 +37,7 @@ const PopupPostCode = ({ setAddress, onClose, ...props }) => {
 				className="postCode_btn"
 			>
 				닫기
-			</CloseBtn>
+			</Stbtn>
 		</PopupWrap>
 	);
 };
@@ -55,12 +57,4 @@ const PopupWrap = styled.div`
 	position: relative;
 	width: 586px;
 	height: 586px;
-`;
-
-const CloseBtn = styled.button`
-	position: absolute;
-	bottom: 5%;
-	left: 50%;
-	transform: translateX(-50%);
-	z-index: 10;
 `;

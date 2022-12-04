@@ -8,6 +8,7 @@ import PopupDom from "../Map/PopupDom";
 import PopupPostCode from "../Map/PopupPostCode";
 import DatePicker from "react-datepicker";
 import { ko } from "date-fns/esm/locale";
+import Stbtn from "../common/button/Button";
 
 const DetailEdit = () => {
 	const [isPopupOpen, setIsPopupOpen] = useState(false);
@@ -158,7 +159,9 @@ const DetailEdit = () => {
 				</DetailContent>
 			</DetailContainer>
 			{/* <button type={"submit"} onClick={() => navigate(`/boards/${id}`)}> */}
-			<button type={"submit"}>수정 완료</button>
+			<Stbtn variant="mypageedit" type={"submit"}>
+				수정 완료
+			</Stbtn>
 		</form>
 	);
 };
