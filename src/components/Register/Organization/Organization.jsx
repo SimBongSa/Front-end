@@ -4,10 +4,9 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { __registerManager } from "../../../redux/modules/registerSlice";
-import ProcessBar from "../ProcessBar/ProcessBar";
 import { BtnContainer } from "../ProcessBar/ProcessBar.styld";
 import styled from "styled-components";
-import { InputContainers, InputHeader } from "../Register.styled";
+import { StInputContainer, InputHeader } from "../Register.styled";
 
 
 const Organization = () => {
@@ -57,10 +56,9 @@ const Organization = () => {
   const [step, setStep] = useState(0);
 
   return(
-    <InputContainers>
+    <StInputContainer>
       <InputHeader>
         <h1>You are almost done!</h1>
-        <ProcessBar step={step} />
       </InputHeader>
       <InputForm>
         <InputBox>
@@ -168,7 +166,7 @@ const Organization = () => {
         </InputBox>
         <span onClick={() => navigate("/login")}>You are already member? Log in Now</span>
       </InputForm>
-    </InputContainers>
+    </StInputContainer>
   )
 };
 

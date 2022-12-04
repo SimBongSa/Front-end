@@ -104,7 +104,8 @@ export const StChatContent = styled.div`
   position: relative;
   height: 100%;
   width: 100%;
-  background: #FBFBF9;
+  color: ${(props) => props.theme.textColor};
+  background: ${(props) => props.theme.subBgColor};
   overflow-y: scroll;
   &::-webkit-scrollbar {
     display: none;
@@ -176,8 +177,8 @@ export const ChatCard = styled.div`
   height: 3rem;
   border: none;
   border-radius: 20px;
-  color: ${(props) => props.theme.textColor};
-  background: ${(props) => props.theme.bgColor};
+  color: #ccc;
+  background: #232323;
   transition: all 0.3s;
   & img {
     display: none;

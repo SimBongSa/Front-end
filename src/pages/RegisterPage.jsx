@@ -6,7 +6,6 @@ export const RegisterPage = () => {
   return (
     <>
       {/* <Header/> */}
-      <div>로고 들어갈거임</div>
       <Register/>
       <Footer />
     </>

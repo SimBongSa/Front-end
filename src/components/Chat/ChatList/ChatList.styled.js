@@ -5,7 +5,7 @@ export const StSidePanel = styled.div`
   width: 25%;
   height: 100%;
   overflow: hidden;
-  background: #232323;
+  background: ${(props) => props.theme.subBgColor};
   & h1 {
     font-size: 2rem;
     padding: 2rem;

@@ -11,7 +11,7 @@ export const StInput = styled.input`
 	padding: 20px;
 	width: 100%;
 	padding-left: 20px;
-	border: 1px solid ${(props) => props.theme.textColor};
+	border: 1px solid ${(props) => props.theme.subTextColor};
 	border-radius: 30px;
 	outline: none;
 	margin-bottom: 1rem;

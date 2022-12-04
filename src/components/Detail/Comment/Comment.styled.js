@@ -8,11 +8,9 @@ export const MainComponent = styled.div`
 export const CommentWriteWrap = styled.div`
 	display: flex;
 	align-items: center;
-	background: #ffffff;
 	border-radius: 30px;
-	/* min-width: 600px; */
 	height: 4rem;
-	& > div {
+	& div {
 		cursor: pointer;
 	}
 `;
@@ -108,5 +106,5 @@ export const StPageBtn = styled.div`
 `;
 
 export const StComment = styled(Input)`
-	background-color: black;
+	/* background-color: black; */
 `;
