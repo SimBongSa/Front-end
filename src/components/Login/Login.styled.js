@@ -3,17 +3,20 @@ import { BiArrowBack } from "react-icons/bi";
 
 export const LoginContainer = styled.div`
   display: flex;
-  height: 100vh;
+  flex-direction: column;
+  height: 65vh;
   margin: 0 auto;
+  margin-top: 12rem;
+  margin-bottom: 15rem;
   overflow: hidden;
   justify-content: space-between;
   align-items: center;
-  @media (max-width: 980px) {
+  /* @media (max-width: 980px) {
 		flex-flow:wrap;
 		text-align: center;
 		align-content: center;
 		align-items: center;
-	}
+	} */
 `
 
 export const LoginBackLeft = styled.div`
@@ -23,11 +26,11 @@ export const LoginBackLeft = styled.div`
   background-color: #aaaaaa;
   background-size: cover;
   background-repeat: no-repeat;
-  @media (max-width: 980px) {
+  /* @media (max-width: 980px) {
     width: 100%;
     height: 50%;
     margin-bottom: 3rem;
-	}
+	} */
 `
 
 export const LoginFrontRight = styled.div`
@@ -58,21 +61,18 @@ export const LoginBox = styled.div`
   display: flex;
   margin: 0 auto;
   padding: 50px;
-  max-width: 500px;
-  min-width: 500px;
+  max-width: 600px;
+  min-width: 600px;
   height: 40vh;
   min-height: 600px;
   overflow: hidden;
+  border-radius: 15px;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: space-evenly;
   font-size: 3rem;
   color: ${(props) => props.theme.bgColor};
   background-color: ${(props) => props.theme.btnColor};;
   transition: all 0.5s;
-  @media (max-width: 1024px) {
-    width: 100%;
-    margin-bottom: 15rem;
-  }
   & span {
     display: flex;
     justify-content: space-between;
@@ -86,7 +86,7 @@ export const LoginBoxTitle = styled.div`
   display: flex;
   justify-content: space-between;
   margin-bottom: 1rem;
-  border-bottom: 1px solid #aaaaaa;
+  border-bottom: 3px solid ${(props) => props.theme.bgColor};
 `
 export const LoginArrowBack = styled(BiArrowBack)`
   cursor: pointer;
@@ -102,20 +102,8 @@ export const LoginArrowBack = styled(BiArrowBack)`
 export const LoginForm = styled.form`
   display: flex;
   flex-direction: column;
-  /* overflow: hidden; */
 `
 
-export const LoginInput = styled.input`
-  width: 100%;
-  padding: 10px;
-  margin-top: 25px;
-  font-size: 16px;
-  background-color: ${(props) => props.theme.ctrColor};
-  color: ${(props) => props.theme.bgColor};
-  border: none;
-  outline: none;
-  border-bottom: 2px solid #B0B3B9;
-`
 export const LoginBtn = styled.button`
   cursor: pointer;
   margin-top: 1.2rem;
@@ -130,23 +118,6 @@ export const LoginBtn = styled.button`
   transition: all 0.3s;
   &:hover {
     transform: translateY(-7%);
-  }
-`
-
-export const SocialContainer = styled.div`
-  display: flex;
-  margin: 0 auto;
-  & div {
-    cursor: pointer;
-    font-size: .8rem;
-    border: 1px solid #DDDDDD;
-    border-radius: 50%;
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    margin: 0 5px;
-    height: 50px;
-    width: 50px;
   }
 `
 

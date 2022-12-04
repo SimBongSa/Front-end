@@ -16,6 +16,7 @@ export const StInput = styled.input`
 	border-radius: 30px;
 	outline: none;
 	margin-bottom: 1rem;
+	margin-left: -.15rem;
 	&:focus {
 		border: 1px solid ${props => props.theme.btnColor};
 		color: ${props => props.theme.btnColor};

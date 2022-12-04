@@ -6,6 +6,7 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { getCookieToken } from "../../utils/cookie";
 import Input from "../common/input/Input";
+import styled, { css } from "styled-components";
 
 const Login = () => {
 
@@ -52,93 +53,93 @@ const Login = () => {
   return(
     <>
       <LoginContainer>
-
-        {/* <LoginBackLeft>
-          <LoginOverlay>
-            <h1>Hello World.</h1>
-            <p>암튼 여기 왼쪽은 이미지 들어갈거임</p>
-            <p>글씨는 넣을까 말까 고민중</p>
-          </LoginOverlay>
-        </LoginBackLeft> */}
-    
         {
           loginOption === "member" ? (
-            <LoginBox>
-              <LoginBoxTitle>
-                <LoginTitle onClick={() => {
-                  setLoginOption("manager")
-                }}>Member Login</LoginTitle><LoginArrowBack onClick={() => navigate("/")}/>
-              </LoginBoxTitle>
-    
-              <LoginForm onSubmit={onSubmitHandler}>
-                <Input 
-                  placeholder="username" 
-                  type="text"
-                  name="username"
-                  value={input.username}
-                  onChange={onChangeHandler}
-                />
-                <LoginInput 
-                  placeholder="password"
-                  type="password"
-                  name="password"
-                  value={input.password}
-                  onChange={onChangeHandler}
-                />
-                <LoginBtn onClick={() => {
-                  dispatch(__loginMember(input))
-                }}>Member Login</LoginBtn>
-              </LoginForm>
-    
-              <span>Forgot Your Password?</span>
-    
-              <span>or Continue With</span>
-    
-              <SocialContainer>
-                <div onClick={() => {
-                  navigate("/https://kauth.kakao.com/oauth/authorize?client_id=e0fa0a29b6f980a77e6cad8b0f96639d&redirect_uri=http://3.39.193.27:8080/user/kakao/callback&response_type=code")
-                }}>ka</div>
-                <div>소셜2</div>
-                <div>소셜3</div>
-              </SocialContainer>
-              <span onClick={() => navigate("/register")}>Create an account</span>
-            </LoginBox>
+            <>
+              <StLoginOptions>
+                <span 
+                  className={ loginOption === "member" ?  "selected" : "not-selected"}
+                  onClick={() => {
+                    setLoginOption("member");
+                }}>봉사 지원자</span>
+                <span 
+                  className={ loginOption === "manager" ?  "selected" : "not-selected"}
+                  onClick={() => {
+                    setLoginOption("manager")
+                  }}>봉사 기관</span>
+              </StLoginOptions>
+
+              <LoginBox>
+                <LoginBoxTitle>
+                  <LoginTitle>Member Login</LoginTitle><LoginArrowBack onClick={() => navigate("/")}/>
+                </LoginBoxTitle>
+      
+                <LoginForm onSubmit={onSubmitHandler}>
+                  <Input 
+                    placeholder="username" 
+                    type="text"
+                    name="username"
+                    value={input.username}
+                    onChange={onChangeHandler}
+                  />
+                  <Input 
+                    placeholder="password"
+                    type="password"
+                    name="password"
+                    value={input.password}
+                    onChange={onChangeHandler}
+                  />
+                  <LoginBtn>Member Login</LoginBtn>
+                </LoginForm>
+              </LoginBox>
+              <StToRegister>아직 봉골레 멤버가 아닌가요? <b onClick={() => navigate("/register")}>회원가입</b></StToRegister>
+            </>
           ) : null
         }
 
         {
           loginOption === "manager" ? (
-            <LoginBox>
-              <LoginBoxTitle>
-                <LoginTitle onClick={() => {
-                  setLoginOption("member");
-                }}>Manager Login</LoginTitle><LoginArrowBack onClick={() => navigate("/")}/>
-              </LoginBoxTitle>
-    
-              <LoginForm onSubmit={onSubmitHandler}>
-                <LoginInput 
-                  placeholder="username" 
-                  type="text"
-                  name="username"
-                  value={input.username}
-                  onChange={onChangeHandler}
-                />
-                <LoginInput 
-                  placeholder="password"
-                  type="password"
-                  name="password"
-                  value={input.password}
-                  onChange={onChangeHandler}
-                />
-                <LoginBtn onClick={() => {
-                  dispatch(__loginMember(input))
-                }}>Manager Login</LoginBtn>
-              </LoginForm>
-    
-              <span>Forgot Your Password?</span>
-    
-              <span onClick={() => navigate("/register")}>Create an account</span>
-            </LoginBox>
+            <>
+              <StLoginOptions>
+                <span 
+                  className={ loginOption === "member" ?  "selected" : "not-selected"}
+                  onClick={() => {
+                    setLoginOption("member");
+                }}>봉사 지원자</span>
+                <span 
+                  className={ loginOption === "manager" ?  "selected" : "not-selected"}
+                  onClick={() => {
+                    setLoginOption("manager")
+                  }}>봉사 기관</span>
+              </StLoginOptions>
+
+              <LoginBox>
+                <LoginBoxTitle>
+                  <LoginTitle>Manager Login</LoginTitle><LoginArrowBack onClick={() => navigate("/")}/>
+                </LoginBoxTitle>
+      
+                <LoginForm onSubmit={onSubmitHandler}>
+                  <Input 
+                    placeholder="username" 
+                    type="text"
+                    name="username"
+                    value={input.username}
+                    onChange={onChangeHandler}
+                  />
+                  <Input 
+                    placeholder="password"
+                    type="password"
+                    name="password"
+                    value={input.password}
+                    onChange={onChangeHandler}
+                  />
+                  <LoginBtn onClick={() => {
+                    dispatch(__loginMember(input))
+                  }}>Manager Login</LoginBtn>
+                </LoginForm>
+              </LoginBox>
+             <StToRegister>아직 봉골레 멤버가 아닌가요? <b onClick={() => navigate("/register")}>회원가입</b></StToRegister>
+            </> 
           ) : null
         }
       </LoginContainer>
@@ -147,3 +148,39 @@ const Login = () => {
 };
 
 export default Login;
+
+export const StLoginOptions = styled.div`
+  display: flex;
+  width: 40%;
+  flex-direction: row;
+  justify-content: space-evenly;
+  > .selected { 
+      border-bottom: 4px solid ${(props) => props.theme.btnColor};
+  }
+  > .not-selected { 
+      border-bottom: 4px solid ${(props) => props.theme.subTextColor};
+  } 
+  & span {
+    cursor: pointer;
+    min-width: 5rem;
+    text-align: center;
+    margin: 1rem;
+    padding-bottom: 5px;
+    transition: all 0.4s;
+    &:hover {
+      transform: translateY(-5%);
+      border-bottom: 4px solid ${(props) => props.theme.btnColor};
+    }
+  }
+`
+
+export const StToRegister = styled.span`
+  font-weight: 300;
+  font-size: 1.2rem;
+  margin-top: 2rem;
+  margin-bottom: 15rem;
+  & b {
+    cursor: pointer;
+    color: orange;
+  }
+`
