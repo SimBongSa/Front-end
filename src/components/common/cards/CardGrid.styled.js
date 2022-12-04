@@ -1,24 +1,83 @@
 import styled, { css } from "styled-components";
 
 export const StCardGridContainer = styled.section`
-	display: grid;
-	width: 70%;
-	grid-template-columns: 0fr repeat(0, minmax(auto, 60px)) 10fr;
-	margin: 3rem 0px 2rem 15rem;
-	justify-items: center;
+	${({ variant }) => {
+		switch (variant) {
+			case "Board":
+				return css`
+					display: grid;
+					width: 70%;
+					grid-template-columns: 0fr repeat(0, minmax(auto, 60px)) 10fr;
+					margin: 3rem 0px 2rem 10rem;
+					background-color: red;
+					justify-items: center;
+				`;
+			case "userEnroll":
+				return css`
+					grid-template-columns: 0fr repeat(0, minmax(auto, 60px)) 10fr;
+					justify-items: center;
+					margin-bottom: 2rem;
+					background-color: green;
+				`;
+			case "Company":
+				return css`
+					grid-template-columns: 0fr repeat(0, minmax(auto, 60px)) 10fr;
+					justify-items: center;
+					background-color: white;
+				`;
+			default:
+				break;
+		}
+	}}
 `;
 
 export const StCards = styled.div`
-	display: grid;
-	grid-column: ${props => props.gridColumn} / span 12;
-	grid-template-columns: repeat(20, minmax(auto, 120px));
-	grid-gap: 1.5rem;
-	@media screen and (max-width: 1440px) {
-		grid-template-columns: repeat(16, minmax(auto, 60px));
-	}
-	@media screen and (max-width: 1024px) {
-		grid-template-columns: repeat(12, minmax(auto, 60px));
-	}
+	${({ variant }) => {
+		switch (variant) {
+			case "Board":
+				return css`
+					display: grid;
+					grid-column: ${props => props.gridColumn} / span 12;
+					grid-template-columns: repeat(20, minmax(auto, 120px));
+					grid-gap: 1.5rem;
+					gap: 5rem;
+					@media screen and (max-width: 1440px) {
+						grid-template-columns: repeat(16, minmax(auto, 60px));
+					}
+					@media screen and (max-width: 1024px) {
+						grid-template-columns: repeat(12, minmax(auto, 60px));
+					}
+				`;
+			case "userEnroll":
+				return css`
+					display: grid;
+					grid-column: ${props => props.gridColumn} / span 12;
+					grid-template-columns: repeat(20, minmax(auto, 120px));
+					grid-gap: 1.5rem;
+					@media screen and (max-width: 1440px) {
+						grid-template-columns: repeat(16, minmax(auto, 60px));
+					}
+					@media screen and (max-width: 1024px) {
+						grid-template-columns: repeat(12, minmax(auto, 60px));
+					}
+				`;
+			case "Company":
+				return css`
+					display: grid;
+					grid-column: ${props => props.gridColumn} / span 12;
+					grid-template-columns: repeat(20, minmax(auto, 120px));
+					grid-gap: 1.5rem;
+					@media screen and (max-width: 1440px) {
+						grid-template-columns: repeat(16, minmax(auto, 60px));
+					}
+					@media screen and (max-width: 1024px) {
+						grid-template-columns: repeat(12, minmax(auto, 60px));
+					}
+				`;
+			default:
+				break;
+		}
+	}}
 `;
 
 export const StCard = styled.div`

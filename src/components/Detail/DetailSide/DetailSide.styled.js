@@ -28,7 +28,7 @@ export const StDateBox = styled.span`
 
 	& div {
 		font-size: 1.5rem;
-		font-weight: bolder;
+		font-weight: 500;
 		margin-right: 1rem;
 		margin-left: 1rem;
 		padding: 5px 12px;
