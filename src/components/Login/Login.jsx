@@ -5,6 +5,7 @@ import { __loginMember } from "../../redux/modules/registerSlice";
 import { useState } from "react";
 import { useEffect } from "react";
 import { getCookieToken } from "../../utils/cookie";
+import Input from "../common/input/Input";
 
 const Login = () => {
 
@@ -52,13 +53,13 @@ const Login = () => {
     <>
       <LoginContainer>
 
-        <LoginBackLeft>
+        {/* <LoginBackLeft>
           <LoginOverlay>
             <h1>Hello World.</h1>
             <p>암튼 여기 왼쪽은 이미지 들어갈거임</p>
             <p>글씨는 넣을까 말까 고민중</p>
           </LoginOverlay>
-        </LoginBackLeft>
+        </LoginBackLeft> */}
     
         {
           loginOption === "member" ? (
@@ -70,7 +71,7 @@ const Login = () => {
               </LoginBoxTitle>
     
               <LoginForm onSubmit={onSubmitHandler}>
-                <LoginInput 
+                <Input 
                   placeholder="username" 
                   type="text"
                   name="username"

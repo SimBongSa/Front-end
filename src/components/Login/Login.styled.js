@@ -102,7 +102,7 @@ export const LoginArrowBack = styled(BiArrowBack)`
 export const LoginForm = styled.form`
   display: flex;
   flex-direction: column;
-  overflow: hidden;
+  /* overflow: hidden; */
 `
 
 export const LoginInput = styled.input`
