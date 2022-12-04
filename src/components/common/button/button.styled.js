@@ -35,6 +35,18 @@ export const Stbtn = styled.button`
 					cursor: pointer;
 				`;
 
+			case "recruit-post":
+				return css`
+					background: ${props => props.theme.btnColor};
+					border: 1px solid ${props => props.theme.btnColor};
+					color: ${props => props.theme.bgColor};
+					border-radius: 20px;
+					width: 8rem;
+					height: 2.5rem;
+					margin-left: 2em;
+					cursor: pointer;
+				`;
+
 			//boards -> DetailSide.jsx
 			case "boards-apply":
 				return css`
