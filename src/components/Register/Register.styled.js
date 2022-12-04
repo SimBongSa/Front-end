@@ -25,6 +25,7 @@ export const RegisterCover = styled.div`
     padding-top: 50%;
     font-size: 2rem;
     cursor: pointer;
+    color: ${(props) => props.theme.textColor};
   }
   & p {
     font-weight: 300;
@@ -35,14 +36,14 @@ export const RegisterCover = styled.div`
 
 export const RegisterBtn = styled.button`
   cursor: pointer;
-  border: 1px solid ${(props) => props.theme.textColor};
+  border: 2px solid ${(props) => props.theme.textColor};
   background: transparent;
   border-radius: 20px;
   color: ${(props) => props.theme.textColor};
-  font-size: 11px;
-  font-weight: 500;
+  font-size: 16px;
+  font-weight: 700;
   letter-spacing: 1px;
-  padding: 15px 60px;
+  padding: 15px 50px;
   text-decoration: none;
   text-transform: uppercase;
   margin-top: 3rem;
@@ -100,13 +101,13 @@ export const RegisterOrganization = styled.div`
 export const OptionProfile = styled(VscAccount)`
   font-size: 10rem;
   margin-top: 2rem;
-  color: #4c4c4c;
+  color: ${(props) => props.theme.textColor};
 `
 
 export const OptionOrganization = styled(VscOrganization)`
   font-size: 10rem;
   margin-top: 2rem;
-  color: #4c4c4c;
+  color: ${(props) => props.theme.textColor};
 `
 
 export const StRegisterForm = styled.div`
@@ -133,16 +134,29 @@ export const StInputContainer = styled.div`
   display: flex;
   flex-direction: column;
   border-radius: .1rem;
-  /* box-shadow: 0 .75rem 1.5rem rgba(0,0,0,0.2), 0 .25rem .25rem rgba(0,0,0,0.2); */
   position: relative;
   align-items: center;
   overflow: hidden;
   width: 80%;
-  background: ${(props) => props.theme.subBgColor};
+  margin-bottom: 10rem;
 `
 
 export const InputHeader = styled.h1`
   height: 5rem;
   text-align: center;
   font-size: 2rem;
+`
+
+export const StRegBtn = styled.button`
+	cursor: pointer;
+  position: relative;
+  margin-left: 10px;
+	width: 100%;
+	height: 3rem;
+	border-radius: 24px;
+	margin-top: 3rem;
+	margin-bottom: 5rem;
+	background: ${props => props.theme.btnColor};
+	border: 1px solid ${props => props.theme.btnColor};
+	color: ${props => props.theme.bgColor};
 `

@@ -31,7 +31,7 @@ export const apis = {
 			},
 		}),
 	checkUsername: payload => axios.get(`${BASE_URL}/members/signup/check_username/${payload}`),
-	checkNickname: payload => axios.get(`${BASE_URL}/members/signup/check_nickname/${payload}`),
+	// checkNickname: payload => axios.get(`${BASE_URL}/members/signup/check_nickname/${payload}`),
 
 	//calendarSlice
 	TotalcalendarList: dueDay => api.get(`${BASE_URL}/boards/date/${dueDay}`),

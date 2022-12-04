@@ -5,7 +5,7 @@ import { useDispatch } from "react-redux";
 import { __registerMember } from "../../../redux/modules/registerSlice";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import { StInputContainer, InputHeader } from "../Register.styled";
+import { StInputContainer, InputHeader, StRegBtn } from "../Register.styled";
 
 const Individual = () => {
 	const init = {
@@ -181,21 +181,23 @@ const Individual = () => {
 							value={input.birthdate}
 							onChange={onChangeHandler}
 						/>
-						<Input
-							id="male"
-							type="radio"
-							name="gender"
-							value="male"
-							onChange={onChangeHandler}
-						/>
-						<Input
-							id="female"
-							type="radio"
-							name="gender"
-							value="female"
-							onChange={onChangeHandler}
-						/>
-						<button type="submit">회원가입</button>
+						<StGender>
+							<Input
+								id="male"
+								type="radio"
+								name="gender"
+								value="male"
+								onChange={onChangeHandler}
+							/>
+							<Input
+								id="female"
+								type="radio"
+								name="gender"
+								value="female"
+								onChange={onChangeHandler}
+							/>
+						</StGender>
+						<StRegBtn type="submit">회원가입</StRegBtn>
 					</form>
 				</InputBox>
 				<span onClick={() => navigate("/login")}>You are already member? Log in Now</span>
@@ -206,10 +208,11 @@ const Individual = () => {
 
 export default Individual;
 
-export const Gender = styled.div`
+export const StGender = styled.div`
 	display: flex;
 	margin: 0 auto;
 	flex-direction: row;
+	justify-content: space-evenly;
 `;
 
 export const StLegend = styled.legend`

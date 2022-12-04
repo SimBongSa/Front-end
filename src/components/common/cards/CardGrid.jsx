@@ -133,31 +133,6 @@ const CardGrid = ({ gridColumn, companyBoards, boards, userEnroll }) => {
 						</StCard>
 					);
 				})}
-
-				{/* companyBoards 기업 상세페이지 */}
-				{companyBoards?.map(item => {
-					const dDay = getDateDiff(item.dueDay, today);
-					return (
-						<StCard variant="Company" key={item.boardId}>
-							<StDate variant="Company">D-{dDay}</StDate>
-							<StImgWrapper>
-								<img src={item.boardImage} loading="lazy" alt="thumbnail" />
-							</StImgWrapper>
-							<StContent variant="Company">
-								<p className="title">{item.title}</p>
-								<StCardInfo variant="Company">
-									<StArea variant="Company">{item.area}</StArea>
-									<StDetailArea variant="Company">{item.detailArea}</StDetailArea>
-								</StCardInfo>
-								<StTagBox>
-									{item?.tags?.map(tag => {
-										return <li>{tag}</li>;
-									})}
-								</StTagBox>
-							</StContent>
-						</StCard>
-					);
-				})}
 			</StCards>
 		</StCardGridContainer>
 	);

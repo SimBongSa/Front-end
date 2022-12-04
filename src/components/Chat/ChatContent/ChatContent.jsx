@@ -126,6 +126,7 @@ export const StMyMessage = styled.li`
     margin: 15px 20px 0px 0px;
     padding: 15px;
     font-size: 12px;
+    background: white;
     color: #232323;
     border: 2px solid ${(props) => props.theme.btnColor};
   }
@@ -151,6 +152,7 @@ export const StReceiveMsg = styled.li`
     margin: 15px 0px 0px 20px;
     padding: 15px;
     font-size: 12px;
+    background: white;
     color: #232323;
     border: 2px solid ${(props) => props.theme.subTextColor};
   }

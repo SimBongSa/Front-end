@@ -7,6 +7,7 @@ export const MainComponent = styled.div`
 `;
 export const CommentWriteWrap = styled.div`
 	display: flex;
+	width: 100%;
 	align-items: center;
 	border-radius: 30px;
 	height: 4rem;
