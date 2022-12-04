@@ -33,7 +33,7 @@ export const ChatContent = () => {
   useEffect(() => {
     dispatch(__getChatHistory(id.id));
     dispatch(__getBoardId(id.id));
-    scrollRef.current.scrollIntoView({ behavior: 'smooth', block: 'start', inline: 'nearest' })
+    scrollRef.current.scrollIntoView({ behavior: 'smooth', block: 'end', inline: 'nearest' })
   }, [dispatch, id, props]);
 
   return (

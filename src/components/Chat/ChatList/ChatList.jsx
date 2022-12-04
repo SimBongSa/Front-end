@@ -3,6 +3,8 @@ import { StSidePanel, StContact, StContactWrap, StContactMeta } from "./ChatList
 
 export const ChatList = ({ chatList }) => {
 
+  console.log(chatList);
+
   const navigate = useNavigate();
 
   return (
