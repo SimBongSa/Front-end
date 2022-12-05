@@ -3,6 +3,7 @@ import { apis } from "./Api/apis";
 
 const initialState = {
 	TotalcalendarList: [],
+	montList: [],
 	calendarList: {},
 	search: {},
 	isLoading: false,
@@ -24,6 +25,15 @@ export const __getTotalCalendarList = createAsyncThunk(
 export const __getCalendarList = createAsyncThunk("getCalendarList", async (payload, thunkAPI) => {
 	try {
 		const response = await apis.calendarList(payload);
+		return thunkAPI.fulfillWithValue(response.data);
+	} catch (error) {
+		return thunkAPI.rejectWithValue(error.data);
+	}
+});
+
+export const __getMonthList = createAsyncThunk("getMonthList", async (payload, thunkAPI) => {
+	try {
+		const response = await apis.MonthList(payload);
 		return thunkAPI.fulfillWithValue(response.data);
 	} catch (error) {
 		return thunkAPI.rejectWithValue(error.data);
@@ -64,6 +74,17 @@ const calendarSlice = createSlice({
 				state.calendarList = action.payload;
 			})
 			.addCase(__getCalendarList.rejected, state => {
+				state.isLoading = false;
+			});
+		builder
+			.addCase(__getMonthList.pending, state => {
+				state.isLoading = true;
+			})
+			.addCase(__getMonthList.fulfilled, (state, action) => {
+				state.isLoading = false;
+				state.montList = action.payload;
+			})
+			.addCase(__getMonthList.rejected, state => {
 				state.isLoading = false;
 			});
 		builder

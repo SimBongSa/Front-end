@@ -194,18 +194,17 @@ const Input = styled.input`
 	padding-left: 10px;
 `;
 
-const RegisterDatePicker = styled(DatePicker)({
-	margin: "1px",
-	fontSize: "15px",
-	padding: "20px",
-	width: "590px",
-	paddingLeft: "20px",
-	border: "1px solid #66885d",
-	borderRadius: "30px",
-	outline: "none",
-	marginBottom: "1rem",
-	background: `${props => props.theme.textColor}`,
-});
+const RegisterDatePicker = styled(DatePicker)`
+	margin: 1rem;
+	font-size: 15px;
+	padding: 20px;
+	width: 100%;
+	// paddingLeft: "20px",
+	border: 1px solid #66885d;
+	border-radius: 30px;
+	outline: none;
+	background: ${props => props.theme.btnColor};
+`;
 
 const TextArea = styled.textarea`
 	margin: 1px;

@@ -13,7 +13,7 @@ import {
 	StDetailArea,
 	StHoverBox,
 } from "./CardGrid.styled";
-const CardGrid = ({ gridColumn, companyBoards, boards, userEnroll }) => {
+const CardGrid = ({ gridColumn, companyBoards, boards, userEnroll, userWait }) => {
 	console.log(userEnroll);
 	const navigate = useNavigate();
 
@@ -71,9 +71,6 @@ const CardGrid = ({ gridColumn, companyBoards, boards, userEnroll }) => {
 					<StCards variant="userEnroll">
 						{userEnroll?.map(item => {
 							const dDay = getDateDiff(item.dueDay, today);
-							const boardId = item.boardId;
-							// let isEditState = hoveritem.indexOf(boardId) === -1 ? false : true;
-							console.log(boardId);
 							return (
 								<StCard
 									variant="userEnroll"
@@ -81,24 +78,8 @@ const CardGrid = ({ gridColumn, companyBoards, boards, userEnroll }) => {
 									onClick={() => navigate(`/boards/${item.boardId}`)}
 								>
 									<StDate variant="userEnroll">D-{dDay}</StDate>
-									<StImgWrapper
-										variant="userEnroll"
-										// onMouseOver={() => [setIsHovering(true), setHoverItem(true)]}
-										// onMouseOut={() => [setIsHovering(false), setHoverItem(false)]}
-										onMouseOver={() => setIsHovering(true)}
-										onMouseOut={() => setIsHovering(false)}
-									>
-										{isHovering ? (
-											<>
-												<img src={item.boardImage} loading="lazy" alt="enrollImage" />
-												<StHoverBox>
-													<div>수정</div>
-													<span>삭제</span>
-												</StHoverBox>
-											</>
-										) : (
-											<img src={item.boardImage} loading="lazy" alt="enrollImage" />
-										)}
+									<StImgWrapper variant="userEnroll">
+										<img src={item.boardImage} loading="lazy" alt="enrollImage" />
 									</StImgWrapper>
 									<StContent variant="userEnroll">
 										<p className="title">{item.title}</p>
@@ -124,11 +105,29 @@ const CardGrid = ({ gridColumn, companyBoards, boards, userEnroll }) => {
 				<StCards variant="Company">
 					{companyBoards?.map(item => {
 						const dDay = getDateDiff(item.dueDay, today);
+						const boardId = item.boardId;
+						// let isEditState = hoveritem.indexOf(boardId) === -1 ? false : true;
+						console.log(boardId);
 						return (
 							<StCard variant="Company" key={item.boardId}>
 								<StDate variant="Company">D-{dDay}</StDate>
-								<StImgWrapper variant="Company">
-									<img src={item.boardImage} loading="lazy" alt="thumbnail" />
+								<StImgWrapper
+									variant="Company" // onMouseOver={() => [setIsHovering(true), setHoverItem(true)]}
+									// onMouseOut={() => [setIsHovering(false), setHoverItem(false)]}
+									onMouseOver={() => setIsHovering(true)}
+									onMouseOut={() => setIsHovering(false)}
+								>
+									{isHovering ? (
+										<>
+											<img src={item.boardImage} loading="lazy" alt="enrollImage" />
+											<StHoverBox>
+												<div>수정</div>
+												<span>삭제</span>
+											</StHoverBox>
+										</>
+									) : (
+										<img src={item.boardImage} loading="lazy" alt="enrollImage" />
+									)}
 								</StImgWrapper>
 								<StContent variant="Company">
 									<p className="title">{item.title}</p>

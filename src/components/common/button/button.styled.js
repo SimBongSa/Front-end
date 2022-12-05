@@ -11,15 +11,19 @@ export const Stbtn = styled.button`
 			case "recruit-green":
 				return css`
 					text-align: center;
-					padding: 15px 20px;
+					padding: 15px 100px;
 					margin-bottom: 1rem;
+					margin-left: 1rem;
 					width: ${props => props.width};
 					height: ${props => props.height};
 					border-radius: 24px;
 					color: ${props => props.theme.bgColor};
 					background-color: ${props => props.theme.btnColor};
 					border: 1px solid ${props => props.theme.btnColor};
+					/* margin-left: 15em; */
 					cursor: pointer;
+					align-items: center;
+					justify-content: center;
 				`;
 			case "recruit-white":
 				return css`
@@ -43,8 +47,9 @@ export const Stbtn = styled.button`
 					border-radius: 20px;
 					width: 8rem;
 					height: 2.5rem;
-					margin-left: 2em;
+					margin-left: 1em;
 					cursor: pointer;
+					position: sticky;
 				`;
 
 			//boards -> DetailSide.jsx
@@ -138,20 +143,22 @@ export const Stbtn = styled.button`
 				`;
 
 			//mypageedit -> ProfileEdit.jsx / edit -> DetailEdit.jsx
+
 			case "mypage-edit":
 				return css`
-					z-index: 11;
-					position: absolute;
+					cursor: pointer;
+					position: relative;
+					margin-left: 10px;
+					width: 100%;
+					height: 3rem;
+					border-radius: 24px;
+					margin-top: 3rem;
+					margin-bottom: 5rem;
 					background: ${props => props.theme.btnColor};
 					border: 1px solid ${props => props.theme.btnColor};
 					color: ${props => props.theme.bgColor};
-					border-radius: 24px;
-					width: 8rem;
-					height: 2.5rem;
-					margin-left: auto;
-					margin-right: 0.5rem;
-					cursor: pointer;
 				`;
+
 			//searchbar -> SearchBar.jsx
 			case "searchbar-open":
 				return css`
