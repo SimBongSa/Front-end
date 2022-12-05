@@ -210,7 +210,7 @@ export const Stbtn = styled.button`
 					height: 45px;
 					border: none;
 					border-radius: 50%;
-					top: 5.5px;
+					top: 15px;
 					right: 11%;
 					font-size: 1.4rem;
 					padding: 11px;

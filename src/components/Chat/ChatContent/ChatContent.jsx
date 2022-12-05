@@ -2,11 +2,9 @@ import { useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useOutletContext, useParams } from "react-router-dom";
 import styled from "styled-components";
-import { __getBoardId } from "../../../redux/modules/boardSlice";
 import { __getChatHistory } from "../../../redux/modules/chatSlice";
 import ChattingService from "../../../StomJS/SockInstance";
 import { getCookieToken } from "../../../utils/cookie";
-import { AppliCard, AppliCardImg } from "../../MyPage/CompanyPage/MyApplicant/MyApplicant.styled";
 
 const ChattingServiceKit = new ChattingService();
 
@@ -32,7 +30,6 @@ export const ChatContent = () => {
 
   useEffect(() => {
     dispatch(__getChatHistory(id.id));
-    dispatch(__getBoardId(id.id));
     scrollRef.current.scrollIntoView({ behavior: 'smooth', block: 'end', inline: 'nearest' })
   }, [dispatch, id, props]);
 
