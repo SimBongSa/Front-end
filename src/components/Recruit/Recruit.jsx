@@ -27,7 +27,6 @@ const Recruit = () => {
 	const status = useSelector(state => state.boards.status);
 
 	const [isPopupOpen, setIsPopupOpen] = useState(false);
-	console.log(isPopupOpen);
 
 	// Image
 	const [boardImage, setBoardImage] = useState(null);
@@ -89,7 +88,6 @@ const Recruit = () => {
 
 	//폼데이터 전송 스테이트
 	const [input, setInput] = useState(init);
-	console.log(input);
 	const [tags, setTags] = useState([]);
 	const [address, setAddress] = useState("");
 
@@ -99,9 +97,15 @@ const Recruit = () => {
 		setInput({ ...input, [name]: value, area: address, tags: tags });
 	};
 
-	const onChangeTags = e => {
-		const tag = e;
-		setTags([...tags, tag]);
+
+	// Tags
+	const onChangeTags = (e) => {
+		if (e.checked) {
+			const tag = e.id;
+			setTags([...tags, tag]);
+		} else if (!e.checked && tags.includes(e.id)) {
+			setTags(tags.filter(item => e.id !== item));
+		}
 	};
 	console.log(tags);
 
@@ -232,7 +236,7 @@ const Recruit = () => {
 						type="text"
 						name="content"
 						value={input.content}
-						onChange={e => onChangeInput(e)}
+						onChange={(e) => onChangeInput(e)}
 					/>
 
 					<Stbtn variant="recruit-green">봉사활동 등록하기</Stbtn>

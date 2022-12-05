@@ -6,7 +6,7 @@ export const FooterContainer = styled.section`
   bottom: -110px;
   flex-flow: row wrap;
   margin: 0 auto;
-  background: ${(props) => props.theme.bgColor};
+  background: ${(props) => props.theme.subBgColor};
   color: ${(props) => props.theme.textColor};
   width: 100%;
   padding: 1rem;
