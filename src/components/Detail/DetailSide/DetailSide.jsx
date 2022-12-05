@@ -25,7 +25,6 @@ function DetailSlideBar({ boardsId, username, id }) {
 		navigate(`/chat/${chatRoom}`)
 	}
 
-
 	return (
 		<>
 			<DetailSide>
@@ -60,7 +59,7 @@ function DetailSlideBar({ boardsId, username, id }) {
 						봉사 단체 연락하기
 					</Stbtn>
 				</StBtnBox>
-				{boardsId === username ? (
+				{boardsId.author === username ? (
 					<StBtnBox>
 						<Stbtn
 							variant="boards-apply"
