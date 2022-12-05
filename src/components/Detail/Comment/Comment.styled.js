@@ -39,18 +39,6 @@ export const Box = styled.div`
 	margin: 16px 0;
 `;
 
-export const Button = styled.button`
-	background: ${props => props.theme.btnColor};
-	border: 1px solid ${props => props.theme.btnColor};
-	color: ${props => props.theme.bgColor};
-	border-radius: 24px;
-	width: 8rem;
-	height: 2.5rem;
-	margin-left: auto;
-	margin-right: 0.5rem;
-	cursor: pointer;
-`;
-
 export const UserIcon = styled(FaRegUserCircle)`
 	display: flex;
 	float: right;
