@@ -23,8 +23,10 @@ function DetailSlideBar({ boardsId, username, id }) {
 
 	const createChatRoom = chatRoomInfo => {
 		dispatch(__createChatRoom(chatRoomInfo));
-		navigate(`/chat/${chatRoom}`);
-	};
+
+		navigate(`/chat/${chatRoom}`)
+	}
+
 
 	return (
 		<>

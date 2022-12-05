@@ -1,10 +1,11 @@
-import { LoginContainer, LoginBackLeft, LoginOverlay, LoginBox, LoginBoxTitle, LoginArrowBack, LoginForm, LoginInput, LoginBtn, SocialContainer, LoginTitle } from "./Login.styled";
+import { LoginContainer, LoginBox, LoginBoxTitle, LoginArrowBack, LoginForm, LoginBtn, LoginTitle, StLoginOptions, StToRegister } from "./Login.styled";
 import { useNavigate } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { __loginMember } from "../../redux/modules/registerSlice";
 import { useState } from "react";
 import { useEffect } from "react";
 import { getCookieToken } from "../../utils/cookie";
+import Input from "../common/input/Input";
 
 const Login = () => {
 
@@ -30,8 +31,6 @@ const Login = () => {
     setInput(init);
   }
 
-  const isSuccess = useSelector(state => state.register.statusCode);
-
   useEffect(() => {
     if (authority) {
       alert(`${authority}님 환영합니다`)
@@ -51,93 +50,91 @@ const Login = () => {
   return(
     <>
       <LoginContainer>
-
-        <LoginBackLeft>
-          <LoginOverlay>
-            <h1>Hello World.</h1>
-            <p>암튼 여기 왼쪽은 이미지 들어갈거임</p>
-            <p>글씨는 넣을까 말까 고민중</p>
-          </LoginOverlay>
-        </LoginBackLeft>
-    
         {
           loginOption === "member" ? (
-            <LoginBox>
-              <LoginBoxTitle>
-                <LoginTitle onClick={() => {
-                  setLoginOption("manager")
-                }}>Member Login</LoginTitle><LoginArrowBack onClick={() => navigate("/")}/>
-              </LoginBoxTitle>
-    
-              <LoginForm onSubmit={onSubmitHandler}>
-                <LoginInput 
-                  placeholder="username" 
-                  type="text"
-                  name="username"
-                  value={input.username}
-                  onChange={onChangeHandler}
-                />
-                <LoginInput 
-                  placeholder="password"
-                  type="password"
-                  name="password"
-                  value={input.password}
-                  onChange={onChangeHandler}
-                />
-                <LoginBtn onClick={() => {
-                  dispatch(__loginMember(input))
-                }}>Member Login</LoginBtn>
-              </LoginForm>
-    
-              <span>Forgot Your Password?</span>
-    
-              <span>or Continue With</span>
-    
-              <SocialContainer>
-                <div onClick={() => {
-                  navigate("/https://kauth.kakao.com/oauth/authorize?client_id=e0fa0a29b6f980a77e6cad8b0f96639d&redirect_uri=http://3.39.193.27:8080/user/kakao/callback&response_type=code")
-                }}>ka</div>
-                <div>소셜2</div>
-                <div>소셜3</div>
-              </SocialContainer>
-              <span onClick={() => navigate("/register")}>Create an account</span>
-            </LoginBox>
+            <>
+              <StLoginOptions>
+                <span 
+                  className={ loginOption === "member" ?  "selected" : "not-selected"}
+                  onClick={() => {
+                    setLoginOption("member");
+                }}>봉사 지원자</span>
+                <span 
+                  className={ loginOption === "manager" ?  "selected" : "not-selected"}
+                  onClick={() => {
+                    setLoginOption("manager")
+                  }}>봉사 기관</span>
+              </StLoginOptions>
+
+              <LoginBox>
+                <LoginBoxTitle>
+                  <LoginTitle>Member Login</LoginTitle><LoginArrowBack onClick={() => navigate("/")}/>
+                </LoginBoxTitle>
+      
+                <LoginForm onSubmit={onSubmitHandler}>
+                  <Input 
+                    placeholder="username" 
+                    type="text"
+                    name="username"
+                    value={input.username}
+                    onChange={onChangeHandler}
+                  />
+                  <Input 
+                    placeholder="password"
+                    type="password"
+                    name="password"
+                    value={input.password}
+                    onChange={onChangeHandler}
+                  />
+                  <LoginBtn>로그인</LoginBtn>
+                </LoginForm>
+              </LoginBox>
+              <StToRegister>아직 봉골레 멤버가 아닌가요? <b onClick={() => navigate("/register")}>회원가입</b></StToRegister>
+            </>
           ) : null
         }
 
         {
           loginOption === "manager" ? (
-            <LoginBox>
-              <LoginBoxTitle>
-                <LoginTitle onClick={() => {
-                  setLoginOption("member");
-                }}>Manager Login</LoginTitle><LoginArrowBack onClick={() => navigate("/")}/>
-              </LoginBoxTitle>
-    
-              <LoginForm onSubmit={onSubmitHandler}>
-                <LoginInput 
-                  placeholder="username" 
-                  type="text"
-                  name="username"
-                  value={input.username}
-                  onChange={onChangeHandler}
-                />
-                <LoginInput 
-                  placeholder="password"
-                  type="password"
-                  name="password"
-                  value={input.password}
-                  onChange={onChangeHandler}
-                />
-                <LoginBtn onClick={() => {
-                  dispatch(__loginMember(input))
-                }}>Manager Login</LoginBtn>
-              </LoginForm>
-    
-              <span>Forgot Your Password?</span>
-    
-              <span onClick={() => navigate("/register")}>Create an account</span>
-            </LoginBox>
+            <>
+              <StLoginOptions>
+                <span 
+                  className={ loginOption === "member" ?  "selected" : "not-selected"}
+                  onClick={() => {
+                    setLoginOption("member");
+                }}>봉사 지원자</span>
+                <span 
+                  className={ loginOption === "manager" ?  "selected" : "not-selected"}
+                  onClick={() => {
+                    setLoginOption("manager")
+                  }}>봉사 기관</span>
+              </StLoginOptions>
+
+              <LoginBox>
+                <LoginBoxTitle>
+                  <LoginTitle>Manager Login</LoginTitle><LoginArrowBack onClick={() => navigate("/")}/>
+                </LoginBoxTitle>
+      
+                <LoginForm onSubmit={onSubmitHandler}>
+                  <Input 
+                    placeholder="username" 
+                    type="text"
+                    name="username"
+                    value={input.username}
+                    onChange={onChangeHandler}
+                  />
+                  <Input 
+                    placeholder="password"
+                    type="password"
+                    name="password"
+                    value={input.password}
+                    onChange={onChangeHandler}
+                  />
+                  <LoginBtn>로그인</LoginBtn>
+                </LoginForm>
+              </LoginBox>
+             <StToRegister>아직 봉골레 멤버가 아닌가요? <b onClick={() => navigate("/register")}>회원가입</b></StToRegister>
+            </> 
           ) : null
         }
       </LoginContainer>

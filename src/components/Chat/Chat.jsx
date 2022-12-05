@@ -13,10 +13,11 @@ const ChattingServiceKit = new ChattingService();
 export const Chat = () => {
 
   const dispatch = useDispatch();
-  const chatList = useSelector((state) => state.chat.chatList);
   const id = useParams();
   const token = getCookieToken(["access-token"]);
   const username = getCookieToken(["username"]);
+
+  const chatList = useSelector((state) => state.chat.chatList);
 
   const [chatLog, setChatLog] = useState([]);
   const [receiveMsg, setReceiveMsg] = useState('');
@@ -29,8 +30,7 @@ export const Chat = () => {
   useEffect(() => {
     dispatch(__getChatList());
     setChatLog([...chatLog, receiveMsg]);
-  }, [receiveMsg, setChatLog]);
-  console.log(chatLog)
+  }, [dispatch, setChatLog, receiveMsg]);
 
   const onSubmitHandler = (e) => {
     if (message) {
@@ -60,7 +60,7 @@ export const Chat = () => {
     <StChatContainer>
       <ChatList chatList={chatList}/>
       <StChatContentWrap>
-        <Outlet context={{chatLog, setReceiveMsg}} />
+        <Outlet context={{chatLog, setChatLog, receiveMsg, setReceiveMsg}} />
         <ChatInput message={message} onSubmitHandler={onSubmitHandler} onChangeHandler={onChangeHandler} />
       </StChatContentWrap>
     </StChatContainer>

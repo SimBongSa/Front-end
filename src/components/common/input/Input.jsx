@@ -1,5 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
-import { __checkNickname, __checkUsername } from "../../../redux/modules/registerSlice";
+import styled from "styled-components";
+import { __checkUsername } from "../../../redux/modules/registerSlice";
 import { StInputContainer, StInput, DupleCheck } from "./Input.styled";
 
 const Input = ({
@@ -16,7 +17,6 @@ const Input = ({
 }) => {
 	const dispatch = useDispatch();
 
-	const nicknameCheck = useSelector(state => state.register.nicknameCheck);
 	const usernameCheck = useSelector(state => state.register.usernameCheck);
 
 	return (
@@ -34,35 +34,21 @@ const Input = ({
 						defaultValue={defaultValue}
 						key={key}
 					/>
+					{dupleCheck === "username" ? (
+						nameMessage === "사용 가능합니다." ? (
+							<>
+								<DupleCheck
+									onClick={() => {
+										dispatch(__checkUsername(value));
+									}}
+								>
+									중복체크
+								</DupleCheck>
+								<h6>{usernameCheck}</h6>
+							</>
+						) : null
+					) : null}
 				</StInputContainer>
-			) : null}
-
-			{dupleCheck === "username" ? (
-				nameMessage === "사용 가능합니다." ? (
-					<>
-						<DupleCheck
-							onClick={() => {
-								console.log(value);
-								dispatch(__checkUsername(value));
-							}}
-						>
-							중복체크
-							<h6>{usernameCheck}</h6>
-						</DupleCheck>
-					</>
-				) : null
-			) : null}
-
-			{dupleCheck === "nickname" ? (
-				<DupleCheck
-					onClick={() => {
-						console.log(value);
-						dispatch(__checkNickname(value));
-					}}
-				>
-					중복체크
-					<h6>{nicknameCheck}</h6>
-				</DupleCheck>
 			) : null}
 
 			{type === "radio" ? <span>{value}</span> : null}
@@ -71,3 +57,7 @@ const Input = ({
 };
 
 export default Input;
+
+export const StRadioInput = styled.div`
+	width: 50%;
+`

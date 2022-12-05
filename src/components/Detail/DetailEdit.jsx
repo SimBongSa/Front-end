@@ -1,10 +1,9 @@
-import React, { useState, useEffect, useRef, useCallback } from "react";
+import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import { __getBoardId, __editBoard } from "../../redux/modules/boardSlice";
 import styled from "styled-components";
 import { DetailContainer, DetailContent } from "./Detail.styled";
-import MainBg from "../MainBg/MainBg";
 import PopupDom from "../Map/PopupDom";
 import PopupPostCode from "../Map/PopupPostCode";
 import DatePicker from "react-datepicker";

@@ -10,7 +10,7 @@ export const lightTheme = {
 
 export const darkTheme = {
 	bgColor: "#333333",
-	subBgColor: "#FBFBF9",
+	subBgColor: "#40423f",
 	textColor: "#F9FAFB",
 	btnColor: "#A5CC9F",
 	subBtnColor: "#6A8E61",

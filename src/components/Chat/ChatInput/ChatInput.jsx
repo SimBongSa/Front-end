@@ -16,17 +16,34 @@ export const ChatInput = ({ message, onSubmitHandler, onChangeHandler }) => {
 export default ChatInput;
 
 export const StChatForm = styled.form`
-	position: relative;
-	width: 100%;
-	height: 5rem;
-	background: #fbfbf9;
-`;
+
+  position: relative;
+  width: 100%;
+  height: 5rem;
+  background: ${(props) => props.theme.subBgColor};
+`
 
 export const StChatInput = styled.input`
-	width: 80%;
-	height: 80%;
-	border: 1px solid ${props => props.theme.subTextColor};
-	border-radius: 30px;
-	outline: none;
-	margin-left: 10%;
-`;
+  width: 80%;
+  height: 80%;
+  border: 1px solid ${(props) => props.theme.subTextColor};
+  border-radius: 30px;
+  outline: none;
+  margin-left: 10%;
+  margin-top: 7.5px;
+`
+export const StChatBtn = styled.button`
+  position: absolute;
+  cursor: pointer;
+  width: 45px;
+  height: 45px;
+  border: none;
+  border-radius: 50%;
+  top: 14px;
+  right: 11%;
+  font-size: 1.4rem;
+  padding: 11px;
+  color: ${(props) => props.theme.textColor};
+  background: ${(props) => props.theme.btnColor};
+`
+
