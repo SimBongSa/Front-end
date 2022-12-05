@@ -149,13 +149,13 @@ export const apis = {
 			},
 		}),
 	putApprove: payload =>
-		axios.put(`${BASE_URL}/companypage/approve/${payload}`, {
+		axios.put(`${BASE_URL}/companypage/approve/${payload}`, {}, {
 			headers: {
 				Authorization: token,
 			},
 		}),
 	putDisapprove: payload =>
-		axios.put(`${BASE_URL}/companypage/disapprove/${payload}`, {
+		axios.put(`${BASE_URL}/companypage/disapprove/${payload}`, {}, {
 			headers: {
 				Authorization: token,
 			},
@@ -195,6 +195,10 @@ export const apis = {
 				Authorization: token,
 			},
 		}),
+
+	// Search
+	getSearchBoards: (payload) =>
+		axios.get(`${BASE_URL}/boards/search?tag=${payload.tag}&startDate=${payload.startDate}&endDate=${payload.endDate}&area=${payload.area}`),
 
 	// Chat Apis
 	getChatList: () =>

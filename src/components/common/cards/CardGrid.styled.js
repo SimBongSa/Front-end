@@ -35,14 +35,15 @@ export const StCards = styled.div`
 			case "Board":
 				return css`
 					display: grid;
-					grid-column: ${props => props.gridColumn} / span 12;
-					grid-template-columns: repeat(20, minmax(auto, 120px));
+					grid-column: ${props => props.gridColumn} / span 14;
+					grid-template-columns: repeat(16, minmax(auto, 120px));
 					grid-gap: 1.5rem;
 					gap: 5rem;
 					@media screen and (max-width: 1440px) {
 						grid-template-columns: repeat(16, minmax(auto, 60px));
 					}
 					@media screen and (max-width: 1024px) {
+						grid-column: ${props => props.gridColumn} / span 4;
 						grid-template-columns: repeat(12, minmax(auto, 60px));
 					}
 				`;
@@ -53,7 +54,7 @@ export const StCards = styled.div`
 					grid-template-columns: repeat(20, minmax(auto, 120px));
 					grid-gap: 1.5rem;
 					@media screen and (max-width: 1440px) {
-						grid-template-columns: repeat(16, minmax(auto, 60px));
+						grid-template-columns: repeat(12, minmax(auto, 60px));
 					}
 					@media screen and (max-width: 1024px) {
 						grid-template-columns: repeat(12, minmax(auto, 60px));
@@ -62,11 +63,11 @@ export const StCards = styled.div`
 			case "Company":
 				return css`
 					display: grid;
-					grid-column: ${props => props.gridColumn} / span 12;
-					grid-template-columns: repeat(20, minmax(auto, 120px));
+					grid-column: ${props => props.gridColumn} / span 2;
+					grid-template-columns: repeat(3, minmax(auto, 120px));
 					grid-gap: 1.5rem;
 					@media screen and (max-width: 1440px) {
-						grid-template-columns: repeat(16, minmax(auto, 60px));
+						grid-template-columns: repeat(3, minmax(auto, 60px));
 					}
 					@media screen and (max-width: 1024px) {
 						grid-template-columns: repeat(12, minmax(auto, 60px));
@@ -417,10 +418,11 @@ export const StTagBox = styled.ul`
 		display: inline-block;
 		background-color: ${props => props.theme.subTextColor};
 		color: ${props => props.theme.bgColor};
-		font-weight: 300;
+		font-weight: 400;
 		border-radius: 3px;
 		padding: 2.5px 10px;
 		margin: 0 10px 10px 0;
+		padding-top: 4px;
 		cursor: pointer;
 		user-select: none;
 		transition: background-color 0.3s;

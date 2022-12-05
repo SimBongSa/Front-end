@@ -14,8 +14,12 @@ export const GloblaStyle = createGlobalStyle`
     color: ${({ theme }) => theme.textColor};
     transition: all 0.5s;
     @media (prefers-color-scheme: dark) {
-      background-color: "#333333";
+      background: "#292929";
       color: "#F9FAFB";
+    }
+    @media (prefers-color-scheme: light) {
+      background: "white";
+      color: "#484848";
     }
     @media (prefers-reduced-motion) {
       & * {

@@ -8,7 +8,6 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import moment from "moment";
 import { ko } from "date-fns/esm/locale";
-import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import Tags from "./Tags/Tags";
 import ImageUpload from "./ImageUpload/ImageUpload";
