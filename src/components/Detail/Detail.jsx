@@ -18,6 +18,7 @@ import {
 	StImgWrapper,
 	StContentBox,
 } from "./Detail.styled";
+import { __getChatList } from "../../redux/modules/chatSlice";
 
 const Detail = () => {
 
@@ -25,12 +26,15 @@ const Detail = () => {
 	const dispatch = useDispatch();
 	const boardsId = useSelector(state => state?.boards?.board);
 	console.log(boardsId);
+	const chatList = useSelector((state) => state.chat.chatList);
+	console.log(chatList);
 	const { id } = useParams();
 
 	const username = getCookieToken(["username"]);
 
 	useEffect(() => {
 		dispatch(__getBoardId(id));
+		dispatch(__getChatList());
 	}, [dispatch, id]);
 
 	const getDateDiff = (d1, d2) => {

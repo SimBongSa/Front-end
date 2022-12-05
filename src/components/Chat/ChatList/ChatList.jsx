@@ -1,12 +1,13 @@
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { __getBoardId } from "../../../redux/modules/boardSlice"
 import styled from "styled-components";
-import { StSidePanel, StContact, StContactWrap, StContactMeta } from "./ChatList.styled";
+import { StSidePanel, StContact, StContactWrap } from "./ChatList.styled";
 
 export const ChatList = ({ chatList }) => {
 
-  console.log(chatList);
-
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   return (
     <StSidePanel>
@@ -18,7 +19,10 @@ export const ChatList = ({ chatList }) => {
               return(
                 <ListGroup 
                   key={idx}
-                  onClick={() => navigate(`/chat/${item.chatRoomId}`)}
+                  onClick={() => {
+                    navigate(`/chat/${item.chatRoomId}`);
+                    dispatch(__getBoardId(item.boardId));
+                  }}
                 >
                   <StContactWrap>
                     {item.roomName}
