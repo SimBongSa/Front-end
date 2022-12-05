@@ -2,7 +2,6 @@ import { useState } from "react";
 import { TagWrap, TagColumn } from "./Tags.styled";
 
 const Tags = ({ category, onChangeTags }) => {
-	const [check, setChecked] = useState(false);
 
 	const [categories] = useState([
 		{ CHILD: "어린이" },
@@ -12,7 +11,11 @@ const Tags = ({ category, onChangeTags }) => {
 		{ ENVIRONMENT: "환경" },
 		{ ABANDONED_ANIMAL: "유기동물" },
 	]);
-	const [conditions] = useState([{ ADULT: "성인" }, { MALE: "남성" }, { FEMALE: "여성" }]);
+	const [conditions] = useState([
+		{ ADULT: "성인" }, 
+		{ MALE: "남성" }, 
+		{ FEMALE: "여성" }
+	]);
 	const [skills] = useState([
 		{ GOOD_AT_CLEANING: "청소에 일가견이 있으신 분" },
 		{ FUNNY: "성격이 유쾌하신 분" },
@@ -24,10 +27,14 @@ const Tags = ({ category, onChangeTags }) => {
 		{ LIKE_ANIMAL: "동물을 사랑하는 분" },
 	]);
 
-	const checkHandler = ({ target }) => {
-		onChangeTags(target.id);
-	};
+	const [isChecked, setIsChecked] = useState(false);
 
+	const checkHandler = ({ target }) => {
+		setIsChecked(!isChecked);
+		onChangeTags(target);
+		console.log("@@",target.checked)
+	};
+	
 	return (
 		<TagWrap>
 			<TagColumn>
@@ -41,8 +48,9 @@ const Tags = ({ category, onChangeTags }) => {
 											type="checkbox"
 											id={Object.keys(item)}
 											value={Object.keys(item)}
-											onChange={e => checkHandler(e)}
+											onChange={(e) => checkHandler(e)}
 											name="tags"
+											isChecked
 										/>
 										<label htmlFor={Object.keys(item)}>{Object.values(item)}</label>
 									</li>
