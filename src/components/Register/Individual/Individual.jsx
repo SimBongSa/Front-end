@@ -25,8 +25,6 @@ const Individual = () => {
 	const [input, setInput] = useState(init);
 	console.log(input);
 
-	// const [step, setStep] = useState(0);
-
 	// 오류메시지 상태 저장
 	const [nameMessage, setNameMessage] = useState(
 		"4 ~ 16글자, 알파벳 소문자, 대문자, 숫자만 가능합니다."
