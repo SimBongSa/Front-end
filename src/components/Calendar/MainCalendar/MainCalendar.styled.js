@@ -168,8 +168,8 @@ export const StCalendarContainer = styled.div`
 		}
 
 		.dot {
-			height: 0.5rem;
-			width: 0.5rem;
+			height: 8px;
+			width: 8px;
 			background-color: #f87171;
 			border-radius: 50%;
 			margin: 0 auto;

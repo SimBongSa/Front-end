@@ -9,7 +9,7 @@ export const StCardGridContainer = styled.section`
 					width: 70%;
 					grid-template-columns: 0fr repeat(0, minmax(auto, 60px)) 10fr;
 					margin: 3rem 0px 2rem 10rem;
-					background-color: red;
+
 					justify-items: center;
 				`;
 			case "userEnroll":
@@ -17,13 +17,12 @@ export const StCardGridContainer = styled.section`
 					grid-template-columns: 0fr repeat(0, minmax(auto, 60px)) 10fr;
 					justify-items: center;
 					margin-bottom: 2rem;
-					background-color: green;
 				`;
 			case "Company":
 				return css`
 					grid-template-columns: 0fr repeat(0, minmax(auto, 60px)) 10fr;
 					justify-items: center;
-					background-color: white;
+					margin-bottom: 2rem;
 				`;
 			default:
 				break;
@@ -174,11 +173,6 @@ export const StImgWrapper = styled.div`
 						height: 300px;
 						object-fit: cover;
 					}
-					:hover {
-						& img {
-							-webkit-filter: blur(20px);
-						}
-					}
 				`;
 			case "Company":
 				return css`
@@ -190,6 +184,11 @@ export const StImgWrapper = styled.div`
 						width: 100%;
 						height: 300px;
 						object-fit: cover;
+					}
+					:hover {
+						& img {
+							-webkit-filter: blur(20px);
+						}
 					}
 				`;
 			default:

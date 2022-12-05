@@ -67,6 +67,7 @@ export const StContentBox = styled.span`
 `;
 export const StAreaBox = styled.span`
 	display: flex;
+	justify-content: space-between;
 	margin-top: 1.5rem;
 	margin-bottom: 2rem;
 	& > div {
@@ -80,6 +81,7 @@ export const StArea = styled.span`
 	border-radius: 15px;
 	background-color: gray;
 	font-weight: 300;
+	max-width: 350px;
 	color: ${props => props.theme.bgColor};
 `;
 

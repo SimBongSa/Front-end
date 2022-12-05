@@ -9,11 +9,17 @@ import "react-datepicker/dist/react-datepicker.css";
 import moment from "moment";
 import { ko } from "date-fns/esm/locale";
 import styled from "styled-components";
-import { RecruitContainer } from "./Recruit.styled";
 import { useNavigate } from "react-router-dom";
 import Tags from "./Tags/Tags";
 import ImageUpload from "./ImageUpload/ImageUpload";
 import Stbtn from "../common/button/Button";
+import {
+	RecruitContainer,
+	StLeftWrap,
+	StRightWrap,
+	TextArea,
+	RegisterDatePicker,
+} from "./Recruit.styled";
 
 const Recruit = () => {
 	const dispatch = useDispatch();
@@ -21,7 +27,6 @@ const Recruit = () => {
 	const status = useSelector(state => state.boards.status);
 
 	const [isPopupOpen, setIsPopupOpen] = useState(false);
-	console.log(isPopupOpen);
 
 	// Image
 	const [boardImage, setBoardImage] = useState(null);
@@ -83,7 +88,6 @@ const Recruit = () => {
 
 	//폼데이터 전송 스테이트
 	const [input, setInput] = useState(init);
-	console.log(input);
 	const [tags, setTags] = useState([]);
 	const [address, setAddress] = useState("");
 
@@ -93,9 +97,15 @@ const Recruit = () => {
 		setInput({ ...input, [name]: value, area: address, tags: tags });
 	};
 
-	const onChangeTags = e => {
-		const tag = e;
-		setTags([...tags, tag]);
+
+	// Tags
+	const onChangeTags = (e) => {
+		if (e.checked) {
+			const tag = e.id;
+			setTags([...tags, tag]);
+		} else if (!e.checked && tags.includes(e.id)) {
+			setTags(tags.filter(item => e.id !== item));
+		}
 	};
 	console.log(tags);
 
@@ -226,7 +236,7 @@ const Recruit = () => {
 						type="text"
 						name="content"
 						value={input.content}
-						onChange={e => onChangeInput(e)}
+						onChange={(e) => onChangeInput(e)}
 					/>
 
 					<Stbtn variant="recruit-green">봉사활동 등록하기</Stbtn>
@@ -237,157 +247,3 @@ const Recruit = () => {
 };
 
 export default Recruit;
-
-export const StLeftWrap = styled.div`
-	width: 40%;
-	float: left;
-	& h1 {
-		font-size: 25px;
-		text-align: center;
-		border-bottom: 1px solid gray;
-		margin: 0px;
-		padding: 20px;
-	}
-
-	& h3 {
-		margin: 1rem;
-		font-size: 1.2rem;
-		& span {
-			font-weight: 500;
-			color: ${props => props.theme.btnColor};
-		}
-	}
-
-	& p {
-		margin: 1rem;
-		font-size: 1rem;
-		& span {
-			font-weight: 500;
-			color: ${props => props.theme.btnColor};
-		}
-	}
-
-	& label {
-		margin: 1rem;
-	}
-	@media (max-width: 1024px) {
-		width: 80%;
-		float: none;
-	}
-`;
-
-export const StRightWrap = styled.div`
-	width: 40%;
-	float: right;
-	& h1 {
-		font-size: 45px;
-		text-align: center;
-		border-bottom: 1px solid gray;
-		margin: 0px;
-		padding: 20px;
-	}
-
-	& h3 {
-		margin: 1rem;
-		font-size: 1.2rem;
-		& span {
-			font-weight: 500;
-			color: ${props => props.theme.btnColor};
-		}
-	}
-
-	& p {
-		margin: 1rem;
-		font-size: 1rem;
-		& span {
-			font-weight: 500;
-			color: ${props => props.theme.btnColor};
-		}
-	}
-
-	@media (max-width: 1024px) {
-		width: 80%;
-		float: none;
-	}
-`;
-
-export const ImageUploadBox = styled.div`
-	& input[type="file"] {
-		display: none;
-	}
-	& label {
-		cursor: pointer;
-		display: flex;
-		width: 100%;
-		justify-content: center;
-		margin: 0 auto;
-		margin: 1rem;
-		padding: 1rem;
-		background: #aaaaaa;
-		& .uploadBtn {
-			font-size: 2rem;
-			margin-left: 1.5rem;
-		}
-		& .textBox {
-		}
-	}
-`;
-
-const TextArea = styled.textarea`
-	margin: 1rem;
-	width: 100%;
-	border: none;
-	border-radius: 10px;
-	outline: none;
-	resize: none;
-	padding: 1rem;
-	&:focus {
-		outline: 2px solid ${props => props.theme.btnColor};
-	}
-	button {
-		width: 300px;
-		height: 60px;
-		border-radius: 30px;
-		background-color: #66885d;
-		border: none;
-	}
-`;
-
-const RegisterDatePicker = styled(DatePicker)`
-	margin: 1rem;
-	font-size: 15px;
-	padding: 20px;
-	width: 100%;
-	// paddingLeft: "20px",
-	border: 1px solid #66885d;
-	border-radius: 30px;
-	outline: none;
-	background: ${props => props.theme.btnColor};
-`;
-
-const CommentWriteWrap = styled.div`
-	display: flex;
-	align-items: center;
-	background: #ffffff;
-	border-radius: 30px;
-	/* min-width: 600px; */
-	height: 4rem;
-	border: 1px solid ${props => props.theme.textColor};
-`;
-
-const CommentWriteWrap2 = styled.div`
-	margin: 12px;
-	font-size: 15px;
-	padding: 20px;
-	width: 100%;
-	padding-left: 20px;
-	border: 1px solid ${props => props.theme.textColor};
-	border-radius: 30px;
-	outline: none;
-	margin-bottom: 1rem;
-	&:focus {
-		border: 1px solid ${props => props.theme.btnColor};
-	}
-`;
-
-export const StComment = styled.input``;

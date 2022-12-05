@@ -1,6 +1,10 @@
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { __getTotalCalendarList, __getCalendarList } from "../../../redux/modules/calendarSlice";
+import {
+	__getTotalCalendarList,
+	__getCalendarList,
+	__getMonthList,
+} from "../../../redux/modules/calendarSlice";
 import Serverlist from "./Serverlist/Serverlist";
 import moment from "moment";
 import {
@@ -14,6 +18,7 @@ const MainCalendar = () => {
 	const dispatch = useDispatch();
 	const maindate = useSelector(state => state.calendarList.calendarList);
 	const totallist = useSelector(state => state.calendarList.TotalcalendarList);
+	const monthlist = useSelector(state => state.calendarList.montList);
 
 	const [value, setValue] = useState(new Date());
 	const [date, setDate] = useState(new Date());
@@ -29,13 +34,19 @@ const MainCalendar = () => {
 	}, [value]);
 
 	useEffect(() => {
-		if (maindate.constructor === Object && Object.keys(maindate).length !== 0) {
-			maindate.data.map(item => {
-				setMark(prev => [...prev, item.dueDay]);
+		dispatch(
+			__getMonthList({ year: moment(value).format("YYYY"), month: moment(value).format("MM") })
+		);
+	}, []);
+
+	useEffect(() => {
+		if (monthlist.constructor === Object && Object.keys(monthlist).length !== 0) {
+			monthlist.data.map(item => {
+				setMark(prev => [...prev, item.dueDay.split("T")[0]]);
 			});
 		}
-	}, [maindate]);
-
+	}, [monthlist]);
+	console.log(mark);
 	return (
 		<>
 			<StCalendarContainer>
@@ -59,7 +70,7 @@ const MainCalendar = () => {
 							if (mark.find(item => item === moment(date).format("YYYY-MM-DD"))) {
 								html.push(
 									<div className="dot" key={date}>
-										{maindate.data[value]?.length}
+										{moment(date).format("YYYY-MM-DD")?.length}
 									</div>
 								);
 							}

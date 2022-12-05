@@ -7,7 +7,7 @@ export const DetailSide = styled.div`
 	right: 1rem;
 	bottom: 10rem;
 	width: 28rem;
-	height: 25rem;
+	height: fit-content;
 	margin: 0rem 5rem 1rem 1rem;
 	padding: 1rem;
 	background: ${props => props.theme.subBgColor};

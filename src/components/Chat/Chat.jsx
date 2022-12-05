@@ -16,8 +16,7 @@ export const Chat = () => {
   const id = useParams();
   const token = getCookieToken(["access-token"]);
   const username = getCookieToken(["username"]);
-
-  const chatList = useSelector((state) => state.chat.chatList);
+  const chatList = useSelector((state) => state?.chat?.chatList);
 
   const [chatLog, setChatLog] = useState([]);
   const [receiveMsg, setReceiveMsg] = useState('');
@@ -29,8 +28,8 @@ export const Chat = () => {
 
   useEffect(() => {
     dispatch(__getChatList());
-    setChatLog([...chatLog, receiveMsg]);
-  }, [dispatch, setChatLog, receiveMsg]);
+    setChatLog([receiveMsg]);
+  }, [dispatch, setChatLog]);
 
   const onSubmitHandler = (e) => {
     if (message) {
@@ -60,7 +59,7 @@ export const Chat = () => {
     <StChatContainer>
       <ChatList chatList={chatList}/>
       <StChatContentWrap>
-        <Outlet context={{chatLog, setChatLog, receiveMsg, setReceiveMsg}} />
+        <Outlet context={{ chatLog, setChatLog, receiveMsg, setReceiveMsg }} />
         <ChatInput message={message} onSubmitHandler={onSubmitHandler} onChangeHandler={onChangeHandler} />
       </StChatContentWrap>
     </StChatContainer>

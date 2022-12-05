@@ -16,17 +16,14 @@ import Stbtn from "../../common/button/Button";
 function DetailSlideBar({ boardsId, username, id }) {
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
-	console.log(boardsId.authorId);
 
 	const chatRoom = useSelector(state => state.chat.chatRoom);
 	console.log(chatRoom);
 
 	const createChatRoom = chatRoomInfo => {
 		dispatch(__createChatRoom(chatRoomInfo));
-
 		navigate(`/chat/${chatRoom}`)
 	}
-
 
 	return (
 		<>
@@ -55,13 +52,14 @@ function DetailSlideBar({ boardsId, username, id }) {
 								userIdList: boardsId.authorId,
 								userNameList: boardsId.author,
 								roomName: boardsId.title,
+								boardId: boardsId.boardId,
 							});
 						}}
 					>
 						봉사 단체 연락하기
 					</Stbtn>
 				</StBtnBox>
-				{boardsId === username ? (
+				{boardsId.author === username ? (
 					<StBtnBox>
 						<Stbtn
 							variant="boards-apply"
