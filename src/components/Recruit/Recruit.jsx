@@ -252,7 +252,6 @@ export const StLeftWrap = styled.div`
 		margin: 0px;
 		padding: 20px;
 	}
-
 	& h3 {
 		margin: 1rem;
 		font-size: 1.2rem;
@@ -261,7 +260,6 @@ export const StLeftWrap = styled.div`
 			color: ${props => props.theme.btnColor};
 		}
 	}
-
 	& p {
 		margin: 1rem;
 		font-size: 1rem;

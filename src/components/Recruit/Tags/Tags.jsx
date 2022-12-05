@@ -32,7 +32,6 @@ const Tags = ({ category, onChangeTags }) => {
 	const checkHandler = ({ target }) => {
 		setIsChecked(!isChecked);
 		onChangeTags(target);
-		console.log("@@",target.checked)
 	};
 	
 	return (
@@ -50,7 +49,6 @@ const Tags = ({ category, onChangeTags }) => {
 											value={Object.keys(item)}
 											onChange={(e) => checkHandler(e)}
 											name="tags"
-											isChecked
 										/>
 										<label htmlFor={Object.keys(item)}>{Object.values(item)}</label>
 									</li>
