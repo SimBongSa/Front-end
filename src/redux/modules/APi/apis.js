@@ -36,6 +36,8 @@ export const apis = {
 	//calendarSlice
 	TotalcalendarList: dueDay => api.get(`${BASE_URL}/boards/date/${dueDay}`),
 	calendarList: dueDay => api.get(`${BASE_URL}/boards/date/${dueDay}`),
+	MonthList: payload =>
+		api.get(`${BASE_URL}/boards/month/?year=${payload.year}&month=${payload.month}`),
 	search: payload => api.post(`${BASE_URL}/boards/date/${payload}`),
 
 	// boards
