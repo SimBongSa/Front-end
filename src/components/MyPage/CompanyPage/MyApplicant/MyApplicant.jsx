@@ -2,6 +2,7 @@ import { FcCalendar } from "react-icons/fc";
 import { useDispatch } from "react-redux";
 import { __putApprove, __putDisapprove } from "../../../../redux/modules/mypageSlice";
 import { StTagBox } from "../../../common/cards/CardGrid.styled";
+import Stbtn from "../../../common/button/Button";
 
 import {
 	AppliCard,
@@ -25,25 +26,27 @@ const MyApplicant = ({ list }) => {
 
 						<AppliCardText>
 							<AppliBtnWrap>
-								<button
+								<Stbtn
+									variant="applicant-approve"
 									onClick={() => {
 										dispatch(__putApprove(item.enrollId));
 									}}
 								>
 									승인
-								</button>
-								<button
+								</Stbtn>
+								<Stbtn
+									variant="applicant-reject"
 									onClick={() => {
 										dispatch(__putDisapprove(item.enrollId));
 									}}
 								>
 									거절
-								</button>
+								</Stbtn>
 							</AppliBtnWrap>
 							<h1>{item.title}</h1>
 							<time>
 								<FcCalendar />
-								{item.dueDay?.split('T')[0]}
+								{item.dueDay?.split("T")[0]}
 							</time>
 							<div className="bar" />
 							<PreviewText>StartDate : {item.startDate}</PreviewText>

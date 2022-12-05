@@ -5,9 +5,7 @@ import { useDispatch } from "react-redux";
 import { __registerMember } from "../../../redux/modules/registerSlice";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import ProcessBar from "../ProcessBar/ProcessBar";
-import { InputContainers, InputHeader } from "../Register.styled";
-import { BtnContainer } from "../ProcessBar/ProcessBar.styld";
+import { StInputContainer, InputHeader, StRegBtn } from "../Register.styled";
 
 const Individual = () => {
 	const init = {
@@ -26,8 +24,6 @@ const Individual = () => {
 	const navigate = useNavigate();
 	const [input, setInput] = useState(init);
 	console.log(input);
-
-	const [step, setStep] = useState(0);
 
 	// 오류메시지 상태 저장
 	const [nameMessage, setNameMessage] = useState(
@@ -119,149 +115,107 @@ const Individual = () => {
 	};
 
 	return (
-		<InputContainers>
-			<InputHeader>
-				<h1>You are almost done!</h1>
-				<ProcessBar step={step} setStep={setStep} />
-			</InputHeader>
-
+		<StInputContainer>
+			<InputHeader>Vongole</InputHeader>
 			<InputForm>
 				<InputBox>
 					<form onSubmit={onSubmitHandler}>
-						{step === 0 ? (
-							<>
-								<StLegend>Your Basic Info</StLegend>
-								<Input
-									placeholder="Username"
-									autoComplete="off"
-									dupleCheck="username"
-									nameMessage={nameMessage}
-									type="text"
-									name="username"
-									value={input.username}
-									onChange={onUsernameChange}
-								/>
-								<span>{nameMessage}</span>
-								<Input
-									placeholder="Password"
-									type="password"
-									name="password"
-									value={input.password}
-									onChange={onPwChange}
-								/>
-								<span>{passwordMessage}</span>
-								<Input
-									placeholder="Confirm Password"
-									type="password"
-									name="passwordConfirm"
-									value={input.passwordConfirm}
-									onChange={onPwConfirmChange}
-								/>
-								<span>{pwConfirmMessage}</span>
-							</>
-						) : null}
-						{step === 1 ? (
-							<>
-								<StLegend>Your Contact Info</StLegend>
-								<Input
-									placeholder="Email"
-									dupleCheck={true}
-									type="email"
-									name="email"
-									value={input.email}
-									onChange={onChangeHandler}
-								/>
-								<Input
-									placeholder="PhoneNumber"
-									type="tel"
-									name="phoneNumber"
-									value={input.phoneNumber}
-									onChange={onChangeHandler}
-								/>
-							</>
-						) : null}
-						{step === 2 ? (
-							<>
-								<StLegend>Your Personal Info</StLegend>
-								<Input
-									placeholder="Name"
-									type="text"
-									name="name"
-									value={input.name}
-									onChange={onChangeHandler}
-								/>
-								<Input
-									placeholder="Birth Date"
-									type="date"
-									name="birthdate"
-									value={input.birthdate}
-									onChange={onChangeHandler}
-								/>
-								<Input
-									id="male"
-									type="radio"
-									name="gender"
-									value="male"
-									onChange={onChangeHandler}
-								/>
-								<Input
-									id="female"
-									type="radio"
-									name="gender"
-									value="female"
-									onChange={onChangeHandler}
-								/>
-							</>
-						) : null}
-
-						{step === 3 ? (
-							<>
-								<h4>추카합니당 이제 봉사활동 해보셈</h4>
-								<button type="submit">회원가입</button>
-							</>
-						) : null}
+						<StLegend>Your Basic Info</StLegend>
+						<Input
+							placeholder="Username"
+							autoComplete="off"
+							dupleCheck="username"
+							nameMessage={nameMessage}
+							type="text"
+							name="username"
+							value={input.username}
+							onChange={onUsernameChange}
+						/>
+						<span>{nameMessage}</span>
+						<Input
+							placeholder="Password"
+							type="password"
+							name="password"
+							value={input.password}
+							onChange={onPwChange}
+						/>
+						<span>{passwordMessage}</span>
+						<Input
+							placeholder="Confirm Password"
+							type="password"
+							name="passwordConfirm"
+							value={input.passwordConfirm}
+							onChange={onPwConfirmChange}
+						/>
+						<span>{pwConfirmMessage}</span>
+						<StLegend>Your Contact Info</StLegend>
+						<Input
+							placeholder="Email"
+							dupleCheck={true}
+							type="email"
+							name="email"
+							value={input.email}
+							onChange={onChangeHandler}
+						/>
+						<Input
+							placeholder="PhoneNumber"
+							type="tel"
+							name="phoneNumber"
+							value={input.phoneNumber}
+							onChange={onChangeHandler}
+						/>
+						<StLegend>Your Personal Info</StLegend>
+						<Input
+							placeholder="Name"
+							type="text"
+							name="name"
+							value={input.name}
+							onChange={onChangeHandler}
+						/>
+						<Input
+							placeholder="Birth Date"
+							type="date"
+							name="birthdate"
+							value={input.birthdate}
+							onChange={onChangeHandler}
+						/>
+						<StGender>
+							<Input
+								id="male"
+								type="radio"
+								name="gender"
+								value="male"
+								onChange={onChangeHandler}
+							/>
+							<Input
+								id="female"
+								type="radio"
+								name="gender"
+								value="female"
+								onChange={onChangeHandler}
+							/>
+						</StGender>
+						<StRegBtn type="submit">회원가입</StRegBtn>
 					</form>
-					<BtnContainer>
-						{step === 3 ? (
-							<button>.</button>
-						) : (
-							<button
-								onClick={() => {
-									setStep(step + 1);
-								}}
-							>
-								다음
-							</button>
-						)}
-						{step === 0 ? (
-							<button>.</button>
-						) : (
-							<button
-								onClick={() => {
-									setStep(step - 1);
-								}}
-							>
-								이전
-							</button>
-						)}
-					</BtnContainer>
 				</InputBox>
 				<span onClick={() => navigate("/login")}>You are already member? Log in Now</span>
 			</InputForm>
-		</InputContainers>
+		</StInputContainer>
 	);
 };
 
 export default Individual;
 
-export const Gender = styled.div`
+export const StGender = styled.div`
 	display: flex;
 	margin: 0 auto;
 	flex-direction: row;
+	justify-content: space-evenly;
 `;
 
 export const StLegend = styled.legend`
 	font-size: 1.4em;
-	margin-bottom: 10px;
+	margin-top: 15px;
+	margin-bottom: 0px;
 	text-align: left;
 `;

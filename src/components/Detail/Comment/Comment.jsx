@@ -15,7 +15,6 @@ import {
 	CommentTitleWrap,
 	CommentBtnWrap,
 	Box,
-	Button,
 	UserIcon,
 	CommentInput,
 	Div,
@@ -25,6 +24,7 @@ import {
 	StPageBtn,
 	StComment,
 } from "./Comment.styled";
+import Stbtn from "../../common/button/Button";
 
 function Comment() {
 	const [cookies] = useCookies(["Authorization"]);
@@ -69,7 +69,8 @@ function Comment() {
 					value={content}
 					onChange={onChangeHalder}
 				/>
-				<Button
+				<Stbtn
+					variant="comment"
 					onClick={() => {
 						// console.log("---------------------- 댓글작성 ---------------------");
 						// console.log(cookies);
@@ -80,7 +81,7 @@ function Comment() {
 					}}
 				>
 					댓글쓰기
-				</Button>
+				</Stbtn>
 			</CommentWriteWrap>
 			{commentList && commentList.length > 0
 				? commentList.map((item, index) => {

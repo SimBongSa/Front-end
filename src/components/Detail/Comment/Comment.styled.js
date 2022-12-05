@@ -7,12 +7,11 @@ export const MainComponent = styled.div`
 `;
 export const CommentWriteWrap = styled.div`
 	display: flex;
+	width: 100%;
 	align-items: center;
-	background: #ffffff;
 	border-radius: 30px;
-	/* min-width: 600px; */
 	height: 4rem;
-	& > div {
+	& div {
 		cursor: pointer;
 	}
 `;
@@ -38,18 +37,6 @@ export const CommentBtnWrap = styled.div`
 `;
 export const Box = styled.div`
 	margin: 16px 0;
-`;
-
-export const Button = styled.button`
-	background: ${props => props.theme.btnColor};
-	border: 1px solid ${props => props.theme.btnColor};
-	color: ${props => props.theme.bgColor};
-	border-radius: 24px;
-	width: 8rem;
-	height: 2.5rem;
-	margin-left: auto;
-	margin-right: 0.5rem;
-	cursor: pointer;
 `;
 
 export const UserIcon = styled(FaRegUserCircle)`
@@ -108,5 +95,5 @@ export const StPageBtn = styled.div`
 `;
 
 export const StComment = styled(Input)`
-	background-color: black;
+	/* background-color: black; */
 `;

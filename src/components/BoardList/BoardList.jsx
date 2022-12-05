@@ -1,20 +1,12 @@
 import CardGrid from "../common/cards/CardGrid";
-import {
-	BoardContainer,
-	BoardContent,
-	Button,
-	StTitle,
-	StMapBtn,
-	StCloseBtn,
-	ListMap,
-	StBtnBox,
-} from "./BoardList.styled";
+import { BoardContainer, BoardContent, StTitle, ListMap, StBtnBox } from "./BoardList.styled";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { __getBoard } from "../../redux/modules/boardSlice";
 import KaMarker from "./../Map/KaMarker";
 import { ImMap2 } from "react-icons/im";
 import styled from "styled-components";
+import Stbtn from "../common/button/Button";
 
 const Board = () => {
 	const dispatch = useDispatch();
@@ -37,37 +29,43 @@ const Board = () => {
 			</StTitle>
 			<BoardContent>
 				<div>
-					<StMapBtn onClick={() => setModal(!modal)}>지도 보기 <StMap/></StMapBtn>
+					<Stbtn variant="boards-map-open" onClick={() => setModal(!modal)}>
+						지도 보기 <StMap />
+					</Stbtn>
 				</div>
 				{modal ? (
 					<ListMap>
-						<StCloseBtn onClick={() => setModal(false)}>X</StCloseBtn>
+						<Stbtn variant="boards-map-close" onClick={() => setModal(false)}>
+							X
+						</Stbtn>
 						<KaMarker boards={boards} />
 					</ListMap>
 				) : null}
 				<CardGrid boards={boards} gridColumn={5} />
 				<StBtnBox>
 					{page === 1 ? (
-						<Button>❮</Button>
+						<Stbtn variant="boards-prev-next">❮</Stbtn>
 					) : (
-						<Button
+						<Stbtn
+							variant="boards-prev-next"
 							onClick={() => {
 								setPage(prev => prev - 1);
 								dispatch(__getBoard({ page, size }));
 							}}
 						>
 							❮
-						</Button>
+						</Stbtn>
 					)}
 					<div>{page}/14</div>
-					<Button
+					<Stbtn
+						variant="boards-prev-next"
 						onClick={() => {
 							setPage(prev => prev + 1);
 							dispatch(__getBoard({ page, size }));
 						}}
 					>
 						❯
-					</Button>
+					</Stbtn>
 				</StBtnBox>
 			</BoardContent>
 		</BoardContainer>
@@ -77,5 +75,5 @@ const Board = () => {
 export default Board;
 
 export const StMap = styled(ImMap2)`
-	font-size: .9rem;
-`
+	font-size: 0.9rem;
+`;

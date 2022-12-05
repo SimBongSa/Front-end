@@ -1,5 +1,5 @@
 export const lightTheme = {
-	bgColor: "#F9FAFB",
+	bgColor: "white",
 	subBgColor: "#FBFBF9",
 	textColor: "#484848",
 	btnColor: "#6A8E61",
@@ -9,8 +9,8 @@ export const lightTheme = {
 };
 
 export const darkTheme = {
-	bgColor: "#333333",
-	subBgColor: "#FBFBF9",
+	bgColor: "#292929",
+	subBgColor: "#333333",
 	textColor: "#F9FAFB",
 	btnColor: "#A5CC9F",
 	subBtnColor: "#6A8E61",

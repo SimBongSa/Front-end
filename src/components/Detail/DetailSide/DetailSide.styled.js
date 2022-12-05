@@ -7,10 +7,10 @@ export const DetailSide = styled.div`
 	right: 1rem;
 	bottom: 10rem;
 	width: 28rem;
-	height: 25rem;
+	height: fit-content;
 	margin: 0rem 5rem 1rem 1rem;
 	padding: 1rem;
-	background: ${props => props.theme.bgColor};
+	background: ${props => props.theme.subBgColor};
 	@media screen and (max-width: 1024px) {
 		position: relative;
 		width: 600px;
@@ -25,10 +25,9 @@ export const StDateBox = styled.span`
 	justify-content: center;
 	align-items: center;
 	padding-top: 1rem;
-
 	& div {
-		font-size: 1.5rem;
-		font-weight: 500;
+		font-size: 1.2rem;
+		font-weight: 300;
 		margin-right: 1rem;
 		margin-left: 1rem;
 		padding: 5px 12px;
@@ -51,31 +50,6 @@ export const StBtnBox = styled.div`
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: center;
-`;
-
-export const StApplyBtn = styled.div`
-	text-align: center;
-	padding: 15px 20px;
-	margin-bottom: 1rem;
-	width: 20rem;
-	height: 3rem;
-	border-radius: 24px;
-	color: ${props => props.theme.bgColor};
-	background-color: ${props => props.theme.btnColor};
-	cursor: pointer;
-`;
-
-export const StChatBtn = styled.div`
-	text-align: center;
-	padding: 15px 20px;
-	margin-bottom: 1rem;
-	width: 20rem;
-	height: 3rem;
-	border-radius: 24px;
-	color: ${props => props.theme.btnColor};
-	background-color: ${props => props.theme.bgColor};
-	border: 1px solid ${props => props.theme.btnColor};
-	cursor: pointer;
 `;
 
 export const DetailSideItem = styled.div`
