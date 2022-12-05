@@ -150,20 +150,162 @@ export const ImgSize = styled.img`
 	margin: 1rem;
 `;
 
-export const CustomeDatePicker = styled(DatePicker)({
-	margin: "12px",
-	fontSize: "15px",
-	padding: "20px",
-	width: "360px",
-	paddingLeft: "20px",
-	border: "none",
-	borderRadius: "15px",
-	outline: "none",
-	marginBottom: "1rem",
-	background: `${props => props.theme.textColor}`,
-});
+// export const CustomeDatePicker = styled(DatePicker)({
+// 	margin: "12px",
+// 	fontSize: "15px",
+// 	padding: "20px",
+// 	width: "360px",
+// 	paddingLeft: "20px",
+// 	border: "none",
+// 	borderRadius: "15px",
+// 	outline: "none",
+// 	marginBottom: "1rem",
+// 	background: `${props => props.theme.textColor}`,
+// });
 
 export const PickerBox = styled.div`
 	display: flex;
 	flex-direction: column;
+`;
+
+export const StLeftWrap = styled.div`
+	width: 40%;
+	float: left;
+	& h1 {
+		font-size: 25px;
+		text-align: center;
+		border-bottom: 1px solid gray;
+		margin: 0px;
+		padding: 20px;
+	}
+
+	& h3 {
+		margin: 1rem;
+		font-size: 1.2rem;
+		& span {
+			font-weight: 500;
+			color: ${props => props.theme.btnColor};
+		}
+	}
+
+	& p {
+		margin: 1rem;
+		font-size: 1rem;
+		& span {
+			font-weight: 500;
+			color: ${props => props.theme.btnColor};
+		}
+	}
+
+	& label {
+		margin: 1rem;
+	}
+	@media (max-width: 1024px) {
+		width: 80%;
+		float: none;
+	}
+`;
+
+export const StRightWrap = styled.div`
+	width: 40%;
+	float: right;
+	& h1 {
+		font-size: 45px;
+		text-align: center;
+		border-bottom: 1px solid gray;
+		margin: 0px;
+		padding: 20px;
+	}
+
+	& h3 {
+		margin: 1rem;
+		font-size: 1.2rem;
+		& span {
+			font-weight: 500;
+			color: ${props => props.theme.btnColor};
+		}
+	}
+
+	& p {
+		margin: 1rem;
+		font-size: 1rem;
+		& span {
+			font-weight: 500;
+			color: ${props => props.theme.btnColor};
+		}
+	}
+
+	@media (max-width: 1024px) {
+		width: 80%;
+		float: none;
+	}
+`;
+
+export const ImageUploadBox = styled.div`
+	& input[type="file"] {
+		display: none;
+	}
+	& label {
+		cursor: pointer;
+		display: flex;
+		width: 100%;
+		justify-content: center;
+		margin: 0 auto;
+		margin: 1rem;
+		padding: 1rem;
+		background: #aaaaaa;
+		& .uploadBtn {
+			font-size: 2rem;
+			margin-left: 1.5rem;
+		}
+		& .textBox {
+		}
+	}
+`;
+
+export const TextArea = styled.textarea`
+	margin: 1rem;
+	width: 100%;
+	border: none;
+	border-radius: 10px;
+	outline: none;
+	resize: none;
+	padding: 1rem;
+	height: 150px;
+
+	&:focus {
+		outline: 2px solid ${props => props.theme.btnColor};
+	}
+	button {
+		width: 300px;
+		height: 60px;
+		border-radius: 30px;
+		background-color: #66885d;
+		border: none;
+	}
+`;
+
+export const RegisterDatePicker = styled(DatePicker)`
+	margin: 0.1rem;
+	font-size: 15px;
+	padding: 20px;
+	width: 100%;
+	// paddingLeft: "20px",
+	border: 1px solid #66885d;
+	border-radius: 30px;
+	outline: none;
+	background: ${props => props.theme.btnColor};
+`;
+
+export const CustomeDatePicker = styled(DatePicker)`
+	margin: 12px;
+	font-size: 15px;
+	padding: 20px;
+	width: 360px;
+	padding-left: 20px;
+	border: none;
+	border-radius: 15px;
+	outline: none;
+	margin-bottom: 1rem;
+	background: ${props => props.theme.textColor};
 `;

@@ -2,34 +2,26 @@ import { useRef } from "react";
 import styled from "styled-components";
 import { BsUpload } from "react-icons/bs";
 
-
 const ImageUpload = ({ onChangeImage, uploadPreview }) => {
-
-  // Image State
-  const uploadBoxRef = useRef();
+	// Image State
+	const uploadBoxRef = useRef();
 	const imageRef = useRef();
 
-  return (
-    <ImageUploadBox>
-      <label htmlFor="image" ref={uploadBoxRef}>
-        <div className="textBox">
-          <h4>클릭하여 업로드</h4>
-          <span>권장사항: 000MB 이하 고화질</span>
-        </div>
-        <BsUpload className="uploadBtn"/>
-      </label>
-      <input 
-        type="file" 
-        accept="image/*" 
-        id="image" 
-        ref={imageRef} 
-        onChange={onChangeImage}
-      />
-      <ImagePreview>
-        <img src={uploadPreview} alt="previewImage"/>
-      </ImagePreview>
-    </ImageUploadBox>
-  )
+	return (
+		<ImageUploadBox>
+			<label htmlFor="image" ref={uploadBoxRef}>
+				<div className="textBox">
+					<h4>클릭하여 업로드</h4>
+					<span>권장사항: 000MB 이하 고화질</span>
+				</div>
+				<BsUpload className="uploadBtn" />
+			</label>
+			<input type="file" accept="image/*" id="image" ref={imageRef} onChange={onChangeImage} />
+			<ImagePreview>
+				<img src={uploadPreview} alt="previewImage" />
+			</ImagePreview>
+		</ImageUploadBox>
+	);
 };
 
 export default ImageUpload;
@@ -52,20 +44,22 @@ export const ImageUploadBox = styled.div`
 			margin-left: 1.5rem;
 		}
 		& .textBox {
-      color: ${(props) => props.theme.textColor};
-      & h4 {
-        text-align: center;
-      }
+			color: ${props => props.theme.textColor};
+			& h4 {
+				text-align: center;
+			}
 		}
 	}
-`
+`;
 
 export const ImagePreview = styled.div`
-  display: flex;
-  width: 100%;
-  justify-content: center;
-  margin: 0 auto;
-  & img {
-    width: 200px;
-  }
-`
+	display: flex;
+	width: 100%;
+	height: 100%;
+	justify-content: center;
+	margin: 0 auto;
+	& img {
+		width: 300px;
+		height: 200px;
+	}
+`;
