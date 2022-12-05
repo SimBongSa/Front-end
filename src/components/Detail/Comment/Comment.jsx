@@ -25,6 +25,7 @@ import {
 	StComment,
 } from "./Comment.styled";
 import Stbtn from "../../common/button/Button";
+import Input from "../../common/input/Input";
 
 function Comment() {
 	const [cookies] = useCookies(["Authorization"]);
@@ -61,28 +62,29 @@ function Comment() {
 
 	return (
 		<MainComponent>
+			<UserIcon />
 			<CommentWriteWrap>
-				<UserIcon />
-				<StComment
-					type="text"
-					placeholder="댓글을 남겨주세요!"
-					value={content}
-					onChange={onChangeHalder}
-				/>
-				<Stbtn
-					variant="comment"
-					onClick={() => {
-						// console.log("---------------------- 댓글작성 ---------------------");
-						// console.log(cookies);
-						if (content !== "") {
-							dispatch(__postComment({ content, id }));
-							setContent("");
-						}
-					}}
-				>
-					댓글쓰기
-				</Stbtn>
+				{/* <div> */}
+					<Input
+						type="text"
+						placeholder="댓글을 남겨주세요!"
+						value={content}
+						onChange={onChangeHalder}
+					/>
+					<Stbtn
+						variant="comment"
+						onClick={() => {
+							if (content !== "") {
+								dispatch(__postComment({ content, id }));
+								setContent("");
+							}
+						}}
+					>
+						댓글쓰기
+					</Stbtn>
+				{/* </div> */}
 			</CommentWriteWrap>
+
 			{commentList && commentList.length > 0
 				? commentList.map((item, index) => {
 						const commentId = item.commentId;
@@ -154,7 +156,7 @@ function Comment() {
 						);
 				  })
 				: ""}
-			{commentTotalList?.length > 4 ? (
+			{/* {commentTotalList?.length > 4 ? (
 				<StPageBtn
 					onClick={() => {
 						setPage(prev => prev + 1);
@@ -163,7 +165,7 @@ function Comment() {
 				>
 					댓글 더보기
 				</StPageBtn>
-			) : null}
+			) : null} */}
 		</MainComponent>
 	);
 }

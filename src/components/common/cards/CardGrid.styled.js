@@ -7,9 +7,8 @@ export const StCardGridContainer = styled.section`
 				return css`
 					display: grid;
 					width: 70%;
-					grid-template-columns: 0fr repeat(0, minmax(auto, 60px)) 10fr;
+					grid-template-columns: 0fr repeat(12, minmax(auto, 60px)) 12fr;
 					margin: 3rem 0px 2rem 10rem;
-
 					justify-items: center;
 				`;
 			case "userEnroll":
@@ -202,7 +201,8 @@ export const StContent = styled.div`
 		switch (variant) {
 			case "Board":
 				return css`
-					padding-top: 12px;
+					padding: 1rem;
+					padding-top: 20px;
 					background-color: transparent;
 					& .title {
 						text-align: start;
@@ -276,6 +276,7 @@ export const StArea = styled.div`
 		switch (variant) {
 			case "Board":
 				return css`
+					font-size: .8rem;
 					max-width: 200px;
 					min-width: 50px;
 					color: ${props => props.theme.bgColor};
@@ -415,8 +416,8 @@ export const StTagBox = styled.ul`
 	& li {
 		display: inline-block;
 		background-color: ${props => props.theme.subTextColor};
-		/* color: ${props => props.theme.textColor}; */
-		color: white;
+		color: ${props => props.theme.bgColor};
+		font-weight: 300;
 		border-radius: 3px;
 		padding: 2.5px 10px;
 		margin: 0 10px 10px 0;
