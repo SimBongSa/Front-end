@@ -5,7 +5,6 @@ import moment from "moment";
 import { ko } from "date-fns/esm/locale";
 import styled from "styled-components";
 import { useDispatch } from "react-redux";
-import { __postSearch } from "../../redux/modules/calendarSlice";
 import { HiMagnifyingGlass } from "react-icons/hi2";
 import {
 	SearchBarContainer,
@@ -17,8 +16,10 @@ import {
 	PickerBox,
 } from "./SearchBar.styled";
 import Stbtn from "../common/button/Button";
+import { __getSearchBoards } from "../../redux/modules/boardSlice";
 
 const SearchBar = () => {
+	
 	const dispatch = useDispatch;
 	const [modal, setModal] = useState(false);
 	const [animation, setAnimation] = useState(false);
@@ -32,16 +33,16 @@ const SearchBar = () => {
 	//search state
 	const [search, setSearch] = useState({
 		category: "",
-		startDate: moment(startDate).format("YYYY-MM-DD"),
-		endDate: moment(startDate).format("YYYY-MM-DD"),
+		startDate: "",
+		endDate: "",
 		location: "",
 	});
+	console.log(search);
 
 	// modal 바깥 클릭 시 닫히는 기능
 	useEffect(() => {
 		const clickOutside = e => {
 			if (modal && node.current && !node.current.contains(e.target)) {
-				// 근데 너무 안이뻐서 delay 줌
 				setAnimation(true);
 				setTimeout(() => {
 					setAnimation(false);
@@ -55,14 +56,25 @@ const SearchBar = () => {
 		};
 	}, [modal]);
 
+	// const onSubmitHandler = e => {
+	// 	e.preventDefault();
+	// 	dispatch(__postSearch(search));
+	// 	setSearch();
+	// };
+
+	const searchChange = (e) => {
+		const { name, value } = e.target;
+		setSearch({...search, [name]: value});
+	}
+
 	const onSubmitHandler = e => {
 		e.preventDefault();
-		dispatch(__postSearch(search));
-		setSearch();
+		// dispatch(__getSearchBoards(search))
+		console.log(search)
 	};
 
 	return (
-		<SearchBarContainer ref={node} modal={modal} animation={animation} onSubmit={onSubmitHandler}>
+		<SearchBarContainer ref={node} modal={modal} animation={animation}>
 			{modal === false ? (
 				<Stbtn variant="searchbar-open" onClick={() => setModal(prev => !prev)}>
 					<StMagnifying />
@@ -79,23 +91,22 @@ const SearchBar = () => {
 									<li>
 										<h4>Category</h4>
 										<select
-											value={search.category?.search.category}
-											onChange={e => {
-												setSearch(e.target.value);
-											}}
+											name={"category"}
+											onChange={searchChange}
 										>
-											<option>CHILD</option>
-											<option>DISABLED</option>
-											<option>SENIOR</option>
-											<option>MULTICULTURAL_FAMILY</option>
-											<option>ENVIRONMENT</option>
-											<option>ABANDONED_ANIMAL</option>
+											<option value={"CHILD"}>CHILD</option>
+											<option value={"DISABLED"}>DISABLED</option>
+											<option value={"SENIOR"}>SENIOR</option>
+											<option value={"MULTICULTURAL_FAMILY"}>MULTICULTURAL_FAMILY</option>
+											<option value={"ENVIRONMENT"}>ENVIRONMENT</option>
+											<option value={"ABANDONED_ANIMAL"}>ABANDONED_ANIMAL</option>
 										</select>
 									</li>
 									<li>
 										<>
 											<PickerBox>
 												<CustomeDatePicker
+													name={'startDate'}
 													locale={ko}
 													dateFormat="📅 yyyy년-MM월-dd일"
 													selected={startDate}
@@ -105,6 +116,7 @@ const SearchBar = () => {
 													endDate={endDate}
 												/>
 												<CustomeDatePicker
+													name={'endDate'}
 													locale={ko}
 													dateFormat="📅 yyyy년-MM월-dd일 "
 													selected={endDate}
@@ -120,23 +132,22 @@ const SearchBar = () => {
 									<li>
 										<h4>Location</h4>
 										<select
-											value={search.location?.search.location}
-											onChange={e => {
-												setSearch(e.target.value);
-											}}
+											name={"location"}
+											onChange={searchChange}
 										>
-											<option>서울</option>
-											<option>경기</option>
-											<option>인천</option>
-											<option>강원</option>
-											<option>충북</option>
-											<option>충남</option>
-											<option>세종</option>
-											<option>전북</option>
-											<option>전남</option>
-											<option>경북</option>
-											<option>경남</option>
-											<option>제주</option>
+											<option value={'ALL'}>전체</option>
+											<option value={'서울'}>서울</option>
+											<option value={'경기'}>경기</option>
+											<option value={'인천'}>인천</option>
+											<option value={'강원'}>강원</option>
+											<option value={'충북'}>충북</option>
+											<option value={'충남'}>충남</option>
+											<option value={'세종'}>세종</option>
+											<option value={'전북'}>전북</option>
+											<option value={'전남'}>전남</option>
+											<option value={'경북'}>경북</option>
+											<option value={'경남'}>경남</option>
+											<option value={'제주'}>제주</option>
 										</select>
 									</li>
 								</SearchList>
