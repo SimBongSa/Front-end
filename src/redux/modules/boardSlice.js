@@ -54,7 +54,12 @@ export const __getSearchBoards = createAsyncThunk(
   async (payload, thunkAPI) => {
     try {
       const response = await apis.getSearchBoards(payload);
-      return thunkAPI.fulfillWithValue(response.data.data);
+      if (response.status === 200) {
+        console.log(response)
+        return thunkAPI.fulfillWithValue(response.data.data);
+      } else {
+        alert("검색 결과가 없습니다.")
+      }
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
     }
