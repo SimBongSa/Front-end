@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useCallback } from "react";
-// import Input from "../../common/input/Input";
-import styled from "styled-components";
 import { useSelector, useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { getCookieToken } from "../../../utils/cookie";
 import {
 	__getCompanyInfo,
@@ -18,10 +17,12 @@ import {
 } from "./ProfileEdit.styled";
 import Stbtn from "../../common/button/Button";
 import ImageUpload from "../../Recruit/ImageUpload/ImageUpload";
+import styled from "styled-components";
 
 const ProfileEdit = () => {
 	const role = getCookieToken(["authority"]);
 	const dispatch = useDispatch();
+	const navigate = useNavigate();
 
 	useEffect(() => {
 		dispatch(__getCompanyInfo());
@@ -33,28 +34,40 @@ const ProfileEdit = () => {
 
 	const companyInfo = useSelector(state => state?.mypage?.companyInfo);
 	console.log("companyInfo => ", companyInfo);
-	const userInfo = useSelector(state => state?.mypage?.userInfo);
+	const userInfo = useSelector(state => state?.mypage);
+	console.log("userInfo => ", userInfo);
 	const [profileImage, setProfileImage] = useState(null);
 	const [uploadCompanyPreview, setUploadCompanyPreview] = useState(companyInfo.profileImage);
 	const [uploadUserPreview, setUploadUserPreview] = useState(userInfo.profileImage);
 
-	//기관
 	const [editInput, setEditInput] = useState(Prev => {
-		const { email, introduction, password, passwordConfirm, profileImage, phoneNumber } =
-			companyInfo;
-		return {
-			...Prev,
-			email,
-			introduction,
-			password,
-			passwordConfirm,
-			profileImage,
-			phoneNumber,
-		};
+		if (role === "ROLE_ADMIN") {
+			const { email, introduction, password, passwordConfirm, profileImage, phoneNumber } =
+				companyInfo;
+			return {
+				...Prev,
+				email,
+				introduction,
+				password,
+				passwordConfirm,
+				profileImage,
+				phoneNumber,
+			};
+		} else {
+			const { email, introduction, password, passwordConfirm, profileImage, phoneNumber } =
+				userInfo;
+			return {
+				...Prev,
+				email,
+				introduction,
+				password,
+				passwordConfirm,
+				profileImage,
+				phoneNumber,
+			};
+		}
 	});
 	console.log("editInput =>", editInput);
-
-	//회원
 
 	// 이미지 upload
 	const onChangeImage = e => {
@@ -84,6 +97,8 @@ const ProfileEdit = () => {
 		},
 		[editInput]
 	);
+
+	console.log("editInput!!! =>", editInput);
 
 	// 오류메시지 상태 저장
 	const [passwordMessage, setPasswordMessage] = useState(
@@ -135,7 +150,7 @@ const ProfileEdit = () => {
 		[editInput]
 	);
 
-	console.log("!!!editInput=>", editInput);
+	console.log("!!!editInput!!!=>", editInput);
 
 	const onSubmitHandler = e => {
 		e.preventDefault();
@@ -144,7 +159,12 @@ const ProfileEdit = () => {
 		} else {
 			dispatch(__putUserInfo({ ...editInput, profileImage }));
 		}
-		// navigate(`/detail/${id}`);
+		// if (status === 200) {
+		// 	alert("게시물 등록 완료");
+		// 	navigate("/boards");
+		// } else {
+		// 	alert("게시물 등록에 실패했습니다. 내용을 다시 확인해주세요");
+		// }
 	};
 
 	return (
@@ -197,9 +217,10 @@ const ProfileEdit = () => {
 									name="introduction"
 									onChange={onChangeEdit}
 								/>
-								<p>기관 프로필 이미지 수정</p>
-
-								<ImageUpload onChangeImage={onChangeImage} uploadPreview={uploadCompanyPreview} />
+								<Wrap>
+									<p>기관 프로필 이미지 수정</p>
+									<ImageUpload onChangeImage={onChangeImage} uploadPreview={uploadCompanyPreview} />
+								</Wrap>
 							</div>
 						) : null}
 
@@ -265,3 +286,7 @@ const ProfileEdit = () => {
 };
 
 export default ProfileEdit;
+
+const Wrap = styled.div`
+	padding-right: 200px;
+`;

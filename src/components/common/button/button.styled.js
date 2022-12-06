@@ -79,6 +79,33 @@ export const Stbtn = styled.button`
 					border: 1px solid ${props => props.theme.btnColor};
 					cursor: pointer;
 				`;
+			case "boards-edit":
+				return css`
+					text-align: center;
+					padding: 15px 20px;
+					margin-bottom: 1rem;
+					width: 20rem;
+					height: 3rem;
+					border-radius: 24px;
+					color: ${props => props.theme.btnColor};
+					background-color: ${props => props.theme.subBgColor};
+					border: 1px solid ${props => props.theme.subBtnColor};
+					cursor: pointer;
+				`;
+
+			case "boards-delete":
+				return css`
+					text-align: center;
+					padding: 15px 20px;
+					margin-bottom: 1rem;
+					width: 20rem;
+					height: 3rem;
+					border-radius: 24px;
+					color: ${props => props.theme.btnColor};
+					background-color: ${props => props.theme.subBgColor};
+					border: 1px solid ${props => props.theme.notiColor};
+					cursor: pointer;
+				`;
 
 			//boards -> Comment.jsx
 			case "comment":
@@ -148,12 +175,13 @@ export const Stbtn = styled.button`
 				return css`
 					cursor: pointer;
 					position: relative;
-					margin-left: 10px;
-					width: 100%;
+					margin-left: 5px;
+					width: 80%;
 					height: 3rem;
 					border-radius: 24px;
 					margin-top: 3rem;
 					margin-bottom: 5rem;
+					margin-left: 3.5rem;
 					background: ${props => props.theme.btnColor};
 					border: 1px solid ${props => props.theme.btnColor};
 					color: ${props => props.theme.bgColor};
@@ -265,6 +293,19 @@ export const Stbtn = styled.button`
 					border: 1px solid ${props => props.theme.btnColor};
 					transform: translateX(-50%);
 					z-index: 10;
+				`;
+			//edit -> DetailEdit.jsx
+			case "edit-post":
+				return css`
+					background: ${props => props.theme.btnColor};
+					border: 1px solid ${props => props.theme.btnColor};
+					color: ${props => props.theme.bgColor};
+					border-radius: 20px;
+					width: 8rem;
+					height: 2.5rem;
+					margin-left: 30em;
+					cursor: pointer;
+					position: sticky;
 				`;
 
 			default:

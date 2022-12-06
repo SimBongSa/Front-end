@@ -22,8 +22,8 @@ function DetailSlideBar({ boardsId, username, id }) {
 
 	const createChatRoom = chatRoomInfo => {
 		dispatch(__createChatRoom(chatRoomInfo));
-		navigate(`/chat/${chatRoom}`)
-	}
+		navigate(`/chat/${chatRoom}`);
+	};
 
 	return (
 		<>
@@ -62,7 +62,7 @@ function DetailSlideBar({ boardsId, username, id }) {
 				{boardsId.author === username ? (
 					<StBtnBox>
 						<Stbtn
-							variant="boards-apply"
+							variant="boards-edit"
 							onClick={() => {
 								navigate(`/edit/${id}`);
 							}}
@@ -70,7 +70,7 @@ function DetailSlideBar({ boardsId, username, id }) {
 							수정하기
 						</Stbtn>
 						<Stbtn
-							variant="boards-chat"
+							variant="boards-delete"
 							onClick={() => {
 								dispatch(__delBoard(id));
 								navigate("/boards");

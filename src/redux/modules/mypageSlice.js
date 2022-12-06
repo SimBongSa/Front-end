@@ -56,15 +56,17 @@ export const __getUserReject = createAsyncThunk("reject", async (payload, thunkA
 	}
 });
 
-export const __putUserInfo = createAsyncThunk("__putUserInfo", async (payload, thunkAPI) => {
+export const __putUserInfo = createAsyncThunk("putUserInfo", async (payload, thunkAPI) => {
 	const formData = new FormData();
+	console.log("userInfo payload =>", payload);
 
 	// formData append
 	Object.entries(payload).forEach(([key, value]) => {
 		formData.append(key, value);
 	});
+
 	try {
-		const response = await axios.putUserPage(payload);
+		const response = await axios.putUserPage(formData);
 		if (response.status === 200) {
 			alert(response.data.data.msg);
 			return thunkAPI.fulfillWithValue(response);

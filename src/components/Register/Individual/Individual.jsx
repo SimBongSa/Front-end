@@ -1,7 +1,7 @@
 import { InputForm, InputBox } from "./Individual.styled";
 import Input from "../../common/input/Input";
 import { useState, useCallback } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { __registerMember } from "../../../redux/modules/registerSlice";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
@@ -23,6 +23,7 @@ const Individual = () => {
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
 	const [input, setInput] = useState(init);
+	const status = useSelector(state => state.boards.status);
 	console.log(input);
 
 	// 오류메시지 상태 저장
@@ -112,6 +113,12 @@ const Individual = () => {
 		e.preventDefault();
 		dispatch(__registerMember(input));
 		setInput(init);
+		if (status === 200) {
+			alert("회원 가입 완료");
+			navigate("/login");
+		} else {
+			alert("회원 가입 내용을 다시 확인해주세요");
+		}
 	};
 
 	return (
@@ -180,13 +187,7 @@ const Individual = () => {
 							onChange={onChangeHandler}
 						/>
 						<StGender>
-							<Input
-								id="male"
-								type="radio"
-								name="gender"
-								value="male"
-								onChange={onChangeHandler}
-							/>
+							<Input id="male" type="radio" name="gender" value="male" onChange={onChangeHandler} />
 							<Input
 								id="female"
 								type="radio"

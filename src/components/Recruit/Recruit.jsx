@@ -1,14 +1,12 @@
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import PopupDom from "../Map/PopupDom";
 import PopupPostCode from "../Map/PopupPostCode";
 import Input from "../common/input/Input";
 import { __createBoard } from "../../redux/modules/boardSlice";
-import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import moment from "moment";
 import { ko } from "date-fns/esm/locale";
-import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import Tags from "./Tags/Tags";
 import ImageUpload from "./ImageUpload/ImageUpload";
@@ -92,14 +90,16 @@ const Recruit = () => {
 	const [address, setAddress] = useState("");
 
 	//텍스트데이터 스테이즈 저장
-	const onChangeInput = e => {
-		const { name, value } = e.target;
-		setInput({ ...input, [name]: value, area: address, tags: tags });
-	};
-
+	const onChangeInput = useCallback(
+		e => {
+			const { name, value } = e.target;
+			setInput({ ...input, [name]: value, area: address, tags: tags });
+		},
+		[input]
+	);
 
 	// Tags
-	const onChangeTags = (e) => {
+	const onChangeTags = e => {
 		if (e.checked) {
 			const tag = e.id;
 			setTags([...tags, tag]);
@@ -236,7 +236,7 @@ const Recruit = () => {
 						type="text"
 						name="content"
 						value={input.content}
-						onChange={(e) => onChangeInput(e)}
+						onChange={e => onChangeInput(e)}
 					/>
 
 					<Stbtn variant="recruit-green">봉사활동 등록하기</Stbtn>
