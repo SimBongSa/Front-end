@@ -40,15 +40,6 @@ export const __getMonthList = createAsyncThunk("getMonthList", async (payload, t
 	}
 });
 
-export const __postSearch = createAsyncThunk("postSearch", async (payload, thunkAPI) => {
-	try {
-		const response = await apis.search(payload);
-		return thunkAPI.fulfillWithValue(response.data);
-	} catch (error) {
-		return thunkAPI.rejectWithValue(error.data);
-	}
-});
-
 const calendarSlice = createSlice({
 	name: "calendarList",
 	initialState,
@@ -85,17 +76,6 @@ const calendarSlice = createSlice({
 				state.montList = action.payload;
 			})
 			.addCase(__getMonthList.rejected, state => {
-				state.isLoading = false;
-			});
-		builder
-			.addCase(__postSearch.pending, state => {
-				state.isLoading = true;
-			})
-			.addCase(__postSearch.fulfilled, (state, action) => {
-				state.isLoading = false;
-				state.search = action.payload;
-			})
-			.addCase(__postSearch.rejected, state => {
 				state.isLoading = false;
 			});
 		// builder

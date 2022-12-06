@@ -142,6 +142,7 @@ export const __getAllAppliList = createAsyncThunk("allAppliList", async (payload
 
 export const __putApprove = createAsyncThunk("approve", async (payload, thunkAPI) => {
 	try {
+		console.log(payload);
 		const response = await apis.putApprove(payload);
 		console.log(response);
 		return thunkAPI.fulfillWithValue(response.data.data);
