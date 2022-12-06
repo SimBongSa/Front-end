@@ -150,15 +150,15 @@ export const Stbtn = styled.button`
 				return css`
 					cursor: pointer;
 					position: relative;
-					margin-left: 10px;
-					width: 100%;
+					margin-left: 1rem;
+					width: 90%;
 					height: 3rem;
 					border-radius: 24px;
-					margin-top: 3rem;
-					margin-bottom: 5rem;
-					background: ${props => props.theme.btnColor};
-					border: 1px solid ${props => props.theme.btnColor};
-					color: ${props => props.theme.bgColor};
+					/* margin-top: 3rem; */
+					/* margin-bottom: 5rem; */
+					background: ${props => props.theme.bgColor};
+					border: 1px solid ${props => props.theme.textColor};
+					color: ${props => props.theme.textColor};
 				`;
 
 			//searchbar -> SearchBar.jsx

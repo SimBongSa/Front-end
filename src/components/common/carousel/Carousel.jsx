@@ -42,7 +42,7 @@ const Carousel = () => {
 						const dDay = getDateDiff(item.dueDay, today);
 						return (
 							<Slide key={item.boardId}>
-								<StCard
+								<StCard									
 									variant="Board"
 									onClick={() => {
 										navigate(`/boards/${item.boardId}`);

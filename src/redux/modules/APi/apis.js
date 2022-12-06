@@ -38,7 +38,6 @@ export const apis = {
 	calendarList: dueDay => api.get(`${BASE_URL}/boards/date/${dueDay}`),
 	MonthList: payload =>
 		api.get(`${BASE_URL}/boards/month/?year=${payload.year}&month=${payload.month}`),
-	search: payload => api.post(`${BASE_URL}/boards/date/${payload}`),
 
 	// boards
 	getBoard: payload => axios.get(`${BASE_URL}/boards?page=${payload.page}&size=${payload.size}`),

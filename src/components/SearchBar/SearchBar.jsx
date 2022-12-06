@@ -24,21 +24,6 @@ const SearchBar = () => {
 	const [modal, setModal] = useState(false);
 	const [animation, setAnimation] = useState(false);
 	const node = useRef();
-
-	// date picker
-	const today = new Date();
-	const [startDate, setStartDate] = useState(today);
-	const [endDate, setEndDate] = useState(today);
-
-	//search state
-	const [search, setSearch] = useState({
-		category: "",
-		startDate: "",
-		endDate: "",
-		location: "",
-	});
-	console.log(search);
-
 	// modal 바깥 클릭 시 닫히는 기능
 	useEffect(() => {
 		const clickOutside = e => {
@@ -56,22 +41,33 @@ const SearchBar = () => {
 		};
 	}, [modal]);
 
-	// const onSubmitHandler = e => {
-	// 	e.preventDefault();
-	// 	dispatch(__postSearch(search));
-	// 	setSearch();
-	// };
+	// date picker
+	const today = new Date();
+	const [startDate, setStartDate] = useState(today);
+	const [endDate, setEndDate] = useState(today);
+
+	//search state
+	const [search, setSearch] = useState({
+		category: "",
+		// startDate: moment(startDate).format("YYYY-MM-DD"),
+		// endDate: moment(endDate).format("YYYY-MM-DD"),
+		location: "",
+	});
+	console.log(search);
+
+
 
 	const searchChange = (e) => {
 		const { name, value } = e.target;
 		setSearch({...search, [name]: value});
 	}
 
-	const onSubmitHandler = e => {
+	const searchHandler = e => {
 		e.preventDefault();
-		// dispatch(__getSearchBoards(search))
+		dispatch(__getSearchBoards({search, startDate, endDate}));
 		console.log(search)
 	};
+	console.log(startDate);
 
 	return (
 		<SearchBarContainer ref={node} modal={modal} animation={animation}>
@@ -82,7 +78,7 @@ const SearchBar = () => {
 					<MagnityingBtn />
 				</Stbtn>
 			) : (
-				<form onSubmit={e => onSubmitHandler(e)}>
+				<form onSubmit={searchHandler}>
 					<SearchModal animation={animation}>
 						<h1>활동 검색하기</h1>
 						<SearchBarWrapper>
@@ -94,16 +90,15 @@ const SearchBar = () => {
 											name={"category"}
 											onChange={searchChange}
 										>
-											<option value={"CHILD"}>CHILD</option>
-											<option value={"DISABLED"}>DISABLED</option>
-											<option value={"SENIOR"}>SENIOR</option>
-											<option value={"MULTICULTURAL_FAMILY"}>MULTICULTURAL_FAMILY</option>
-											<option value={"ENVIRONMENT"}>ENVIRONMENT</option>
-											<option value={"ABANDONED_ANIMAL"}>ABANDONED_ANIMAL</option>
+											<option value={"CHILD"}>어린이</option>
+											<option value={"DISABLED"}>장애인</option>
+											<option value={"SENIOR"}>노인</option>
+											<option value={"MULTICULTURAL_FAMILY"}>다문화가정</option>
+											<option value={"ENVIRONMENT"}>환경</option>
+											<option value={"ABANDONED_ANIMAL"}>유기동물</option>
 										</select>
 									</li>
 									<li>
-										<>
 											<PickerBox>
 												<CustomeDatePicker
 													name={'startDate'}
@@ -127,7 +122,6 @@ const SearchBar = () => {
 													minDate={startDate}
 												/>
 											</PickerBox>
-										</>
 									</li>
 									<li>
 										<h4>Location</h4>

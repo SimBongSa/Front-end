@@ -28,7 +28,7 @@ export const ProfileContainer = styled.div`
 	}
 	& p {
 		text-align: left;
-		color: gray;
+		color: ${(props) => props.theme.subTextColor};
 		font-size: 0.9rem;
 		width: 90%;
 		margin: 1rem;
@@ -52,9 +52,18 @@ export const ProfileContainer = styled.div`
 `;
 
 export const ProfileBox = styled.div`
-	background: #aaaaaa;
-	padding: 30px 10px 10px 10px;
-	width: 120%;
+	display: flex;
+	flex-direction: column;
+	margin: 0 auto;
+	margin-left: -2rem;
+	padding: 20px 10px 10px 10px;
+	width: 300px;
+	& img {
+		margin: 0 auto;
+		justify-content: center;
+		align-items: center;
+		margin-bottom: 1rem;
+	}
 	@media (max-width: 1024px) {
 		flex-direction: column;
 		margin: 0 auto;
@@ -105,9 +114,18 @@ export const ProfileSkill = styled.ul`
 
 export const ProfileCategory = styled.h4`
 	text-align: left;
-	color: black;
 	margin: 1rem;
 	margin-top: 2rem;
+	padding-left: 1rem;
+	width: 45%;
+	font-size: 1rem;
+	& h6 {
+		font-size: 1.2rem;
+		margin-bottom: .6rem;
+	}
+	& span {
+		font-size: 0.9rem;
+	}
 `;
 
 export const ProfileMisc = styled.div`
