@@ -14,6 +14,7 @@ const Input = ({
 	defaultValue,
 	key,
 	nameMessage,
+	onClick,
 }) => {
 	const dispatch = useDispatch();
 
@@ -33,6 +34,7 @@ const Input = ({
 						onChange={onChange}
 						defaultValue={defaultValue}
 						key={key}
+						onClick={onClick}
 					/>
 					{dupleCheck === "username" ? (
 						nameMessage === "사용 가능합니다." ? (
@@ -60,4 +62,4 @@ export default Input;
 
 export const StRadioInput = styled.div`
 	width: 50%;
-`
+`;
