@@ -52,10 +52,8 @@ export const __getBoardId = createAsyncThunk(
 export const __getSearchBoards = createAsyncThunk(
   "getSearchBoards",
   async (payload, thunkAPI) => {
-    console.log(payload)
     try {
       const response = await apis.getSearchBoards(payload);
-      console.log(response)
       return thunkAPI.fulfillWithValue(response.data.data);
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
@@ -189,6 +187,7 @@ export const boardSlice = createSlice({
       })
       .addCase(__getSearchBoards.fulfilled, (state, action) => {
         state.isLoading = false;
+        console.log(action.payload)
         state.boards = action.payload;
       })
       .addCase(__getSearchBoards.rejected, (state, action) => {

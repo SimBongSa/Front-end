@@ -101,8 +101,10 @@ const Profile = ({
           <ProfileMisc>
             <h2>봉사 현황</h2>
             <span/>
+            <h4>봉사 신청 내역</h4>
+            <h4>참여 봉사 관리</h4>
             <h4>캘린더</h4>
-            <h4 onClick={() => {
+            {/* <h4 onClick={() => {
               setUserPageOpt("enroll");
             }}>봉사 신청 내역</h4>
             <h4 onClick={() => {
@@ -113,15 +115,8 @@ const Profile = ({
             }}>참여 봉사 관리</h4>
             <h4 onClick={() => {
               setUserPageOpt("reject");
-            }}>거절된 봉사</h4>
+            }}>거절된 봉사</h4> */}
             <span/>
-            <h4
-              onClick={() => {
-                navigate("/mypageedit");
-              }}
-            >
-              프로필 수정
-            </h4>
             <h4 onClick={() => {
               logOut();
               navigate("/login");
