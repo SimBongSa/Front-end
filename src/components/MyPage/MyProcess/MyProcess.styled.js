@@ -1,11 +1,13 @@
 import styled from "styled-components";
 
 export const MyProcessContainer = styled.div`
-  display: flex;
+  display: inline-flex;
   flex-direction: column;
   margin: 0 auto;
   margin-top: 10rem;
   margin-left: 20rem;
+  width: 60%;
+  box-shadow: 0 3px 8px -6px rgba(0,0,0,.50);
   & h1 {
     font-size: 2rem;
     margin: 1rem;
@@ -17,13 +19,17 @@ export const MyProcessContainer = styled.div`
 `
 
 export const ProcessStepWrap = styled.div`
-	display: table;
+	display: flex;
   position: sticky;
-	width: 100%;
+  justify-content: center;
+  align-items: center;
+	width: 80%;
 	margin: 0 auto;
-  margin-left: 10rem;
-	box-shadow: 0 3px 8px -6px rgba(0,0,0,.50);
+  margin-left: 5rem;
+	/* box-shadow: 0 3px 8px -6px rgba(0,0,0,.50); */
+  background: ${(props) => props.theme.subBgColor};
   @media ( max-width: 1024px) {
+    width: 100%;
     margin-left: 0rem;
     float: left;
   }
@@ -31,13 +37,13 @@ export const ProcessStepWrap = styled.div`
 
 export const ProcessStep = styled.div`
   cursor: pointer;
-	display: table-cell;
 	position: relative;
   width: 200px;
 	padding: 24px;
   transition: all 0.3s;
   &:hover {
-    background:${(props) => props.theme.ctrColor};
+    color: ${(props) => props.theme.bgColor};
+    background:${(props) => props.theme.subTextColor};
   }
   @media ( max-width: 1024px) {
     width: 200px;
@@ -48,10 +54,11 @@ export const ProcessCircle = styled.div`
 	width:30px;
 	height:30px;
 	margin:0 auto;
-	background-color:#70BD44;
+	background-color: ${(props) => props.theme.btnColor};
 	border-radius: 50%;
 	text-align: center;
-	line-height:30px;
+  align-items: center;
+	line-height: 33px;
 	font-size: 16px;
 	font-weight: 600;
 	color:#FFFFFF;

@@ -197,7 +197,7 @@ export const apis = {
 
 	// Search
 	getSearchBoards: (payload) =>
-		axios.get(`${BASE_URL}/boards/search?tag=${payload.tag}&startDate=${payload.startDate}&endDate=${payload.endDate}&area=${payload.area}`),
+		axios.get(`${BASE_URL}/boards/search?tag=${payload.category}&startDate=${payload.startDate}&endDate=${payload.endDate}&area=${payload.location}`),
 
 	// Chat Apis
 	getChatList: () =>

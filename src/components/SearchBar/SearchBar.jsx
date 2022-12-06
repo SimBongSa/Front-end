@@ -20,10 +20,11 @@ import { __getSearchBoards } from "../../redux/modules/boardSlice";
 
 const SearchBar = () => {
 	
-	const dispatch = useDispatch;
+	const dispatch = useDispatch();
 	const [modal, setModal] = useState(false);
 	const [animation, setAnimation] = useState(false);
 	const node = useRef();
+
 	// modal 바깥 클릭 시 닫히는 기능
 	useEffect(() => {
 		const clickOutside = e => {
@@ -49,13 +50,9 @@ const SearchBar = () => {
 	//search state
 	const [search, setSearch] = useState({
 		category: "",
-		// startDate: moment(startDate).format("YYYY-MM-DD"),
-		// endDate: moment(endDate).format("YYYY-MM-DD"),
 		location: "",
 	});
 	console.log(search);
-
-
 
 	const searchChange = (e) => {
 		const { name, value } = e.target;
@@ -64,10 +61,14 @@ const SearchBar = () => {
 
 	const searchHandler = e => {
 		e.preventDefault();
-		dispatch(__getSearchBoards({search, startDate, endDate}));
-		console.log(search)
+		dispatch(__getSearchBoards({
+			...search,
+			startDate : moment(startDate).format("YYYY-MM-DD"), 
+			endDate : moment(endDate).format("YYYY-MM-DD"),
+		}));
+		console.log(search.category)
 	};
-	console.log(startDate);
+	console.log(search.category);
 
 	return (
 		<SearchBarContainer ref={node} modal={modal} animation={animation}>

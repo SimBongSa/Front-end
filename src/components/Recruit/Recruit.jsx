@@ -33,7 +33,6 @@ const Recruit = () => {
 	const onChangeImage = e => {
 		setBoardImage(e.target.files[0]);
 		let reader = new FileReader();
-
 		if (e.target.files[0]) {
 			reader.readAsDataURL(e.target.files[0]);
 		}
@@ -68,11 +67,6 @@ const Recruit = () => {
 		setEndDate(end);
 		setDueDay(due);
 	};
-
-	// const onChangeDue = day => {
-	// 	const [due] = day;
-	// 	setDueDay(due);
-	// };
 
 	const init = {
 		title: "",
