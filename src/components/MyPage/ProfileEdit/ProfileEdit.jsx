@@ -33,10 +33,8 @@ const ProfileEdit = () => {
 	}, [dispatch]);
 
 	const companyInfo = useSelector(state => state?.mypage?.companyInfo);
-	const statusTest = useSelector(state => state.mypage);
+	const status = useSelector(state => state?.mypage?.status);
 	const userInfo = useSelector(state => state?.mypage);
-	console.log("companyInfo =>", companyInfo);
-	console.log("userInfo => ", userInfo);
 
 	const [profileImage, setProfileImage] = useState("; filename=");
 	const [uploadCompanyPreview, setUploadCompanyPreview] = useState(companyInfo.profileImage);
@@ -69,13 +67,10 @@ const ProfileEdit = () => {
 			};
 		}
 	});
-	console.log("editInput =>", editInput);
 
 	// 이미지 upload
 	const onChangeImage = e => {
 		setProfileImage(e.target.files[0]);
-
-		console.log("profileImage =>", profileImage);
 
 		// 미리보기 온체인지 핸들러
 		let reader = new FileReader();
@@ -100,12 +95,11 @@ const ProfileEdit = () => {
 		[editInput]
 	);
 
-	console.log("editInput!!! =>", editInput);
-
 	// 오류메시지 상태 저장
 	const [passwordMessage, setPasswordMessage] = useState(
 		"8 ~ 20자, 알파벳 대소문자, 숫자, 특수문자로 구성됩니다."
 	);
+
 	const [pwConfirmMessage, setPwConfirmMessage] = useState("");
 
 	//PW 정규식 검사
@@ -152,34 +146,17 @@ const ProfileEdit = () => {
 		[editInput]
 	);
 
-	console.log("!!!editInput!!!=>", editInput);
-
-	console.log("typeof Image=>", typeof profileImage);
-
 	const onSubmitHandler = e => {
 		e.preventDefault();
 		if (role === "ROLE_ADMIN") {
 			dispatch(__putCompanyInfo({ ...editInput, profileImage }));
-			console.log("statusTest =>", statusTest);
 		} else {
 			dispatch(__putUserInfo({ ...editInput, profileImage }));
 		}
-		// if (statusTest === 200) {
-		// 	alert("게시물 등록 완료");
-		// 	navigate("/boards");
-		// } else {
-		// 	alert("게시물 등록에 실패했습니다. 내용을 다시 확인해주세요");
-		// }
-	};
-
-	console.log("statusTest !!!", statusTest);
-
-	useEffect(() => {
-		console.log("statusTest 바뀜!!!", statusTest);
-		if (statusTest === 200) {
-			navigate("/");
+		if (status === 200) {
+			navigate(-1);
 		}
-	}, [statusTest]);
+	};
 
 	return (
 		<MyPageEditContainer>

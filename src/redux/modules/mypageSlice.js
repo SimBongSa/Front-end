@@ -107,7 +107,7 @@ export const __getAppliList = createAsyncThunk("appliList", async (payload, thun
 	}
 });
 
-export const __putCompanyInfo = createAsyncThunk("putCompanyInfo", async (payload, thunkAPI) => {
+export const __putCompanyInfo = createAsyncThunk("__putCompanyInfo", async (payload, thunkAPI) => {
 	const formData = new FormData();
 
 	// formData append
@@ -115,18 +115,11 @@ export const __putCompanyInfo = createAsyncThunk("putCompanyInfo", async (payloa
 		formData.append(key, value);
 	});
 
-	for (let key of formData.keys()) {
-		console.log("formData ===>", key, ":", formData.get(key));
-	}
-
-	console.log("formData profileImage ===>", typeof profileImage);
-
 	try {
 		const response = await apis.putCompanyPage(formData);
-		console.log("putCompanyPage response =>", response.status);
+
 		if (response.status === 200) {
 			alert(response.data.data.msg);
-
 			return thunkAPI.fulfillWithValue(response);
 		}
 	} catch (error) {
@@ -137,7 +130,6 @@ export const __putCompanyInfo = createAsyncThunk("putCompanyInfo", async (payloa
 export const __getAllAppliList = createAsyncThunk("allAppliList", async (payload, thunkAPI) => {
 	try {
 		const response = await apis.getAllAppliList(payload);
-		console.log(response);
 		return thunkAPI.fulfillWithValue(response.data.data);
 	} catch (error) {
 		return thunkAPI.rejectWithValue(error);
@@ -146,9 +138,8 @@ export const __getAllAppliList = createAsyncThunk("allAppliList", async (payload
 
 export const __putApprove = createAsyncThunk("approve", async (payload, thunkAPI) => {
 	try {
-		console.log(payload);
 		const response = await apis.putApprove(payload);
-		console.log(response);
+
 		return thunkAPI.fulfillWithValue(response.data.data);
 	} catch (error) {
 		return thunkAPI.rejectWithValue(error);
@@ -158,7 +149,7 @@ export const __putApprove = createAsyncThunk("approve", async (payload, thunkAPI
 export const __putDisapprove = createAsyncThunk("disapprove", async (payload, thunkAPI) => {
 	try {
 		const response = await apis.putDisapprove(payload);
-		console.log(response);
+
 		return thunkAPI.fulfillWithValue(response.data.data);
 	} catch (error) {
 		return thunkAPI.rejectWithValue(error);
@@ -314,9 +305,7 @@ export const mypageSlice = createSlice({
 			})
 			.addCase(__putUserInfo.fulfilled, (state, action) => {
 				state.isLoading = false;
-				state.data = state.data.map(item => {
-					return item.username === action.payload.username ? action.payload : item;
-				});
+				state.status = action.payload.status;
 			})
 			.addCase(__putUserInfo.rejected, (state, action) => {
 				state.isLoading = false;
@@ -341,13 +330,7 @@ export const mypageSlice = createSlice({
 			})
 			.addCase(__putCompanyInfo.fulfilled, (state, action) => {
 				state.isLoading = false;
-				console.log("real status=> ", action.payload.status);
 				state.status = action.payload.status;
-
-				console.log("state.status =>", state.status);
-				state.companyInfo = state.companyInfo.map(item => {
-					return item.username === action.payload.username ? action.payload : item;
-				});
 			})
 			.addCase(__putCompanyInfo.rejected, (state, action) => {
 				state.isLoading = false;
