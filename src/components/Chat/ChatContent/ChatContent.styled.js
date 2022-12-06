@@ -1,6 +1,8 @@
 import styled from "styled-components";
 
 export const StChatContent = styled.div`
+  display: inline-flex;
+  flex-direction: column;
   float: right;
   position: relative;
   height: 100%;
