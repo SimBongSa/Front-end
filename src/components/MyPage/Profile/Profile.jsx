@@ -1,9 +1,13 @@
-import { ProfileContainer, ProfileBox, ProfileCategory, ProfileMisc } from "./Profile.styled";
+import {
+  ProfileContainer,
+  ProfileBox,
+  ProfileCategory,
+  ProfileMisc,
+} from "./Profile.styled";
 import { removeCookie } from "../../../utils/cookie";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import Button from "../../common/button/Button";
-
 
 const Profile = ({
   companyInfo,
@@ -30,31 +34,21 @@ const Profile = ({
           <img src={companyInfo?.profileImage} alt="user" />
         ) : null }
 
+        { userInfo && userInfo?.profileImage ? (
+          <img src={companyInfo?.profileImage} alt="user" />
+        ) : null}
 
-				{/* <img
-          src="https://play-lh.googleusercontent.com/38AGKCqmbjZ9OuWx4YjssAz3Y0DTWbiM5HB0ove1pNBq_o9mtWfGszjZNxZdwt_vgHo=w240-h480-rw"
-          alt="user"
-        /> */}
+        {companyInfo ? (
+          <ProfileInfo>
+            <h3>{companyInfo.name}</h3>
+            <h5>{companyInfo.phoneNumber}</h5>
+            <h5>{companyInfo.email}</h5>
 
-				{/* {
-          !userInfo.profileImage && !companyInfo.profileImage ? (
-            <img
-              src="https://play-lh.googleusercontent.com/38AGKCqmbjZ9OuWx4YjssAz3Y0DTWbiM5HB0ove1pNBq_o9mtWfGszjZNxZdwt_vgHo=w240-h480-rw"
-              alt="user"
-            />
-          ) : null
-        } */}
-
-				{companyInfo ? (
-					<>
-						<h3>{companyInfo.name}</h3>
-						<h5>{companyInfo.email}</h5>
-						<h5>{companyInfo.phoneNumber}</h5>
-						<ProfileCategory>Description</ProfileCategory>
-						<p>{companyInfo.introduction}</p>
-					</>
-				) : null}
-
+            <Button 
+              variant="mypage-edit"               
+              onClick={() => {
+                navigate("/mypageedit");
+              }}>프로필 수정하기</Button>
 
             <ProfileCategory>단체 소개</ProfileCategory>
             <p>{companyInfo.introduction}</p>
@@ -164,26 +158,25 @@ const Profile = ({
       ) : null}
     </ProfileContainer>
   );
-
 };
 
 export default Profile;
 
 export const ProfileInfo = styled.div`
-	text-align: left;
-	& h3 {
-		text-align: center;
-	}
-	& h5 {
-		padding-left: 1rem;
-		color: ${props => props.theme.subTextColor};
-	}
-	& p {
-		padding-left: 1rem;
-	}
-`;
+  text-align: left;
+  & h3 {
+    text-align: center;
+  }
+  & h5 {
+    padding-left: 1rem;
+    color: ${(props) => props.theme.subTextColor};
+  }
+  & p {
+    padding-left: 1rem;
+  }
+`
 
 export const MyActivity = styled.div`
-	display: flex;
-	justify-content: space-between;
-`;
+  display: flex;
+  justify-content: space-between;
+`
