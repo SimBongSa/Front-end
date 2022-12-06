@@ -3,7 +3,6 @@ import styled from "styled-components";
 export const ProfileContainer = styled.div`
 	float: left;
 	position: fixed;
-	margin-top: 0rem;
 	margin-left: 2rem;
 	border-radius: 5px;
 	padding: 20px 10px 10px 10px;
@@ -21,7 +20,7 @@ export const ProfileContainer = styled.div`
 	& h5 {
 		text-align: left;
 		margin: 1rem;
-		color: gray;
+		color: ${(props) => props.theme.subTextColor};
 		@media (max-width: 1024px) {
 			text-align: center;
 		}

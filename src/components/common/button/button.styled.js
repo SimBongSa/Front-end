@@ -231,7 +231,7 @@ export const Stbtn = styled.button`
 			case "applicant-approve":
 				return css`
 					text-align: center;
-					padding: 15px 20px;
+					padding: 0px 20px;
 					margin-bottom: 1rem;
 					width: ${props => props.width};
 					height: ${props => props.height};
@@ -244,14 +244,14 @@ export const Stbtn = styled.button`
 			case "applicant-reject":
 				return css`
 					text-align: center;
-					padding: 15px 20px;
+					padding: 0px 20px;
 					margin-bottom: 1rem;
 					width: ${props => props.width};
 					height: ${props => props.height};
 					border-radius: 24px;
-					color: ${props => props.theme.btnColor};
+					color: ${props => props.theme.notiColor};
 					background-color: ${props => props.theme.bgColor};
-					border: 1px solid ${props => props.theme.btnColor};
+					border: 1px solid ${props => props.theme.notiColor} !important;
 					cursor: pointer;
 				`;
 
