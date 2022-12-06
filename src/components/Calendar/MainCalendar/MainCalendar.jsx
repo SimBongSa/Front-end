@@ -46,7 +46,7 @@ const MainCalendar = () => {
 			});
 		}
 	}, [monthlist]);
-	console.log(mark);
+
 	return (
 		<>
 			<StCalendarContainer>

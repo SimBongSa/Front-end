@@ -30,6 +30,7 @@ const CompanyPage = () => {
     <>
       <Profile 
         companyInfo={companyInfo}
+        companyBoards={companyBoards}
         setCompanyPageOpt={setCompanyPageOpt}
       />
       <CompanyPageContainer>
