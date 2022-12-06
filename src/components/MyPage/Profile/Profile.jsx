@@ -6,7 +6,6 @@ import {
 } from "./Profile.styled";
 import { removeCookie } from "../../../utils/cookie";
 import { useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
 import styled from "styled-components";
 import Button from "../../common/button/Button";
 
@@ -14,6 +13,8 @@ const Profile = ({
   companyInfo,
   companyBoards,
   userInfo,
+  userWait,
+  userPass,
   setUserPageOpt,
   setCompanyPageOpt,
 }) => {
@@ -24,11 +25,6 @@ const Profile = ({
     removeCookie(["authority"], { path: "/" });
     localStorage.removeItem("refresh-token");
   };
-
-  console.log(companyBoards)
-
-  const userPass = useSelector((state) => state.mypage?.userPass);
-  console.log("@@=>",userPass.length)
 
   return (
     <ProfileContainer>
@@ -71,13 +67,33 @@ const Profile = ({
         ) : null}
 
         {userInfo ? (
-          <>
-            <h3>{userInfo.name}</h3>
-            <h5>{userInfo.email}</h5>
-            <h5>{userInfo.phoneNumber}</h5>
+          <ProfileInfo>
+              <h3>{userInfo.name}</h3>
+              <h5>{userInfo.phoneNumber}</h5>
+              <h5>{userInfo.email}</h5>
+            <ProfileCategory>
+
+            </ProfileCategory>
+
+            <Button 
+              variant="mypage-edit"               
+              onClick={() => {
+                navigate("/mypageedit");
+              }}>프로필 수정하기</Button>
+
+            <MyActivity>
+              <ProfileCategory>
+                <h6>{userWait.length}</h6>
+                <span>진행중인 봉사</span>
+              </ProfileCategory>
+              <ProfileCategory>
+                <h6>{userPass.length}</h6>
+                <span>진행한 봉사</span>
+              </ProfileCategory>
+            </MyActivity>
             <ProfileCategory>자기소개</ProfileCategory>
             <p>{userInfo.introduction}</p>
-          </>
+          </ProfileInfo>
         ) : null}
       </ProfileBox>
       {

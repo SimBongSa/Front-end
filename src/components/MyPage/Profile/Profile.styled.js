@@ -6,7 +6,7 @@ export const ProfileContainer = styled.div`
 	margin-top: 0rem;
 	margin-left: 2rem;
 	border-radius: 5px;
-	padding: 30px 10px 10px 10px;
+	padding: 20px 10px 10px 10px;
 	width: 200px;
 	max-width: 100%;
 	text-align: center;
