@@ -110,14 +110,16 @@ export const Stbtn = styled.button`
 			//boards -> Comment.jsx
 			case "comment":
 				return css`
+					position: absolute;
+					border-radius: 24px;
+					width: 6rem;
+					height: 2.5rem;
+					/* margin-left: calc(100% + 110px); */
+					margin-left: calc(100% - 110px);
+					margin-top: -65px;
 					background: ${props => props.theme.btnColor};
 					border: 1px solid ${props => props.theme.btnColor};
 					color: ${props => props.theme.bgColor};
-					border-radius: 24px;
-					width: 8rem;
-					height: 2.5rem;
-					margin-left: auto;
-					margin-right: 0.5rem;
 					cursor: pointer;
 				`;
 			//boards -> SearchBar.jsx

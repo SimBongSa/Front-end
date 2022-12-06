@@ -2,6 +2,8 @@ import { ProfileContainer, ProfileBox, ProfileCategory, ProfileMisc } from "./Pr
 import { removeCookie } from "../../../utils/cookie";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
+import styled from "styled-components";
+import Button from "../../common/button/Button";
 
 const Profile = ({ companyInfo, userInfo, setUserPageOpt, setCompanyPageOpt }) => {
 	const navigate = useNavigate();
@@ -154,3 +156,22 @@ const Profile = ({ companyInfo, userInfo, setUserPageOpt, setCompanyPageOpt }) =
 };
 
 export default Profile;
+
+export const ProfileInfo = styled.div`
+	text-align: left;
+	& h3 {
+		text-align: center;
+	}
+	& h5 {
+		padding-left: 1rem;
+		color: ${props => props.theme.subTextColor};
+	}
+	& p {
+		padding-left: 1rem;
+	}
+`;
+
+export const MyActivity = styled.div`
+	display: flex;
+	justify-content: space-between;
+`;
