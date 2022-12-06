@@ -118,11 +118,15 @@ export const __putCompanyInfo = createAsyncThunk("putCompanyInfo", async (payloa
 	for (let key of formData.keys()) {
 		console.log("formData ===>", key, ":", formData.get(key));
 	}
+
+	console.log("formData profileImage ===>", typeof profileImage);
+
 	try {
 		const response = await apis.putCompanyPage(formData);
-
+		console.log("putCompanyPage response =>", response.status);
 		if (response.status === 200) {
 			alert(response.data.data.msg);
+
 			return thunkAPI.fulfillWithValue(response);
 		}
 	} catch (error) {
@@ -173,6 +177,7 @@ export const mypageSlice = createSlice({
 		allAppliList: [],
 		appliList: [],
 		approve: [],
+		status: null,
 		isLoading: false,
 		error: null,
 	},
@@ -335,8 +340,11 @@ export const mypageSlice = createSlice({
 			})
 			.addCase(__putCompanyInfo.fulfilled, (state, action) => {
 				state.isLoading = false;
-				console.log("__putCompanyInfo payload=> ", action.payload);
-				state.data = state.data.map(item => {
+				console.log("real status=> ", action.payload.status);
+				state.status = action.payload.status;
+
+				console.log("state.status =>", state.status);
+				state.companyInfo = state.companyInfo.map(item => {
 					return item.username === action.payload.username ? action.payload : item;
 				});
 			})

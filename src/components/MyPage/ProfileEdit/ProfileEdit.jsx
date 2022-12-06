@@ -25,18 +25,20 @@ const ProfileEdit = () => {
 	const navigate = useNavigate();
 
 	useEffect(() => {
-		dispatch(__getCompanyInfo());
-	}, [dispatch]);
-
-	useEffect(() => {
-		dispatch(__getUserInfo());
+		if (role === "ROLE_ADMIN") {
+			dispatch(__getCompanyInfo());
+		} else {
+			dispatch(__getUserInfo());
+		}
 	}, [dispatch]);
 
 	const companyInfo = useSelector(state => state?.mypage?.companyInfo);
-	console.log("companyInfo => ", companyInfo);
+	const statusTest = useSelector(state => state.mypage);
 	const userInfo = useSelector(state => state?.mypage);
+	console.log("companyInfo =>", companyInfo);
 	console.log("userInfo => ", userInfo);
-	const [profileImage, setProfileImage] = useState(null);
+
+	const [profileImage, setProfileImage] = useState("; filename=");
 	const [uploadCompanyPreview, setUploadCompanyPreview] = useState(companyInfo.profileImage);
 	const [uploadUserPreview, setUploadUserPreview] = useState(userInfo.profileImage);
 
@@ -152,20 +154,32 @@ const ProfileEdit = () => {
 
 	console.log("!!!editInput!!!=>", editInput);
 
+	console.log("typeof Image=>", typeof profileImage);
+
 	const onSubmitHandler = e => {
 		e.preventDefault();
 		if (role === "ROLE_ADMIN") {
 			dispatch(__putCompanyInfo({ ...editInput, profileImage }));
+			console.log("statusTest =>", statusTest);
 		} else {
 			dispatch(__putUserInfo({ ...editInput, profileImage }));
 		}
-		// if (status === 200) {
+		// if (statusTest === 200) {
 		// 	alert("게시물 등록 완료");
 		// 	navigate("/boards");
 		// } else {
 		// 	alert("게시물 등록에 실패했습니다. 내용을 다시 확인해주세요");
 		// }
 	};
+
+	console.log("statusTest !!!", statusTest);
+
+	useEffect(() => {
+		console.log("statusTest 바뀜!!!", statusTest);
+		if (statusTest === 200) {
+			navigate("/");
+		}
+	}, [statusTest]);
 
 	return (
 		<MyPageEditContainer>

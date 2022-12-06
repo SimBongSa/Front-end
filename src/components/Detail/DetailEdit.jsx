@@ -96,12 +96,12 @@ const DetailEdit = () => {
 	const onSubmitHandler = e => {
 		e.preventDefault();
 		dispatch(__editBoard({ upDate, id }));
-		if (status === 200) {
-			alert("게시물 수정 완료");
-			navigate("/boards");
-		} else {
-			alert("게시물 수정에 오류가 있습니다. 내용을 다시 확인해주세요");
-		}
+		// if (status === 200) {
+		// 	alert("게시물 수정 완료");
+		// 	navigate("/boards");
+		// } else {
+		// 	alert("게시물 수정에 오류가 있습니다. 내용을 다시 확인해주세요");
+		// }
 	};
 
 	return (
