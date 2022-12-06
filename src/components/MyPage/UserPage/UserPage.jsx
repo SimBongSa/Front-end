@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { __getUserEnroll, __getUserInfo, __getUserPass, __getUserReject, __getUserWait } from "../../../redux/modules/mypageSlice";
-
 import Profile from "../Profile/Profile";
 import CardGrid from "../../common/cards/CardGrid"
 import styled from "styled-components";
@@ -35,6 +34,8 @@ const UserPage = () => {
     <>
       <Profile
         userInfo={userInfo}
+        userWait={userWait}
+        userPass={userPass}
         userPageOpt={userPageOpt}
         setUserPageOpt={setUserPageOpt}
       />

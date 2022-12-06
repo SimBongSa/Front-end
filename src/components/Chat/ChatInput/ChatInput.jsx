@@ -30,6 +30,7 @@ export const StChatInput = styled.input`
   outline: none;
   margin-left: 10%;
   margin-top: 7.5px;
+  padding-left: 20px;
 `
 export const StChatBtn = styled.button`
   position: absolute;

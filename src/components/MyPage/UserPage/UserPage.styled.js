@@ -13,6 +13,7 @@ export const MyPageCards = styled.div`
   @media ( max-width: 1024px) {
     margin: 0 auto;
     margin-top: 10rem;
-    float: left;
+    margin-left: 5rem;
+    /* float: left; */
   }
 `

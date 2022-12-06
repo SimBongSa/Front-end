@@ -19,6 +19,9 @@ class ChattingService {
     callback = () => {}
   ) => {
     let newMessage = '';
+    this.stompClient.debug = function (str) {
+      console.log(str)
+    };
     this.stompClient.connect(headers, (frame) => {
       console.log('연결 성공', frame);
       this.stompClient.subscribe(roomAddress, (data) => {
