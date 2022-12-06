@@ -172,7 +172,6 @@ export const Stbtn = styled.button`
 				`;
 
 			//mypageedit -> ProfileEdit.jsx / edit -> DetailEdit.jsx
-
 			case "mypage-edit":
 				return css`
 					cursor: pointer;
@@ -184,6 +183,22 @@ export const Stbtn = styled.button`
 					margin-top: 3rem;
 					margin-bottom: 5rem;
 					margin-left: 1rem;
+					background: ${props => props.theme.btnColor};
+					border: 1px solid ${props => props.theme.btnColor};
+					color: ${props => props.theme.bgColor};
+				`;
+
+			case "board-edit":
+				return css`
+					cursor: pointer;
+					position: relative;
+					margin-left: 5px;
+					width: 60%;
+					height: 3rem;
+					border-radius: 24px;
+					margin-top: 3rem;
+					margin-bottom: 5rem;
+					margin-left: 6.6rem;
 					background: ${props => props.theme.btnColor};
 					border: 1px solid ${props => props.theme.btnColor};
 					color: ${props => props.theme.bgColor};
