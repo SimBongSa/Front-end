@@ -49,8 +49,8 @@ const SearchBar = () => {
 
 	//search state
 	const [search, setSearch] = useState({
-		category: "",
-		location: "",
+		category: "ALL",
+		location: "ALL",
 	});
 	console.log(search);
 
@@ -66,9 +66,7 @@ const SearchBar = () => {
 			startDate : moment(startDate).format("YYYY-MM-DD"), 
 			endDate : moment(endDate).format("YYYY-MM-DD"),
 		}));
-		console.log(search.category)
 	};
-	console.log(search.category);
 
 	return (
 		<SearchBarContainer ref={node} modal={modal} animation={animation}>
@@ -91,6 +89,7 @@ const SearchBar = () => {
 											name={"category"}
 											onChange={searchChange}
 										>
+											<option value={"ALL"}>전체</option>
 											<option value={"CHILD"}>어린이</option>
 											<option value={"DISABLED"}>장애인</option>
 											<option value={"SENIOR"}>노인</option>
