@@ -149,17 +149,25 @@ export const apis = {
 			},
 		}),
 	putApprove: payload =>
-		axios.put(`${BASE_URL}/companypage/approve/${payload}`, {
-			headers: {
-				Authorization: token,
-			},
-		}),
+		axios.put(
+			`${BASE_URL}/companypage/approve/${payload}`,
+			{},
+			{
+				headers: {
+					Authorization: token,
+				},
+			}
+		),
 	putDisapprove: payload =>
-		axios.put(`${BASE_URL}/companypage/disapprove/${payload}`, {
-			headers: {
-				Authorization: token,
-			},
-		}),
+		axios.put(
+			`${BASE_URL}/companypage/disapprove/${payload}`,
+			{},
+			{
+				headers: {
+					Authorization: token,
+				},
+			}
+		),
 
 	//commentSlice
 	getTotalComment: payload =>
@@ -169,11 +177,17 @@ export const apis = {
 			},
 		}),
 	getComment: payload =>
-		axios.get(`${BASE_URL}/boards/${payload.id}?page=${payload.page}&size=${payload.size}`, {
+		axios.get(`${BASE_URL}/boards/${payload}`, {
 			headers: {
 				Authorization: token,
 			},
 		}),
+	// getComment: payload =>
+	// axios.get(`${BASE_URL}/boards/${payload.id}?page=${payload.page}&size=${payload.size}`, {
+	// 	headers: {
+	// 		Authorization: token,
+	// 	},
+	// }),
 	postComment: payload =>
 		axios.post(
 			`${BASE_URL}/comments/${payload.id}`,

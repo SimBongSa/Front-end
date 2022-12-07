@@ -97,9 +97,8 @@ const Recruit = () => {
 		setInput({ ...input, [name]: value, area: address, tags: tags });
 	};
 
-
 	// Tags
-	const onChangeTags = (e) => {
+	const onChangeTags = e => {
 		if (e.checked) {
 			const tag = e.id;
 			setTags([...tags, tag]);
@@ -236,7 +235,7 @@ const Recruit = () => {
 						type="text"
 						name="content"
 						value={input.content}
-						onChange={(e) => onChangeInput(e)}
+						onChange={e => onChangeInput(e)}
 					/>
 
 					<Stbtn variant="recruit-green">봉사활동 등록하기</Stbtn>
