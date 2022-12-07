@@ -12,17 +12,17 @@ export const StInput = styled.input`
 	padding: 20px;
 	width: 100%;
 	padding-left: 20px;
-	border: 1px solid ${(props) => props.theme.textColor};
+	border: 1px solid ${props => props.theme.textColor};
 	border-radius: 30px;
 	outline: none;
 	margin-bottom: 1rem;
-	margin-left: -.15rem;
+	margin-left: -0.15rem;
 	&:focus {
 		border: 1px solid ${props => props.theme.btnColor};
 		color: ${props => props.theme.btnColor};
 		&::-webkit-input-placeholder {
-			color: ${props => props.theme.btnColor}
-		};
+			color: ${props => props.theme.btnColor};
+		}
 	}
 `;
 

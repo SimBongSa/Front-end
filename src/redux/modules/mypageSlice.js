@@ -138,9 +138,8 @@ export const __getAllAppliList = createAsyncThunk("allAppliList", async (payload
 
 export const __putApprove = createAsyncThunk("approve", async (payload, thunkAPI) => {
 	try {
-		console.log(payload);
 		const response = await apis.putApprove(payload);
-		console.log(response);
+
 		return thunkAPI.fulfillWithValue(response.data.data);
 	} catch (error) {
 		return thunkAPI.rejectWithValue(error);
@@ -150,7 +149,7 @@ export const __putApprove = createAsyncThunk("approve", async (payload, thunkAPI
 export const __putDisapprove = createAsyncThunk("disapprove", async (payload, thunkAPI) => {
 	try {
 		const response = await apis.putDisapprove(payload);
-		console.log(response);
+
 		return thunkAPI.fulfillWithValue(response.data.data);
 	} catch (error) {
 		return thunkAPI.rejectWithValue(error);
