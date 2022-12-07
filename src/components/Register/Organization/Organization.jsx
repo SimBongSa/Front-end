@@ -25,13 +25,6 @@ const Organization = () => {
 	const navigate = useNavigate();
 	const [input, setInput] = useState(init);
 
-
-	const onSubmitHandler = e => {
-		e.preventDefault();
-		dispatch(__registerManager({ ...input, licenseImage }));
-		setInput(init);
-	};
-
 	const status = useSelector(state => state.register.organiStatus);
 	const onChangeHandler = useCallback(
 		e => {
@@ -40,7 +33,6 @@ const Organization = () => {
 		},
 		[input]
 	);
-
 
 	const onSubmitHandler = e => {
 		e.preventDefault();
