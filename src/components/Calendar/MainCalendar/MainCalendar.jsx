@@ -52,11 +52,12 @@ const MainCalendar = () => {
 		}
 	}, [monthlist]);
 
-	console.log(mark);
+	// console.log(mark);
 
 	const getElCount = mark => mark.reduce((ac, v) => ({ ...ac, [v]: (ac[v] || 0) + 1 }), {});
 	const arr = getElCount(mark);
-	console.log(arr);
+	// console.log(arr);
+
 	return (
 		<>
 			<StCalendarContainer>
