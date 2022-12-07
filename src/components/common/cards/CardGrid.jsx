@@ -14,7 +14,6 @@ import {
 	StHoverBox,
 } from "./CardGrid.styled";
 const CardGrid = ({ gridColumn, companyBoards, boards, userEnroll, userWait }) => {
-	
 	const navigate = useNavigate();
 
 	const getDateDiff = (d1, d2) => {
@@ -27,8 +26,6 @@ const CardGrid = ({ gridColumn, companyBoards, boards, userEnroll, userWait }) =
 
 	const [isHovering, setIsHovering] = useState(false);
 	const [hoveritem, setHoverItem] = useState([]);
-
-	console.log(hoveritem);
 
 	return (
 		<>

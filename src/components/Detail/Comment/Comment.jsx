@@ -48,13 +48,13 @@ function Comment() {
 	const size = 4;
 
 	useEffect(() => {
-		dispatch(__getComment({ id, page, size }));
-	}, [dispatch, id, page, size]);
-
-	useEffect(() => {
-		dispatch(__getTotalComment(id));
+		dispatch(__getComment(id));
 	}, [dispatch, id]);
-	console.log(commentTotalList);
+
+	// useEffect(() => {
+	// 	dispatch(__getTotalComment(id));
+	// }, [dispatch, id]);
+	// console.log(commentTotalList);
 
 	const onChangeHalder = useCallback(
 		e => {
