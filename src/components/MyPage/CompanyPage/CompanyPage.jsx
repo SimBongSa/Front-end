@@ -10,16 +10,19 @@ import Profile from "../Profile/Profile";
 import CardGrid from "../../common/cards/CardGrid";
 import MyApplicant from "./MyApplicant/MyApplicant";
 import CustomerCalendar from "../../Calendar/CustomerCalendar/CustomerCalendar";
+import { useParams } from "react-router-dom";
 
 const CompanyPage = () => {
+
 	const dispatch = useDispatch();
+	const { id } = useParams();
 
 	const [size, setSize] = useState(10);
 	const [page, setPage] = useState(1);
 
 	useEffect(() => {
-		dispatch(__getCompanyInfo());
-		dispatch(__getCompanyBoards());
+		dispatch(__getCompanyInfo(id));
+		dispatch(__getCompanyBoards(id));
 		dispatch(__getAllAppliList({ page, size }));
 	}, [dispatch, page, size]);
 

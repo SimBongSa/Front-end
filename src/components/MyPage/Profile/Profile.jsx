@@ -52,11 +52,11 @@ const Profile = ({
 
 						<MyActivity>
 							<ProfileCategory>
-								<h6>{companyBoards.length}</h6>
+								<h6>{companyBoards?.length}</h6>
 								<span>모집중인 봉사</span>
 							</ProfileCategory>
 							<ProfileCategory>
-								<h6>{companyBoards.length}</h6>
+								<h6>{companyBoards?.length}</h6>
 								<span>진행한 봉사</span>
 							</ProfileCategory>
 						</MyActivity>
