@@ -10,7 +10,6 @@ import { BoardContainer, BoardContent, ListMap, StBtnBox, StTitle } from "../Boa
 const SearchList = () => {
 
   const { state } = useLocation();
-  console.log("state", state)
 
   const [modal, setModal] = useState(false);
   const [page, setPage] = useState(1);
