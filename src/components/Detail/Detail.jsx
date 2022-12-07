@@ -19,7 +19,6 @@ import {
 	StContentBox,
 } from "./Detail.styled";
 import { __getChatList } from "../../redux/modules/chatSlice";
-import Profileimg from "../common/profileimg/Profileimg";
 
 const Detail = () => {
 	const navigate = useNavigate();
@@ -70,10 +69,8 @@ const Detail = () => {
 						<StArea>{boardsId.area}</StArea>
 						<div>{boardsId.detailArea}</div>
 					</StAreaBox>
-					<hr />
 					<h3>봉사 활동 내용</h3>
 					<StContentBox>{boardsId?.content}</StContentBox>
-					<hr />
 					<h3>봉사 요청 사항</h3>
 					<StDetailTag>
 						{boardsId.tags && boardsId.tags.length > 0 ? (
@@ -84,11 +81,9 @@ const Detail = () => {
 							<h2>요청 사항이 없습니다</h2>
 						)}
 					</StDetailTag>
-					<hr />
 					<MapWrapper>
 						<KaMap input="false" area={boardsId?.area} mapWidth="100%" mapHeight="400px" />
 					</MapWrapper>
-					<hr />
 					<Comment />
 				</DetailContent>
 				<DetailSlide boardsId={boardsId} username={username} id={id} />

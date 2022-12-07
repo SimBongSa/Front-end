@@ -29,8 +29,6 @@ function DetailSlideBar({ boardsId, username, id }) {
 		navigate(`/chat/${chatRoom}`);
 	};
 
-	console.log("applicants =>", applicants);
-	console.log("authority =>", authority);
 	// console.log(applicants.includes(authority));
 
 	// if (applicants.includes(authority) > 0 && applicants.includes(authority) === true) {
@@ -46,16 +44,18 @@ function DetailSlideBar({ boardsId, username, id }) {
 		}
 	}, [setApplied]);
 
-	console.log("applied =>", applied);
+	console.log(boardsId);
 	return (
-
 		<DetailSide>
 			<h1>봉사활동 모집기간</h1>
 			<StDateBox>
 				<div>{boardsId?.startDate}</div> ━ <div>{boardsId?.endDate}</div>
 			</StDateBox>
 			<DetailSideItem>
-				<div>시간 : ?</div>
+				<div>
+					시간 : {boardsId.dueDay?.split(" ")[1].split(":")[0]}시
+					{boardsId.dueDay?.split(" ")[1].split(":")[1]}분
+				</div>
 				<div>반복 여부 : ?</div>
 				<div>봉사 인원 : Volunteers: {boardsId.applicantCnt}명</div>
 			</DetailSideItem>
@@ -83,7 +83,6 @@ function DetailSlideBar({ boardsId, username, id }) {
 				</Stbtn>
 			</StBtnBox>
 			{boardsId.author === username ? (
-
 				<StBtnBox>
 					<Stbtn
 						variant="boards-edit"
@@ -91,9 +90,7 @@ function DetailSlideBar({ boardsId, username, id }) {
 							navigate(`/edit/${id}`);
 						}}
 					>
-
 						{applied}
-
 					</Stbtn>
 					<Stbtn
 						variant="boards-delete"
