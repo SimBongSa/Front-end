@@ -47,7 +47,6 @@ const Detail = () => {
 	return (
 		<>
 			<MainBg image={boardsId?.boardImage} />
-
 			<DetailContainer>
 				<DetailContent>
 					<StTitleBox>
@@ -63,7 +62,7 @@ const Detail = () => {
 									}}
 								/>
 							) : (
-								<img src={process.env.PUBLIC_URL + "/image/32badge1.png"} alt="user" />
+								<img src={process.env.PUBLIC_URL + "/image/32defaultimg.png"} alt="user" />
 							)}
 						</StImgWrapper>
 					</StTitleBox>
