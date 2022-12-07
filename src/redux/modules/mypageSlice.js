@@ -136,11 +136,15 @@ export const __getAppliList = createAsyncThunk("appliList", async (payload, thun
 
 export const __putCompanyInfo = createAsyncThunk("__putCompanyInfo", async (payload, thunkAPI) => {
 	const formData = new FormData();
+
+	// formData append
 	Object.entries(payload).forEach(([key, value]) => {
 		formData.append(key, value);
 	});
+
 	try {
 		const response = await apis.putCompanyPage(formData);
+		console.log(response);
 		if (response.status === 200) {
 			alert(response.data.data.msg);
 			return thunkAPI.fulfillWithValue(response);
@@ -409,7 +413,6 @@ export const mypageSlice = createSlice({
 			.addCase(__putCompanyInfo.fulfilled, (state, action) => {
 				state.isLoading = false;
 				state.status = action.payload.status;
-
 			})
 			.addCase(__putCompanyInfo.rejected, (state, action) => {
 				state.isLoading = false;

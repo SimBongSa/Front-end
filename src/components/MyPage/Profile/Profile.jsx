@@ -1,30 +1,25 @@
-import {
-  ProfileContainer,
-  ProfileBox,
-  ProfileCategory,
-  ProfileMisc,
-} from "./Profile.styled";
+import { ProfileContainer, ProfileBox, ProfileCategory, ProfileMisc } from "./Profile.styled";
 import { removeCookie } from "../../../utils/cookie";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import Button from "../../common/button/Button";
 
 const Profile = ({
-  companyInfo,
-  companyBoards,
-  userInfo,
-  userWait,
-  userPass,
-  setUserPageOpt,
-  setCompanyPageOpt,
+	companyInfo,
+	companyBoards,
+	userInfo,
+	userWait,
+	userPass,
+	setUserPageOpt,
+	setCompanyPageOpt,
 }) => {
-  const navigate = useNavigate();
-  const logOut = () => {
-    removeCookie(["access-token"], { path: "/" });
-    removeCookie(["username"], { path: "/" });
-    removeCookie(["authority"], { path: "/" });
-    localStorage.removeItem("refresh-token");
-  };
+	const navigate = useNavigate();
+	const logOut = () => {
+		removeCookie(["access-token"], { path: "/" });
+		removeCookie(["username"], { path: "/" });
+		removeCookie(["authority"], { path: "/" });
+		localStorage.removeItem("refresh-token");
+	};
 
   return (
     <ProfileContainer>
@@ -33,37 +28,40 @@ const Profile = ({
           <img src={companyInfo?.profileImage} alt="user" />
         ) : null }
 
-        { userInfo && userInfo?.profileImage ? (
-          <img src={companyInfo?.profileImage} alt="user" />
-        ) : null}
+				{userInfo && userInfo?.profileImage ? (
+					<img src={companyInfo?.profileImage} alt="user" />
+				) : null}
 
-        {companyInfo ? (
-          <ProfileInfo>
-            <h3>{companyInfo.name}</h3>
-            <h5>{companyInfo.phoneNumber}</h5>
-            <h5>{companyInfo.email}</h5>
+				{companyInfo ? (
+					<ProfileInfo>
+						<h3>{companyInfo.name}</h3>
+						<h5>{companyInfo.phoneNumber}</h5>
+						<h5>{companyInfo.email}</h5>
 
-            <Button 
-              variant="mypage-edit"               
-              onClick={() => {
-                navigate("/mypageedit");
-              }}>프로필 수정하기</Button>
+						<Button
+							variant="mypage-edit"
+							onClick={() => {
+								navigate("/mypageedit");
+							}}
+						>
+							프로필 수정하기
+						</Button>
 
-            <ProfileCategory>단체 소개</ProfileCategory>
-            <p>{companyInfo.introduction}</p>
+						<ProfileCategory>단체 소개</ProfileCategory>
+						<p>{companyInfo.introduction}</p>
 
-            <MyActivity>
-              <ProfileCategory>
-                <h6>{companyBoards.length}</h6>
-                <span>모집중인 봉사</span>
-              </ProfileCategory>
-              <ProfileCategory>
-                <h6>{companyBoards.length}</h6>
-                <span>진행한 봉사</span>
-              </ProfileCategory>
-            </MyActivity>
-          </ProfileInfo>
-        ) : null}
+						<MyActivity>
+							<ProfileCategory>
+								<h6>{companyBoards.length}</h6>
+								<span>모집중인 봉사</span>
+							</ProfileCategory>
+							<ProfileCategory>
+								<h6>{companyBoards.length}</h6>
+								<span>진행한 봉사</span>
+							</ProfileCategory>
+						</MyActivity>
+					</ProfileInfo>
+				) : null}
 
         {userInfo ? (
           <ProfileInfo>
@@ -168,6 +166,6 @@ export const ProfileInfo = styled.div`
 `
 
 export const MyActivity = styled.div`
-  display: flex;
-  justify-content: space-between;
-`
+	display: flex;
+	justify-content: space-between;
+`;

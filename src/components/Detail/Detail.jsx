@@ -21,12 +21,11 @@ import {
 import { __getChatList } from "../../redux/modules/chatSlice";
 
 const Detail = () => {
-
 	const navigate = useNavigate();
 	const dispatch = useDispatch();
 	const boardsId = useSelector(state => state?.boards?.board);
 	console.log(boardsId);
-	const chatList = useSelector((state) => state.chat.chatList);
+	const chatList = useSelector(state => state.chat.chatList);
 	console.log(chatList);
 	const { id } = useParams();
 

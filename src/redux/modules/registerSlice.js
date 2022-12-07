@@ -107,6 +107,7 @@ export const registerSlice = createSlice({
 		loginInfo: [],
 		usernameCheck: "",
 		nicknameCheck: "",
+		successCheck: "",
 		statusCode: null,
 		isLoading: false,
 		error: "",
@@ -178,6 +179,7 @@ export const registerSlice = createSlice({
 			.addCase(__registerMember.fulfilled, (state, action) => {
 				state.isLoading = false;
 				state.memberInfo.concat(action.payload);
+				state.successCheck = action.payload;
 			})
 			.addCase(__registerMember.rejected, (state, action) => {
 				state.isLoading = false;
@@ -190,6 +192,7 @@ export const registerSlice = createSlice({
 			.addCase(__registerManager.fulfilled, (state, action) => {
 				state.isLoading = false;
 				state.managerInfo.concat(action.payload);
+				state.successCheck = action.payload;
 			})
 			.addCase(__registerManager.rejected, (state, action) => {
 				state.isLoading = false;
