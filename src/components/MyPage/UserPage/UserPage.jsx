@@ -13,7 +13,7 @@ import styled from "styled-components";
 import MyProcess from "../MyProcess/MyProcess";
 import { MyPageCards } from "./UserPage.styled";
 import UserCalendar from "../../Calendar/UserCalendar/UserCalendar";
-import { useParams } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 
 const UserPage = () => {
 	const { id } = useParams();
