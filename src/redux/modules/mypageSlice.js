@@ -83,10 +83,10 @@ export const __getOtherUserInfo = createAsyncThunk(
 	async (payload, thunkAPI) => {
 		try {
 			const response = await apis.getOtherUserInfo(payload);
-			console.log("__getOtherUserInfo",response);
+			console.log("__getOtherUserInfo", response);
 			return thunkAPI.fulfillWithValue(response.data.data);
 		} catch (error) {
-			return thunkAPI.rejectWithValue(error)
+			return thunkAPI.rejectWithValue(error);
 		}
 	}
 );
@@ -96,7 +96,7 @@ export const __getOtherUserEnroll = createAsyncThunk(
 	async (payload, thunkAPI) => {
 		try {
 			const response = await apis.getOtherUserEnroll(payload);
-			console.log("getOtherUserEnroll",response)
+			console.log("getOtherUserEnroll", response);
 		} catch (error) {
 			return thunkAPI.rejectWithValue(error);
 		}
@@ -142,9 +142,13 @@ export const __putCompanyInfo = createAsyncThunk("__putCompanyInfo", async (payl
 		formData.append(key, value);
 	});
 
+	for (let key of formData.keys()) {
+		console.log("formData ===>", key, ":", formData.get(key));
+	}
+
 	try {
 		const response = await apis.putCompanyPage(formData);
-		console.log(response);
+		console.log("__putCompanyInfo => ", response);
 		if (response.status === 200) {
 			alert(response.data.data.msg);
 			return thunkAPI.fulfillWithValue(response);
@@ -186,7 +190,7 @@ export const __getOtherCompanyInfo = createAsyncThunk(
 	"getOtherCompanyInfo",
 	async (payload, thunkAPI) => {
 		try {
-			const response = await apis.getOtherCompanyInfo(payload)
+			const response = await apis.getOtherCompanyInfo(payload);
 			console.log("getOtherCompanyInfo", response);
 			return thunkAPI.fulfillWithValue(response.data.data);
 		} catch (error) {
@@ -199,7 +203,7 @@ export const __getOtherCompanyBoards = createAsyncThunk(
 	"getOtherCompanyBoards",
 	async (payload, thunkAPI) => {
 		try {
-			const response = await apis.getOtherCompanyBoards(payload)
+			const response = await apis.getOtherCompanyBoards(payload);
 			console.log("getOtherCompanyBoards", response);
 			return thunkAPI.fulfillWithValue(response.data.data);
 		} catch (error) {
@@ -441,7 +445,7 @@ export const mypageSlice = createSlice({
 			.addCase(__getOtherCompanyBoards.rejected, (state, action) => {
 				state.isLoading = false;
 				state.error = action.payload;
-			})
+			});
 	},
 });
 
