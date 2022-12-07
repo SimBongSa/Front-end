@@ -18,15 +18,15 @@ import {
 	Div,
 	Date,
 	CommentDiv,
-	UserIcon,
 	StImgBox,
+	CommentWriteWraps,
 } from "./Comment.styled";
 import { __getUserInfo } from "../../../redux/modules/mypageSlice";
 import { __getCompanyInfo } from "../../../redux/modules/mypageSlice";
 import Stbtn from "../../common/button/Button";
 import Input from "../../common/input/Input";
 import Profileimg from "../../common/profileimg/Profileimg";
-import { __getOtherUserEnroll, __getOtherUserInfo } from "../../../redux/modules/mypageSlice";
+import { __getOtherUserInfo } from "../../../redux/modules/mypageSlice";
 
 function Comment() {
 	const dispatch = useDispatch();
@@ -37,7 +37,6 @@ function Comment() {
 	const userName = cookies["username"];
 	const authority = cookies["authority"];
 
-	const commentTotalList = useSelector(state => state.comment.commentTotalList);
 	const commentList = useSelector(state => state.comment.commentList);
 	const otherUserInfo = useSelector(state => state.mypage.otherUserInfo);
 
@@ -60,11 +59,6 @@ function Comment() {
 		dispatch(__getCompanyInfo(id));
 	}, [dispatch]);
 
-	// useEffect(() => {
-	// 	dispatch(__getTotalComment(id));
-	// }, [dispatch, id]);
-	// console.log(commentTotalList);
-
 	const onChangeHalder = useCallback(e => {
 		setContent(e.target.value);
 	}, []);
@@ -72,7 +66,17 @@ function Comment() {
 	return (
 		<MainComponent>
 			<StImgBox>
-				{authority === "ROLE_ADMIN" ? (
+				{authority === "ROLE_MEMBER" ? (
+					userInfo && userInfo.profileImage ? (
+						<Profileimg variant="profile-user" src={userInfo?.profileImage} alt="user" />
+					) : (
+						<Profileimg src={process.env.PUBLIC_URL + "/image/64defaultimg.png"} />
+					)
+				) : (
+					<Profileimg src={process.env.PUBLIC_URL + "/image/64defaultimg.png"} />
+				)}
+
+				{/* {authority === "ROLE_ADMIN" ? (
 					// (ROLE_ADMIN) 프로필의 이미지가 존재할 때
 					companyInfo && companyInfo?.profileImage ? (
 						<Profileimg variant="profile-company" src={companyInfo?.profileImage} alt="user" />
@@ -84,27 +88,34 @@ function Comment() {
 					<Profileimg variant="profile-user" src={userInfo?.profileImage} alt="user" />
 				) : (
 					<Profileimg src={process.env.PUBLIC_URL + "/image/64defaultimg.png"} />
-				)}
+				)} */}
 			</StImgBox>
-			<CommentWriteWrap>
-				<Input
-					type="text"
-					placeholder="댓글을 남겨주세요!"
-					value={content}
-					onChange={onChangeHalder}
-				/>
-				<Stbtn
-					variant="comment"
-					onClick={() => {
-						if (content !== "") {
-							dispatch(__postComment({ content, id }));
-							setContent("");
-						}
-					}}
-				>
-					댓글쓰기
-				</Stbtn>
-			</CommentWriteWrap>
+
+			{authority === "ROLE_MEMBER" ? (
+				<CommentWriteWrap>
+					<Input
+						type="text"
+						placeholder="댓글을 남겨주세요!"
+						value={content}
+						onChange={onChangeHalder}
+					/>
+					<Stbtn
+						variant="comment"
+						onClick={() => {
+							if (content !== "") {
+								dispatch(__postComment({ content, id }));
+								setContent("");
+							}
+						}}
+					>
+						댓글쓰기
+					</Stbtn>{" "}
+				</CommentWriteWrap>
+			) : (
+				<CommentWriteWraps>
+					<div>댓글을 작성하실수 없습니다.</div>
+				</CommentWriteWraps>
+			)}
 
 			{commentList && commentList.length > 0
 				? commentList.map((item, index) => {
@@ -114,17 +125,15 @@ function Comment() {
 							<Box key={index}>
 								<CommentTitleWrap>
 									<div>
-										{authority === "ROLE_ADMIN" ? (
-											// (ROLE_ADMIN) 프로필의 이미지가 존재할 때
-											companyInfo && companyInfo?.profileImage ? (
+										{authority === "ROLE_MEMBER" ? (
+											userInfo && userInfo.profileImage ? (
 												<Profileimg
-													variant="profile-company"
-													src={companyInfo?.profileImage}
+													variant="profile-user"
+													src={userInfo?.profileImage}
 													alt="user"
 													onClick={() => {
 														dispatch(__getOtherUserInfo(item.memberId));
-														// dispatch(__getOtherUserEnroll(item.memberId))
-														navigate(`/companypage/${item.memberId}`, { state: otherUserInfo });
+														navigate(`/usermypage/${item.memberId}`, { state: otherUserInfo });
 													}}
 												/>
 											) : (
@@ -133,34 +142,17 @@ function Comment() {
 													alt="user"
 													onClick={() => {
 														dispatch(__getOtherUserInfo(item.memberId));
-														// dispatch(__getOtherUserEnroll(item.memberId))
-														navigate(`/companypage/${item.memberId}`, { state: otherUserInfo });
+														navigate(`/usermypage/${item.memberId}`, { state: otherUserInfo });
 													}}
 												/>
 											)
-										) : // (ROLE_MEMBER) 프로필의 이미지가 존재할 때
-										userInfo && userInfo.profileImage ? (
-											<Profileimg
-												variant="profile-user"
-												src={userInfo?.profileImage}
-												alt="user"
-												onClick={() => {
-													dispatch(__getOtherUserInfo(item.memberId));
-													// dispatch(__getOtherUserEnroll(item.memberId))
-													navigate(`/usermypage/${item.memberId}`, { state: otherUserInfo });
-												}}
-											/>
 										) : (
 											<Profileimg
 												src={process.env.PUBLIC_URL + "/image/32defaultimg.png"}
 												alt="user"
-												onClick={() => {
-													dispatch(__getOtherUserInfo(item.memberId));
-													// dispatch(__getOtherUserEnroll(item.memberId))
-													navigate(`/usermypage/${item.memberId}`, { state: otherUserInfo });
-												}}
 											/>
 										)}
+
 										<div>
 											<h2>{item?.username}</h2>
 											<Date>{item.createdAt.split("T")[0].substring(0, 10)}</Date>

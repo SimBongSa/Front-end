@@ -30,16 +30,13 @@ const UserPage = () => {
 
 	const userInfo = useSelector(state => state.mypage?.userInfo);
 	const userEnroll = useSelector(state => state.mypage?.userEnroll);
+	console.log(userEnroll)
 	const userWait = useSelector(state => state.mypage?.userWait);
 	const userPass = useSelector(state => state.mypage?.userPass);
 	const userReject = useSelector(state => state.mypage?.userReject);
 
 	const { state } = useLocation();
 	const [userPageOpt, setUserPageOpt] = useState("wait");
-
-	const onClickHandler = e => {
-		setModal(true);
-	};
 
 	return (
 		<>
@@ -53,8 +50,6 @@ const UserPage = () => {
 					setUserPageOpt={setUserPageOpt}
 					callendarData={userEnroll}
 				/>
-				{/* {modal === false && userEnroll.length > 0 ? <UserCalendar userEnroll={userEnroll} /> : ""}
-				<BtnBox onClick={onClickHandler}>캘린더 닫기</BtnBox> */}
 				{userPageOpt === "enroll" ? (
 					<MyPageCards>
 						<h1>봉사 신청 내역</h1>

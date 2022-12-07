@@ -26,7 +26,6 @@ const Individual = () => {
 	const status = useSelector(state => state.boards.status);
 	const successCheck = useSelector(state => state);
 	console.log(input);
-	console.log("successCheck!!! =>", successCheck);
 
 	// 오류메시지 상태 저장
 	const [nameMessage, setNameMessage] = useState(

@@ -1,10 +1,14 @@
 import { InputForm, InputBox, StLegend } from "../Individual/Individual.styled";
 import Input from "../../common/input/Input";
-import { useState, useCallback } from "react";
-import { useDispatch } from "react-redux";
+import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { __registerManager } from "../../../redux/modules/registerSlice";
 import { InputHeader, StInputContainer, StRegBtn } from "../Register.styled";
+import { useCallback } from "react";
+import ImageUpload from "../../Recruit/ImageUpload/ImageUpload";
+import styled from "styled-components";
+
 
 const Organization = () => {
 	const init = {
@@ -21,11 +25,7 @@ const Organization = () => {
 	const navigate = useNavigate();
 	const [input, setInput] = useState(init);
 
-	const onSubmitHandler = e => {
-		e.preventDefault();
-		dispatch(__registerManager({ ...input, licenseImage }));
-		setInput(init);
-	};
+	const status = useSelector(state => state.register.organiStatus);
 	const onChangeHandler = useCallback(
 		e => {
 			const { name, value } = e.target;
@@ -34,11 +34,23 @@ const Organization = () => {
 		[input]
 	);
 
+	const onSubmitHandler = e => {
+		e.preventDefault();
+		dispatch(__registerManager({ ...input, licenseImage }));
+		setInput(init);
+		if (status === 200) {
+			alert("회원 가입 완료");
+			navigate("/login");
+		}
+	};
+
+
 	const [licenseImage, setLicenseImage] = useState(null);
 	const [licensePreview, setLicensePreview] = useState("");
 
 	const onChangeImage = e => {
 		setLicenseImage(e.target.files[0]);
+
 		let reader = new FileReader();
 		if (e.target.files[0]) {
 			reader.readAsDataURL(e.target.files[0]);
@@ -50,6 +62,7 @@ const Organization = () => {
 			}
 		};
 	};
+
 
 	const [step, setStep] = useState(0);
 
@@ -79,7 +92,7 @@ const Organization = () => {
 					setNameMessage("4 ~ 16글자, 알파벳 소문자, 대문자, 숫자만 가능합니다.");
 					setIsName(false);
 					if (!usernameRegex.test(value)) {
-						setNameMessage("형식이 틀렸습니다. 확인 바랍니다.");
+						setNameMessage("형식이 틀렸읍니다. 확인 바랍니다.");
 					}
 				} else {
 					setNameMessage("사용 가능합니다.");
@@ -139,6 +152,9 @@ const Organization = () => {
 							placeholder="Username"
 							autoComplete="off"
 							dupleCheck="username"
+
+							nameMessage={nameMessage}
+
 							type="text"
 							name="username"
 							value={input.username}
@@ -163,7 +179,9 @@ const Organization = () => {
 						<span>{pwConfirmMessage}</span>
 						<StLegend>Your Company Info</StLegend>
 						<Input
-							placeholder="Otganization Name"
+
+							placeholder="Organization Name"
+
 							type="text"
 							name="name"
 							value={input.name}
@@ -183,10 +201,18 @@ const Organization = () => {
 							value={input.licenseNumber}
 							onChange={onChangeHandler}
 						/>
+
 						<input type="file" accept="image/*" name="licenseImage" onChange={onChangeImage} />
 						<div>
 							<img src={licensePreview} alt="licenseImage" />
 						</div>
+
+						<StLegend>Organization Image</StLegend>
+						<ImageWrap>
+							<ImageUpload onChangeImage={onChangeImage} uploadPreview={licensePreview} />
+						</ImageWrap>
+						<StLegend>Organization Manager Contact</StLegend>
+
 						<Input
 							placeholder="Phone Number"
 							type="text"
@@ -204,3 +230,25 @@ const Organization = () => {
 };
 
 export default Organization;
+
+
+{
+	/* <h4>클릭하여 업로드</h4>
+<span>권장사항: 000MB 이하 고화질</span> */
+}
+const ImageWrap = styled.div`
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	margin-right: 30px;
+	align-items: center;
+	& span {
+		align-items: center;
+		font-size: 15px;
+	}
+	& h4 {
+		align-items: center;
+		font-size: 20px;
+	}
+`;
+

@@ -20,6 +20,9 @@ const Input = ({
 
 	const usernameCheck = useSelector(state => state.register.usernameCheck);
 
+	console.log(nameMessage);
+
+
 	return (
 		<StInputContainer>
 			{type === "text" || "password" ? (

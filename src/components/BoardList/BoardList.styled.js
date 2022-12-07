@@ -11,7 +11,8 @@ export const StTitle = styled.div`
 	text-align: center;
 	& > div {
 		padding-bottom: 1rem;
-		font-weight: bolder;
+		font-weight: 300;
+		font-size: 1.6rem;
 	}
 `;
 
