@@ -4,7 +4,6 @@ import {
 	HeaderLogo,
 	HeaderMenu,
 	HeaderMenuItem,
-	HeaderRegister,
 	LightThemeBtn,
 	UserIcon,
 } from "./Header.styled";
@@ -42,7 +41,7 @@ const Header = () => {
 						<HeaderMenuItem>알림</HeaderMenuItem>
 						<UserIcon
 							onClick={() => {
-								navigate("/usermypage");
+								navigate(`/usermypage/${cookies.ID}`);
 							}}
 						/>
 					</>

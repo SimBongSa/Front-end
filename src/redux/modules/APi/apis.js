@@ -118,7 +118,7 @@ export const apis = {
 	getOtherUserInfo: (id) =>
 		api.get(`${BASE_URL}/mypage/${id}`),
 	getOtherUserEnroll: (id) => 
-		api.get(`${BASE_URL}/${id}/enroll/pass`),
+		api.get(`${BASE_URL}/mypage/${id}/enroll/pass`),
 	
 
 	// MyPage (Company)

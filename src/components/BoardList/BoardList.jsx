@@ -7,7 +7,6 @@ import KaMarker from "./../Map/KaMarker";
 import { ImMap2 } from "react-icons/im";
 import styled from "styled-components";
 import Stbtn from "../common/button/Button";
-
 import { useLocation } from "react-router-dom";
 
 const Board = () => {

@@ -6,6 +6,7 @@ import CardGrid from "../../common/cards/CardGrid"
 import styled from "styled-components";
 import MyProcess from "../MyProcess/MyProcess";
 import { MyPageCards } from "./UserPage.styled";
+import { useLocation } from "react-router-dom";
 
 const UserPage = () => {
 
@@ -17,8 +18,6 @@ const UserPage = () => {
   const userPass = useSelector((state) => state.mypage?.userPass);
   const userReject = useSelector((state) => state.mypage?.userReject);
 
-  console.log(userPass.length)
-
   useEffect(() => {
     dispatch(__getUserInfo());
     dispatch(__getUserEnroll());
@@ -28,7 +27,8 @@ const UserPage = () => {
   }, [dispatch])
 
   const [userPageOpt, setUserPageOpt] = useState("wait");
-  console.log(userPageOpt)
+
+  const { state } = useLocation();
 
   return (
     <>
