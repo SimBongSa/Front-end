@@ -4,7 +4,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import moment from "moment";
 import { ko } from "date-fns/esm/locale";
 import styled from "styled-components";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { HiMagnifyingGlass } from "react-icons/hi2";
 import {
 	SearchBarContainer,
@@ -17,10 +17,40 @@ import {
 } from "./SearchBar.styled";
 import Stbtn from "../common/button/Button";
 import { __getSearchBoards } from "../../redux/modules/boardSlice";
+import { useNavigate } from "react-router-dom";
 
 const SearchBar = () => {
 	
+	const navigate = useNavigate();
 	const dispatch = useDispatch();
+	const searchResult = useSelector((state) => state.boards.boards);
+	console.log(searchResult)
+
+	//search state
+	const [search, setSearch] = useState({
+		category: "ALL",
+		location: "ALL",
+	});
+	console.log(search);
+
+	const searchChange = (e) => {
+		const { name, value } = e.target;
+		setSearch({...search, [name]: value});
+	}
+
+	const searchHandler = e => {
+		e.preventDefault();
+		dispatch(__getSearchBoards({
+			...search,
+			startDate : moment(startDate).format("YYYY-MM-DD"), 
+			endDate : moment(endDate).format("YYYY-MM-DD"),
+		}));
+		if (searchResult) {
+			navigate("/boards", { state: searchResult })
+		}
+	};
+
+
 	const [modal, setModal] = useState(false);
 	const [animation, setAnimation] = useState(false);
 	const node = useRef();
@@ -47,28 +77,7 @@ const SearchBar = () => {
 	const [startDate, setStartDate] = useState(today);
 	const [endDate, setEndDate] = useState(today);
 
-	//search state
-	const [search, setSearch] = useState({
-		category: "",
-		location: "",
-	});
-	console.log(search);
 
-	const searchChange = (e) => {
-		const { name, value } = e.target;
-		setSearch({...search, [name]: value});
-	}
-
-	const searchHandler = e => {
-		e.preventDefault();
-		dispatch(__getSearchBoards({
-			...search,
-			startDate : moment(startDate).format("YYYY-MM-DD"), 
-			endDate : moment(endDate).format("YYYY-MM-DD"),
-		}));
-		console.log(search.category)
-	};
-	console.log(search.category);
 
 	return (
 		<SearchBarContainer ref={node} modal={modal} animation={animation}>
@@ -91,6 +100,7 @@ const SearchBar = () => {
 											name={"category"}
 											onChange={searchChange}
 										>
+											<option value={"ALL"}>전체</option>
 											<option value={"CHILD"}>어린이</option>
 											<option value={"DISABLED"}>장애인</option>
 											<option value={"SENIOR"}>노인</option>

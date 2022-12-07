@@ -8,7 +8,10 @@ import { ImMap2 } from "react-icons/im";
 import styled from "styled-components";
 import Stbtn from "../common/button/Button";
 
+import { useLocation } from "react-router-dom";
+
 const Board = () => {
+
 	const dispatch = useDispatch();
 	const boards = useSelector(state => state.boards.boards);
 
@@ -21,55 +24,114 @@ const Board = () => {
 		dispatch(__getBoard({ page, size }));
 	}, [dispatch, size, page]);
 
-	return (
-		<BoardContainer>
-			<StTitle>
-				<div>봉사 검색 결과</div>
-				<div>{boards.length}개</div>
-			</StTitle>
-			<BoardContent>
-				<div>
-					<Stbtn variant="boards-map-open" onClick={() => setModal(!modal)}>
-						지도 보기 <StMap />
-					</Stbtn>
-				</div>
-				{modal ? (
-					<ListMap>
-						<Stbtn variant="boards-map-close" onClick={() => setModal(false)}>
-							X
+	// 검색을 통해 들어온 경우,
+	const { state } = useLocation();
+	console.log("검색결과", state);
+
+	if (state) {
+		const pageNum = Math.round(12 / state.length);
+		return (
+			<BoardContainer>
+				<StTitle>
+					<div>봉사 검색 결과</div>
+					<div>{state.length}개</div>
+				</StTitle>
+				<BoardContent>
+					<div>
+						<Stbtn variant="boards-map-open" onClick={() => setModal(!modal)}>
+							지도 보기 <StMap />
 						</Stbtn>
-						<KaMarker boards={boards} />
-					</ListMap>
-				) : null}
-				<CardGrid boards={boards} gridColumn={5} />
-				<StBtnBox>
-					{page === 1 ? (
-						<Stbtn variant="boards-prev-next">❮</Stbtn>
-					) : (
+					</div>
+					{modal ? (
+						<ListMap>
+							<Stbtn variant="boards-map-close" onClick={() => setModal(false)}>
+								X
+							</Stbtn>
+							<KaMarker boards={state} />
+						</ListMap>
+					) : null}
+					<CardGrid boards={state} gridColumn={5} />
+					<StBtnBox>
+						{page === 1 ? (
+							<Stbtn variant="boards-prev-next">❮</Stbtn>
+						) : (
+							<Stbtn
+								variant="boards-prev-next"
+								onClick={() => {
+									setPage(prev => prev - 1);
+									dispatch(__getBoard({ page, size }));
+								}}
+							>
+								❮
+							</Stbtn>
+						)}
+						<div>{page}/{pageNum}</div>
 						<Stbtn
 							variant="boards-prev-next"
 							onClick={() => {
-								setPage(prev => prev - 1);
+								setPage(prev => prev + 1);
 								dispatch(__getBoard({ page, size }));
 							}}
 						>
-							❮
+							❯
 						</Stbtn>
-					)}
-					<div>{page}/14</div>
-					<Stbtn
-						variant="boards-prev-next"
-						onClick={() => {
-							setPage(prev => prev + 1);
-							dispatch(__getBoard({ page, size }));
-						}}
-					>
-						❯
-					</Stbtn>
-				</StBtnBox>
-			</BoardContent>
-		</BoardContainer>
-	);
+					</StBtnBox>
+				</BoardContent>
+			</BoardContainer>
+		)
+	} else {
+		// 그냥 게시물 리스트
+		return (
+			<BoardContainer>
+				<StTitle>
+					<div>봉사 검색 결과</div>
+					<div>{boards.length}개</div>
+				</StTitle>
+				<BoardContent>
+					<div>
+						<Stbtn variant="boards-map-open" onClick={() => setModal(!modal)}>
+							지도 보기 <StMap />
+						</Stbtn>
+					</div>
+					{modal ? (
+						<ListMap>
+							<Stbtn variant="boards-map-close" onClick={() => setModal(false)}>
+								X
+							</Stbtn>
+							<KaMarker boards={boards} />
+						</ListMap>
+					) : null}
+					<CardGrid boards={boards} gridColumn={5} />
+					<StBtnBox>
+						{page === 1 ? (
+							<Stbtn variant="boards-prev-next">❮</Stbtn>
+						) : (
+							<Stbtn
+								variant="boards-prev-next"
+								onClick={() => {
+									setPage(prev => prev - 1);
+									dispatch(__getBoard({ page, size }));
+								}}
+							>
+								❮
+							</Stbtn>
+						)}
+						<div>{page}/14</div>
+						<Stbtn
+							variant="boards-prev-next"
+							onClick={() => {
+								setPage(prev => prev + 1);
+								dispatch(__getBoard({ page, size }));
+							}}
+						>
+							❯
+						</Stbtn>
+					</StBtnBox>
+				</BoardContent>
+			</BoardContainer>
+		);
+
+	}
 };
 
 export default Board;
