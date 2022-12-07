@@ -40,13 +40,6 @@ const Login = () => {
     }
   }, [authority]);
 
-  // useEffect(() => {
-  //   if (token) {
-  //     alert("올바른 접근이 아닙니다.")
-  //     navigate("/")
-  //   }
-  // }, [token])
-
   const [loginOption, setLoginOption] = useState("member");
 
   return(
