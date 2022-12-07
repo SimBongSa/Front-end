@@ -31,40 +31,15 @@ const Profile = ({
 	return (
 		<ProfileContainer>
 			<ProfileBox>
-				{authority === "ROLE_MEMBER" ? (
-					userInfo && userInfo.profileImage ? (
-						<Profileimg variant="profile-user" src={userInfo.profileImage} alt="user" />
-					) : (
-						<Profileimg
-							variant="profile-user"
-							src={process.env.PUBLIC_URL + "/image/64badge1.png"}
-							alt="user"
-						/>
-					)
-				) : null}
-
-				{authority === "ROLE_ADMIN" ? (
-					companyInfo && companyInfo?.profileImage ? (
-						<Profileimg variant="profile-company" src={companyInfo?.profileImage} alt="user" />
-					) : (
-						<Profileimg
-							variant="profile-company"
-							src={process.env.PUBLIC_URL + "/image/64badge1.png"}
-							alt="user"
-						/>
-					)
-				) : null}
-
 				{/* userInfo && userInfo.profileImage ? (
 				<Profileimg variant="profile-user" src={userInfo.profileImage} alt="user" />) : null
 				 */}
-				{/* {companyInfo && companyInfo.profileImage ? (
-				 	<Profileimg variant="profile-company" src={companyInfo.profileImage} alt="user" />
-			) : null}
-
-		{userInfo && userInfo.profileImage ? (
-			 	<Profileimg variant="profile-user" src={userInfo.profileImage} alt="user" />
-		 ) : null}  */}
+				{companyInfo && companyInfo.profileImage ? (
+					<Profileimg variant="profile-company" src={companyInfo.profileImage} alt="user" />
+				) : null}
+				{userInfo && userInfo.profileImage ? (
+					<Profileimg variant="profile-user" src={userInfo.profileImage} alt="user" />
+				) : null}
 				{companyInfo ? (
 					<ProfileInfo>
 						<h3>{companyInfo?.name}</h3>
