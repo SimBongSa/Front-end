@@ -4,19 +4,13 @@ import { BiArrowBack } from "react-icons/bi";
 export const LoginContainer = styled.div`
   display: flex;
   flex-direction: column;
-  height: 65vh;
+  height: 75vh;
   margin: 0 auto;
   margin-top: 12rem;
   margin-bottom: 15rem;
   overflow: hidden;
   justify-content: space-between;
   align-items: center;
-  /* @media (max-width: 980px) {
-		flex-flow:wrap;
-		text-align: center;
-		align-content: center;
-		align-items: center;
-	} */
 `
 
 export const LoginBackLeft = styled.div`
@@ -26,11 +20,6 @@ export const LoginBackLeft = styled.div`
   background-color: #aaaaaa;
   background-size: cover;
   background-repeat: no-repeat;
-  /* @media (max-width: 980px) {
-    width: 100%;
-    height: 50%;
-    margin-bottom: 3rem;
-	} */
 `
 
 export const LoginFrontRight = styled.div`
@@ -56,7 +45,7 @@ export const LoginOverlay = styled.div`
     font-weight: 900;
   }
 `
-// 오른쪽에 로그인 form 네모임
+
 export const LoginBox = styled.div`
   display: flex;
   margin: 0 auto;

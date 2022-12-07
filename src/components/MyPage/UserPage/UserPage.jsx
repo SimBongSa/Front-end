@@ -12,26 +12,28 @@ import CardGrid from "../../common/cards/CardGrid";
 import styled from "styled-components";
 import MyProcess from "../MyProcess/MyProcess";
 import { MyPageCards } from "./UserPage.styled";
-import { useLocation } from "react-router-dom";
 import UserCalendar from "../../Calendar/UserCalendar/UserCalendar";
+import { useLocation, useParams } from "react-router-dom";
 
 const UserPage = () => {
+
+  const { id } = useParams();
 	const dispatch = useDispatch();
 	const [modal, setModal] = useState(false);
 
-	const userInfo = useSelector(state => state.mypage?.userInfo);
-	const userEnroll = useSelector(state => state.mypage?.userEnroll);
-	const userWait = useSelector(state => state.mypage?.userWait);
-	const userPass = useSelector(state => state.mypage?.userPass);
-	const userReject = useSelector(state => state.mypage?.userReject);
-
 	useEffect(() => {
-		dispatch(__getUserInfo());
-		dispatch(__getUserEnroll());
-		dispatch(__getUserWait());
-		dispatch(__getUserPass());
-		dispatch(__getUserReject());
+		dispatch(__getUserInfo(id));
+		dispatch(__getUserEnroll(id));
+		dispatch(__getUserWait(id));
+		dispatch(__getUserPass(id));
+		dispatch(__getUserReject(id));
 	}, [dispatch]);
+
+  const userInfo = useSelector((state) => state.mypage?.userInfo);
+  const userEnroll = useSelector((state) => state.mypage?.userEnroll);
+  const userWait = useSelector((state) => state.mypage?.userWait);
+  const userPass = useSelector((state) => state.mypage?.userPass);
+  const userReject = useSelector((state) => state.mypage?.userReject);
 
   const { state } = useLocation();
 	const [userPageOpt, setUserPageOpt] = useState("wait");

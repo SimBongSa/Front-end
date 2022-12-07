@@ -24,9 +24,7 @@ const Detail = () => {
 	const navigate = useNavigate();
 	const dispatch = useDispatch();
 	const boardsId = useSelector(state => state?.boards?.board);
-	console.log(boardsId);
 	const chatList = useSelector(state => state.chat.chatList);
-	console.log(chatList);
 	const { id } = useParams();
 
 	const username = getCookieToken(["username"]);
@@ -58,7 +56,9 @@ const Detail = () => {
 								<img 
 									src={boardsId.profileImage} 
 									alt="profileImage" 
-									
+									onClick={() => {
+										navigate(`/companypage/${boardsId?.authorId}`)
+									}}
 								/>
 							) : (
 								<img
