@@ -8,7 +8,6 @@ export const HeaderContainer = styled.header`
 	left: 0;
 	padding: 0.5rem 0;
 	background: ${props => props.theme.bgColor};
-	/* background: white; */
 	will-change: transform;
 	transition: all 0.5s;
 	z-index: 5;
@@ -45,30 +44,6 @@ export const HeaderMenuItem = styled.span`
 	padding: 13px 10px 13px 10px;
 	text-decoration: none;
 	color: ${props => props.theme.textColor};
-	transition: all 0.3s;
-	&:hover {
-		transform: translateY(-10%);
-	}
-	@media (max-width: 768px) {
-		display: none;
-	}
-`;
-
-export const HeaderRegister = styled.div`
-	cursor: pointer;
-	display: flex;
-	border-radius: 30px;
-	background: ${props => props.theme.textColor};
-	color: ${props => props.theme.bgColor};
-	padding: 15px;
-	width: fit-content;
-	margin-left: 50px;
-	padding: 15px 25px 15px 25px;
-	float: right;
-	justify-content: center;
-	text-align: center;
-	align-items: center;
-	user-select: none;
 	transition: all 0.3s;
 	&:hover {
 		transform: translateY(-10%);

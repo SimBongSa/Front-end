@@ -126,7 +126,7 @@ export const ProfileCategory = styled.h4`
 		font-size: 0.9rem;
 	}
 	@media (max-width: 1024px) {
-		padding-left: 2rem;
+		padding-left: 4.5rem;
 	}
 `;
 

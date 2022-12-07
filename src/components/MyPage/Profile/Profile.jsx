@@ -151,7 +151,7 @@ export const ProfileInfo = styled.div`
 
   }
   & h5 {
-    padding-left: 2rem;
+    padding-left: 3rem;
     color: ${(props) => props.theme.subTextColor};
     @media (max-width: 1024px) {
       padding-left: 0;

@@ -12,6 +12,7 @@ import CardGrid from "../../common/cards/CardGrid";
 import styled from "styled-components";
 import MyProcess from "../MyProcess/MyProcess";
 import { MyPageCards } from "./UserPage.styled";
+import { useLocation } from "react-router-dom";
 import UserCalendar from "../../Calendar/UserCalendar/UserCalendar";
 
 const UserPage = () => {
@@ -32,6 +33,7 @@ const UserPage = () => {
 		dispatch(__getUserReject());
 	}, [dispatch]);
 
+  const { state } = useLocation();
 	const [userPageOpt, setUserPageOpt] = useState("wait");
 
 	const onClickHandler = e => {
