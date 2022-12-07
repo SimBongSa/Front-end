@@ -294,6 +294,7 @@ export const RegisterDatePicker = styled(DatePicker)`
 	border: 1px solid #66885d;
 	border-radius: 30px;
 	outline: none;
+	text-align: center;
 	background: ${props => props.theme.btnColor};
 `;
 
