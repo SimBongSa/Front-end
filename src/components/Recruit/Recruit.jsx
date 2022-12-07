@@ -84,12 +84,6 @@ const Recruit = () => {
 	const [address, setAddress] = useState("");
 
 	//텍스트데이터 스테이즈 저장
-<<<<<<< HEAD
-	const onChangeInput = e => {
-		const { name, value } = e.target;
-		setInput({ ...input, [name]: value, area: address, tags: tags });
-	};
-=======
 	const onChangeInput = useCallback(
 		e => {
 			const { name, value } = e.target;
@@ -97,7 +91,6 @@ const Recruit = () => {
 		},
 		[input]
 	);
->>>>>>> 7863201d1176ddfbc322b8482928d17451dfd270
 
 	// Tags
 	const onChangeTags = e => {
