@@ -1,5 +1,4 @@
 import { ProfileContainer, ProfileBox, ProfileCategory, ProfileMisc } from "./Profile.styled";
-import { useCookies } from "react-cookie";
 import { removeCookie } from "../../../utils/cookie";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
@@ -21,12 +20,6 @@ const Profile = ({
 		removeCookie(["authority"], { path: "/" });
 		localStorage.removeItem("refresh-token");
 	};
-
-	const [cookies] = useCookies(["Authorization"]);
-	const authority = cookies["authority"];
-
-	console.log(userInfo);
-	console.log(companyInfo);
 
 	return (
 		<ProfileContainer>

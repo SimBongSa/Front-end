@@ -1,7 +1,7 @@
 import { Profile } from "./Profileimg.styled";
 
-const Profileimg = ({ children, ...props }) => {
-	return <Profile {...props}>{children}</Profile>;
+const Profileimg = ({ ...props }) => {
+	return <Profile {...props} />;
 };
 
 export default Profileimg;

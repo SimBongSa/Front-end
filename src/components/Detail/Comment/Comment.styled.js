@@ -11,7 +11,7 @@ export const CommentWriteWrap = styled.div`
 	width: 85%;
 	align-items: center;
 	height: 4rem;
-	margin-top: -5rem;
+	margin-top: -6rem;
 	/* & div {
 		position: relative;
 		& input {

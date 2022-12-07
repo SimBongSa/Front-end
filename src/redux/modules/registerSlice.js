@@ -120,7 +120,6 @@ export const registerSlice = createSlice({
 				state.error = action.payload;
 			});
 
-
 		// Register
 		builder
 			//Duplicate Check(username)
