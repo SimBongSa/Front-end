@@ -79,18 +79,47 @@ export const Stbtn = styled.button`
 					border: 1px solid ${props => props.theme.btnColor};
 					cursor: pointer;
 				`;
+			case "boards-edit":
+				return css`
+					text-align: center;
+					padding: 15px 20px;
+					margin-bottom: 1rem;
+					width: 20rem;
+					height: 3rem;
+					border-radius: 24px;
+					color: ${props => props.theme.btnColor};
+					background-color: ${props => props.theme.subBgColor};
+					border: 1px solid ${props => props.theme.subBtnColor};
+					cursor: pointer;
+				`;
+
+			case "boards-delete":
+				return css`
+					text-align: center;
+					padding: 15px 20px;
+					margin-bottom: 1rem;
+					width: 20rem;
+					height: 3rem;
+					border-radius: 24px;
+					color: ${props => props.theme.btnColor};
+					background-color: ${props => props.theme.subBgColor};
+					border: 1px solid ${props => props.theme.notiColor};
+					cursor: pointer;
+				`;
 
 			//boards -> Comment.jsx
 			case "comment":
 				return css`
+					position: absolute;
+					border-radius: 24px;
+					width: 6rem;
+					height: 2.5rem;
+					/* margin-left: calc(100% + 110px); */
+					margin-left: calc(100% - 110px);
+					margin-top: -65px;
 					background: ${props => props.theme.btnColor};
 					border: 1px solid ${props => props.theme.btnColor};
 					color: ${props => props.theme.bgColor};
-					border-radius: 24px;
-					width: 8rem;
-					height: 2.5rem;
-					margin-left: auto;
-					margin-right: 0.5rem;
 					cursor: pointer;
 				`;
 			//boards -> SearchBar.jsx
@@ -143,17 +172,33 @@ export const Stbtn = styled.button`
 				`;
 
 			//mypageedit -> ProfileEdit.jsx / edit -> DetailEdit.jsx
-
 			case "mypage-edit":
 				return css`
 					cursor: pointer;
 					position: relative;
-					margin-left: 10px;
-					width: 100%;
+					margin-left: 5px;
+					width: 60%;
 					height: 3rem;
 					border-radius: 24px;
 					margin-top: 3rem;
 					margin-bottom: 5rem;
+					margin-left: 1rem;
+					background: ${props => props.theme.btnColor};
+					border: 1px solid ${props => props.theme.btnColor};
+					color: ${props => props.theme.bgColor};
+				`;
+
+			case "board-edit":
+				return css`
+					cursor: pointer;
+					position: relative;
+					margin-left: 5px;
+					width: 60%;
+					height: 3rem;
+					border-radius: 24px;
+					margin-top: 3rem;
+					margin-bottom: 5rem;
+					margin-left: 6.6rem;
 					background: ${props => props.theme.btnColor};
 					border: 1px solid ${props => props.theme.btnColor};
 					color: ${props => props.theme.bgColor};
@@ -229,7 +274,7 @@ export const Stbtn = styled.button`
 			case "applicant-approve":
 				return css`
 					text-align: center;
-					padding: 15px 20px;
+					padding: 0px 20px;
 					margin-bottom: 1rem;
 					width: ${props => props.width};
 					height: ${props => props.height};
@@ -242,14 +287,14 @@ export const Stbtn = styled.button`
 			case "applicant-reject":
 				return css`
 					text-align: center;
-					padding: 15px 20px;
+					padding: 0px 20px;
 					margin-bottom: 1rem;
 					width: ${props => props.width};
 					height: ${props => props.height};
 					border-radius: 24px;
-					color: ${props => props.theme.btnColor};
+					color: ${props => props.theme.notiColor};
 					background-color: ${props => props.theme.bgColor};
-					border: 1px solid ${props => props.theme.btnColor};
+					border: 1px solid ${props => props.theme.notiColor} !important;
 					cursor: pointer;
 				`;
 
@@ -265,6 +310,19 @@ export const Stbtn = styled.button`
 					border: 1px solid ${props => props.theme.btnColor};
 					transform: translateX(-50%);
 					z-index: 10;
+				`;
+			//edit -> DetailEdit.jsx
+			case "edit-post":
+				return css`
+					background: ${props => props.theme.btnColor};
+					border: 1px solid ${props => props.theme.btnColor};
+					color: ${props => props.theme.bgColor};
+					border-radius: 20px;
+					width: 8rem;
+					height: 2.5rem;
+					margin-left: 30em;
+					cursor: pointer;
+					position: sticky;
 				`;
 
 			default:

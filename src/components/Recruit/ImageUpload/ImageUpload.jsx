@@ -33,10 +33,11 @@ export const ImageUploadBox = styled.div`
 	& label {
 		cursor: pointer;
 		display: flex;
-		width: 100%;
+		width: 95%;
 		justify-content: center;
 		margin: 0 auto;
 		margin: 1rem;
+		margin-right: 1rem;
 		padding: 1rem;
 		background: #aaaaaa;
 		& .uploadBtn {

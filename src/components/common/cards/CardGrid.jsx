@@ -14,6 +14,10 @@ import {
 	StHoverBox,
 } from "./CardGrid.styled";
 const CardGrid = ({ gridColumn, companyBoards, boards, userEnroll, userWait }) => {
+<<<<<<< HEAD
+=======
+	
+>>>>>>> 7863201d1176ddfbc322b8482928d17451dfd270
 	const navigate = useNavigate();
 
 	const getDateDiff = (d1, d2) => {

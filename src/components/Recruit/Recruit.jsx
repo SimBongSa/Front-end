@@ -1,14 +1,12 @@
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import PopupDom from "../Map/PopupDom";
 import PopupPostCode from "../Map/PopupPostCode";
 import Input from "../common/input/Input";
 import { __createBoard } from "../../redux/modules/boardSlice";
-import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import moment from "moment";
 import { ko } from "date-fns/esm/locale";
-import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import Tags from "./Tags/Tags";
 import ImageUpload from "./ImageUpload/ImageUpload";
@@ -35,7 +33,6 @@ const Recruit = () => {
 	const onChangeImage = e => {
 		setBoardImage(e.target.files[0]);
 		let reader = new FileReader();
-
 		if (e.target.files[0]) {
 			reader.readAsDataURL(e.target.files[0]);
 		}
@@ -71,11 +68,6 @@ const Recruit = () => {
 		setDueDay(due);
 	};
 
-	// const onChangeDue = day => {
-	// 	const [due] = day;
-	// 	setDueDay(due);
-	// };
-
 	const init = {
 		title: "",
 		content: "",
@@ -92,10 +84,20 @@ const Recruit = () => {
 	const [address, setAddress] = useState("");
 
 	//텍스트데이터 스테이즈 저장
+<<<<<<< HEAD
 	const onChangeInput = e => {
 		const { name, value } = e.target;
 		setInput({ ...input, [name]: value, area: address, tags: tags });
 	};
+=======
+	const onChangeInput = useCallback(
+		e => {
+			const { name, value } = e.target;
+			setInput({ ...input, [name]: value, area: address, tags: tags });
+		},
+		[input]
+	);
+>>>>>>> 7863201d1176ddfbc322b8482928d17451dfd270
 
 	// Tags
 	const onChangeTags = e => {

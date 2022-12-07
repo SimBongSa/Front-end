@@ -30,7 +30,9 @@ export const ChatContent = () => {
 
   useEffect(() => {
     dispatch(__getChatHistory(id.id));
-    scrollRef.current.scrollIntoView({ behavior: 'smooth', block: 'end', inline: 'nearest' })
+    if (props) {
+      scrollRef.current.scrollIntoView({ behavior: 'smooth', block: 'end' })
+    }
   }, [dispatch, id, props]);
 
   return (
@@ -48,7 +50,6 @@ export const ChatContent = () => {
         ) : null
       }
       <ul>
-
         {/* 채팅기록 불러오기 */}
         {
           chatHistory?.map((item) => {

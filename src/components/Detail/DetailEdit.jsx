@@ -3,30 +3,41 @@ import { useSelector, useDispatch } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import { __getBoardId, __editBoard } from "../../redux/modules/boardSlice";
 import styled from "styled-components";
-import { DetailContainer, DetailContent } from "./Detail.styled";
+import { DetailContainer, DetailContent, RegisterDatePicker, TextArea } from "./DetailEdit.styled";
 import PopupDom from "../Map/PopupDom";
+import moment from "moment";
 import PopupPostCode from "../Map/PopupPostCode";
 import DatePicker from "react-datepicker";
 import { ko } from "date-fns/esm/locale";
 import Stbtn from "../common/button/Button";
+import Input from "../common/input/Input";
+import ImageUpload from "../Recruit/ImageUpload/ImageUpload";
 
+//기관의 페이지 수정
 const DetailEdit = () => {
 	const [isPopupOpen, setIsPopupOpen] = useState(false);
-	const [address, setAddress] = useState("");
 	const [boardImage, setBoardImage] = useState(null);
 	const [input, setInput] = useState("");
-	const [uploadpreview, setUploadpreview] = useState("");
 
-	const boardsId = useSelector(state => state?.boards?.boardsId);
+	const boardsId = useSelector(state => state?.boards?.board);
+	const [uploadpreview, setUploadpreview] = useState(boardsId.boardImage);
+
+	const [editInput, setEditInput] = useState(Prev => {
+		const { title, content, boardImage, dueDay, startDate, endDate, area } = boardsId;
+	});
+
+	const [address, setAddress] = useState(boardsId.area);
+	console.log("address =>", boardsId.area);
 
 	const today = new Date();
 	const due = new Date();
 	const [startDate, setStartDate] = useState(today);
 	const [endDate, setEndDate] = useState(null);
 	const [dueDay, setDueDay] = useState(due.setHours(due.setMinutes(new Date(), 30), 17));
-
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
+
+	const status = useSelector(state => state.boards.status);
 
 	const { id } = useParams();
 
@@ -64,7 +75,7 @@ const DetailEdit = () => {
 	};
 
 	//해당 페이지의 id에 해당되는 객체 불러오기
-	console.log(boardsId);
+	console.log("boardsId => ", boardsId);
 
 	useEffect(() => {
 		dispatch(__getBoardId(id));
@@ -73,17 +84,25 @@ const DetailEdit = () => {
 	const onChangeHandler = e => {
 		console.log("인풋=>", input);
 		const { name, value } = e.target;
-		// setInput({ ...input, [name]: value, area: address });
-		setInput({ ...input, [name]: value });
+		setInput({ ...input, [name]: value, area: address });
 	};
-	const upDate = { ...input, boardImage };
+	const upDate = {
+		...input,
+		boardImage,
+		startDate: moment(startDate).format("YYYY-MM-DD"),
+		endDate: moment(endDate).format("YYYY-MM-DD"),
+		dueDay: moment(dueDay).format("YYYY-MM-DD HH:mm:ss"),
+	};
 	const onSubmitHandler = e => {
 		e.preventDefault();
 		dispatch(__editBoard({ upDate, id }));
-		// navigate(`/detail/${id}`);
+		// if (status === 200) {
+		// 	alert("게시물 수정 완료");
+		// 	navigate("/boards");
+		// } else {
+		// 	alert("게시물 수정에 오류가 있습니다. 내용을 다시 확인해주세요");
+		// }
 	};
-
-	console.log("Detail.jsx boardsId =>", boardsId);
 
 	return (
 		<form onSubmit={onSubmitHandler}>
@@ -92,10 +111,10 @@ const DetailEdit = () => {
 				<DetailContent>
 					<h4>봉사 내용 주제</h4>
 					<Input
-						placeholder="봉사 활동 주제"
 						type="text"
 						name="title"
 						defaultValue={boardsId?.title}
+						key={boardsId?.title}
 						onChange={onChangeHandler}
 					/>
 					<h4>봉사활동 모집기간</h4>
@@ -119,12 +138,22 @@ const DetailEdit = () => {
 						dateFormat="📅 yyyy년-MM월-dd일 / 🕜 aa h:mm "
 					/>
 					<h4>행사 주소</h4>
+					<Stbtn variant="edit-post" type="button" onClick={openPostCode}>
+						우편번호 검색
+					</Stbtn>
 					<Input
-						placeholder="클릭 시 우편번호 검색"
+						// // placeholder="클릭 시 우편번호 검색"
+						// type="text"
+						// name="area"
+						// // onClick={openPostCode}
+						// defaultValue={address}
+						// key={boardsId?.area}
+						placeholder={address}
 						type="text"
+						required
+						defaultValue={address}
+						key={address}
 						name="area"
-						value={address}
-						onClick={openPostCode}
 					/>
 					<div id="popupDom">
 						{isPopupOpen && (
@@ -148,72 +177,16 @@ const DetailEdit = () => {
 						name={"content"}
 						onChange={onChangeHandler}
 					/>
-					<ImgSize src={uploadpreview} alt="" />
-					<Input
-						name="thumbNail"
-						type={"file"}
-						accept={"image/*"}
-						placeholder="이미지업로드"
-						onChange={onChangeImage}
-					/>
+					<p> 게시글 이미지 수정</p>
+					<ImageUpload onChangeImage={onChangeImage} uploadPreview={uploadpreview} />
+					{/* <button type={"submit"} onClick={() => navigate(`/boards/${id}`)}> */}
+					<Stbtn variant="board-edit" type={"submit"}>
+						수정 완료
+					</Stbtn>
 				</DetailContent>
 			</DetailContainer>
-			{/* <button type={"submit"} onClick={() => navigate(`/boards/${id}`)}> */}
-			<Stbtn variant="mypageedit" type={"submit"}>
-				수정 완료
-			</Stbtn>
 		</form>
 	);
 };
 
 export default DetailEdit;
-
-const Content = styled.li`
-	text-align: center;
-	margin-top: 20px;
-	list-style: none;
-	padding-left: 0px;
-`;
-
-export const ImgSize = styled.img`
-	width: 70px;
-	height: 70px;
-`;
-
-const Input = styled.input`
-	display: block;
-	width: 590px;
-	height: 60px;
-	border-radius: 30px;
-	/* background-image: url(); */
-	background-position: center right 10px;
-	background-repeat: no-repeat;
-	margin-bottom: 10px;
-	border: 1px solid #66885d;
-	margin-top: 10px;
-	padding-left: 10px;
-`;
-
-const RegisterDatePicker = styled(DatePicker)`
-	margin: 1rem;
-	font-size: 15px;
-	padding: 20px;
-	width: 100%;
-	// paddingLeft: "20px",
-	border: 1px solid #66885d;
-	border-radius: 30px;
-	outline: none;
-	background: ${props => props.theme.btnColor};
-`;
-
-const TextArea = styled.textarea`
-	margin: 1px;
-	margin-top: 10px;
-	width: 590px;
-	border-radius: 30px;
-	height: 300px;
-	padding-right: 10px;
-
-	border: 1px solid #66885d;
-	resize: none;
-`;

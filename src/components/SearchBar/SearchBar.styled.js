@@ -161,15 +161,15 @@ const fadeOut = keyframes`
   }
 `;
 
-export const CustomeDatePicker = styled(DatePicker)({
-	display: "flex",
-	fontSize: "15px",
-	width: "50rem",
-	border: "none",
-	borderRadius: "15px",
-	outline: "none",
-	background: `${props => props.theme.subTextColor}`,
-});
+export const CustomeDatePicker = styled(DatePicker)`
+	display: flex;
+	font-size: 14px;
+	width: max-content;
+	border: none;
+	border-radius: 15px;
+	outline: none;
+	/* background: ${props => props.theme.subTextColor}; */
+`;
 
 export const PickerBox = styled.div`
 	display: flex;

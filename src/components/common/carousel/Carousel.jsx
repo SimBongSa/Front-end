@@ -41,8 +41,13 @@ const Carousel = () => {
 					{boardList.map((item, index) => {
 						const dDay = getDateDiff(item.dueDay, today);
 						return (
+<<<<<<< HEAD
 							<Slide key={index}>
 								<StCard
+=======
+							<Slide key={item.boardId}>
+								<StCard									
+>>>>>>> 7863201d1176ddfbc322b8482928d17451dfd270
 									variant="Board"
 									onClick={() => {
 										navigate(`/boards/${item.boardId}`);

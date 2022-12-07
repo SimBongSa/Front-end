@@ -38,7 +38,6 @@ export const apis = {
 	calendarList: dueDay => api.get(`${BASE_URL}/boards/date/${dueDay}`),
 	MonthList: payload =>
 		api.get(`${BASE_URL}/boards/month/?year=${payload.year}&month=${payload.month}`),
-	search: payload => api.post(`${BASE_URL}/boards/date/${payload}`),
 
 	// boards
 	getBoard: payload => axios.get(`${BASE_URL}/boards?page=${payload.page}&size=${payload.size}`),
@@ -149,6 +148,7 @@ export const apis = {
 			},
 		}),
 	putApprove: payload =>
+<<<<<<< HEAD
 		axios.put(
 			`${BASE_URL}/companypage/approve/${payload}`,
 			{},
@@ -168,6 +168,19 @@ export const apis = {
 				},
 			}
 		),
+=======
+		axios.put(`${BASE_URL}/companypage/approve/${payload}`, {}, {
+			headers: {
+				Authorization: token,
+			},
+		}),
+	putDisapprove: payload =>
+		axios.put(`${BASE_URL}/companypage/disapprove/${payload}`, {}, {
+			headers: {
+				Authorization: token,
+			},
+		}),
+>>>>>>> 7863201d1176ddfbc322b8482928d17451dfd270
 
 	//commentSlice
 	getTotalComment: payload =>
@@ -209,6 +222,10 @@ export const apis = {
 				Authorization: token,
 			},
 		}),
+
+	// Search
+	getSearchBoards: (payload) =>
+		axios.get(`${BASE_URL}/boards/search?tag=${payload.category}&startDate=${payload.startDate}&endDate=${payload.endDate}&area=${payload.location}`),
 
 	// Chat Apis
 	getChatList: () =>

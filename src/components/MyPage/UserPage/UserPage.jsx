@@ -7,13 +7,12 @@ import {
 	__getUserReject,
 	__getUserWait,
 } from "../../../redux/modules/mypageSlice";
-import UserCalendar from "../../Calendar/UserCalendar/UserCalendar";
-
 import Profile from "../Profile/Profile";
 import CardGrid from "../../common/cards/CardGrid";
 import styled from "styled-components";
 import MyProcess from "../MyProcess/MyProcess";
 import { MyPageCards } from "./UserPage.styled";
+import UserCalendar from "../../Calendar/UserCalendar/UserCalendar";
 
 const UserPage = () => {
 	const dispatch = useDispatch();

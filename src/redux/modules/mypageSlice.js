@@ -53,15 +53,17 @@ export const __getUserReject = createAsyncThunk("reject", async (payload, thunkA
 	}
 });
 
-export const __putUserInfo = createAsyncThunk("__putUserInfo", async (payload, thunkAPI) => {
+export const __putUserInfo = createAsyncThunk("putUserInfo", async (payload, thunkAPI) => {
 	const formData = new FormData();
+	console.log("userInfo payload =>", payload);
 
 	// formData append
 	Object.entries(payload).forEach(([key, value]) => {
 		formData.append(key, value);
 	});
+
 	try {
-		const response = await axios.putUserPage(payload);
+		const response = await axios.putUserPage(formData);
 		if (response.status === 200) {
 			alert(response.data.data.msg);
 			return thunkAPI.fulfillWithValue(response);
@@ -102,7 +104,7 @@ export const __getAppliList = createAsyncThunk("appliList", async (payload, thun
 	}
 });
 
-export const __putCompanyInfo = createAsyncThunk("putCompanyInfo", async (payload, thunkAPI) => {
+export const __putCompanyInfo = createAsyncThunk("__putCompanyInfo", async (payload, thunkAPI) => {
 	const formData = new FormData();
 
 	// formData append
@@ -110,12 +112,9 @@ export const __putCompanyInfo = createAsyncThunk("putCompanyInfo", async (payloa
 		formData.append(key, value);
 	});
 
-	for (let key of formData.keys()) {
-		console.log("formData ===>", key, ":", formData.get(key));
-	}
 	try {
 		const response = await apis.putCompanyPage(formData);
-
+		console.log(response);
 		if (response.status === 200) {
 			alert(response.data.data.msg);
 			return thunkAPI.fulfillWithValue(response);
@@ -128,7 +127,6 @@ export const __putCompanyInfo = createAsyncThunk("putCompanyInfo", async (payloa
 export const __getAllAppliList = createAsyncThunk("allAppliList", async (payload, thunkAPI) => {
 	try {
 		const response = await apis.getAllAppliList(payload);
-		console.log(response);
 		return thunkAPI.fulfillWithValue(response.data.data);
 	} catch (error) {
 		return thunkAPI.rejectWithValue(error);
@@ -138,7 +136,7 @@ export const __getAllAppliList = createAsyncThunk("allAppliList", async (payload
 export const __putApprove = createAsyncThunk("approve", async (payload, thunkAPI) => {
 	try {
 		const response = await apis.putApprove(payload);
-		console.log(response);
+
 		return thunkAPI.fulfillWithValue(response.data.data);
 	} catch (error) {
 		return thunkAPI.rejectWithValue(error);
@@ -148,7 +146,7 @@ export const __putApprove = createAsyncThunk("approve", async (payload, thunkAPI
 export const __putDisapprove = createAsyncThunk("disapprove", async (payload, thunkAPI) => {
 	try {
 		const response = await apis.putDisapprove(payload);
-		console.log(response);
+
 		return thunkAPI.fulfillWithValue(response.data.data);
 	} catch (error) {
 		return thunkAPI.rejectWithValue(error);
@@ -168,6 +166,7 @@ export const mypageSlice = createSlice({
 		allAppliList: [],
 		appliList: [],
 		approve: [],
+		status: null,
 		isLoading: false,
 		error: null,
 	},
@@ -303,9 +302,7 @@ export const mypageSlice = createSlice({
 			})
 			.addCase(__putUserInfo.fulfilled, (state, action) => {
 				state.isLoading = false;
-				state.data = state.data.map(item => {
-					return item.username === action.payload.username ? action.payload : item;
-				});
+				state.status = action.payload.status;
 			})
 			.addCase(__putUserInfo.rejected, (state, action) => {
 				state.isLoading = false;
@@ -330,10 +327,7 @@ export const mypageSlice = createSlice({
 			})
 			.addCase(__putCompanyInfo.fulfilled, (state, action) => {
 				state.isLoading = false;
-				console.log("__putCompanyInfo payload=> ", action.payload);
-				state.data = state.data.map(item => {
-					return item.username === action.payload.username ? action.payload : item;
-				});
+				state.status = action.payload.status;
 			})
 			.addCase(__putCompanyInfo.rejected, (state, action) => {
 				state.isLoading = false;

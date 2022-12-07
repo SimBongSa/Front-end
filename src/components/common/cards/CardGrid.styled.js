@@ -7,9 +7,8 @@ export const StCardGridContainer = styled.section`
 				return css`
 					display: grid;
 					width: 70%;
-					grid-template-columns: 0fr repeat(0, minmax(auto, 60px)) 10fr;
+					grid-template-columns: 0fr repeat(12, minmax(auto, 60px)) 12fr;
 					margin: 3rem 0px 2rem 10rem;
-
 					justify-items: center;
 				`;
 			case "userEnroll":
@@ -36,14 +35,15 @@ export const StCards = styled.div`
 			case "Board":
 				return css`
 					display: grid;
-					grid-column: ${props => props.gridColumn} / span 12;
-					grid-template-columns: repeat(20, minmax(auto, 120px));
+					grid-column: ${props => props.gridColumn} / span 14;
+					grid-template-columns: repeat(16, minmax(auto, 120px));
 					grid-gap: 1.5rem;
 					gap: 5rem;
 					@media screen and (max-width: 1440px) {
 						grid-template-columns: repeat(16, minmax(auto, 60px));
 					}
 					@media screen and (max-width: 1024px) {
+						grid-column: ${props => props.gridColumn} / span 4;
 						grid-template-columns: repeat(12, minmax(auto, 60px));
 					}
 				`;
@@ -54,7 +54,7 @@ export const StCards = styled.div`
 					grid-template-columns: repeat(20, minmax(auto, 120px));
 					grid-gap: 1.5rem;
 					@media screen and (max-width: 1440px) {
-						grid-template-columns: repeat(16, minmax(auto, 60px));
+						grid-template-columns: repeat(12, minmax(auto, 60px));
 					}
 					@media screen and (max-width: 1024px) {
 						grid-template-columns: repeat(12, minmax(auto, 60px));
@@ -63,11 +63,11 @@ export const StCards = styled.div`
 			case "Company":
 				return css`
 					display: grid;
-					grid-column: ${props => props.gridColumn} / span 12;
-					grid-template-columns: repeat(20, minmax(auto, 120px));
+					grid-column: ${props => props.gridColumn} / span 2;
+					grid-template-columns: repeat(3, minmax(auto, 120px));
 					grid-gap: 1.5rem;
 					@media screen and (max-width: 1440px) {
-						grid-template-columns: repeat(16, minmax(auto, 60px));
+						grid-template-columns: repeat(3, minmax(auto, 60px));
 					}
 					@media screen and (max-width: 1024px) {
 						grid-template-columns: repeat(12, minmax(auto, 60px));
@@ -202,7 +202,8 @@ export const StContent = styled.div`
 		switch (variant) {
 			case "Board":
 				return css`
-					padding-top: 12px;
+					padding: 1rem;
+					padding-top: 20px;
 					background-color: transparent;
 					& .title {
 						text-align: start;
@@ -276,6 +277,7 @@ export const StArea = styled.div`
 		switch (variant) {
 			case "Board":
 				return css`
+					font-size: .8rem;
 					max-width: 200px;
 					min-width: 50px;
 					color: ${props => props.theme.bgColor};
@@ -415,11 +417,12 @@ export const StTagBox = styled.ul`
 	& li {
 		display: inline-block;
 		background-color: ${props => props.theme.subTextColor};
-		/* color: ${props => props.theme.textColor}; */
-		color: white;
+		color: ${props => props.theme.bgColor};
+		font-weight: 400;
 		border-radius: 3px;
 		padding: 2.5px 10px;
 		margin: 0 10px 10px 0;
+		padding-top: 4px;
 		cursor: pointer;
 		user-select: none;
 		transition: background-color 0.3s;

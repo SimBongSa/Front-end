@@ -1,20 +1,26 @@
 import styled from "styled-components";
 import { FaRegUserCircle } from "react-icons/fa";
-import Input from "../../common/input/Input";
 
 export const MainComponent = styled.div`
 	margin: 2.5rem;
 `;
+
 export const CommentWriteWrap = styled.div`
-	display: flex;
-	width: 100%;
+	float: right;
+	position: relative;
+	width: 85%;
 	align-items: center;
-	border-radius: 30px;
 	height: 4rem;
-	& div {
-		cursor: pointer;
-	}
+	margin-top: -1.3rem;
+	/* & div {
+		position: relative;
+		& input {
+			width: 200%;
+			max-width: 300%;
+		}
+	} */
 `;
+
 export const CommentTitleWrap = styled.div`
 	display: flex;
 	align-items: center;
@@ -28,6 +34,7 @@ export const CommentTitleWrap = styled.div`
 		flex-wrap: wrap;
 	}
 `;
+
 export const CommentBtnWrap = styled.div`
 	display: flex;
 	align-items: center;
@@ -40,12 +47,13 @@ export const Box = styled.div`
 `;
 
 export const UserIcon = styled(FaRegUserCircle)`
-	display: flex;
-	float: right;
-	justify-content: right;
+	/* display: flex; */
+	/* float: right; */
+	/* justify-content: right; */
 	font-size: 3rem;
 	color: grey;
 	min-width: 40px;
+	/* margin-right: 1.5rem; */
 `;
 
 export const CommentIcon = styled(FaRegUserCircle)`
@@ -94,6 +102,3 @@ export const StPageBtn = styled.div`
 	cursor: pointer;
 `;
 
-export const StComment = styled(Input)`
-	/* background-color: black; */
-`;

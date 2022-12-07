@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useCallback } from "react";
-// import Input from "../../common/input/Input";
-import styled from "styled-components";
 import { useSelector, useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { getCookieToken } from "../../../utils/cookie";
 import {
 	__getCompanyInfo,
@@ -18,49 +17,60 @@ import {
 } from "./ProfileEdit.styled";
 import Stbtn from "../../common/button/Button";
 import ImageUpload from "../../Recruit/ImageUpload/ImageUpload";
+import styled from "styled-components";
 
 const ProfileEdit = () => {
 	const role = getCookieToken(["authority"]);
 	const dispatch = useDispatch();
+	const navigate = useNavigate();
 
 	useEffect(() => {
-		dispatch(__getCompanyInfo());
-	}, [dispatch]);
-
-	useEffect(() => {
-		dispatch(__getUserInfo());
+		if (role === "ROLE_ADMIN") {
+			dispatch(__getCompanyInfo());
+		} else {
+			dispatch(__getUserInfo());
+		}
 	}, [dispatch]);
 
 	const companyInfo = useSelector(state => state?.mypage?.companyInfo);
-	console.log("companyInfo => ", companyInfo);
-	const userInfo = useSelector(state => state?.mypage?.userInfo);
-	const [profileImage, setProfileImage] = useState(null);
+	const status = useSelector(state => state?.mypage?.status);
+	const userInfo = useSelector(state => state?.mypage);
+
+	const [profileImage, setProfileImage] = useState("; filename=");
 	const [uploadCompanyPreview, setUploadCompanyPreview] = useState(companyInfo.profileImage);
 	const [uploadUserPreview, setUploadUserPreview] = useState(userInfo.profileImage);
 
-	//기관
 	const [editInput, setEditInput] = useState(Prev => {
-		const { email, introduction, password, passwordConfirm, profileImage, phoneNumber } =
-			companyInfo;
-		return {
-			...Prev,
-			email,
-			introduction,
-			password,
-			passwordConfirm,
-			profileImage,
-			phoneNumber,
-		};
+		if (role === "ROLE_ADMIN") {
+			const { email, introduction, password, passwordConfirm, profileImage, phoneNumber } =
+				companyInfo;
+			return {
+				...Prev,
+				email,
+				introduction,
+				password,
+				passwordConfirm,
+				profileImage,
+				phoneNumber,
+			};
+		} else {
+			const { email, introduction, password, passwordConfirm, profileImage, phoneNumber } =
+				userInfo;
+			return {
+				...Prev,
+				email,
+				introduction,
+				password,
+				passwordConfirm,
+				profileImage,
+				phoneNumber,
+			};
+		}
 	});
-	console.log("editInput =>", editInput);
-
-	//회원
 
 	// 이미지 upload
 	const onChangeImage = e => {
 		setProfileImage(e.target.files[0]);
-
-		console.log("profileImage =>", profileImage);
 
 		// 미리보기 온체인지 핸들러
 		let reader = new FileReader();
@@ -89,6 +99,7 @@ const ProfileEdit = () => {
 	const [passwordMessage, setPasswordMessage] = useState(
 		"8 ~ 20자, 알파벳 대소문자, 숫자, 특수문자로 구성됩니다."
 	);
+
 	const [pwConfirmMessage, setPwConfirmMessage] = useState("");
 
 	//PW 정규식 검사
@@ -135,8 +146,6 @@ const ProfileEdit = () => {
 		[editInput]
 	);
 
-	console.log("!!!editInput=>", editInput);
-
 	const onSubmitHandler = e => {
 		e.preventDefault();
 		if (role === "ROLE_ADMIN") {
@@ -144,7 +153,9 @@ const ProfileEdit = () => {
 		} else {
 			dispatch(__putUserInfo({ ...editInput, profileImage }));
 		}
-		// navigate(`/detail/${id}`);
+		if (status === 200) {
+			navigate(-1);
+		}
 	};
 
 	return (
@@ -197,9 +208,10 @@ const ProfileEdit = () => {
 									name="introduction"
 									onChange={onChangeEdit}
 								/>
-								<p>기관 프로필 이미지 수정</p>
-
-								<ImageUpload onChangeImage={onChangeImage} uploadPreview={uploadCompanyPreview} />
+								<Wrap>
+									<p>기관 프로필 이미지 수정</p>
+									<ImageUpload onChangeImage={onChangeImage} uploadPreview={uploadCompanyPreview} />
+								</Wrap>
 							</div>
 						) : null}
 
@@ -265,3 +277,7 @@ const ProfileEdit = () => {
 };
 
 export default ProfileEdit;
+
+const Wrap = styled.div`
+	padding-right: 200px;
+`;
