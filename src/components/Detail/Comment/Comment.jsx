@@ -18,7 +18,6 @@ import {
 	Div,
 	Date,
 	CommentDiv,
-	UserIcon,
 	StImgBox,
 } from "./Comment.styled";
 import { __getUserInfo } from "../../../redux/modules/mypageSlice";
@@ -26,7 +25,7 @@ import { __getCompanyInfo } from "../../../redux/modules/mypageSlice";
 import Stbtn from "../../common/button/Button";
 import Input from "../../common/input/Input";
 import Profileimg from "../../common/profileimg/Profileimg";
-import { __getOtherUserEnroll, __getOtherUserInfo } from "../../../redux/modules/mypageSlice";
+import { __getOtherUserInfo } from "../../../redux/modules/mypageSlice";
 
 function Comment() {
 	const dispatch = useDispatch();
@@ -37,7 +36,6 @@ function Comment() {
 	const userName = cookies["username"];
 	const authority = cookies["authority"];
 
-	const commentTotalList = useSelector(state => state.comment.commentTotalList);
 	const commentList = useSelector(state => state.comment.commentList);
 	const otherUserInfo = useSelector(state => state.mypage.otherUserInfo);
 
@@ -59,11 +57,6 @@ function Comment() {
 	useEffect(() => {
 		dispatch(__getCompanyInfo(id));
 	}, [dispatch]);
-
-	// useEffect(() => {
-	// 	dispatch(__getTotalComment(id));
-	// }, [dispatch, id]);
-	// console.log(commentTotalList);
 
 	const onChangeHalder = useCallback(e => {
 		setContent(e.target.value);
@@ -123,7 +116,6 @@ function Comment() {
 													alt="user"
 													onClick={() => {
 														dispatch(__getOtherUserInfo(item.memberId));
-														// dispatch(__getOtherUserEnroll(item.memberId))
 														navigate(`/usermypage/${item.memberId}`, { state: otherUserInfo });
 													}}
 												/>
@@ -133,7 +125,6 @@ function Comment() {
 													alt="user"
 													onClick={() => {
 														dispatch(__getOtherUserInfo(item.memberId));
-														// dispatch(__getOtherUserEnroll(item.memberId))
 														navigate(`/usermypage/${item.memberId}`, { state: otherUserInfo });
 													}}
 												/>
@@ -146,7 +137,6 @@ function Comment() {
 												alt="user"
 												onClick={() => {
 													dispatch(__getOtherUserInfo(item.memberId));
-													// dispatch(__getOtherUserEnroll(item.memberId))
 													navigate(`/usermypage/${item.memberId}`, { state: otherUserInfo });
 												}}
 											/>
@@ -156,7 +146,6 @@ function Comment() {
 												alt="user"
 												onClick={() => {
 													dispatch(__getOtherUserInfo(item.memberId));
-													// dispatch(__getOtherUserEnroll(item.memberId))
 													navigate(`/usermypage/${item.memberId}`, { state: otherUserInfo });
 												}}
 											/>
