@@ -13,12 +13,24 @@ export const CommentWriteWrap = styled.div`
 	height: 4rem;
 	margin-top: -5rem;
 	/* & div {
-		position: relative;
-		& input {
-			width: 200%;
-			max-width: 300%;
-		}
+		padding-top: 2rem;
+		text-align: center;
+		color: ${props => props.theme.textColor};
 	} */
+`;
+
+export const CommentWriteWraps = styled.div`
+	float: right;
+	position: relative;
+	width: 85%;
+	align-items: center;
+	height: 4rem;
+	margin-top: -5rem;
+	& div {
+		padding-top: 2rem;
+		text-align: center;
+		color: ${props => props.theme.textColor};
+	}
 `;
 
 export const CommentTitleWrap = styled.div`
