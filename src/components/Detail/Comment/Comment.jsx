@@ -21,6 +21,8 @@ import {
 	UserIcon,
 	StImgBox,
 } from "./Comment.styled";
+import { __getUserInfo } from "../../../redux/modules/mypageSlice";
+import { __getCompanyInfo } from "../../../redux/modules/mypageSlice";
 import Stbtn from "../../common/button/Button";
 import Input from "../../common/input/Input";
 import Profileimg from "../../common/profileimg/Profileimg";
@@ -33,22 +35,30 @@ function Comment() {
 
 	const [cookies] = useCookies(["Authorization"]);
 	const userName = cookies["username"];
+	const authority = cookies["authority"];
 
 	const commentTotalList = useSelector(state => state.comment.commentTotalList);
 	const commentList = useSelector(state => state.comment.commentList);
 	const otherUserInfo = useSelector(state => state.mypage.otherUserInfo);
-	console.log(otherUserInfo);
 
 	const [editCommentId, setEditCommentId] = useState([]);
 	const [content, setContent] = useState();
 	const [comment, setComment] = useState({ comment: content });
 
-	const [page, setPage] = useState(1);
-	const size = 4;
+	const userInfo = useSelector(state => state.mypage?.userInfo);
+	const companyInfo = useSelector(state => state.mypage?.companyInfo);
 
 	useEffect(() => {
 		dispatch(__getComment(id));
 	}, [dispatch, id]);
+
+	useEffect(() => {
+		dispatch(__getUserInfo(id));
+	}, [dispatch]);
+
+	useEffect(() => {
+		dispatch(__getCompanyInfo(id));
+	}, [dispatch]);
 
 	// useEffect(() => {
 	// 	dispatch(__getTotalComment(id));
@@ -58,11 +68,14 @@ function Comment() {
 	const onChangeHalder = useCallback(e => {
 		setContent(e.target.value);
 	}, []);
-	console.log(commentList);
+
 	return (
 		<MainComponent>
 			<StImgBox>
-				<img src={process.env.PUBLIC_URL + "/image/32badge1.png"} alt="user" />
+				<Profileimg
+					src={process.env.PUBLIC_URL + "/image/64defaultimg.png"}
+					variant={"profile-company"}
+				/>
 			</StImgBox>
 			<CommentWriteWrap>
 				<Input
@@ -92,15 +105,53 @@ function Comment() {
 							<Box key={index}>
 								<CommentTitleWrap>
 									<div>
-										<img
-											src={process.env.PUBLIC_URL + "/image/32badge1.png"}
-											alt="user"
-											onClick={() => {
-												dispatch(__getOtherUserInfo(item.memberId));
-												// dispatch(__getOtherUserEnroll(item.memberId))
-												navigate(`/usermypage/${item.memberId}`, { state: otherUserInfo });
-											}}
-										/>
+										{authority === "ROLE_ADMIN" ? (
+											// (ROLE_ADMIN) 프로필의 이미지가 존재할 때
+											companyInfo && companyInfo?.profileImage ? (
+												<Profileimg
+													variant="profile-company"
+													src={companyInfo?.profileImage}
+													alt="user"
+													onClick={() => {
+														dispatch(__getOtherUserInfo(item.memberId));
+														// dispatch(__getOtherUserEnroll(item.memberId))
+														navigate(`/usermypage/${item.memberId}`, { state: otherUserInfo });
+													}}
+												/>
+											) : (
+												<Profileimg
+													src={process.env.PUBLIC_URL + "/image/32defaultimg.png"}
+													alt="user"
+													onClick={() => {
+														dispatch(__getOtherUserInfo(item.memberId));
+														// dispatch(__getOtherUserEnroll(item.memberId))
+														navigate(`/usermypage/${item.memberId}`, { state: otherUserInfo });
+													}}
+												/>
+											)
+										) : // (ROLE_MEMBER) 프로필의 이미지가 존재할 때
+										userInfo && userInfo.profileImage ? (
+											<Profileimg
+												variant="profile-user"
+												src={userInfo?.profileImage}
+												alt="user"
+												onClick={() => {
+													dispatch(__getOtherUserInfo(item.memberId));
+													// dispatch(__getOtherUserEnroll(item.memberId))
+													navigate(`/usermypage/${item.memberId}`, { state: otherUserInfo });
+												}}
+											/>
+										) : (
+											<Profileimg
+												src={process.env.PUBLIC_URL + "/image/32defaultimg.png"}
+												alt="user"
+												onClick={() => {
+													dispatch(__getOtherUserInfo(item.memberId));
+													// dispatch(__getOtherUserEnroll(item.memberId))
+													navigate(`/usermypage/${item.memberId}`, { state: otherUserInfo });
+												}}
+											/>
+										)}
 										<div>
 											<h2>{item?.username}</h2>
 											<Date>{item.createdAt.split("T")[0].substring(0, 10)}</Date>
