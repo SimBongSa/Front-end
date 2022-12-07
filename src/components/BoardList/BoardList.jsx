@@ -82,6 +82,12 @@ const Board = () => {
 				</BoardContent>
 			</BoardContainer>
 		)
+	} else if (state.length === 0){
+		return (
+			<BoardContainer>
+				검색 결과가 없습니다.
+			</BoardContainer>
+		)
 	} else {
 		// 그냥 게시물 리스트
 		return (
