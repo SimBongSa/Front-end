@@ -20,8 +20,7 @@ const Board = () => {
 
 	useEffect(() => {
 		dispatch(__getBoard({ page, size}))
-	})
-
+	}, [dispatch, page])
 	const pageNum = Math.floor(boards.length / 12) === 0 ? 1 : Math.floor(boards.length / 12);
 	
 	return (
