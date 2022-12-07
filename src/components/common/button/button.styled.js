@@ -174,20 +174,20 @@ export const Stbtn = styled.button`
 			//mypageedit -> ProfileEdit.jsx / edit -> DetailEdit.jsx
 			case "mypage-edit":
 				return css`
+					display: flex;
 					cursor: pointer;
 					position: relative;
 					margin-left: 5px;
 					width: 60%;
 					height: 3rem;
+					margin: 0 auto;
+					align-items: center;
+					justify-content: center;
 					border-radius: 24px;
 					margin-top: 1rem;
-					margin-left: 2rem;
 					background: ${props => props.theme.btnColor};
 					border: 1px solid ${props => props.theme.btnColor};
 					color: ${props => props.theme.bgColor};
-					@media (max-width: 1024px) {
-						margin-left: 0;
-					}
 				`;
 
 			case "board-edit":

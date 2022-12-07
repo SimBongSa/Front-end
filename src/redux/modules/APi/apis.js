@@ -77,32 +77,32 @@ export const apis = {
 		}),
 
 	// MyPage (User)
-	getUserPage: () =>
-		api.get(`${BASE_URL}/mypage`, {
+	getUserPage: (id) =>
+		api.get(`${BASE_URL}/mypage/${id}`, {
 			headers: {
 				Authorization: token,
 			},
 		}),
-	getUserEnroll: () =>
-		api.get(`${BASE_URL}/mypage/enroll`, {
+	getUserEnroll: (id) =>
+		api.get(`${BASE_URL}/mypage/${id}/enroll`, {
 			headers: {
 				Authorization: token,
 			},
 		}),
-	getUserWait: () =>
-		api.get(`${BASE_URL}/mypage/enroll/wait`, {
+	getUserWait: (id) =>
+		api.get(`${BASE_URL}/mypage/${id}/enroll/wait`, {
 			headers: {
 				Authorization: token,
 			},
 		}),
-	getUserPass: () =>
-		api.get(`${BASE_URL}/mypage/enroll/pass`, {
+	getUserPass: (id) =>
+		api.get(`${BASE_URL}/mypage/${id}/enroll/pass`, {
 			headers: {
 				Authorization: token,
 			},
 		}),
-	getUserReject: () =>
-		api.get(`${BASE_URL}/mypage/enroll/fail`, {
+	getUserReject: (id) =>
+		api.get(`${BASE_URL}/mypage/${id}/enroll/fail`, {
 			headers: {
 				Authorization: token,
 			},
@@ -118,18 +118,18 @@ export const apis = {
 	getOtherUserInfo: (id) =>
 		api.get(`${BASE_URL}/mypage/${id}`),
 	getOtherUserEnroll: (id) => 
-		api.get(`${BASE_URL}/${id}/enroll/pass`),
+		api.get(`${BASE_URL}/mypage/${id}/enroll/pass`),
 	
 
 	// MyPage (Company)
-	getCompanyPage: () =>
-		api.get(`${BASE_URL}/companypage`, {
+	getCompanyPage: (id) =>
+		api.get(`${BASE_URL}/companypage/${id}`, {
 			headers: {
 				Authorization: token,
 			},
 		}),
-	getCompanyBoards: () =>
-		api.get(`${BASE_URL}/companypage/boards`, {
+	getCompanyBoards: (id) =>
+		api.get(`${BASE_URL}/companypage/${id}/boards`, {
 			headers: {
 				Authorization: token,
 			},
@@ -169,7 +169,7 @@ export const apis = {
 		api.get(`${BASE_URL}/companypage/${id}`),
 	getOtherCompanyBoards: (id) =>
 		api.get(`${BASE_URL}/companypage/${id}/boards`),
-
+		
 	//commentSlice
 	getTotalComment: payload =>
 		axios.get(`${BASE_URL}/boards/${payload}`, {
@@ -178,7 +178,7 @@ export const apis = {
 			},
 		}),
 	getComment: payload =>
-		axios.get(`${BASE_URL}/boards/${payload.id}?page=${payload.page}&size=${payload.size}`, {
+		axios.get(`${BASE_URL}/boards/${payload}`, {
 			headers: {
 				Authorization: token,
 			},
@@ -206,8 +206,14 @@ export const apis = {
 		}),
 
 	// Search
-	getSearchBoards: (payload) =>
-		axios.get(`${BASE_URL}/boards/search?tag=${payload.category}&startDate=${payload.startDate}&endDate=${payload.endDate}&area=${payload.location}`),
+	getSearchBoards: payload =>
+		axios.get(
+			`${BASE_URL}/boards/search?tag=${payload.category}&startDate=${payload.startDate}&endDate=${payload.endDate}&area=${payload.location}`, {
+				headers: {
+					contentType: "application/json;"
+				}
+			}
+		),
 
 	// Chat Apis
 	getChatList: () =>

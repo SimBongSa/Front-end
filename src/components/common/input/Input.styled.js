@@ -37,9 +37,10 @@ export const DupleCheck = styled.span`
 	height: 2.5rem;
 	border-radius: 24px;
 	align-items: center;
-	padding-top: .75rem;
+	padding-top: .85rem;
 	margin-left: calc(100% - 115px);
 	margin-top: 21.5px;
+	font-size: .8rem;
 	background: ${props => props.theme.btnColor};
 	border: 1px solid ${props => props.theme.btnColor};
 	color: ${props => props.theme.bgColor};

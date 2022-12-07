@@ -52,11 +52,11 @@ const Profile = ({
 
 						<MyActivity>
 							<ProfileCategory>
-								<h6>{companyBoards.length}</h6>
+								<h6>{companyBoards?.length}</h6>
 								<span>모집중인 봉사</span>
 							</ProfileCategory>
 							<ProfileCategory>
-								<h6>{companyBoards.length}</h6>
+								<h6>{companyBoards?.length}</h6>
 								<span>진행한 봉사</span>
 							</ProfileCategory>
 						</MyActivity>
@@ -76,11 +76,11 @@ const Profile = ({
 
             <MyActivity>
               <ProfileCategory>
-                <h6>{userWait.length}</h6>
+                <h6>{userWait?.length}</h6>
                 <span>진행중인 봉사</span>
               </ProfileCategory>
               <ProfileCategory>
-                <h6>{userPass.length}</h6>
+                <h6>{userPass?.length}</h6>
                 <span>진행한 봉사</span>
               </ProfileCategory>
             </MyActivity>
@@ -151,7 +151,7 @@ export const ProfileInfo = styled.div`
 
   }
   & h5 {
-    padding-left: 2rem;
+    padding-left: 3rem;
     color: ${(props) => props.theme.subTextColor};
     @media (max-width: 1024px) {
       padding-left: 0;

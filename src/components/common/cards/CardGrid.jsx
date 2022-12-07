@@ -27,8 +27,6 @@ const CardGrid = ({ gridColumn, companyBoards, boards, userEnroll, userWait }) =
 	const [isHovering, setIsHovering] = useState(false);
 	const [hoveritem, setHoverItem] = useState([]);
 
-	console.log(hoveritem);
-
 	return (
 		<>
 			<StCardGridContainer variant="Board">

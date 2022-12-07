@@ -150,7 +150,7 @@ export const InputHeader = styled.h1`
 export const StRegBtn = styled.button`
 	cursor: pointer;
   position: relative;
-  margin-left: 10px;
+  margin-left: -12px;
 	width: 100%;
 	height: 3rem;
 	border-radius: 24px;

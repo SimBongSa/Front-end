@@ -12,6 +12,7 @@ import {
 	StCalendarList,
 	StCalendarWrap,
 	StCalendar,
+	StDiv,
 } from "./MainCalendar.styled";
 
 const MainCalendar = () => {
@@ -25,14 +26,17 @@ const MainCalendar = () => {
 	const [result, setResult] = useState([]);
 	const [mark, setMark] = useState([]);
 
+	// dueDay
 	useEffect(() => {
 		dispatch(__getTotalCalendarList(moment(value).format("YYYY-MM-DD")));
-	}, [value]);
+	}, [dispatch, value]);
 
+	// dueDay page 4
 	useEffect(() => {
 		dispatch(__getCalendarList(moment(value).format("YYYY-MM-DD")));
-	}, [value]);
+	}, [dispatch, value]);
 
+	// month
 	useEffect(() => {
 		dispatch(
 			__getMonthList({ year: moment(value).format("YYYY"), month: moment(value).format("MM") })
@@ -40,13 +44,19 @@ const MainCalendar = () => {
 	}, []);
 
 	useEffect(() => {
+		setMark([]);
 		if (monthlist.constructor === Object && Object.keys(monthlist).length !== 0) {
 			monthlist.data.map(item => {
-				setMark(prev => [...prev, item.dueDay.split("T")[0]]);
+				setMark(prev => [...prev, item.dueDay.split(" ")[0]]);
 			});
 		}
 	}, [monthlist]);
 
+	console.log(mark);
+
+	const getElCount = mark => mark.reduce((ac, v) => ({ ...ac, [v]: (ac[v] || 0) + 1 }), {});
+	const arr = getElCount(mark);
+	console.log(arr);
 	return (
 		<>
 			<StCalendarContainer>
@@ -67,22 +77,24 @@ const MainCalendar = () => {
 						tileContent={({ date, view }) => {
 							let html = [];
 
-							if (mark.find(item => item === moment(date).format("YYYY-MM-DD"))) {
+							const momentDate = moment(date).format("YYYY-MM-DD");
+
+							if (mark.find(item => item === momentDate)) {
 								html.push(
 									<div className="dot" key={date}>
-										{moment(date).format("YYYY-MM-DD")?.length}
+										<StDiv>{arr[momentDate] ? arr[momentDate] : ""}</StDiv>
 									</div>
 								);
 							}
 							return (
 								<>
-									<div className="flex justify-center items-center absoluteDiv">{html}</div>
+									<div className="dotdiv">{html}</div>
 								</>
 							);
 						}}
 					/>
 					<StCalendarList className="text-gray-500 mt-4">
-						<h2>봉사활동 : {maindate.data?.length}개</h2>
+						<h2>오늘의 봉사활동 : {maindate.data?.length}개</h2>
 						<Serverlist result={maindate.data} key={date} mark={mark} totallist={totallist.data} />
 					</StCalendarList>
 				</StCalendarWrap>

@@ -1,6 +1,6 @@
 import { LoginContainer, LoginBox, LoginBoxTitle, LoginArrowBack, LoginForm, LoginBtn, LoginTitle, StLoginOptions, StToRegister } from "./Login.styled";
 import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { __loginMember } from "../../redux/modules/registerSlice";
 import { useState } from "react";
 import { useEffect } from "react";
@@ -12,6 +12,8 @@ const Login = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const authority = getCookieToken(['username']);
+  const loginStatus = useSelector((state) => state.register.statusCode);
+  console.log("@@", loginStatus)
 
   const init = {
     "username": "",
@@ -38,107 +40,98 @@ const Login = () => {
     }
   }, [authority]);
 
-  // useEffect(() => {
-  //   if (token) {
-  //     alert("올바른 접근이 아닙니다.")
-  //     navigate("/")
-  //   }
-  // }, [token])
-
   const [loginOption, setLoginOption] = useState("member");
 
   return(
-    <>
-      <LoginContainer>
-        {
-          loginOption === "member" ? (
-            <>
-              <StLoginOptions>
-                <span 
-                  className={ loginOption === "member" ?  "selected" : "not-selected"}
-                  onClick={() => {
-                    setLoginOption("member");
-                }}>봉사 지원자</span>
-                <span 
-                  className={ loginOption === "manager" ?  "selected" : "not-selected"}
-                  onClick={() => {
-                    setLoginOption("manager")
-                  }}>봉사 기관</span>
-              </StLoginOptions>
+    <LoginContainer>
+      {
+        loginOption === "member" ? (
+          <>
+            <StLoginOptions>
+              <span 
+                className={ loginOption === "member" ?  "selected" : "not-selected"}
+                onClick={() => {
+                  setLoginOption("member");
+              }}>봉사 지원자</span>
+              <span 
+                className={ loginOption === "manager" ?  "selected" : "not-selected"}
+                onClick={() => {
+                  setLoginOption("manager")
+                }}>봉사 기관</span>
+            </StLoginOptions>
 
-              <LoginBox>
-                <LoginBoxTitle>
-                  <LoginTitle>Member Login</LoginTitle><LoginArrowBack onClick={() => navigate("/")}/>
-                </LoginBoxTitle>
-      
-                <LoginForm onSubmit={onSubmitHandler}>
-                  <Input 
-                    placeholder="username" 
-                    type="text"
-                    name="username"
-                    value={input.username}
-                    onChange={onChangeHandler}
-                  />
-                  <Input 
-                    placeholder="password"
-                    type="password"
-                    name="password"
-                    value={input.password}
-                    onChange={onChangeHandler}
-                  />
-                  <LoginBtn>로그인</LoginBtn>
-                </LoginForm>
-              </LoginBox>
-              <StToRegister>아직 봉골레 멤버가 아닌가요? <b onClick={() => navigate("/register")}>회원가입</b></StToRegister>
-            </>
-          ) : null
-        }
+            <LoginBox>
+              <LoginBoxTitle>
+                <LoginTitle>Member Login</LoginTitle><LoginArrowBack onClick={() => navigate("/")}/>
+              </LoginBoxTitle>
+    
+              <LoginForm onSubmit={onSubmitHandler}>
+                <Input 
+                  placeholder="username" 
+                  type="text"
+                  name="username"
+                  value={input.username}
+                  onChange={onChangeHandler}
+                />
+                <Input 
+                  placeholder="password"
+                  type="password"
+                  name="password"
+                  value={input.password}
+                  onChange={onChangeHandler}
+                />
+                <LoginBtn>로그인</LoginBtn>
+              </LoginForm>
+            </LoginBox>
+            <StToRegister>아직 봉골레 멤버가 아닌가요? <b onClick={() => navigate("/register")}>회원가입</b></StToRegister>
+          </>
+        ) : null
+      }
 
-        {
-          loginOption === "manager" ? (
-            <>
-              <StLoginOptions>
-                <span 
-                  className={ loginOption === "member" ?  "selected" : "not-selected"}
-                  onClick={() => {
-                    setLoginOption("member");
-                }}>봉사 지원자</span>
-                <span 
-                  className={ loginOption === "manager" ?  "selected" : "not-selected"}
-                  onClick={() => {
-                    setLoginOption("manager")
-                  }}>봉사 기관</span>
-              </StLoginOptions>
+      {
+        loginOption === "manager" ? (
+          <>
+            <StLoginOptions>
+              <span 
+                className={ loginOption === "member" ?  "selected" : "not-selected"}
+                onClick={() => {
+                  setLoginOption("member");
+              }}>봉사 지원자</span>
+              <span 
+                className={ loginOption === "manager" ?  "selected" : "not-selected"}
+                onClick={() => {
+                  setLoginOption("manager")
+                }}>봉사 기관</span>
+            </StLoginOptions>
 
-              <LoginBox>
-                <LoginBoxTitle>
-                  <LoginTitle>Manager Login</LoginTitle><LoginArrowBack onClick={() => navigate("/")}/>
-                </LoginBoxTitle>
-      
-                <LoginForm onSubmit={onSubmitHandler}>
-                  <Input 
-                    placeholder="username" 
-                    type="text"
-                    name="username"
-                    value={input.username}
-                    onChange={onChangeHandler}
-                  />
-                  <Input 
-                    placeholder="password"
-                    type="password"
-                    name="password"
-                    value={input.password}
-                    onChange={onChangeHandler}
-                  />
-                  <LoginBtn>로그인</LoginBtn>
-                </LoginForm>
-              </LoginBox>
-             <StToRegister>아직 봉골레 멤버가 아닌가요? <b onClick={() => navigate("/register")}>회원가입</b></StToRegister>
-            </> 
-          ) : null
-        }
-      </LoginContainer>
-    </>
+            <LoginBox>
+              <LoginBoxTitle>
+                <LoginTitle>Manager Login</LoginTitle><LoginArrowBack onClick={() => navigate("/")}/>
+              </LoginBoxTitle>
+    
+              <LoginForm onSubmit={onSubmitHandler}>
+                <Input 
+                  placeholder="username" 
+                  type="text"
+                  name="username"
+                  value={input.username}
+                  onChange={onChangeHandler}
+                />
+                <Input 
+                  placeholder="password"
+                  type="password"
+                  name="password"
+                  value={input.password}
+                  onChange={onChangeHandler}
+                />
+                <LoginBtn>로그인</LoginBtn>
+              </LoginForm>
+            </LoginBox>
+            <StToRegister>아직 봉골레 멤버가 아닌가요? <b onClick={() => navigate("/register")}>회원가입</b></StToRegister>
+          </> 
+        ) : null
+      }
+    </LoginContainer>
   )
 };
 

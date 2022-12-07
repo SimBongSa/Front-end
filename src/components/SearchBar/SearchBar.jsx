@@ -77,8 +77,6 @@ const SearchBar = () => {
 	const [startDate, setStartDate] = useState(today);
 	const [endDate, setEndDate] = useState(today);
 
-
-
 	return (
 		<SearchBarContainer ref={node} modal={modal} animation={animation}>
 			{modal === false ? (

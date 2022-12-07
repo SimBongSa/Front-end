@@ -14,7 +14,6 @@ export const __getUserInfo = createAsyncThunk("userInfo", async (payload, thunkA
 export const __getUserEnroll = createAsyncThunk("enroll", async (payload, thunkAPI) => {
 	try {
 		const response = await apis.getUserEnroll(payload);
-		console.log(response);
 		return thunkAPI.fulfillWithValue(response.data.data);
 	} catch (error) {
 		return thunkAPI.rejectWithValue(error);
@@ -23,7 +22,6 @@ export const __getUserEnroll = createAsyncThunk("enroll", async (payload, thunkA
 export const __getUserWait = createAsyncThunk("wait", async (payload, thunkAPI) => {
 	try {
 		const response = await apis.getUserWait(payload);
-		console.log(response);
 		return thunkAPI.fulfillWithValue(response.data.data);
 	} catch (error) {
 		return thunkAPI.rejectWithValue(error);
@@ -32,7 +30,6 @@ export const __getUserWait = createAsyncThunk("wait", async (payload, thunkAPI) 
 export const __getUserPass = createAsyncThunk("pass", async (payload, thunkAPI) => {
 	try {
 		const response = await apis.getUserPass(payload);
-		console.log(response);
 		return thunkAPI.fulfillWithValue(response.data.data);
 	} catch (error) {
 		return thunkAPI.rejectWithValue(error);
