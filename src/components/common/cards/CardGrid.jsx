@@ -63,39 +63,37 @@ const CardGrid = ({ gridColumn, companyBoards, boards, userEnroll, userWait }) =
 			</StCardGridContainer>
 
 			{/* user page  */}
-			<>
-				<StCardGridContainer variant="userEnroll">
-					<StCards variant="userEnroll">
-						{userEnroll?.map(item => {
-							const dDay = getDateDiff(item.dueDay, today);
-							return (
-								<StCard
-									variant="userEnroll"
-									key={item.boardId}
-									onClick={() => navigate(`/boards/${item.boardId}`)}
-								>
-									<StDate variant="userEnroll">D-{dDay}</StDate>
-									<StImgWrapper variant="userEnroll">
-										<img src={item.boardImage} loading="lazy" alt="enrollImage" />
-									</StImgWrapper>
-									<StContent variant="userEnroll">
-										<p className="title">{item.title}</p>
-										<StCardInfo variant="userEnroll">
-											<StArea variant="userEnroll">{item.area}</StArea>
-											<StDetailArea variant="userEnroll">{item.detailArea}</StDetailArea>
-										</StCardInfo>
-										<StTagBox>
-											{item?.tags?.map(tag => {
-												return <li>{tag}</li>;
-											})}
-										</StTagBox>
-									</StContent>
-								</StCard>
-							);
-						})}
-					</StCards>
-				</StCardGridContainer>
-			</>
+			<StCardGridContainer variant="userEnroll">
+				<StCards variant="userEnroll">
+					{userEnroll?.map(item => {
+						const dDay = getDateDiff(item.dueDay, today);
+						return (
+							<StCard
+								variant="userEnroll"
+								key={item.boardId}
+								onClick={() => navigate(`/boards/${item.boardId}`)}
+							>
+								<StDate variant="userEnroll">D-{dDay}</StDate>
+								<StImgWrapper variant="userEnroll">
+									<img src={item.boardImage} loading="lazy" alt="enrollImage" />
+								</StImgWrapper>
+								<StContent variant="userEnroll">
+									<p className="title">{item.title}</p>
+									<StCardInfo variant="userEnroll">
+										<StArea variant="userEnroll">{item.area}</StArea>
+										<StDetailArea variant="userEnroll">{item.detailArea}</StDetailArea>
+									</StCardInfo>
+									<StTagBox>
+										{item?.tags?.map(tag => {
+											return <li>{tag}</li>;
+										})}
+									</StTagBox>
+								</StContent>
+							</StCard>
+						);
+					})}
+				</StCards>
+			</StCardGridContainer>
 
 			{/* companyBoards 기업 상세페이지 */}
 			<StCardGridContainer variant="Company">
