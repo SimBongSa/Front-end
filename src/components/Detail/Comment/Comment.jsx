@@ -72,10 +72,19 @@ function Comment() {
 	return (
 		<MainComponent>
 			<StImgBox>
-				<Profileimg
-					src={process.env.PUBLIC_URL + "/image/64defaultimg.png"}
-					variant={"profile-company"}
-				/>
+				{authority === "ROLE_ADMIN" ? (
+					// (ROLE_ADMIN) 프로필의 이미지가 존재할 때
+					companyInfo && companyInfo?.profileImage ? (
+						<Profileimg variant="profile-company" src={companyInfo?.profileImage} alt="user" />
+					) : (
+						<Profileimg src={process.env.PUBLIC_URL + "/image/64defaultimg.png"} />
+					)
+				) : // (ROLE_MEMBER) 프로필의 이미지가 존재할 때
+				userInfo && userInfo.profileImage ? (
+					<Profileimg variant="profile-user" src={userInfo?.profileImage} alt="user" />
+				) : (
+					<Profileimg src={process.env.PUBLIC_URL + "/image/64defaultimg.png"} />
+				)}
 			</StImgBox>
 			<CommentWriteWrap>
 				<Input
