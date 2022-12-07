@@ -55,7 +55,11 @@ const Detail = () => {
 						<div>D-{dDay}</div>
 						<StImgWrapper>
 							{boardsId.profileImage ? (
-								<img src={boardsId.profileImage} alt="profileImage" />
+								<img 
+									src={boardsId.profileImage} 
+									alt="profileImage" 
+									
+								/>
 							) : (
 								<img
 									src="https://play-lh.googleusercontent.com/38AGKCqmbjZ9OuWx4YjssAz3Y0DTWbiM5HB0ove1pNBq_o9mtWfGszjZNxZdwt_vgHo=w240-h480-rw"
