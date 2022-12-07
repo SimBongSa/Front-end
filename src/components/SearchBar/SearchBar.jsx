@@ -23,33 +23,8 @@ const SearchBar = () => {
 	
 	const navigate = useNavigate();
 	const dispatch = useDispatch();
-	const searchResult = useSelector((state) => state.boards.boards);
-	console.log(searchResult)
-
-	//search state
-	const [search, setSearch] = useState({
-		category: "ALL",
-		location: "ALL",
-	});
-	console.log(search);
-
-	const searchChange = (e) => {
-		const { name, value } = e.target;
-		setSearch({...search, [name]: value});
-	}
-
-	const searchHandler = e => {
-		e.preventDefault();
-		dispatch(__getSearchBoards({
-			...search,
-			startDate : moment(startDate).format("YYYY-MM-DD"), 
-			endDate : moment(endDate).format("YYYY-MM-DD"),
-		}));
-		if (searchResult) {
-			navigate("/boards", { state: searchResult })
-		}
-	};
-
+	const searchResult = useSelector((state) => state.boards.searchResult);
+	console.log("@@", searchResult)
 
 	const [modal, setModal] = useState(false);
 	const [animation, setAnimation] = useState(false);
@@ -57,7 +32,7 @@ const SearchBar = () => {
 
 	// modal 바깥 클릭 시 닫히는 기능
 	useEffect(() => {
-		const clickOutside = e => {
+		const clickOutside = (e) => {
 			if (modal && node.current && !node.current.contains(e.target)) {
 				setAnimation(true);
 				setTimeout(() => {
@@ -71,6 +46,34 @@ const SearchBar = () => {
 			document.removeEventListener("mousedown", clickOutside);
 		};
 	}, [modal]);
+
+	//search state
+	const [search, setSearch] = useState({
+		category: "ALL",
+		location: "ALL",
+	});
+
+	const searchChange = (e) => {
+		const { name, value } = e.target;
+		setSearch({...search, [name]: value});
+	}
+
+	const searchHandler = e => {
+		e.preventDefault();
+		dispatch(__getSearchBoards({
+			...search,
+			startDate : moment(startDate).format("YYYY-MM-DD"), 
+			endDate : moment(endDate).format("YYYY-MM-DD"),
+		}));
+		navigate("/search", { state: searchResult });
+		setModal(false)
+	};
+
+	// useEffect(() => {
+	// 	if (searchResult) {
+	// 		navigate("/search", { state: searchResult });
+	// 	}
+	// }, [searchResult])
 
 	// date picker
 	const today = new Date();
@@ -93,7 +96,7 @@ const SearchBar = () => {
 							<SearchLabel>
 								<SearchList>
 									<li>
-										<h4>Category</h4>
+										<h4>카테고리</h4>
 										<select
 											name={"category"}
 											onChange={searchChange}
@@ -108,32 +111,34 @@ const SearchBar = () => {
 										</select>
 									</li>
 									<li>
-											<PickerBox>
-												<CustomeDatePicker
-													name={'startDate'}
-													locale={ko}
-													dateFormat="📅 yyyy년-MM월-dd일"
-													selected={startDate}
-													onChange={date => setStartDate(date)}
-													selectsStart
-													startDate={startDate}
-													endDate={endDate}
-												/>
-												<CustomeDatePicker
-													name={'endDate'}
-													locale={ko}
-													dateFormat="📅 yyyy년-MM월-dd일 "
-													selected={endDate}
-													onChange={date => setEndDate(date)}
-													selectsEnd
-													startDate={startDate}
-													endDate={endDate}
-													minDate={startDate}
-												/>
-											</PickerBox>
+										<h4>모집기간</h4>
+										<PickerBox>
+											<CustomeDatePicker
+												name={'startDate'}
+												locale={ko}
+												dateFormat="MM월-dd일"
+												selected={startDate}
+												onChange={date => setStartDate(date)}
+												selectsStart
+												startDate={startDate}
+												endDate={endDate}
+											/>
+											<span>-</span>
+											<CustomeDatePicker
+												name={'endDate'}
+												locale={ko}
+												dateFormat="MM월-dd일 "
+												selected={endDate}
+												onChange={date => setEndDate(date)}
+												selectsEnd
+												startDate={startDate}
+												endDate={endDate}
+												minDate={startDate}
+											/>
+										</PickerBox>
 									</li>
 									<li>
-										<h4>Location</h4>
+										<h4>지역</h4>
 										<select
 											name={"location"}
 											onChange={searchChange}

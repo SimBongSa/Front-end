@@ -15,6 +15,7 @@ import { useCookies } from "react-cookie";
 import SearchBar from "../SearchBar/SearchBar";
 
 const Header = () => {
+
 	const navigate = useNavigate();
 	const [ThemeMode, toggleTheme] = useTheme();
 	const [cookies] = useCookies(["Authorization"]);
@@ -34,7 +35,9 @@ const Header = () => {
 				<BsFillMoonFill>Theme</BsFillMoonFill>
 			</LightThemeBtn>
 			<HeaderMenu>
-				<HeaderMenuItem onClick={() => navigate("/boards")}>Boards</HeaderMenuItem>
+				<HeaderMenuItem onClick={() => {
+					navigate("/boards")
+				}}>Boards</HeaderMenuItem>
 				{isLogin && authority === "ROLE_MEMBER" ? (
 					<>
 						<HeaderMenuItem onClick={() => navigate("/chat")}>메시지</HeaderMenuItem>
@@ -58,7 +61,7 @@ const Header = () => {
 						</HeaderMenuItem>
 						<UserIcon
 							onClick={() => {
-								navigate("/companypage");
+								navigate(`/companypage/${cookies.ID}`);
 							}}
 						/>
 					</>

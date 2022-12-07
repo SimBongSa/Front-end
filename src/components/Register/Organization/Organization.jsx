@@ -9,6 +9,7 @@ import { useCallback } from "react";
 import ImageUpload from "../../Recruit/ImageUpload/ImageUpload";
 import styled from "styled-components";
 
+
 const Organization = () => {
 	const init = {
 		authority: "ROLE_ADMIN",
@@ -23,6 +24,14 @@ const Organization = () => {
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
 	const [input, setInput] = useState(init);
+
+
+	const onSubmitHandler = e => {
+		e.preventDefault();
+		dispatch(__registerManager({ ...input, licenseImage }));
+		setInput(init);
+	};
+
 	const status = useSelector(state => state.register.organiStatus);
 	const onChangeHandler = useCallback(
 		e => {
@@ -31,6 +40,7 @@ const Organization = () => {
 		},
 		[input]
 	);
+
 
 	const onSubmitHandler = e => {
 		e.preventDefault();
@@ -41,6 +51,7 @@ const Organization = () => {
 			navigate("/login");
 		}
 	};
+
 
 	const [licenseImage, setLicenseImage] = useState(null);
 	const [licensePreview, setLicensePreview] = useState("");
@@ -59,6 +70,9 @@ const Organization = () => {
 			}
 		};
 	};
+
+
+	const [step, setStep] = useState(0);
 
 	// 오류메시지 상태 저장
 	const [nameMessage, setNameMessage] = useState(
@@ -146,7 +160,9 @@ const Organization = () => {
 							placeholder="Username"
 							autoComplete="off"
 							dupleCheck="username"
+
 							nameMessage={nameMessage}
+
 							type="text"
 							name="username"
 							value={input.username}
@@ -171,7 +187,9 @@ const Organization = () => {
 						<span>{pwConfirmMessage}</span>
 						<StLegend>Your Company Info</StLegend>
 						<Input
+
 							placeholder="Organization Name"
+
 							type="text"
 							name="name"
 							value={input.name}
@@ -191,11 +209,18 @@ const Organization = () => {
 							value={input.licenseNumber}
 							onChange={onChangeHandler}
 						/>
+
+						<input type="file" accept="image/*" name="licenseImage" onChange={onChangeImage} />
+						<div>
+							<img src={licensePreview} alt="licenseImage" />
+						</div>
+
 						<StLegend>Organization Image</StLegend>
 						<ImageWrap>
 							<ImageUpload onChangeImage={onChangeImage} uploadPreview={licensePreview} />
 						</ImageWrap>
 						<StLegend>Organization Manager Contact</StLegend>
+
 						<Input
 							placeholder="Phone Number"
 							type="text"
@@ -213,6 +238,7 @@ const Organization = () => {
 };
 
 export default Organization;
+
 
 {
 	/* <h4>클릭하여 업로드</h4>
@@ -233,3 +259,4 @@ const ImageWrap = styled.div`
 		font-size: 20px;
 	}
 `;
+

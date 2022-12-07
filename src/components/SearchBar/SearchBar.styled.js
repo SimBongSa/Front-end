@@ -105,7 +105,10 @@ export const SearchList = styled.ul`
 		padding: 0 2em 0 1.5em;
 		position: relative;
 		&:first-child {
-			flex: 1.5;
+			flex: .5;
+		}
+		&:last-child {
+			flex: .5;
 		}
 		&:not(:last-child)::after {
 			content: "";
@@ -119,9 +122,28 @@ export const SearchList = styled.ul`
 		}
 		& h4 {
 			font-size: calc(0.5em + 0.5vw);
+			text-align: center;
+			color: ${(props) => props.theme.btnColor};
 		}
 		& input {
 			width: 100%;
+		}
+		& select {
+			margin: 0;
+			min-width: 0;
+			display: block;
+			width: 100%;
+			padding: 8px 8px;
+			font-size: inherit;
+			line-height: inherit;
+			border: none;
+			border-radius: 4px;
+			color: inherit;
+			outline: none;
+			background-color: transparent;
+			& option {
+				background: ${(props) => props.theme.subBgColor};
+			}
 		}
 	}
 `;
@@ -173,4 +195,19 @@ export const CustomeDatePicker = styled(DatePicker)`
 
 export const PickerBox = styled.div`
 	display: flex;
+	justify-content: space-evenly;
+	margin: 0 auto;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	& span {
+		font-size: 2rem;
+		font-weight: 300;
+		margin: 0;
+	}
+	& input {
+		cursor: pointer;
+		font-size: 1rem;
+		text-align: center;
+	}
 `;

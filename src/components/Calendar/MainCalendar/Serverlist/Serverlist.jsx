@@ -8,14 +8,22 @@ import {
 	StMore,
 	StMoreBox,
 } from "./Serverlist.styled";
+import { useNavigate } from "react-router-dom";
 
 function Serverlist({ result, mark, totallist }) {
+	const navigate = useNavigate();
+
 	return (
 		<>
 			{result && result.length > 0
 				? result.map((obj, boardId) => {
 						return (
-							<StServerListContainer key={boardId}>
+							<StServerListContainer
+								key={boardId}
+								onClick={() => {
+									navigate(`/boards/${obj.boardId}`);
+								}}
+							>
 								<StServerListImg>
 									<img src={obj.boardImage} alt="test" />
 								</StServerListImg>

@@ -13,7 +13,6 @@ import CustomerCalendar from "../../Calendar/CustomerCalendar/CustomerCalendar";
 import { useParams } from "react-router-dom";
 
 const CompanyPage = () => {
-
 	const dispatch = useDispatch();
 	const { id } = useParams();
 
@@ -54,7 +53,7 @@ const CompanyPage = () => {
 						<label htmlFor="myActivity">나의 봉사</label>
 					</nav>
 				</BtnContainer>
-				{companyBoards.length > 0 ? <CustomerCalendar companyBoards={companyBoards} /> : ""}
+				{/* {companyBoards.length > 0 ? <CustomerCalendar companyBoards={companyBoards} /> : ""} */}
 				{companyPageOpt !== null && companyPageOpt === "newActivity" ? (
 					<MyApplicant list={appliList} />
 				) : null}

@@ -19,6 +19,7 @@ import {
 	StContentBox,
 } from "./Detail.styled";
 import { __getChatList } from "../../redux/modules/chatSlice";
+import Profileimg from "../common/profileimg/Profileimg";
 
 const Detail = () => {
 	const navigate = useNavigate();
@@ -42,7 +43,7 @@ const Detail = () => {
 	};
 	const today = new Date().toISOString().split("T")[0];
 	const dDay = getDateDiff(boardsId.dueDay, today);
-
+	console.log(boardsId);
 	return (
 		<>
 			<MainBg image={boardsId?.boardImage} />
@@ -53,18 +54,15 @@ const Detail = () => {
 						<div>D-{dDay}</div>
 						<StImgWrapper>
 							{boardsId.profileImage ? (
-								<img 
-									src={boardsId.profileImage} 
-									alt="profileImage" 
+								<img
+									src={boardsId.profileImage}
+									alt="profileImage"
 									onClick={() => {
-										navigate(`/companypage/${boardsId?.authorId}`)
+										navigate(`/companypage/${boardsId?.authorId}`);
 									}}
 								/>
 							) : (
-								<img
-									src="https://play-lh.googleusercontent.com/38AGKCqmbjZ9OuWx4YjssAz3Y0DTWbiM5HB0ove1pNBq_o9mtWfGszjZNxZdwt_vgHo=w240-h480-rw"
-									alt="user"
-								/>
+								<img src={process.env.PUBLIC_URL + "/image/32defaultimg.png"} alt="user" />
 							)}
 						</StImgWrapper>
 					</StTitleBox>
