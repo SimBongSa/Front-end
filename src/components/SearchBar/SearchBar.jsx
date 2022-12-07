@@ -69,6 +69,7 @@ const SearchBar = () => {
 		setModal(false)
 	};
 
+	
 	// useEffect(() => {
 	// 	if (searchResult) {
 	// 		navigate("/search", { state: searchResult });
