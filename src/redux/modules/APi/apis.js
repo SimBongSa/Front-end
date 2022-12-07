@@ -167,6 +167,8 @@ export const apis = {
 				},
 			}
 		),
+	getOtherCompanyInfo: id => api.get(`${BASE_URL}/companypage/${id}`),
+	getOtherCompanyBoards: id => api.get(`${BASE_URL}/companypage/${id}/boards`),
 
 	//commentSlice
 	getTotalComment: payload =>

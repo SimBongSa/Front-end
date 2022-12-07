@@ -63,14 +63,16 @@ export const CommentIcon = styled(FaRegUserCircle)`
 `;
 
 export const CommentInput = styled.input`
+	font-size: 15px;
 	margin-top: 1rem;
 	margin-left: 3.5rem;
 	height: 2rem;
 	margin-bottom: 1rem;
-	width: 95vh;
+	color: ${props => props.theme.textColor};
 	background-color: transparent;
 	border: transparent;
 	border-bottom: 0.5px solid ${props => props.theme.textColor};
+	width: calc(100% - 13px * 2);
 `;
 
 export const Div = styled.div`
@@ -101,4 +103,3 @@ export const StPageBtn = styled.div`
 	padding: 10px 10px;
 	cursor: pointer;
 `;
-

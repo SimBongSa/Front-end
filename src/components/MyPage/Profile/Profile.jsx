@@ -35,9 +35,9 @@ const Profile = ({
 
 				{companyInfo ? (
 					<ProfileInfo>
-						<h3>{companyInfo.name}</h3>
-						<h5>{companyInfo.phoneNumber}</h5>
-						<h5>{companyInfo.email}</h5>
+						<h3>{companyInfo?.name}</h3>
+						<h5>{companyInfo?.phoneNumber}</h5>
+						<h5>{companyInfo?.email}</h5>
 
 						<Button
 							variant="mypage-edit"
@@ -49,15 +49,15 @@ const Profile = ({
 						</Button>
 
 						<ProfileCategory>단체 소개</ProfileCategory>
-						<p>{companyInfo.introduction}</p>
+						<p>{companyInfo?.introduction}</p>
 
 						<MyActivity>
 							<ProfileCategory>
-								<h6>{companyBoards.length}</h6>
+								<h6>{companyBoards?.length}</h6>
 								<span>모집중인 봉사</span>
 							</ProfileCategory>
 							<ProfileCategory>
-								<h6>{companyBoards.length}</h6>
+								<h6>{companyBoards?.length}</h6>
 								<span>진행한 봉사</span>
 							</ProfileCategory>
 						</MyActivity>
@@ -82,16 +82,16 @@ const Profile = ({
 
 						<MyActivity>
 							<ProfileCategory>
-								<h6>{userWait.length}</h6>
+								<h6>{userWait?.length}</h6>
 								<span>진행중인 봉사</span>
 							</ProfileCategory>
 							<ProfileCategory>
-								<h6>{userPass.length}</h6>
+								<h6>{userPass?.length}</h6>
 								<span>진행한 봉사</span>
 							</ProfileCategory>
 						</MyActivity>
 						<ProfileCategory>자기소개</ProfileCategory>
-						<p>{userInfo.introduction}</p>
+						<p>{userInfo?.introduction}</p>
 					</ProfileInfo>
 				) : null}
 			</ProfileBox>

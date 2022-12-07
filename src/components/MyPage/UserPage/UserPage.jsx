@@ -49,7 +49,7 @@ const UserPage = () => {
 					userReject={userReject.length}
 					setUserPageOpt={setUserPageOpt}
 				/>
-				{modal === false && userEnroll.length > 0 ? <UserCalendar userEnroll={userEnroll} /> : ""}
+				{userEnroll.length > 0 ? <UserCalendar userEnroll={userEnroll} /> : ""}
 				<BtnBox onClick={onClickHandler}>캘린더 닫기</BtnBox>
 				{userPageOpt === "enroll" ? (
 					<MyPageCards>
