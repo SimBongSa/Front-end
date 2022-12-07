@@ -2,7 +2,7 @@ import styled from "styled-components";
 import Calendar from "react-calendar";
 
 export const StCalendarList = styled.div`
-	width: 35%;
+	width: 100%;
 	& h2 {
 		font-size: 1.6rem;
 	}
@@ -15,8 +15,7 @@ export const StCalendarList = styled.div`
 export const StCalendarWrap = styled.div`
 	display: flex;
 	width: 100%;
-	flex-direction: row;
-	justify-content: space-between;
+	justify-content: center;
 	@media (max-width: 1280px) {
 		flex-direction: column;
 	}
@@ -30,9 +29,7 @@ export const StCalendar = styled(Calendar)`
 `;
 
 export const StCalendarContainer = styled.div`
-	margin: auto;
-	margin-top: 5rem;
-	margin-left: 30rem;
+	width: 100%;
 	justify-content: center;
 	overflow: hidden;
 	transition: all 0.5s;
@@ -45,13 +42,10 @@ export const StCalendarContainer = styled.div`
 
 	.react-calendar {
 		/* width: 55rem; */
-		height: 40rem;
-		max-width: 60%;
 		background-color: ${props => props.theme.bgColor};
 		font-family: Arial, Helvetica, sans-serif;
 		line-height: 2.5rem;
 		border-radius: 12px;
-		box-shadow: 5px 5px 5px 5px rgb(0 0 0 / 25%);
 	}
 
 	.react-calendar__month-view__days__day--neighboringMonth {

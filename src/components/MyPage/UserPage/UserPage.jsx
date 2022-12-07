@@ -38,7 +38,7 @@ const UserPage = () => {
 	const [userPageOpt, setUserPageOpt] = useState("wait");
 
 	const onClickHandler = e => {
-		setModal(false);
+		setModal(true);
 	};
 
 	return (
@@ -51,9 +51,10 @@ const UserPage = () => {
 					userPass={userPass.length}
 					userReject={userReject.length}
 					setUserPageOpt={setUserPageOpt}
+					callendarData={userEnroll}
 				/>
-				{modal === true && userEnroll.length > 0 ? <UserCalendar userEnroll={userEnroll} /> : ""}
-				<BtnBox onClick={onClickHandler}>캘린더 닫기</BtnBox>
+				{/* {modal === false && userEnroll.length > 0 ? <UserCalendar userEnroll={userEnroll} /> : ""}
+				<BtnBox onClick={onClickHandler}>캘린더 닫기</BtnBox> */}
 				{userPageOpt === "enroll" ? (
 					<MyPageCards>
 						<h1>봉사 신청 내역</h1>

@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { useState } from "react";
 import {
 	MyProcessContainer,
 	ProcessStepWrap,
@@ -6,9 +7,25 @@ import {
 	ProcessCircle,
 	StepTitle,
 } from "./MyProcess.styled";
-import { IoIosArrowDown } from "react-icons/io";
+import UserCalendar from "../../Calendar/UserCalendar/UserCalendar";
+import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 
-const MyProcess = ({ userEnroll, userWait, userPass, userReject, setUserPageOpt }) => {
+const MyProcess = ({
+	userEnroll,
+	userWait,
+	userPass,
+	userReject,
+	setUserPageOpt,
+	callendarData,
+}) => {
+	const [modal, setModal] = useState(false);
+
+	const onClickCloseHandler = e => {
+		setModal(true);
+	};
+	const onClickOpenHandler = e => {
+		setModal(false);
+	};
 	return (
 		<MyProcessContainer>
 			<h1>봉사 현황</h1>
@@ -53,9 +70,22 @@ const MyProcess = ({ userEnroll, userWait, userPass, userReject, setUserPageOpt 
 					</ProcessCircle>
 					<StepTitle>거절된 봉사</StepTitle>
 				</ProcessStep>
-			</ProcessStepWrap>
+			</ProcessStepWrap>{" "}
+			{modal === false && callendarData.length > 0 ? (
+				<UserCalendar userEnroll={callendarData} />
+			) : (
+				""
+			)}
 			<StOpenCalendar>
-				캘린더 보기 <IoIosArrowDown />
+				{modal === false ? (
+					<>
+						캘린더 닫기 <IoIosArrowUp onClick={onClickCloseHandler} />
+					</>
+				) : (
+					<>
+						캘린더 보기 <IoIosArrowDown onClick={onClickOpenHandler} />
+					</>
+				)}
 			</StOpenCalendar>
 		</MyProcessContainer>
 	);

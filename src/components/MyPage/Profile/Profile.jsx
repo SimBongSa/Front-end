@@ -1,9 +1,10 @@
 import { ProfileContainer, ProfileBox, ProfileCategory, ProfileMisc } from "./Profile.styled";
+import { useCookies } from "react-cookie";
 import { removeCookie } from "../../../utils/cookie";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import Button from "../../common/button/Button";
-
+import Profileimg from "../../common/profileimg/Profileimg";
 const Profile = ({
 	companyInfo,
 	companyBoards,
@@ -21,17 +22,46 @@ const Profile = ({
 		localStorage.removeItem("refresh-token");
 	};
 
+	const [cookies] = useCookies(["Authorization"]);
+	const authority = cookies["authority"];
+
 	return (
 		<ProfileContainer>
 			<ProfileBox>
-				{companyInfo && companyInfo?.profileImage ? (
-					<img src={companyInfo?.profileImage} alt="user" />
+				{authority === "ROLE_MEMBER" ? (
+					userInfo && userInfo?.profileImage ? (
+						<Profileimg variant="profile-user" src={userInfo?.profileImage} alt="user" />
+					) : (
+						<Profileimg
+							variant="profile-user"
+							src={process.env.PUBLIC_URL + "/image/64badge1.png"}
+							alt="user"
+						/>
+					)
 				) : null}
 
-				{userInfo && userInfo?.profileImage ? (
-					<img src={companyInfo?.profileImage} alt="user" />
+				{authority === "ROLE_ADMIN" ? (
+					companyInfo && companyInfo?.profileImage ? (
+						<Profileimg variant="profile-company" src={companyInfo?.profileImage} alt="user" />
+					) : (
+						<Profileimg
+							variant="profile-company"
+							src={process.env.PUBLIC_URL + "/image/64badge1.png"}
+							alt="user"
+						/>
+					)
 				) : null}
 
+				{/* userInfo && userInfo.profileImage ? (
+				<Profileimg variant="profile-user" src={userInfo.profileImage} alt="user" />) : null
+				 */}
+				{/* {companyInfo && companyInfo.profileImage ? (
+				 	<Profileimg variant="profile-company" src={companyInfo.profileImage} alt="user" />
+			) : null}
+
+		{userInfo && userInfo.profileImage ? (
+			 	<Profileimg variant="profile-user" src={userInfo.profileImage} alt="user" />
+		 ) : null}  */}
 				{companyInfo ? (
 					<ProfileInfo>
 						<h3>{companyInfo?.name}</h3>
@@ -62,7 +92,6 @@ const Profile = ({
 						</MyActivity>
 					</ProfileInfo>
 				) : null}
-
 				{userInfo ? (
 					<ProfileInfo>
 						<h3>{userInfo.name}</h3>

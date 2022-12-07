@@ -11,7 +11,7 @@ export const CommentWriteWrap = styled.div`
 	width: 85%;
 	align-items: center;
 	height: 4rem;
-	margin-top: -1.3rem;
+	margin-top: -5rem;
 	/* & div {
 		position: relative;
 		& input {
@@ -30,6 +30,12 @@ export const CommentTitleWrap = styled.div`
 		display: flex;
 		align-items: center;
 	}
+	& > div > img {
+		margin-right: 1rem;
+		width: 40px;
+		height: 40px;
+		border-radius: 50%;
+	}
 	& > div > div {
 		flex-wrap: wrap;
 	}
@@ -47,19 +53,25 @@ export const Box = styled.div`
 `;
 
 export const UserIcon = styled(FaRegUserCircle)`
-	/* display: flex; */
-	/* float: right; */
-	/* justify-content: right; */
 	font-size: 3rem;
 	color: grey;
 	min-width: 40px;
-	/* margin-right: 1.5rem; */
+`;
+export const StImgBox = styled.div`
+	& img {
+		font-size: 3rem;
+		width: 70px;
+		width: 70px;
+		border-radius: 50%;
+	}
 `;
 
 export const CommentIcon = styled(FaRegUserCircle)`
 	font-size: 3rem;
-	color: grey;
 	margin-right: 0.5rem;
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
 `;
 
 export const CommentInput = styled.input`
