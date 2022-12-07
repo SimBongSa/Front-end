@@ -125,6 +125,9 @@ export const ProfileCategory = styled.h4`
 	& span {
 		font-size: 0.9rem;
 	}
+	@media (max-width: 1024px) {
+		padding-left: 4.5rem;
+	}
 `;
 
 export const ProfileMisc = styled.div`

@@ -35,15 +35,6 @@ export const __loginMember = createAsyncThunk("loginMember", async (payload, thu
 	}
 });
 
-// export const __loginManager = createAsyncThunk("loginManager", async (payload, thunkAPI) => {
-// 	try {
-// 		const response = await apis.managerLogin(payload);
-// 		return thunkAPI.fulfillWithValue(response.data);
-// 	} catch (error) {
-// 		return thunkAPI.rejectWithValue(error);
-// 	}
-// });
-
 export const __registerMember = createAsyncThunk("regitserMember", async (payload, thunkAPI) => {
 	try {
 		const response = await apis.memberSignup(payload);
@@ -131,19 +122,6 @@ export const registerSlice = createSlice({
 				state.error = action.payload;
 			});
 
-		// manager
-		// .addCase(__loginManager.pending, (state, _) => {
-		// 	state.isLoading = true;
-		// })
-		// .addCase(__loginManager.fulfilled, (state, action) => {
-		// 	state.isLoading = false;
-		// 	state.statusCode = action.payload;
-		// 	state.loginInfo.concat(action.payload);
-		// })
-		// .addCase(__loginManager.rejected, (state, action) => {
-		// 	state.isLoading = false;
-		// 	state.error = action.payload;
-		// });
 
 		// Register
 		builder

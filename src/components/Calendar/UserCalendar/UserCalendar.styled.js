@@ -3,7 +3,6 @@ import Calendar from "react-calendar";
 
 export const StCalendarList = styled.div`
 	width: 35%;
-
 	& h2 {
 		font-size: 1.6rem;
 	}
@@ -37,16 +36,22 @@ export const StCalendarContainer = styled.div`
 	justify-content: center;
 	overflow: hidden;
 	transition: all 0.5s;
+	& h1 {
+		font-size: 2rem;
+		margin-top: 1rem;
+		margin-bottom: 1rem;
+		color: ${props => props.theme.textColor};
+	}
 
 	.react-calendar {
 		/* width: 55rem; */
 		height: 40rem;
 		max-width: 60%;
-		background: #ffffff;
+		background-color: ${props => props.theme.bgColor};
 		font-family: Arial, Helvetica, sans-serif;
 		line-height: 2.5rem;
 		border-radius: 12px;
-		box-shadow: 0 3px 8px -6px rgba(0, 0, 0, 0.5);
+		box-shadow: 5px 5px 5px 5px rgb(0 0 0 / 25%);
 	}
 
 	.react-calendar__month-view__days__day--neighboringMonth {
@@ -97,21 +102,22 @@ export const StCalendarContainer = styled.div`
 	// nav 년월
 	.react-calendar__navigation button:disabled {
 		margin-top: 1rem;
-		background-color: #ffffff;
+		background-color: ${props => props.theme.bgColor};
 		font-size: 2rem;
-		color: #232323;
+		color: ${props => props.theme.textColor};
 	}
 	.react-calendar__navigation button:enabled {
-		background-color: #ffffff;
+		color: ${props => props.theme.textColor};
+		background-color: ${props => props.theme.bgColor};
 		border-radius: 50%;
 	}
-	.react-calendar__navigation button:enabled:hover {
+	/* .react-calendar__navigation button:enabled:hover {
 		background-color: #ffffff;
 		border-radius: 50%;
 	}
 	.react-calendar__navigation button:enabled:focus {
 		background-color: #ffffff;
-	}
+	} */
 
 	// 요일
 	.react-calendar__month-view__weekdays {
@@ -153,6 +159,7 @@ export const StCalendarContainer = styled.div`
 	.react-calendar__tile {
 		max-width: 100%;
 		padding: 1.2rem 0.5rem;
+		color: ${props => props.theme.textColor};
 		background: none;
 		text-align: center;
 		line-height: 3rem;
@@ -160,18 +167,20 @@ export const StCalendarContainer = styled.div`
 			bottom: 50%;
 			height: 15px;
 			width: 30px;
-			background-color: #94928c;
-			border-radius: 25%;
+			background-color: ${props => props.theme.bgColor};
+			border: 1px solid ${props => props.theme.subBtnColor};
+			border-radius: 5rem;
 			margin: 0 auto;
 			display: flex;
 			justify-content: center;
-			position: relative;
-			padding: 0px 18px;
-		}
-		.flex justify-center items-center absoluteDiv {
-			/* position: absolute;
+			padding: 2px 8px;
+			position: absolute;
+			top: 50%;
 			left: 50%;
-			transform: translate(-50%, -50%); */
+			transform: translate(-50%, -50%);
+		}
+		.html {
+			position: relative;
 		}
 	}
 
@@ -191,8 +200,8 @@ export const StCalendarContainer = styled.div`
 		background-color: #fff;
 		padding: 15px;
 		border-radius: 50%;
-		color: black;
-		border: 1px solid ${props => props.theme.subBtnColor};
+		color: ${props => props.theme.bgColor};
+		border: 1px solid ${props => props.theme.btnColor};
 	}
 	/* .react-calendar button {
     background: #ff8331;
@@ -223,7 +232,7 @@ export const StCalendarContainer = styled.div`
 		padding: 15px;
 		border-radius: 50%;
 		border: 1px solid ${props => props.theme.subBtnColor};
-		color: black;
+		color: ${props => props.theme.textColor};
 	}
 	/* .react-calendar__tile--active:enabled:hover {
   }
@@ -237,6 +246,6 @@ export const StCalendarContainer = styled.div`
 
 export const StDiv = styled.div`
 	position: absolute;
-	top: -16px;
-	color: white;
+	top: -17px;
+	color: ${props => props.theme.subBtnColor};
 `;

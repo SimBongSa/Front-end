@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useCookies } from "react-cookie";
 import {
 	__getTotalComment,
@@ -21,21 +21,24 @@ import {
 	Date,
 	CommentDiv,
 	CommentIcon,
-	StPageBtn,
-	StComment,
 } from "./Comment.styled";
 import Stbtn from "../../common/button/Button";
 import Input from "../../common/input/Input";
+import { __getOtherUserEnroll, __getOtherUserInfo } from "../../../redux/modules/mypageSlice";
 
 function Comment() {
+
+	const dispatch = useDispatch();
+	const navigate = useNavigate();
+	const { id } = useParams();
+
 	const [cookies] = useCookies(["Authorization"]);
 	const userName = cookies["username"];
 
-	const commentTotalList = useSelector(state => state.comment.commentTotalList);
-	const commentList = useSelector(state => state.comment.commentList);
-	const dispatch = useDispatch();
-
-	const { id } = useParams();
+	const commentTotalList = useSelector((state) => state.comment.commentTotalList);
+	const commentList = useSelector((state) => state.comment.commentList);
+	const otherUserInfo = useSelector((state) => state.mypage.otherUserInfo);
+	console.log(otherUserInfo)
 
 	const [editCommentId, setEditCommentId] = useState([]);
 	const [content, setContent] = useState();
@@ -64,25 +67,23 @@ function Comment() {
 		<MainComponent>
 			<UserIcon />
 			<CommentWriteWrap>
-				{/* <div> */}
-					<Input
-						type="text"
-						placeholder="댓글을 남겨주세요!"
-						value={content}
-						onChange={onChangeHalder}
-					/>
-					<Stbtn
-						variant="comment"
-						onClick={() => {
-							if (content !== "") {
-								dispatch(__postComment({ content, id }));
-								setContent("");
-							}
-						}}
-					>
-						댓글쓰기
-					</Stbtn>
-				{/* </div> */}
+				<Input
+					type="text"
+					placeholder="댓글을 남겨주세요!"
+					value={content}
+					onChange={onChangeHalder}
+				/>
+				<Stbtn
+					variant="comment"
+					onClick={() => {
+						if (content !== "") {
+							dispatch(__postComment({ content, id }));
+							setContent("");
+						}
+					}}
+				>
+					댓글쓰기
+				</Stbtn>
 			</CommentWriteWrap>
 
 			{commentList && commentList.length > 0
@@ -93,10 +94,16 @@ function Comment() {
 							<Box key={index}>
 								<CommentTitleWrap>
 									<div>
-										<CommentIcon />
+										<CommentIcon 
+											onClick={() => {
+												dispatch(__getOtherUserInfo(item.memberId))
+												// dispatch(__getOtherUserEnroll(item.memberId))
+												navigate(`/usermypage/${item.memberId}`, {state: otherUserInfo})
+											}}
+										/>
 										<div>
 											<h2>{item?.username}</h2>
-											<Date>{item.createdAt.split("T")[0]}</Date>
+											<Date>{item.createdAt.split("T")[0].substring(0,10)}</Date>
 										</div>
 									</div>
 									<CommentBtnWrap>
@@ -156,16 +163,6 @@ function Comment() {
 						);
 				  })
 				: ""}
-			{/* {commentTotalList?.length > 4 ? (
-				<StPageBtn
-					onClick={() => {
-						setPage(prev => prev + 1);
-						dispatch(__getComment({ id, page, size }));
-					}}
-				>
-					댓글 더보기
-				</StPageBtn>
-			) : null} */}
 		</MainComponent>
 	);
 }

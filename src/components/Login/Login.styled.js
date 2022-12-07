@@ -56,7 +56,7 @@ export const LoginOverlay = styled.div`
 		font-weight: 900;
 	}
 `;
-// 오른쪽에 로그인 form 네모임
+
 export const LoginBox = styled.div`
 	display: flex;
 	margin: 0 auto;

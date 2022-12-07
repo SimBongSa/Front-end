@@ -77,32 +77,32 @@ export const apis = {
 		}),
 
 	// MyPage (User)
-	getUserPage: () =>
-		api.get(`${BASE_URL}/mypage`, {
+	getUserPage: id =>
+		api.get(`${BASE_URL}/mypage/${id}`, {
 			headers: {
 				Authorization: token,
 			},
 		}),
-	getUserEnroll: () =>
-		api.get(`${BASE_URL}/mypage/enroll`, {
+	getUserEnroll: id =>
+		api.get(`${BASE_URL}/mypage/${id}/enroll`, {
 			headers: {
 				Authorization: token,
 			},
 		}),
-	getUserWait: () =>
-		api.get(`${BASE_URL}/mypage/enroll/wait`, {
+	getUserWait: id =>
+		api.get(`${BASE_URL}/mypage/${id}/enroll/wait`, {
 			headers: {
 				Authorization: token,
 			},
 		}),
-	getUserPass: () =>
-		api.get(`${BASE_URL}/mypage/enroll/pass`, {
+	getUserPass: id =>
+		api.get(`${BASE_URL}/mypage/${id}/enroll/pass`, {
 			headers: {
 				Authorization: token,
 			},
 		}),
-	getUserReject: () =>
-		api.get(`${BASE_URL}/mypage/enroll/fail`, {
+	getUserReject: id =>
+		api.get(`${BASE_URL}/mypage/${id}/enroll/fail`, {
 			headers: {
 				Authorization: token,
 			},
@@ -114,6 +114,9 @@ export const apis = {
 				"Content-Type": "multipart/form-data",
 			},
 		}),
+
+	getOtherUserInfo: id => api.get(`${BASE_URL}/mypage/${id}`),
+	getOtherUserEnroll: id => api.get(`${BASE_URL}/mypage/${id}/enroll/pass`),
 
 	// MyPage (Company)
 	getCompanyPage: () =>
@@ -129,7 +132,7 @@ export const apis = {
 			},
 		}),
 	putCompanyPage: payload =>
-		axios.put(`${BASE_URL}/companypage`, payload, {
+		api.put(`${BASE_URL}/companypage`, payload, {
 			headers: {
 				Authorization: token,
 				"Content-Type": "multipart/form-data",
@@ -142,13 +145,13 @@ export const apis = {
 			},
 		}),
 	getAllAppliList: payload =>
-		axios.get(`${BASE_URL}/companypage/applicants?page=${payload.page}&size=${payload.size}`, {
+		api.get(`${BASE_URL}/companypage/applicants?page=${payload.page}&size=${payload.size}`, {
 			headers: {
 				Authorization: token,
 			},
 		}),
 	putApprove: payload =>
-		axios.put(
+		api.put(
 			`${BASE_URL}/companypage/approve/${payload}`,
 			{},
 			{
@@ -158,7 +161,7 @@ export const apis = {
 			}
 		),
 	putDisapprove: payload =>
-		axios.put(
+		api.put(
 			`${BASE_URL}/companypage/disapprove/${payload}`,
 			{},
 			{
@@ -169,7 +172,6 @@ export const apis = {
 		),
 	getOtherCompanyInfo: id => api.get(`${BASE_URL}/companypage/${id}`),
 	getOtherCompanyBoards: id => api.get(`${BASE_URL}/companypage/${id}/boards`),
-
 	//commentSlice
 	getTotalComment: payload =>
 		axios.get(`${BASE_URL}/boards/${payload}`, {

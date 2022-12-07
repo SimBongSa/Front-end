@@ -74,8 +74,33 @@ export const __putUserInfo = createAsyncThunk("putUserInfo", async (payload, thu
 	}
 });
 
-// Company
+// 다른 유저 정보 get
+export const __getOtherUserInfo = createAsyncThunk(
+	"getOtherUserInfo",
+	async (payload, thunkAPI) => {
+		try {
+			const response = await apis.getOtherUserInfo(payload);
+			console.log("__getOtherUserInfo",response);
+			return thunkAPI.fulfillWithValue(response.data.data);
+		} catch (error) {
+			return thunkAPI.rejectWithValue(error)
+		}
+	}
+);
 
+export const __getOtherUserEnroll = createAsyncThunk(
+	"getOtherUserEnroll",
+	async (payload, thunkAPI) => {
+		try {
+			const response = await apis.getOtherUserEnroll(payload);
+			console.log("getOtherUserEnroll",response)
+		} catch (error) {
+			return thunkAPI.rejectWithValue(error);
+		}
+	}
+);
+
+// Company
 export const __getCompanyInfo = createAsyncThunk("companyInfo", async (payload, thunkAPI) => {
 	try {
 		console.log("__getCompanyInfo payload =>", payload);
@@ -86,6 +111,7 @@ export const __getCompanyInfo = createAsyncThunk("companyInfo", async (payload, 
 		return thunkAPI.rejectWithValue(error);
 	}
 });
+
 export const __getCompanyBoards = createAsyncThunk("companyBoards", async (payload, thunkAPI) => {
 	try {
 		const response = await apis.getCompanyBoards(payload);
@@ -94,6 +120,7 @@ export const __getCompanyBoards = createAsyncThunk("companyBoards", async (paylo
 		return thunkAPI.rejectWithValue(error);
 	}
 });
+
 export const __getAppliList = createAsyncThunk("appliList", async (payload, thunkAPI) => {
 	try {
 		const response = await apis.getAppliList(payload);
@@ -146,26 +173,57 @@ export const __putApprove = createAsyncThunk("approve", async (payload, thunkAPI
 export const __putDisapprove = createAsyncThunk("disapprove", async (payload, thunkAPI) => {
 	try {
 		const response = await apis.putDisapprove(payload);
-
 		return thunkAPI.fulfillWithValue(response.data.data);
 	} catch (error) {
 		return thunkAPI.rejectWithValue(error);
 	}
 });
 
+export const __getOtherCompanyInfo = createAsyncThunk(
+	"getOtherCompanyInfo",
+	async (payload, thunkAPI) => {
+		try {
+			const response = await apis.getOtherCompanyInfo(payload)
+			console.log("getOtherCompanyInfo", response);
+			return thunkAPI.fulfillWithValue(response.data.data);
+		} catch (error) {
+			return thunkAPI.rejectWithValue(error);
+		}
+	}
+);
+
+export const __getOtherCompanyBoards = createAsyncThunk(
+	"getOtherCompanyBoards",
+	async (payload, thunkAPI) => {
+		try {
+			const response = await apis.getOtherCompanyBoards(payload)
+			console.log("getOtherCompanyBoards", response);
+			return thunkAPI.fulfillWithValue(response.data.data);
+		} catch (error) {
+			return thunkAPI.rejectWithValue(error);
+		}
+	}
+);
+
 export const mypageSlice = createSlice({
 	name: "mypage",
 	initialState: {
 		companyInfo: [],
 		companyBoards: [],
+		allAppliList: [],
+		otherCompanyInfo: [],
+		otherCompanyBoards: [],
+
+		appliList: [],
+		approve: [],
 		userInfo: [],
 		userEnroll: [],
 		userWait: [],
 		userPass: [],
 		userReject: [],
-		allAppliList: [],
-		appliList: [],
-		approve: [],
+		otherUserInfo: [],
+		otherUserEnroll: [],
+
 		status: null,
 		isLoading: false,
 		error: null,
@@ -230,6 +288,30 @@ export const mypageSlice = createSlice({
 				state.userReject = action.payload;
 			})
 			.addCase(__getUserReject.rejected, (state, action) => {
+				state.isLoading = false;
+				state.error = action.payload;
+			})
+
+			.addCase(__getOtherUserInfo.pending, (state, _) => {
+				state.isLoading = true;
+			})
+			.addCase(__getOtherUserInfo.fulfilled, (state, action) => {
+				state.isLoading = false;
+				state.otherUserInfo = action.payload;
+			})
+			.addCase(__getOtherUserInfo.rejected, (state, action) => {
+				state.isLoading = false;
+				state.error = action.payload;
+			})
+
+			.addCase(__getOtherUserEnroll.pending, (state, _) => {
+				state.isLoading = true;
+			})
+			.addCase(__getOtherUserEnroll.fulfilled, (state, action) => {
+				state.isLoading = false;
+				state.otherUserEnroll = action.payload;
+			})
+			.addCase(__getOtherUserEnroll.rejected, (state, action) => {
 				state.isLoading = false;
 				state.error = action.payload;
 			})
@@ -332,7 +414,31 @@ export const mypageSlice = createSlice({
 			.addCase(__putCompanyInfo.rejected, (state, action) => {
 				state.isLoading = false;
 				state.error = action.payload;
-			});
+			})
+
+			.addCase(__getOtherCompanyInfo.pending, (state, _) => {
+				state.isLoading = true;
+			})
+			.addCase(__getOtherCompanyInfo.fulfilled, (state, action) => {
+				state.isLoading = false;
+				state.otherCompanyInfo = action.payload;
+			})
+			.addCase(__getOtherCompanyInfo.rejected, (state, action) => {
+				state.isLoading = false;
+				state.error = action.payload;
+			})
+
+			.addCase(__getOtherCompanyBoards.pending, (state, _) => {
+				state.isLoading = true;
+			})
+			.addCase(__getOtherCompanyBoards.fulfilled, (state, action) => {
+				state.isLoading = false;
+				state.otherCompanyBoards = action.payload;
+			})
+			.addCase(__getOtherCompanyBoards.rejected, (state, action) => {
+				state.isLoading = false;
+				state.error = action.payload;
+			})
 	},
 });
 

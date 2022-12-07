@@ -13,10 +13,20 @@ import styled from "styled-components";
 import MyProcess from "../MyProcess/MyProcess";
 import { MyPageCards } from "./UserPage.styled";
 import UserCalendar from "../../Calendar/UserCalendar/UserCalendar";
+import { useLocation, useParams } from "react-router-dom";
 
 const UserPage = () => {
+	const { id } = useParams();
 	const dispatch = useDispatch();
 	const [modal, setModal] = useState(false);
+
+	useEffect(() => {
+		dispatch(__getUserInfo(id));
+		dispatch(__getUserEnroll(id));
+		dispatch(__getUserWait(id));
+		dispatch(__getUserPass(id));
+		dispatch(__getUserReject(id));
+	}, [dispatch]);
 
 	const userInfo = useSelector(state => state.mypage?.userInfo);
 	const userEnroll = useSelector(state => state.mypage?.userEnroll);
@@ -24,18 +34,11 @@ const UserPage = () => {
 	const userPass = useSelector(state => state.mypage?.userPass);
 	const userReject = useSelector(state => state.mypage?.userReject);
 
-	useEffect(() => {
-		dispatch(__getUserInfo());
-		dispatch(__getUserEnroll());
-		dispatch(__getUserWait());
-		dispatch(__getUserPass());
-		dispatch(__getUserReject());
-	}, [dispatch]);
-
+	const { state } = useLocation();
 	const [userPageOpt, setUserPageOpt] = useState("wait");
 
 	const onClickHandler = e => {
-		setModal(true);
+		setModal(false);
 	};
 
 	return (
@@ -49,7 +52,7 @@ const UserPage = () => {
 					userReject={userReject.length}
 					setUserPageOpt={setUserPageOpt}
 				/>
-				{userEnroll.length > 0 ? <UserCalendar userEnroll={userEnroll} /> : ""}
+				{modal === true && userEnroll.length > 0 ? <UserCalendar userEnroll={userEnroll} /> : ""}
 				<BtnBox onClick={onClickHandler}>캘린더 닫기</BtnBox>
 				{userPageOpt === "enroll" ? (
 					<MyPageCards>
