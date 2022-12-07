@@ -52,6 +52,7 @@ export const __getBoardId = createAsyncThunk(
 export const __getSearchBoards = createAsyncThunk(
   "getSearchBoards",
   async (payload, thunkAPI) => {
+    console.log("@@",payload)
     try {
       const response = await apis.getSearchBoards(payload);
       if (response.status === 200) {

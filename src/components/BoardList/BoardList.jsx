@@ -28,7 +28,7 @@ const Board = () => {
 	console.log("검색결과", state);
 
 	if (state) {
-		const pageNum = Math.round(12 / state.length);
+		const pageNum = Math.floor(12 / state.length);
 		return (
 			<BoardContainer>
 				<StTitle>
@@ -68,8 +68,12 @@ const Board = () => {
 						<Stbtn
 							variant="boards-prev-next"
 							onClick={() => {
-								setPage(prev => prev + 1);
-								dispatch(__getBoard({ page, size }));
+								if (page === Math.floor(12 / state.length)) {
+									alert("마지막 페이지입니다")
+								} else {
+									setPage(prev => prev + 1);
+									dispatch(__getBoard({ page, size }));
+								}
 							}}
 						>
 							❯
@@ -115,12 +119,16 @@ const Board = () => {
 								❮
 							</Stbtn>
 						)}
-						<div>{page}/14</div>
+						<div>{page}/{Math.floor(12 / boards.length)}</div>
 						<Stbtn
 							variant="boards-prev-next"
 							onClick={() => {
-								setPage(prev => prev + 1);
-								dispatch(__getBoard({ page, size }));
+								if (page === Math.floor(12 / boards.length)) {
+									alert("마지막 페이지입니다.")
+								} else {
+									setPage(prev => prev + 1);
+									dispatch(__getBoard({ page, size }));
+								}
 							}}
 						>
 							❯
