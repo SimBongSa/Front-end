@@ -115,6 +115,12 @@ export const apis = {
 			},
 		}),
 
+	getOtherUserInfo: (id) =>
+		api.get(`${BASE_URL}/mypage/${id}`),
+	getOtherUserEnroll: (id) => 
+		api.get(`${BASE_URL}/${id}/enroll/pass`),
+	
+
 	// MyPage (Company)
 	getCompanyPage: () =>
 		api.get(`${BASE_URL}/companypage`, {
@@ -129,7 +135,7 @@ export const apis = {
 			},
 		}),
 	putCompanyPage: payload =>
-		axios.put(`${BASE_URL}/companypage`, payload, {
+		api.put(`${BASE_URL}/companypage`, payload, {
 			headers: {
 				Authorization: token,
 				"Content-Type": "multipart/form-data",
@@ -142,32 +148,27 @@ export const apis = {
 			},
 		}),
 	getAllAppliList: payload =>
-		axios.get(`${BASE_URL}/companypage/applicants?page=${payload.page}&size=${payload.size}`, {
+		api.get(`${BASE_URL}/companypage/applicants?page=${payload.page}&size=${payload.size}`, {
 			headers: {
 				Authorization: token,
 			},
 		}),
 	putApprove: payload =>
-		axios.put(
-			`${BASE_URL}/companypage/approve/${payload}`,
-			{},
-			{
-				headers: {
-					Authorization: token,
-				},
-			}
-		),
+		api.put(`${BASE_URL}/companypage/approve/${payload}`, {}, {
+			headers: {
+				Authorization: token,
+			},
+		}),
 	putDisapprove: payload =>
-		axios.put(
-			`${BASE_URL}/companypage/disapprove/${payload}`,
-			{},
-			{
-				headers: {
-					Authorization: token,
-				},
-			}
-		),
-
+		api.put(`${BASE_URL}/companypage/disapprove/${payload}`, {}, {
+			headers: {
+				Authorization: token,
+			},
+		}),
+	getOtherCompanyInfo: (id) =>
+		api.get(`${BASE_URL}/companypage/${id}`),
+	getOtherCompanyBoards: (id) =>
+		api.get(`${BASE_URL}/companypage/${id}/boards`),
 	//commentSlice
 	getTotalComment: payload =>
 		axios.get(`${BASE_URL}/boards/${payload}`, {
