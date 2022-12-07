@@ -124,7 +124,6 @@ export const __postApply = createAsyncThunk(
       const response = await apis.applyBoard(payload);
       if (response.status === 200) {
         alert(response.data.data.msg);
-        console.log(response.data.data.msg);
         return thunkAPI.fulfillWithValue(response.data.data.msg);
       }
     } catch (error) {
@@ -154,7 +153,6 @@ export const boardSlice = createSlice({
 				state.isLoading = false;
 				state.status = action.payload.status;
 				state.boards.push(action.payload.data.data);
-				console.log("state.boards =>", state.boards);
 			})
 			.addCase(__createBoard.rejected, (state, action) => {
 				state.isLoading = false;

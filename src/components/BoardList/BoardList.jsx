@@ -19,10 +19,6 @@ const Board = () => {
 
 	const [modal, setModal] = useState(false);
 
-	useEffect(() => {
-		dispatch(__getBoard({ page, size }));
-	}, [dispatch, size, page]);
-
 	// 검색을 통해 들어온 경우,
 	const { state } = useLocation();
 	console.log("검색결과", state);
@@ -33,6 +29,7 @@ const Board = () => {
 			<BoardContainer>
 				<StTitle>
 					<div>봉사 검색 결과</div>
+					검색결과임
 					<div>{state.length}개</div>
 				</StTitle>
 				<BoardContent>
@@ -82,12 +79,10 @@ const Board = () => {
 				</BoardContent>
 			</BoardContainer>
 		)
-	} else if (state.length === 0){
-		return (
-			<BoardContainer>
-				검색 결과가 없습니다.
-			</BoardContainer>
-		)
+	} else if (state?.length === 0) {
+		<BoardContainer>
+			검색 결과가 없습니다
+		</BoardContainer>
 	} else {
 		// 그냥 게시물 리스트
 		return (
