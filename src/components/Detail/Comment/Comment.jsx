@@ -18,7 +18,6 @@ import {
 	Div,
 	Date,
 	CommentDiv,
-	UserIcon,
 	StImgBox,
 } from "./Comment.styled";
 import { __getUserInfo } from "../../../redux/modules/mypageSlice";
@@ -26,7 +25,7 @@ import { __getCompanyInfo } from "../../../redux/modules/mypageSlice";
 import Stbtn from "../../common/button/Button";
 import Input from "../../common/input/Input";
 import Profileimg from "../../common/profileimg/Profileimg";
-import { __getOtherUserEnroll, __getOtherUserInfo } from "../../../redux/modules/mypageSlice";
+import { __getOtherUserInfo } from "../../../redux/modules/mypageSlice";
 
 function Comment() {
 	const dispatch = useDispatch();
@@ -117,7 +116,6 @@ function Comment() {
 													alt="user"
 													onClick={() => {
 														dispatch(__getOtherUserInfo(item.memberId));
-														// dispatch(__getOtherUserEnroll(item.memberId))
 														navigate(`/usermypage/${item.memberId}`, { state: otherUserInfo });
 													}}
 												/>
@@ -127,7 +125,6 @@ function Comment() {
 													alt="user"
 													onClick={() => {
 														dispatch(__getOtherUserInfo(item.memberId));
-														// dispatch(__getOtherUserEnroll(item.memberId))
 														navigate(`/usermypage/${item.memberId}`, { state: otherUserInfo });
 													}}
 												/>
@@ -140,7 +137,6 @@ function Comment() {
 												alt="user"
 												onClick={() => {
 													dispatch(__getOtherUserInfo(item.memberId));
-													// dispatch(__getOtherUserEnroll(item.memberId))
 													navigate(`/usermypage/${item.memberId}`, { state: otherUserInfo });
 												}}
 											/>
@@ -150,7 +146,6 @@ function Comment() {
 												alt="user"
 												onClick={() => {
 													dispatch(__getOtherUserInfo(item.memberId));
-													// dispatch(__getOtherUserEnroll(item.memberId))
 													navigate(`/usermypage/${item.memberId}`, { state: otherUserInfo });
 												}}
 											/>
