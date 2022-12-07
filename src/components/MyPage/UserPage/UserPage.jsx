@@ -16,8 +16,7 @@ import UserCalendar from "../../Calendar/UserCalendar/UserCalendar";
 import { useLocation, useParams } from "react-router-dom";
 
 const UserPage = () => {
-
-  const { id } = useParams();
+	const { id } = useParams();
 	const dispatch = useDispatch();
 	const [modal, setModal] = useState(false);
 
@@ -29,13 +28,13 @@ const UserPage = () => {
 		dispatch(__getUserReject(id));
 	}, [dispatch]);
 
-  const userInfo = useSelector((state) => state.mypage?.userInfo);
-  const userEnroll = useSelector((state) => state.mypage?.userEnroll);
-  const userWait = useSelector((state) => state.mypage?.userWait);
-  const userPass = useSelector((state) => state.mypage?.userPass);
-  const userReject = useSelector((state) => state.mypage?.userReject);
+	const userInfo = useSelector(state => state.mypage?.userInfo);
+	const userEnroll = useSelector(state => state.mypage?.userEnroll);
+	const userWait = useSelector(state => state.mypage?.userWait);
+	const userPass = useSelector(state => state.mypage?.userPass);
+	const userReject = useSelector(state => state.mypage?.userReject);
 
-  const { state } = useLocation();
+	const { state } = useLocation();
 	const [userPageOpt, setUserPageOpt] = useState("wait");
 
 	const onClickHandler = e => {
@@ -52,9 +51,10 @@ const UserPage = () => {
 					userPass={userPass.length}
 					userReject={userReject.length}
 					setUserPageOpt={setUserPageOpt}
+					callendarData={userEnroll}
 				/>
-				{modal === false && userEnroll.length > 0 ? <UserCalendar userEnroll={userEnroll} /> : ""}
-				<BtnBox onClick={onClickHandler}>캘린더 닫기</BtnBox>
+				{/* {modal === false && userEnroll.length > 0 ? <UserCalendar userEnroll={userEnroll} /> : ""}
+				<BtnBox onClick={onClickHandler}>캘린더 닫기</BtnBox> */}
 				{userPageOpt === "enroll" ? (
 					<MyPageCards>
 						<h1>봉사 신청 내역</h1>

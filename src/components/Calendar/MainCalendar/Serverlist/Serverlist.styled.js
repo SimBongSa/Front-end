@@ -7,6 +7,11 @@ export const StServerListContainer = styled.div`
 	margin-top: 2rem;
 	border-bottom: 1px solid ${props => props.theme.textColor};
 	color: ${props => props.theme.textColor};
+	cursor: pointer;
+	transition: all 0.5s ease;
+	&:hover {
+		transform: translateY(-0.5rem);
+	}
 `;
 
 export const StServerListImg = styled.div`

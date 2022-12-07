@@ -14,19 +14,19 @@ import {
 	CommentTitleWrap,
 	CommentBtnWrap,
 	Box,
-	UserIcon,
 	CommentInput,
 	Div,
 	Date,
 	CommentDiv,
-	CommentIcon,
+	UserIcon,
+	StImgBox,
 } from "./Comment.styled";
 import Stbtn from "../../common/button/Button";
 import Input from "../../common/input/Input";
-import { __getOtherUserInfo } from "../../../redux/modules/mypageSlice";
+import Profileimg from "../../common/profileimg/Profileimg";
+import { __getOtherUserEnroll, __getOtherUserInfo } from "../../../redux/modules/mypageSlice";
 
 function Comment() {
-
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
 	const { id } = useParams();
@@ -34,10 +34,10 @@ function Comment() {
 	const [cookies] = useCookies(["Authorization"]);
 	const userName = cookies["username"];
 
-	const commentTotalList = useSelector((state) => state.comment.commentTotalList);
-	const commentList = useSelector((state) => state.comment.commentList);
-	const otherUserInfo = useSelector((state) => state.mypage.otherUserInfo);
-	console.log(otherUserInfo)
+	const commentTotalList = useSelector(state => state.comment.commentTotalList);
+	const commentList = useSelector(state => state.comment.commentList);
+	const otherUserInfo = useSelector(state => state.mypage.otherUserInfo);
+	console.log(otherUserInfo);
 
 	const [editCommentId, setEditCommentId] = useState([]);
 	const [content, setContent] = useState();
@@ -55,16 +55,15 @@ function Comment() {
 	// }, [dispatch, id]);
 	// console.log(commentTotalList);
 
-	const onChangeHalder = useCallback(
-		e => {
-			setContent(e.target.value);
-		},
-		[content]
-	);
-
+	const onChangeHalder = useCallback(e => {
+		setContent(e.target.value);
+	}, []);
+	console.log(commentList);
 	return (
 		<MainComponent>
-			<UserIcon />
+			<StImgBox>
+				<img src={process.env.PUBLIC_URL + "/image/32badge1.png"} alt="user" />
+			</StImgBox>
 			<CommentWriteWrap>
 				<Input
 					type="text"
@@ -93,16 +92,18 @@ function Comment() {
 							<Box key={index}>
 								<CommentTitleWrap>
 									<div>
-										<CommentIcon 
+										<img
+											src={process.env.PUBLIC_URL + "/image/32badge1.png"}
+											alt="user"
 											onClick={() => {
-												dispatch(__getOtherUserInfo(item.memberId))
+												dispatch(__getOtherUserInfo(item.memberId));
 												// dispatch(__getOtherUserEnroll(item.memberId))
-												navigate(`/usermypage/${item.memberId}`, {state: otherUserInfo})
+												navigate(`/usermypage/${item.memberId}`, { state: otherUserInfo });
 											}}
 										/>
 										<div>
 											<h2>{item?.username}</h2>
-											<Date>{item.createdAt.split("T")[0].substring(0,10)}</Date>
+											<Date>{item.createdAt.split("T")[0].substring(0, 10)}</Date>
 										</div>
 									</div>
 									<CommentBtnWrap>
