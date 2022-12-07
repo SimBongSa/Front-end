@@ -180,12 +180,14 @@ export const Stbtn = styled.button`
 					width: 60%;
 					height: 3rem;
 					border-radius: 24px;
-					margin-top: 3rem;
-					margin-bottom: 5rem;
-					margin-left: 1rem;
+					margin-top: 1rem;
+					margin-left: 2rem;
 					background: ${props => props.theme.btnColor};
 					border: 1px solid ${props => props.theme.btnColor};
 					color: ${props => props.theme.bgColor};
+					@media (max-width: 1024px) {
+						margin-left: 0;
+					}
 				`;
 
 			case "board-edit":

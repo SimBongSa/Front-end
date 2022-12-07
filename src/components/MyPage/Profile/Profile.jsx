@@ -29,7 +29,6 @@ const Profile = ({
   return (
     <ProfileContainer>
       <ProfileBox>
-        {/* 이거 삼항연산자 넘 그지같아서 수정해야 함 - 성호 */}
         {companyInfo && companyInfo?.profileImage ? (
           <img src={companyInfo?.profileImage} alt="user" />
         ) : null }
@@ -71,10 +70,6 @@ const Profile = ({
               <h3>{userInfo.name}</h3>
               <h5>{userInfo.phoneNumber}</h5>
               <h5>{userInfo.email}</h5>
-            <ProfileCategory>
-
-            </ProfileCategory>
-
             <Button 
               variant="mypage-edit"               
               onClick={() => {
@@ -104,18 +99,6 @@ const Profile = ({
             <h4>봉사 신청 내역</h4>
             <h4>참여 봉사 관리</h4>
             <h4>캘린더</h4>
-            {/* <h4 onClick={() => {
-              setUserPageOpt("enroll");
-            }}>봉사 신청 내역</h4>
-            <h4 onClick={() => {
-              setUserPageOpt("wait");
-            }}>승인 대기중</h4>
-            <h4 onClick={() => {
-              setUserPageOpt("pass");
-            }}>참여 봉사 관리</h4>
-            <h4 onClick={() => {
-              setUserPageOpt("reject");
-            }}>거절된 봉사</h4> */}
             <span/>
             <h4 onClick={() => {
               logOut();
@@ -126,6 +109,7 @@ const Profile = ({
           </h4>
         </ProfileMisc>
       ) : null}
+
       {companyInfo ? (
         <ProfileMisc>
           <h2>봉사 현황</h2>
@@ -166,14 +150,21 @@ export const ProfileInfo = styled.div`
   text-align: left;
   & h3 {
     text-align: center;
+
   }
   & h5 {
-    padding-left: 1rem;
+    padding-left: 2rem;
     color: ${(props) => props.theme.subTextColor};
+    @media (max-width: 1024px) {
+      padding-left: 0;
+    }
   }
   & p {
-    padding-left: 1rem;
+    padding-left: 2rem;
   }
+  @media (max-width: 1024px) {
+      text-align: center;
+    }
 `
 
 export const MyActivity = styled.div`

@@ -21,11 +21,10 @@ import {
 	Date,
 	CommentDiv,
 	CommentIcon,
-	StPageBtn,
-	StComment,
 } from "./Comment.styled";
 import Stbtn from "../../common/button/Button";
 import Input from "../../common/input/Input";
+import { __getOtherUserEnroll, __getOtherUserInfo } from "../../../redux/modules/mypageSlice";
 
 function Comment() {
 	const [cookies] = useCookies(["Authorization"]);
@@ -93,10 +92,15 @@ function Comment() {
 							<Box key={index}>
 								<CommentTitleWrap>
 									<div>
-										<CommentIcon />
+										<CommentIcon 
+											onClick={() => {
+												dispatch(__getOtherUserInfo(item.userId))
+												dispatch(__getOtherUserEnroll(item.userId))
+											}}
+										/>
 										<div>
 											<h2>{item?.username}</h2>
-											<Date>{item.createdAt.split("T")[0]}</Date>
+											<Date>{item.createdAt.split("T")[0].substring(0,10)}</Date>
 										</div>
 									</div>
 									<CommentBtnWrap>
@@ -156,16 +160,6 @@ function Comment() {
 						);
 				  })
 				: ""}
-			{/* {commentTotalList?.length > 4 ? (
-				<StPageBtn
-					onClick={() => {
-						setPage(prev => prev + 1);
-						dispatch(__getComment({ id, page, size }));
-					}}
-				>
-					댓글 더보기
-				</StPageBtn>
-			) : null} */}
 		</MainComponent>
 	);
 }
