@@ -77,8 +77,6 @@ const SearchBar = () => {
 	const [startDate, setStartDate] = useState(today);
 	const [endDate, setEndDate] = useState(today);
 
-
-
 	return (
 		<SearchBarContainer ref={node} modal={modal} animation={animation}>
 			{modal === false ? (
@@ -110,29 +108,30 @@ const SearchBar = () => {
 										</select>
 									</li>
 									<li>
-											<PickerBox>
-												<CustomeDatePicker
-													name={'startDate'}
-													locale={ko}
-													dateFormat="📅 yyyy년-MM월-dd일"
-													selected={startDate}
-													onChange={date => setStartDate(date)}
-													selectsStart
-													startDate={startDate}
-													endDate={endDate}
-												/>
-												<CustomeDatePicker
-													name={'endDate'}
-													locale={ko}
-													dateFormat="📅 yyyy년-MM월-dd일 "
-													selected={endDate}
-													onChange={date => setEndDate(date)}
-													selectsEnd
-													startDate={startDate}
-													endDate={endDate}
-													minDate={startDate}
-												/>
-											</PickerBox>
+										<PickerBox>
+											<CustomeDatePicker
+												name={'startDate'}
+												locale={ko}
+												dateFormat="MM월-dd일"
+												selected={startDate}
+												onChange={date => setStartDate(date)}
+												selectsStart
+												startDate={startDate}
+												endDate={endDate}
+											/>
+											<span>~</span>
+											<CustomeDatePicker
+												name={'endDate'}
+												locale={ko}
+												dateFormat="MM월-dd일 "
+												selected={endDate}
+												onChange={date => setEndDate(date)}
+												selectsEnd
+												startDate={startDate}
+												endDate={endDate}
+												minDate={startDate}
+											/>
+										</PickerBox>
 									</li>
 									<li>
 										<h4>Location</h4>

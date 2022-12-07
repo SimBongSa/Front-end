@@ -119,13 +119,13 @@ export const apis = {
 	getOtherUserEnroll: id => api.get(`${BASE_URL}/mypage/${id}/enroll/pass`),
 
 	// MyPage (Company)
-	getCompanyPage: (id) =>
+	getCompanyPage: id =>
 		api.get(`${BASE_URL}/companypage/${id}`, {
 			headers: {
 				Authorization: token,
 			},
 		}),
-	getCompanyBoards: (id) =>
+	getCompanyBoards: id =>
 		api.get(`${BASE_URL}/companypage/${id}/boards`, {
 			headers: {
 				Authorization: token,
@@ -172,6 +172,7 @@ export const apis = {
 		),
 	getOtherCompanyInfo: id => api.get(`${BASE_URL}/companypage/${id}`),
 	getOtherCompanyBoards: id => api.get(`${BASE_URL}/companypage/${id}/boards`),
+
 	//commentSlice
 	getTotalComment: payload =>
 		axios.get(`${BASE_URL}/boards/${payload}`, {
@@ -185,12 +186,6 @@ export const apis = {
 				Authorization: token,
 			},
 		}),
-	// getComment: payload =>
-	// axios.get(`${BASE_URL}/boards/${payload.id}?page=${payload.page}&size=${payload.size}`, {
-	// 	headers: {
-	// 		Authorization: token,
-	// 	},
-	// }),
 	postComment: payload =>
 		axios.post(
 			`${BASE_URL}/comments/${payload.id}`,
@@ -216,7 +211,12 @@ export const apis = {
 	// Search
 	getSearchBoards: payload =>
 		axios.get(
-			`${BASE_URL}/boards/search?tag=${payload.category}&startDate=${payload.startDate}&endDate=${payload.endDate}&area=${payload.location}`
+			`${BASE_URL}/boards/search?tag=${payload.category}&startDate=${payload.startDate}&endDate=${payload.endDate}&area=${payload.location}`,
+			{
+				headers: {
+					contentType: "application/json;",
+				},
+			}
 		),
 
 	// Chat Apis

@@ -70,8 +70,8 @@ export const LoginBox = styled.div`
 	flex-direction: column;
 	justify-content: space-evenly;
 	font-size: 3rem;
-	color: ${props => props.theme.bgColor};
-	background-color: ${props => props.theme.btnColor};
+	color: ${props => props.theme.textColor};
+	background-color: ${props => props.theme.subBgColor};
 	transition: all 0.5s;
 	& span {
 		display: flex;
@@ -86,13 +86,13 @@ export const LoginBoxTitle = styled.div`
 	display: flex;
 	justify-content: space-between;
 	margin-bottom: 1rem;
-	border-bottom: 3px solid ${props => props.theme.bgColor};
+	border-bottom: 3px solid ${props => props.theme.textColor};
 `;
 export const LoginArrowBack = styled(BiArrowBack)`
 	cursor: pointer;
 	display: flex;
 	font-size: 1.8rem;
-	color: ${props => props.theme.bgColor};
+	color: ${props => props.theme.textColor};
 	transition: all 0.3s;
 	&:hover {
 		transform: translateX(-10%);
@@ -123,7 +123,7 @@ export const LoginBtn = styled.button`
 
 export const LoginTitle = styled.h4`
 	cursor: pointer;
-	color: ${props => props.theme.bgColor};
+	color: ${props => props.theme.textColor};
 `;
 
 export const StLoginOptions = styled.div`

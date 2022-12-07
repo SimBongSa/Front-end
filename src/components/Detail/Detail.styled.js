@@ -83,7 +83,7 @@ export const StArea = styled.span`
 	background-color: gray;
 	font-weight: 300;
 	max-width: 350px;
-	color: ${props => props.theme.bgColor};
+	color: ${props => props.theme.textColor};
 `;
 
 export const StDetailTag = styled.div`

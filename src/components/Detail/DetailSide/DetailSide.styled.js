@@ -9,8 +9,14 @@ export const DetailSide = styled.div`
 	width: 28rem;
 	height: fit-content;
 	margin: 0rem 5rem 1rem 1rem;
-	padding: 1rem;
+	padding: 2rem;
 	background: ${props => props.theme.subBgColor};
+	& h1 {
+		font-size: 1.5rem;
+		font-weight: 300;
+		padding: 1rem;
+		text-align: center;
+	}
 	@media screen and (max-width: 1024px) {
 		position: relative;
 		width: 600px;
@@ -25,6 +31,9 @@ export const StDateBox = styled.span`
 	justify-content: center;
 	align-items: center;
 	padding-top: 1rem;
+	& h1 {
+		width: 100%;
+	}
 	& div {
 		font-size: 1.2rem;
 		font-weight: 300;

@@ -35,9 +35,10 @@ const Header = () => {
 			</LightThemeBtn>
 			<HeaderMenu>
 				<HeaderMenuItem onClick={() => navigate("/boards")}>Boards</HeaderMenuItem>
+
 				{isLogin && authority === "ROLE_MEMBER" ? (
 					<>
-						<HeaderMenuItem onClick={() => navigate('/chat')}>메시지</HeaderMenuItem>
+						<HeaderMenuItem onClick={() => navigate("/chat")}>메시지</HeaderMenuItem>
 						<HeaderMenuItem>알림</HeaderMenuItem>
 						<UserIcon
 							onClick={() => {
@@ -47,7 +48,7 @@ const Header = () => {
 					</>
 				) : isLogin && authority === "ROLE_ADMIN" ? (
 					<>
-						<HeaderMenuItem onClick={() => navigate('/chat')}>메시지</HeaderMenuItem>
+						<HeaderMenuItem onClick={() => navigate("/chat")}>메시지</HeaderMenuItem>
 						<HeaderMenuItem>알림</HeaderMenuItem>
 						<HeaderMenuItem
 							onClick={() => {
@@ -58,7 +59,7 @@ const Header = () => {
 						</HeaderMenuItem>
 						<UserIcon
 							onClick={() => {
-								navigate("/companypage");
+								navigate(`/companypage/${cookies.ID}`);
 							}}
 						/>
 					</>

@@ -26,6 +26,7 @@ const Profile = ({
 	const authority = cookies["authority"];
 
 	console.log(userInfo);
+	console.log(companyInfo);
 
 	return (
 		<ProfileContainer>

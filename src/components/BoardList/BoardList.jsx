@@ -19,20 +19,17 @@ const Board = () => {
 
 	const [modal, setModal] = useState(false);
 
-	useEffect(() => {
-		dispatch(__getBoard({ page, size }));
-	}, [dispatch, size, page]);
-
 	// 검색을 통해 들어온 경우,
 	const { state } = useLocation();
 	console.log("검색결과", state);
 
 	if (state) {
-		const pageNum = Math.round(12 / state.length);
+		const pageNum = Math.floor(12 / state.length);
 		return (
 			<BoardContainer>
 				<StTitle>
 					<div>봉사 검색 결과</div>
+					검색결과임
 					<div>{state.length}개</div>
 				</StTitle>
 				<BoardContent>
@@ -68,8 +65,12 @@ const Board = () => {
 						<Stbtn
 							variant="boards-prev-next"
 							onClick={() => {
-								setPage(prev => prev + 1);
-								dispatch(__getBoard({ page, size }));
+								if (page === Math.floor(12 / state.length)) {
+									alert("마지막 페이지입니다")
+								} else {
+									setPage(prev => prev + 1);
+									dispatch(__getBoard({ page, size }));
+								}
 							}}
 						>
 							❯
@@ -78,6 +79,10 @@ const Board = () => {
 				</BoardContent>
 			</BoardContainer>
 		)
+	} else if (state?.length === 0) {
+		<BoardContainer>
+			검색 결과가 없습니다
+		</BoardContainer>
 	} else {
 		// 그냥 게시물 리스트
 		return (
@@ -115,12 +120,16 @@ const Board = () => {
 								❮
 							</Stbtn>
 						)}
-						<div>{page}/14</div>
+						<div>{page}/{Math.floor(12 / boards.length)}</div>
 						<Stbtn
 							variant="boards-prev-next"
 							onClick={() => {
-								setPage(prev => prev + 1);
-								dispatch(__getBoard({ page, size }));
+								if (page === Math.floor(12 / boards.length)) {
+									alert("마지막 페이지입니다.")
+								} else {
+									setPage(prev => prev + 1);
+									dispatch(__getBoard({ page, size }));
+								}
 							}}
 						>
 							❯

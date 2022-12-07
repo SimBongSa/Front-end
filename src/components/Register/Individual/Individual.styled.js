@@ -27,3 +27,10 @@ export const InputBox = styled.div`
 		font-size: 12px;
 	}
 `;
+
+export const StLegend = styled.legend`
+	font-size: 1.4em;
+	margin-top: 15px;
+	margin-bottom: 0px;
+	text-align: left;
+`;

@@ -2,7 +2,6 @@ import { useState, useEffect, useCallback } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { useCookies } from "react-cookie";
 import {
-	__getTotalComment,
 	__getComment,
 	__postComment,
 	__putComment,
