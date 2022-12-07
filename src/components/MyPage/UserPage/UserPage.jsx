@@ -13,7 +13,7 @@ import styled from "styled-components";
 import MyProcess from "../MyProcess/MyProcess";
 import { MyPageCards } from "./UserPage.styled";
 import UserCalendar from "../../Calendar/UserCalendar/UserCalendar";
-import { useLocation, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 const UserPage = () => {
 	const { id } = useParams();
@@ -37,7 +37,7 @@ const UserPage = () => {
 	const { state } = useLocation();
 	const [userPageOpt, setUserPageOpt] = useState("wait");
 
-	const onClickHandler = e => {
+	const onClickHandler = (e) => {
 		setModal(true);
 	};
 

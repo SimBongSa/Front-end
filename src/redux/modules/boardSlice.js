@@ -58,8 +58,6 @@ export const __getSearchBoards = createAsyncThunk(
       if (response.status === 200) {
         console.log(response)
         return thunkAPI.fulfillWithValue(response.data.data);
-      } else {
-        alert("검색 결과가 없습니다.")
       }
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
@@ -137,6 +135,7 @@ export const boardSlice = createSlice({
 	initialState: {
 		boards: [],
 		board: [],
+    searchResult: [],
 		area: [],
 		apply: "",
 		status: null,
@@ -189,10 +188,11 @@ export const boardSlice = createSlice({
 			// GET Search
 			.addCase(__getSearchBoards.pending, (state, _) => {
 				state.isLoading = true;
+        state.searchResult = [];
 			})
 			.addCase(__getSearchBoards.fulfilled, (state, action) => {
 				state.isLoading = false;
-				state.boards = action.payload;
+				state.searchResult = action.payload;
 			})
 			.addCase(__getSearchBoards.rejected, (state, action) => {
 				state.isLoading = false;

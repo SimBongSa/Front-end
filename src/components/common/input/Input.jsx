@@ -19,6 +19,7 @@ const Input = ({
 	const dispatch = useDispatch();
 
 	const usernameCheck = useSelector(state => state.register.usernameCheck);
+	console.log(nameMessage)
 
 	return (
 		<StInputContainer>

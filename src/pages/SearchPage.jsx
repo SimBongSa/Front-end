@@ -1,13 +1,13 @@
 import Header from "../components/Header/Header";
 import Footer from "../components/Footer/Footer";
-import BoardList from "../components/BoardList/BoardList";
+import SearchList from "../components/BoardList/SearchList.jsx/SearchList";
 
 export const BoardListPage = () => {
 
 	return (
 		<>
 			<Header />
-			<BoardList />
+			<SearchList/>
 			<Footer />
 		</>
 	);
