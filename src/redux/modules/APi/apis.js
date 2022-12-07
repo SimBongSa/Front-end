@@ -77,32 +77,32 @@ export const apis = {
 		}),
 
 	// MyPage (User)
-	getUserPage: () =>
-		api.get(`${BASE_URL}/mypage`, {
+	getUserPage: (id) =>
+		api.get(`${BASE_URL}/mypage/${id}`, {
 			headers: {
 				Authorization: token,
 			},
 		}),
-	getUserEnroll: () =>
-		api.get(`${BASE_URL}/mypage/enroll`, {
+	getUserEnroll: (id) =>
+		api.get(`${BASE_URL}/mypage/${id}/enroll`, {
 			headers: {
 				Authorization: token,
 			},
 		}),
-	getUserWait: () =>
-		api.get(`${BASE_URL}/mypage/enroll/wait`, {
+	getUserWait: (id) =>
+		api.get(`${BASE_URL}/mypage/${id}/enroll/wait`, {
 			headers: {
 				Authorization: token,
 			},
 		}),
-	getUserPass: () =>
-		api.get(`${BASE_URL}/mypage/enroll/pass`, {
+	getUserPass: (id) =>
+		api.get(`${BASE_URL}/mypage/${id}/enroll/pass`, {
 			headers: {
 				Authorization: token,
 			},
 		}),
-	getUserReject: () =>
-		api.get(`${BASE_URL}/mypage/enroll/fail`, {
+	getUserReject: (id) =>
+		api.get(`${BASE_URL}/mypage/${id}/enroll/fail`, {
 			headers: {
 				Authorization: token,
 			},
