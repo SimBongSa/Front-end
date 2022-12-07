@@ -3,6 +3,7 @@ import { MyProcessContainer, ProcessStepWrap, ProcessStep, ProcessCircle, StepTi
 import { IoIosArrowDown } from "react-icons/io";
 
 const MyProcess = ({ userEnroll, userWait, userPass, userReject, setUserPageOpt }) => {
+  
   return (
     <MyProcessContainer>
       <h1>봉사 현황</h1>

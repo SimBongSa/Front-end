@@ -14,6 +14,7 @@ import DetailEdit from "../components/Detail/DetailEdit";
 import { MyPageEdit } from "../pages/MyPageEdit";
 import { ChatPage } from "../pages/ChatPage";
 import ChatContent from "../components/Chat/ChatContent/ChatContent";
+import SearchPage from "../pages/SearchPage"
 
 const Router = () => {
   return (
@@ -25,6 +26,7 @@ const Router = () => {
             <Route path="/" element={<MainPage />} />
             <Route path="/boards" element={<BoardListPage />} />
             <Route path="/boards/:id" element={<DetailPage />} />
+            <Route path="/search" element={<SearchPage />} />
             <Route path="/edit/:id" element={<DetailEdit />} />
             <Route path="/login" element={<LoginPage />} />
             <Route path="/register" element={<RegisterPage />} />
