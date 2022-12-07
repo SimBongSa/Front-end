@@ -62,7 +62,7 @@ const Individual = () => {
 					setNameMessage("4 ~ 16글자, 알파벳 소문자, 대문자, 숫자만 가능합니다.");
 					setIsName(false);
 					if (!usernameRegex.test(value)) {
-						setNameMessage("형식이 틀렸읍니다. 확인 바랍니다.");
+						setNameMessage("형식이 틀렸습니다. 확인 바랍니다.");
 					}
 				} else {
 					setNameMessage("사용 가능합니다.");
@@ -85,7 +85,7 @@ const Individual = () => {
 					setPasswordMessage("8 ~ 20자, 알파벳 대소문자, 숫자, 특수문자로 구성됩니다.");
 					setIsPw(false);
 					if (!pwRegex.test(value)) {
-						setPasswordMessage("형식이 틀렸읍니다. 확인 바랍니다");
+						setPasswordMessage("형식이 틀렸습니다. 확인 바랍니다");
 					}
 				} else {
 					setPasswordMessage("사용 가능합니다.");

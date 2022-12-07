@@ -2,7 +2,6 @@ import { useState, useEffect, useCallback } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { useCookies } from "react-cookie";
 import {
-	__getTotalComment,
 	__getComment,
 	__postComment,
 	__putComment,
@@ -24,7 +23,7 @@ import {
 } from "./Comment.styled";
 import Stbtn from "../../common/button/Button";
 import Input from "../../common/input/Input";
-import { __getOtherUserEnroll, __getOtherUserInfo } from "../../../redux/modules/mypageSlice";
+import { __getOtherUserInfo } from "../../../redux/modules/mypageSlice";
 
 function Comment() {
 
