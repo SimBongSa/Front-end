@@ -8,6 +8,7 @@ export const ChatList = ({ chatList }) => {
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  console.log(chatList)
 
   return (
     <StSidePanel>
@@ -15,21 +16,23 @@ export const ChatList = ({ chatList }) => {
       <StContact>
         <ul>
           {
-            chatList?.map((item, idx) => {
-              return(
-                <ListGroup 
-                  key={idx}
-                  onClick={() => {
-                    navigate(`/chat/${item.chatRoomId}`);
-                    dispatch(__getBoardId(item.boardId));
-                  }}
-                >
-                  <StContactWrap>
-                    {item.roomName}
-                  </StContactWrap>
-                </ListGroup>
-              )
-            })
+            chatList ? (
+                chatList?.map((item, idx) => {
+                  return(
+                    <ListGroup 
+                      key={idx}
+                      onClick={() => {
+                        navigate(`/chat/${item.chatRoomId}`);
+                        dispatch(__getBoardId(item.boardId));
+                      }}
+                    >
+                      <StContactWrap>
+                        {item.roomName}
+                      </StContactWrap>
+                    </ListGroup>
+                  )
+                })
+            ) : (<div>{chatList}</div>)
           }
         </ul>
       </StContact>
@@ -41,5 +44,4 @@ export default ChatList;
 
 export const ListGroup = styled.li`
   margin: auto 15px;
-  /* box-shadow: 0px 4px 8px 0px #d8d4d4; */
 `

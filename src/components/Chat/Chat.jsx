@@ -17,6 +17,7 @@ export const Chat = () => {
   const token = getCookieToken(["access-token"]);
   const username = getCookieToken(["username"]);
   const chatList = useSelector((state) => state?.chat?.chatList);
+  console.log(chatList);
 
   const [chatLog, setChatLog] = useState([]);
   const [receiveMsg, setReceiveMsg] = useState('');
