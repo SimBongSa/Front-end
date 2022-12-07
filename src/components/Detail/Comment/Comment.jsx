@@ -124,7 +124,7 @@ function Comment() {
 													onClick={() => {
 														dispatch(__getOtherUserInfo(item.memberId));
 														// dispatch(__getOtherUserEnroll(item.memberId))
-														navigate(`/usermypage/${item.memberId}`, { state: otherUserInfo });
+														navigate(`/companypage/${item.memberId}`, { state: otherUserInfo });
 													}}
 												/>
 											) : (
@@ -134,7 +134,7 @@ function Comment() {
 													onClick={() => {
 														dispatch(__getOtherUserInfo(item.memberId));
 														// dispatch(__getOtherUserEnroll(item.memberId))
-														navigate(`/usermypage/${item.memberId}`, { state: otherUserInfo });
+														navigate(`/companypage/${item.memberId}`, { state: otherUserInfo });
 													}}
 												/>
 											)
