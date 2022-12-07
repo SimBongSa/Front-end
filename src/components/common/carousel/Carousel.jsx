@@ -38,7 +38,7 @@ const Carousel = () => {
 			<CarouselContainer>
 				<h1>모집 종료 예정인 봉사활동</h1>
 				<SlideTrack>
-					{boardList.map((item, index) => {
+					{boardList?.map((item, index) => {
 						const dDay = getDateDiff(item.dueDay, today);
 						return (
 							<Slide key={index}>
