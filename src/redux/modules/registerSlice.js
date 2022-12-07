@@ -35,10 +35,9 @@ export const __loginMember = createAsyncThunk("loginMember", async (payload, thu
 	}
 });
 
-export const __registerMember = createAsyncThunk("regitsterMember", async (payload, thunkAPI) => {
+export const __registerMember = createAsyncThunk("regitserMember", async (payload, thunkAPI) => {
 	try {
 		const response = await apis.memberSignup(payload);
-		console.log(response);
 		return thunkAPI.fulfillWithValue(response.data);
 	} catch (error) {
 		return thunkAPI.rejectWithValue(error);
@@ -52,10 +51,8 @@ export const __registerManager = createAsyncThunk("registerManager", async (payl
 	});
 	try {
 		const response = await apis.managerSignup(payload);
-		console.log("registerManager =>", response);
 		if (response.status === 200) {
-			alert("회원가입이 완료되었습니다.");
-			return thunkAPI.fulfillWithValue(response);
+			return thunkAPI.fulfillWithValue(response.data);
 		}
 	} catch (error) {
 		return thunkAPI.rejectWithValue(error);
@@ -100,7 +97,6 @@ export const registerSlice = createSlice({
 		usernameCheck: "",
 		nicknameCheck: "",
 		successCheck: "",
-		organiStatus: null,
 		statusCode: null,
 		isLoading: false,
 		error: "",
@@ -170,8 +166,8 @@ export const registerSlice = createSlice({
 			})
 			.addCase(__registerManager.fulfilled, (state, action) => {
 				state.isLoading = false;
-				state.organiStatus = action.payload.status;
-				state.managerInfo.concat(action.payload.data);
+				state.managerInfo.concat(action.payload);
+				state.successCheck = action.payload;
 			})
 			.addCase(__registerManager.rejected, (state, action) => {
 				state.isLoading = false;
