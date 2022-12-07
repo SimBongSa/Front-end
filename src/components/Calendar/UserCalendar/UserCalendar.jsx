@@ -17,7 +17,8 @@ const UserCalendar = ({ userEnroll }) => {
 
 	const getElCount = mark => mark.reduce((ac, v) => ({ ...ac, [v]: (ac[v] || 0) + 1 }), {});
 	const arr = getElCount(mark);
-
+	console.log(userEnroll);
+	console.log(mark);
 	return (
 		<>
 			<StCalendarContainer>
@@ -25,7 +26,6 @@ const UserCalendar = ({ userEnroll }) => {
 					<StCalendar
 						onChange={setValue}
 						formatDay={(locale, date) => moment(date).format("DD")}
-						locale="en-EN"
 						value={value}
 						next2Label={null}
 						prev2Label={null}
@@ -47,7 +47,7 @@ const UserCalendar = ({ userEnroll }) => {
 							}
 							return (
 								<>
-									<div className="dotdiv">{html}</div>
+									<div className="html">{html}</div>
 								</>
 							);
 						}}
