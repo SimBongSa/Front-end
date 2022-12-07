@@ -78,13 +78,13 @@ const MyProcess = ({
 			)}
 			<StOpenCalendar>
 				{modal === false ? (
-					<>
-						캘린더 닫기 <IoIosArrowUp onClick={onClickCloseHandler} />
-					</>
+					<div onClick={onClickCloseHandler}>
+						캘린더 닫기 <IoIosArrowUp />
+					</div>
 				) : (
-					<>
-						캘린더 보기 <IoIosArrowDown onClick={onClickOpenHandler} />
-					</>
+					<div onClick={onClickOpenHandler} >
+						캘린더 보기 <IoIosArrowDown/>
+					</div>
 				)}
 			</StOpenCalendar>
 		</MyProcessContainer>
@@ -101,7 +101,7 @@ export const StOpenCalendar = styled.div`
 	margin: 0 auto;
 	margin-left: 5rem;
 	padding-top: 1rem;
-	/* border: 5px solid red; */
+	transition: all 0.5s;
 	@media (max-width: 1024px) {
 		margin: 0 auto;
 		float: left;
