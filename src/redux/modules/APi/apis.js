@@ -119,14 +119,14 @@ export const apis = {
 	getOtherUserEnroll: id => api.get(`${BASE_URL}/mypage/${id}/enroll/pass`),
 
 	// MyPage (Company)
-	getCompanyPage: () =>
-		api.get(`${BASE_URL}/companypage`, {
+	getCompanyPage: (id) =>
+		api.get(`${BASE_URL}/companypage/${id}`, {
 			headers: {
 				Authorization: token,
 			},
 		}),
-	getCompanyBoards: () =>
-		api.get(`${BASE_URL}/companypage/boards`, {
+	getCompanyBoards: (id) =>
+		api.get(`${BASE_URL}/companypage/${id}/boards`, {
 			headers: {
 				Authorization: token,
 			},
