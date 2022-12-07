@@ -28,7 +28,7 @@ export const StBody = styled.div`
 	& > div {
 		margin-top: 0.5rem;
 		margin-bottom: 1rem;
-		font-weight: bolder;
+		font-weight: 500;
 		font-size: 1.2rem;
 	}
 `;

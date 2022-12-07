@@ -1,15 +1,15 @@
 import { useState, useEffect } from "react";
-import { StCalendarContainer, StCalendarWrap, StCalendar, StDiv } from "./CustomerCalendar.styled";
+import { StCalendarContainer, StCalendarWrap, StCalendar, StDiv } from "./UserCalendar.styled";
 import moment from "moment";
 
-const CustomerCalendar = ({ companyBoards }) => {
+const UserCalendar = ({ userEnroll }) => {
 	const [value, setValue] = useState(new Date());
-	const [month, setMonth] = useState({ companyBoards });
+	const [month, setMonth] = useState({ userEnroll });
 	const [mark, setMark] = useState([]);
 
 	useEffect(() => {
 		if (month.constructor === Object && Object.keys(month).length !== 0) {
-			month.companyBoards.map(item => {
+			month.userEnroll.map(item => {
 				setMark(prev => [...prev, item.dueDay.split(" ")[0]]);
 			});
 		}
@@ -58,4 +58,4 @@ const CustomerCalendar = ({ companyBoards }) => {
 	);
 };
 
-export default CustomerCalendar;
+export default UserCalendar;
