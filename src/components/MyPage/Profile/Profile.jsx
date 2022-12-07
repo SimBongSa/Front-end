@@ -25,12 +25,14 @@ const Profile = ({
 	const [cookies] = useCookies(["Authorization"]);
 	const authority = cookies["authority"];
 
+	console.log(userInfo);
+
 	return (
 		<ProfileContainer>
 			<ProfileBox>
 				{authority === "ROLE_MEMBER" ? (
-					userInfo && userInfo?.profileImage ? (
-						<Profileimg variant="profile-user" src={userInfo?.profileImage} alt="user" />
+					userInfo && userInfo.profileImage ? (
+						<Profileimg variant="profile-user" src={userInfo.profileImage} alt="user" />
 					) : (
 						<Profileimg
 							variant="profile-user"
