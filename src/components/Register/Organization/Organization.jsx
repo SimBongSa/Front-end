@@ -1,29 +1,29 @@
 import { InputForm, InputBox, StLegend } from "../Individual/Individual.styled";
 import Input from "../../common/input/Input";
 import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { __registerManager } from "../../../redux/modules/registerSlice";
 import { InputHeader, StInputContainer, StRegBtn } from "../Register.styled";
 import { useCallback } from "react";
-
+import ImageUpload from "../../Recruit/ImageUpload/ImageUpload";
+import styled from "styled-components";
 
 const Organization = () => {
+	const init = {
+		authority: "ROLE_ADMIN",
+		username: "",
+		password: "",
+		passwordConfirm: "",
+		phoneNumber: "",
+		email: "",
+		licenseNumber: "",
+	};
 
-  const init = {
-    authority: "ROLE_ADMIN",
-    username: "",
-    password: "",
-    passwordConfirm: "",
-    phoneNumber: "",
-    email: "",
-    licenseNumber: "",
-  }
-
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
-  const [input, setInput] = useState(init);
-
+	const dispatch = useDispatch();
+	const navigate = useNavigate();
+	const [input, setInput] = useState(init);
+	const status = useSelector(state => state.register.organiStatus);
 	const onChangeHandler = useCallback(
 		e => {
 			const { name, value } = e.target;
@@ -32,28 +32,33 @@ const Organization = () => {
 		[input]
 	);
 
-  const onSubmitHandler = (e) => {
-    e.preventDefault();
-    dispatch(__registerManager({...input, licenseImage}));
-    setInput(init);
-  }
+	const onSubmitHandler = e => {
+		e.preventDefault();
+		dispatch(__registerManager({ ...input, licenseImage }));
+		setInput(init);
+		if (status === 200) {
+			alert("회원 가입 완료");
+			navigate("/login");
+		}
+	};
 
-  const [licenseImage, setLicenseImage] = useState(null);
-  const [licensePreview, setLicensePreview] = useState("");
+	const [licenseImage, setLicenseImage] = useState(null);
+	const [licensePreview, setLicensePreview] = useState("");
 
-  const onChangeImage = (e) => {
-    setLicenseImage(e.target.files[0]);
-    let reader = new FileReader();
-    if (e.target.files[0]) {
-      reader.readAsDataURL(e.target.files[0]);
-    }
-    reader.onloadend = () => {
-      const previewImgUrl = reader.result;
-      if (previewImgUrl) {
-        setLicensePreview(previewImgUrl);
-      }
-    };
-  };
+	const onChangeImage = e => {
+		setLicenseImage(e.target.files[0]);
+
+		let reader = new FileReader();
+		if (e.target.files[0]) {
+			reader.readAsDataURL(e.target.files[0]);
+		}
+		reader.onloadend = () => {
+			const previewImgUrl = reader.result;
+			if (previewImgUrl) {
+				setLicensePreview(previewImgUrl);
+			}
+		};
+	};
 
 	// 오류메시지 상태 저장
 	const [nameMessage, setNameMessage] = useState(
@@ -69,7 +74,7 @@ const Organization = () => {
 	const [isPw, setIsPw] = useState(false);
 	const [isPwConfirm, setIsPwConfirm] = useState(false);
 
-  const onUsernameChange = useCallback(
+	const onUsernameChange = useCallback(
 		e => {
 			const usernameRegex = /^[a-zA-Z0-9]{4,16}$/;
 			const { name, value } = e.target;
@@ -81,7 +86,7 @@ const Organization = () => {
 					setNameMessage("4 ~ 16글자, 알파벳 소문자, 대문자, 숫자만 가능합니다.");
 					setIsName(false);
 					if (!usernameRegex.test(value)) {
-						setNameMessage("형식이 틀렸습니다. 확인 바랍니다.");
+						setNameMessage("형식이 틀렸읍니다. 확인 바랍니다.");
 					}
 				} else {
 					setNameMessage("사용 가능합니다.");
@@ -130,85 +135,101 @@ const Organization = () => {
 		[input]
 	);
 
-
-  return(
-    <StInputContainer>
-      <InputHeader>Vongole</InputHeader>
-      <InputForm>
-        <InputBox>
-          <form onSubmit={onSubmitHandler}>
-            <StLegend>Your Basic Info</StLegend>
-            <Input 
+	return (
+		<StInputContainer>
+			<InputHeader>Vongole</InputHeader>
+			<InputForm>
+				<InputBox>
+					<form onSubmit={onSubmitHandler}>
+						<StLegend>Your Basic Info</StLegend>
+						<Input
 							placeholder="Username"
 							autoComplete="off"
 							dupleCheck="username"
-              type="text"
-              name="username"
-              value={input.username}
-              onChange={onUsernameChange}
-            />
-            <span>{nameMessage}</span>
-            <Input 
-              placeholder="Password"
-              type="password"
-              name="password"
-              value={input.password}
-              onChange={onPwChange}
-            />
-            <span>{passwordMessage}</span>
-            <Input 
-              placeholder="Confirm Password"
-              type="password"
-              name="passwordConfirm"
-              value={input.passwordConfirm}
-              onChange={onPwConfirmChange}
-            />
-            <span>{pwConfirmMessage}</span>
-            <StLegend>Your Company Info</StLegend>
-            <Input 
-              placeholder="Otganization Name"
-              type="text"
-              name="name"
-              value={input.name}
-              onChange={onChangeHandler}
-            />
-            <Input 
-              placeholder="Email"
-              type="email"
-              name="email"
-              value={input.email}
-              onChange={onChangeHandler}
-            />
-            <Input 
-              placeholder="License Number"
-              type="text"
-              name="licenseNumber"
-              value={input.licenseNumber}
-              onChange={onChangeHandler}
-            />
-            <input 
-              type="file"
-              accept="image/*"
-              name="licenseImage"
-              onChange={onChangeImage}
-            />
-            <div>
-              <img src={licensePreview} alt="licenseImage" />
-            </div>
-            <Input 
-              placeholder="Phone Number"
-              type="text"
-              name="phoneNumber"
-              value={input.phoneNumber}
-              onChange={onChangeHandler}
-            />
-            <StRegBtn type="submit">회원가입</StRegBtn>
-          </form>
-        </InputBox>
-        <span onClick={() => navigate("/login")}>You are already member? Log in Now</span>
-      </InputForm>
-    </StInputContainer>
-  )
+							nameMessage={nameMessage}
+							type="text"
+							name="username"
+							value={input.username}
+							onChange={onUsernameChange}
+						/>
+						<span>{nameMessage}</span>
+						<Input
+							placeholder="Password"
+							type="password"
+							name="password"
+							value={input.password}
+							onChange={onPwChange}
+						/>
+						<span>{passwordMessage}</span>
+						<Input
+							placeholder="Confirm Password"
+							type="password"
+							name="passwordConfirm"
+							value={input.passwordConfirm}
+							onChange={onPwConfirmChange}
+						/>
+						<span>{pwConfirmMessage}</span>
+						<StLegend>Your Company Info</StLegend>
+						<Input
+							placeholder="Organization Name"
+							type="text"
+							name="name"
+							value={input.name}
+							onChange={onChangeHandler}
+						/>
+						<Input
+							placeholder="Email"
+							type="email"
+							name="email"
+							value={input.email}
+							onChange={onChangeHandler}
+						/>
+						<Input
+							placeholder="License Number"
+							type="text"
+							name="licenseNumber"
+							value={input.licenseNumber}
+							onChange={onChangeHandler}
+						/>
+						<StLegend>Organization Image</StLegend>
+						<ImageWrap>
+							<ImageUpload onChangeImage={onChangeImage} uploadPreview={licensePreview} />
+						</ImageWrap>
+						<StLegend>Organization Manager Contact</StLegend>
+						<Input
+							placeholder="Phone Number"
+							type="text"
+							name="phoneNumber"
+							value={input.phoneNumber}
+							onChange={onChangeHandler}
+						/>
+						<StRegBtn type="submit">회원가입</StRegBtn>
+					</form>
+				</InputBox>
+				<span onClick={() => navigate("/login")}>You are already member? Log in Now</span>
+			</InputForm>
+		</StInputContainer>
+	);
 };
 
 export default Organization;
+
+{
+	/* <h4>클릭하여 업로드</h4>
+<span>권장사항: 000MB 이하 고화질</span> */
+}
+const ImageWrap = styled.div`
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	margin-right: 30px;
+	align-items: center;
+	& span {
+		align-items: center;
+		font-size: 15px;
+	}
+	& h4 {
+		align-items: center;
+		font-size: 20px;
+	}
+`;

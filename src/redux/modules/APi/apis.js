@@ -77,31 +77,31 @@ export const apis = {
 		}),
 
 	// MyPage (User)
-	getUserPage: (id) =>
+	getUserPage: id =>
 		api.get(`${BASE_URL}/mypage/${id}`, {
 			headers: {
 				Authorization: token,
 			},
 		}),
-	getUserEnroll: (id) =>
+	getUserEnroll: id =>
 		api.get(`${BASE_URL}/mypage/${id}/enroll`, {
 			headers: {
 				Authorization: token,
 			},
 		}),
-	getUserWait: (id) =>
+	getUserWait: id =>
 		api.get(`${BASE_URL}/mypage/${id}/enroll/wait`, {
 			headers: {
 				Authorization: token,
 			},
 		}),
-	getUserPass: (id) =>
+	getUserPass: id =>
 		api.get(`${BASE_URL}/mypage/${id}/enroll/pass`, {
 			headers: {
 				Authorization: token,
 			},
 		}),
-	getUserReject: (id) =>
+	getUserReject: id =>
 		api.get(`${BASE_URL}/mypage/${id}/enroll/fail`, {
 			headers: {
 				Authorization: token,
@@ -115,20 +115,17 @@ export const apis = {
 			},
 		}),
 
-	getOtherUserInfo: (id) =>
-		api.get(`${BASE_URL}/mypage/${id}`),
-	getOtherUserEnroll: (id) => 
-		api.get(`${BASE_URL}/mypage/${id}/enroll/pass`),
-	
+	getOtherUserInfo: id => api.get(`${BASE_URL}/mypage/${id}`),
+	getOtherUserEnroll: id => api.get(`${BASE_URL}/mypage/${id}/enroll/pass`),
 
 	// MyPage (Company)
-	getCompanyPage: (id) =>
+	getCompanyPage: id =>
 		api.get(`${BASE_URL}/companypage/${id}`, {
 			headers: {
 				Authorization: token,
 			},
 		}),
-	getCompanyBoards: (id) =>
+	getCompanyBoards: id =>
 		api.get(`${BASE_URL}/companypage/${id}/boards`, {
 			headers: {
 				Authorization: token,
@@ -154,22 +151,28 @@ export const apis = {
 			},
 		}),
 	putApprove: payload =>
-		api.put(`${BASE_URL}/companypage/approve/${payload}`, {}, {
-			headers: {
-				Authorization: token,
-			},
-		}),
+		api.put(
+			`${BASE_URL}/companypage/approve/${payload}`,
+			{},
+			{
+				headers: {
+					Authorization: token,
+				},
+			}
+		),
 	putDisapprove: payload =>
-		api.put(`${BASE_URL}/companypage/disapprove/${payload}`, {}, {
-			headers: {
-				Authorization: token,
-			},
-		}),
-	getOtherCompanyInfo: (id) =>
-		api.get(`${BASE_URL}/companypage/${id}`),
-	getOtherCompanyBoards: (id) =>
-		api.get(`${BASE_URL}/companypage/${id}/boards`),
-		
+		api.put(
+			`${BASE_URL}/companypage/disapprove/${payload}`,
+			{},
+			{
+				headers: {
+					Authorization: token,
+				},
+			}
+		),
+	getOtherCompanyInfo: id => api.get(`${BASE_URL}/companypage/${id}`),
+	getOtherCompanyBoards: id => api.get(`${BASE_URL}/companypage/${id}/boards`),
+
 	//commentSlice
 	getTotalComment: payload =>
 		axios.get(`${BASE_URL}/boards/${payload}`, {
@@ -208,10 +211,11 @@ export const apis = {
 	// Search
 	getSearchBoards: payload =>
 		axios.get(
-			`${BASE_URL}/boards/search?tag=${payload.category}&startDate=${payload.startDate}&endDate=${payload.endDate}&area=${payload.location}`, {
+			`${BASE_URL}/boards/search?tag=${payload.category}&startDate=${payload.startDate}&endDate=${payload.endDate}&area=${payload.location}`,
+			{
 				headers: {
-					contentType: "application/json;"
-				}
+					contentType: "application/json;",
+				},
 			}
 		),
 

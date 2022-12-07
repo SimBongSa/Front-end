@@ -35,7 +35,7 @@ export const __loginMember = createAsyncThunk("loginMember", async (payload, thu
 	}
 });
 
-export const __registerMember = createAsyncThunk("regitserMember", async (payload, thunkAPI) => {
+export const __registerMember = createAsyncThunk("regitsterMember", async (payload, thunkAPI) => {
 	try {
 		const response = await apis.memberSignup(payload);
 		console.log(response);
@@ -52,9 +52,10 @@ export const __registerManager = createAsyncThunk("registerManager", async (payl
 	});
 	try {
 		const response = await apis.managerSignup(payload);
-		console.log(response);
+		console.log("registerManager =>", response);
 		if (response.status === 200) {
-			return thunkAPI.fulfillWithValue(response.data);
+			alert("회원가입이 완료되었습니다.");
+			return thunkAPI.fulfillWithValue(response);
 		}
 	} catch (error) {
 		return thunkAPI.rejectWithValue(error);
@@ -99,6 +100,7 @@ export const registerSlice = createSlice({
 		usernameCheck: "",
 		nicknameCheck: "",
 		successCheck: "",
+		organiStatus: null,
 		statusCode: null,
 		isLoading: false,
 		error: "",
@@ -121,7 +123,6 @@ export const registerSlice = createSlice({
 				state.isLoading = false;
 				state.error = action.payload;
 			});
-
 
 		// Register
 		builder
@@ -169,8 +170,8 @@ export const registerSlice = createSlice({
 			})
 			.addCase(__registerManager.fulfilled, (state, action) => {
 				state.isLoading = false;
-				state.managerInfo.concat(action.payload);
-				state.successCheck = action.payload;
+				state.organiStatus = action.payload.status;
+				state.managerInfo.concat(action.payload.data);
 			})
 			.addCase(__registerManager.rejected, (state, action) => {
 				state.isLoading = false;
