@@ -1,6 +1,6 @@
 import CardGrid from "../common/cards/CardGrid";
 import { BoardContainer, BoardContent, StTitle, ListMap, StBtnBox } from "./BoardList.styled";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { __getBoard } from "../../redux/modules/boardSlice";
 import KaMarker from "./../Map/KaMarker";
@@ -24,7 +24,7 @@ const Board = () => {
 	console.log("검색결과", state);
 
 	if (state) {
-		const pageNum = Math.floor(12 / state.length);
+		const pageNum = Math.floor(state.length / 12) === 0 ? 1 : Math.floor(state.length / 12);
 		return (
 			<BoardContainer>
 				<StTitle>
@@ -79,7 +79,7 @@ const Board = () => {
 				</BoardContent>
 			</BoardContainer>
 		)
-	} else if (state?.length === 0) {
+	} else if (state === null) {
 		<BoardContainer>
 			검색 결과가 없습니다
 		</BoardContainer>

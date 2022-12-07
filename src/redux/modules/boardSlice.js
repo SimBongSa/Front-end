@@ -192,6 +192,7 @@ export const boardSlice = createSlice({
 			})
 			.addCase(__getSearchBoards.fulfilled, (state, action) => {
 				state.isLoading = false;
+        state.boards = [];
 				state.boards = action.payload;
 			})
 			.addCase(__getSearchBoards.rejected, (state, action) => {
