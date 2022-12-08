@@ -25,9 +25,8 @@ const Organization = () => {
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
 	const [input, setInput] = useState(init);
-
 	const status = useSelector(state => state.register.successCheck);
-	console.log("@@", status)
+
 	const onChangeHandler = useCallback(
 		e => {
 			const { name, value } = e.target;
@@ -228,11 +227,6 @@ const Organization = () => {
 
 export default Organization;
 
-
-{
-	/* <h4>클릭하여 업로드</h4>
-<span>권장사항: 000MB 이하 고화질</span> */
-}
 const ImageWrap = styled.div`
 	display: flex;
 	flex-direction: column;

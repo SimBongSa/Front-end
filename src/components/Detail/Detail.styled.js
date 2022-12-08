@@ -2,7 +2,6 @@ import styled from "styled-components";
 
 export const DetailContainer = styled.div`
 	display: flex;
-	/* flex-direction: row; */
 	justify-content: space-between;
 	margin: 3rem;
 	min-height: 100vh;
@@ -15,6 +14,11 @@ export const DetailContainer = styled.div`
 
 export const StTitleBox = styled.div`
 	display: flex;
+	& h1 {
+		font-weight: 300;
+		width: 75%;
+		font-size: 1.4rem !important;
+	}
 	& div {
 		margin-left: 1rem;
 		padding-top: 8px;
@@ -28,7 +32,6 @@ export const DetailContent = styled.div`
 	width: 60%;
 	min-width: 600px;
 	padding: 2rem;
-	/* color: ${props => props.theme.textColor}; */
 	& h1 {
 		font-size: 2rem;
 	}
@@ -84,12 +87,12 @@ export const StAreaBox = styled.span`
 `;
 
 export const StArea = styled.span`
-	padding: 5px 10px;
+	padding: 10px 20px;
 	border-radius: 15px;
 	background-color: gray;
 	font-weight: 300;
 	max-width: 350px;
-	color: ${props => props.theme.textColor};
+	color: white;
 `;
 
 export const StDetailTag = styled.div`

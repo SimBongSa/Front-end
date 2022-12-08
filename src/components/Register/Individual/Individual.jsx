@@ -25,7 +25,6 @@ const Individual = () => {
 	const navigate = useNavigate();
 	const [input, setInput] = useState(init);
 	const status = useSelector(state => state.register.successCheck);
-	console.log("!!", status)
 
 	// 오류메시지 상태 저장
 	const [nameMessage, setNameMessage] = useState(
