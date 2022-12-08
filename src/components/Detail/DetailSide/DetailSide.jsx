@@ -55,7 +55,7 @@ function DetailSlideBar({ boardsId, username, id }) {
 				<div>{boardsId?.startDate}</div> ━ <div>{boardsId?.endDate}</div>
 			</StDateBox>
 			<DetailSideItem>
-				<div>시간 : ?</div>
+				<div>시간 : {boardsId.dueDay.split(' ')[1].substring(0,5)}</div>
 				<div>반복 여부 : ?</div>
 				<div>봉사 인원 : Volunteers: {boardsId.applicantCnt}명</div>
 			</DetailSideItem>
