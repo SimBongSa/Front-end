@@ -84,10 +84,3 @@ export default Board;
 export const StMap = styled(ImMap2)`
 	font-size: 0.9rem;
 `;
-
-export const StNoData = styled.h1`
-	text-align: center;
-	margin-top: 15rem;
-	font-size: 2rem;
-	font-weight: 300;
-`;
