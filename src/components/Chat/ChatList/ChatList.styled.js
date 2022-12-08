@@ -9,6 +9,7 @@ export const StSidePanel = styled.div`
   & h1 {
     font-size: 2rem;
     padding: 2rem;
+    font-weight: 300;
   }
 `
 
