@@ -2,9 +2,7 @@ import {
 	DetailSide,
 	DetailSideItem,
 	StDateBox,
-	StApplyBtn,
 	StBtnBox,
-	StChatBtn,
 } from "../DetailSide/DetailSide.styled";
 import { useEffect, useState } from "react";
 import { __postApply } from "../../../redux/modules/boardSlice";
@@ -22,20 +20,12 @@ function DetailSlideBar({ boardsId, username, id }) {
 	const navigate = useNavigate();
 	const applicants = useSelector(state => state?.boards?.board?.applicants);
 	const chatRoom = useSelector(state => state.chat.chatRoom);
-	// const boardId = useSelector(state => state?.boards.board.boardId);
 
 	const createChatRoom = chatRoomInfo => {
 		dispatch(__createChatRoom(chatRoomInfo));
 		navigate(`/chat/${chatRoom}`);
 	};
 
-	// console.log(applicants.includes(authority));
-
-	// if (applicants.includes(authority) > 0 && applicants.includes(authority) === true) {
-	// 	setApplied("봉사활동 취소하기");
-	// } else {
-	// 	setApplied("봉사자 신청하기");
-	// }
 	useEffect(() => {
 		if (applicants?.includes(authority) === true) {
 			setApplied("봉사활동 취소하기");
@@ -52,10 +42,7 @@ function DetailSlideBar({ boardsId, username, id }) {
 				<div>{boardsId?.startDate}</div> ━ <div>{boardsId?.endDate}</div>
 			</StDateBox>
 			<DetailSideItem>
-				<div>
-					시간 : {boardsId.dueDay?.split(" ")[1].split(":")[0]}시
-					{boardsId.dueDay?.split(" ")[1].split(":")[1]}분
-				</div>
+				<div>시간 : {boardsId?.dueDay?.split(' ')[1].substring(0,5)}</div>
 				<div>봉사 인원 : Volunteers: {boardsId.applicantCnt}명</div>
 			</DetailSideItem>
 			<StBtnBox>
