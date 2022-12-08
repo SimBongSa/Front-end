@@ -41,7 +41,7 @@ const Header = () => {
 				{isLogin && authority === "ROLE_MEMBER" ? (
 					<>
 						<HeaderMenuItem onClick={() => navigate("/chat")}>메시지</HeaderMenuItem>
-						<HeaderMenuItem>알림</HeaderMenuItem>
+						{/* <HeaderMenuItem>알림</HeaderMenuItem> */}
 						<UserIcon
 							onClick={() => {
 								navigate(`/usermypage/${cookies.ID}`);
@@ -51,7 +51,7 @@ const Header = () => {
 				) : isLogin && authority === "ROLE_ADMIN" ? (
 					<>
 						<HeaderMenuItem onClick={() => navigate("/chat")}>메시지</HeaderMenuItem>
-						<HeaderMenuItem>알림</HeaderMenuItem>
+						{/* <HeaderMenuItem>알림</HeaderMenuItem> */}
 						<HeaderMenuItem
 							onClick={() => {
 								navigate("/recruit");

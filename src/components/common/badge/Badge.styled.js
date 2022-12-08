@@ -1,4 +1,4 @@
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 
 export const StBadge = styled.img`
   position: absolute;
@@ -7,18 +7,5 @@ export const StBadge = styled.img`
   width: 35px !important;
   height: 35px !important;
   border: none !important;
-  ${({ count }) => {
-    switch (count) {
-      case (count = 0):
-        return css`
-          background: url('/image/32badge1.png') !important;
-        `
-      case (count = 5):
-        return css`
-
-        `
-      default:
-        break;
-    }
-  }}
+  background: transparent;
 `
