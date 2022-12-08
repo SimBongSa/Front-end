@@ -19,7 +19,7 @@ import {
 	StContentBox,
 } from "./Detail.styled";
 import { __getChatList } from "../../redux/modules/chatSlice";
-import Profileimg from "../common/profileimg/Profileimg";
+import styled from "styled-components";
 
 const Detail = () => {
 	const navigate = useNavigate();
@@ -43,7 +43,7 @@ const Detail = () => {
 	};
 	const today = new Date().toISOString().split("T")[0];
 	const dDay = getDateDiff(boardsId.dueDay, today);
-	console.log(boardsId);
+
 	return (
 		<>
 			<MainBg image={boardsId?.boardImage} />
@@ -70,10 +70,8 @@ const Detail = () => {
 						<StArea>{boardsId.area}</StArea>
 						<div>{boardsId.detailArea}</div>
 					</StAreaBox>
-					<hr />
 					<h3>봉사 활동 내용</h3>
 					<StContentBox>{boardsId?.content}</StContentBox>
-					<hr />
 					<h3>봉사 요청 사항</h3>
 					<StDetailTag>
 						{boardsId.tags && boardsId.tags.length > 0 ? (
@@ -84,11 +82,9 @@ const Detail = () => {
 							<h2>요청 사항이 없습니다</h2>
 						)}
 					</StDetailTag>
-					<hr />
 					<MapWrapper>
 						<KaMap input="false" area={boardsId?.area} mapWidth="100%" mapHeight="400px" />
 					</MapWrapper>
-					<hr />
 					<Comment />
 				</DetailContent>
 				<DetailSlide boardsId={boardsId} username={username} id={id} />
@@ -98,3 +94,14 @@ const Detail = () => {
 };
 
 export default Detail;
+
+export const StDivider = styled.div`
+	display: flex;
+	margin: 0 auto;
+	margin-top: 5rem;
+	justify-content: center;
+	align-items: center;
+	width: 80%;
+	height: 0.5px;
+	background: ${props => props.theme.subTextColor};
+`;

@@ -30,7 +30,6 @@ const UserPage = () => {
 
 	const userInfo = useSelector(state => state.mypage?.userInfo);
 	const userEnroll = useSelector(state => state.mypage?.userEnroll);
-	console.log(userEnroll)
 	const userWait = useSelector(state => state.mypage?.userWait);
 	const userPass = useSelector(state => state.mypage?.userPass);
 	const userReject = useSelector(state => state.mypage?.userReject);
@@ -40,7 +39,7 @@ const UserPage = () => {
 
 	return (
 		<>
-			<Profile userInfo={userInfo} userPageOpt={userPageOpt} setUserPageOpt={setUserPageOpt} />
+			<Profile userInfo={userInfo} userPageOpt={userPageOpt} setUserPageOpt={setUserPageOpt} count={userPass.length} />
 			<UserPageContainer>
 				<MyProcess
 					userEnroll={userEnroll.length}

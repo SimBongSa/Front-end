@@ -101,7 +101,6 @@ const Recruit = () => {
 			setTags(tags.filter(item => e.id !== item));
 		}
 	};
-	console.log(tags);
 
 	const submitHandler = e => {
 		e.preventDefault();
@@ -112,6 +111,7 @@ const Recruit = () => {
 				startDate: moment(startDate).format("YYYY-MM-DD"),
 				endDate: moment(endDate).format("YYYY-MM-DD"),
 				dueDay: moment(dueDay).format("YYYY-MM-DD HH:mm:ss"),
+				tags: tags
 			})
 		);
 		if (status === 200) {
@@ -121,7 +121,6 @@ const Recruit = () => {
 			alert("게시물 등록에 실패했습니다. 내용을 다시 확인해주세요");
 		}
 	};
-	console.log("dueDay =>", dueDay);
 
 	return (
 		<RecruitContainer>

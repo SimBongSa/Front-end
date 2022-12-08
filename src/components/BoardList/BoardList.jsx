@@ -9,21 +9,19 @@ import styled from "styled-components";
 import Stbtn from "../common/button/Button";
 
 const Board = () => {
-
 	const dispatch = useDispatch();
 
 	const [page, setPage] = useState(1);
 	const size = 12;
 	const [modal, setModal] = useState(false);
 
-	const boards = useSelector((state) => state.boards.boards)
+	const boards = useSelector(state => state.boards.boards);
 
 	useEffect(() => {
-		dispatch(__getBoard({ page, size}))
-	})
-
+		dispatch(__getBoard({ page, size }));
+	}, [dispatch, page]);
 	const pageNum = Math.floor(boards.length / 12) === 0 ? 1 : Math.floor(boards.length / 12);
-	
+
 	return (
 		<BoardContainer>
 			<StTitle>
@@ -59,12 +57,14 @@ const Board = () => {
 							❮
 						</Stbtn>
 					)}
-					<div>{page}/{pageNum}</div>
+					<div>
+						{page}/{pageNum}
+					</div>
 					<Stbtn
 						variant="boards-prev-next"
 						onClick={() => {
 							if (page === Math.floor(12 / boards.length)) {
-								alert("마지막 페이지입니다")
+								alert("마지막 페이지입니다");
 							} else {
 								setPage(prev => prev + 1);
 								dispatch(__getBoard({ page, size }));
@@ -76,7 +76,7 @@ const Board = () => {
 				</StBtnBox>
 			</BoardContent>
 		</BoardContainer>
-	)
+	);
 };
 
 export default Board;
@@ -84,10 +84,3 @@ export default Board;
 export const StMap = styled(ImMap2)`
 	font-size: 0.9rem;
 `;
-
-export const StNoData = styled.h1`
-	text-align: center;
-	margin-top: 15rem;
-	font-size: 2rem;
-	font-weight: 300;
-`

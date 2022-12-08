@@ -1,6 +1,6 @@
 import { LoginContainer, LoginBox, LoginBoxTitle, LoginArrowBack, LoginForm, LoginBtn, LoginTitle, StLoginOptions, StToRegister } from "./Login.styled";
 import { useNavigate } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { __loginMember } from "../../redux/modules/registerSlice";
 import { useState } from "react";
 import { useEffect } from "react";
@@ -12,8 +12,6 @@ const Login = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const authority = getCookieToken(['username']);
-  const loginStatus = useSelector((state) => state.register.statusCode);
-  console.log("@@", loginStatus)
 
   const init = {
     "username": "",

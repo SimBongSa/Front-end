@@ -8,7 +8,6 @@ import {
 	EmailBody,
 } from "./Footer.styled";
 import emailjs from "@emailjs/browser";
-import styled from "styled-components";
 import { useState } from "react";
 import { useRef } from "react";
 

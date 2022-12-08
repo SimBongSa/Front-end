@@ -14,6 +14,7 @@ export const Chat = () => {
 
   const dispatch = useDispatch();
   const id = useParams();
+  console.log("@@", id)
   const token = getCookieToken(["access-token"]);
   const username = getCookieToken(["username"]);
   const chatList = useSelector((state) => state?.chat?.chatList);
@@ -60,7 +61,11 @@ export const Chat = () => {
       <ChatList chatList={chatList}/>
       <StChatContentWrap>
         <Outlet context={{ chatLog, setChatLog, receiveMsg, setReceiveMsg }} />
-        <ChatInput message={message} onSubmitHandler={onSubmitHandler} onChangeHandler={onChangeHandler} />
+        {
+         id.id ? 
+          <ChatInput message={message} onSubmitHandler={onSubmitHandler} onChangeHandler={onChangeHandler} /> 
+          : null 
+        }
       </StChatContentWrap>
     </StChatContainer>
   )

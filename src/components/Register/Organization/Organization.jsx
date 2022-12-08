@@ -1,6 +1,6 @@
 import { InputForm, InputBox, StLegend } from "../Individual/Individual.styled";
 import Input from "../../common/input/Input";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { __registerManager } from "../../../redux/modules/registerSlice";
@@ -17,14 +17,15 @@ const Organization = () => {
 		passwordConfirm: "",
 		phoneNumber: "",
 		email: "",
+		name: "",
 		licenseNumber: "",
 	};
 
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
 	const [input, setInput] = useState(init);
+	const status = useSelector(state => state.register.successCheck);
 
-	const status = useSelector(state => state.register.organiStatus);
 	const onChangeHandler = useCallback(
 		e => {
 			const { name, value } = e.target;
@@ -37,11 +38,14 @@ const Organization = () => {
 		e.preventDefault();
 		dispatch(__registerManager({ ...input, licenseImage }));
 		setInput(init);
-		if (status === 200) {
+	};
+
+	useEffect(() => {
+		if (status === true) {
 			alert("회원 가입 완료");
 			navigate("/login");
 		}
-	};
+	}, [status])
 
 	const [licenseImage, setLicenseImage] = useState(null);
 	const [licensePreview, setLicensePreview] = useState("");
@@ -196,9 +200,6 @@ const Organization = () => {
 						/>
 
 						<input type="file" accept="image/*" name="licenseImage" onChange={onChangeImage} />
-						<div>
-							<img src={licensePreview} alt="licenseImage" />
-						</div>
 
 						<StLegend>Organization Image</StLegend>
 						<ImageWrap>

@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useCallback, useEffect } from "react";
 import { useRef, useState } from "react";
 import "react-datepicker/dist/react-datepicker.css";
 import moment from "moment";
@@ -24,8 +24,12 @@ const SearchBar = () => {
 	const navigate = useNavigate();
 	const dispatch = useDispatch();
 	const searchResult = useSelector((state) => state.boards.searchResult);
-	console.log("@@", searchResult)
 
+	//강제 re-render용 state
+	const [,updateState] = useState();
+	const forceUpdate = useCallback(() => updateState({}), [])
+
+	// modal animation state
 	const [modal, setModal] = useState(false);
 	const [animation, setAnimation] = useState(false);
 	const node = useRef();
@@ -58,23 +62,24 @@ const SearchBar = () => {
 		setSearch({...search, [name]: value});
 	}
 
-	const searchHandler = e => {
+	const searchHandler = (e) => {
 		e.preventDefault();
 		dispatch(__getSearchBoards({
 			...search,
 			startDate : moment(startDate).format("YYYY-MM-DD"), 
 			endDate : moment(endDate).format("YYYY-MM-DD"),
 		}));
-		navigate("/search", { state: searchResult });
+		forceUpdate();
+		navigate("/search");
 		setModal(false)
 	};
 
-	
 	// useEffect(() => {
 	// 	if (searchResult) {
 	// 		navigate("/search", { state: searchResult });
 	// 	}
-	// }, [searchResult])
+	// }, [])
+
 
 	// date picker
 	const today = new Date();

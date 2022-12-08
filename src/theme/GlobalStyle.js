@@ -7,7 +7,9 @@ export const GloblaStyle = createGlobalStyle`
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
-  };
+};
+
+
 
   body {
     background: ${({ theme }) => theme.bgColor};
