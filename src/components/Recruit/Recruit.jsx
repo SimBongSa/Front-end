@@ -91,7 +91,6 @@ const Recruit = () => {
 		},
 		[input]
 	);
-	console.log(input)
 
 	// Tags
 	const onChangeTags = e => {
@@ -102,7 +101,6 @@ const Recruit = () => {
 			setTags(tags.filter(item => e.id !== item));
 		}
 	};
-	console.log(tags);
 
 	const submitHandler = e => {
 		e.preventDefault();
@@ -123,7 +121,6 @@ const Recruit = () => {
 			alert("게시물 등록에 실패했습니다. 내용을 다시 확인해주세요");
 		}
 	};
-	console.log("dueDay =>", dueDay);
 
 	return (
 		<RecruitContainer>

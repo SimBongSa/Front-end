@@ -27,7 +27,6 @@ const DetailEdit = () => {
 	});
 
 	const [address, setAddress] = useState(boardsId.area);
-	console.log("address =>", boardsId.area);
 
 	const today = new Date();
 	const due = new Date();

@@ -34,7 +34,6 @@ function DetailSlideBar({ boardsId, username, id }) {
 		}
 	}, [setApplied]);
 
-	console.log(boardsId);
 	return (
 		<DetailSide>
 			<h1>봉사활동 모집기간</h1>

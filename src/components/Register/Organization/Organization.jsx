@@ -63,9 +63,6 @@ const Organization = () => {
 		};
 	};
 
-
-	const [step, setStep] = useState(0);
-
 	// 오류메시지 상태 저장
 	const [nameMessage, setNameMessage] = useState(
 		"4 ~ 16글자, 알파벳 소문자, 대문자, 숫자만 가능합니다."
@@ -179,9 +176,7 @@ const Organization = () => {
 						<span>{pwConfirmMessage}</span>
 						<StLegend>Your Company Info</StLegend>
 						<Input
-
 							placeholder="Organization Name"
-
 							type="text"
 							name="name"
 							value={input.name}

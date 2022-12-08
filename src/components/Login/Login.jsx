@@ -22,7 +22,6 @@ const Login = () => {
 	const dispatch = useDispatch();
 	const authority = getCookieToken(["username"]);
 	const loginStatus = useSelector(state => state.register.statusCode);
-	console.log("@@", loginStatus);
 
 	const init = {
 		username: "",

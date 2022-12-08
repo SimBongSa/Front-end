@@ -20,9 +20,7 @@ api.interceptors.request.use(function (config) {
 
 export const apis = {
 	// registerSlice
-	memberLogin: payload => axios.post(`${BASE_URL}/members/login`, payload, {
-		withCredentials: true,
-	}),
+	memberLogin: payload => axios.post(`${BASE_URL}/members/login`, payload),
 
 	memberSignup: payload => axios.post(`${BASE_URL}/members/signup/individual`, payload),
 	managerSignup: payload =>
