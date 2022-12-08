@@ -43,7 +43,7 @@ const Detail = () => {
 	};
 	const today = new Date().toISOString().split("T")[0];
 	const dDay = getDateDiff(boardsId.dueDay, today);
-	console.log(boardsId);
+
 	return (
 		<>
 			<MainBg image={boardsId?.boardImage} />

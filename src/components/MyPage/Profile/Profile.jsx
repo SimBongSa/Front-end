@@ -22,7 +22,6 @@ const Profile = ({
 		removeCookie(["authority"], { path: "/" });
 		localStorage.removeItem("refresh-token");
 	};
-	console.log(userPass?.length)
 
 	return (
 		<ProfileContainer>
