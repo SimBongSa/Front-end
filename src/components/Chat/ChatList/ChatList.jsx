@@ -9,7 +9,6 @@ export const ChatList = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const chatList = useSelector((state) => state?.chat?.chatList);
-  console.log(chatList)
 
   return (
     <StSidePanel>

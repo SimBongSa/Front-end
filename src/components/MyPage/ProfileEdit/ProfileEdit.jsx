@@ -33,9 +33,7 @@ const ProfileEdit = () => {
 	}, [dispatch]);
 
 	const companyInfo = useSelector(state => state?.mypage?.companyInfo);
-	console.log("companyInfo => ", companyInfo);
 	const userInfo = useSelector(state => state?.mypage);
-	console.log("userInfo => ", userInfo);
 	const [profileImage, setProfileImage] = useState(null);
 	const [uploadCompanyPreview, setUploadCompanyPreview] = useState(companyInfo.profileImage);
 	const [uploadUserPreview, setUploadUserPreview] = useState(userInfo.profileImage);

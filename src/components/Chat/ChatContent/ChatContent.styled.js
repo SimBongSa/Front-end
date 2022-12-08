@@ -77,7 +77,7 @@ export const ChatCard = styled.div`
   align-items: center;
   justify-content: center;
   margin: 1rem;
-  padding: 1rem;
+  padding: 2rem;
   top: 10px;
   height: 3rem;
   border: none;
