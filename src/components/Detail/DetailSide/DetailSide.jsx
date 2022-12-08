@@ -34,9 +34,8 @@ function DetailSlideBar({ boardsId, username, id }) {
 		}
 	}, [setApplied]);
 
-	console.log("applied =>", applied);
+	console.log(boardsId);
 	return (
-
 		<DetailSide>
 			<h1>봉사활동 모집기간</h1>
 			<StDateBox>
@@ -70,7 +69,6 @@ function DetailSlideBar({ boardsId, username, id }) {
 				</Stbtn>
 			</StBtnBox>
 			{boardsId.author === username ? (
-
 				<StBtnBox>
 					<Stbtn
 						variant="boards-edit"

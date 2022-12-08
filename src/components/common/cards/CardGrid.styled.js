@@ -277,7 +277,7 @@ export const StArea = styled.div`
 		switch (variant) {
 			case "Board":
 				return css`
-					font-size: .8rem;
+					font-size: 0.8rem;
 					max-width: 200px;
 					min-width: 50px;
 					color: ${props => props.theme.bgColor};
@@ -410,6 +410,7 @@ export const StDate = styled.div`
 
 export const StTagBox = styled.ul`
 	display: flex;
+	flex-wrap: wrap;
 	font-size: 12px;
 	margin: 10px 0 0 0;
 	padding: 0;
