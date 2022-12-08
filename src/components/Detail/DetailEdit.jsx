@@ -2,12 +2,10 @@ import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import { __getBoardId, __editBoard } from "../../redux/modules/boardSlice";
-import styled from "styled-components";
 import { DetailContainer, DetailContent, RegisterDatePicker, TextArea } from "./DetailEdit.styled";
 import PopupDom from "../Map/PopupDom";
 import moment from "moment";
 import PopupPostCode from "../Map/PopupPostCode";
-import DatePicker from "react-datepicker";
 import { ko } from "date-fns/esm/locale";
 import Stbtn from "../common/button/Button";
 import Input from "../common/input/Input";
@@ -34,9 +32,6 @@ const DetailEdit = () => {
 	const [endDate, setEndDate] = useState(null);
 	const [dueDay, setDueDay] = useState(due.setHours(due.setMinutes(new Date(), 30), 17));
 	const dispatch = useDispatch();
-	const navigate = useNavigate();
-
-	const status = useSelector(state => state.boards.status);
 
 	const { id } = useParams();
 
