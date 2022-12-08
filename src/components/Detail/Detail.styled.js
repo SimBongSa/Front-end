@@ -18,7 +18,7 @@ export const StTitleBox = styled.div`
 	& div {
 		margin-left: 1rem;
 		padding-top: 8px;
-		font-weight: bolder;
+		font-weight: 500;
 		color: ${props => props.theme.notiColor};
 	}
 `;
@@ -44,6 +44,8 @@ export const MapWrapper = styled.div`
 	width: 100%;
 	margin-top: 2rem;
 	margin-bottom: 2rem;
+	padding-bottom: 2rem;
+	border-bottom: 0.5px solid ${props => props.theme.textColor};
 `;
 
 export const StImgWrapper = styled.span`
@@ -65,12 +67,16 @@ export const StContentBox = styled.span`
 	display: flex;
 	margin-top: 1.5rem;
 	margin-bottom: 2rem;
+	padding-bottom: 2rem;
+	border-bottom: 0.5px solid ${props => props.theme.textColor};
 `;
 export const StAreaBox = styled.span`
 	display: flex;
 	justify-content: space-between;
 	margin-top: 1.5rem;
 	margin-bottom: 2rem;
+	padding-bottom: 2rem;
+	border-bottom: 0.5px solid ${props => props.theme.textColor};
 	& > div {
 		color: ${props => props.theme.textColor};
 		padding: 5px 10px;
@@ -92,6 +98,8 @@ export const StDetailTag = styled.div`
 	gap: 12px;
 	margin-top: 1.5rem;
 	margin-bottom: 2rem;
+	padding-bottom: 2rem;
+	border-bottom: 0.5px solid ${props => props.theme.textColor};
 	& div {
 		text-align: center;
 		min-width: 115px;

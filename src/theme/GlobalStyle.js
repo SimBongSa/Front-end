@@ -7,9 +7,16 @@ export const GloblaStyle = createGlobalStyle`
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
-  };
+};
+
+@font-face {
+  font-family: "휴먼범석";
+  src: url("../font/휴먼범석체.ttf");
+};
+
 
   body {
+    font-family: "휴먼범석";
     background: ${({ theme }) => theme.bgColor};
     color: ${({ theme }) => theme.textColor};
     transition: all 0.5s;
