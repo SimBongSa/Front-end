@@ -19,6 +19,10 @@ import {
 	StContentBox,
 } from "./Detail.styled";
 import { __getChatList } from "../../redux/modules/chatSlice";
+<<<<<<< HEAD
+=======
+import styled from "styled-components";
+>>>>>>> bccff54f0b80a6d34c891b32d4cbb59505a113ca
 
 const Detail = () => {
 	const navigate = useNavigate();
@@ -69,8 +73,15 @@ const Detail = () => {
 						<StArea>{boardsId.area}</StArea>
 						<div>{boardsId.detailArea}</div>
 					</StAreaBox>
+<<<<<<< HEAD
 					<h3>봉사 활동 내용</h3>
 					<StContentBox>{boardsId?.content}</StContentBox>
+=======
+
+					<h3>봉사 활동 내용</h3>
+					<StContentBox>{boardsId?.content}</StContentBox>
+
+>>>>>>> bccff54f0b80a6d34c891b32d4cbb59505a113ca
 					<h3>봉사 요청 사항</h3>
 					<StDetailTag>
 						{boardsId.tags && boardsId.tags.length > 0 ? (
@@ -81,9 +92,17 @@ const Detail = () => {
 							<h2>요청 사항이 없습니다</h2>
 						)}
 					</StDetailTag>
+<<<<<<< HEAD
 					<MapWrapper>
 						<KaMap input="false" area={boardsId?.area} mapWidth="100%" mapHeight="400px" />
 					</MapWrapper>
+=======
+
+					<MapWrapper>
+						<KaMap input="false" area={boardsId?.area} mapWidth="100%" mapHeight="400px" />
+					</MapWrapper>
+					<StDivider />
+>>>>>>> bccff54f0b80a6d34c891b32d4cbb59505a113ca
 					<Comment />
 				</DetailContent>
 				<DetailSlide boardsId={boardsId} username={username} id={id} />
@@ -93,3 +112,14 @@ const Detail = () => {
 };
 
 export default Detail;
+
+export const StDivider = styled.div`
+	display: flex;
+	margin: 0 auto;
+	margin-top: 5rem;
+	justify-content: center;
+	align-items: center;
+	width: 80%;
+	height: .5px;
+	background: ${(props) => props.theme.subTextColor};
+`

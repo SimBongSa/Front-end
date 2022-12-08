@@ -20,9 +20,10 @@ api.interceptors.request.use(function (config) {
 
 export const apis = {
 	// registerSlice
-	memberLogin: payload => axios.post(`${BASE_URL}/members/login`, payload),
+	memberLogin: payload => axios.post(`${BASE_URL}/members/login`, payload, {
+		withCredentials: true,
+	}),
 
-	// managerLogin: payload => axios.post(`${BASE_URL}/managers/login`, payload),
 	memberSignup: payload => axios.post(`${BASE_URL}/members/signup/individual`, payload),
 	managerSignup: payload =>
 		axios.post(`${BASE_URL}/members/signup/admin`, payload, {
@@ -31,7 +32,6 @@ export const apis = {
 			},
 		}),
 	checkUsername: payload => axios.get(`${BASE_URL}/members/signup/check_username/${payload}`),
-	// checkNickname: payload => axios.get(`${BASE_URL}/members/signup/check_nickname/${payload}`),
 
 	//calendarSlice
 	TotalcalendarList: dueDay => api.get(`${BASE_URL}/boards/date/${dueDay}`),

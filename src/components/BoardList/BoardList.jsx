@@ -18,9 +18,14 @@ const Board = () => {
 	const boards = useSelector(state => state.boards.boards);
 
 	useEffect(() => {
+<<<<<<< HEAD
 		dispatch(__getBoard({ page, size }));
 	}, [dispatch, page]);
 
+=======
+		dispatch(__getBoard({ page, size}))
+	}, [dispatch, page])
+>>>>>>> bccff54f0b80a6d34c891b32d4cbb59505a113ca
 	const pageNum = Math.floor(boards.length / 12) === 0 ? 1 : Math.floor(boards.length / 12);
 
 	return (

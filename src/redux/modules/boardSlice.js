@@ -111,7 +111,11 @@ export const boardSlice = createSlice({
 	initialState: {
 		boards: [],
 		board: [],
+<<<<<<< HEAD
 		searchResult: [],
+=======
+    searchResult: null,
+>>>>>>> bccff54f0b80a6d34c891b32d4cbb59505a113ca
 		area: [],
 		apply: "",
 		status: null,

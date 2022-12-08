@@ -101,7 +101,7 @@ export const Stbtn = styled.button`
 					width: 20rem;
 					height: 3rem;
 					border-radius: 24px;
-					color: ${props => props.theme.btnColor};
+					color: ${props => props.theme.notiColor};
 					background-color: ${props => props.theme.subBgColor};
 					border: 1px solid ${props => props.theme.notiColor};
 					cursor: pointer;

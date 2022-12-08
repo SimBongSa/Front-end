@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import Button from "../../common/button/Button";
 import Profileimg from "../../common/profileimg/Profileimg";
+import Badge from "../../common/badge/Badge";
 const Profile = ({
 	companyInfo,
 	companyBoards,
@@ -12,6 +13,7 @@ const Profile = ({
 	userPass,
 	setUserPageOpt,
 	setCompanyPageOpt,
+	count,
 }) => {
 	const navigate = useNavigate();
 	const logOut = () => {
@@ -20,13 +22,11 @@ const Profile = ({
 		removeCookie(["authority"], { path: "/" });
 		localStorage.removeItem("refresh-token");
 	};
+	console.log(userPass?.length)
 
 	return (
 		<ProfileContainer>
 			<ProfileBox>
-				{/* userInfo && userInfo.profileImage ? (
-				<Profileimg variant="profile-user" src={userInfo.profileImage} alt="user" />) : null
-				 */}
 				{companyInfo && companyInfo.profileImage ? (
 					<Profileimg variant="profile-company" src={companyInfo.profileImage} alt="user" />
 				) : null}
@@ -65,7 +65,7 @@ const Profile = ({
 				) : null}
 				{userInfo ? (
 					<ProfileInfo>
-						<h3>{userInfo.name}</h3>
+						<h3>{userInfo.name}<Badge count={count} /></h3>
 						<h5>{userInfo.phoneNumber}</h5>
 						<h5>{userInfo.email}</h5>
 						<Button
@@ -149,8 +149,10 @@ export default Profile;
 
 export const ProfileInfo = styled.div`
 	text-align: left;
+	position: relative;
 	& h3 {
 		text-align: center;
+		position: relative;
 	}
 	& h5 {
 		padding-left: 3rem;
@@ -161,6 +163,10 @@ export const ProfileInfo = styled.div`
 	}
 	& p {
 		padding-left: 2rem;
+	}
+	& span {
+		border-radius: 50%;
+		background-image: url('./image/32badge1.png');
 	}
 	@media (max-width: 1024px) {
 		text-align: center;
