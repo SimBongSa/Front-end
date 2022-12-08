@@ -38,8 +38,9 @@ export const __loginMember = createAsyncThunk("loginMember", async (payload, thu
 export const __registerMember = createAsyncThunk("regitserMember", async (payload, thunkAPI) => {
 	try {
 		const response = await apis.memberSignup(payload);
-		console.log(response)
-		return thunkAPI.fulfillWithValue(response.data);
+		if (response.status === 200) {
+			return thunkAPI.fulfillWithValue(response.data.success);
+		}
 	} catch (error) {
 		return thunkAPI.rejectWithValue(error);
 	}
@@ -52,8 +53,9 @@ export const __registerManager = createAsyncThunk("registerManager", async (payl
 	});
 	try {
 		const response = await apis.managerSignup(payload);
+		console.log(response)
 		if (response.status === 200) {
-			return thunkAPI.fulfillWithValue(response.data);
+			return thunkAPI.fulfillWithValue(response.data.success);
 		}
 	} catch (error) {
 		return thunkAPI.rejectWithValue(error);

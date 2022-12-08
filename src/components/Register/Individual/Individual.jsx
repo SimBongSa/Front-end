@@ -6,6 +6,7 @@ import { __registerMember } from "../../../redux/modules/registerSlice";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { StInputContainer, InputHeader, StRegBtn } from "../Register.styled";
+import { useEffect } from "react";
 
 const Individual = () => {
 	const init = {
@@ -23,7 +24,8 @@ const Individual = () => {
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
 	const [input, setInput] = useState(init);
-	const status = useSelector(state => state.boards.status);
+	const status = useSelector(state => state.register.successCheck);
+	console.log("!!", status)
 
 	// 오류메시지 상태 저장
 	const [nameMessage, setNameMessage] = useState(
@@ -46,6 +48,13 @@ const Individual = () => {
 		},
 		[input]
 	);
+
+	useEffect(() => {
+		if (status === true) {
+			alert("회원 가입 완료");
+			navigate("/login");
+		}
+	}, [status])
 
 	const onUsernameChange = useCallback(
 		e => {
@@ -112,12 +121,6 @@ const Individual = () => {
 		e.preventDefault();
 		dispatch(__registerMember(input));
 		setInput(init);
-		if (status === 200) {
-			alert("회원 가입 완료");
-			navigate("/login");
-		} else {
-			alert("회원 가입 내용을 다시 확인해주세요");
-		}
 	};
 
 	return (

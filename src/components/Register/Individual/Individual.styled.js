@@ -21,6 +21,9 @@ export const InputBox = styled.div`
 	& form {
 		width: 40%;
 		min-width: 350px;
+		& input[type="file"] {
+			display: none;
+		}
 	}
 	& form > span {
 		font-weight: 300;
