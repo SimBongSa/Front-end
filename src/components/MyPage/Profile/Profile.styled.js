@@ -20,14 +20,14 @@ export const ProfileContainer = styled.div`
 	& h5 {
 		text-align: left;
 		margin: 1rem;
-		color: ${(props) => props.theme.subTextColor};
+		color: ${props => props.theme.subTextColor};
 		@media (max-width: 1024px) {
 			text-align: center;
 		}
 	}
 	& p {
 		text-align: left;
-		color: ${(props) => props.theme.subTextColor};
+		color: ${props => props.theme.subTextColor};
 		font-size: 0.9rem;
 		width: 90%;
 		margin: 1rem;
@@ -120,7 +120,7 @@ export const ProfileCategory = styled.h4`
 	font-size: 1rem;
 	& h6 {
 		font-size: 1.2rem;
-		margin-bottom: .6rem;
+		margin-bottom: 0.6rem;
 	}
 	& span {
 		font-size: 0.9rem;
