@@ -75,20 +75,6 @@ function Comment() {
 				) : (
 					<Profileimg src={process.env.PUBLIC_URL + "/image/64defaultimg.png"} />
 				)}
-
-				{/* {authority === "ROLE_ADMIN" ? (
-					// (ROLE_ADMIN) 프로필의 이미지가 존재할 때
-					companyInfo && companyInfo?.profileImage ? (
-						<Profileimg variant="profile-company" src={companyInfo?.profileImage} alt="user" />
-					) : (
-						<Profileimg src={process.env.PUBLIC_URL + "/image/64defaultimg.png"} />
-					)
-				) : // (ROLE_MEMBER) 프로필의 이미지가 존재할 때
-				userInfo && userInfo.profileImage ? (
-					<Profileimg variant="profile-user" src={userInfo?.profileImage} alt="user" />
-				) : (
-					<Profileimg src={process.env.PUBLIC_URL + "/image/64defaultimg.png"} />
-				)} */}
 			</StImgBox>
 
 			{authority === "ROLE_MEMBER" ? (
