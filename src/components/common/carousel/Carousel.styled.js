@@ -8,7 +8,8 @@ export const CarouselContainer = styled.div`
 	overflow: hidden;
 	background-color: ${props => props.theme.subBgColor};
 	& h1 {
-		font-size: 1.8rem;
+		font-size: 1.6rem;
+		font-weight: 300;
 		color: ${props => props.theme.textColor};
 	}
 	&::before,

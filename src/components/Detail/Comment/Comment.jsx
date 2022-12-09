@@ -19,6 +19,7 @@ import {
 	Date,
 	CommentDiv,
 	StImgBox,
+	CommentWriteWraps,
 } from "./Comment.styled";
 import { __getUserInfo } from "../../../redux/modules/mypageSlice";
 import { __getCompanyInfo } from "../../../redux/modules/mypageSlice";
@@ -65,7 +66,17 @@ function Comment() {
 	return (
 		<MainComponent>
 			<StImgBox>
-				{authority === "ROLE_ADMIN" ? (
+				{authority === "ROLE_MEMBER" ? (
+					userInfo && userInfo.profileImage ? (
+						<Profileimg variant="profile-user" src={userInfo?.profileImage} alt="user" />
+					) : (
+						<Profileimg src={process.env.PUBLIC_URL + "/image/64defaultimg.png"} />
+					)
+				) : (
+					<Profileimg src={process.env.PUBLIC_URL + "/image/64defaultimg.png"} />
+				)}
+
+				{/* {authority === "ROLE_ADMIN" ? (
 					// (ROLE_ADMIN) 프로필의 이미지가 존재할 때
 					companyInfo && companyInfo?.profileImage ? (
 						<Profileimg variant="profile-company" src={companyInfo?.profileImage} alt="user" />
@@ -77,27 +88,34 @@ function Comment() {
 					<Profileimg variant="profile-user" src={userInfo?.profileImage} alt="user" />
 				) : (
 					<Profileimg src={process.env.PUBLIC_URL + "/image/64defaultimg.png"} />
-				)}
+				)} */}
 			</StImgBox>
-			<CommentWriteWrap>
-				<Input
-					type="text"
-					placeholder="댓글을 남겨주세요!"
-					value={content}
-					onChange={onChangeHalder}
-				/>
-				<Stbtn
-					variant="comment"
-					onClick={() => {
-						if (content !== "") {
-							dispatch(__postComment({ content, id }));
-							setContent("");
-						}
-					}}
-				>
-					댓글쓰기
-				</Stbtn>
-			</CommentWriteWrap>
+
+			{authority === "ROLE_MEMBER" ? (
+				<CommentWriteWrap>
+					<Input
+						type="text"
+						placeholder="댓글을 남겨주세요!"
+						value={content}
+						onChange={onChangeHalder}
+					/>
+					<Stbtn
+						variant="comment"
+						onClick={() => {
+							if (content !== "") {
+								dispatch(__postComment({ content, id }));
+								setContent("");
+							}
+						}}
+					>
+						댓글쓰기
+					</Stbtn>{" "}
+				</CommentWriteWrap>
+			) : (
+				<CommentWriteWraps>
+					<div>댓글을 작성하실수 없습니다.</div>
+				</CommentWriteWraps>
+			)}
 
 			{commentList && commentList.length > 0
 				? commentList.map((item, index) => {
@@ -107,12 +125,11 @@ function Comment() {
 							<Box key={index}>
 								<CommentTitleWrap>
 									<div>
-										{authority === "ROLE_ADMIN" ? (
-											// (ROLE_ADMIN) 프로필의 이미지가 존재할 때
-											companyInfo && companyInfo?.profileImage ? (
+										{authority === "ROLE_MEMBER" ? (
+											userInfo && userInfo.profileImage ? (
 												<Profileimg
-													variant="profile-company"
-													src={companyInfo?.profileImage}
+													variant="profile-user"
+													src={userInfo?.profileImage}
 													alt="user"
 													onClick={() => {
 														dispatch(__getOtherUserInfo(item.memberId));
@@ -129,27 +146,13 @@ function Comment() {
 													}}
 												/>
 											)
-										) : // (ROLE_MEMBER) 프로필의 이미지가 존재할 때
-										userInfo && userInfo.profileImage ? (
-											<Profileimg
-												variant="profile-user"
-												src={userInfo?.profileImage}
-												alt="user"
-												onClick={() => {
-													dispatch(__getOtherUserInfo(item.memberId));
-													navigate(`/usermypage/${item.memberId}`, { state: otherUserInfo });
-												}}
-											/>
 										) : (
 											<Profileimg
 												src={process.env.PUBLIC_URL + "/image/32defaultimg.png"}
 												alt="user"
-												onClick={() => {
-													dispatch(__getOtherUserInfo(item.memberId));
-													navigate(`/usermypage/${item.memberId}`, { state: otherUserInfo });
-												}}
 											/>
 										)}
+
 										<div>
 											<h2>{item?.username}</h2>
 											<Date>{item.createdAt.split("T")[0].substring(0, 10)}</Date>

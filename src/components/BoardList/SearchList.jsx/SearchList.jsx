@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useSelector } from "react-redux";
 import styled from "styled-components";
 import { Stbtn } from "../../common/button/Button.styled";
 import CardGrid from "../../common/cards/CardGrid";
@@ -9,7 +9,7 @@ import { BoardContainer, BoardContent, ListMap, StBtnBox, StTitle } from "../Boa
 
 const SearchList = () => {
 
-  const { state } = useLocation();
+  const state = useSelector((state) => state.boards.searchResult);
 
   const [modal, setModal] = useState(false);
   const [page, setPage] = useState(1);

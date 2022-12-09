@@ -22,6 +22,7 @@ const CardGrid = ({ gridColumn, companyBoards, boards, userEnroll, userWait }) =
 		const diffDate = dueDay.getTime() - today.getTime();
 		return Math.round(Math.abs(diffDate / (1000 * 60 * 60 * 24)));
 	};
+	
 	const today = new Date().toISOString().split("T")[0];
 
 	const [isHovering, setIsHovering] = useState(false);
