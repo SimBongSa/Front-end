@@ -20,8 +20,6 @@ const PopupPostCode = ({ setAddress, onClose, ...props }) => {
 		// 주소값
 		setAddress(fullAddress);
 		onClose();
-		console.log(data);
-		console.log(fullAddress);
 	};
 
 	return (
