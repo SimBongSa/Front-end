@@ -2,6 +2,7 @@ import {
 	DetailSide,
 	DetailSideItem,
 	StDateBox,
+	StApplyBtn,
 	StBtnBox,
 } from "../DetailSide/DetailSide.styled";
 import { useEffect, useState } from "react";
@@ -12,7 +13,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { __createChatRoom } from "../../../redux/modules/chatSlice";
 import Stbtn from "../../common/button/Button";
-
 function DetailSlideBar({ boardsId, username, id }) {
 	const [applied, setApplied] = useState("");
 	const authority = getCookieToken(["username"]);
@@ -41,7 +41,7 @@ function DetailSlideBar({ boardsId, username, id }) {
 				<div>{boardsId?.startDate}</div> ━ <div>{boardsId?.endDate}</div>
 			</StDateBox>
 			<DetailSideItem>
-				<div>시간 : {boardsId?.dueDay?.split(' ')[1].substring(0,5)}</div>
+				<div>시간 : {boardsId?.dueDay?.split(" ")[1].substring(0, 5)}</div>
 				<div>봉사 인원 : Volunteers: {boardsId.applicantCnt}명</div>
 			</DetailSideItem>
 			<StBtnBox>
@@ -51,7 +51,7 @@ function DetailSlideBar({ boardsId, username, id }) {
 						dispatch(__postApply(id));
 					}}
 				>
-					봉사자 신청하기
+					{applied}
 				</Stbtn>
 				<Stbtn
 					variant="boards-chat"
@@ -64,7 +64,7 @@ function DetailSlideBar({ boardsId, username, id }) {
 						});
 					}}
 				>
-					봉사 단체 연락하기
+					봉사단체 연락하기
 				</Stbtn>
 			</StBtnBox>
 			{boardsId.author === username ? (
@@ -75,7 +75,7 @@ function DetailSlideBar({ boardsId, username, id }) {
 							navigate(`/edit/${id}`);
 						}}
 					>
-						{applied}
+						수정하기
 					</Stbtn>
 					<Stbtn
 						variant="boards-delete"
@@ -91,5 +91,4 @@ function DetailSlideBar({ boardsId, username, id }) {
 		</DetailSide>
 	);
 }
-
 export default DetailSlideBar;
