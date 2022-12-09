@@ -12,7 +12,7 @@ export const GloblaStyle = createGlobalStyle`
     @font-face {
       font-family: 'NanumBarunGothic';
       font-style: normal;
-      font-weight: 400;
+      font-weight: 300;
       src: url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.eot');
       src: url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.eot?#iefix') format('embedded-opentype'), 
            url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.woff') format('woff'), 

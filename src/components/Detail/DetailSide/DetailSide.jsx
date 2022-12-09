@@ -75,7 +75,7 @@ function DetailSlideBar({ boardsId, username, id }) {
 							navigate(`/edit/${id}`);
 						}}
 					>
-						{applied}
+						수정하기
 					</Stbtn>
 					<Stbtn
 						variant="boards-delete"
