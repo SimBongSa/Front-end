@@ -14,7 +14,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { __createChatRoom } from "../../../redux/modules/chatSlice";
 import Stbtn from "../../common/button/Button";
-
 function DetailSlideBar({ boardsId, username, id }) {
 	const [applied, setApplied] = useState("");
 	const authority = getCookieToken(["username"]);
@@ -23,20 +22,17 @@ function DetailSlideBar({ boardsId, username, id }) {
 	const applicants = useSelector(state => state?.boards?.board?.applicants);
 	const chatRoom = useSelector(state => state.chat.chatRoom);
 	// const boardId = useSelector(state => state?.boards.board.boardId);
-
 	const createChatRoom = chatRoomInfo => {
 		dispatch(__createChatRoom(chatRoomInfo));
 		navigate(`/chat/${chatRoom}`);
 	};
-
 	console.log("applicants =>", applicants);
 	console.log("authority =>", authority);
 	// console.log(applicants.includes(authority));
-
 	// if (applicants.includes(authority) > 0 && applicants.includes(authority) === true) {
-	// 	setApplied("봉사활동 취소하기");
+	//  setApplied("봉사활동 취소하기");
 	// } else {
-	// 	setApplied("봉사자 신청하기");
+	//  setApplied("봉사자 신청하기");
 	// }
 	useEffect(() => {
 		if (applicants?.includes(authority) === true) {
@@ -45,10 +41,8 @@ function DetailSlideBar({ boardsId, username, id }) {
 			setApplied("봉사자 신청하기");
 		}
 	}, [setApplied]);
-
 	console.log("applied =>", applied);
 	return (
-
 		<DetailSide>
 			<h1>봉사활동 모집기간</h1>
 			<StDateBox>
@@ -66,7 +60,7 @@ function DetailSlideBar({ boardsId, username, id }) {
 						dispatch(__postApply(id));
 					}}
 				>
-					봉사자 신청하기
+					{applied}
 				</Stbtn>
 				<Stbtn
 					variant="boards-chat"
@@ -79,11 +73,10 @@ function DetailSlideBar({ boardsId, username, id }) {
 						});
 					}}
 				>
-					봉사 단체 연락하기
+					봉사단체 연락하기
 				</Stbtn>
 			</StBtnBox>
 			{boardsId.author === username ? (
-
 				<StBtnBox>
 					<Stbtn
 						variant="boards-edit"
@@ -91,9 +84,7 @@ function DetailSlideBar({ boardsId, username, id }) {
 							navigate(`/edit/${id}`);
 						}}
 					>
-
-						{applied}
-
+						수정하기
 					</Stbtn>
 					<Stbtn
 						variant="boards-delete"
@@ -109,5 +100,4 @@ function DetailSlideBar({ boardsId, username, id }) {
 		</DetailSide>
 	);
 }
-
 export default DetailSlideBar;

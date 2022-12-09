@@ -2,6 +2,8 @@ import styled from "styled-components";
 import Calendar from "react-calendar";
 
 export const StCalendarList = styled.div`
+	background-color: ${props => props.theme.subBgColor};
+	border-radius: 20px;
 	width: 35%;
 	& h2 {
 		font-size: 1.6rem;
