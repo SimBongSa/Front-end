@@ -52,11 +52,11 @@ const Profile = ({
 
 						<MyActivity>
 							<ProfileCategory>
-								<h6>{companyBoards?.length}</h6>
+								<div>{companyBoards?.length}</div>
 								<span>모집중인 봉사</span>
 							</ProfileCategory>
 							<ProfileCategory>
-								<h6>{companyBoards?.length}</h6>
+								<div>{companyBoards?.length}</div>
 								<span>진행한 봉사</span>
 							</ProfileCategory>
 						</MyActivity>
@@ -64,7 +64,10 @@ const Profile = ({
 				) : null}
 				{userInfo ? (
 					<ProfileInfo>
-						<h3>{userInfo.name}<Badge count={count} /></h3>
+						<h3>
+							{userInfo.name}
+							<Badge count={count} />
+						</h3>
 						<h5>{userInfo.phoneNumber}</h5>
 						<h5>{userInfo.email}</h5>
 						<Button
@@ -78,11 +81,11 @@ const Profile = ({
 
 						<MyActivity>
 							<ProfileCategory>
-								<h6>{userWait?.length}</h6>
+								<div>{userWait?.length}</div>
 								<span>진행중인 봉사</span>
 							</ProfileCategory>
 							<ProfileCategory>
-								<h6>{userPass?.length}</h6>
+								<div>{userPass?.length}</div>
 								<span>진행한 봉사</span>
 							</ProfileCategory>
 						</MyActivity>
@@ -165,7 +168,7 @@ export const ProfileInfo = styled.div`
 	}
 	& span {
 		border-radius: 50%;
-		background-image: url('./image/32badge1.png');
+		background-image: url("./image/32badge1.png");
 	}
 	@media (max-width: 1024px) {
 		text-align: center;

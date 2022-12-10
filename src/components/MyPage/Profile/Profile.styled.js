@@ -118,7 +118,7 @@ export const ProfileCategory = styled.h4`
 	padding-left: 1rem;
 	width: 45%;
 	font-size: 1rem;
-	& h6 {
+	& div {
 		font-size: 1.2rem;
 		margin-bottom: 0.6rem;
 	}
