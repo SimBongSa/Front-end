@@ -170,7 +170,11 @@ function Comment() {
 												)}
 												<Div
 													onClick={() => {
-														dispatch(__deleteComment(commentId));
+														if (window.confirm("댓글을 삭제하시겠습니까?")) {
+															dispatch(__deleteComment(commentId));
+														} else {
+															alert("취소되었습니다.");
+														}
 													}}
 												>
 													삭제

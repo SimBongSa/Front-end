@@ -36,8 +36,8 @@ const Login = () => {
 
 	const onSubmitHandler = e => {
 		e.preventDefault();
-		dispatch(__loginMember(input));
 		setInput(init);
+		dispatch(__loginMember(input));
 	};
 
 	useEffect(() => {
@@ -74,20 +74,20 @@ const Login = () => {
 
 					<LoginBox>
 						<LoginBoxTitle>
-							<LoginTitle>Member Login</LoginTitle>
+							<LoginTitle>봉사 지원자</LoginTitle>
 							<LoginArrowBack onClick={() => navigate("/")} />
 						</LoginBoxTitle>
 
 						<LoginForm onSubmit={onSubmitHandler}>
 							<Input
-								placeholder="username"
+								placeholder="아이디"
 								type="text"
 								name="username"
 								value={input.username}
 								onChange={onChangeHandler}
 							/>
 							<Input
-								placeholder="password"
+								placeholder="비밀번호"
 								type="password"
 								name="password"
 								value={input.password}

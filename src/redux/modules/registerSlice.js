@@ -53,7 +53,7 @@ export const __registerManager = createAsyncThunk("registerManager", async (payl
 	});
 	try {
 		const response = await apis.managerSignup(payload);
-		console.log(response)
+
 		if (response.status === 200) {
 			return thunkAPI.fulfillWithValue(response.data.success);
 		}
@@ -65,7 +65,7 @@ export const __registerManager = createAsyncThunk("registerManager", async (payl
 export const __checkUsername = createAsyncThunk("checkUsername", async (payload, thunkAPI) => {
 	try {
 		const response = await apis.checkUsername(payload);
-		console.log(response);
+
 		return thunkAPI.fulfillWithValue(response.data.data);
 	} catch (error) {
 		return thunkAPI.rejectWithValue(error);
@@ -84,7 +84,7 @@ export const __getCompanyInfo = createAsyncThunk("getCompanyInfo", async (payloa
 export const __checkNickname = createAsyncThunk("checkNickname", async (payload, thunkAPI) => {
 	try {
 		const response = await apis.checkNickname(payload);
-		console.log(response);
+
 		return thunkAPI.fulfillWithValue(response.data.data);
 	} catch (error) {
 		return thunkAPI.rejectWithValue(error);

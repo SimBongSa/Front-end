@@ -108,10 +108,11 @@ export const Date = styled.div`
 `;
 
 export const CommentDiv = styled.div`
+	word-break: break-all;
+	line-height: auto;
 	margin-top: 1rem;
 	margin-left: 3.5rem;
 	height: 2rem;
-	flex-wrap: wrap;
 	border-bottom: 0.5px solid ${props => props.theme.textColor};
 `;
 
