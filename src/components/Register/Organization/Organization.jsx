@@ -219,7 +219,7 @@ const Organization = () => {
 						<StRegBtn type="submit">회원가입</StRegBtn>
 					</form>
 				</InputBox>
-				<span onClick={() => navigate("/login")}>You are already member? Log in Now</span>
+				<StToRegister onClick={() => navigate("/login")}>이미 봉골레 회원인가요? <b>로그인하기</b></StToRegister>
 			</InputForm>
 		</StInputContainer>
 	);
@@ -243,3 +243,13 @@ const ImageWrap = styled.div`
 	}
 `;
 
+export const StToRegister = styled.span`
+	font-weight: 300;
+	font-size: 1.2rem;
+	margin-top: 2rem;
+	margin-bottom: 15rem;
+	& b {
+		cursor: pointer;
+		color: orange;
+	}
+`;
