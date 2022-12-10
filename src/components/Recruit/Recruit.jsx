@@ -112,7 +112,7 @@ const Recruit = () => {
 				startDate: moment(startDate).format("YYYY-MM-DD"),
 				endDate: moment(endDate).format("YYYY-MM-DD"),
 				dueDay: moment(dueDay).format("YYYY-MM-DD HH:mm:ss"),
-				tags: tags
+				tags: tags,
 			})
 		);
 		if (status === 200) {

@@ -65,13 +65,10 @@ const ProfileEdit = () => {
 			};
 		}
 	});
-	console.log("editInput =>", editInput);
 
 	// 이미지 upload
 	const onChangeImage = e => {
 		setProfileImage(e.target.files[0]);
-
-		console.log("profileImage =>", profileImage);
 
 		// 미리보기 온체인지 핸들러
 		let reader = new FileReader();
@@ -95,8 +92,6 @@ const ProfileEdit = () => {
 		},
 		[editInput]
 	);
-
-	console.log("editInput!!! =>", editInput);
 
 	// 오류메시지 상태 저장
 	const [passwordMessage, setPasswordMessage] = useState(
@@ -147,8 +142,6 @@ const ProfileEdit = () => {
 		},
 		[editInput]
 	);
-
-	console.log("!!!editInput!!!=>", editInput);
 
 	const onSubmitHandler = e => {
 		e.preventDefault();

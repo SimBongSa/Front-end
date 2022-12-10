@@ -22,12 +22,9 @@ const Footer = () => {
 			.then(
 				result => {
 					alert("소중한 의견 감사드립니다.");
-					console.log(result.text);
 					setEmailModal(!emailModal);
 				},
-				error => {
-					console.log(error.text);
-				}
+				error => {}
 			);
 	};
 
