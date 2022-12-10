@@ -1,14 +1,16 @@
 import { InputForm, InputBox } from "./Individual.styled";
 import Input from "../../common/input/Input";
-import { useState, useCallback } from "react";
+import { useState, useCallback, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { __registerMember } from "../../../redux/modules/registerSlice";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { StInputContainer, InputHeader, StRegBtn } from "../Register.styled";
-import { useEffect } from "react";
+import Notification from "../../common/noti/Notification";
+import { toast, ToastContainer } from 'react-toastify';
 
 const Individual = () => {
+	
 	const init = {
 		authority: "ROLE_MEMBER",
 		username: "",
@@ -24,7 +26,15 @@ const Individual = () => {
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
 	const [input, setInput] = useState(init);
-	const status = useSelector(state => state.register.successCheck);
+	const status = useSelector(state => state.register.usernameCheck);
+
+	useEffect(() => {
+		if (status && isName) {
+			toast.success("사용 가능한 아이디입니다.")
+		} else if (!status && isName){
+			toast.error("중복된 아이디입니다.")
+		}
+	}, [status])
 
 	// 오류메시지 상태 저장
 	const [nameMessage, setNameMessage] = useState(
@@ -48,27 +58,19 @@ const Individual = () => {
 		[input]
 	);
 
-	useEffect(() => {
-		if (status === true) {
-			alert("회원 가입 완료");
-			navigate("/login");
-		}
-	}, [status]);
-
 	const onUsernameChange = useCallback(
 		e => {
 			const usernameRegex = /^[a-zA-Z0-9]{4,16}$/;
 			const { name, value } = e.target;
 			setInput({ ...input, [name]: value });
 			if (value.length === 0) {
-				setNameMessage("");
+				setNameMessage("4 ~ 16글자, 알파벳 소문자, 대문자, 숫자만 가능합니다.");
 			} else {
 				if (value.length < 4 || value.length > 16) {
 					setNameMessage("4 ~ 16글자, 알파벳 소문자, 대문자, 숫자만 가능합니다.");
 					setIsName(false);
-					if (!usernameRegex.test(value)) {
-						setNameMessage("형식이 틀렸습니다. 확인 바랍니다.");
-					}
+				} else if (!usernameRegex.test(value)) {
+					setNameMessage("형식이 틀렸습니다. 확인 바랍니다.");
 				} else {
 					setNameMessage("사용 가능합니다.");
 					setIsName(true);
@@ -84,14 +86,13 @@ const Individual = () => {
 			const { name, value } = e.target;
 			setInput({ ...input, [name]: value });
 			if (value.length === 0) {
-				setPasswordMessage("");
+				setPasswordMessage("8 ~ 20자, 알파벳 대소문자, 숫자, 특수문자로 구성됩니다.");
 			} else {
 				if (value.length < 8 || value.length > 20) {
 					setPasswordMessage("8 ~ 20자, 알파벳 대소문자, 숫자, 특수문자로 구성됩니다.");
 					setIsPw(false);
-					if (!pwRegex.test(value)) {
-						setPasswordMessage("형식이 틀렸습니다. 확인 바랍니다");
-					}
+				} else if (!pwRegex.test(value)) {
+					setPasswordMessage("형식이 틀렸습니다. 확인 바랍니다");
 				} else {
 					setPasswordMessage("사용 가능합니다.");
 					setIsPw(true);
@@ -106,7 +107,7 @@ const Individual = () => {
 			const { name, value } = e.target;
 			setInput({ ...input, [name]: value });
 			if (value === input.password) {
-				setPwConfirmMessage("비밀번호 확인이 완료되었읍니다.");
+				setPwConfirmMessage("비밀번호 확인이 완료되었습니다.");
 				setIsPwConfirm(true);
 			} else {
 				setPwConfirmMessage("비밀번호를 확인 바랍니다.");
@@ -118,13 +119,22 @@ const Individual = () => {
 
 	const onSubmitHandler = e => {
 		e.preventDefault();
-		dispatch(__registerMember(input));
-		setInput(init);
+		if (isName && isPw && isPwConfirm && status) {
+			dispatch(__registerMember(input));
+			setInput(init);
+			toast.success("회원가입이 성공했습니다.")
+			navigate("/login");
+		} else if (!status) {
+			toast.error("아이디 중복체크를 해주세요!");
+		} else {
+			toast.error("입력 내용을 확인해주세요.");
+		}
 	};
 
 	return (
 		<StInputContainer>
 			<InputHeader>Vongole</InputHeader>
+			<ToastContainer/>
 			<InputForm>
 				<InputBox>
 					<form onSubmit={onSubmitHandler}>
@@ -133,6 +143,7 @@ const Individual = () => {
 							placeholder="아이디"
 							autoComplete="off"
 							dupleCheck="username"
+							status={status}
 							nameMessage={nameMessage}
 							type="text"
 							name="username"
@@ -155,6 +166,8 @@ const Individual = () => {
 							value={input.passwordConfirm}
 							onChange={onPwConfirmChange}
 						/>
+						<span>{pwConfirmMessage}</span>
+						<StLegend>개인 정보</StLegend>
 						<Input
 							placeholder="이메일"
 							dupleCheck={true}
@@ -163,8 +176,6 @@ const Individual = () => {
 							value={input.email}
 							onChange={onChangeHandler}
 						/>
-						<span>{pwConfirmMessage}</span>
-						<StLegend>선택 정보</StLegend>
 						<Input
 							placeholder="핸드폰번호"
 							type="tel"
@@ -172,9 +183,8 @@ const Individual = () => {
 							value={input.phoneNumber}
 							onChange={onChangeHandler}
 						/>
-						<StLegend>개인 정보</StLegend>
 						<Input
-							placeholder="Name"
+							placeholder="이름"
 							type="text"
 							name="name"
 							value={input.name}
@@ -188,7 +198,13 @@ const Individual = () => {
 							onChange={onChangeHandler}
 						/>
 						<StGender>
-							<Input id="male" type="radio" name="gender" value="male" onChange={onChangeHandler} />
+							<Input 
+								id="male" 
+								type="radio" 
+								name="gender" 
+								value="male" 
+								onChange={onChangeHandler} 
+							/>
 							<Input
 								id="female"
 								type="radio"
@@ -197,6 +213,7 @@ const Individual = () => {
 								onChange={onChangeHandler}
 							/>
 						</StGender>
+
 						<StRegBtn type="submit">회원가입</StRegBtn>
 					</form>
 				</InputBox>

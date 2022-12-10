@@ -50,4 +50,5 @@ export default ChatList;
 
 export const ListGroup = styled.li`
   margin: auto 15px;
+  padding: 0;
 `

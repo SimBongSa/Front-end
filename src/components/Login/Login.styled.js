@@ -112,6 +112,7 @@ export const LoginBtn = styled.button`
 export const LoginTitle = styled.h4`
 	cursor: pointer;
 	color: ${props => props.theme.textColor};
+	padding-bottom: 12px;
 `;
 
 export const StLoginOptions = styled.div`

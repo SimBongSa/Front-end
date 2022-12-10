@@ -143,8 +143,10 @@ export const StInputContainer = styled.div`
 
 export const InputHeader = styled.h1`
   height: 5rem;
+  margin-top: 5rem;
   text-align: center;
   font-size: 2rem;
+  color: ${(props) => props.theme.btnColor};
 `
 
 export const StRegBtn = styled.button`
