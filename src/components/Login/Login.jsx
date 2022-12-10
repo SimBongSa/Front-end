@@ -10,17 +10,22 @@ import {
 	StToRegister,
 } from "./Login.styled";
 import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { __loginMember } from "../../redux/modules/registerSlice";
 import { useState } from "react";
 import { useEffect } from "react";
 import { getCookieToken } from "../../utils/cookie";
 import Input from "../common/input/Input";
+import { toast, ToastContainer } from 'react-toastify';
 
 const Login = () => {
+
 	const navigate = useNavigate();
 	const dispatch = useDispatch();
 	const authority = getCookieToken(["username"]);
+
+	const status = useSelector((state) => state.register.error.response?.data?.error?.detail)
+	console.log("!!", status)
 
 	const init = {
 		username: "",
@@ -36,8 +41,14 @@ const Login = () => {
 
 	const onSubmitHandler = e => {
 		e.preventDefault();
-		setInput(init);
-		dispatch(__loginMember(input));
+		if (status) {
+			toast.error(status);
+			setInput(init);
+		} else if (input.username && input.password) {
+			dispatch(__loginMember(input));
+		} else if (input.username === '' || input.password === ''){
+			toast.error('항목을 모두 입력해주세요');
+		}
 	};
 
 	useEffect(() => {
@@ -51,6 +62,7 @@ const Login = () => {
 
 	return (
 		<LoginContainer>
+			<ToastContainer/>
 			{loginOption === "member" ? (
 				<>
 					<StLoginOptions>
@@ -125,7 +137,7 @@ const Login = () => {
 
 					<LoginBox>
 						<LoginBoxTitle>
-							<LoginTitle>Manager Login</LoginTitle>
+							<LoginTitle>봉사 기관</LoginTitle>
 							<LoginArrowBack onClick={() => navigate("/")} />
 						</LoginBoxTitle>
 

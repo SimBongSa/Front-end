@@ -1,14 +1,16 @@
 import { InputForm, InputBox } from "./Individual.styled";
 import Input from "../../common/input/Input";
-import { useState, useCallback } from "react";
+import { useState, useCallback, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { __registerMember } from "../../../redux/modules/registerSlice";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { StInputContainer, InputHeader, StRegBtn } from "../Register.styled";
-import { useEffect } from "react";
+import Notification from "../../common/noti/Notification";
+import { toast, ToastContainer } from 'react-toastify';
 
 const Individual = () => {
+	
 	const init = {
 		authority: "ROLE_MEMBER",
 		username: "",
@@ -24,7 +26,15 @@ const Individual = () => {
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
 	const [input, setInput] = useState(init);
-	const status = useSelector(state => state.register.successCheck);
+	const status = useSelector(state => state.register.usernameCheck);
+
+	useEffect(() => {
+		if (status && isName) {
+			toast.success("사용 가능한 아이디입니다.")
+		} else if (!status && isName){
+			toast.error("중복된 아이디입니다.")
+		}
+	}, [status])
 
 	// 오류메시지 상태 저장
 	const [nameMessage, setNameMessage] = useState(
@@ -47,13 +57,6 @@ const Individual = () => {
 		},
 		[input]
 	);
-
-	useEffect(() => {
-		if (status === true) {
-			alert("회원 가입 완료");
-			navigate("/login");
-		}
-	}, [status]);
 
 	const onUsernameChange = useCallback(
 		e => {
@@ -118,13 +121,21 @@ const Individual = () => {
 
 	const onSubmitHandler = e => {
 		e.preventDefault();
-		dispatch(__registerMember(input));
-		setInput(init);
+		if (isName && isPw && isPwConfirm && status) {
+			dispatch(__registerMember(input));
+			setInput(init);
+			toast.success("회원가입이 성공했습니다.")
+			navigate("/login");
+		} else {
+			toast.error("입력 내용을 확인해주세요.");
+			<Notification status={false} />
+		}
 	};
 
 	return (
 		<StInputContainer>
 			<InputHeader>Vongole</InputHeader>
+			<ToastContainer/>
 			<InputForm>
 				<InputBox>
 					<form onSubmit={onSubmitHandler}>
@@ -133,6 +144,7 @@ const Individual = () => {
 							placeholder="아이디"
 							autoComplete="off"
 							dupleCheck="username"
+							status={status}
 							nameMessage={nameMessage}
 							type="text"
 							name="username"
@@ -197,6 +209,7 @@ const Individual = () => {
 								onChange={onChangeHandler}
 							/>
 						</StGender>
+
 						<StRegBtn type="submit">회원가입</StRegBtn>
 					</form>
 				</InputBox>

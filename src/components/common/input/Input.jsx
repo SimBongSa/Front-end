@@ -1,12 +1,14 @@
-import { useDispatch, useSelector } from "react-redux";
-import styled from "styled-components";
+import { useDispatch } from "react-redux";
+import styled, { css } from "styled-components";
 import { __checkUsername } from "../../../redux/modules/registerSlice";
 import { StInputContainer, StInput, DupleCheck } from "./Input.styled";
+import { toast, ToastContainer } from 'react-toastify';
 
 const Input = ({
 	id,
 	placeholder,
 	dupleCheck,
+	status,
 	type,
 	name,
 	value,
@@ -17,8 +19,6 @@ const Input = ({
 	onClick,
 }) => {
 	const dispatch = useDispatch();
-
-	const usernameCheck = useSelector(state => state.register.usernameCheck);
 
 	return (
 		<StInputContainer>
@@ -46,7 +46,9 @@ const Input = ({
 								>
 									중복체크
 								</DupleCheck>
-								<h6>{usernameCheck}</h6>
+								{
+									status ? <StSuccessMsg>중복확인 완료</StSuccessMsg> : null
+								}
 							</>
 						) : null
 					) : null}
@@ -63,3 +65,12 @@ export default Input;
 export const StRadioInput = styled.div`
 	width: 50%;
 `;
+
+export const StSuccessMsg = styled.h6`
+	position: absolute;
+	z-index: 3;
+	margin-left: calc(100% - 80px);
+	margin-top: calc(0% + 33px);
+	width: 300px;
+	color: ${(props) => props.theme.btnColor};
+`

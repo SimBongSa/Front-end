@@ -27,6 +27,8 @@ const ImageUpload = ({ onChangeImage, uploadPreview }) => {
 export default ImageUpload;
 
 export const ImageUploadBox = styled.div`
+	height: fit-content;
+	max-height: 500px;
 	& input[type="file"] {
 		display: none;
 	}

@@ -8,6 +8,8 @@ import { InputHeader, StInputContainer, StRegBtn } from "../Register.styled";
 import { useCallback } from "react";
 import ImageUpload from "../../Recruit/ImageUpload/ImageUpload";
 import styled from "styled-components";
+import { toast, ToastContainer } from 'react-toastify';
+import Notification from "../../common/noti/Notification";
 
 const Organization = () => {
 	const init = {
@@ -24,7 +26,15 @@ const Organization = () => {
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
 	const [input, setInput] = useState(init);
-	const status = useSelector(state => state.register.successCheck);
+	const status = useSelector(state => state.register.usernameCheck);
+
+	useEffect(() => {
+		if (status && isName) {
+			toast.success("사용 가능한 아이디입니다.")
+		} else if (!status && isName){
+			toast.error("중복된 아이디입니다.")
+		}
+	}, [status])
 
 	const onChangeHandler = useCallback(
 		e => {
@@ -33,19 +43,6 @@ const Organization = () => {
 		},
 		[input]
 	);
-
-	const onSubmitHandler = e => {
-		e.preventDefault();
-		dispatch(__registerManager({ ...input, licenseImage }));
-		setInput(init);
-	};
-
-	useEffect(() => {
-		if (status === true) {
-			alert("회원 가입 완료");
-			navigate("/login");
-		}
-	}, [status])
 
 	const [licenseImage, setLicenseImage] = useState(null);
 	const [licensePreview, setLicensePreview] = useState("");
@@ -64,8 +61,6 @@ const Organization = () => {
 			}
 		};
 	};
-
-	const [step, setStep] = useState(0);
 
 	// 오류메시지 상태 저장
 	const [nameMessage, setNameMessage] = useState(
@@ -142,9 +137,26 @@ const Organization = () => {
 		[input]
 	);
 
+	const onSubmitHandler = e => {
+		e.preventDefault();
+		if (isName && isPw && isPwConfirm && status) {
+			dispatch(__registerManager({ ...input, licenseImage }));
+			setInput(init);
+			toast.success("회원가입이 성공했습니다.")
+			navigate("/login");
+		} else {
+			toast.error("입력 내용을 확인해주세요.");
+			<Notification status={false} />
+		}
+	};
+
+	dispatch(__registerManager({ ...input, licenseImage }));
+
+
 	return (
 		<StInputContainer>
 			<InputHeader>Vongole</InputHeader>
+			<ToastContainer/>
 			<InputForm>
 				<InputBox>
 					<form onSubmit={onSubmitHandler}>
@@ -153,6 +165,7 @@ const Organization = () => {
 							placeholder="Username"
 							autoComplete="off"
 							dupleCheck="username"
+							status={status}
 							nameMessage={nameMessage}
 							type="text"
 							name="username"
@@ -225,12 +238,9 @@ const Organization = () => {
 
 export default Organization;
 
-{
-	/* <h4>클릭하여 업로드</h4>
-<span>권장사항: 000MB 이하 고화질</span> */
-}
 const ImageWrap = styled.div`
 	display: flex;
+	height: fit-content;
 	flex-direction: column;
 	justify-content: space-around;
 	margin-right: 30px;

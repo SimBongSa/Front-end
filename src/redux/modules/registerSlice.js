@@ -53,7 +53,6 @@ export const __registerManager = createAsyncThunk("registerManager", async (payl
 	});
 	try {
 		const response = await apis.managerSignup(payload);
-
 		if (response.status === 200) {
 			return thunkAPI.fulfillWithValue(response.data.success);
 		}
@@ -65,17 +64,7 @@ export const __registerManager = createAsyncThunk("registerManager", async (payl
 export const __checkUsername = createAsyncThunk("checkUsername", async (payload, thunkAPI) => {
 	try {
 		const response = await apis.checkUsername(payload);
-
-		return thunkAPI.fulfillWithValue(response.data.data);
-	} catch (error) {
-		return thunkAPI.rejectWithValue(error);
-	}
-});
-
-export const __getCompanyInfo = createAsyncThunk("getCompanyInfo", async (payload, thunkAPI) => {
-	try {
-		const response = await apis.getCompanyPage(payload);
-		return thunkAPI.fulfillWithValue(response);
+		return thunkAPI.fulfillWithValue(response.data.success);
 	} catch (error) {
 		return thunkAPI.rejectWithValue(error);
 	}
@@ -105,7 +94,6 @@ export const registerSlice = createSlice({
 		error: "",
 	},
 	reducers: {},
-
 	extraReducers: builder => {
 		//  Login
 		builder
@@ -134,18 +122,6 @@ export const registerSlice = createSlice({
 				state.usernameCheck = action.payload;
 			})
 			.addCase(__checkUsername.rejected, (state, action) => {
-				state.isLoading = false;
-				state.error = action.payload;
-			})
-			//Duplicate Check(nickname)
-			.addCase(__checkNickname.pending, (state, _) => {
-				state.isLoading = true;
-			})
-			.addCase(__checkNickname.fulfilled, (state, action) => {
-				state.isLoading = false;
-				state.nicknameCheck = action.payload;
-			})
-			.addCase(__checkNickname.rejected, (state, action) => {
 				state.isLoading = false;
 				state.error = action.payload;
 			})
