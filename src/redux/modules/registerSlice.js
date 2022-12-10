@@ -5,6 +5,7 @@ import { setCookie } from "../../utils/cookie";
 export const __loginMember = createAsyncThunk("loginMember", async (payload, thunkAPI) => {
 	try {
 		const response = await apis.memberLogin(payload);
+		console.log("!!", response);
 		if (response.status === 200) {
 			localStorage.setItem("refresh-token", response.headers["refresh-token"]); // refresh token은 로껄스토리지
 			setCookie("access-token", response.headers["access-token"], {
@@ -155,5 +156,5 @@ export const registerSlice = createSlice({
 	},
 });
 
-export const { register } = registerSlice.actions;
+export const { register, logOut } = registerSlice.actions;
 export default registerSlice.reducer;

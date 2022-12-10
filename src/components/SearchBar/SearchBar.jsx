@@ -4,7 +4,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import moment from "moment";
 import { ko } from "date-fns/esm/locale";
 import styled from "styled-components";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { HiMagnifyingGlass } from "react-icons/hi2";
 import {
 	SearchBarContainer,
@@ -23,7 +23,6 @@ const SearchBar = () => {
 	
 	const navigate = useNavigate();
 	const dispatch = useDispatch();
-	const searchResult = useSelector((state) => state.boards.searchResult);
 
 	//강제 re-render용 state
 	const [,updateState] = useState();

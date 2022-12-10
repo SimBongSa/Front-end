@@ -207,8 +207,8 @@ export const StContent = styled.div`
 					background-color: transparent;
 					& .title {
 						text-align: start;
-						font-size: 1.5rem;
-						font-weight: 500;
+						font-size: 1.2rem;
+						font-weight: 300;
 						color: ${props => props.theme.textColor};
 						margin-bottom: 20px;
 					}
@@ -278,6 +278,7 @@ export const StArea = styled.div`
 			case "Board":
 				return css`
 					font-size: 0.8rem;
+					font-weight: 300;
 					max-width: 200px;
 					min-width: 50px;
 					color: ${props => props.theme.bgColor};

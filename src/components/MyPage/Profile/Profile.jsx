@@ -21,6 +21,7 @@ const Profile = ({
 		removeCookie(["username"], { path: "/" });
 		removeCookie(["authority"], { path: "/" });
 		localStorage.removeItem("refresh-token");
+		navigate('/')
 	};
 
 	return (
@@ -102,7 +103,6 @@ const Profile = ({
 					<h4
 						onClick={() => {
 							logOut();
-							navigate("/login");
 						}}
 					>
 						로그 아웃
@@ -133,7 +133,6 @@ const Profile = ({
 					<h4
 						onClick={() => {
 							logOut();
-							navigate("/login");
 						}}
 					>
 						로그 아웃

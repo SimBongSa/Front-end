@@ -143,7 +143,9 @@ const Organization = () => {
 			dispatch(__registerManager({ ...input, licenseImage }));
 			setInput(init);
 			toast.success("회원가입이 성공했습니다.")
-			navigate("/login");
+			setTimeout(() => {
+				navigate("/login");
+			}, 1000);
 		} else {
 			toast.error("입력 내용을 확인해주세요.");
 			<Notification status={false} />
