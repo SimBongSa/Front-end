@@ -69,14 +69,12 @@ const DetailEdit = () => {
 	};
 
 	//해당 페이지의 id에 해당되는 객체 불러오기
-	console.log("boardsId => ", boardsId);
 
 	useEffect(() => {
 		dispatch(__getBoardId(id));
 	}, [dispatch, id]);
 
 	const onChangeHandler = e => {
-		console.log("인풋=>", input);
 		const { name, value } = e.target;
 		setInput({ ...input, [name]: value, area: address });
 	};

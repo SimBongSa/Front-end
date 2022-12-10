@@ -1,4 +1,4 @@
-import { InputForm, InputBox, StLegend } from "../Individual/Individual.styled";
+import { InputForm, InputBox, StLegend, StToLogin } from "../Individual/Individual.styled";
 import Input from "../../common/input/Input";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -45,7 +45,7 @@ const Organization = () => {
 			alert("회원 가입 완료");
 			navigate("/login");
 		}
-	}, [status])
+	}, [status]);
 
 	const [licenseImage, setLicenseImage] = useState(null);
 	const [licensePreview, setLicensePreview] = useState("");
@@ -150,7 +150,7 @@ const Organization = () => {
 					<form onSubmit={onSubmitHandler}>
 						<StLegend>Your Basic Info</StLegend>
 						<Input
-							placeholder="Username"
+							placeholder="ID"
 							autoComplete="off"
 							dupleCheck="username"
 							nameMessage={nameMessage}
@@ -217,7 +217,9 @@ const Organization = () => {
 						<StRegBtn type="submit">회원가입</StRegBtn>
 					</form>
 				</InputBox>
-				<span onClick={() => navigate("/login")}>You are already member? Log in Now</span>
+				<StToLogin>
+					이미 Vongole 회원이시라면? ➔ <b onClick={() => navigate("/login")}> Login </b>
+				</StToLogin>
 			</InputForm>
 		</StInputContainer>
 	);

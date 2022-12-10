@@ -1,4 +1,4 @@
-import { InputForm, InputBox } from "./Individual.styled";
+import { InputForm, InputBox, StToLogin } from "./Individual.styled";
 import Input from "../../common/input/Input";
 import { useState, useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -53,7 +53,7 @@ const Individual = () => {
 			alert("회원 가입 완료");
 			navigate("/login");
 		}
-	}, [status])
+	}, [status]);
 
 	const onUsernameChange = useCallback(
 		e => {
@@ -130,7 +130,7 @@ const Individual = () => {
 					<form onSubmit={onSubmitHandler}>
 						<StLegend>Your Basic Info</StLegend>
 						<Input
-							placeholder="Username"
+							placeholder="ID"
 							autoComplete="off"
 							dupleCheck="username"
 							nameMessage={nameMessage}
@@ -200,7 +200,9 @@ const Individual = () => {
 						<StRegBtn type="submit">회원가입</StRegBtn>
 					</form>
 				</InputBox>
-				<span onClick={() => navigate("/login")}>You are already member? Log in Now</span>
+				<StToLogin>
+					이미 Vongole 회원이시라면? ➔ <b onClick={() => navigate("/login")}> Login </b>
+				</StToLogin>
 			</InputForm>
 		</StInputContainer>
 	);

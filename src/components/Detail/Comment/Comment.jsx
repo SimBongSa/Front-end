@@ -99,7 +99,7 @@ function Comment() {
 				</CommentWriteWrap>
 			) : (
 				<CommentWriteWraps>
-					<div>댓글을 작성하실수 없습니다.</div>
+					<div>로그인 후 작성 가능합니다.</div>
 				</CommentWriteWraps>
 			)}
 

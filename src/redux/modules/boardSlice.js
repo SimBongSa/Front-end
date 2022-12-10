@@ -2,7 +2,6 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { apis } from "./Api/apis";
 
 export const __createBoard = createAsyncThunk("createBoard", async (payload, thunkAPI) => {
-	console.log("post 페이로드 =>", payload);
 	const formData = new FormData();
 
 	//formData append
@@ -12,7 +11,7 @@ export const __createBoard = createAsyncThunk("createBoard", async (payload, thu
 
 	try {
 		const response = await apis.createBoard(formData);
-		console.log("createBoard response =>", response);
+
 		if (response.status === 200) {
 			alert(response.data.data.msg);
 			return thunkAPI.fulfillWithValue(response);
@@ -41,11 +40,9 @@ export const __getBoardId = createAsyncThunk("getBoardId", async (payload, thunk
 });
 
 export const __getSearchBoards = createAsyncThunk("getSearchBoards", async (payload, thunkAPI) => {
-	console.log("@@", payload);
 	try {
 		const response = await apis.getSearchBoards(payload);
 		if (response.status === 200) {
-			console.log(response);
 			return thunkAPI.fulfillWithValue(response.data.data);
 		}
 	} catch (error) {
@@ -54,7 +51,6 @@ export const __getSearchBoards = createAsyncThunk("getSearchBoards", async (payl
 });
 
 export const __editBoard = createAsyncThunk("editBoard", async (payload, thunkAPI) => {
-	console.log("edit 페이로드 =>", payload);
 	const formData = new FormData();
 
 	// formData append
@@ -85,8 +81,7 @@ export const __delBoard = createAsyncThunk("delCreate", async (payload, thunkAPI
 export const __getArea = createAsyncThunk("getArea", async (payload, thunkAPI) => {
 	try {
 		const response = await payload;
-		console.log(payload);
-		console.log(response);
+
 		return thunkAPI.fulfillWithValue(response);
 	} catch (error) {
 		return thunkAPI.rejectWithValue(error);
@@ -94,7 +89,6 @@ export const __getArea = createAsyncThunk("getArea", async (payload, thunkAPI) =
 });
 
 export const __postApply = createAsyncThunk("apply", async (payload, thunkAPI) => {
-	console.log(payload);
 	try {
 		const response = await apis.applyBoard(payload);
 		if (response.status === 200) {

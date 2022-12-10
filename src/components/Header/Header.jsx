@@ -41,7 +41,7 @@ const Header = () => {
 						navigate("/boards");
 					}}
 				>
-					Boards
+					봉사 전체보기
 				</HeaderMenuItem>
 				{isLogin && authority === "ROLE_MEMBER" ? (
 					<>
@@ -76,7 +76,7 @@ const Header = () => {
 							navigate("/login");
 						}}
 					>
-						Login
+						로그인
 					</HeaderMenuItem>
 				)}
 			</HeaderMenu>

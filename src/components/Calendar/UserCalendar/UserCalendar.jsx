@@ -17,8 +17,7 @@ const UserCalendar = ({ userEnroll }) => {
 
 	const getElCount = mark => mark.reduce((ac, v) => ({ ...ac, [v]: (ac[v] || 0) + 1 }), {});
 	const arr = getElCount(mark);
-	console.log(userEnroll);
-	console.log(mark);
+
 	return (
 		<>
 			<StCalendarContainer>

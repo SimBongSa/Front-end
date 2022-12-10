@@ -1,12 +1,26 @@
 import styled from "styled-components";
 import Calendar from "react-calendar";
 
+export const StCalendarListWrap = styled.div``;
+
 export const StCalendarList = styled.div`
 	background-color: ${props => props.theme.subBgColor};
 	border-radius: 20px;
 	width: 35%;
+
+	& h3 {
+		font-size: 1.5rem;
+		justify-content: center;
+		padding: 20px 20px 20px 20px;
+		padding-left: 7rem;
+	}
+
 	& h2 {
-		font-size: 1.6rem;
+		font-size: 1.5rem;
+		justify-content: center;
+		padding: 20px 10px 20px 20px;
+		padding-top: 20rem;
+		padding-left: 6.5rem;
 	}
 	@media (max-width: 1280px) {
 		margin-top: 5rem;
@@ -40,6 +54,13 @@ export const StCalendarContainer = styled.div`
 	overflow: hidden;
 	transition: all 0.5s;
 	& h1 {
+		& span {
+			background-color: ${props => props.theme.subBgColor};
+			padding: 10px 50px;
+			border-radius: 20px;
+		}
+
+		border-radius: 20px;
 		font-size: 1.8rem;
 		margin-top: 1rem;
 		margin-bottom: 1rem;

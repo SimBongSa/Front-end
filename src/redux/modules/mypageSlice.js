@@ -46,7 +46,7 @@ export const __getUserReject = createAsyncThunk("reject", async (payload, thunkA
 
 	try {
 		const response = await apis.getUserReject(payload);
-		console.log(response);
+
 		return thunkAPI.fulfillWithValue(response.data.data);
 	} catch (error) {
 		return thunkAPI.rejectWithValue(error);
@@ -55,7 +55,6 @@ export const __getUserReject = createAsyncThunk("reject", async (payload, thunkA
 
 export const __putUserInfo = createAsyncThunk("putUserInfo", async (payload, thunkAPI) => {
 	const formData = new FormData();
-	console.log("userInfo payload =>", payload);
 
 	// formData append
 	Object.entries(payload).forEach(([key, value]) => {
@@ -80,7 +79,7 @@ export const __getOtherUserInfo = createAsyncThunk(
 	async (payload, thunkAPI) => {
 		try {
 			const response = await apis.getOtherUserInfo(payload);
-			console.log("__getOtherUserInfo", response);
+
 			return thunkAPI.fulfillWithValue(response.data.data);
 		} catch (error) {
 			return thunkAPI.rejectWithValue(error);
@@ -93,7 +92,6 @@ export const __getOtherUserEnroll = createAsyncThunk(
 	async (payload, thunkAPI) => {
 		try {
 			const response = await apis.getOtherUserEnroll(payload);
-			console.log("getOtherUserEnroll", response);
 		} catch (error) {
 			return thunkAPI.rejectWithValue(error);
 		}
@@ -103,9 +101,8 @@ export const __getOtherUserEnroll = createAsyncThunk(
 // Company
 export const __getCompanyInfo = createAsyncThunk("companyInfo", async (payload, thunkAPI) => {
 	try {
-		console.log("__getCompanyInfo payload =>", payload);
 		const response = await apis.getCompanyPage(payload);
-		console.log("__getCompanyInfo response =>", response);
+
 		return thunkAPI.fulfillWithValue(response.data.data);
 	} catch (error) {
 		return thunkAPI.rejectWithValue(error);
@@ -124,7 +121,7 @@ export const __getCompanyBoards = createAsyncThunk("companyBoards", async (paylo
 export const __getAppliList = createAsyncThunk("appliList", async (payload, thunkAPI) => {
 	try {
 		const response = await apis.getAppliList(payload);
-		console.log(response);
+
 		return thunkAPI.fulfillWithValue(response.data.data);
 	} catch (error) {
 		return thunkAPI.rejectWithValue(error);
@@ -139,13 +136,9 @@ export const __putCompanyInfo = createAsyncThunk("__putCompanyInfo", async (payl
 		formData.append(key, value);
 	});
 
-	for (let key of formData.keys()) {
-		console.log("formData ===>", key, ":", formData.get(key));
-	}
-
 	try {
 		const response = await apis.putCompanyPage(formData);
-		console.log("__putCompanyInfo => ", response);
+
 		if (response.status === 200) {
 			alert(response.data.data.msg);
 			return thunkAPI.fulfillWithValue(response);
@@ -188,7 +181,7 @@ export const __getOtherCompanyInfo = createAsyncThunk(
 	async (payload, thunkAPI) => {
 		try {
 			const response = await apis.getOtherCompanyInfo(payload);
-			console.log("getOtherCompanyInfo", response);
+
 			return thunkAPI.fulfillWithValue(response.data.data);
 		} catch (error) {
 			return thunkAPI.rejectWithValue(error);
@@ -201,7 +194,7 @@ export const __getOtherCompanyBoards = createAsyncThunk(
 	async (payload, thunkAPI) => {
 		try {
 			const response = await apis.getOtherCompanyBoards(payload);
-			console.log("getOtherCompanyBoards", response);
+
 			return thunkAPI.fulfillWithValue(response.data.data);
 		} catch (error) {
 			return thunkAPI.rejectWithValue(error);
