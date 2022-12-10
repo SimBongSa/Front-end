@@ -53,7 +53,7 @@ const Individual = () => {
 			alert("회원 가입 완료");
 			navigate("/login");
 		}
-	}, [status])
+	}, [status]);
 
 	const onUsernameChange = useCallback(
 		e => {
@@ -128,9 +128,9 @@ const Individual = () => {
 			<InputForm>
 				<InputBox>
 					<form onSubmit={onSubmitHandler}>
-						<StLegend>Your Basic Info</StLegend>
+						<StLegend>필수 정보</StLegend>
 						<Input
-							placeholder="Username"
+							placeholder="아이디"
 							autoComplete="off"
 							dupleCheck="username"
 							nameMessage={nameMessage}
@@ -141,7 +141,7 @@ const Individual = () => {
 						/>
 						<span>{nameMessage}</span>
 						<Input
-							placeholder="Password"
+							placeholder="비밀번호"
 							type="password"
 							name="password"
 							value={input.password}
@@ -149,30 +149,30 @@ const Individual = () => {
 						/>
 						<span>{passwordMessage}</span>
 						<Input
-							placeholder="Confirm Password"
+							placeholder="비밀번호 확인"
 							type="password"
 							name="passwordConfirm"
 							value={input.passwordConfirm}
 							onChange={onPwConfirmChange}
 						/>
-						<span>{pwConfirmMessage}</span>
-						<StLegend>Your Contact Info</StLegend>
 						<Input
-							placeholder="Email"
+							placeholder="이메일"
 							dupleCheck={true}
 							type="email"
 							name="email"
 							value={input.email}
 							onChange={onChangeHandler}
 						/>
+						<span>{pwConfirmMessage}</span>
+						<StLegend>선택 정보</StLegend>
 						<Input
-							placeholder="PhoneNumber"
+							placeholder="핸드폰번호"
 							type="tel"
 							name="phoneNumber"
 							value={input.phoneNumber}
 							onChange={onChangeHandler}
 						/>
-						<StLegend>Your Personal Info</StLegend>
+						<StLegend>개인 정보</StLegend>
 						<Input
 							placeholder="Name"
 							type="text"
@@ -200,7 +200,9 @@ const Individual = () => {
 						<StRegBtn type="submit">회원가입</StRegBtn>
 					</form>
 				</InputBox>
-				<StToRegister onClick={() => navigate("/login")}>이미 봉골레 회원인가요? <b>로그인하기</b></StToRegister>
+				<StToRegister onClick={() => navigate("/login")}>
+					이미 봉골레 회원인가요? <b>로그인하기</b>
+				</StToRegister>
 			</InputForm>
 		</StInputContainer>
 	);

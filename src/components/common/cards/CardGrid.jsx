@@ -22,7 +22,7 @@ const CardGrid = ({ gridColumn, companyBoards, boards, userEnroll, userWait }) =
 		const diffDate = dueDay.getTime() - today.getTime();
 		return Math.round(Math.abs(diffDate / (1000 * 60 * 60 * 24)));
 	};
-	
+
 	const today = new Date().toISOString().split("T")[0];
 
 	const [isHovering, setIsHovering] = useState(false);
@@ -103,7 +103,6 @@ const CardGrid = ({ gridColumn, companyBoards, boards, userEnroll, userWait }) =
 						const dDay = getDateDiff(item.dueDay, today);
 						const boardId = item.boardId;
 						// let isEditState = hoveritem.indexOf(boardId) === -1 ? false : true;
-						console.log(boardId);
 						return (
 							<StCard variant="Company" key={item.boardId}>
 								<StDate variant="Company">D-{dDay}</StDate>
