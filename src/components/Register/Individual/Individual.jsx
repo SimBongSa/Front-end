@@ -200,7 +200,9 @@ const Individual = () => {
 						<StRegBtn type="submit">회원가입</StRegBtn>
 					</form>
 				</InputBox>
-				<span onClick={() => navigate("/login")}>로그인</span>
+				<StToRegister onClick={() => navigate("/login")}>
+					이미 봉골레 회원인가요? <b>로그인하기</b>
+				</StToRegister>
 			</InputForm>
 		</StInputContainer>
 	);
@@ -220,4 +222,15 @@ export const StLegend = styled.legend`
 	margin-top: 15px;
 	margin-bottom: 0px;
 	text-align: left;
+`;
+
+export const StToRegister = styled.span`
+	font-weight: 300;
+	font-size: 1.2rem;
+	margin-top: 2rem;
+	margin-bottom: 15rem;
+	& b {
+		cursor: pointer;
+		color: orange;
+	}
 `;
