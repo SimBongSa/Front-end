@@ -5,10 +5,12 @@ export const StCalendarList = styled.div`
 	background-color: ${props => props.theme.subBgColor};
 	border-radius: 20px;
 	width: 35%;
+	padding: 1.5rem;
 	& h2 {
 		font-size: 1.6rem;
 	}
 	@media (max-width: 1280px) {
+		text-align: center;
 		margin-top: 5rem;
 		width: 100%;
 	}

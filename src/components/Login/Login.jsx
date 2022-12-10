@@ -12,7 +12,7 @@ import {
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { __loginMember } from "../../redux/modules/registerSlice";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { useEffect } from "react";
 import { getCookieToken } from "../../utils/cookie";
 import Input from "../common/input/Input";
@@ -20,12 +20,16 @@ import { toast, ToastContainer } from 'react-toastify';
 
 const Login = () => {
 
+	const loginRef = useRef();
+	
+	useEffect(() => {
+		loginRef.current?.focus();
+	}, []);
+
 	const navigate = useNavigate();
 	const dispatch = useDispatch();
 	const authority = getCookieToken(["username"]);
-
 	const status = useSelector((state) => state.register.error.response?.data?.error?.detail)
-	console.log("!!", status)
 
 	const init = {
 		username: "",
@@ -48,15 +52,17 @@ const Login = () => {
 			dispatch(__loginMember(input));
 		} else if (input.username === '' || input.password === ''){
 			toast.error('항목을 모두 입력해주세요');
-		}
+		} 
 	};
 
 	useEffect(() => {
 		if (authority) {
-			alert(`${authority}님 환영합니다`);
-			navigate("/");
+			toast.success(authority + '님 반갑습니다!')
+			setTimeout(() => {
+				navigate('/');
+			}, 1000);
 		}
-	}, [authority]);
+	});
 
 	const [loginOption, setLoginOption] = useState("member");
 
@@ -92,6 +98,7 @@ const Login = () => {
 
 						<LoginForm onSubmit={onSubmitHandler}>
 							<Input
+								ref={loginRef}
 								placeholder="아이디"
 								type="text"
 								name="username"
@@ -143,14 +150,15 @@ const Login = () => {
 
 						<LoginForm onSubmit={onSubmitHandler}>
 							<Input
-								placeholder="username"
+								ref={loginRef}
+								placeholder="아이디"
 								type="text"
 								name="username"
 								value={input.username}
 								onChange={onChangeHandler}
 							/>
 							<Input
-								placeholder="password"
+								placeholder="비밀번호"
 								type="password"
 								name="password"
 								value={input.password}

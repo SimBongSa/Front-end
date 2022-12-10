@@ -123,7 +123,9 @@ const Individual = () => {
 			dispatch(__registerMember(input));
 			setInput(init);
 			toast.success("회원가입이 성공했습니다.")
-			navigate("/login");
+			setTimeout(() => {
+				navigate("/login");
+			}, 1000);
 		} else if (!status) {
 			toast.error("아이디 중복체크를 해주세요!");
 		} else {

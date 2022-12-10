@@ -6,6 +6,7 @@ import { AiFillEyeInvisible, AiFillEye } from "react-icons/ai";
 import { useState } from "react";
 
 const Input = ({
+	ref,
 	id,
 	placeholder,
 	dupleCheck,
@@ -40,6 +41,7 @@ const Input = ({
 			{type === "text" ? (
 				<>
 					<StInput
+						ref={ref}
 						id={id}
 						placeholder={placeholder}
 						autoComplete="off"
