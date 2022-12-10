@@ -1,12 +1,10 @@
 import axios from "axios";
 import { getCookieToken } from "../../../utils/cookie";
 const BASE_URL = process.env.REACT_APP_SERVER;
-const token = getCookieToken("access-token");
 
 const api = axios.create({
 	baseURL: BASE_URL,
 	headers: {
-		Authorization: token,
 		"Content-Type": "application/json",
 		accept: "*/*",
 	},
@@ -45,7 +43,7 @@ export const apis = {
 	createBoard: payload =>
 		axios.post(`${BASE_URL}/boards`, payload, {
 			headers: {
-				Authorization: token,
+				Authorization: getCookieToken("access-token"),
 				"Content-Type": "multipart/form-data",
 			},
 		}),
@@ -53,7 +51,7 @@ export const apis = {
 	editBoard: payload =>
 		axios.put(`${BASE_URL}/boards/${payload.id}`, payload.upDate, {
 			headers: {
-				Authorization: token,
+				Authorization: getCookieToken("access-token"),
 				"Content-Type": "multipart/form-data",
 			},
 		}),
@@ -61,7 +59,7 @@ export const apis = {
 	delBoard: payload =>
 		axios.delete(`${BASE_URL}/boards/${payload}`, {
 			headers: {
-				Authorization: token,
+				Authorization: getCookieToken("access-token"),
 				"Content-Type": "multipart/form-data",
 			},
 		}),
@@ -70,7 +68,7 @@ export const apis = {
 	applyBoard: id =>
 		axios.post(`${BASE_URL}/boards/${id}/apply`, id, {
 			headers: {
-				Authorization: token,
+				Authorization: getCookieToken("access-token"),
 			},
 		}),
 
@@ -78,37 +76,37 @@ export const apis = {
 	getUserPage: id =>
 		api.get(`${BASE_URL}/mypage/${id}`, {
 			headers: {
-				Authorization: token,
+				Authorization: getCookieToken("access-token"),
 			},
 		}),
 	getUserEnroll: id =>
 		api.get(`${BASE_URL}/mypage/${id}/enroll`, {
 			headers: {
-				Authorization: token,
+				Authorization: getCookieToken("access-token"),
 			},
 		}),
 	getUserWait: id =>
 		api.get(`${BASE_URL}/mypage/${id}/enroll/wait`, {
 			headers: {
-				Authorization: token,
+				Authorization: getCookieToken("access-token"),
 			},
 		}),
 	getUserPass: id =>
 		api.get(`${BASE_URL}/mypage/${id}/enroll/pass`, {
 			headers: {
-				Authorization: token,
+				Authorization: getCookieToken("access-token"),
 			},
 		}),
 	getUserReject: id =>
 		api.get(`${BASE_URL}/mypage/${id}/enroll/fail`, {
 			headers: {
-				Authorization: token,
+				Authorization: getCookieToken("access-token"),
 			},
 		}),
 	putUserPage: payload =>
 		api.put(`${BASE_URL}/mypage`, payload, {
 			headers: {
-				Authorization: token,
+				Authorization: getCookieToken("access-token"),
 				"Content-Type": "multipart/form-data",
 			},
 		}),
@@ -120,32 +118,32 @@ export const apis = {
 	getCompanyPage: id =>
 		api.get(`${BASE_URL}/companypage/${id}`, {
 			headers: {
-				Authorization: token,
+				Authorization: getCookieToken("access-token"),
 			},
 		}),
 	getCompanyBoards: id =>
 		api.get(`${BASE_URL}/companypage/${id}/boards`, {
 			headers: {
-				Authorization: token,
+				Authorization: getCookieToken("access-token"),
 			},
 		}),
 	putCompanyPage: payload =>
 		api.put(`${BASE_URL}/companypage`, payload, {
 			headers: {
-				Authorization: token,
+				Authorization: getCookieToken("access-token"),
 				"Content-Type": "multipart/form-data",
 			},
 		}),
 	getAppliList: id =>
 		api.get(`${BASE_URL}/companypage/boards/${id}`, {
 			headers: {
-				Authorization: token,
+				Authorization: getCookieToken("access-token"),
 			},
 		}),
 	getAllAppliList: payload =>
 		api.get(`${BASE_URL}/companypage/applicants?page=${payload.page}&size=${payload.size}`, {
 			headers: {
-				Authorization: token,
+				Authorization: getCookieToken("access-token"),
 			},
 		}),
 	putApprove: payload =>
@@ -154,7 +152,7 @@ export const apis = {
 			{},
 			{
 				headers: {
-					Authorization: token,
+					Authorization: getCookieToken("access-token"),
 				},
 			}
 		),
@@ -164,7 +162,7 @@ export const apis = {
 			{},
 			{
 				headers: {
-					Authorization: token,
+					Authorization: getCookieToken("access-token"),
 				},
 			}
 		),
@@ -175,34 +173,29 @@ export const apis = {
 	getTotalComment: payload =>
 		axios.get(`${BASE_URL}/boards/${payload}`, {
 			headers: {
-				Authorization: token,
+				Authorization: getCookieToken("access-token"),
 			},
 		}),
 	getComment: payload =>
 		axios.get(`${BASE_URL}/boards/${payload}`, {
 			headers: {
-				Authorization: token,
+				Authorization: getCookieToken("access-token"),
 			},
 		}),
 	postComment: payload =>
-		axios.post(
-			`${BASE_URL}/comments/${payload.id}`,
-			payload,
-			{
-				headers: { Authorization: token },
-			},
-			console.log(token)
-		),
+		axios.post(`${BASE_URL}/comments/${payload.id}`, payload, {
+			headers: { Authorization: getCookieToken("access-token") },
+		}),
 	putComment: payload =>
 		axios.put(`${BASE_URL}/comments/${payload.commentId}`, payload, {
 			headers: {
-				Authorization: token,
+				Authorization: getCookieToken("access-token"),
 			},
 		}),
 	deleteComment: commentId =>
 		axios.delete(`${BASE_URL}/comments/${commentId}`, {
 			headers: {
-				Authorization: token,
+				Authorization: getCookieToken("access-token"),
 			},
 		}),
 
@@ -221,21 +214,21 @@ export const apis = {
 	getChatList: () =>
 		axios.get(`${BASE_URL}/chatroom`, {
 			headers: {
-				Authorization: token,
+				Authorization: getCookieToken("access-token"),
 			},
 		}),
 
 	createChatRoom: payload =>
 		axios.post(`${BASE_URL}/chatroom`, payload, {
 			headers: {
-				Authorization: token,
+				Authorization: getCookieToken("access-token"),
 			},
 		}),
 
 	getChatHistory: id =>
 		axios.get(`${BASE_URL}/chatroom/${id}/history`, {
 			headers: {
-				Authorization: token,
+				Authorization: getCookieToken("access-token"),
 			},
 		}),
 };

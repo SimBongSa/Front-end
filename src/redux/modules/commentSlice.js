@@ -22,6 +22,9 @@ export const __getComment = createAsyncThunk("getComment", async (payload, thunk
 export const __postComment = createAsyncThunk("postComment", async (payload, thunkAPI) => {
 	try {
 		const { data } = await apis.postComment(payload);
+		if (data.success === true) {
+			alert("댓글이 작성되었습니다.");
+		}
 		return thunkAPI.fulfillWithValue(data.data);
 	} catch (error) {
 		return thunkAPI.rejectWithValue(error);
@@ -31,6 +34,9 @@ export const __postComment = createAsyncThunk("postComment", async (payload, thu
 export const __putComment = createAsyncThunk("putComment", async (payload, thunkAPI) => {
 	try {
 		const { data } = await apis.putComment(payload);
+		if (data.success === true) {
+			alert("댓글이 수정되었습니다.");
+		}
 		return thunkAPI.fulfillWithValue(data.data);
 	} catch (error) {
 		return thunkAPI.rejectWithValue(error);
@@ -39,7 +45,10 @@ export const __putComment = createAsyncThunk("putComment", async (payload, thunk
 
 export const __deleteComment = createAsyncThunk("deleteComment", async (payload, thunkAPI) => {
 	try {
-		await apis.deleteComment(payload);
+		const { data } = await apis.deleteComment(payload);
+		if (data.success === true) {
+			alert("댓글이 삭제되었습니다.");
+		}
 		return thunkAPI.fulfillWithValue(payload);
 	} catch (error) {
 		return thunkAPI.rejectWithValue(error);
