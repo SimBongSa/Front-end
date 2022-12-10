@@ -74,13 +74,6 @@ const SearchBar = () => {
 		setModal(false)
 	};
 
-	// useEffect(() => {
-	// 	if (searchResult) {
-	// 		navigate("/search", { state: searchResult });
-	// 	}
-	// }, [])
-
-
 	// date picker
 	const today = new Date();
 	const [startDate, setStartDate] = useState(today);
