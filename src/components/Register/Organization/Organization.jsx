@@ -82,7 +82,7 @@ const Organization = () => {
 			const { name, value } = e.target;
 			setInput({ ...input, [name]: value });
 			if (value.length === 0) {
-				setNameMessage("");
+				setNameMessage("4 ~ 16글자, 알파벳 소문자, 대문자, 숫자만 가능합니다.");
 			} else {
 				if (value.length < 4 || value.length > 16) {
 					setNameMessage("4 ~ 16글자, 알파벳 소문자, 대문자, 숫자만 가능합니다.");
@@ -105,7 +105,7 @@ const Organization = () => {
 			const { name, value } = e.target;
 			setInput({ ...input, [name]: value });
 			if (value.length === 0) {
-				setPasswordMessage("");
+				setPasswordMessage("8 ~ 20자, 알파벳 대소문자, 숫자, 특수문자로 구성됩니다.");
 			} else {
 				if (value.length < 8 || value.length > 20) {
 					setPasswordMessage("8 ~ 20자, 알파벳 대소문자, 숫자, 특수문자로 구성됩니다.");

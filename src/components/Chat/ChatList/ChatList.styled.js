@@ -29,8 +29,8 @@ export const StContact = styled.div`
     transition: all 0.5s;
     border-bottom: 1px solid ${(props) => props.theme.subTextColor};
     &:hover {
-      color: ${(props) => props.theme.btnColor};
-      background: #FBFBF9;
+      color: ${(props) => props.theme.bgColor};
+      background: ${(props) => props.theme.btnColor};
     }
     @media screen and (max-width: 768px) {
       padding: 6px 0 46px 8px;
@@ -42,9 +42,14 @@ export const StContact = styled.div`
 `
 
 export const StContactWrap = styled.div`
-  width: 88%;
+  width: 100%;
+  padding-top: 10px;
   margin: 0 auto;
+  font-size: .95rem;
   position: relative;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
   & img {
     width: 40px;
     border-radius: 50%;
