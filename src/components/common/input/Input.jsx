@@ -1,5 +1,5 @@
 import { useDispatch } from "react-redux";
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 import { __checkUsername } from "../../../redux/modules/registerSlice";
 import { StInputContainer, StInput, DupleCheck } from "./Input.styled";
 import { AiFillEyeInvisible, AiFillEye } from "react-icons/ai";
