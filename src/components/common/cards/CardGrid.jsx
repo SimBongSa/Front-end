@@ -134,7 +134,7 @@ const CardGrid = ({ gridColumn, companyBoards, boards, userEnroll, userWait }) =
 															<StBoardMisc>
 																<span onClick={() => {
 																	dispatch(__getBoardId(item.boardId));
-																	// navigate(`/edit/${item.boardId}`); 
+																	navigate(`/edit/${item.boardId}`); 
 																}}>수정</span>
 																<span onClick={() => {
 																	dispatch(__delBoard(item.boardId));

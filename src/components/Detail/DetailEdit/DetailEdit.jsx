@@ -73,7 +73,8 @@ const DetailEdit = () => {
 		setInput({ ...input, [name]: value, area: address });
 	};
 
-	const [tags, setTags] = useState([...boardsId?.tags]);
+	// const [tags, setTags] = useState([...boardsId?.tags]);
+	const [tags, setTags] = useState(boardsId?.tags);
 	console.log(tags);
 		// Tags
 	const onChangeTags = (e) => {
