@@ -202,6 +202,9 @@ export const StContent = styled.div`
 		switch (variant) {
 			case "Board":
 				return css`
+					text-overflow: ellipsis;
+					white-space: nowrap;
+					overflow: hidden;
 					padding: 1rem;
 					padding-top: 20px;
 					background-color: transparent;

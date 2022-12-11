@@ -229,7 +229,7 @@ export default Organization;
 
 {
 	/* <h4>클릭하여 업로드</h4>
-<span>권장사항: 000MB 이하 고화질</span> */
+<span>권장사항: 5MB 이하 고화질</span> */
 }
 const ImageWrap = styled.div`
 	display: flex;

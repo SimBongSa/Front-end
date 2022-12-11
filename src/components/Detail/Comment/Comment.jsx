@@ -99,7 +99,7 @@ function Comment() {
 				</CommentWriteWrap>
 			) : (
 				<CommentWriteWraps>
-					<div>로그인 후 작성 가능합니다.</div>
+					<div>개인 회원 로그인 시 댓글 작성이 가능합니다.</div>
 				</CommentWriteWraps>
 			)}
 

@@ -4,8 +4,8 @@ export const StServerListContainer = styled.div`
 	display: flex;
 	/* width: 30rem; */
 	height: 7.5rem;
-	margin-top: 2rem;
-	border-bottom: 1px solid ${props => props.theme.textColor};
+	margin: 2rem 2rem 2rem 2rem;
+	border-bottom: 1px solid silver;
 	color: ${props => props.theme.textColor};
 	cursor: pointer;
 	transition: all 0.5s ease;

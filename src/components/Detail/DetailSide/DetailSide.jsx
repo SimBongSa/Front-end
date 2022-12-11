@@ -13,26 +13,26 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { __createChatRoom } from "../../../redux/modules/chatSlice";
 import Stbtn from "../../common/button/Button";
+import { Immer } from "immer";
 function DetailSlideBar({ boardsId, username, id }) {
 	const [applied, setApplied] = useState("");
 	const authority = getCookieToken(["username"]);
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
+	const test = useSelector(state => state?.boards);
 	const applicants = useSelector(state => state?.boards?.board?.applicants);
 	const chatRoom = useSelector(state => state.chat.chatRoom);
+
+	console.log("applicants => ", applicants);
 
 	const createChatRoom = chatRoomInfo => {
 		dispatch(__createChatRoom(chatRoomInfo));
 		navigate(`/chat/${chatRoom}`);
 	};
 
-	useEffect(() => {
-		if (applicants?.includes(authority) === true) {
-			setApplied("봉사활동 취소하기");
-		} else {
-			setApplied("봉사자 신청하기");
-		}
-	}, [setApplied]);
+	console.log("authority =>", authority);
+	console.log("includes =>", applicants?.includes(authority));
+	console.log("test =>", test);
 
 	return (
 		<DetailSide>
@@ -51,7 +51,9 @@ function DetailSlideBar({ boardsId, username, id }) {
 						dispatch(__postApply(id));
 					}}
 				>
-					{applied}
+					{applicants && applicants?.includes(authority) === true
+						? "봉사활동 취소하기"
+						: "봉사자 신청하기"}
 				</Stbtn>
 				<Stbtn
 					variant="boards-chat"

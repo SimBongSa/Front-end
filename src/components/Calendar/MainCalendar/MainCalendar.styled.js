@@ -5,6 +5,7 @@ export const StCalendarListWrap = styled.div``;
 
 export const StCalendarList = styled.div`
 	background-color: ${props => props.theme.subBgColor};
+	border: 1px solid gainsboro;
 	border-radius: 20px;
 	width: 35%;
 
@@ -12,7 +13,7 @@ export const StCalendarList = styled.div`
 		font-size: 1.5rem;
 		justify-content: center;
 		padding: 20px 20px 20px 20px;
-		padding-left: 7rem;
+		padding-left: 10rem;
 	}
 
 	& h2 {
@@ -57,7 +58,7 @@ export const StCalendarContainer = styled.div`
 		& span {
 			background-color: ${props => props.theme.subBgColor};
 			padding: 10px 50px;
-			border-radius: 20px;
+			border-radius: 10px;
 		}
 
 		border-radius: 20px;
@@ -72,7 +73,6 @@ export const StCalendarContainer = styled.div`
 		height: 40rem;
 		max-width: 60%;
 		background-color: ${props => props.theme.subBgColor};
-		font-family: Arial, Helvetica, sans-serif;
 		line-height: 2.5rem;
 		border-radius: 12px;
 	}
