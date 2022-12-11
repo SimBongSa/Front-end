@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { __getBoardId, __editBoard } from "../../redux/modules/boardSlice";
 import { DetailContainer, DetailContent, RegisterDatePicker, TextArea } from "./DetailEdit.styled";
 import PopupDom from "../Map/PopupDom";
@@ -17,12 +17,8 @@ const DetailEdit = () => {
 	const [boardImage, setBoardImage] = useState(null);
 	const [input, setInput] = useState("");
 
-	const boardsId = useSelector(state => state?.boards?.board);
+	const boardsId = useSelector((state) => state?.boards?.board);
 	const [uploadpreview, setUploadpreview] = useState(boardsId.boardImage);
-
-	const [editInput, setEditInput] = useState(Prev => {
-		const { title, content, boardImage, dueDay, startDate, endDate, area } = boardsId;
-	});
 
 	const [address, setAddress] = useState(boardsId.area);
 
@@ -52,7 +48,7 @@ const DetailEdit = () => {
 	};
 
 	//이미지 스테이트저장
-	const onChangeImage = e => {
+	const onChangeImage = (e) => {
 		setBoardImage(e.target.files[0]);
 
 		// 미리보기 온체인지 핸들러
@@ -69,7 +65,6 @@ const DetailEdit = () => {
 	};
 
 	//해당 페이지의 id에 해당되는 객체 불러오기
-
 	useEffect(() => {
 		dispatch(__getBoardId(id));
 	}, [dispatch, id]);

@@ -1,7 +1,6 @@
 import { ProfileContainer, ProfileBox, ProfileCategory, ProfileMisc, ProfileInfo, MyActivity } from "./Profile.styled";
 import { removeCookie } from "../../../utils/cookie";
 import { useNavigate } from "react-router-dom";
-import styled from "styled-components";
 import Button from "../../common/button/Button";
 import Profileimg from "../../common/profileimg/Profileimg";
 import Badge from "../../common/badge/Badge";
@@ -19,14 +18,14 @@ const Profile = ({
 
 	const navigate = useNavigate();
 
-
 	const logOut = () => {
 		removeCookie('access-token');
 		removeCookie('username');
 		removeCookie('authority');
 		removeCookie('ID');
 		localStorage.removeItem("refresh-token");
-		window.location.replace('/')	};
+		window.location.replace('/')	
+	};
 
 	return (
 		<ProfileContainer>

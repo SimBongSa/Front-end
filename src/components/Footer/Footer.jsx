@@ -15,7 +15,7 @@ const Footer = () => {
 	const emailRef = useRef();
 	const [emailModal, setEmailModal] = useState(false);
 
-	const sendEmail = e => {
+	const sendEmail = (e) => {
 		e.preventDefault();
 		emailjs
 			.sendForm("service_cyvresv", "template_slgvwc7", emailRef.current, "G36k-8rb7aC7t_e_-")
