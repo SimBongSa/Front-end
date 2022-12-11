@@ -10,6 +10,7 @@ export const DetailSide = styled.div`
 	height: fit-content;
 	margin: 0rem 5rem 1rem 1rem;
 	padding: 2rem;
+	line-height: 1.6;
 	background: ${props => props.theme.subBgColor};
 	& h1 {
 		font-size: 1.5rem;
@@ -24,7 +25,7 @@ export const DetailSide = styled.div`
 		justify-content: center;
 		align-items: center;
 		position: relative;
-		margin-bottom: 5rem;
+		margin-bottom: 10rem;
 	}
 	box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.1);
 	border-radius: 12px;
@@ -73,6 +74,7 @@ export const DetailSideItem = styled.div`
 	padding-top: 2rem;
 	& div {
 		line-height: 1.5em;
+		padding: 1rem;
 		color: ${props => props.theme.textColor};
 	}
 `;

@@ -55,8 +55,7 @@ const DetailSlideBar = ({ boardsId, username, id }) => {
 			</StDateBox>
 			<DetailSideItem>
 				<div>시간 : {boardsId?.dueDay?.split(" ")[1].substring(0, 5)}</div>
-
-				<div>봉사 인원 : {boardsId.applicantCnt}명</div>
+				<div>봉사 신청 인원 : {boardsId.applicantCnt}명</div>
 			</DetailSideItem>
 			<StBtnBox>
 				<Stbtn

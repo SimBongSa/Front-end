@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import { __getBoardId, __editBoard } from "../../../redux/modules/boardSlice";
-import { DetailContainer, DetailContent, RegisterDatePicker, TextArea } from "./DetailEdit.styled";
+import { RegisterDatePicker, TextArea } from "./DetailEdit.styled";
 import PopupDom from "../../Map/PopupDom";
 import moment from "moment";
 import PopupPostCode from "../../Map/PopupPostCode";
@@ -92,7 +92,6 @@ const DetailEdit = () => {
 		dueDay: moment(dueDay).format("YYYY-MM-DD HH:mm:ss"),
 		tags: tags
 	};
-	console.log(input)
 
 	const onSubmitHandler = e => {
 		e.preventDefault();
