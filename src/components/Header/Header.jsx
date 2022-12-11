@@ -15,6 +15,7 @@ import { useCookies } from "react-cookie";
 import SearchBar from "../SearchBar/SearchBar";
 
 const Header = () => {
+	
 	const navigate = useNavigate();
 	const [ThemeMode, toggleTheme] = useTheme();
 	const [cookies] = useCookies(["Authorization"]);

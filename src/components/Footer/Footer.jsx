@@ -40,7 +40,9 @@ const Footer = () => {
 				<FooterItem onClick={() => window.open("https://github.com/SimBongSa/Back-end", "_blank")}>
 					BE: 김원재, 강진구, 강창식, 김성민
 				</FooterItem>
-				<FooterItem>DESIGN: 전혜진</FooterItem>
+				<FooterItem onClick={() => window.open('https://www.figma.com/file/kYFvIOU803qXJAKd8Hpy5e/%EB%B4%89%EA%B3%A8%EB%A0%88-Vongole?node-id=602%3A2434&t=Y7bGfoeLPBYzHUwC-0', '_blank')}>
+					DESIGN: 전혜진
+				</FooterItem>
 				<FooterItem onClick={() => window.open("https://github.com/SimBongSa", "_blank")}>
 					https://github.com/SimBongSa
 				</FooterItem>

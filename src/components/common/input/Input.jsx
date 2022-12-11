@@ -25,7 +25,8 @@ const Input = ({
 	const [passwordType, setPasswordType] = useState({
 		type: 'password',
 		visible: false,
-	})
+	});
+
 	const handlePasswordType = (e) => {
 		setPasswordType(() => {
 			if (!passwordType.visible) {
@@ -33,7 +34,7 @@ const Input = ({
 			}
 			return { type: 'password', visible: false }
 		})
-	}
+	};
 
 	return (
 		<StInputContainer>

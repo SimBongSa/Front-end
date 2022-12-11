@@ -26,9 +26,8 @@ const CompanyPage = () => {
 
 	const companyInfo = useSelector(state => state.mypage?.companyInfo);
 	const companyBoards = useSelector(state => state.mypage.companyBoards);
-	console.log("@@",companyBoards)
 	const appliList = useSelector(state => state.mypage.allAppliList);
-	const [companyPageOpt, setCompanyPageOpt] = useState(null);
+	const [companyPageOpt, setCompanyPageOpt] = useState('myActivity');
 
 	return (
 		<>
