@@ -19,9 +19,13 @@ export const StTitleBox = styled.div`
 		font-weight: 300;
 		width: 75%;
 		font-size: 1.4rem !important;
+		& span {
+			border-bottom: 2px solid ${props => props.theme.subBtnColor};
+			box-shadow: inset 0 -1px 0 ${props => props.theme.subBtnColor};
+		}
 	}
 	& div {
-		margin-left: 1rem;
+		margin-left: 10.5rem;
 		padding-top: 8px;
 		font-weight: 500;
 		color: ${props => props.theme.notiColor};
@@ -37,8 +41,12 @@ export const DetailContent = styled.div`
 		font-size: 2rem;
 	}
 	& h3 {
-		font-size: 1.6rem;
+		font-size: 1.4rem;
 		margin: 3rem 1rem 2rem 0rem;
+		& span {
+			border-bottom: 2px solid ${props => props.theme.subBtnColor};
+			box-shadow: inset 0 -1px 0 ${props => props.theme.subBtnColor};
+		}
 	}
 	@media screen and (max-width: 1024px) {
 		margin-top: 5rem;
@@ -49,7 +57,7 @@ export const MapWrapper = styled.div`
 	margin-top: 2rem;
 	margin-bottom: 2rem;
 	padding-bottom: 2rem;
-	border-bottom: 0.5px solid ${props => props.theme.textColor};
+	border-bottom: 0.5px solid silver;
 `;
 
 export const StImgWrapper = styled.span`
@@ -68,11 +76,12 @@ export const StImgWrapper = styled.span`
 `;
 
 export const StContentBox = styled.span`
+	white-space: pre-line;
 	display: flex;
 	margin-top: 1.5rem;
 	margin-bottom: 2rem;
 	padding-bottom: 2rem;
-	border-bottom: 0.5px solid ${props => props.theme.textColor};
+	border-bottom: 0.5px solid silver;
 `;
 export const StAreaBox = styled.span`
 	display: flex;
@@ -80,7 +89,7 @@ export const StAreaBox = styled.span`
 	margin-top: 1.5rem;
 	margin-bottom: 2rem;
 	padding-bottom: 2rem;
-	border-bottom: 0.5px solid ${props => props.theme.textColor};
+	border-bottom: 0.5px solid silver;
 	& > div {
 		color: ${props => props.theme.textColor};
 		padding: 5px 10px;
@@ -96,6 +105,15 @@ export const StArea = styled.span`
 	color: white;
 `;
 
+export const StDetailArea = styled.span`
+	padding: 10px 5px;
+	border-radius: 10px;
+	background-color: Silver;
+	font-weight: 300;
+	max-width: 350px;
+	color: white;
+`;
+
 export const StDetailTag = styled.div`
 	font-size: 1rem;
 	display: flex;
@@ -103,7 +121,7 @@ export const StDetailTag = styled.div`
 	margin-top: 1.5rem;
 	margin-bottom: 2rem;
 	padding-bottom: 2rem;
-	border-bottom: 0.5px solid ${props => props.theme.textColor};
+	border-bottom: 0.5px solid silver;
 	& div {
 		text-align: center;
 		min-width: 115px;

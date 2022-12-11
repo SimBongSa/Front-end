@@ -13,6 +13,7 @@ const ChattingServiceKit = new ChattingService();
 export const Chat = () => {
 	const dispatch = useDispatch();
 	const id = useParams();
+
 	const token = getCookieToken(["access-token"]);
 	const username = getCookieToken(["username"]);
 	const chatList = useSelector(state => state?.chat?.chatList);
@@ -56,6 +57,7 @@ export const Chat = () => {
 			ChattingServiceKit.onDisconnect();
 		};
 	}, []);
+
 
 	return (
 		<StChatContainer>

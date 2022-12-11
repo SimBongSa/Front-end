@@ -136,8 +136,8 @@ export const __putCompanyInfo = createAsyncThunk("__putCompanyInfo", async (payl
 		formData.append(key, value);
 	});
 
-	for (let key of formData.keys()) {
-	}
+
+
 
 	try {
 		const response = await apis.putCompanyPage(formData);

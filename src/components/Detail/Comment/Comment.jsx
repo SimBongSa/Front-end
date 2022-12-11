@@ -98,7 +98,7 @@ function Comment() {
 				</CommentWriteWrap>
 			) : (
 				<CommentWriteWraps>
-					<div>댓글을 작성하실수 없습니다.</div>
+					<div>개인 회원 로그인 시 댓글 작성이 가능합니다.</div>
 				</CommentWriteWraps>
 			)}
 

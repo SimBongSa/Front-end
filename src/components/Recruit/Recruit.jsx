@@ -27,8 +27,6 @@ const Recruit = () => {
 
 	const status = useSelector((state) => state.boards?.status);
 	const error = useSelector((state) => state.boards?.error);
-	console.log("status",status);
-	console.log("error", error)
 
 	const [isPopupOpen, setIsPopupOpen] = useState(false);
 

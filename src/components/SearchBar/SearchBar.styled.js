@@ -105,10 +105,10 @@ export const SearchList = styled.ul`
 		padding: 0 2em 0 1.5em;
 		position: relative;
 		&:first-child {
-			flex: .5;
+			flex: 0.5;
 		}
 		&:last-child {
-			flex: .5;
+			flex: 0.5;
 		}
 		&:not(:last-child)::after {
 			content: "";
@@ -123,7 +123,7 @@ export const SearchList = styled.ul`
 		& h4 {
 			font-size: calc(0.5em + 0.5vw);
 			text-align: center;
-			color: ${(props) => props.theme.btnColor};
+			color: ${props => props.theme.btnColor};
 		}
 		& input {
 			width: 100%;
@@ -142,7 +142,7 @@ export const SearchList = styled.ul`
 			outline: none;
 			background-color: transparent;
 			& option {
-				background: ${(props) => props.theme.subBgColor};
+				background: ${props => props.theme.subBgColor};
 			}
 		}
 	}

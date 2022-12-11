@@ -17,6 +17,7 @@ import {
 	StArea,
 	StImgWrapper,
 	StContentBox,
+	StDetailArea,
 } from "./Detail.styled";
 import { __getChatList } from "../../redux/modules/chatSlice";
 import styled from "styled-components";
@@ -50,7 +51,9 @@ const Detail = () => {
 			<DetailContainer>
 				<DetailContent>
 					<StTitleBox>
-						<h1>{boardsId?.title}</h1>
+						<h1>
+							<span>{boardsId?.title}</span>
+						</h1>
 						<div>D-{dDay}</div>
 						<StImgWrapper>
 							{boardsId.profileImage ? (
@@ -68,11 +71,15 @@ const Detail = () => {
 					</StTitleBox>
 					<StAreaBox>
 						<StArea>{boardsId.area}</StArea>
-						<div>{boardsId.detailArea}</div>
+						<StDetailArea>{boardsId.detailArea}</StDetailArea>
 					</StAreaBox>
-					<h3>봉사 활동 내용</h3>
+					<h3>
+						<span>봉사 활동 내용</span>
+					</h3>
 					<StContentBox>{boardsId?.content}</StContentBox>
-					<h3>봉사 요청 사항</h3>
+					<h3>
+						<span>우리 봉사의 키워드</span>
+					</h3>
 					<StDetailTag>
 						{boardsId.tags && boardsId.tags.length > 0 ? (
 							boardsId.tags.map((item, idx) => {

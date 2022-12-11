@@ -14,17 +14,17 @@ import { __createChatRoom } from "../../../redux/modules/chatSlice";
 import Stbtn from "../../common/button/Button";
 import { toast, ToastContainer } from "react-toastify";
 
-const DetailSlideBar = ({ boardsId, username, id }) => {
+import { Immer } from "immer";
+function DetailSlideBar({ boardsId, username, id }) {
+
 	const [applied, setApplied] = useState("");
 	const authority = getCookieToken(["username"]);
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
+	const test = useSelector(state => state?.boards);
 	const applicants = useSelector(state => state?.boards?.board?.applicants);
 	const chatList = useSelector((state) => state?.chat?.chatList);
 	const newChatRoom = useSelector((state) => state.chat?.chatRoom);
-	console.log("newChatRoom", newChatRoom);
-	console.log("chatList",chatList)
-
 
 	const findMyChatRoom = (chatList) => {
 		if (chatList.roomName === boardsId?.title) {
@@ -58,7 +58,8 @@ const DetailSlideBar = ({ boardsId, username, id }) => {
 			</StDateBox>
 			<DetailSideItem>
 				<div>시간 : {boardsId?.dueDay?.split(" ")[1].substring(0, 5)}</div>
-				<div>신청 인원 : Volunteers: {boardsId.applicantCnt}명</div>
+
+				<div>봉사 인원 : {boardsId.applicantCnt}명</div>
 			</DetailSideItem>
 			<StBtnBox>
 				<Stbtn
@@ -68,7 +69,9 @@ const DetailSlideBar = ({ boardsId, username, id }) => {
 						dispatch(__getBoardId(id));
 					}}
 				>
-					{applied}
+					{applicants && applicants?.includes(authority) === true
+						? "봉사활동 취소하기"
+						: "봉사자 신청하기"}
 				</Stbtn>
 
 				{
