@@ -72,17 +72,18 @@ const DetailEdit = () => {
 		const { name, value } = e.target;
 		setInput({ ...input, [name]: value, area: address });
 	};
+
 	const [tags, setTags] = useState([...boardsId?.tags]);
-	console.log(tags)
+	console.log(tags);
 		// Tags
-		const onChangeTags = (e) => {
-			if (e.checked) {
-				const tag = e.id;
-				setTags([...tags, tag]);
-			} else if (!e.checked && tags.includes(e.id)) {
-				setTags(tags.filter(item => e.id !== item));
-			}
-		};
+	const onChangeTags = (e) => {
+		if (e.checked) {
+			const tag = e.id;
+			setTags([...tags, tag]);
+		} else if (!e.checked && tags.includes(e.id)) {
+			setTags(tags.filter(item => e.id !== item));
+		}
+	};
 
 	const upDate = {
 		...input,
