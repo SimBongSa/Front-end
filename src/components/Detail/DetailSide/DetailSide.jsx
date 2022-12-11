@@ -12,6 +12,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { __createChatRoom } from "../../../redux/modules/chatSlice";
 import Stbtn from "../../common/button/Button";
+import { toast, ToastContainer } from "react-toastify";
 
 const DetailSlideBar = ({ boardsId, username, id }) => {
 	const [applied, setApplied] = useState("");
@@ -36,6 +37,7 @@ const DetailSlideBar = ({ boardsId, username, id }) => {
 
 	return (
 		<DetailSide>
+			<ToastContainer/>
 			<h1>봉사활동 모집기간</h1>
 			<StDateBox>
 				<div>{boardsId?.startDate}</div> ━ <div>{boardsId?.endDate}</div>
@@ -81,7 +83,10 @@ const DetailSlideBar = ({ boardsId, username, id }) => {
 						variant="boards-delete"
 						onClick={() => {
 							dispatch(__delBoard(id));
-							navigate("/boards");
+							toast.success("게시물이 삭제되었습니다.")
+							setTimeout(() => {
+								navigate('/')
+							}, 1000)
 						}}
 					>
 						삭제하기
