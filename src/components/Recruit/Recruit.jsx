@@ -182,7 +182,7 @@ const Recruit = () => {
 						name="area"
 						value={address}
 						onClick={openPostCode}
-					></Input>
+					/>
 
 					<div id="popupDom">
 						{isPopupOpen && (

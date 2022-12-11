@@ -6,7 +6,7 @@ export const DetailSide = styled.div`
 	top: 7rem;
 	right: 1rem;
 	bottom: 10rem;
-	width: 28rem;
+	width: 26rem;
 	height: fit-content;
 	margin: 0rem 5rem 1rem 1rem;
 	padding: 2rem;
@@ -17,9 +17,13 @@ export const DetailSide = styled.div`
 		padding: 1rem;
 		text-align: center;
 	}
-	@media screen and (max-width: 1024px) {
+	@media screen and (max-width: 1060px) {
+		display: flex;
+		margin: 0 auto;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
 		position: relative;
-		width: 600px;
 		margin-bottom: 5rem;
 	}
 	box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.1);
@@ -43,6 +47,8 @@ export const StDateBox = styled.span`
 		border-radius: 16px;
 		border: 0.5px solid ${props => props.theme.subBtnColor};
 		color: "#484848";
+		min-width: 150px;
+		text-align: center;
 	}
 `;
 export const DetailNavBtn = styled.div`

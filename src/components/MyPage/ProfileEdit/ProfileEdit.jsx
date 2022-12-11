@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
 import { getCookieToken } from "../../../utils/cookie";
 import {
 	__getCompanyInfo,
@@ -22,7 +21,6 @@ import styled from "styled-components";
 const ProfileEdit = () => {
 	const role = getCookieToken(["authority"]);
 	const dispatch = useDispatch();
-	const navigate = useNavigate();
 
 	useEffect(() => {
 		dispatch(__getCompanyInfo());

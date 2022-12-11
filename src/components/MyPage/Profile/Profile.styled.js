@@ -159,3 +159,34 @@ export const ProfileMisc = styled.div`
 		width: 500px;
 	}
 `;
+
+export const ProfileInfo = styled.div`
+	text-align: left;
+	position: relative;
+	& h3 {
+		text-align: center;
+		position: relative;
+	}
+	& h5 {
+		padding-left: 3rem;
+		color: ${props => props.theme.subTextColor};
+		@media (max-width: 1024px) {
+			padding-left: 0;
+		}
+	}
+	& p {
+		padding-left: 2rem;
+	}
+	& span {
+		border-radius: 50%;
+		background-image: url('./image/32badge1.png');
+	}
+	@media (max-width: 1024px) {
+		text-align: center;
+	}
+`;
+
+export const MyActivity = styled.div`
+	display: flex;
+	justify-content: space-between;
+`;

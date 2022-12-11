@@ -53,7 +53,7 @@ const CompanyPage = () => {
 						<label htmlFor="myActivity">나의 봉사</label>
 					</nav>
 				</BtnContainer>
-				{/* {companyBoards.length > 0 ? <CustomerCalendar companyBoards={companyBoards} /> : ""} */}
+				{/* {companyBoards.length > 0 ? <CustomerCalendar companyBoards={companyBoards} /> : <CustomerCalendar />} */}
 				{companyPageOpt !== null && companyPageOpt === "newActivity" ? (
 					<MyApplicant list={appliList} />
 				) : null}

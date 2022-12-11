@@ -14,7 +14,7 @@ export const StChatInput = styled.input`
 	border-radius: 30px;
 	outline: none;
 	margin-left: 10%;
-	margin-top: 7.5px;
+	margin-top: 0px;
 	padding-left: 20px;
 `;
 export const StChatBtn = styled.button`

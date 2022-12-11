@@ -5,8 +5,9 @@ export const DetailContainer = styled.div`
 	justify-content: space-between;
 	margin: 3rem;
 	min-height: 100vh;
-	@media screen and (max-width: 1024px) {
+	@media screen and (max-width: 1060px) {
 		display: flex;
+		align-items: center;
 		justify-content: space-around;
 		flex-direction: column-reverse;
 	}

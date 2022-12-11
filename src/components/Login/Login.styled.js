@@ -6,55 +6,9 @@ export const LoginContainer = styled.div`
 	flex-direction: column;
 	height: 100vh;
 	margin: 0 auto;
-	margin-top: 12rem;
-	margin-bottom: 15rem;
-	overflow: hidden;
+	margin-top: 7rem;
 	justify-content: space-between;
 	align-items: center;
-	/* @media (max-width: 980px) {
-		flex-flow:wrap;
-		text-align: center;
-		align-content: center;
-		align-items: center;
-	} */
-`;
-
-export const LoginBackLeft = styled.div`
-	width: 50%;
-	left: 0;
-	height: 100%;
-	background-color: #aaaaaa;
-	background-size: cover;
-	background-repeat: no-repeat;
-	/* @media (max-width: 980px) {
-    width: 100%;
-    height: 50%;
-    margin-bottom: 3rem;
-	} */
-`;
-
-export const LoginFrontRight = styled.div`
-	width: 50%;
-	right: 0;
-	height: 100%;
-`;
-
-export const LoginOverlay = styled.div`
-	padding: 30px;
-	width: 100%;
-	height: 100%;
-	overflow: hidden;
-	& h1 {
-		font-size: 7vmax;
-		line-height: 1;
-		font-weight: 900;
-		margin-top: 150px;
-		margin-bottom: 20px;
-	}
-	& p {
-		margin-top: 30px;
-		font-weight: 900;
-	}
 `;
 
 export const LoginBox = styled.div`
@@ -63,7 +17,6 @@ export const LoginBox = styled.div`
 	padding: 50px;
 	max-width: 600px;
 	min-width: 600px;
-	height: 40vh;
 	min-height: 600px;
 	overflow: hidden;
 	border-radius: 15px;
@@ -124,6 +77,7 @@ export const LoginBtn = styled.button`
 export const LoginTitle = styled.h4`
 	cursor: pointer;
 	color: ${props => props.theme.textColor};
+	padding-bottom: 12px;
 `;
 
 export const StLoginOptions = styled.div`

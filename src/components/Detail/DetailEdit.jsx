@@ -128,12 +128,6 @@ const DetailEdit = () => {
 						우편번호 검색
 					</Stbtn>
 					<Input
-						// // placeholder="클릭 시 우편번호 검색"
-						// type="text"
-						// name="area"
-						// // onClick={openPostCode}
-						// defaultValue={address}
-						// key={boardsId?.area}
 						placeholder={address}
 						type="text"
 						required

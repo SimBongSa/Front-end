@@ -11,7 +11,6 @@ export const __createBoard = createAsyncThunk("createBoard", async (payload, thu
 
 	try {
 		const response = await apis.createBoard(formData);
-		console.log("createBoard =>", response);
 		if (response.status === 200) {
 			return thunkAPI.fulfillWithValue(response);
 		}

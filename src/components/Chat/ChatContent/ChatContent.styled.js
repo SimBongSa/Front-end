@@ -70,6 +70,7 @@ export const ChatCard = styled.div`
   display: flex;
   position: sticky;
   position: -webkit-sticky;
+  font-size: 0.9rem;
   cursor: pointer;
   clear: both;
   width: 30%;
@@ -85,6 +86,12 @@ export const ChatCard = styled.div`
   color: #ccc;
   background: #232323;
   transition: all 0.3s;
+  & h2 {
+    width: 160px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
   & img {
     display: none;
     width: 120px;
@@ -96,6 +103,11 @@ export const ChatCard = styled.div`
     height: 7rem;
     justify-content: flex-start;
     padding: 2rem;
+    & h2 {
+      width: 100%;
+      overflow: none;
+      text-overflow: clip;
+    }
     & img {
       display: block;
       float: left;
@@ -111,7 +123,7 @@ export const ChatCardText = styled.div`
   flex-direction: column;
   transition: all 0.3s;
   & h2 {
-    font-weight: 500;
+    font-weight: 300;
   }
   & span {
     display: none;
