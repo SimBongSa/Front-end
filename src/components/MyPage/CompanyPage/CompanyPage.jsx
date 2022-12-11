@@ -9,7 +9,6 @@ import { CompanyPageContainer, BtnContainer } from "./CompanyPage.styled";
 import Profile from "../Profile/Profile";
 import CardGrid from "../../common/cards/CardGrid";
 import MyApplicant from "./MyApplicant/MyApplicant";
-import CustomerCalendar from "../../Calendar/CustomerCalendar/CustomerCalendar";
 import { useParams } from "react-router-dom";
 
 const CompanyPage = () => {
@@ -53,7 +52,7 @@ const CompanyPage = () => {
 						<label htmlFor="myActivity">나의 봉사</label>
 					</nav>
 				</BtnContainer>
-				{/* {companyBoards.length > 0 ? <CustomerCalendar companyBoards={companyBoards} /> : <CustomerCalendar />} */}
+				
 				{companyPageOpt !== null && companyPageOpt === "newActivity" ? (
 					<MyApplicant list={appliList} />
 				) : null}
