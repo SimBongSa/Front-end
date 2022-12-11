@@ -26,8 +26,6 @@ const Recruit = () => {
 
 	const status = useSelector(state => state.boards?.status);
 	const error = useSelector(state => state.boards?.error);
-	console.log("status", status);
-	console.log("error", error);
 
 	const [isPopupOpen, setIsPopupOpen] = useState(false);
 
@@ -82,7 +80,7 @@ const Recruit = () => {
 
 	//폼데이터 전송 스테이트
 	const [input, setInput] = useState(init);
-	console.log(input);
+
 	const [tags, setTags] = useState([]);
 	const [address, setAddress] = useState("");
 

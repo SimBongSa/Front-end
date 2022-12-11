@@ -23,7 +23,7 @@ export const FooterContainer = styled.section`
 `;
 
 export const FooterUl = styled.ul`
-	padding-left: 60px;
+	padding-left: 180px;
 	width: 33.3333%;
 	&:last-child {
 		color: ${props => props.theme.btnColor};

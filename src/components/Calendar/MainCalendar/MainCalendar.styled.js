@@ -12,7 +12,7 @@ export const StCalendarList = styled.div`
 	& h3 {
 		font-size: 1.5rem;
 		justify-content: center;
-		padding: 10px 10px 10px 10px;
+		padding: 20px 10px 10px 10px;
 		padding-left: 7rem;
 	}
 

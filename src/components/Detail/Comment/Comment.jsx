@@ -28,7 +28,9 @@ import Input from "../../common/input/Input";
 import Profileimg from "../../common/profileimg/Profileimg";
 import { __getOtherUserInfo } from "../../../redux/modules/mypageSlice";
 
-function Comment() {
+import React from "react";
+
+const Comment = () => {
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
 	const { id } = useParams();
@@ -204,6 +206,6 @@ function Comment() {
 				: ""}
 		</MainComponent>
 	);
-}
+};
 
 export default Comment;
