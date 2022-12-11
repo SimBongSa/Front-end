@@ -175,19 +175,14 @@ export const StLeftWrap = styled.div`
 		font-size: 25px;
 		text-align: center;
 		border-bottom: 1px solid gray;
-		margin: 0px;
-		padding: 20px;
-	}
-
-	& h3 {
 		margin: 1rem;
 		font-size: 1.2rem;
+		padding: 20px;
 		& span {
 			font-weight: 500;
 			color: ${props => props.theme.btnColor};
 		}
 	}
-
 	& p {
 		margin: 1rem;
 		font-size: 1rem;
@@ -213,19 +208,14 @@ export const StRightWrap = styled.div`
 		font-size: 45px;
 		text-align: center;
 		border-bottom: 1px solid gray;
-		margin: 0px;
-		padding: 20px;
-	}
-
-	& h3 {
 		margin: 1rem;
+		padding: 20px;
 		font-size: 1.2rem;
 		& span {
 			font-weight: 500;
 			color: ${props => props.theme.btnColor};
 		}
 	}
-
 	& p {
 		margin: 1rem;
 		font-size: 1rem;

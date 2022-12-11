@@ -1,5 +1,5 @@
 import { useCallback, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import PopupDom from "../Map/PopupDom";
 import PopupPostCode from "../Map/PopupPostCode";
 import Input from "../common/input/Input";
@@ -127,14 +127,8 @@ const Recruit = () => {
 			<form onSubmit={submitHandler}>
 				<h2>봉사 등록하기</h2>
 				<StLeftWrap>
-					<h1>
-						<h3>
-							<span>봉사 활동</span>에 대해 궁금해요!
-						</h3>
-					</h1>
-					<p>
-						<span>모집글</span>을 써주세요!
-					</p>
+					<h1><span>봉사 활동</span>에 대해 궁금해요!</h1>
+					<p><span>모집글</span>을 써주세요!</p>
 					<Input
 						placeholder="어떤 봉사활동인가요?"
 						type="text"
@@ -142,9 +136,7 @@ const Recruit = () => {
 						value={input.title}
 						onChange={e => onChangeInput(e)}
 					/>
-					<p>
-						봉사활동 <span>모집기간</span>
-					</p>
+					<p>봉사활동 <span>모집기간</span></p>
 					<RegisterDatePicker
 						locale={ko}
 						dateFormat="📅 yyyy년-MM월-dd일"
@@ -154,9 +146,7 @@ const Recruit = () => {
 						endDate={endDate}
 						selectsRange
 					/>
-					<p>
-						활동 <span>날짜와 시간</span>을 선택해주세요!
-					</p>
+					<p>활동 <span>날짜와 시간</span>을 선택해주세요!</p>
 					<RegisterDatePicker
 						locale={ko}
 						selected={dueDay}
@@ -166,9 +156,7 @@ const Recruit = () => {
 						maxTime={due.setHours(due.setMinutes(new Date(), 0), 18)}
 						dateFormat="📅 yyyy년-MM월-dd일 / 🕜 aa h:mm "
 					/>
-
-					<p>
-						봉사 기관에 대한 <span>주소</span>를 입력해주세요!
+					<p>봉사 기관에 대한 <span>주소</span>를 입력해주세요!
 						<Stbtn variant="recruit-post" type="button" onClick={openPostCode}>
 							우편번호 검색
 						</Stbtn>
@@ -203,26 +191,14 @@ const Recruit = () => {
 				</StLeftWrap>
 
 				<StRightWrap>
-					<h1>
-						<h3>
-							<span>모집 내용</span>에 대해 궁금해요!
-						</h3>
-					</h1>
+					<h1><span>모집 내용</span>에 대해 궁금해요!</h1>
 
-					<p>
-						<span>봉사 카테고리</span>를 선택해 주세요!
-					</p>
-					<h1>
-						<Tags category={true} onChangeTags={onChangeTags} />
-					</h1>
+					<p><span>봉사 카테고리</span>를 선택해 주세요!</p>
+					<h1><Tags category={true} onChangeTags={onChangeTags} /></h1>
 
-					<p>
-						<span>이런 사람</span>을 찾고 있어요!
-					</p>
-					<h1>
-						<Tags category={false} onChangeTags={onChangeTags} />
-					</h1>
-
+					<p><span>이런 사람</span>을 찾고 있어요!</p>
+					<h1><Tags category={false} onChangeTags={onChangeTags} /></h1>
+					
 					<p>세부 내용</p>
 					<TextArea
 						placeholder="봉사 활동 내용"
