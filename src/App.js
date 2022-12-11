@@ -1,10 +1,11 @@
 import Router from "./shared/Router";
+import { AppStyle } from "./App.style";
 
 function App() {
 	return (
-		<div className="App">
+		<AppStyle>
 			<Router />
-		</div>
+		</AppStyle>
 	);
 }
 export default App;

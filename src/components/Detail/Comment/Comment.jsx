@@ -180,9 +180,7 @@ function Comment() {
 												</Div>
 											</>
 										) : (
-											<>
-												<Div>신고</Div>
-											</>
+											<></>
 										)}
 									</CommentBtnWrap>
 								</CommentTitleWrap>

@@ -11,6 +11,7 @@ import { useNavigate } from "react-router-dom";
 import Tags from "./Tags/Tags";
 import ImageUpload from "./ImageUpload/ImageUpload";
 import Stbtn from "../common/button/Button";
+import { toast, ToastContainer } from "react-toastify";
 import {
 	RecruitContainer,
 	StLeftWrap,
@@ -22,8 +23,11 @@ import {
 const Recruit = () => {
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
-	const status = useSelector(state => state.boards.status);
-	console.log("status =>", status);
+
+	const status = useSelector(state => state.boards?.status);
+	const error = useSelector(state => state.boards?.error);
+	console.log("status", status);
+	console.log("error", error);
 
 	const [isPopupOpen, setIsPopupOpen] = useState(false);
 
@@ -72,15 +76,13 @@ const Recruit = () => {
 	const init = {
 		title: "",
 		content: "",
-		dueDay: "",
-		startDate: "",
-		endDate: "",
 		area: "",
 		detailArea: "",
 	};
 
 	//폼데이터 전송 스테이트
 	const [input, setInput] = useState(init);
+	console.log(input);
 	const [tags, setTags] = useState([]);
 	const [address, setAddress] = useState("");
 
@@ -115,16 +117,29 @@ const Recruit = () => {
 				tags: tags,
 			})
 		);
-		if (status === 200) {
-			alert("게시물 등록 완료");
-			navigate("/boards");
+		if (
+			input.title &&
+			input.content &&
+			input.area &&
+			input.detailArea &&
+			boardImage &&
+			startDate &&
+			endDate &&
+			dueDay &&
+			tags
+		) {
+			toast.success("게시물 등록이 성공했습니다.");
+			setTimeout(() => {
+				navigate("/boards");
+			}, 1000);
 		} else {
-			alert("게시물 등록에 실패했습니다. 내용을 다시 확인해주세요");
+			toast.error("모든 항목을 입력해주세요");
 		}
 	};
 
 	return (
 		<RecruitContainer>
+			<ToastContainer />
 			<form onSubmit={submitHandler}>
 				<h2>봉사 등록하기</h2>
 				<StLeftWrap>

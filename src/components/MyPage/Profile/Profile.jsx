@@ -1,4 +1,11 @@
-import { ProfileContainer, ProfileBox, ProfileCategory, ProfileMisc, ProfileInfo, MyActivity } from "./Profile.styled";
+import {
+	ProfileContainer,
+	ProfileBox,
+	ProfileCategory,
+	ProfileMisc,
+	ProfileInfo,
+	MyActivity,
+} from "./Profile.styled";
 import { removeCookie } from "../../../utils/cookie";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
@@ -16,17 +23,16 @@ const Profile = ({
 	setCompanyPageOpt,
 	count,
 }) => {
-
 	const navigate = useNavigate();
 
-
 	const logOut = () => {
-		removeCookie('access-token');
-		removeCookie('username');
-		removeCookie('authority');
-		removeCookie('ID');
+		removeCookie("access-token");
+		removeCookie("username");
+		removeCookie("authority");
+		removeCookie("ID");
 		localStorage.removeItem("refresh-token");
-		window.location.replace('/')	};
+		window.location.replace("/");
+	};
 
 	return (
 		<ProfileContainer>
@@ -69,7 +75,10 @@ const Profile = ({
 				) : null}
 				{userInfo ? (
 					<ProfileInfo>
-						<h3>{userInfo.name}<Badge count={count} /></h3>
+						<h3>
+							{userInfo.name}
+							<Badge count={count} />
+						</h3>
 						<h5>{userInfo.phoneNumber}</h5>
 						<h5>{userInfo.email}</h5>
 						<Button
@@ -104,11 +113,7 @@ const Profile = ({
 					<h4>참여 봉사 관리</h4>
 					<h4>캘린더</h4>
 					<span />
-					<h4
-						onClick={logOut}
-					>
-						로그 아웃
-					</h4>
+					<h4 onClick={logOut}>로그 아웃</h4>
 				</ProfileMisc>
 			) : null}
 
@@ -132,11 +137,7 @@ const Profile = ({
 					</h4>
 					<h4>캘린더</h4>
 					<span />
-					<h4
-						onClick={logOut}
-					>
-						로그 아웃
-					</h4>
+					<h4 onClick={logOut}>로그 아웃</h4>
 				</ProfileMisc>
 			) : null}
 		</ProfileContainer>

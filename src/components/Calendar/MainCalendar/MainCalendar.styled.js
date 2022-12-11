@@ -9,21 +9,17 @@ export const StCalendarList = styled.div`
 	border-radius: 20px;
 	width: 35%;
 
-
 	& h3 {
 		font-size: 1.5rem;
 		justify-content: center;
-		padding: 20px 20px 20px 20px;
-		padding-left: 10rem;
+		padding: 10px 10px 10px 10px;
+		padding-left: 7rem;
 	}
-
 
 	& h2 {
 		font-size: 1.5rem;
-		justify-content: center;
-		padding: 20px 10px 20px 20px;
-		padding-top: 20rem;
-		padding-left: 6.5rem;
+		text-align: center;
+		padding: 45% 0 45% 0;
 	}
 	@media (max-width: 1280px) {
 		text-align: center;

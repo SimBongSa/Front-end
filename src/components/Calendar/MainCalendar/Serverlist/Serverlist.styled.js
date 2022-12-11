@@ -4,7 +4,7 @@ export const StServerListContainer = styled.div`
 	display: flex;
 	/* width: 30rem; */
 	height: 7.5rem;
-	margin: 2rem 2rem 2rem 2rem;
+	margin: 1.5rem 1rem 1rem 1rem;
 	border-bottom: 1px solid silver;
 	color: ${props => props.theme.textColor};
 	cursor: pointer;
