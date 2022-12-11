@@ -2,7 +2,6 @@ import {
 	DetailSide,
 	DetailSideItem,
 	StDateBox,
-	StApplyBtn,
 	StBtnBox,
 } from "../DetailSide/DetailSide.styled";
 import { useEffect, useState } from "react";
@@ -13,7 +12,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { __createChatRoom } from "../../../redux/modules/chatSlice";
 import Stbtn from "../../common/button/Button";
-function DetailSlideBar({ boardsId, username, id }) {
+
+const DetailSlideBar = ({ boardsId, username, id }) => {
 	const [applied, setApplied] = useState("");
 	const authority = getCookieToken(["username"]);
 	const dispatch = useDispatch();
@@ -42,7 +42,7 @@ function DetailSlideBar({ boardsId, username, id }) {
 			</StDateBox>
 			<DetailSideItem>
 				<div>시간 : {boardsId?.dueDay?.split(" ")[1].substring(0, 5)}</div>
-				<div>봉사 인원 : Volunteers: {boardsId.applicantCnt}명</div>
+				<div>신청 인원 : Volunteers: {boardsId.applicantCnt}명</div>
 			</DetailSideItem>
 			<StBtnBox>
 				<Stbtn
