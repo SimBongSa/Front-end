@@ -20,7 +20,6 @@ const DetailSlideBar = ({ boardsId, username, id }) => {
 	const authority = getCookieToken(["username"]);
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
-	const test = useSelector(state => state?.boards);
 	const applicants = useSelector(state => state?.boards?.board?.applicants);
 	const chatList = useSelector((state) => state?.chat?.chatList);
 	const newChatRoom = useSelector((state) => state.chat?.chatRoom);
@@ -34,7 +33,6 @@ const DetailSlideBar = ({ boardsId, username, id }) => {
 	};
 
 	const chatRoom = chatList?.filter(findMyChatRoom);
-	console.log("내가 채팅방 만든 곳인지,",chatRoom);
 
 	const createChatRoom = (chatRoomInfo) => {
 		dispatch(__createChatRoom(chatRoomInfo));
