@@ -10,7 +10,13 @@ import {
 	StArea,
 	StTagBox,
 } from "../cards/CardGrid.styled";
-import { CarouselContainer, SlideTrack, Slide, StDetailArea } from "./Carousel.styled";
+import {
+	CarouselContainer,
+	SlideTrack,
+	Slide,
+	StDetailArea,
+	TitleContainer,
+} from "./Carousel.styled";
 import { useNavigate } from "react-router-dom";
 
 const Carousel = () => {
@@ -36,7 +42,10 @@ const Carousel = () => {
 	return (
 		<>
 			<CarouselContainer>
-				<h1>모집 종료 예정인 봉사활동</h1>
+				<TitleContainer>
+					<h1>모집 종료 예정인 봉사활동</h1>
+				</TitleContainer>
+
 				<SlideTrack>
 					{boardList?.map((item, index) => {
 						const dDay = getDateDiff(item.dueDay, today);

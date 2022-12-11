@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const CarouselContainer = styled.div`
 	margin: auto;
-	margin-top: 5rem;
+	margin-top: 8rem;
 	min-height: fit-content;
 	width: 80%;
 	overflow: hidden;
@@ -27,6 +27,13 @@ export const CarouselContainer = styled.div`
 		left: 0;
 		top: 0;
 	}
+`;
+
+export const TitleContainer = styled.div`
+	margin: auto;
+	width: 80%;
+	margin-top: 1rem;
+	margin-left: 200rem;
 `;
 
 export const SlideTrack = styled.div`

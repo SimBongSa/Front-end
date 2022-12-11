@@ -113,7 +113,10 @@ export const CommentDiv = styled.div`
 	margin-top: 1rem;
 	margin-left: 3.5rem;
 	height: 2rem;
-	border-bottom: 0.5px solid ${props => props.theme.textColor};
+
+	flex-wrap: wrap;
+	border-bottom: 0.5px solid silver;
+
 `;
 
 export const StPageBtn = styled.div`

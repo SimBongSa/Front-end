@@ -23,6 +23,7 @@ const Recruit = () => {
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
 	const status = useSelector(state => state.boards.status);
+	console.log("status =>", status);
 
 	const [isPopupOpen, setIsPopupOpen] = useState(false);
 

@@ -7,22 +7,22 @@ import App from "./App";
 import { CookiesProvider } from "react-cookie";
 
 const theme = {
-  BLACK: "#232323",
-  GREY: "#D9D9D9",
-  RED: "#E80000",
-  DEEP_BLUE: "#020080",
-  WHITE: "#FFFFFF",
+	BLACK: "#232323",
+	GREY: "#D9D9D9",
+	RED: "#E80000",
+	DEEP_BLUE: "#020080",
+	WHITE: "#FFFFFF",
 };
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  // <React.StrictMode>
-  <Provider store={store}>
-    <ThemeProvider theme={theme}>
-      <CookiesProvider>
-        <App />
-      </CookiesProvider>
-    </ThemeProvider>
-  </Provider>
-  // </React.StrictMode>
+	// <React.StrictMode>
+	<Provider store={store}>
+		<ThemeProvider theme={theme}>
+			<CookiesProvider>
+				<App />
+			</CookiesProvider>
+		</ThemeProvider>
+	</Provider>
+	// </React.StrictMode>
 );

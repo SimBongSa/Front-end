@@ -85,13 +85,16 @@ const Login = () => {
 
 					<LoginBox>
 						<LoginBoxTitle>
-							<LoginTitle>봉사 지원자</LoginTitle>
+						<LoginTitle>봉사 지원자</LoginTitle>
+
 							<LoginArrowBack onClick={() => navigate("/")} />
 						</LoginBoxTitle>
 
 						<LoginForm onSubmit={onSubmitHandler}>
 							<Input
-								placeholder="아이디"
+
+								placeholder="ID"
+
 								type="text"
 								name="username"
 								value={input.username}
@@ -109,7 +112,8 @@ const Login = () => {
 					</LoginBox>
 
 					<StToRegister>
-						아직 봉골레 멤버가 아닌가요? <b onClick={() => navigate("/register")}>회원가입</b>
+						봉사 활동 / 봉사자를 찾고싶다면?
+						<b onClick={() => navigate("/register")}>Vongole 회원가입</b>
 					</StToRegister>
 				</>
 			) : null}
@@ -137,13 +141,17 @@ const Login = () => {
 
 					<LoginBox>
 						<LoginBoxTitle>
+
 							<LoginTitle>봉사 기관</LoginTitle>
+
 							<LoginArrowBack onClick={() => navigate("/")} />
 						</LoginBoxTitle>
 
 						<LoginForm onSubmit={onSubmitHandler}>
 							<Input
-								placeholder="아이디"
+
+								placeholder="ID"
+
 								type="text"
 								name="username"
 								value={input.username}
@@ -160,7 +168,7 @@ const Login = () => {
 						</LoginForm>
 					</LoginBox>
 					<StToRegister>
-						아직 봉골레 멤버가 아닌가요? <b onClick={() => navigate("/register")}>회원가입</b>
+						아직 Vongole 멤버가 아닌가요? <b onClick={() => navigate("/register")}>회원가입</b>
 					</StToRegister>
 				</>
 			) : null}

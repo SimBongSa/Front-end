@@ -15,7 +15,6 @@ import { useCookies } from "react-cookie";
 import SearchBar from "../SearchBar/SearchBar";
 
 const Header = () => {
-
 	const navigate = useNavigate();
 	const [ThemeMode, toggleTheme] = useTheme();
 	const [cookies] = useCookies(["Authorization"]);
@@ -30,14 +29,20 @@ const Header = () => {
 	return (
 		<HeaderContainer>
 			<SearchBar />
-			<HeaderLogo onClick={() => navigate("/")}>Vongole</HeaderLogo>
+			<HeaderLogo onClick={() => navigate("/")}>
+				<img src={"image/vongole_main.png"} alt="" />
+			</HeaderLogo>
 			<LightThemeBtn onClick={toggleTheme}>
 				<BsFillMoonFill>Theme</BsFillMoonFill>
 			</LightThemeBtn>
 			<HeaderMenu>
-				<HeaderMenuItem onClick={() => {
-					navigate("/boards")
-				}}>Boards</HeaderMenuItem>
+				<HeaderMenuItem
+					onClick={() => {
+						navigate("/boards");
+					}}
+				>
+					봉사 전체보기
+				</HeaderMenuItem>
 				{isLogin && authority === "ROLE_MEMBER" ? (
 					<>
 						<HeaderMenuItem onClick={() => navigate("/chat")}>메시지</HeaderMenuItem>
@@ -71,7 +76,7 @@ const Header = () => {
 							navigate("/login");
 						}}
 					>
-						Login
+						로그인
 					</HeaderMenuItem>
 				)}
 			</HeaderMenu>

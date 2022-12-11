@@ -53,6 +53,7 @@ export const __registerManager = createAsyncThunk("registerManager", async (payl
 	});
 	try {
 		const response = await apis.managerSignup(payload);
+
 		if (response.status === 200) {
 			return thunkAPI.fulfillWithValue(response.data.success);
 		}
@@ -64,7 +65,9 @@ export const __registerManager = createAsyncThunk("registerManager", async (payl
 export const __checkUsername = createAsyncThunk("checkUsername", async (payload, thunkAPI) => {
 	try {
 		const response = await apis.checkUsername(payload);
+
 		return thunkAPI.fulfillWithValue(response.data.success);
+
 	} catch (error) {
 		return thunkAPI.rejectWithValue(error);
 	}

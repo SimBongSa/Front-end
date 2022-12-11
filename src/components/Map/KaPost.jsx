@@ -15,6 +15,7 @@ const KaPost = ({}) => {
 			}
 			fullAddress += extraAddress !== "" ? ` (${extraAddress})` : "";
 		}
+
 	};
 
 	return (

@@ -1,4 +1,4 @@
-import { InputForm, InputBox, StLegend } from "../Individual/Individual.styled";
+import { InputForm, InputBox, StLegend, StToLogin } from "../Individual/Individual.styled";
 import Input from "../../common/input/Input";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -43,6 +43,7 @@ const Organization = () => {
 		},
 		[input]
 	);
+
 
 	const [licenseImage, setLicenseImage] = useState(null);
 	const [licensePreview, setLicensePreview] = useState("");
@@ -164,7 +165,7 @@ const Organization = () => {
 					<form onSubmit={onSubmitHandler}>
 						<StLegend>Your Basic Info</StLegend>
 						<Input
-							placeholder="Username"
+							placeholder="ID"
 							autoComplete="off"
 							dupleCheck="username"
 							status={status}
@@ -232,13 +233,23 @@ const Organization = () => {
 						<StRegBtn type="submit">회원가입</StRegBtn>
 					</form>
 				</InputBox>
-				<StToRegister onClick={() => navigate("/login")}>이미 봉골레 회원인가요? <b>로그인하기</b></StToRegister>
+
+				<StToLogin>
+					이미 Vongole 회원이시라면? ➔ <b onClick={() => navigate("/login")}> Login </b>
+				</StToLogin>
+
 			</InputForm>
 		</StInputContainer>
 	);
 };
 
 export default Organization;
+
+
+{
+	/* <h4>클릭하여 업로드</h4>
+<span>권장사항: 5MB 이하 고화질</span> */
+}
 
 const ImageWrap = styled.div`
 	display: flex;
