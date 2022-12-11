@@ -95,6 +95,7 @@ export const ChatCard = styled.div`
   & img {
     display: none;
     width: 120px;
+    max-height: 80px;
     border-radius: 15px;
     margin-right: 2rem;
   }
@@ -124,6 +125,7 @@ export const ChatCardText = styled.div`
   transition: all 0.3s;
   & h2 {
     font-weight: 300;
+    text-align: center;
   }
   & span {
     display: none;

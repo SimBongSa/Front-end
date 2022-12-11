@@ -21,7 +21,10 @@ const DetailSlideBar = ({ boardsId, username, id }) => {
 	const navigate = useNavigate();
 	const applicants = useSelector(state => state?.boards?.board?.applicants);
 	const chatList = useSelector((state) => state?.chat?.chatList);
+	const newChatRoom = useSelector((state) => state.chat?.chatRoom);
+	console.log("newChatRoom", newChatRoom);
 	console.log("chatList",chatList)
+
 
 	const findMyChatRoom = (chatList) => {
 		if (chatList.roomName === boardsId?.title) {
@@ -69,7 +72,7 @@ const DetailSlideBar = ({ boardsId, username, id }) => {
 				</Stbtn>
 
 				{
-					chatRoom.length > 0 ? (
+					chatRoom?.length > 0 ? (
 						<Stbtn
 							variant="boards-chat"
 							onClick={() => {
@@ -91,7 +94,10 @@ const DetailSlideBar = ({ boardsId, username, id }) => {
 									roomName: boardsId.title,
 									boardId: boardsId.boardId,
 								});
-								navigate(`/chat/${chatRoom[0].chatRoomId}`);
+								toast.success(boardsId.author + '님 과의 채팅방으로 이동합니다.')
+								setTimeout(() => {
+									navigate(`/chat/${newChatRoom}`);
+								}, 1000)
 							}}
 						>
 							봉사단체 연락하기asd
