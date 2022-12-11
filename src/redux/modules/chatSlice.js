@@ -34,7 +34,7 @@ export const chatSlice = createSlice({
 	name: "chat",
 	initialState: {
 		chatRoom: [],
-		chatList: [],
+		chatList: null,
 		chatHistory: [],
 		isLoading: false,
 		error: null,

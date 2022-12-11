@@ -8,8 +8,9 @@ export const StSidePanel = styled.div`
   background: ${(props) => props.theme.subBgColor};
   border-right: 10px solid ${(props) => props.theme.bgColor};
   & h1 {
-    font-size: 2rem;
-    padding: 2rem;
+    font-size: 1.8rem;
+    padding-top: 2rem;
+    text-align: center;
     font-weight: 300;
   }
 `
@@ -18,6 +19,11 @@ export const StContact = styled.div`
   height: 90%;
   overflow-y: scroll;
   overflow-x: hidden;
+  & h4 {
+    cursor: pointer;
+    padding-top: 2rem;
+    padding-left: 2rem;
+  }
   &:nth-child(1) {
     padding-top: 25px;
   }

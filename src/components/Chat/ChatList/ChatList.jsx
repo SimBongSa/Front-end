@@ -9,35 +9,35 @@ export const ChatList = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const chatList = useSelector((state) => state?.chat?.chatList);
+  console.log(chatList)
 
   return (
     <StSidePanel>
       <h1>문의 내역</h1>
       <StContact>
         <ul>
-          {
-            chatList ? (
-                chatList?.map((item, idx) => {
-                  return(
-                    <ListGroup 
-                      key={idx}
-                      onClick={() => {
-                        navigate(`/chat/${item.chatRoomId}`);
-                        dispatch(__getBoardId(item.boardId));
-                      }}
-                    >
-                      <StContactWrap>
-                        {item.roomName}
-                      </StContactWrap>
-                    </ListGroup>
-                  )
-                })
-            ) : (
-              <ListGroup>
-                <StContactWrap>
-                  문의 내역이 없어요!
-                </StContactWrap>
-              </ListGroup>
+        {
+          chatList === "참여하고 있는 채팅방이 없습니다." ? 
+            <div onClick={() => {
+              navigate('/boards')
+            }}>
+              <h4>문의 내역이 없어요!</h4>
+              <h4>게시물 조회하기</h4>
+            </div>
+           : (
+            chatList?.map((item) => {
+              return (
+                <StListGroup 
+                  key={item.chatRoomId}
+                  onClick={() => {
+                    navigate(`/chat/${item.chatRoomId}`);
+                    dispatch(__getBoardId(item.boardId)); 
+                  }}
+                >
+                  <StContactWrap>{item.roomName}</StContactWrap>
+                </StListGroup>
+              )
+            })
             )
           }
         </ul>
@@ -48,7 +48,7 @@ export const ChatList = () => {
 
 export default ChatList;
 
-export const ListGroup = styled.li`
+export const StListGroup = styled.li`
   margin: auto 15px;
   padding: 0;
 `

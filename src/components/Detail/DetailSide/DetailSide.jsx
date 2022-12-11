@@ -5,7 +5,7 @@ import {
 	StBtnBox,
 } from "../DetailSide/DetailSide.styled";
 import { useEffect, useState } from "react";
-import { __postApply } from "../../../redux/modules/boardSlice";
+import { __getBoardId, __postApply } from "../../../redux/modules/boardSlice";
 import { __delBoard } from "../../../redux/modules/boardSlice";
 import { getCookieToken } from "../../../utils/cookie";
 import { useDispatch, useSelector } from "react-redux";
@@ -20,11 +20,22 @@ const DetailSlideBar = ({ boardsId, username, id }) => {
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
 	const applicants = useSelector(state => state?.boards?.board?.applicants);
-	const chatRoom = useSelector(state => state.chat.chatRoom);
+	const chatList = useSelector((state) => state?.chat?.chatList);
+	console.log("chatList",chatList)
 
-	const createChatRoom = chatRoomInfo => {
+	const findMyChatRoom = (chatList) => {
+		if (chatList.roomName === boardsId?.title) {
+			return true;
+		} else {
+			return false;
+		}
+	};
+
+	const chatRoom = chatList?.filter(findMyChatRoom);
+	console.log("내가 채팅방 만든 곳인지,",chatRoom);
+
+	const createChatRoom = (chatRoomInfo) => {
 		dispatch(__createChatRoom(chatRoomInfo));
-		navigate(`/chat/${chatRoom}`);
 	};
 
 	useEffect(() => {
@@ -33,7 +44,7 @@ const DetailSlideBar = ({ boardsId, username, id }) => {
 		} else {
 			setApplied("봉사자 신청하기");
 		}
-	}, [setApplied]);
+	}, [setApplied, applicants]);
 
 	return (
 		<DetailSide>
@@ -51,23 +62,43 @@ const DetailSlideBar = ({ boardsId, username, id }) => {
 					variant="boards-apply"
 					onClick={() => {
 						dispatch(__postApply(id));
+						dispatch(__getBoardId(id));
 					}}
 				>
 					{applied}
 				</Stbtn>
-				<Stbtn
-					variant="boards-chat"
-					onClick={() => {
-						createChatRoom({
-							userIdList: boardsId.authorId,
-							userNameList: boardsId.author,
-							roomName: boardsId.title,
-							boardId: boardsId.boardId,
-						});
-					}}
-				>
-					봉사단체 연락하기
-				</Stbtn>
+
+				{
+					chatRoom.length > 0 ? (
+						<Stbtn
+							variant="boards-chat"
+							onClick={() => {
+								toast.success(boardsId.author + '님 과의 채팅방으로 이동합니다.')
+								setTimeout(() => {
+									navigate(`/chat/${chatRoom[0].chatRoomId}`);
+								}, 1000)
+							}}
+						>
+							봉사단체 연락하기
+						</Stbtn>
+					) : (
+						<Stbtn
+							variant="boards-chat"
+							onClick={() => {
+								createChatRoom({
+									userIdList: boardsId.authorId,
+									userNameList: boardsId.author,
+									roomName: boardsId.title,
+									boardId: boardsId.boardId,
+								});
+								navigate(`/chat/${chatRoom[0].chatRoomId}`);
+							}}
+						>
+							봉사단체 연락하기asd
+						</Stbtn>
+					)
+				}
+			
 			</StBtnBox>
 			{boardsId.author === username ? (
 				<StBtnBox>
