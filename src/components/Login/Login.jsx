@@ -12,8 +12,7 @@ import {
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { __loginMember } from "../../redux/modules/registerSlice";
-import { useRef, useState } from "react";
-import { useEffect } from "react";
+import { useEffect, useRef, useState } from "react";
 import { getCookieToken } from "../../utils/cookie";
 import Input from "../common/input/Input";
 import { toast, ToastContainer } from 'react-toastify';
@@ -21,15 +20,12 @@ import { toast, ToastContainer } from 'react-toastify';
 const Login = () => {
 
 	const loginRef = useRef();
-	
-	useEffect(() => {
-		loginRef.current?.focus();
-	}, []);
-
 	const navigate = useNavigate();
 	const dispatch = useDispatch();
-	const authority = getCookieToken(["username"]);
+	// const authority = getCookieToken(["username"]);
 	const status = useSelector((state) => state.register.error.response?.data?.error?.detail)
+	const authority = useSelector((state) => state.register?.statusCode?.data?.username);
+	console.log(authority);
 
 	const init = {
 		username: "",
@@ -44,7 +40,7 @@ const Login = () => {
 	};
 
 	const onSubmitHandler = e => {
-		e.preventDefault();
+		e.preventDefault();;
 		if (status) {
 			toast.error(status);
 			setInput(init);
@@ -52,7 +48,7 @@ const Login = () => {
 			dispatch(__loginMember(input));
 		} else if (input.username === '' || input.password === ''){
 			toast.error('항목을 모두 입력해주세요');
-		} 
+		}
 	};
 
 	useEffect(() => {
@@ -62,12 +58,12 @@ const Login = () => {
 				navigate('/');
 			}, 1000);
 		}
-	});
+	})
 
 	const [loginOption, setLoginOption] = useState("member");
 
 	return (
-		<LoginContainer>
+		<LoginContainer ref={loginRef}>
 			<ToastContainer/>
 			{loginOption === "member" ? (
 				<>
@@ -98,7 +94,6 @@ const Login = () => {
 
 						<LoginForm onSubmit={onSubmitHandler}>
 							<Input
-								ref={loginRef}
 								placeholder="아이디"
 								type="text"
 								name="username"
@@ -115,6 +110,7 @@ const Login = () => {
 							<LoginBtn>로그인</LoginBtn>
 						</LoginForm>
 					</LoginBox>
+
 					<StToRegister>
 						아직 봉골레 멤버가 아닌가요? <b onClick={() => navigate("/register")}>회원가입</b>
 					</StToRegister>
@@ -150,7 +146,6 @@ const Login = () => {
 
 						<LoginForm onSubmit={onSubmitHandler}>
 							<Input
-								ref={loginRef}
 								placeholder="아이디"
 								type="text"
 								name="username"
