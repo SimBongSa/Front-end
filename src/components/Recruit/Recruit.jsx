@@ -24,10 +24,6 @@ const Recruit = () => {
 
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
-
-	const status = useSelector((state) => state.boards?.status);
-	const error = useSelector((state) => state.boards?.error);
-
 	const [isPopupOpen, setIsPopupOpen] = useState(false);
 
 	// Image

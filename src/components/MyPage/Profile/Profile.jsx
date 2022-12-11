@@ -18,14 +18,14 @@ const Profile = ({
 
 	const navigate = useNavigate();
 
-
 	const logOut = () => {
 		removeCookie('access-token');
 		removeCookie('username');
 		removeCookie('authority');
 		removeCookie('ID');
 		localStorage.removeItem("refresh-token");
-		window.location.replace('/')	};
+		window.location.replace('/')	
+	};
 
 	return (
 		<ProfileContainer>

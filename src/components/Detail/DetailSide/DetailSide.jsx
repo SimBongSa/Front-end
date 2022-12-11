@@ -14,8 +14,7 @@ import { __createChatRoom } from "../../../redux/modules/chatSlice";
 import Stbtn from "../../common/button/Button";
 import { toast, ToastContainer } from "react-toastify";
 
-import { Immer } from "immer";
-function DetailSlideBar({ boardsId, username, id }) {
+const DetailSlideBar = ({ boardsId, username, id }) => {
 
 	const [applied, setApplied] = useState("");
 	const authority = getCookieToken(["username"]);
@@ -103,7 +102,7 @@ function DetailSlideBar({ boardsId, username, id }) {
 								}, 1000)
 							}}
 						>
-							봉사단체 연락하기asd
+							봉사단체 연락하기
 						</Stbtn>
 					)
 				}

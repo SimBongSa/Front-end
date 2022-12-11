@@ -27,13 +27,13 @@ const CompanyPage = () => {
 
 	const companyInfo = useSelector(state => state.mypage?.companyInfo);
 	const companyBoards = useSelector(state => state.mypage.companyBoards);
+	console.log("@@",companyBoards)
 	const appliList = useSelector(state => state.mypage.allAppliList);
-
 	const [companyPageOpt, setCompanyPageOpt] = useState(null);
 
 	return (
 		<>
-			<Profile companyInfo={companyInfo} setCompanyPageOpt={setCompanyPageOpt} />
+			<Profile companyInfo={companyInfo} companyBoards={companyBoards} setCompanyPageOpt={setCompanyPageOpt} />
 			<CompanyPageContainer>
 				<BtnContainer>
 					<input
