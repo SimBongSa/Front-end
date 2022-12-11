@@ -1,53 +1,113 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 export const ProfileContainer = styled.div`
-	float: left;
-	position: fixed;
-	margin-left: 2rem;
-	border-radius: 5px;
-	padding: 20px 10px 10px 10px;
-	width: 200px;
-	max-width: 100%;
-	text-align: center;
-	z-index: 1;
-	& h3 {
-		font-size: 1.2rem;
-		margin: 10px 0;
-	}
-	& h4 {
-		text-align: left;
-	}
-	& h5 {
-		text-align: left;
-		margin: 1rem;
-		color: ${props => props.theme.subTextColor};
-		@media (max-width: 1024px) {
-			text-align: center;
+	${({ variant }) => {
+		switch (variant) {
+			case "user":
+				return css`
+					float: left;
+					position: fixed;
+					margin-left: 2rem;
+					border-radius: 5px;
+					padding: 20px 10px 10px 10px;
+					width: 200px;
+					max-width: 100%;
+					text-align: center;
+					z-index: 1;
+					& h3 {
+						font-size: 1.2rem;
+						margin: 10px 0;
+					}
+					& h4 {
+						text-align: left;
+					}
+					& h5 {
+						text-align: left;
+						margin: 1rem;
+						color: ${props => props.theme.subTextColor};
+						@media (max-width: 1024px) {
+							text-align: center;
+						}
+					}
+					& p {
+						text-align: left;
+						color: ${props => props.theme.subTextColor};
+						font-size: 0.9rem;
+						width: 90%;
+						margin: 1rem;
+					}
+					& img {
+						width: 10rem;
+						height: 10rem;
+						border: 1px solid #ffffff;
+						border-radius: 50%;
+						padding: 7px;
+					}
+					@media (max-width: 1024px) {
+						display: flex;
+						position: sticky;
+						flex-direction: column;
+						position: relative;
+						width: 90%;
+						margin-top: 25rem;
+						z-index: 1;
+					}
+				`;
+			case "Company":
+				return css`
+					float: left;
+					position: fixed;
+					margin-left: 2rem;
+					border-radius: 5px;
+					top: 17%;
+					padding: 20px 10px 10px 10px;
+					width: 200px;
+					max-width: 100%;
+					text-align: center;
+					z-index: 1;
+					& h3 {
+						font-size: 1.2rem;
+						margin: 10px 0;
+					}
+					& h4 {
+						text-align: left;
+					}
+					& h5 {
+						text-align: left;
+						margin: 1rem;
+						color: ${props => props.theme.subTextColor};
+						@media (max-width: 1024px) {
+							text-align: center;
+						}
+					}
+					& p {
+						text-align: left;
+						color: ${props => props.theme.subTextColor};
+						font-size: 0.9rem;
+						width: 90%;
+						margin: 1rem;
+					}
+					& img {
+						width: 10rem;
+						height: 10rem;
+						border: 1px solid #ffffff;
+						border-radius: 50%;
+						padding: 7px;
+					}
+					@media (max-width: 1024px) {
+						display: flex;
+						position: sticky;
+						flex-direction: column;
+						position: relative;
+						width: 90%;
+						margin-top: 25rem;
+						z-index: 1;
+					}
+				`;
+			default:
+				break;
 		}
-	}
-	& p {
-		text-align: left;
-		color: ${props => props.theme.subTextColor};
-		font-size: 0.9rem;
-		width: 90%;
-		margin: 1rem;
-	}
-	& img {
-		width: 10rem;
-		height: 10rem;
-		border: 1px solid #ffffff;
-		border-radius: 50%;
-		padding: 7px;
-	}
-	@media (max-width: 1024px) {
-		display: flex;
-		position: sticky;
-		flex-direction: column;
-		position: relative;
-		width: 90%;
-		margin-top: 25rem;
-		z-index: 1;
-	}
+	}}
 `;
 
 export const ProfileBox = styled.div`
@@ -132,7 +192,7 @@ export const ProfileCategory = styled.h4`
 
 export const ProfileMisc = styled.div`
 	text-align: left;
-	margin: 4rem 0rem 1rem 0rem;
+	margin: 2rem 0rem rem 0rem;
 	& h2 {
 		font-size: 1.4rem;
 	}

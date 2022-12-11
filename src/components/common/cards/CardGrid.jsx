@@ -107,8 +107,7 @@ const CardGrid = ({ gridColumn, companyBoards, boards, userEnroll, userWait }) =
 							<StCard variant="Company" key={item.boardId}>
 								<StDate variant="Company">D-{dDay}</StDate>
 								<StImgWrapper
-									variant="Company" // onMouseOver={() => [setIsHovering(true), setHoverItem(true)]}
-									// onMouseOut={() => [setIsHovering(false), setHoverItem(false)]}
+									variant="Company"
 									onMouseOver={() => setIsHovering(true)}
 									onMouseOut={() => setIsHovering(false)}
 								>
