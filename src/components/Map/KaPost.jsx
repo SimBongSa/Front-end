@@ -15,7 +15,6 @@ const KaPost = ({}) => {
 			}
 			fullAddress += extraAddress !== "" ? ` (${extraAddress})` : "";
 		}
-		//fullAddress -> 전체 주소반환하기
 	};
 
 	return (
