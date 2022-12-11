@@ -91,7 +91,6 @@ const Recruit = () => {
 		},
 		[input]
 	);
-	console.log(input)
 
 	// Tags
 	const onChangeTags = e => {

@@ -23,9 +23,7 @@ export const ChatContent = () => {
   const username = getCookieToken(["username"]);
 
   const chatHistory = useSelector((state) => state.chat.chatHistory);
-  console.log("!!", chatHistory)
   const chatBoard = useSelector((state) => state.boards.board);
-
   const scrollRef = useRef();
 
   useEffect(() => {

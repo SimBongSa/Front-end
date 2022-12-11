@@ -13,7 +13,6 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { __loginMember } from "../../redux/modules/registerSlice";
 import { useEffect, useRef, useState } from "react";
-import { getCookieToken } from "../../utils/cookie";
 import Input from "../common/input/Input";
 import { toast, ToastContainer } from 'react-toastify';
 
@@ -22,11 +21,9 @@ const Login = () => {
 	const loginRef = useRef();
 	const navigate = useNavigate();
 	const dispatch = useDispatch();
-	// const authority = getCookieToken(["username"]);
 	const status = useSelector((state) => state.register.error.response?.data?.error?.detail)
 	const authority = useSelector((state) => state.register?.statusCode?.data?.username);
-	console.log(authority);
-
+	
 	const init = {
 		username: "",
 		password: "",

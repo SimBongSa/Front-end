@@ -45,7 +45,6 @@ function Comment() {
 	const [comment, setComment] = useState({ comment: content });
 
 	const userInfo = useSelector(state => state.mypage?.userInfo);
-	const companyInfo = useSelector(state => state.mypage?.companyInfo);
 
 	useEffect(() => {
 		dispatch(__getComment(id));
