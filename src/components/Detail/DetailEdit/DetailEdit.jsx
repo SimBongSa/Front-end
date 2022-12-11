@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
-import { __getBoardId, __editBoard } from "../../redux/modules/boardSlice";
+import { __getBoardId, __editBoard } from "../../../redux/modules/boardSlice";
 import { DetailContainer, DetailContent, RegisterDatePicker, TextArea } from "./DetailEdit.styled";
-import PopupDom from "../Map/PopupDom";
+import PopupDom from "../../Map/PopupDom";
 import moment from "moment";
-import PopupPostCode from "../Map/PopupPostCode";
+import PopupPostCode from "../../Map/PopupPostCode";
 import { ko } from "date-fns/esm/locale";
-import Stbtn from "../common/button/Button";
-import Input from "../common/input/Input";
-import ImageUpload from "../Recruit/ImageUpload/ImageUpload";
+import Stbtn from "../../common/button/Button";
+import Input from "../../common/input/Input";
+import ImageUpload from "../../Recruit/ImageUpload/ImageUpload";
 
 //기관의 페이지 수정
 const DetailEdit = () => {
