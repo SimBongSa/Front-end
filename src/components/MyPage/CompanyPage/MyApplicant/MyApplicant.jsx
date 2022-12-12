@@ -1,7 +1,6 @@
 import { FcCalendar } from "react-icons/fc";
 import { useDispatch } from "react-redux";
-import { useState, useEffect } from "react";
-import { __putApprove, __putDisapprove } from "../../../../redux/modules/mypageSlice";
+import { __getAllAppliList, __putApprove, __putDisapprove } from "../../../../redux/modules/mypageSlice";
 import { StTagBox } from "../../../common/cards/CardGrid.styled";
 import Stbtn from "../../../common/button/Button";
 import {
@@ -11,12 +10,18 @@ import {
 	PreviewText,
 	AppliBtnWrap,
 } from "./MyApplicant.styled";
+import { useState } from "react";
+import { toast, ToastContainer } from 'react-toastify';
 
 const MyApplicant = ({ list }) => {
 	const dispatch = useDispatch();
 
+	const [size, setSize] = useState(10);
+	const [page, setPage] = useState(1);
+
 	return (
 		<>
+			<ToastContainer/>
 			{list.map(item => {
 				return (
 					<>
@@ -31,6 +36,8 @@ const MyApplicant = ({ list }) => {
 											variant="applicant-approve"
 											onClick={() => {
 												dispatch(__putApprove(item.enrollId));
+												toast.success(item.username + '님의 요청을 승인했습니다.')
+												dispatch(__getAllAppliList({ page, size }));
 											}}
 										>
 											승인
@@ -39,6 +46,8 @@ const MyApplicant = ({ list }) => {
 											variant="applicant-reject"
 											onClick={() => {
 												dispatch(__putDisapprove(item.enrollId));
+												toast.success(item.username + '님의 요청을 거절했습니다.')
+												dispatch(__getAllAppliList({ page, size }));
 											}}
 										>
 											거절
