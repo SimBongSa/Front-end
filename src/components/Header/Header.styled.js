@@ -29,9 +29,6 @@ export const HeaderLogo = styled.span`
 		display: table;
 		clear: both;
 	}
-
-	@media screen {
-	}
 `;
 
 export const HeaderMenu = styled.div`
@@ -76,7 +73,7 @@ export const LightThemeBtn = styled.button`
 	cursor: pointer;
 	position: fixed;
 	bottom: 22px;
-	left: 350px;
+	left: 360px;
 	border-radius: 50%;
 	background-color: ${props => props.theme.textColor};
 	color: ${props => props.theme.bgColor};
