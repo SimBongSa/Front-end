@@ -37,26 +37,26 @@ const CardGrid = ({ gridColumn, companyBoards, boards, userEnroll, userWait }) =
 	return (
 		<>
 			<ToastContainer />
-			<StCardGridContainer variant="Board">
-				<StCards gridColumn={gridColumn} variant="Board">
+			<StCardGridContainer variant="board">
+				<StCards gridColumn={gridColumn} variant="board">
 					{/* boards 전체 게시물 리스트  */}
 					{boards?.map(item => {
 						const dDay = getDateDiff(item.dueDay, today);
 						return (
 							<StCard
-								variant="Board"
+								variant="board"
 								key={item.boardId}
 								onClick={() => navigate(`/boards/${item.boardId}`)}
 							>
-								<StDate variant="Board">D-{dDay}</StDate>
-								<StImgWrapper variant="Board">
+								<StDate variant="board">D-{dDay}</StDate>
+								<StImgWrapper variant="board">
 									<img src={item.boardImage} loading="lazy" alt="thumbnail" />
 								</StImgWrapper>
-								<StContent variant="Board">
+								<StContent variant="board">
 									<p className="title">{item.title}</p>
-									<StCardInfo variant="Board">
-										<StArea variant="Board">{item.area}</StArea>
-										<StDetailArea variant="Board">{item.detailArea}</StDetailArea>
+									<StCardInfo variant="board">
+										<StArea variant="board">{item.area}</StArea>
+										<StDetailArea variant="board">{item.detailArea}</StDetailArea>
 									</StCardInfo>
 									<StTagBox>
 										{item?.tags?.map(tag => {
@@ -104,15 +104,15 @@ const CardGrid = ({ gridColumn, companyBoards, boards, userEnroll, userWait }) =
 			</StCardGridContainer>
 
 			{/* companyBoards 기업 상세페이지 */}
-			<StCardGridContainer variant="Company">
-				<StCards variant="Company">
+			<StCardGridContainer variant="company">
+				<StCards variant="company">
 					{companyBoards?.map(item => {
 						const dDay = getDateDiff(item.dueDay, today);
 						return (
 							<>
 								{item.author === username ? (
-									<StCard variant="Company" key={item.boardId}>
-										<StDate variant="Company">D-{dDay}</StDate>
+									<StCard variant="company" key={item.boardId}>
+										<StDate variant="company">D-{dDay}</StDate>
 										<StImgWrapper
 											variant="myCompany"
 											onMouseEnter={() => setIsHovering(item.boardId)}
@@ -150,11 +150,11 @@ const CardGrid = ({ gridColumn, companyBoards, boards, userEnroll, userWait }) =
 												}}
 											/>
 										</StImgWrapper>
-										<StContent variant="Company">
+										<StContent variant="company">
 											<p className="title">{item.title}</p>
-											<StCardInfo variant="Company">
-												<StArea variant="Company">{item.area}</StArea>
-												<StDetailArea variant="Company">{item.detailArea}</StDetailArea>
+											<StCardInfo variant="company">
+												<StArea variant="company">{item.area}</StArea>
+												<StDetailArea variant="company">{item.detailArea}</StDetailArea>
 											</StCardInfo>
 											<StTagBox>
 												{item?.tags?.map(tag => {
@@ -164,16 +164,16 @@ const CardGrid = ({ gridColumn, companyBoards, boards, userEnroll, userWait }) =
 										</StContent>
 									</StCard>
 								) : (
-									<StCard variant="Company" key={item.boardId}>
-										<StDate variant="Company">D-{dDay}</StDate>
-										<StImgWrapper variant="Company">
+									<StCard variant="company" key={item.boardId}>
+										<StDate variant="company">D-{dDay}</StDate>
+										<StImgWrapper variant="company">
 											<img src={item.boardImage} loading="lazy" alt="enrollImage" />
 										</StImgWrapper>
-										<StContent variant="Company">
+										<StContent variant="company">
 											<p className="title">{item.title}</p>
-											<StCardInfo variant="Company">
-												<StArea variant="Company">{item.area}</StArea>
-												<StDetailArea variant="Company">{item.detailArea}</StDetailArea>
+											<StCardInfo variant="company">
+												<StArea variant="company">{item.area}</StArea>
+												<StDetailArea variant="company">{item.detailArea}</StDetailArea>
 											</StCardInfo>
 											<StTagBox>
 												{item?.tags?.map(tag => {

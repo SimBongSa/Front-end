@@ -10,7 +10,7 @@ import {
 } from "./Serverlist.styled";
 import { useNavigate } from "react-router-dom";
 
-const Serverlist = ({ result, mark, totallist }) => {
+const Serverlist = ({ result, totallist }) => {
 	const navigate = useNavigate();
 
 	return (

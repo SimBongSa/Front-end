@@ -15,13 +15,6 @@ import {
 const MyApplicant = ({ list }) => {
 	const dispatch = useDispatch();
 
-	// const onApply = () => {
-	// 	setApply(apply + 1);
-	// };
-	// const onReject = () => {
-	// 	setReject(reject + 1);
-	// };
-
 	return (
 		<>
 			{list.map(item => {
