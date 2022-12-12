@@ -147,25 +147,17 @@ export const apis = {
 			},
 		}),
 	putApprove: payload =>
-		api.put(
-			`${BASE_URL}/companypage/approve/${payload}`,
-			{},
-			{
-				headers: {
-					Authorization: getCookieToken("access-token"),
-				},
-			}
-		),
+		api.put(`${BASE_URL}/companypage/approve/${payload.id}`, payload, {
+			headers: {
+				Authorization: getCookieToken("access-token"),
+			},
+		}),
 	putDisapprove: payload =>
-		api.put(
-			`${BASE_URL}/companypage/disapprove/${payload}`,
-			{},
-			{
-				headers: {
-					Authorization: getCookieToken("access-token"),
-				},
-			}
-		),
+		api.put(`${BASE_URL}/companypage/disapprove/${payload.id}`, payload, {
+			headers: {
+				Authorization: getCookieToken("access-token"),
+			},
+		}),
 	getOtherCompanyInfo: id => api.get(`${BASE_URL}/companypage/${id}`),
 	getOtherCompanyBoards: id => api.get(`${BASE_URL}/companypage/${id}/boards`),
 

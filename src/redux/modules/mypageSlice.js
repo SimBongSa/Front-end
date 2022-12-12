@@ -136,9 +136,6 @@ export const __putCompanyInfo = createAsyncThunk("__putCompanyInfo", async (payl
 		formData.append(key, value);
 	});
 
-
-
-
 	try {
 		const response = await apis.putCompanyPage(formData);
 
@@ -366,8 +363,9 @@ export const mypageSlice = createSlice({
 			})
 			.addCase(__putApprove.fulfilled, (state, action) => {
 				state.isLoading = false;
-				state.approve = action.payload;
+				state.allAppliList = state.allAppliList.filter(payload => payload.id !== action.payload);
 			})
+
 			.addCase(__putApprove.rejected, (state, action) => {
 				state.isLoading = false;
 				state.error = action.payload;
@@ -377,8 +375,9 @@ export const mypageSlice = createSlice({
 			})
 			.addCase(__putDisapprove.fulfilled, (state, action) => {
 				state.isLoading = false;
-				state.approve = action.payload;
+				state.allAppliList = state.allAppliList.filter(payload => payload.id !== action.payload);
 			})
+
 			.addCase(__putDisapprove.rejected, (state, action) => {
 				state.isLoading = false;
 				state.error = action.payload;

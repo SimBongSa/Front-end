@@ -61,20 +61,25 @@ const CompanyPage = () => {
 
 	return (
 		<>
-			<MyProcessContainer variant="Company">
+			<Profile
+				companyInfo={companyInfo}
+				companyBoards={companyBoards}
+				setCompanyPageOpt={setCompanyPageOpt}
+			/>
+			<MyProcessContainer variant="company">
 				<h1>나의 활동</h1>
-				<ProcessStepWrap variant="Company">
-					<ProcessStep variant="Company" onClick={() => setCompanyPageOpt("newActivity")}>
-						<ProcessCircle variant="Company">
+				<ProcessStepWrap variant="company">
+					<ProcessStep variant="company" onClick={() => setCompanyPageOpt("newActivity")}>
+						<ProcessCircle variant="company">
 							<span>{newVolunteerCount}</span>
 						</ProcessCircle>
-						<StepTitle variant="Company">새로운 봉사자 신청</StepTitle>
+						<StepTitle variant="company">새로운 봉사자 신청</StepTitle>
 					</ProcessStep>
-					<ProcessStep variant="Company" onClick={() => setCompanyPageOpt("myActivity")}>
-						<ProcessCircle variant="Company">
+					<ProcessStep variant="company" onClick={() => setCompanyPageOpt("myActivity")}>
+						<ProcessCircle variant="company">
 							<span>{companyBoards?.length}</span>
 						</ProcessCircle>
-						<StepTitle variant="Company">나의 봉사</StepTitle>
+						<StepTitle variant="company">나의 봉사</StepTitle>
 					</ProcessStep>
 				</ProcessStepWrap>
 				{modal === false && companyBoards.length > 0 ? (
@@ -94,12 +99,6 @@ const CompanyPage = () => {
 					)}
 				</StOpenCalendar>
 			</MyProcessContainer>
-
-			<Profile
-				companyInfo={companyInfo}
-				companyBoards={companyBoards}
-				setCompanyPageOpt={setCompanyPageOpt}
-			/>
 			<CompanyPageContainer>
 				<BtnContainer>
 					<input

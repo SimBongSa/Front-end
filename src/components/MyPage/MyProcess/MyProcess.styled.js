@@ -7,7 +7,6 @@ export const MyProcessContainer = styled.div`
 				return css`
 					display: inline-flex;
 					flex-direction: column;
-					margin-top: 8rem;
 					margin-left: 25rem;
 					width: 60%;
 					box-shadow: 0 3px 8px -6px rgba(0, 0, 0, 0.5);
@@ -20,11 +19,11 @@ export const MyProcessContainer = styled.div`
 						float: left;
 					}
 				`;
-			case "Company":
+			case "company":
 				return css`
 					display: inline-flex;
 					flex-direction: column;
-					margin-top: 18rem;
+					margin-top: 10rem;
 					margin-left: 30rem;
 					width: 60%;
 					box-shadow: 0 3px 8px -6px rgba(0, 0, 0, 0.5);
@@ -34,6 +33,7 @@ export const MyProcessContainer = styled.div`
 					}
 					@media (max-width: 1024px) {
 						margin: 0 auto;
+						margin-top: 10rem;
 						float: left;
 					}
 				`;
@@ -63,7 +63,7 @@ export const ProcessStepWrap = styled.div`
 						float: left;
 					}
 				`;
-			case "Company":
+			case "company":
 				return css`
 					display: flex;
 					position: sticky;
@@ -104,7 +104,7 @@ export const ProcessStep = styled.div`
 						width: 200px;
 					}
 				`;
-			case "Company":
+			case "company":
 				return css`
 					cursor: pointer;
 					position: relative;
@@ -142,7 +142,7 @@ export const ProcessCircle = styled.div`
 					font-weight: 600;
 					color: #ffffff;
 				`;
-			case "Company":
+			case "company":
 				return css`
 					width: 30px;
 					height: 30px;
@@ -172,7 +172,7 @@ export const StepTitle = styled.div`
 					font-weight: 600;
 					text-align: center;
 				`;
-			case "Company":
+			case "company":
 				return css`
 					margin-top: 2rem;
 					font-size: 16px;
