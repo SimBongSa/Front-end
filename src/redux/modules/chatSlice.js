@@ -6,7 +6,7 @@ export const __getChatList = createAsyncThunk("getChatList", async (payload, thu
 	try {
 		const response = await apis.getChatList(payload);
 		console.log(response)
-		return thunkAPI.fulfillWithValue(response.data.error);
+		return thunkAPI.fulfillWithValue(response.data.data);
 	} catch (error) {
 		return thunkAPI.rejectWithValue(error);
 	}
@@ -50,7 +50,7 @@ export const chatSlice = createSlice({
 			})
 			.addCase(__getChatList.fulfilled, (state, action) => {
 				state.isLoading = false;
-				state.chatList = []; // 여기 수정해야 함
+				state.chatList = action.payload; // 여기 수정해야 함
 				// state.chatList = action.payload;
 			})
 			.addCase(__getChatList.rejected, (state, action) => {
