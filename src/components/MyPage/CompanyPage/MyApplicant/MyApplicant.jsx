@@ -15,7 +15,6 @@ import { toast, ToastContainer } from 'react-toastify';
 
 const MyApplicant = ({ list }) => {
 	const dispatch = useDispatch();
-
 	const [size, setSize] = useState(10);
 	const [page, setPage] = useState(1);
 

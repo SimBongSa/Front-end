@@ -17,6 +17,7 @@ export const StChatInput = styled.input`
 	margin-top: 0px;
 	padding-left: 20px;
 `;
+
 export const StChatBtn = styled.button`
 	position: absolute;
 	cursor: pointer;

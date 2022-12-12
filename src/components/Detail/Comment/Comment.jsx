@@ -30,6 +30,7 @@ import { __getOtherUserInfo } from "../../../redux/modules/mypageSlice";
 
 
 const Comment = () => {
+	
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
 	const { id } = useParams();
