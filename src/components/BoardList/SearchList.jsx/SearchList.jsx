@@ -23,11 +23,9 @@ const SearchList = () => {
 					<div>{state.length}개</div>
 				</StTitle>
 				<BoardContent>
-					<div>
-						<Stbtn variant="boards-map-open" onClick={() => setModal(!modal)}>
-							지도 보기 <StMap />
-						</Stbtn>
-					</div>
+					<Stbtn variant="boards-map-open" onClick={() => setModal(!modal)}>
+						지도 보기 <StMap />
+					</Stbtn>
 					{modal ? (
 						<ListMap>
 							<Stbtn variant="boards-map-close" onClick={() => setModal(false)}>

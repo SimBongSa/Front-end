@@ -6,8 +6,7 @@ export const StCardGridContainer = styled.section`
 			case "board":
 				return css`
 					display: grid;
-					width: 70%;
-					grid-template-columns: 0fr repeat(12, minmax(auto, 60px)) 12fr;
+					grid-template-columns: 0fr repeat(6, minmax(auto, 20px)) 12fr;
 					justify-items: center;
 				`;
 			case "userEnroll":
@@ -97,7 +96,8 @@ export const StCard = styled.div`
 						grid-column-end: span 6;
 					}
 					@media screen and (max-width: 768px) {
-						grid-column-end: span 12;
+						grid-column-end: span 8;
+						margin-left: 30%;
 					}
 					&:hover {
 						transform: translateY(-0.5rem);

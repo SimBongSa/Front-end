@@ -21,7 +21,6 @@ export const ChatContent = () => {
   const props  = useOutletContext();
   const setReceiveMsg = props.setReceiveMsg;
   const username = getCookieToken(["username"]);
-
   const chatHistory = useSelector((state) => state.chat.chatHistory);
   const chatBoard = useSelector((state) => state.boards.board);
   const scrollRef = useRef();
@@ -31,7 +30,7 @@ export const ChatContent = () => {
     if (props) {
       scrollRef.current.scrollIntoView({ behavior: 'smooth', block: 'end' })
     }
-  }, [dispatch, id, props]);
+  }, [dispatch, id, props, setReceiveMsg]);
 
   return (
     <StChatContent>

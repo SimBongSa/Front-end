@@ -168,7 +168,8 @@ const Login = () => {
 						</LoginForm>
 					</LoginBox>
 					<StToRegister>
-						아직 Vongole 멤버가 아닌가요? <b onClick={() => navigate("/register")}>회원가입</b>
+						봉사 활동 / 봉사자를 찾고싶다면?
+						<b onClick={() => navigate("/register")}>Vongole 회원가입</b>
 					</StToRegister>
 				</>
 			) : null}
