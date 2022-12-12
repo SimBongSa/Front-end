@@ -239,7 +239,7 @@ export const ProfileInfo = styled.div`
 	}
 	& span {
 		border-radius: 50%;
-		background-image: url('./image/32badge1.png');
+		background-image: url("./image/32badge1.png");
 	}
 	@media (max-width: 1024px) {
 		text-align: center;

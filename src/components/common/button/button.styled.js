@@ -130,7 +130,7 @@ export const Stbtn = styled.button`
 					border-radius: 50px;
 					width: 140px;
 					height: 40px;
-					margin-right: 2rem;
+					margin-right: 7rem;
 					background: ${props => props.theme.bgColor};
 					color: ${props => props.theme.textColor};
 					cursor: pointer;

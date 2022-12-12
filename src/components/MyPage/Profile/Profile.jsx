@@ -33,8 +33,10 @@ const Profile = ({
 		window.location.replace("/");
 	};
 
+
 	const [cookies] = useCookies(["Authorization"]);
 	const authority = cookies["authority"];
+
 
 	return (
 		<>
@@ -159,6 +161,7 @@ const Profile = ({
 				</ProfileContainer>
 			)}
 		</>
+
 	);
 };
 

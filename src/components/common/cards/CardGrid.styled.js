@@ -221,8 +221,10 @@ export const StContent = styled.div`
 					white-space: nowrap;
 					overflow: hidden;
 					padding: 1rem;
-					padding-top: 20px;
+					padding-top: 23px;
 					background-color: transparent;
+					border-radius: 50px;
+
 					& .title {
 						text-align: start;
 						font-size: 1rem;
@@ -233,6 +235,9 @@ export const StContent = styled.div`
 						text-overflow: ellipsis;
 						color: ${props => props.theme.textColor};
 						margin-bottom: 20px;
+						text-overflow: ellipsis;
+						white-space: nowrap;
+						overflow: hidden;
 					}
 				`;
 			case "userEnroll":

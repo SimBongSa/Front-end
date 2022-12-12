@@ -28,6 +28,7 @@ import Input from "../../common/input/Input";
 import Profileimg from "../../common/profileimg/Profileimg";
 import { __getOtherUserInfo } from "../../../redux/modules/mypageSlice";
 
+
 const Comment = () => {
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
@@ -180,9 +181,7 @@ const Comment = () => {
 												</Div>
 											</>
 										) : (
-											<>
-												<Div>신고</Div>
-											</>
+											<></>
 										)}
 									</CommentBtnWrap>
 								</CommentTitleWrap>
@@ -206,6 +205,6 @@ const Comment = () => {
 				: ""}
 		</MainComponent>
 	);
-}
+};
 
 export default Comment;

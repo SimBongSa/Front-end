@@ -84,7 +84,7 @@ export const __getArea = createAsyncThunk("getArea", async (payload, thunkAPI) =
 export const __postApply = createAsyncThunk("apply", async (payload, thunkAPI) => {
 	try {
 		const response = await apis.applyBoard(payload);
-		console.log("__postApply =>", response);
+
 		if (response.status === 200) {
 			alert(response.data.data.msg);
 			return thunkAPI.fulfillWithValue(response.data.data.msg);
@@ -116,7 +116,6 @@ export const boardSlice = createSlice({
 				state.isLoading = false;
 				state.status = action.payload.status;
 				state.boards.push(action.payload.data.data);
-				console.log("봉사 등록 action.payload=>", action.payload);
 			})
 			.addCase(__createBoard.rejected, (state, action) => {
 				state.isLoading = false;
