@@ -60,7 +60,7 @@ export const StReceiveMsg = styled.li`
     border: 2px solid ${(props) => props.theme.subTextColor};
   }
   & span {
-    color: #232323;
+    color: ${(props) => props.theme.textColor};
     font-size: 0.7rem;
     margin-left: 10px;
   }
