@@ -34,11 +34,10 @@ const CompanyPage = () => {
 		dispatch(__getAllAppliList({ page, size }));
 	}, [dispatch, page, size]);
 
-	// 내정보 , 등록한 게시글 , 신청한 놈
 	const companyInfo = useSelector(state => state.mypage?.companyInfo);
 	const companyBoards = useSelector(state => state.mypage.companyBoards);
 	const appliList = useSelector(state => state.mypage.allAppliList);
-	const ma = useSelector(state => state.mypage.approve);
+
 	const [newVolunteerCount, setNewVolunteerCount] = useState(0);
 
 	const [companyPageOpt, setCompanyPageOpt] = useState(null);
@@ -55,12 +54,11 @@ const CompanyPage = () => {
 	useEffect(() => {
 		let watingItemLength = 0;
 		for (let item of appliList) {
-			if (item.approval === "WAITING") watingItemLength++;
+			if (item?.approval === "WAITING") watingItemLength++;
 		}
 		setNewVolunteerCount(watingItemLength);
 	}, [appliList]);
 
-	console.log(ma);
 	return (
 		<>
 			<MyProcessContainer variant="Company">
@@ -78,18 +76,6 @@ const CompanyPage = () => {
 						</ProcessCircle>
 						<StepTitle variant="Company">나의 봉사</StepTitle>
 					</ProcessStep>
-					{/* <ProcessStep variant="Company">
-						<ProcessCircle variant="Company">
-							<span>{0}</span>
-						</ProcessCircle>
-						<StepTitle variant="Company">승인한 봉사</StepTitle>
-					</ProcessStep>
-					<ProcessStep variant="Company">
-						<ProcessCircle variant="Company">
-							<span>{0}</span>
-						</ProcessCircle>
-						<StepTitle variant="Company">거절한 봉사</StepTitle>
-					</ProcessStep> */}
 				</ProcessStepWrap>
 				{modal === false && companyBoards.length > 0 ? (
 					<CustomerCalendar companyBoards={companyBoards} />
@@ -109,7 +95,11 @@ const CompanyPage = () => {
 				</StOpenCalendar>
 			</MyProcessContainer>
 
-			<Profile companyInfo={companyInfo} setCompanyPageOpt={setCompanyPageOpt} />
+			<Profile
+				companyInfo={companyInfo}
+				companyBoards={companyBoards}
+				setCompanyPageOpt={setCompanyPageOpt}
+			/>
 			<CompanyPageContainer>
 				<BtnContainer>
 					<input

@@ -41,6 +41,7 @@ const UserPage = () => {
 		<>
 			<Profile
 				userInfo={userInfo}
+				userWait={userWait}
 				userPageOpt={userPageOpt}
 				setUserPageOpt={setUserPageOpt}
 				count={userPass.length}

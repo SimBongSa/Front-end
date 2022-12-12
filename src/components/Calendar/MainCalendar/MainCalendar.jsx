@@ -64,7 +64,7 @@ const MainCalendar = () => {
 				<StCalendarWrap>
 					<StCalendar
 						onChange={setValue}
-						formatDay={(locale, date) => moment(date).format("DD")}
+						formatDay={date => moment(date).format("DD")}
 						value={value}
 						next2Label={null}
 						prev2Label={null}
@@ -72,7 +72,7 @@ const MainCalendar = () => {
 						maxDetail="month"
 						calendarType="US"
 						navigationLabel={null}
-						tileContent={({ date, view }) => {
+						tileContent={({ date }) => {
 							let html = [];
 
 							const momentDate = moment(date).format("YYYY-MM-DD");
@@ -98,7 +98,7 @@ const MainCalendar = () => {
 						) : (
 							<h2>해당 날짜에 활동이 없어요 💨</h2>
 						)}
-						<Serverlist result={maindate.data} key={date} mark={mark} totallist={totallist.data} />
+						<Serverlist result={maindate.data} key={date} totallist={totallist.data} />
 					</StCalendarList>
 				</StCalendarWrap>
 			</StCalendarContainer>

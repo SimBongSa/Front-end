@@ -6,6 +6,7 @@ import {
 	ProfileInfo,
 	MyActivity,
 } from "./Profile.styled";
+import { useState, useEffect } from "react";
 import { removeCookie } from "../../../utils/cookie";
 import { useNavigate } from "react-router-dom";
 import Button from "../../common/button/Button";
@@ -14,15 +15,17 @@ import Badge from "../../common/badge/Badge";
 import { useCookies } from "react-cookie";
 const Profile = ({
 	companyInfo,
-	companyBoards,
 	userInfo,
 	userWait,
 	userPass,
 	setUserPageOpt,
 	setCompanyPageOpt,
+	companyBoards,
 	count,
 }) => {
 	const navigate = useNavigate();
+	const [CompanyComplete, setCompanyComplete] = useState(0);
+	const [userComplete, setUserComplete] = useState(0);
 
 	const logOut = () => {
 		removeCookie("access-token");
@@ -36,6 +39,22 @@ const Profile = ({
 	const [cookies] = useCookies(["Authorization"]);
 	const authority = cookies["authority"];
 
+	useEffect(() => {
+		const today = new Date();
+		if (companyBoards?.length > 0) {
+			let doingItemLength = 0;
+			for (let item of companyBoards) {
+				if (item?.dueDay.split(" ")[0] < today?.toISOString().split("T")[0]) doingItemLength++;
+			}
+			setCompanyComplete(doingItemLength);
+		} else if (userWait?.length > 0) {
+			let doingItemLength = 0;
+			for (let item of userWait) {
+				if (item?.dueDay.split(" ")[0] < today?.toISOString().split("T")[0]) doingItemLength++;
+			}
+			setUserComplete(doingItemLength);
+		}
+	}, [companyBoards, userWait]);
 	return (
 		<>
 			{authority === "ROLE_MEMBER" ? (
@@ -66,7 +85,7 @@ const Profile = ({
 										<span>진행중인 봉사</span>
 									</ProfileCategory>
 									<ProfileCategory>
-										<div>{userPass?.length}</div>
+										<div>{userComplete}</div>
 										<span>진행한 봉사</span>
 									</ProfileCategory>
 								</MyActivity>
@@ -120,7 +139,7 @@ const Profile = ({
 										<span>모집중인 봉사</span>
 									</ProfileCategory>
 									<ProfileCategory>
-										<div>{companyBoards?.length}</div>
+										<div>{CompanyComplete}</div>
 										<span>진행한 봉사</span>
 									</ProfileCategory>
 								</MyActivity>

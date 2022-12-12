@@ -52,20 +52,20 @@ const Carousel = () => {
 						return (
 							<Slide key={index}>
 								<StCard
-									variant="Board"
+									variant="board"
 									onClick={() => {
 										navigate(`/boards/${item.boardId}`);
 									}}
 								>
-									<StDate variant="Board">D-{dDay}</StDate>
-									<StImgWrapper variant="Board">
+									<StDate variant="board">D-{dDay}</StDate>
+									<StImgWrapper variant="board">
 										<img src={item.boardImage} loading="lazy" alt="thumbnail" />
 									</StImgWrapper>
-									<StContent variant="Board">
+									<StContent variant="board">
 										<p className="title">{item.title}</p>
-										<StCardInfo variant="Board">
-											<StArea variant="Board">{item.area}</StArea>
-											<StDetailArea variant="Board">{item.detailArea}</StDetailArea>
+										<StCardInfo variant="board">
+											<StArea variant="board">{item.area}</StArea>
+											<StDetailArea variant="board">{item.detailArea}</StDetailArea>
 										</StCardInfo>
 										<StTagBox>
 											{item.tags.map((tag, idx) => {
