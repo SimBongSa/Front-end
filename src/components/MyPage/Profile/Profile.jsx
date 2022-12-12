@@ -49,7 +49,6 @@ const Profile = ({
 							<h3>{companyInfo?.name}</h3>
 							<h5>{companyInfo?.phoneNumber}</h5>
 							<h5>{companyInfo?.email}</h5>
-
 							<Button
 								variant="mypage-edit"
 								onClick={() => {
