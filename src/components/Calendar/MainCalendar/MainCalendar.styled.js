@@ -5,15 +5,16 @@ export const StCalendarListWrap = styled.div``;
 
 export const StCalendarList = styled.div`
 	background-color: ${props => props.theme.subBgColor};
-	border: 1px solid gainsboro;
+	border: 1px solid ${props => props.theme.borderBottom};
 	border-radius: 20px;
 	width: 35%;
 
 	& h3 {
 		font-size: 1.5rem;
-		justify-content: center;
-		padding: 20px 10px 10px 10px;
-		padding-left: 7rem;
+		padding: 20px 20px 20px 95px;
+		overflow: hidden;
+		white-space: nowrap;
+		text-overflow: ellipsis;
 	}
 
 	& h2 {

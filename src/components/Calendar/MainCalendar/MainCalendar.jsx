@@ -64,7 +64,7 @@ const MainCalendar = () => {
 				<StCalendarWrap>
 					<StCalendar
 						onChange={setValue}
-						formatDay={date => moment(date).format("DD")}
+						formatDay={(locale, date) => moment(date).format("DD")}
 						value={value}
 						next2Label={null}
 						prev2Label={null}

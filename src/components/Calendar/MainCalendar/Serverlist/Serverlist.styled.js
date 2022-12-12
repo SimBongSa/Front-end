@@ -2,11 +2,14 @@ import styled from "styled-components";
 
 export const StServerListContainer = styled.div`
 	display: flex;
-	/* width: 30rem; */
+	max-width: 400px;
+	min-width: 3500px;
 	height: 7.5rem;
 	margin: 1.5rem 1rem 1rem 1rem;
-	border-bottom: 1px solid silver;
+	border-bottom: 1px solid ${props => props.theme.borderBottom};
 	color: ${props => props.theme.textColor};
+	white-space: nowrap;
+	text-overflow: ellipsis;
 	cursor: pointer;
 	transition: all 0.5s ease;
 	&:hover {
