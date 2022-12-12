@@ -39,7 +39,12 @@ const UserPage = () => {
 
 	return (
 		<>
-			<Profile userInfo={userInfo} userPageOpt={userPageOpt} setUserPageOpt={setUserPageOpt} count={userPass.length} />
+			<Profile
+				userInfo={userInfo}
+				userPageOpt={userPageOpt}
+				setUserPageOpt={setUserPageOpt}
+				count={userPass.length}
+			/>
 			<UserPageContainer>
 				<MyProcess
 					userEnroll={userEnroll.length}

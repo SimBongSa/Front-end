@@ -9,7 +9,7 @@ const UserCalendar = ({ userEnroll }) => {
 
 	useEffect(() => {
 		if (month.constructor === Object && Object.keys(month).length !== 0) {
-			month.userEnroll.map(item => {
+			month.userEnroll?.map(item => {
 				setMark(prev => [...prev, item.dueDay.split(" ")[0]]);
 			});
 		}

@@ -8,13 +8,13 @@ export const StCardGridContainer = styled.section`
 					display: grid;
 					width: 70%;
 					grid-template-columns: 0fr repeat(12, minmax(auto, 60px)) 12fr;
-					margin: 3rem 0px 2rem 10rem;
 					justify-items: center;
 				`;
 			case "userEnroll":
 				return css`
 					grid-template-columns: 0fr repeat(0, minmax(auto, 60px)) 10fr;
 					justify-items: center;
+					margin-top: 2rem;
 					margin-bottom: 2rem;
 				`;
 			case "Company":

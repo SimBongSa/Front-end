@@ -94,7 +94,7 @@ const Comment = () => {
 						}}
 					>
 						댓글쓰기
-					</Stbtn>{" "}
+					</Stbtn>
 				</CommentWriteWrap>
 			) : (
 				<CommentWriteWraps>

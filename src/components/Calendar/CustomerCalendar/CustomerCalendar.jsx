@@ -9,7 +9,7 @@ const CustomerCalendar = ({ companyBoards }) => {
 
 	useEffect(() => {
 		if (month.constructor === Object && Object.keys(month).length !== 0) {
-			month.companyBoards.map(item => {
+			month.companyBoards?.map(item => {
 				setMark(prev => [...prev, item.dueDay.split(" ")[0]]);
 			});
 		}
@@ -25,7 +25,6 @@ const CustomerCalendar = ({ companyBoards }) => {
 					<StCalendar
 						onChange={setValue}
 						formatDay={(locale, date) => moment(date).format("DD")}
-						locale="en-EN"
 						value={value}
 						next2Label={null}
 						prev2Label={null}
