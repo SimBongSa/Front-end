@@ -20,13 +20,12 @@ import { __getSearchBoards } from "../../redux/modules/boardSlice";
 import { useNavigate } from "react-router-dom";
 
 const SearchBar = () => {
-	
 	const navigate = useNavigate();
 	const dispatch = useDispatch();
 
 	//강제 re-render용 state
-	const [,updateState] = useState();
-	const forceUpdate = useCallback(() => updateState({}), [])
+	const [, updateState] = useState();
+	const forceUpdate = useCallback(() => updateState({}), []);
 
 	// modal animation state
 	const [modal, setModal] = useState(false);
@@ -35,7 +34,7 @@ const SearchBar = () => {
 
 	// modal 바깥 클릭 시 닫히는 기능
 	useEffect(() => {
-		const clickOutside = (e) => {
+		const clickOutside = e => {
 			if (modal && node.current && !node.current.contains(e.target)) {
 				setAnimation(true);
 				setTimeout(() => {
@@ -56,21 +55,23 @@ const SearchBar = () => {
 		location: "ALL",
 	});
 
-	const searchChange = (e) => {
+	const searchChange = e => {
 		const { name, value } = e.target;
-		setSearch({...search, [name]: value});
-	}
+		setSearch({ ...search, [name]: value });
+	};
 
-	const searchHandler = (e) => {
+	const searchHandler = e => {
 		e.preventDefault();
-		dispatch(__getSearchBoards({
-			...search,
-			startDate : moment(startDate).format("YYYY-MM-DD"), 
-			endDate : moment(endDate).format("YYYY-MM-DD"),
-		}));
+		dispatch(
+			__getSearchBoards({
+				...search,
+				startDate: moment(startDate).format("YYYY-MM-DD"),
+				endDate: moment(endDate).format("YYYY-MM-DD"),
+			})
+		);
 		forceUpdate();
 		navigate("/search");
-		setModal(false)
+		setModal(false);
 	};
 
 	// date picker
@@ -95,10 +96,7 @@ const SearchBar = () => {
 								<SearchList>
 									<li>
 										<h4>카테고리</h4>
-										<select
-											name={"category"}
-											onChange={searchChange}
-										>
+										<select name={"category"} onChange={searchChange}>
 											<option value={"ALL"}>전체</option>
 											<option value={"CHILD"}>어린이</option>
 											<option value={"DISABLED"}>장애인</option>
@@ -112,7 +110,7 @@ const SearchBar = () => {
 										<h4>모집기간</h4>
 										<PickerBox>
 											<CustomeDatePicker
-												name={'startDate'}
+												name={"startDate"}
 												locale={ko}
 												dateFormat="MM월-dd일"
 												selected={startDate}
@@ -123,7 +121,7 @@ const SearchBar = () => {
 											/>
 											<span>-</span>
 											<CustomeDatePicker
-												name={'endDate'}
+												name={"endDate"}
 												locale={ko}
 												dateFormat="MM월-dd일 "
 												selected={endDate}
@@ -137,23 +135,20 @@ const SearchBar = () => {
 									</li>
 									<li>
 										<h4>지역</h4>
-										<select
-											name={"location"}
-											onChange={searchChange}
-										>
-											<option value={'ALL'}>전체</option>
-											<option value={'서울'}>서울</option>
-											<option value={'경기'}>경기</option>
-											<option value={'인천'}>인천</option>
-											<option value={'강원'}>강원</option>
-											<option value={'충북'}>충북</option>
-											<option value={'충남'}>충남</option>
-											<option value={'세종'}>세종</option>
-											<option value={'전북'}>전북</option>
-											<option value={'전남'}>전남</option>
-											<option value={'경북'}>경북</option>
-											<option value={'경남'}>경남</option>
-											<option value={'제주'}>제주</option>
+										<select name={"location"} onChange={searchChange}>
+											<option value={"ALL"}>전체</option>
+											<option value={"서울"}>서울</option>
+											<option value={"경기"}>경기</option>
+											<option value={"인천"}>인천</option>
+											<option value={"강원"}>강원</option>
+											<option value={"충북"}>충북</option>
+											<option value={"충남"}>충남</option>
+											<option value={"세종"}>세종</option>
+											<option value={"전북"}>전북</option>
+											<option value={"전남"}>전남</option>
+											<option value={"경북"}>경북</option>
+											<option value={"경남"}>경남</option>
+											<option value={"제주"}>제주</option>
 										</select>
 									</li>
 								</SearchList>

@@ -27,50 +27,54 @@ const MyProcess = ({
 		setModal(false);
 	};
 	return (
-		<MyProcessContainer>
-			<h1>봉사 현황</h1>
-			<ProcessStepWrap>
+		<MyProcessContainer variant="user">
+			<h1>나의 활동</h1>
+			<ProcessStepWrap variant="user">
 				<ProcessStep
+					variant="user"
 					onClick={() => {
 						setUserPageOpt("enroll");
 					}}
 				>
-					<ProcessCircle>
+					<ProcessCircle variant="user">
 						<span>{userEnroll}</span>
 					</ProcessCircle>
-					<StepTitle>봉사 신청 내역</StepTitle>
+					<StepTitle variant="user">봉사 신청 내역</StepTitle>
 				</ProcessStep>
 				<ProcessStep
+					variant="user"
 					onClick={() => {
 						setUserPageOpt("wait");
 					}}
 				>
-					<ProcessCircle>
+					<ProcessCircle variant="user">
 						<span>{userWait}</span>
 					</ProcessCircle>
-					<StepTitle>승인 대기중</StepTitle>
+					<StepTitle variant="user">승인 대기중</StepTitle>
 				</ProcessStep>
 				<ProcessStep
+					variant="user"
 					onClick={() => {
 						setUserPageOpt("pass");
 					}}
 				>
-					<ProcessCircle>
+					<ProcessCircle variant="user">
 						<span>{userPass}</span>
 					</ProcessCircle>
-					<StepTitle>참여 봉사 관리</StepTitle>
+					<StepTitle variant="user">참여 봉사 관리</StepTitle>
 				</ProcessStep>
 				<ProcessStep
+					variant="user"
 					onClick={() => {
 						setUserPageOpt("reject");
 					}}
 				>
-					<ProcessCircle>
+					<ProcessCircle variant="user">
 						<span>{userReject}</span>
 					</ProcessCircle>
-					<StepTitle>거절된 봉사</StepTitle>
+					<StepTitle variant="user">거절된 봉사</StepTitle>
 				</ProcessStep>
-			</ProcessStepWrap>{" "}
+			</ProcessStepWrap>
 			{modal === false && callendarData.length > 0 ? (
 				<UserCalendar userEnroll={callendarData} />
 			) : (
@@ -82,8 +86,8 @@ const MyProcess = ({
 						캘린더 닫기 <IoIosArrowUp />
 					</div>
 				) : (
-					<div onClick={onClickOpenHandler} >
-						캘린더 보기 <IoIosArrowDown/>
+					<div onClick={onClickOpenHandler}>
+						캘린더 보기 <IoIosArrowDown />
 					</div>
 				)}
 			</StOpenCalendar>
@@ -95,11 +99,8 @@ export default MyProcess;
 
 export const StOpenCalendar = styled.div`
 	cursor: pointer;
-	width: 80%;
 	text-align: center;
 	height: 4rem;
-	margin: 0 auto;
-	margin-left: 5rem;
 	padding-top: 1rem;
 	transition: all 0.5s;
 	@media (max-width: 1024px) {

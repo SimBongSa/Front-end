@@ -17,6 +17,7 @@ export const HeaderLogo = styled.span`
 	float: left;
 	padding: 13px 10px 13px 10px;
 	margin: 10px 0px 0px 15px;
+	margin-left: 200px;
 	font-size: 2.25rem;
 	line-height: inherit;
 	font-weight: 500;
@@ -35,6 +36,7 @@ export const HeaderMenu = styled.div`
 	float: right;
 	font-size: 1rem;
 	margin: 1rem;
+	margin-right: 13rem;
 `;
 
 export const HeaderMenuItem = styled.span`
@@ -71,7 +73,7 @@ export const LightThemeBtn = styled.button`
 	cursor: pointer;
 	position: fixed;
 	bottom: 22px;
-	left: 170px;
+	left: 360px;
 	border-radius: 50%;
 	background-color: ${props => props.theme.textColor};
 	color: ${props => props.theme.bgColor};

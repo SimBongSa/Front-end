@@ -4,10 +4,12 @@ export const BoardContainer = styled.div`
 	display: flex;
 	flex-direction: column;
 	margin: 3rem;
+	margin-left: 2rem;
 `;
 
 export const StTitle = styled.div`
 	margin-top: 5rem;
+	margin-right: 1rem;
 	text-align: center;
 	& > div {
 		padding-bottom: 1rem;
