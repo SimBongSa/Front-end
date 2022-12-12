@@ -103,7 +103,6 @@ const DetailEdit = () => {
 	return (
 		<RecruitContainer>
 			<form onSubmit={onSubmitHandler}>
-
 				<StLeftWrap>
 					<h1><span>봉사 활동</span>에 대해 궁금해요!</h1>
 					<p><span>모집글</span>을 써주세요!</p>

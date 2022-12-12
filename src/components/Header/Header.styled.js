@@ -15,15 +15,13 @@ export const HeaderContainer = styled.header`
 
 export const HeaderLogo = styled.span`
 	float: left;
-	padding: 13px 10px 13px 10px;
-	margin: 10px 0px 0px 15px;
-	margin-left: 200px;
+	padding: 10px;
+	margin: 5px 0px 0px 10px;
 	font-size: 2.25rem;
 	line-height: inherit;
 	font-weight: 500;
 	color: ${props => props.theme.btnColor};
 	cursor: pointer;
-
 	&::after {
 		content: "";
 		display: table;
@@ -36,7 +34,7 @@ export const HeaderMenu = styled.div`
 	float: right;
 	font-size: 1rem;
 	margin: 1rem;
-	margin-right: 13rem;
+	/* margin-right: 13rem; */
 `;
 
 export const HeaderMenuItem = styled.span`
@@ -72,8 +70,8 @@ export const UserIcon = styled(FaRegUserCircle)`
 export const LightThemeBtn = styled.button`
 	cursor: pointer;
 	position: fixed;
-	bottom: 22px;
-	left: 360px;
+	bottom: 25px;
+	margin-left: 25px;
 	border-radius: 50%;
 	background-color: ${props => props.theme.textColor};
 	color: ${props => props.theme.bgColor};

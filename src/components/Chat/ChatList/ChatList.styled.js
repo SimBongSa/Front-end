@@ -57,15 +57,6 @@ export const StContactWrap = styled.div`
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  & img {
-    width: 40px;
-    border-radius: 50%;
-    float: left;
-    margin-right: 10px;
-    @media screen and (max-width: 768px) {
-      margin-right: 0px;
-    }
-  }
   @media screen and (max-width: $break) {
     width: 100%;
   }

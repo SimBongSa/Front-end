@@ -113,5 +113,6 @@ export const StToRegister = styled.span`
 	& b {
 		cursor: pointer;
 		color: orange;
+		margin-left: 1rem;
 	}
 `;
