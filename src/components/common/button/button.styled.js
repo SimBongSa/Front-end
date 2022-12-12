@@ -20,7 +20,6 @@ export const Stbtn = styled.button`
 					color: ${props => props.theme.bgColor};
 					background-color: ${props => props.theme.btnColor};
 					border: 1px solid ${props => props.theme.btnColor};
-					/* margin-left: 15em; */
 					cursor: pointer;
 					align-items: center;
 					justify-content: center;
@@ -114,7 +113,6 @@ export const Stbtn = styled.button`
 					border-radius: 24px;
 					width: 6rem;
 					height: 2.5rem;
-					/* margin-left: calc(100% + 110px); */
 					margin-left: calc(100% - 110px);
 					margin-top: -65px;
 					background: ${props => props.theme.btnColor};
@@ -130,11 +128,10 @@ export const Stbtn = styled.button`
 					border-radius: 50px;
 					width: 140px;
 					height: 40px;
-					margin-right: 7rem;
+					margin-bottom: 2rem;
 					background: ${props => props.theme.bgColor};
 					color: ${props => props.theme.textColor};
 					cursor: pointer;
-					/* padding-top: 2.5px; */
 					transition: all 0.5s ease;
 					&:hover {
 						transform: translateY(-0.5rem);
@@ -213,7 +210,7 @@ export const Stbtn = styled.button`
 					flex-direction: row;
 					cursor: pointer;
 					position: fixed;
-					width: 350px;
+					width: 25%;
 					height: 50px;
 					float: left;
 					align-items: center;

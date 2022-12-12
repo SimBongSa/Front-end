@@ -17,6 +17,7 @@ import Tags from "../../Recruit/Tags/Tags";
 const DetailEdit = () => {
 	const [isPopupOpen, setIsPopupOpen] = useState(false);
 	const [boardImage, setBoardImage] = useState(null);
+
 	const boardsId = useSelector(state => state?.boards?.board);
 	const [input, setInput] = useState(Prev => {
 		const { title, detailArea, content } = boardsId;
@@ -27,6 +28,7 @@ const DetailEdit = () => {
 			content,
 		};
 	});
+
 
 	const [uploadpreview, setUploadpreview] = useState(boardsId.boardImage);
 	const [address, setAddress] = useState(boardsId.area);

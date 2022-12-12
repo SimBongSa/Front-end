@@ -120,7 +120,9 @@ const DetailSlideBar = ({ boardsId, username, id }) => {
 						variant="boards-delete"
 						onClick={() => {
 							dispatch(__delBoard(id));
-							toast.success("게시물이 삭제되었습니다.");
+
+							toast.success("게시물이 삭제되었습니다.")
+
 							setTimeout(() => {
 								navigate("/");
 							}, 1000);

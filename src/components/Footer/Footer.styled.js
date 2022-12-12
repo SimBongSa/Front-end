@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const FooterContainer = styled.section`
 	display: flex;
 	position: fixed;
-	bottom: -110px;
+	bottom: -10%;
 	left: 0px;
 	flex-flow: row wrap;
 	margin: 0 auto;
@@ -18,12 +18,11 @@ export const FooterContainer = styled.section`
 	}
 	@media (max-width: 768px) {
 		position: fixed;
-		bottom: -120px;
+		bottom: -10%;
 	}
 `;
 
 export const FooterUl = styled.ul`
-	padding-left: 180px;
 	width: 33.3333%;
 	&:last-child {
 		color: ${props => props.theme.btnColor};
