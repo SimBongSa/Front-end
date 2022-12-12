@@ -12,13 +12,11 @@ import CardGrid from "../../common/cards/CardGrid";
 import styled from "styled-components";
 import MyProcess from "../MyProcess/MyProcess";
 import { MyPageCards } from "./UserPage.styled";
-import UserCalendar from "../../Calendar/UserCalendar/UserCalendar";
 import { useLocation, useParams } from "react-router-dom";
 
 const UserPage = () => {
 	const { id } = useParams();
 	const dispatch = useDispatch();
-	const [modal, setModal] = useState(false);
 
 	useEffect(() => {
 		dispatch(__getUserInfo(id));
