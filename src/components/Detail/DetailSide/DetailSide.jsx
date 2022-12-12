@@ -31,8 +31,8 @@ const DetailSlideBar = ({ boardsId, username, id }) => {
 			return false;
 		}
 	};
-
 	const chatRoom = chatList?.filter(findMyChatRoom);
+	console.log(chatRoom);
 
 	const createChatRoom = (chatRoomInfo) => {
 		dispatch(__createChatRoom(chatRoomInfo));
@@ -65,9 +65,11 @@ const DetailSlideBar = ({ boardsId, username, id }) => {
 						dispatch(__getBoardId(id));
 					}}
 				>
-					{applicants && applicants?.includes(authority) === true
-						? "봉사활동 취소하기"
-						: "봉사자 신청하기"}
+					{
+						applicants && applicants?.includes(authority) === true
+							? "봉사활동 취소하기"
+							: "봉사자 신청하기"
+					}
 				</Stbtn>
 
 				{
