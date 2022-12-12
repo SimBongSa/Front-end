@@ -48,7 +48,6 @@ const DetailSlideBar = ({ boardsId, username, id }) => {
 	return (
 		<DetailSide>
 			<ToastContainer />
-
 			<h1>봉사활동 모집기간</h1>
 			<StDateBox>
 				<div>{boardsId?.startDate}</div> ━ <div>{boardsId?.endDate}</div>
@@ -64,7 +63,6 @@ const DetailSlideBar = ({ boardsId, username, id }) => {
 					variant="boards-apply"
 					onClick={() => {
 						dispatch(__postApply(id));
-
 						dispatch(__getBoard(id));
 						setTimeout(() => {
 							navigate("/boards");
@@ -124,7 +122,6 @@ const DetailSlideBar = ({ boardsId, username, id }) => {
 						variant="boards-delete"
 						onClick={() => {
 							dispatch(__delBoard(id));
-
 							toast.success("게시물이 삭제되었습니다.")
 							setTimeout(() => {
 								navigate('/')
