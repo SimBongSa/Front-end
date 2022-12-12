@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { Stbtn } from "../../common/button/Button.styled";
 import CardGrid from "../../common/cards/CardGrid";
 import KaMarker from "../../Map/KaMarker";
-import { StMap } from "../BoardList";
+import { StMap } from "../BoardList.styled";
 import { BoardContainer, BoardContent, ListMap, StBtnBox, StTitle } from "../BoardList.styled";
 
 const SearchList = () => {

@@ -1,6 +1,6 @@
 import Header from "../components/Header/Header";
 import Footer from "../components/Footer/Footer";
-import SearchList from "../components/BoardList/SearchList.jsx/SearchList";
+import SearchList from "../components/BoardList/SearchList/SearchList";
 
 export const BoardListPage = () => {
 
