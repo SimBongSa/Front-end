@@ -11,11 +11,13 @@ const Tags = ({ category, onChangeTags, prevTags }) => {
 		{ ENVIRONMENT: "환경" },
 		{ ABANDONED_ANIMAL: "유기동물" },
 	]);
+
 	const [conditions] = useState([
 		{ ADULT: "성인 우대" }, 
 		{ MALE: "남성" }, 
 		{ FEMALE: "여성" }
 	]);
+	
 	const [skills] = useState([
 		{ GOOD_AT_CLEANING: "청소에 일가견이 있으신 분" },
 		{ FUNNY: "성격이 유쾌하신 분" },
