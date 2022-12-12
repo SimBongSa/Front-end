@@ -158,7 +158,9 @@ const Organization = () => {
 
 	return (
 		<StInputContainer>
-			<InputHeader>Vongole</InputHeader>
+			<InputHeader onClick={() => {
+				navigate('/')
+			}}>Vongole</InputHeader>
 			<ToastContainer/>
 			<InputForm>
 				<InputBox>
