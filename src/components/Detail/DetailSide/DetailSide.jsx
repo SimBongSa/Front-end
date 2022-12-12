@@ -28,7 +28,6 @@ const DetailSlideBar = ({ boardsId, username, id }) => {
 		}
 	};
 	const chatRoom = chatList?.filter(findMyChatRoom);
-	console.log(chatRoom);
 
 	const createChatRoom = chatRoomInfo => {
 		dispatch(__createChatRoom(chatRoomInfo));

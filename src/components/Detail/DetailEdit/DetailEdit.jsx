@@ -83,7 +83,7 @@ const DetailEdit = () => {
 
 	// const [tags, setTags] = useState([...boardsId?.tags]);
 	const [tags, setTags] = useState(boardsId?.tags);
-	console.log(tags);
+
 	// Tags
 	const onChangeTags = e => {
 		if (e.checked) {
@@ -102,8 +102,6 @@ const DetailEdit = () => {
 		dueDay: moment(dueDay).format("YYYY-MM-DD HH:mm:ss"),
 		tags: tags,
 	};
-
-	console.log(upDate);
 
 	const onSubmitHandler = e => {
 		e.preventDefault();

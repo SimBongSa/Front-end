@@ -65,7 +65,6 @@ const ProfileEdit = () => {
 			};
 		}
 	});
-	console.log(editInput);
 
 	// 이미지 upload
 	const onChangeImage = e => {
