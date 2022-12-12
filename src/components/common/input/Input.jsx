@@ -87,7 +87,9 @@ const Input = ({
 							onClick={onClick}
 						/>
 						{
-							passwordType.visible ? <StPwInvisible onClick={handlePasswordType}/> : <StPwVisible onClick={handlePasswordType}>false</StPwVisible>
+							passwordType.visible ? 
+								<StPwInvisible onClick={handlePasswordType}/> : 
+								<StPwVisible onClick={handlePasswordType}>false</StPwVisible>
 						}
 					</> : 
 					null
