@@ -28,7 +28,6 @@ const DetailEdit = () => {
 		};
 	});
 
-	console.log("boardsId =>", boardsId);
 	const [uploadpreview, setUploadpreview] = useState(boardsId.boardImage);
 	const [address, setAddress] = useState(boardsId.area);
 

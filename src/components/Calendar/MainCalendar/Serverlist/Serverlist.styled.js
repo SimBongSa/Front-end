@@ -2,8 +2,8 @@ import styled from "styled-components";
 
 export const StServerListContainer = styled.div`
 	display: flex;
-	max-width: 400px;
-	min-width: 3500px;
+	max-width: 800px;
+	min-width: 300px;
 	height: 7.5rem;
 	margin: 1.5rem 1rem 1rem 1rem;
 	border-bottom: 1px solid ${props => props.theme.borderBottom};
@@ -38,6 +38,10 @@ export const StBody = styled.div`
 		margin-bottom: 1rem;
 		font-weight: 500;
 		font-size: 1.2rem;
+		max-width: 98%;
+		overflow: hidden;
+		white-space: nowrap;
+		text-overflow: ellipsis;
 	}
 `;
 
@@ -66,7 +70,11 @@ export const StDetailArea = styled.span`
 	color: ${props => props.theme.textColor};
 	padding: 5px;
 	text-align: center;
+	max-width: 33%;
 	margin-left: 1rem;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
 `;
 
 export const StMoreBox = styled.div`

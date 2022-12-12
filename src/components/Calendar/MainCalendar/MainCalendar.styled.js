@@ -11,7 +11,8 @@ export const StCalendarList = styled.div`
 
 	& h3 {
 		font-size: 1.5rem;
-		padding: 20px 20px 20px 95px;
+		padding-top: 1rem;
+		text-align: center;
 		overflow: hidden;
 		white-space: nowrap;
 		text-overflow: ellipsis;
