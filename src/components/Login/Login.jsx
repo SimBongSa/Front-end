@@ -12,17 +12,17 @@ import {
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { __loginMember } from "../../redux/modules/registerSlice";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import Input from "../common/input/Input";
 import { toast, ToastContainer } from 'react-toastify';
 
 const Login = () => {
 
-	const loginRef = useRef();
 	const navigate = useNavigate();
 	const dispatch = useDispatch();
 	const status = useSelector((state) => state.register.error.response?.data?.error?.detail)
 	const authority = useSelector((state) => state.register?.statusCode?.data?.username);
+	console.log(authority);
 	
 	const init = {
 		username: "",
@@ -56,12 +56,12 @@ const Login = () => {
 				navigate('/');
 			}, 1000);
 		}
-	}, [])
+	}, [authority])
 
 	const [loginOption, setLoginOption] = useState("member");
 
 	return (
-		<LoginContainer ref={loginRef}>
+		<LoginContainer>
 			<ToastContainer/>
 			{loginOption === "member" ? (
 				<>
@@ -87,15 +87,12 @@ const Login = () => {
 					<LoginBox>
 						<LoginBoxTitle>
 						<LoginTitle>봉사 지원자</LoginTitle>
-
 							<LoginArrowBack onClick={() => navigate("/")} />
 						</LoginBoxTitle>
 
 						<LoginForm onSubmit={onSubmitHandler}>
 							<Input
-
 								placeholder="ID"
-
 								type="text"
 								name="username"
 								value={input.username}
@@ -142,17 +139,13 @@ const Login = () => {
 
 					<LoginBox>
 						<LoginBoxTitle>
-
 							<LoginTitle>봉사 기관</LoginTitle>
-
 							<LoginArrowBack onClick={() => navigate("/")} />
 						</LoginBoxTitle>
 
 						<LoginForm onSubmit={onSubmitHandler}>
 							<Input
-
 								placeholder="ID"
-
 								type="text"
 								name="username"
 								value={input.username}

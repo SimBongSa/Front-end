@@ -12,11 +12,9 @@ const Board = () => {
 	const dispatch = useDispatch();
 
 	const [page, setPage] = useState(1);
-	const size = 12;
+	const size = 6;
 	const [modal, setModal] = useState(false);
-
 	const boards = useSelector((state) => state.boards.boards);
-	console.log(boards);
 
 	useEffect(() => {
 		dispatch(__getBoard({page, size}));
@@ -52,7 +50,6 @@ const Board = () => {
 				<StBtnBox
 					onClick={() =>{
 						setPage((prev) => prev + 1);
-						dispatch(__getBoard({ page, size }));
 					}}
 				>
 					더 보기
