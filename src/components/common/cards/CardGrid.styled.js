@@ -6,7 +6,6 @@ export const StCardGridContainer = styled.section`
 			case "board":
 				return css`
 					display: grid;
-					width: 70%;
 					grid-template-columns: 0fr repeat(12, minmax(auto, 60px)) 12fr;
 					justify-items: center;
 				`;
