@@ -4,6 +4,7 @@ export const FooterContainer = styled.section`
 	display: flex;
 	position: fixed;
 	bottom: -110px;
+	left: 0px;
 	flex-flow: row wrap;
 	margin: 0 auto;
 	background: ${props => props.theme.subBgColor};
@@ -22,7 +23,7 @@ export const FooterContainer = styled.section`
 `;
 
 export const FooterUl = styled.ul`
-	padding-left: 60px;
+	padding-left: 180px;
 	width: 33.3333%;
 	&:last-child {
 		color: ${props => props.theme.btnColor};

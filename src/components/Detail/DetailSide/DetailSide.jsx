@@ -1,12 +1,8 @@
-import {
-	DetailSide,
-	DetailSideItem,
-	StDateBox,
-	StBtnBox,
-} from "../DetailSide/DetailSide.styled";
+import { DetailSide, DetailSideItem, StDateBox, StBtnBox } from "../DetailSide/DetailSide.styled";
 import { useEffect, useState } from "react";
-import { __getBoardId, __postApply } from "../../../redux/modules/boardSlice";
-import { __delBoard } from "../../../redux/modules/boardSlice";
+
+import { __postApply, __getBoard, __delBoard } from "../../../redux/modules/boardSlice";
+
 import { getCookieToken } from "../../../utils/cookie";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -24,6 +20,7 @@ const DetailSlideBar = ({ boardsId, username, id }) => {
 	const chatList = useSelector((state) => state?.chat?.chatList);
 	const newChatRoom = useSelector((state) => state.chat?.chatRoom);
 
+
 	const findMyChatRoom = (chatList) => {
 		if (chatList.roomName === boardsId?.title) {
 			return true;
@@ -35,6 +32,7 @@ const DetailSlideBar = ({ boardsId, username, id }) => {
 	const chatRoom = chatList?.filter(findMyChatRoom);
 
 	const createChatRoom = (chatRoomInfo) => {
+
 		dispatch(__createChatRoom(chatRoomInfo));
 	};
 
@@ -42,32 +40,39 @@ const DetailSlideBar = ({ boardsId, username, id }) => {
 		if (applicants?.includes(authority) === true) {
 			setApplied("봉사활동 취소하기");
 		} else {
-			setApplied("봉사자 신청하기");
+
+			setApplied("이 봉사활동에 참여하기!");
 		}
-	}, [setApplied, applicants]);
+	}, [applicants, authority, setApplied]);
 
 	return (
 		<DetailSide>
-			<ToastContainer/>
+			<ToastContainer />
+
 			<h1>봉사활동 모집기간</h1>
 			<StDateBox>
 				<div>{boardsId?.startDate}</div> ━ <div>{boardsId?.endDate}</div>
 			</StDateBox>
 			<DetailSideItem>
 				<div>시간 : {boardsId?.dueDay?.split(" ")[1].substring(0, 5)}</div>
+
 				<div>봉사 신청 인원 : {boardsId.applicantCnt}명</div>
+
 			</DetailSideItem>
 			<StBtnBox>
 				<Stbtn
 					variant="boards-apply"
 					onClick={() => {
 						dispatch(__postApply(id));
-						dispatch(__getBoardId(id));
+
+						dispatch(__getBoard(id));
+						setTimeout(() => {
+							navigate("/boards");
+						}, 1000);
+
 					}}
 				>
-					{applicants && applicants?.includes(authority) === true
-						? "봉사활동 취소하기"
-						: "봉사자 신청하기"}
+					{applied}
 				</Stbtn>
 
 				{
@@ -119,10 +124,12 @@ const DetailSlideBar = ({ boardsId, username, id }) => {
 						variant="boards-delete"
 						onClick={() => {
 							dispatch(__delBoard(id));
+
 							toast.success("게시물이 삭제되었습니다.")
 							setTimeout(() => {
 								navigate('/')
 							}, 1000)
+
 						}}
 					>
 						삭제하기
@@ -131,5 +138,5 @@ const DetailSlideBar = ({ boardsId, username, id }) => {
 			) : null}
 		</DetailSide>
 	);
-}
+};
 export default DetailSlideBar;

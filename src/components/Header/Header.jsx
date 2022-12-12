@@ -13,6 +13,7 @@ import { getCookieToken, removeCookie } from "../../utils/cookie";
 import { useEffect } from "react";
 import { useCookies } from "react-cookie";
 import SearchBar from "../SearchBar/SearchBar";
+import logo from "../../logo/logo.png";
 
 const Header = () => {
 	
@@ -40,7 +41,7 @@ const Header = () => {
 		<HeaderContainer>
 			<SearchBar />
 			<HeaderLogo onClick={() => navigate("/")}>
-				<img src={"image/vongole_main.png"} alt="" />
+				<img src={logo} alt="" />
 			</HeaderLogo>
 			<LightThemeBtn onClick={toggleTheme}>
 				<BsFillMoonFill>Theme</BsFillMoonFill>
