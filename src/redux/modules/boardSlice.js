@@ -86,7 +86,6 @@ export const __postApply = createAsyncThunk("apply", async (payload, thunkAPI) =
 		const response = await apis.applyBoard(payload);
 
 		if (response.status === 200) {
-			alert(response.data.data.msg);
 			return thunkAPI.fulfillWithValue(response.data.data.msg);
 		}
 	} catch (error) {

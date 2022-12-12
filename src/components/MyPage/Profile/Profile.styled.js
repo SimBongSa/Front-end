@@ -9,6 +9,7 @@ export const ProfileContainer = styled.div`
 					position: fixed;
 					margin-left: 2rem;
 					border-radius: 5px;
+					top: 10%;
 					padding: 20px 10px 10px 10px;
 					width: 200px;
 					max-width: 100%;
@@ -53,13 +54,13 @@ export const ProfileContainer = styled.div`
 						z-index: 1;
 					}
 				`;
-			case "Company":
+			case "company":
 				return css`
 					float: left;
 					position: fixed;
 					margin-left: 2rem;
 					border-radius: 5px;
-					top: 17%;
+					top: 10%;
 					padding: 20px 10px 10px 10px;
 					width: 200px;
 					max-width: 100%;
@@ -192,7 +193,7 @@ export const ProfileCategory = styled.h4`
 
 export const ProfileMisc = styled.div`
 	text-align: left;
-	margin: 2rem 0rem rem 0rem;
+	margin: 2rem 0rem 0 0rem;
 	& h2 {
 		font-size: 1.4rem;
 	}
