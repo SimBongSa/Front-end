@@ -25,9 +25,7 @@ const CardGrid = ({ gridColumn, companyBoards, boards, userEnroll, userWait }) =
 
 	const today = new Date().toISOString().split("T")[0];
 
-	const [isHovering, setIsHovering] = useState(false);
-	const [hoveritem, setHoverItem] = useState([]);
-
+	const [isHovering, setIsHovering] = useState("");
 	return (
 		<>
 			<StCardGridContainer variant="Board">
@@ -101,8 +99,6 @@ const CardGrid = ({ gridColumn, companyBoards, boards, userEnroll, userWait }) =
 				<StCards variant="Company">
 					{companyBoards?.map(item => {
 						const dDay = getDateDiff(item.dueDay, today);
-						const boardId = item.boardId;
-						// let isEditState = hoveritem.indexOf(boardId) === -1 ? false : true;
 						return (
 							<StCard variant="Company" key={item.boardId}>
 								<StDate variant="Company">D-{dDay}</StDate>

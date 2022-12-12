@@ -69,7 +69,7 @@ export const ProcessStepWrap = styled.div`
 					position: sticky;
 					justify-content: center;
 					align-items: center;
-					width: 80%;
+					width: 60%;
 					margin-left: auto;
 					margin-right: auto;
 					/* box-shadow: 0 3px 8px -6px rgba(0,0,0,.50); */

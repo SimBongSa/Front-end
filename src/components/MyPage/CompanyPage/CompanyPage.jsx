@@ -38,20 +38,13 @@ const CompanyPage = () => {
 	const companyInfo = useSelector(state => state.mypage?.companyInfo);
 	const companyBoards = useSelector(state => state.mypage.companyBoards);
 	const appliList = useSelector(state => state.mypage.allAppliList);
+	const ma = useSelector(state => state.mypage.approve);
+	const [newVolunteerCount, setNewVolunteerCount] = useState(0);
 
 	const [companyPageOpt, setCompanyPageOpt] = useState(null);
 
 	const [modal, setModal] = useState(false);
 
-	const [apply, setApply] = useState(0);
-	const [reject, setReject] = useState(0);
-
-	const onApply = () => {
-		setApply(apply + 1);
-	};
-	const onReject = () => {
-		setReject(reject + 1);
-	};
 	const onClickCloseHandler = e => {
 		setModal(true);
 	};
@@ -59,17 +52,23 @@ const CompanyPage = () => {
 		setModal(false);
 	};
 
-	console.log(appliList);
+	useEffect(() => {
+		let watingItemLength = 0;
+		for (let item of appliList) {
+			if (item.approval === "WAITING") watingItemLength++;
+		}
+		setNewVolunteerCount(watingItemLength);
+	}, [appliList]);
+
+	console.log(ma);
 	return (
 		<>
 			<MyProcessContainer variant="Company">
 				<h1>나의 활동</h1>
-				<button onClick={onApply}>apply</button>
-				<button onClick={onReject}>reject</button>
 				<ProcessStepWrap variant="Company">
 					<ProcessStep variant="Company" onClick={() => setCompanyPageOpt("newActivity")}>
 						<ProcessCircle variant="Company">
-							<span>{appliList?.length - apply - reject}</span>
+							<span>{newVolunteerCount}</span>
 						</ProcessCircle>
 						<StepTitle variant="Company">새로운 봉사자 신청</StepTitle>
 					</ProcessStep>
@@ -79,18 +78,18 @@ const CompanyPage = () => {
 						</ProcessCircle>
 						<StepTitle variant="Company">나의 봉사</StepTitle>
 					</ProcessStep>
-					<ProcessStep variant="Company">
+					{/* <ProcessStep variant="Company">
 						<ProcessCircle variant="Company">
-							<span>{appliList}</span>
+							<span>{0}</span>
 						</ProcessCircle>
 						<StepTitle variant="Company">승인한 봉사</StepTitle>
 					</ProcessStep>
 					<ProcessStep variant="Company">
 						<ProcessCircle variant="Company">
-							<span>{reject}</span>
+							<span>{0}</span>
 						</ProcessCircle>
 						<StepTitle variant="Company">거절한 봉사</StepTitle>
-					</ProcessStep>
+					</ProcessStep> */}
 				</ProcessStepWrap>
 				{modal === false && companyBoards.length > 0 ? (
 					<CustomerCalendar companyBoards={companyBoards} />
