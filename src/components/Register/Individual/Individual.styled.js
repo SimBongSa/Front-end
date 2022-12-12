@@ -6,6 +6,17 @@ export const InputForm = styled.div`
 	width: 100%;
 `;
 
+export const StToLogin = styled.span`
+	font-weight: 300;
+	font-size: 1.2rem;
+	margin-top: 2rem;
+	margin-bottom: 15rem;
+	& b {
+		cursor: pointer;
+		color: orange;
+	}
+`;
+
 export const InputBox = styled.div`
 	display: flex;
 	flex-direction: column;
@@ -25,7 +36,8 @@ export const InputBox = styled.div`
 			display: none;
 		}
 	}
-	& form > span {
+	& form > span > {
+		cursor: pointer;
 		font-weight: 300;
 		font-size: 12px;
 	}

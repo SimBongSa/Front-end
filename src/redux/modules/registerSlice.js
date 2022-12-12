@@ -66,16 +66,8 @@ export const __checkUsername = createAsyncThunk("checkUsername", async (payload,
 	try {
 		const response = await apis.checkUsername(payload);
 
-		return thunkAPI.fulfillWithValue(response.data.data);
-	} catch (error) {
-		return thunkAPI.rejectWithValue(error);
-	}
-});
+		return thunkAPI.fulfillWithValue(response.data.success);
 
-export const __getCompanyInfo = createAsyncThunk("getCompanyInfo", async (payload, thunkAPI) => {
-	try {
-		const response = await apis.getCompanyPage(payload);
-		return thunkAPI.fulfillWithValue(response);
 	} catch (error) {
 		return thunkAPI.rejectWithValue(error);
 	}
@@ -105,7 +97,6 @@ export const registerSlice = createSlice({
 		error: "",
 	},
 	reducers: {},
-
 	extraReducers: builder => {
 		//  Login
 		builder
@@ -134,18 +125,6 @@ export const registerSlice = createSlice({
 				state.usernameCheck = action.payload;
 			})
 			.addCase(__checkUsername.rejected, (state, action) => {
-				state.isLoading = false;
-				state.error = action.payload;
-			})
-			//Duplicate Check(nickname)
-			.addCase(__checkNickname.pending, (state, _) => {
-				state.isLoading = true;
-			})
-			.addCase(__checkNickname.fulfilled, (state, action) => {
-				state.isLoading = false;
-				state.nicknameCheck = action.payload;
-			})
-			.addCase(__checkNickname.rejected, (state, action) => {
 				state.isLoading = false;
 				state.error = action.payload;
 			})
@@ -179,5 +158,5 @@ export const registerSlice = createSlice({
 	},
 });
 
-export const { register } = registerSlice.actions;
+export const { register, logOut } = registerSlice.actions;
 export default registerSlice.reducer;

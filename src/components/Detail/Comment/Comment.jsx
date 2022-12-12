@@ -28,7 +28,7 @@ import Input from "../../common/input/Input";
 import Profileimg from "../../common/profileimg/Profileimg";
 import { __getOtherUserInfo } from "../../../redux/modules/mypageSlice";
 
-function Comment() {
+const Comment = () => {
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
 	const { id } = useParams();
@@ -45,7 +45,6 @@ function Comment() {
 	const [comment, setComment] = useState({ comment: content });
 
 	const userInfo = useSelector(state => state.mypage?.userInfo);
-	const companyInfo = useSelector(state => state.mypage?.companyInfo);
 
 	useEffect(() => {
 		dispatch(__getComment(id));
@@ -99,7 +98,7 @@ function Comment() {
 				</CommentWriteWrap>
 			) : (
 				<CommentWriteWraps>
-					<div>댓글을 작성하실수 없습니다.</div>
+					<div>개인 회원 로그인 시 댓글 작성이 가능합니다.</div>
 				</CommentWriteWraps>
 			)}
 

@@ -58,7 +58,9 @@ const MainCalendar = () => {
 	return (
 		<>
 			<StCalendarContainer>
-				<h1>날짜별 봉사활동</h1>
+				<h1>
+					<span>이번 달 봉사활동</span>
+				</h1>
 				<StCalendarWrap>
 					<StCalendar
 						onChange={setValue}
@@ -91,7 +93,15 @@ const MainCalendar = () => {
 					/>
 
 					<StCalendarList className="text-gray-500 mt-4">
+<<<<<<< HEAD
 						{maindate.data?.length ? <h2>오늘의 봉사활동</h2> : <h2>봉사활동이 없습니다</h2>}
+=======
+						{maindate.data?.length ? (
+							<h3>오늘의 봉사활동 : {maindate.data?.length}개</h3>
+						) : (
+							<h2>해당 날짜에 활동이 없어요 💨</h2>
+						)}
+>>>>>>> 4ffb67fd651f723c04d6ba9bc7ed4b04aa389829
 						<Serverlist result={maindate.data} key={date} mark={mark} totallist={totallist.data} />
 					</StCalendarList>
 				</StCalendarWrap>

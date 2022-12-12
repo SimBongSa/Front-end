@@ -19,13 +19,11 @@ export const ChatContent = () => {
   });
 
   const props  = useOutletContext();
-  const chatLog = props.chatLog;
   const setReceiveMsg = props.setReceiveMsg;
   const username = getCookieToken(["username"]);
 
   const chatHistory = useSelector((state) => state.chat.chatHistory);
   const chatBoard = useSelector((state) => state.boards.board);
-
   const scrollRef = useRef();
 
   useEffect(() => {
@@ -50,7 +48,6 @@ export const ChatContent = () => {
         ) : null
       }
       <ul>
-        {/* 채팅기록 불러오기 */}
         {
           chatHistory?.map((item) => {
             return (
@@ -65,27 +62,6 @@ export const ChatContent = () => {
                   <h4>{item.content}</h4>
                 </StReceiveMsg>
               )
-            )
-          })
-        }
-        {
-          chatLog?.map((item, idx) => {
-            return (
-              <>
-                {
-                  username === item.userName ? (
-                      <StMyMessage key={idx}>
-                        <span>{item?.createdAt?.split('T')[1].substr(0,5)}</span>
-                        <h4>{item.content}</h4>
-                      </StMyMessage>
-                  ) : (
-                      <StReceiveMsg key={idx}>
-                        <span>{item?.createdAt?.split('T')[1].substr(0,5)}</span>
-                        <h4>{item.content}</h4>
-                      </StReceiveMsg>
-                  )
-                }
-              </>
             )
           })
         }

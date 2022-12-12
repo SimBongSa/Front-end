@@ -5,8 +5,9 @@ export const DetailContainer = styled.div`
 	justify-content: space-between;
 	margin: 3rem;
 	min-height: 100vh;
-	@media screen and (max-width: 1024px) {
+	@media screen and (max-width: 1060px) {
 		display: flex;
+		align-items: center;
 		justify-content: space-around;
 		flex-direction: column-reverse;
 	}
@@ -18,12 +19,16 @@ export const StTitleBox = styled.div`
 		font-weight: 300;
 		width: 75%;
 		font-size: 1.4rem !important;
+		& span {
+			box-shadow: inset 0 -1px 0 ${props => props.theme.subBtnColor};
+		}
 	}
 	& div {
-		margin-left: 1rem;
+		margin-left: 10.5rem;
 		padding-top: 8px;
 		font-weight: 500;
 		color: ${props => props.theme.notiColor};
+		width: 5rem;
 	}
 `;
 
@@ -36,8 +41,11 @@ export const DetailContent = styled.div`
 		font-size: 2rem;
 	}
 	& h3 {
-		font-size: 1.6rem;
+		font-size: 1.4rem;
 		margin: 3rem 1rem 2rem 0rem;
+		& span {
+			box-shadow: inset 0 -1px 0 ${props => props.theme.subBtnColor};
+		}
 	}
 	@media screen and (max-width: 1024px) {
 		margin-top: 5rem;
@@ -48,7 +56,7 @@ export const MapWrapper = styled.div`
 	margin-top: 2rem;
 	margin-bottom: 2rem;
 	padding-bottom: 2rem;
-	border-bottom: 0.5px solid ${props => props.theme.textColor};
+	border-bottom: 0.5px solid ${(props) => props.theme.borderBottom};
 `;
 
 export const StImgWrapper = styled.span`
@@ -67,11 +75,14 @@ export const StImgWrapper = styled.span`
 `;
 
 export const StContentBox = styled.span`
+	white-space: pre-line;
 	display: flex;
 	margin-top: 1.5rem;
 	margin-bottom: 2rem;
 	padding-bottom: 2rem;
-	border-bottom: 0.5px solid ${props => props.theme.textColor};
+	border-bottom: 0.5px solid ${(props) => props.theme.borderBottom};
+	font-weight: 300;
+	line-height: 2.2;
 `;
 export const StAreaBox = styled.span`
 	display: flex;
@@ -79,7 +90,8 @@ export const StAreaBox = styled.span`
 	margin-top: 1.5rem;
 	margin-bottom: 2rem;
 	padding-bottom: 2rem;
-	border-bottom: 0.5px solid ${props => props.theme.textColor};
+	height: fit-content;
+	border-bottom: 0.5px solid ${(props) => props.theme.borderBottom};
 	& > div {
 		color: ${props => props.theme.textColor};
 		padding: 5px 10px;
@@ -92,7 +104,15 @@ export const StArea = styled.span`
 	background-color: gray;
 	font-weight: 300;
 	max-width: 350px;
-	color: white;
+	${(props) => props.theme.textBottom};
+`;
+
+export const StDetailArea = styled.span`
+	padding: 10px 5px;
+	border-radius: 10px;
+	font-weight: 300;
+	max-width: 350px;
+	${(props) => props.theme.textBottom};
 `;
 
 export const StDetailTag = styled.div`
@@ -102,7 +122,7 @@ export const StDetailTag = styled.div`
 	margin-top: 1.5rem;
 	margin-bottom: 2rem;
 	padding-bottom: 2rem;
-	border-bottom: 0.5px solid ${props => props.theme.textColor};
+	border-bottom: 0.5px solid ${(props) => props.theme.borderBottom};
 	& div {
 		text-align: center;
 		min-width: 115px;

@@ -15,7 +15,7 @@ const Footer = () => {
 	const emailRef = useRef();
 	const [emailModal, setEmailModal] = useState(false);
 
-	const sendEmail = e => {
+	const sendEmail = (e) => {
 		e.preventDefault();
 		emailjs
 			.sendForm("service_cyvresv", "template_slgvwc7", emailRef.current, "G36k-8rb7aC7t_e_-")
@@ -40,7 +40,9 @@ const Footer = () => {
 				<FooterItem onClick={() => window.open("https://github.com/SimBongSa/Back-end", "_blank")}>
 					BE: 김원재, 강진구, 강창식, 김성민
 				</FooterItem>
-				<FooterItem>DESIGN: 전혜진</FooterItem>
+				<FooterItem onClick={() => window.open('https://www.figma.com/file/kYFvIOU803qXJAKd8Hpy5e/%EB%B4%89%EA%B3%A8%EB%A0%88-Vongole?node-id=602%3A2434&t=Y7bGfoeLPBYzHUwC-0', '_blank')}>
+					DESIGN: 전혜진
+				</FooterItem>
 				<FooterItem onClick={() => window.open("https://github.com/SimBongSa", "_blank")}>
 					https://github.com/SimBongSa
 				</FooterItem>

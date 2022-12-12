@@ -260,12 +260,12 @@ export const Stbtn = styled.button`
 				return css`
 					position: absolute;
 					cursor: pointer;
-					width: 45px;
+					width: 60px;
 					height: 45px;
 					border: none;
-					border-radius: 50%;
-					top: 15px;
-					right: 11%;
+					border-radius: 30px;
+					top: 7px;
+					right: 12%;
 					font-size: 1.4rem;
 					padding: 11px;
 					color: ${props => props.theme.textColor};

@@ -10,15 +10,17 @@ import { MyPageUser } from "./../pages/MyPageUser";
 import BoardListPage from "../pages/BoardListPage";
 import DetailPage from "../pages/DetailPage";
 import { RecruitPage } from "../pages/RecruitPage";
-import DetailEdit from "../components/Detail/DetailEdit";
+import DetailEdit from "../components/Detail/DetailEdit/DetailEdit";
 import { MyPageEdit } from "../pages/MyPageEdit";
 import { ChatPage } from "../pages/ChatPage";
 import ChatContent from "../components/Chat/ChatContent/ChatContent";
 import SearchPage from "../pages/SearchPage";
+import ScrollToTop from "../components/Scroll/ScrollToTop";
 
 const Router = () => {
 	return (
 		<BrowserRouter>
+			<ScrollToTop />
 			<ThemeProvider>
 				<GloblaStyle />
 				<Suspense fallback={<div>...loading</div>}>

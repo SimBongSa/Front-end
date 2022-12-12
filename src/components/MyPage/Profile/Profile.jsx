@@ -1,7 +1,13 @@
-import { ProfileContainer, ProfileBox, ProfileCategory, ProfileMisc } from "./Profile.styled";
+import {
+	ProfileContainer,
+	ProfileBox,
+	ProfileCategory,
+	ProfileMisc,
+	ProfileInfo,
+	MyActivity,
+} from "./Profile.styled";
 import { removeCookie } from "../../../utils/cookie";
 import { useNavigate } from "react-router-dom";
-import styled from "styled-components";
 import Button from "../../common/button/Button";
 import Profileimg from "../../common/profileimg/Profileimg";
 import Badge from "../../common/badge/Badge";
@@ -17,12 +23,14 @@ const Profile = ({
 	count,
 }) => {
 	const navigate = useNavigate();
+
 	const logOut = () => {
 		removeCookie(["access-token"], { path: "/" });
 		removeCookie(["username"], { path: "/" });
 		removeCookie(["authority"], { path: "/" });
 		removeCookie(["ID"], { path: "/" });
 		localStorage.removeItem("refresh-token");
+		window.location.replace("/");
 	};
 
 	const [cookies] = useCookies(["Authorization"]);
@@ -157,34 +165,3 @@ const Profile = ({
 };
 
 export default Profile;
-
-export const ProfileInfo = styled.div`
-	text-align: left;
-	position: relative;
-	& h3 {
-		text-align: center;
-		position: relative;
-	}
-	& h5 {
-		padding-left: 3rem;
-		color: ${props => props.theme.subTextColor};
-		@media (max-width: 1024px) {
-			padding-left: 0;
-		}
-	}
-	& p {
-		padding-left: 2rem;
-	}
-	& span {
-		border-radius: 50%;
-		background-image: url("./image/32badge1.png");
-	}
-	@media (max-width: 1024px) {
-		text-align: center;
-	}
-`;
-
-export const MyActivity = styled.div`
-	display: flex;
-	justify-content: space-between;
-`;

@@ -13,6 +13,7 @@ const ChattingServiceKit = new ChattingService();
 export const Chat = () => {
 	const dispatch = useDispatch();
 	const id = useParams();
+
 	const token = getCookieToken(["access-token"]);
 	const username = getCookieToken(["username"]);
 	const chatList = useSelector(state => state?.chat?.chatList);
@@ -24,6 +25,8 @@ export const Chat = () => {
 	ChattingServiceKit.onConnect(`/topic/greetings/${id.id}`, {}, newMessage => {
 		setReceiveMsg(newMessage);
 	});
+	const [,updateState] = useState();
+	const forceUpdate = useCallback(() => updateState({}), []);
 
 	useEffect(() => {
 		dispatch(__getChatList());
@@ -41,6 +44,7 @@ export const Chat = () => {
 				Authorization: token,
 			});
 			setMessage("");
+			forceUpdate();
 		}
 	};
 
@@ -53,6 +57,7 @@ export const Chat = () => {
 			ChattingServiceKit.onDisconnect();
 		};
 	}, []);
+
 
 	return (
 		<StChatContainer>

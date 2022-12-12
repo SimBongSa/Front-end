@@ -6,9 +6,11 @@ export const StSidePanel = styled.div`
   height: 100%;
   overflow: hidden;
   background: ${(props) => props.theme.subBgColor};
+  border-right: 10px solid ${(props) => props.theme.bgColor};
   & h1 {
-    font-size: 2rem;
-    padding: 2rem;
+    font-size: 1.8rem;
+    padding-top: 2rem;
+    text-align: center;
     font-weight: 300;
   }
 `
@@ -17,6 +19,11 @@ export const StContact = styled.div`
   height: 90%;
   overflow-y: scroll;
   overflow-x: hidden;
+  & h4 {
+    cursor: pointer;
+    padding-top: 2rem;
+    padding-left: 2rem;
+  }
   &:nth-child(1) {
     padding-top: 25px;
   }
@@ -29,8 +36,8 @@ export const StContact = styled.div`
     transition: all 0.5s;
     border-bottom: 1px solid ${(props) => props.theme.subTextColor};
     &:hover {
-      color: ${(props) => props.theme.btnColor};
-      background: #FBFBF9;
+      color: ${(props) => props.theme.bgColor};
+      background: ${(props) => props.theme.btnColor};
     }
     @media screen and (max-width: 768px) {
       padding: 6px 0 46px 8px;
@@ -42,9 +49,14 @@ export const StContact = styled.div`
 `
 
 export const StContactWrap = styled.div`
-  width: 88%;
+  width: 100%;
+  padding-top: 10px;
   margin: 0 auto;
+  font-size: .95rem;
   position: relative;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
   & img {
     width: 40px;
     border-radius: 50%;

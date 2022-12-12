@@ -9,9 +9,9 @@ import { CompanyPageContainer, BtnContainer } from "./CompanyPage.styled";
 import Profile from "../Profile/Profile";
 import CardGrid from "../../common/cards/CardGrid";
 import MyApplicant from "./MyApplicant/MyApplicant";
-import CustomerCalendar from "../../Calendar/CustomerCalendar/CustomerCalendar";
 import { useParams } from "react-router-dom";
 import styled from "styled-components";
+import CustomerCalendar from "../../Calendar/CustomerCalendar/CustomerCalendar";
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 import {
 	MyProcessContainer,
@@ -129,7 +129,6 @@ const CompanyPage = () => {
 						<label htmlFor="myActivity">나의 봉사</label>
 					</nav>
 				</BtnContainer>
-
 				{companyPageOpt !== null && companyPageOpt === "newActivity" ? (
 					<MyApplicant list={appliList} />
 				) : null}

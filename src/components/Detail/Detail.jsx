@@ -17,6 +17,7 @@ import {
 	StArea,
 	StImgWrapper,
 	StContentBox,
+	StDetailArea,
 } from "./Detail.styled";
 import { __getChatList } from "../../redux/modules/chatSlice";
 import styled from "styled-components";
@@ -25,7 +26,6 @@ const Detail = () => {
 	const navigate = useNavigate();
 	const dispatch = useDispatch();
 	const boardsId = useSelector(state => state?.boards?.board);
-	const chatList = useSelector(state => state.chat.chatList);
 	const { id } = useParams();
 
 	const username = getCookieToken(["username"]);
@@ -68,11 +68,11 @@ const Detail = () => {
 					</StTitleBox>
 					<StAreaBox>
 						<StArea>{boardsId.area}</StArea>
-						<div>{boardsId.detailArea}</div>
+						<StDetailArea>{boardsId.detailArea}</StDetailArea>
 					</StAreaBox>
 					<h3>봉사 활동 내용</h3>
 					<StContentBox>{boardsId?.content}</StContentBox>
-					<h3>봉사 요청 사항</h3>
+					<h3>우리 봉사의 키워드</h3>
 					<StDetailTag>
 						{boardsId.tags && boardsId.tags.length > 0 ? (
 							boardsId.tags.map((item, idx) => {
