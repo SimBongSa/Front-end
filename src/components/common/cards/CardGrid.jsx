@@ -40,12 +40,12 @@ const CardGrid = ({ gridColumn, companyBoards, boards, userEnroll, userWait }) =
 			<StCardGridContainer variant="board">
 				<StCards gridColumn={gridColumn} variant="board">
 					{/* boards 전체 게시물 리스트  */}
-					{boards?.map(item => {
+					{boards?.map((item, idx) => {
 						const dDay = getDateDiff(item.dueDay, today);
 						return (
 							<StCard
 								variant="board"
-								key={item.boardId}
+								key={idx}
 								onClick={() => navigate(`/boards/${item.boardId}`)}
 							>
 								<StDate variant="board">D-{dDay}</StDate>

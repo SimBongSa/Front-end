@@ -62,7 +62,7 @@ export const AppliCardImg = styled.div`
   position: relative;
   & img {
     height: 250px;
-    width: 150px;
+    width: 100%;
     object-fit: cover;
     position: relative;
     transition: all 0.3s linear;

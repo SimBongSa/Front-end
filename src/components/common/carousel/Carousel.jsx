@@ -20,8 +20,10 @@ import {
 import { useNavigate } from "react-router-dom";
 
 const Carousel = () => {
+
 	const navigate = useNavigate();
 	const dispatch = useDispatch();
+
 	const [size, setSize] = useState(10);
 	const [page, setPage] = useState(1);
 
@@ -48,29 +50,31 @@ const Carousel = () => {
 
 				<SlideTrack>
 					{boardList?.map((item, index) => {
-						const dDay = getDateDiff(item.dueDay, today);
+						const dDay = getDateDiff(item?.dueDay, today);
 						return (
 							<Slide key={index}>
 								<StCard
 									variant="board"
 									onClick={() => {
-										navigate(`/boards/${item.boardId}`);
+										navigate(`/boards/${item?.boardId}`);
 									}}
 								>
 									<StDate variant="board">D-{dDay}</StDate>
 									<StImgWrapper variant="board">
-										<img src={item.boardImage} loading="lazy" alt="thumbnail" />
+										<img src={item?.boardImage} loading="lazy" alt="thumbnail" />
 									</StImgWrapper>
 									<StContent variant="board">
-										<p className="title">{item.title}</p>
+										<p className="title">{item?.title}</p>
 										<StCardInfo variant="board">
-											<StArea variant="board">{item.area}</StArea>
-											<StDetailArea variant="board">{item.detailArea}</StDetailArea>
+											<StArea variant="board">{item?.area}</StArea>
+											<StDetailArea variant="board">{item?.detailArea}</StDetailArea>
 										</StCardInfo>
 										<StTagBox>
-											{item.tags.map((tag, idx) => {
-												return <li key={idx}>{tag}</li>;
-											})}
+											{
+												item?.tags?.map((tag, idx) => {
+													return <li key={idx}>{tag}</li>;
+												})
+											}
 										</StTagBox>
 									</StContent>
 								</StCard>
