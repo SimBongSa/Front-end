@@ -9,16 +9,26 @@ import {
 } from "./Header.styled";
 import { BsFillMoonFill } from "react-icons/bs";
 import { useTheme } from "../../context/themeProvider";
-import { getCookieToken } from "../../utils/cookie";
+import { getCookieToken, removeCookie } from "../../utils/cookie";
 import { useEffect } from "react";
 import { useCookies } from "react-cookie";
 import SearchBar from "../SearchBar/SearchBar";
 import logo from "../../logo/logo.png";
 
 const Header = () => {
+	
 	const navigate = useNavigate();
 	const [ThemeMode, toggleTheme] = useTheme();
 	const [cookies] = useCookies(["Authorization"]);
+
+	const logOut = () => {
+		removeCookie('access-token');
+		removeCookie('username');
+		removeCookie('authority');
+		removeCookie('ID');
+		localStorage.removeItem("refresh-token");
+		window.location.replace('/')	
+	};
 
 	useEffect(() => {
 		getCookieToken();
@@ -47,7 +57,7 @@ const Header = () => {
 				{isLogin && authority === "ROLE_MEMBER" ? (
 					<>
 						<HeaderMenuItem onClick={() => navigate("/chat")}>메시지</HeaderMenuItem>
-						{/* <HeaderMenuItem>알림</HeaderMenuItem> */}
+						<HeaderMenuItem onClick={logOut}>로그아웃</HeaderMenuItem>
 						<UserIcon
 							onClick={() => {
 								navigate(`/usermypage/${cookies.ID}`);
@@ -57,7 +67,6 @@ const Header = () => {
 				) : isLogin && authority === "ROLE_ADMIN" ? (
 					<>
 						<HeaderMenuItem onClick={() => navigate("/chat")}>메시지</HeaderMenuItem>
-						{/* <HeaderMenuItem>알림</HeaderMenuItem> */}
 						<HeaderMenuItem
 							onClick={() => {
 								navigate("/recruit");
@@ -65,6 +74,7 @@ const Header = () => {
 						>
 							봉사활동 등록하기
 						</HeaderMenuItem>
+						<HeaderMenuItem onClick={logOut}>로그아웃</HeaderMenuItem>
 						<UserIcon
 							onClick={() => {
 								navigate(`/companypage/${cookies.ID}`);

@@ -6,6 +6,7 @@ export const lightTheme = {
 	subBtnColor: "#A5CC9F",
 	subTextColor: "#94928C",
 	notiColor: "#FF8155",
+	borderBottom: "rgba(0,0,0,0.2)"
 };
 
 export const darkTheme = {
@@ -16,6 +17,7 @@ export const darkTheme = {
 	subBtnColor: "#6A8E61",
 	subTextColor: "#94928C",
 	notiColor: "#FF8155",
+	borderBottom: "rgba(255,255,255,0.4)"
 };
 
 export const theme = {

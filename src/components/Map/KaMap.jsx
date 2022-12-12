@@ -9,25 +9,14 @@ const KaMap = ({ area, mapWidth, mapHeight, position, input }) => {
 	const [schedule, setSchedule] = useState("");
 	const { kakao } = window;
 	const geocoder = new kakao.maps.services.Geocoder();
-
 	useEffect(() => {
 		const onAddScheduleHandler = area => {
-
-
-			// e.preventDefault();
 			if (!map) return;
-			// const ps = new kakao.maps.services.Places();
-
 			geocoder.addressSearch(`${area}`, (data, status, _pagination) => {
 				if (status === kakao.maps.services.Status.OK) {
-
 					const bounds = new kakao.maps.LatLngBounds();
 					let markers = [];
-
 					for (let i = 0; i < data.length; i++) {
-
-		
-
 						markers.push({
 							position: {
 								lat: data[i].y,
@@ -62,7 +51,6 @@ const KaMap = ({ area, mapWidth, mapHeight, position, input }) => {
 							type="text"
 							placeholder="주소"
 							name="address"
-							// value={area}
 							value={schedule}
 							onChange={onChangeHandler}
 						/>
