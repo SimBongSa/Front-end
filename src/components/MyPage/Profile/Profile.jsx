@@ -25,10 +25,10 @@ const Profile = ({
 	const navigate = useNavigate();
 
 	const logOut = () => {
-		removeCookie(["access-token"], { path: "/" });
-		removeCookie(["username"], { path: "/" });
-		removeCookie(["authority"], { path: "/" });
-		removeCookie(["ID"], { path: "/" });
+		removeCookie("access-token");
+		removeCookie("username");
+		removeCookie("authority");
+		removeCookie("ID");
 		localStorage.removeItem("refresh-token");
 		window.location.replace("/");
 	};
@@ -86,7 +86,6 @@ const Profile = ({
 								onClick={() => {
 									logOut();
 									alert("로그아웃 되셨습니다.");
-									navigate("/login");
 								}}
 							>
 								로그 아웃
@@ -151,7 +150,6 @@ const Profile = ({
 								onClick={() => {
 									logOut();
 									alert("로그아웃 되셨습니다.");
-									navigate("/login");
 								}}
 							>
 								로그 아웃
