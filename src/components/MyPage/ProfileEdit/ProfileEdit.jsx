@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getCookieToken } from "../../../utils/cookie";
+import { useNavigate } from "react-router-dom";
 import {
 	__getCompanyInfo,
 	__putCompanyInfo,
@@ -21,6 +22,7 @@ import styled from "styled-components";
 const ProfileEdit = () => {
 	const role = getCookieToken(["authority"]);
 	const dispatch = useDispatch();
+	const navigate = useNavigate();
 
 	useEffect(() => {
 		dispatch(__getCompanyInfo());
@@ -148,12 +150,7 @@ const ProfileEdit = () => {
 		} else {
 			dispatch(__putUserInfo({ ...editInput, profileImage }));
 		}
-		// if (status === 200) {
-		// 	alert("게시물 등록 완료");
-		// 	navigate("/boards");
-		// } else {
-		// 	alert("게시물 등록에 실패했습니다. 내용을 다시 확인해주세요");
-		// }
+		navigate(-1);
 	};
 
 	return (
