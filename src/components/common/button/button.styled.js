@@ -123,12 +123,15 @@ export const Stbtn = styled.button`
 			//boards -> SearchBar.jsx
 			case "boards-map-open":
 				return css`
+					position: fixed;
+					bottom: 50px;
 					font-size: 16px;
 					border: 1px solid ${props => props.theme.btnColor};
 					border-radius: 50px;
 					width: 140px;
 					height: 40px;
 					margin-bottom: 2rem;
+					z-index: 3;
 					background: ${props => props.theme.bgColor};
 					color: ${props => props.theme.textColor};
 					cursor: pointer;

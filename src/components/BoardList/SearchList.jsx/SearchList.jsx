@@ -8,6 +8,7 @@ import { StMap } from "../BoardList";
 import { BoardContainer, BoardContent, ListMap, StBtnBox, StTitle } from "../BoardList.styled";
 
 const SearchList = () => {
+	
 	const state = useSelector(state => state.boards.searchResult);
 
 	const [modal, setModal] = useState(false);
