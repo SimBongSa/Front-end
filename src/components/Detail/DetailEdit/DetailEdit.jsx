@@ -18,6 +18,7 @@ const DetailEdit = () => {
 	const [isPopupOpen, setIsPopupOpen] = useState(false);
 	const [boardImage, setBoardImage] = useState(null);
 	const [input, setInput] = useState("");
+	console.log(input)
 	const boardsId = useSelector((state) => state?.boards?.board);
 	const [uploadpreview, setUploadpreview] = useState(boardsId.boardImage);
 	const [address, setAddress] = useState(boardsId.area);

@@ -28,8 +28,8 @@ const DetailSlideBar = ({ boardsId, username, id }) => {
 			return false;
 		}
 	};
-
 	const chatRoom = chatList?.filter(findMyChatRoom);
+	console.log(chatRoom);
 
 	const createChatRoom = (chatRoomInfo) => {
 

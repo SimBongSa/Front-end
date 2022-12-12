@@ -17,7 +17,7 @@ export const ChatList = () => {
       <StContact>
         <ul>
         {
-          chatList === "참여하고 있는 채팅방이 없습니다." ? 
+          chatList.length === 0 ? 
             <div onClick={() => {
               navigate('/boards')
             }}>
