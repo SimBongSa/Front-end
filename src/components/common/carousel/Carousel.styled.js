@@ -6,7 +6,7 @@ export const CarouselContainer = styled.div`
 	min-height: fit-content;
 	width: 80%;
 	overflow: hidden;
-	background-color: ${props => props.theme.subBgColor};
+	/* background-color: ${props => props.theme.subBgColor}; */
 	& h1 {
 		font-size: 1.6rem;
 		font-weight: 300;

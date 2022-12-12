@@ -1,4 +1,6 @@
 import styled from "styled-components";
+import { ImMap2 } from "react-icons/im";
+import { MdKeyboardArrowUp } from "react-icons/md";
 
 export const BoardContainer = styled.div`
 	display: flex;
@@ -20,6 +22,7 @@ export const StTitle = styled.div`
 
 export const BoardContent = styled.div`
 	text-align: right;
+	position: relative;
 `;
 
 export const StBtnBox = styled.div`
@@ -45,3 +48,11 @@ export const ListMap = styled.div`
 	background: rgb(0, 0, 0, 0.7);
 	z-index: 99;
 `;
+
+export const StMap = styled(ImMap2)`
+	font-size: 0.9rem;
+`;
+
+export const StArrow = styled(MdKeyboardArrowUp)`
+	font-size: 1.8rem;
+`
