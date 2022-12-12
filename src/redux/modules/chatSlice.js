@@ -5,7 +5,7 @@ import { apis } from "./Api/apis";
 export const __getChatList = createAsyncThunk("getChatList", async (payload, thunkAPI) => {
 	try {
 		const response = await apis.getChatList(payload);
-		console.log(response)
+
 		return thunkAPI.fulfillWithValue(response.data.data);
 	} catch (error) {
 		return thunkAPI.rejectWithValue(error);
