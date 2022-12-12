@@ -113,7 +113,7 @@ const Profile = ({
 					) : null}
 				</ProfileContainer>
 			) : (
-				<ProfileContainer variant="Company">
+				<ProfileContainer variant="company">
 					<ProfileBox>
 						{companyInfo && companyInfo.profileImage ? (
 							<Profileimg variant="profile-company" src={companyInfo.profileImage} alt="user" />
