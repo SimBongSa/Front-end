@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import DaumPostCode from "react-daum-postcode";
 import styled from "styled-components";
 
-const KaPost = ({}) => {
+const KaPost = () => {
 	const handleComplete = data => {
 		let fullAddress = data.address;
 		let extraAddress = "";

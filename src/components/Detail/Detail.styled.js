@@ -20,12 +20,18 @@ export const StTitleBox = styled.div`
 		font-weight: 300;
 		width: 75%;
 		font-size: 1.4rem !important;
+
+		& span {
+			box-shadow: inset 0 -1px 0 ${props => props.theme.subBtnColor};
+		}
+
 	}
 	& div {
 		margin-left: 5rem;
 		padding-top: 8px;
 		font-weight: 500;
 		color: ${props => props.theme.notiColor};
+		width: 5rem;
 	}
 `;
 
@@ -39,7 +45,12 @@ export const DetailContent = styled.div`
 	}
 	& h3 {
 		font-size: 1.4rem;
-		margin: 0rem 10rem 2rem 0rem;
+
+		margin: 3rem 1rem 2rem 0rem;
+		& span {
+			box-shadow: inset 0 -1px 0 ${props => props.theme.subBtnColor};
+		}
+
 	}
 	@media screen and (max-width: 1024px) {
 		margin-top: 5rem;
@@ -50,7 +61,9 @@ export const MapWrapper = styled.div`
 	margin-top: 2rem;
 	margin-bottom: 2rem;
 	padding-bottom: 2rem;
-	border-bottom: 1px solid silver;
+
+	border-bottom: 0.5px solid ${(props) => props.theme.borderBottom};
+
 `;
 
 export const StImgWrapper = styled.span`
@@ -74,8 +87,11 @@ export const StContentBox = styled.span`
 	margin-top: 1.5rem;
 	margin-bottom: 2rem;
 	padding-bottom: 2rem;
-	width: 100%;
-	border-bottom: 0.5px solid silver;
+
+	border-bottom: 0.5px solid ${(props) => props.theme.borderBottom};
+	font-weight: 300;
+	line-height: 2.2;
+
 `;
 export const StAreaBox = styled.span`
 	display: flex;
@@ -83,8 +99,10 @@ export const StAreaBox = styled.span`
 	margin-top: 1.5rem;
 	margin-bottom: 2rem;
 	padding-bottom: 2rem;
-	width: 100%;
-	border-bottom: 0.5px solid silver;
+
+	height: fit-content;
+	border-bottom: 0.5px solid ${(props) => props.theme.borderBottom};
+
 	& > div {
 		color: ${props => props.theme.textColor};
 		padding: 5px 10px;
@@ -97,16 +115,15 @@ export const StArea = styled.span`
 	background-color: gray;
 	font-weight: 300;
 	max-width: 350px;
-	color: white;
+	${(props) => props.theme.textBottom};
 `;
 
 export const StDetailArea = styled.span`
 	padding: 10px 5px;
 	border-radius: 10px;
-	background-color: Silver;
 	font-weight: 300;
 	max-width: 350px;
-	color: white;
+	${(props) => props.theme.textBottom};
 `;
 
 export const StDetailTag = styled.div`
@@ -116,8 +133,9 @@ export const StDetailTag = styled.div`
 	margin-top: 1.5rem;
 	margin-bottom: 2rem;
 	padding-bottom: 2rem;
-	width: 100%;
-	border-bottom: 0.5px solid silver;
+
+	border-bottom: 0.5px solid ${(props) => props.theme.borderBottom};
+
 	& div {
 		text-align: center;
 		min-width: 115px;

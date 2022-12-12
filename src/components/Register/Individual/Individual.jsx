@@ -136,16 +136,16 @@ const Individual = () => {
 
 	return (
 		<StInputContainer>
-			<InputHeader>Vongole</InputHeader>
+			<InputHeader onClick={() => {
+				navigate('/')
+			}}>Vongole</InputHeader>
 			<ToastContainer/>
 			<InputForm>
 				<InputBox>
 					<form onSubmit={onSubmitHandler}>
 						<StLegend>필수 정보</StLegend>
 						<Input
-
 							placeholder="ID"
-
 							autoComplete="off"
 							dupleCheck="username"
 							status={status}

@@ -28,7 +28,6 @@ import Input from "../../common/input/Input";
 import Profileimg from "../../common/profileimg/Profileimg";
 import { __getOtherUserInfo } from "../../../redux/modules/mypageSlice";
 
-import React from "react";
 
 const Comment = () => {
 	const dispatch = useDispatch();
@@ -96,7 +95,7 @@ const Comment = () => {
 						}}
 					>
 						댓글쓰기
-					</Stbtn>{" "}
+					</Stbtn>
 				</CommentWriteWrap>
 			) : (
 				<CommentWriteWraps>

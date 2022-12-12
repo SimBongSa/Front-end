@@ -3,21 +3,21 @@ import styled, { css } from "styled-components";
 export const StCardGridContainer = styled.section`
 	${({ variant }) => {
 		switch (variant) {
-			case "Board":
+			case "board":
 				return css`
 					display: grid;
 					width: 70%;
 					grid-template-columns: 0fr repeat(12, minmax(auto, 60px)) 12fr;
-					margin: 3rem 0px 2rem 10rem;
 					justify-items: center;
 				`;
 			case "userEnroll":
 				return css`
 					grid-template-columns: 0fr repeat(0, minmax(auto, 60px)) 10fr;
 					justify-items: center;
+					margin-top: 2rem;
 					margin-bottom: 2rem;
 				`;
-			case "Company":
+			case "company":
 				return css`
 					grid-template-columns: 0fr repeat(0, minmax(auto, 60px)) 10fr;
 					justify-items: center;
@@ -32,7 +32,7 @@ export const StCardGridContainer = styled.section`
 export const StCards = styled.div`
 	${({ variant }) => {
 		switch (variant) {
-			case "Board":
+			case "board":
 				return css`
 					display: grid;
 					grid-column: ${props => props.gridColumn} / span 14;
@@ -60,7 +60,7 @@ export const StCards = styled.div`
 						grid-template-columns: repeat(12, minmax(auto, 60px));
 					}
 				`;
-			case "Company":
+			case "company":
 				return css`
 					display: grid;
 					grid-column: ${props => props.gridColumn} / span 2;
@@ -82,7 +82,7 @@ export const StCards = styled.div`
 export const StCard = styled.div`
 	${({ variant }) => {
 		switch (variant) {
-			case "Board":
+			case "board":
 				return css`
 					grid-column-end: span 5;
 					border-radius: 6px;
@@ -122,7 +122,7 @@ export const StCard = styled.div`
 						transform: translateY(-0.5rem);
 					}
 				`;
-			case "Company":
+			case "company":
 				return css`
 					border-radius: 6px;
 					width: 18rem;
@@ -150,7 +150,7 @@ export const StCard = styled.div`
 export const StImgWrapper = styled.div`
 	${({ variant }) => {
 		switch (variant) {
-			case "Board":
+			case "board":
 				return css`
 					width: 100%;
 					overflow: hidden;
@@ -174,12 +174,26 @@ export const StImgWrapper = styled.div`
 						object-fit: cover;
 					}
 				`;
-			case "Company":
+			case "company":
 				return css`
 					width: 100%;
 					overflow: hidden;
 					border-radius: 12px;
 					position: relative;
+					transition: all 0.5s;
+					& img {
+						width: 100%;
+						height: 300px;
+						object-fit: cover;
+					}
+				`;
+			case "myCompany":
+				return css`
+					width: 100%;
+					overflow: hidden;
+					border-radius: 12px;
+					position: relative;
+					transition: all 0.5s;
 					& img {
 						width: 100%;
 						height: 300px;
@@ -187,7 +201,8 @@ export const StImgWrapper = styled.div`
 					}
 					:hover {
 						& img {
-							-webkit-filter: blur(20px);
+							filter: blur(5px);
+							-webkit-filter: blur(5px);
 						}
 					}
 				`;
@@ -200,7 +215,7 @@ export const StImgWrapper = styled.div`
 export const StContent = styled.div`
 	${({ variant }) => {
 		switch (variant) {
-			case "Board":
+			case "board":
 				return css`
 					text-overflow: ellipsis;
 					white-space: nowrap;
@@ -212,8 +227,12 @@ export const StContent = styled.div`
 
 					& .title {
 						text-align: start;
-						font-size: 1.2rem;
+						font-size: 1rem;
 						font-weight: 300;
+						max-width: 250px;
+						padding-top: 5px;
+						overflow: hidden;
+						text-overflow: ellipsis;
 						color: ${props => props.theme.textColor};
 						margin-bottom: 20px;
 						text-overflow: ellipsis;
@@ -228,19 +247,23 @@ export const StContent = styled.div`
 					& .title {
 						text-align: start;
 						font-size: 1rem;
-						font-weight: 500;
+						font-weight: 300;
+						max-width: 250px;
+						padding-top: 5px;
 						color: ${props => props.theme.textColor};
 						margin-bottom: 20px;
 					}
 				`;
-			case "Company":
+			case "company":
 				return css`
 					padding-top: 12px;
 					background-color: transparent;
 					& .title {
 						text-align: start;
 						font-size: 1rem;
-						font-weight: 500;
+						font-weight: 300;
+						max-width: 250px;
+						padding-top: 5px;
 						color: ${props => props.theme.textColor};
 						margin-bottom: 20px;
 					}
@@ -254,7 +277,7 @@ export const StContent = styled.div`
 export const StCardInfo = styled.div`
 	${({ variant }) => {
 		switch (variant) {
-			case "Board":
+			case "board":
 				return css`
 					display: flex;
 					justify-content: space-between;
@@ -283,7 +306,7 @@ export const StCardInfo = styled.div`
 export const StArea = styled.div`
 	${({ variant }) => {
 		switch (variant) {
-			case "Board":
+			case "board":
 				return css`
 					font-size: 0.8rem;
 					font-weight: 300;
@@ -310,7 +333,7 @@ export const StArea = styled.div`
 					white-space: nowrap;
 					text-overflow: ellipsis;
 				`;
-			case "Company":
+			case "company":
 				return css`
 					font-size: 0.5rem;
 					max-width: 150px;
@@ -332,7 +355,7 @@ export const StArea = styled.div`
 export const StDetailArea = styled.div`
 	${({ variant }) => {
 		switch (variant) {
-			case "Board":
+			case "board":
 				return css`
 					color: ${props => props.theme.textColor};
 					padding: 5px;
@@ -347,7 +370,7 @@ export const StDetailArea = styled.div`
 					font-size: 0.5rem;
 					margin-left: 0.5rem;
 				`;
-			case "Company":
+			case "company":
 				return css`
 					color: ${props => props.theme.textColor};
 					padding: 5px;
@@ -364,7 +387,7 @@ export const StDetailArea = styled.div`
 export const StDate = styled.div`
 	${({ variant }) => {
 		switch (variant) {
-			case "Board":
+			case "board":
 				return css`
 					width: 4rem;
 					height: 2rem;
@@ -375,7 +398,7 @@ export const StDate = styled.div`
 					text-align: center;
 					border-radius: 12rem;
 					color: ${props => props.theme.notiColor};
-					background-color: ${props => props.theme.bgColor};
+					background-color: rgba(0, 0, 0, 0.7);
 					z-index: 1;
 					position: absolute;
 				`;
@@ -391,23 +414,24 @@ export const StDate = styled.div`
 					text-align: center;
 					border-radius: 12rem;
 					color: ${props => props.theme.notiColor};
-					background-color: ${props => props.theme.bgColor};
+					background-color: rgba(0, 0, 0, 0.7);
 					z-index: 1;
 					position: absolute;
 				`;
-			case "Company":
+			case "company":
 				return css`
 					width: 3rem;
 					height: 1.5rem;
-					font-size: small;
-					font-weight: 500;
-					padding: 5px 5px;
+					font-size: 0.7rem;
+					font-weight: 300;
+					padding: 6px 10px;
 					margin-top: 15px;
 					margin-left: 15px;
 					text-align: center;
+					align-items: center;
 					border-radius: 12rem;
 					color: ${props => props.theme.notiColor};
-					background-color: ${props => props.theme.bgColor};
+					background-color: rgba(0, 0, 0, 0.7);
 					z-index: 1;
 					position: absolute;
 				`;
@@ -443,43 +467,28 @@ export const StTagBox = styled.ul`
 	}
 `;
 
-export const StHoverBox = styled.div`
+export const StBoardMisc = styled.div`
 	display: flex;
+	position: relative;
+	flex-direction: row;
 	justify-content: space-evenly;
-	gap: 12px;
-
-	:hover {
-	}
-	& div {
-		width: 4rem;
-		height: 4rem;
-		border: 1px solid ${props => props.theme.btnColor};
-		border-radius: 50%;
-		text-align: center;
-		padding: 22px 10px;
-		position: absolute;
-		z-index: 99;
-		top: 40%;
-		left: 20%;
-		display: block;
-		margin-right: 2rem;
-		color: ${props => props.theme.bgColor};
-		background: ${props => props.theme.btnColor};
-	}
+	width: 100%;
+	height: 100%;
+	z-index: 2;
 	& span {
-		width: 4rem;
-		height: 4rem;
-		border: 1px solid ${props => props.theme.notiColor};
-		border-radius: 50%;
-		text-align: center;
-		padding: 22px 10px;
 		position: absolute;
-		z-index: 99;
-		top: 40%;
-		right: 20%;
-		display: block;
-		margin-left: 2rem;
-		color: ${props => props.theme.bgColor};
+		font-weight: 700;
+		top: 140px;
+		width: 80px;
+		padding: 1rem;
+		border-radius: 12px;
+		text-align: center;
+		margin-left: calc(100% - 175px);
 		background: ${props => props.theme.notiColor};
+		color: ${props => props.theme.bgColor};
+		&:nth-child(1) {
+			margin-left: calc(100% - 400px);
+			background: ${props => props.theme.btnColor};
+		}
 	}
 `;
