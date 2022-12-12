@@ -73,7 +73,7 @@ export const ChatCard = styled.div`
   font-size: 0.9rem;
   cursor: pointer;
   clear: both;
-  width: 30%;
+  width: 35%;
   margin: 0 auto;
   align-items: center;
   justify-content: center;

@@ -25,6 +25,7 @@ export const Chat = () => {
 	ChattingServiceKit.onConnect(`/topic/greetings/${id.id}`, {}, newMessage => {
 		setReceiveMsg(newMessage);
 	});
+	
 	const [,updateState] = useState();
 	const forceUpdate = useCallback(() => updateState({}), []);
 

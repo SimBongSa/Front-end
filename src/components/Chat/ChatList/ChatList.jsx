@@ -9,7 +9,7 @@ export const ChatList = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const chatList = useSelector((state) => state?.chat?.chatList);
-  console.log(chatList)
+  console.log(chatList);
 
   return (
     <StSidePanel>
@@ -17,7 +17,7 @@ export const ChatList = () => {
       <StContact>
         <ul>
         {
-          chatList === "참여하고 있는 채팅방이 없습니다." ? 
+          chatList.length === 0 ? 
             <div onClick={() => {
               navigate('/boards')
             }}>
@@ -35,6 +35,7 @@ export const ChatList = () => {
                   }}
                 >
                   <StContactWrap>{item.roomName}</StContactWrap>
+                  <StContactWrap>{item.userNameList.split(' ')[1]}</StContactWrap>
                 </StListGroup>
               )
             })
@@ -51,4 +52,7 @@ export default ChatList;
 export const StListGroup = styled.li`
   margin: auto 15px;
   padding: 0;
+  &:nth-child(1) {
+    color: ${(props) => props.theme.btnColor};
+  }
 `

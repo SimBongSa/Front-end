@@ -5,10 +5,12 @@ export const StCardGridContainer = styled.section`
 		switch (variant) {
 			case "board":
 				return css`
+
 					display: grid;
-					width: 70%;
-					grid-template-columns: 0fr repeat(12, minmax(auto, 60px)) 12fr;
+					grid-template-columns: 0fr repeat(6, minmax(auto, 20px)) 12fr;
+
 					justify-items: center;
+					margin: 30px 0px 0px 65px;
 				`;
 			case "userEnroll":
 				return css`
@@ -97,7 +99,8 @@ export const StCard = styled.div`
 						grid-column-end: span 6;
 					}
 					@media screen and (max-width: 768px) {
-						grid-column-end: span 12;
+						grid-column-end: span 8;
+						margin-left: 30%;
 					}
 					&:hover {
 						transform: translateY(-0.5rem);
@@ -235,7 +238,6 @@ export const StContent = styled.div`
 						text-overflow: ellipsis;
 						color: ${props => props.theme.textColor};
 						margin-bottom: 20px;
-						text-overflow: ellipsis;
 						white-space: nowrap;
 						overflow: hidden;
 					}

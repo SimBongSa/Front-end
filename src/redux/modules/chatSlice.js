@@ -1,9 +1,11 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { act } from "react-dom/test-utils";
 import { apis } from "./Api/apis";
 
 export const __getChatList = createAsyncThunk("getChatList", async (payload, thunkAPI) => {
 	try {
 		const response = await apis.getChatList(payload);
+
 		return thunkAPI.fulfillWithValue(response.data.data);
 	} catch (error) {
 		return thunkAPI.rejectWithValue(error);
@@ -34,7 +36,7 @@ export const chatSlice = createSlice({
 	name: "chat",
 	initialState: {
 		chatRoom: [],
-		chatList: null,
+		chatList: [],
 		chatHistory: [],
 		isLoading: false,
 		error: null,
@@ -48,7 +50,8 @@ export const chatSlice = createSlice({
 			})
 			.addCase(__getChatList.fulfilled, (state, action) => {
 				state.isLoading = false;
-				state.chatList = action.payload;
+				state.chatList = action.payload; // 여기 수정해야 함
+				// state.chatList = action.payload;
 			})
 			.addCase(__getChatList.rejected, (state, action) => {
 				state.isLoading = false;

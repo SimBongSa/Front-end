@@ -130,12 +130,10 @@ export const __getAppliList = createAsyncThunk("appliList", async (payload, thun
 
 export const __putCompanyInfo = createAsyncThunk("__putCompanyInfo", async (payload, thunkAPI) => {
 	const formData = new FormData();
-
 	// formData append
 	Object.entries(payload).forEach(([key, value]) => {
 		formData.append(key, value);
 	});
-
 	try {
 		const response = await apis.putCompanyPage(formData);
 
@@ -160,9 +158,6 @@ export const __getAllAppliList = createAsyncThunk("allAppliList", async (payload
 export const __putApprove = createAsyncThunk("approve", async (payload, thunkAPI) => {
 	try {
 		const response = await apis.putApprove(payload);
-		if (response.data.success === true) {
-			alert("승인 완료");
-		}
 		return thunkAPI.fulfillWithValue(response.data.data);
 	} catch (error) {
 		return thunkAPI.rejectWithValue(error);
@@ -172,9 +167,6 @@ export const __putApprove = createAsyncThunk("approve", async (payload, thunkAPI
 export const __putDisapprove = createAsyncThunk("disapprove", async (payload, thunkAPI) => {
 	try {
 		const response = await apis.putDisapprove(payload);
-		if (response.data.success === true) {
-			alert("거절 완료");
-		}
 		return thunkAPI.fulfillWithValue(response.data.data);
 	} catch (error) {
 		return thunkAPI.rejectWithValue(error);

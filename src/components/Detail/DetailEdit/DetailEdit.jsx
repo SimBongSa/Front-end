@@ -17,11 +17,21 @@ import Tags from "../../Recruit/Tags/Tags";
 const DetailEdit = () => {
 	const [isPopupOpen, setIsPopupOpen] = useState(false);
 	const [boardImage, setBoardImage] = useState(null);
-	const [input, setInput] = useState("");
-	const boardsId = useSelector((state) => state?.boards?.board);
+
+	const boardsId = useSelector(state => state?.boards?.board);
+	const [input, setInput] = useState(Prev => {
+		const { title, detailArea, content } = boardsId;
+		return {
+			...Prev,
+			title,
+			detailArea,
+			content,
+		};
+	});
+
+
 	const [uploadpreview, setUploadpreview] = useState(boardsId.boardImage);
 	const [address, setAddress] = useState(boardsId.area);
-
 
 	const today = new Date();
 	const due = new Date();
@@ -49,7 +59,7 @@ const DetailEdit = () => {
 	};
 
 	//이미지 스테이트저장
-	const onChangeImage = (e) => {
+	const onChangeImage = e => {
 		setBoardImage(e.target.files[0]);
 		let reader = new FileReader();
 		if (e.target.files[0]) {
@@ -75,9 +85,9 @@ const DetailEdit = () => {
 
 	// const [tags, setTags] = useState([...boardsId?.tags]);
 	const [tags, setTags] = useState(boardsId?.tags);
-	console.log(tags);
-		// Tags
-	const onChangeTags = (e) => {
+
+	// Tags
+	const onChangeTags = e => {
 		if (e.checked) {
 			const tag = e.id;
 			setTags([...tags, tag]);
@@ -92,7 +102,7 @@ const DetailEdit = () => {
 		startDate: moment(startDate).format("YYYY-MM-DD"),
 		endDate: moment(endDate).format("YYYY-MM-DD"),
 		dueDay: moment(dueDay).format("YYYY-MM-DD HH:mm:ss"),
-		tags: tags
+		tags: tags,
 	};
 
 	const onSubmitHandler = e => {
@@ -103,10 +113,13 @@ const DetailEdit = () => {
 	return (
 		<RecruitContainer>
 			<form onSubmit={onSubmitHandler}>
-
 				<StLeftWrap>
-					<h1><span>봉사 활동</span>에 대해 궁금해요!</h1>
-					<p><span>모집글</span>을 써주세요!</p>
+					<h1>
+						<span>봉사 활동</span>에 대해 궁금해요!
+					</h1>
+					<p>
+						<span>모집글</span>을 써주세요!
+					</p>
 					<Input
 						type="text"
 						name="title"
@@ -114,17 +127,20 @@ const DetailEdit = () => {
 						key={boardsId?.title}
 						onChange={onChangeHandler}
 					/>
-					<p>봉사활동 <span>모집기간</span></p>
+					<p>
+						봉사활동 <span>모집기간</span>
+					</p>
 					<RegisterDatePicker
 						locale={ko}
 						dateFormat="📅 yyyy년-MM월-dd일"
-						selected={startDate}
 						onChange={onChange}
 						startDate={startDate}
 						endDate={endDate}
 						selectsRange
 					/>
-					<p>활동 <span>날짜와 시간</span>을 선택해주세요!</p>
+					<p>
+						활동 <span>날짜와 시간</span>을 선택해주세요!
+					</p>
 					<RegisterDatePicker
 						locale={ko}
 						selected={dueDay}
@@ -134,12 +150,13 @@ const DetailEdit = () => {
 						maxTime={due.setHours(due.setMinutes(new Date(), 0), 18)}
 						dateFormat="📅 yyyy년-MM월-dd일 / 🕜 aa h:mm "
 					/>
-					<p>봉사 기관에 대한 <span>주소</span>를 입력해주세요!
+					<p>
+						봉사 기관에 대한 <span>주소</span>를 입력해주세요!
 						<Stbtn variant="recruit-post" type="button" onClick={openPostCode}>
 							우편번호 검색
 						</Stbtn>
 					</p>
-					
+
 					<Input
 						placeholder={address}
 						type="text"
@@ -157,9 +174,9 @@ const DetailEdit = () => {
 					</div>
 					<Input
 						type="text"
-						placeholder="봉사활동 상세 주소"
 						name="detailArea"
-						value={boardsId?.detailArea}
+						defaultValue={boardsId?.detailArea}
+						key={boardsId?.detailArea}
 						onChange={onChangeHandler}
 					/>
 					<p> 게시글 이미지 수정</p>
@@ -167,19 +184,30 @@ const DetailEdit = () => {
 				</StLeftWrap>
 
 				<StRightWrap>
-					<h1><span>모집 내용</span>에 대해 궁금해요!</h1>	
+					<h1>
+						<span>모집 내용</span>에 대해 궁금해요!
+					</h1>
 
-					<p><span>봉사 카테고리</span>를 선택해 주세요!</p>
-					<h1><Tags category={true} onChangeTags={onChangeTags} prevTags={tags}/></h1>
+					<p>
+						<span>봉사 카테고리</span>를 선택해 주세요!
+					</p>
+					<h1>
+						<Tags category={true} onChangeTags={onChangeTags} prevTags={tags} />
+					</h1>
 
-					<p><span>이런 사람</span>을 찾고 있어요!</p>
-					<h1><Tags category={false} onChangeTags={onChangeTags} prevTags={tags}/></h1>
+					<p>
+						<span>이런 사람</span>을 찾고 있어요!
+					</p>
+					<h1>
+						<Tags category={false} onChangeTags={onChangeTags} prevTags={tags} />
+					</h1>
 
 					<p>세부 내용</p>
 					<TextArea
 						type="text"
 						defaultValue={boardsId?.content}
-						name={"content"}
+						key={boardsId?.content}
+						name="content"
 						onChange={onChangeHandler}
 					/>
 					<Stbtn variant="board-edit" type={"submit"}>
