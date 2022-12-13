@@ -16,18 +16,17 @@ const Board = () => {
 	const size = 12;
 	const [modal, setModal] = useState(false);
 
-	const boards = useSelector((state) => state.boards.boards);
-	console.log(boards);
+	const boards = useSelector(state => state.boards.boards);
 
 	useEffect(() => {
-		dispatch(__getBoard({page, size}));
+		dispatch(__getBoard({ page, size }));
 	}, [dispatch, page]);
 
 	// const pageNum = Math.floor(boards.length / 12) === 0 ? 1 : Math.floor(boards.length / 12);
 
 	return (
 		<BoardContainer>
-			<ToastContainer/>
+			<ToastContainer />
 			<BoardContent>
 				<Stbtn variant="boards-map-open" onClick={() => setModal(!modal)}>
 					지도 보기 <StMap />
@@ -42,8 +41,8 @@ const Board = () => {
 				) : null}
 				<CardGrid boards={boards} gridColumn={5} />
 				<StBtnBox
-					onClick={() =>{
-						setPage((prev) => prev + 1);
+					onClick={() => {
+						setPage(prev => prev + 1);
 						dispatch(__getBoard({ page, size }));
 					}}
 				>

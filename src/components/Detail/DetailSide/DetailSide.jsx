@@ -20,8 +20,6 @@ const DetailSlideBar = ({ boardsId, username, id }) => {
 	const chatList = useSelector(state => state?.chat?.chatList);
 	const newChatRoom = useSelector(state => state.chat?.chatRoom);
 
-	console.log("authority =>", authority);
-
 	const findMyChatRoom = chatList => {
 		if (chatList.roomName === boardsId?.title) {
 			return true;
