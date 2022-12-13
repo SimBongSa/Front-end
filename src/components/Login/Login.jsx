@@ -49,13 +49,14 @@ const Login = () => {
 	};
 
 	useEffect(() => {
+		window.scrollTo(0, 0);
 		if (authority) {
 			toast.success(authority + '님 반갑습니다!')
 			setTimeout(() => {
 				navigate('/');
 			}, 1000);
 		}
-	})
+	}, [])
 
 	const [loginOption, setLoginOption] = useState("member");
 

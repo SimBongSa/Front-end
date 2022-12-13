@@ -1,12 +1,12 @@
 import CardGrid from "../common/cards/CardGrid";
-import { BoardContainer, BoardContent, StTitle, ListMap, StBtnBox } from "./BoardList.styled";
+import { BoardContainer, BoardContent, ListMap, StBtnBox, StMap, StArrow } from "./BoardList.styled";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { __getBoard } from "../../redux/modules/boardSlice";
 import KaMarker from "./../Map/KaMarker";
-import { ImMap2 } from "react-icons/im";
-import styled from "styled-components";
 import Stbtn from "../common/button/Button";
+import { toast, ToastContainer } from "react-toastify";
+
 
 const Board = () => {
 	const dispatch = useDispatch();
@@ -15,25 +15,31 @@ const Board = () => {
 	const size = 12;
 	const [modal, setModal] = useState(false);
 
-	const boards = useSelector(state => state.boards.boards);
+	const boards = useSelector((state) => state.boards.boards);
+	console.log(boards);
 
 	useEffect(() => {
-		dispatch(__getBoard({ page, size }));
+		dispatch(__getBoard({page, size}));
 	}, [dispatch, page]);
-	const pageNum = Math.floor(boards.length / 12) === 0 ? 1 : Math.floor(boards.length / 12);
 
 	return (
 		<BoardContainer>
-			<StTitle>
-				<div>봉사 검색 결과</div>
-				<div>{boards.length}개</div>
-			</StTitle>
+			<ToastContainer/>
 			<BoardContent>
-				<div>
-					<Stbtn variant="boards-map-open" onClick={() => setModal(!modal)}>
-						지도 보기 <StMap />
-					</Stbtn>
-				</div>
+				<Stbtn 
+					variant="scroll-to-top" 
+					onClick={() => {
+						window.scrollTo(0, 0);
+					}}>
+						<StArrow/>
+				</Stbtn>
+				<Stbtn 
+					variant="boards-map-open" 
+					onClick={() => {
+						setModal(!modal)
+					}}>
+					지도 보기 <StMap />
+				</Stbtn>
 				{modal ? (
 					<ListMap>
 						<Stbtn variant="boards-map-close" onClick={() => setModal(false)}>
@@ -43,44 +49,18 @@ const Board = () => {
 					</ListMap>
 				) : null}
 				<CardGrid boards={boards} gridColumn={5} />
-				<StBtnBox>
-					{page === 1 ? (
-						<Stbtn variant="boards-prev-next">❮</Stbtn>
-					) : (
-						<Stbtn
-							variant="boards-prev-next"
-							onClick={() => {
-								setPage(prev => prev - 1);
-								dispatch(__getBoard({ page, size }));
-							}}
-						>
-							❮
-						</Stbtn>
-					)}
-					<div>
-						{page}/{pageNum}
-					</div>
-					<Stbtn
-						variant="boards-prev-next"
-						onClick={() => {
-							if (page === Math.floor(12 / boards.length)) {
-								alert("마지막 페이지입니다");
-							} else {
-								setPage(prev => prev + 1);
-								dispatch(__getBoard({ page, size }));
-							}
-						}}
-					>
-						❯
-					</Stbtn>
+				<StBtnBox
+					onClick={() =>{
+						setPage((prev) => prev + 1);
+						dispatch(__getBoard({ page, size }));
+					}}
+				>
+					더 보기
 				</StBtnBox>
+				<scrollToTop/>
 			</BoardContent>
 		</BoardContainer>
 	);
 };
 
 export default Board;
-
-export const StMap = styled(ImMap2)`
-	font-size: 0.9rem;
-`;

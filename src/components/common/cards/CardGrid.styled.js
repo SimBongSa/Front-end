@@ -37,6 +37,7 @@ export const StCards = styled.div`
 			case "board":
 				return css`
 					display: grid;
+					margin-top: 12rem;
 					grid-column: ${props => props.gridColumn} / span 14;
 					grid-template-columns: repeat(16, minmax(auto, 120px));
 					grid-gap: 1.5rem;
