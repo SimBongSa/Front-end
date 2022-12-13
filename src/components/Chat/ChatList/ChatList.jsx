@@ -35,6 +35,7 @@ export const ChatList = () => {
 								>
 									<StContactWrap>{item.roomName}</StContactWrap>
 									<StContactWrap>{item.userNameList.split(" ")[1]}</StContactWrap>
+
 								</StListGroup>
 							);
 						})
@@ -53,4 +54,5 @@ export const StListGroup = styled.li`
 	&:nth-child(1) {
 		color: ${props => props.theme.btnColor};
 	}
+
 `;

@@ -20,6 +20,8 @@ const DetailSlideBar = ({ boardsId, username, id }) => {
 	const chatList = useSelector(state => state?.chat?.chatList);
 	const newChatRoom = useSelector(state => state.chat?.chatRoom);
 
+	console.log("authority =>", authority);
+
 	const findMyChatRoom = chatList => {
 		if (chatList.roomName === boardsId?.title) {
 			return true;
@@ -59,53 +61,56 @@ const DetailSlideBar = ({ boardsId, username, id }) => {
 					<FcManager /> 봉사 신청 인원 : {boardsId.applicantCnt}명
 				</div>
 			</DetailSideItem>
-			<StBtnBox>
-				<Stbtn
-					variant="boards-apply"
-					onClick={() => {
-						dispatch(__postApply(id));
-						dispatch(__getBoard(id));
-						toast.success("성공적으로 처리되었습니다.");
-						setTimeout(() => {
-							window.location.replace(`/boards/${id}`);
-						}, 1000);
-					}}
-				>
-					{applied}
-				</Stbtn>
+			{authority === undefined ? null : (
+				<StBtnBox>
+					<Stbtn
+						variant="boards-apply"
+						onClick={() => {
+							dispatch(__postApply(id));
+							dispatch(__getBoard(id));
+							toast.success("성공적으로 처리되었습니다.");
+							setTimeout(() => {
+								window.location.replace(`/boards/${id}`);
+							}, 1000);
+						}}
+					>
+						{applied}
+					</Stbtn>
 
-				{chatRoom?.length > 0 ? (
-					<Stbtn
-						variant="boards-chat"
-						onClick={() => {
-							toast.success(boardsId.author + "님 과의 채팅방으로 이동합니다.");
-							setTimeout(() => {
-								navigate(`/chat/${chatRoom[0].chatRoomId}`);
-							}, 1000);
-						}}
-					>
-						봉사단체 연락하기
-					</Stbtn>
-				) : (
-					<Stbtn
-						variant="boards-chat"
-						onClick={() => {
-							createChatRoom({
-								userIdList: boardsId.authorId,
-								userNameList: boardsId.author,
-								roomName: boardsId.title,
-								boardId: boardsId.boardId,
-							});
-							toast.success(boardsId.author + "님 과의 채팅방으로 이동합니다.");
-							setTimeout(() => {
-								navigate(`/chat/${newChatRoom}`);
-							}, 1000);
-						}}
-					>
-						봉사단체 연락하기
-					</Stbtn>
-				)}
-			</StBtnBox>
+					{chatRoom?.length > 0 ? (
+						<Stbtn
+							variant="boards-chat"
+							onClick={() => {
+								toast.success(boardsId.author + "님 과의 채팅방으로 이동합니다.");
+								setTimeout(() => {
+									navigate(`/chat/${chatRoom[0].chatRoomId}`);
+								}, 1000);
+							}}
+						>
+							봉사단체 연락하기
+						</Stbtn>
+					) : (
+						<Stbtn
+							variant="boards-chat"
+							onClick={() => {
+								createChatRoom({
+									userIdList: boardsId.authorId,
+									userNameList: boardsId.author,
+									roomName: boardsId.title,
+									boardId: boardsId.boardId,
+								});
+								toast.success(boardsId.author + "님 과의 채팅방으로 이동합니다.");
+								setTimeout(() => {
+									navigate(`/chat/${newChatRoom}`);
+								}, 1000);
+							}}
+						>
+							봉사단체 연락하기
+						</Stbtn>
+					)}
+				</StBtnBox>
+			)}
+
 			{boardsId.author === username ? (
 				<StBtnBox>
 					<Stbtn
@@ -121,7 +126,7 @@ const DetailSlideBar = ({ boardsId, username, id }) => {
 						onClick={() => {
 							dispatch(__delBoard(id));
 
-							toast.success("게시물이 삭제되었습니다.")
+							toast.success("게시물이 삭제되었습니다.");
 
 							setTimeout(() => {
 								navigate("/");
