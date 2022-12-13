@@ -33,7 +33,8 @@ export const MyProcessContainer = styled.div`
 					}
 					@media (max-width: 1024px) {
 						margin: 0 auto;
-						margin-top: 10rem;
+						text-align: center;
+						margin-top: 5rem;
 						float: left;
 					}
 				`;
