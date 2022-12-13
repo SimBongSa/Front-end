@@ -43,11 +43,7 @@ const CardGrid = ({ gridColumn, companyBoards, boards, userEnroll, userWait }) =
 					{boards?.map((item, idx) => {
 						const dDay = getDateDiff(item.dueDay, today);
 						return (
-							<StCard
-								variant="board"
-								key={idx}
-								onClick={() => navigate(`/boards/${item.boardId}`)}
-							>
+							<StCard variant="board" key={idx} onClick={() => navigate(`/boards/${item.boardId}`)}>
 								<StDate variant="board">D-{dDay}</StDate>
 								<StImgWrapper variant="board">
 									<img src={item.boardImage} loading="lazy" alt="thumbnail" />
