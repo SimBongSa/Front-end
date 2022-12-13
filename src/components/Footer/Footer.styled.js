@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const FooterContainer = styled.section`
 	display: flex;
 	position: fixed;
-	bottom: -10%;
+	bottom: -10vh;
 	left: 0px;
 	flex-flow: row wrap;
 	margin: 0 auto;
@@ -14,7 +14,7 @@ export const FooterContainer = styled.section`
 	transition: all 0.3s;
 	z-index: 10;
 	&:hover {
-		bottom: 0;
+		bottom: 0vh;
 	}
 	@media (max-width: 768px) {
 		position: fixed;
