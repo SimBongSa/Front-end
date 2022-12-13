@@ -54,7 +54,6 @@ const Board = () => {
 				>
 					더 보기
 				</StBtnBox>
-				<scrollToTop/>
 			</BoardContent>
 		</BoardContainer>
 	);
