@@ -34,6 +34,8 @@ export const ChatList = () => {
 									}}
 								>
 									<StContactWrap>{item.roomName}</StContactWrap>
+									<StContactWrap>{item.userNameList.split(" ")[1]}</StContactWrap>
+
 								</StListGroup>
 							);
 						})
@@ -49,4 +51,8 @@ export default ChatList;
 export const StListGroup = styled.li`
 	margin: auto 15px;
 	padding: 0;
+	&:nth-child(1) {
+		color: ${props => props.theme.btnColor};
+	}
+
 `;

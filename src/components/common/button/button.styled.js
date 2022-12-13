@@ -120,7 +120,27 @@ export const Stbtn = styled.button`
 					color: ${props => props.theme.bgColor};
 					cursor: pointer;
 				`;
-			//boards -> SearchBar.jsx
+
+			case "scroll-to-top":
+				return css`
+					position: fixed;
+					bottom: 100px;
+					font-size: 16px;
+					border: 1px solid ${props => props.theme.btnColor};
+					border-radius: 50px;
+					width: 140px;
+					height: 40px;
+					margin-bottom: 2rem;
+					z-index: 3;
+					background: ${props => props.theme.bgColor};
+					color: ${props => props.theme.textColor};
+					cursor: pointer;
+					transition: all 0.5s ease;
+					&:hover {
+						transform: translateY(-0.5rem);
+					}
+				`;
+
 			case "boards-map-open":
 				return css`
 					position: fixed;

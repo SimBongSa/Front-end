@@ -1,13 +1,12 @@
 import CardGrid from "../common/cards/CardGrid";
-import { BoardContainer, BoardContent, ListMap, StBtnBox } from "./BoardList.styled";
+import { BoardContainer, BoardContent, ListMap, StBtnBox, StMap, StArrow } from "./BoardList.styled";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { __getBoard } from "../../redux/modules/boardSlice";
 import KaMarker from "./../Map/KaMarker";
-import { ImMap2 } from "react-icons/im";
-import styled from "styled-components";
 import Stbtn from "../common/button/Button";
 import { toast, ToastContainer } from "react-toastify";
+
 
 const Board = () => {
 	const dispatch = useDispatch();
@@ -22,13 +21,22 @@ const Board = () => {
 		dispatch(__getBoard({ page, size }));
 	}, [dispatch, page]);
 
-	// const pageNum = Math.floor(boards.length / 12) === 0 ? 1 : Math.floor(boards.length / 12);
-
 	return (
 		<BoardContainer>
 			<ToastContainer />
 			<BoardContent>
-				<Stbtn variant="boards-map-open" onClick={() => setModal(!modal)}>
+				<Stbtn 
+					variant="scroll-to-top" 
+					onClick={() => {
+						window.scrollTo(0, 0);
+					}}>
+						<StArrow/>
+				</Stbtn>
+				<Stbtn 
+					variant="boards-map-open" 
+					onClick={() => {
+						setModal(!modal)
+					}}>
 					지도 보기 <StMap />
 				</Stbtn>
 				{modal ? (
@@ -48,13 +56,10 @@ const Board = () => {
 				>
 					더 보기
 				</StBtnBox>
+				<scrollToTop/>
 			</BoardContent>
 		</BoardContainer>
 	);
 };
 
 export default Board;
-
-export const StMap = styled(ImMap2)`
-	font-size: 0.9rem;
-`;
