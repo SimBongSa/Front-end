@@ -82,6 +82,7 @@ const Login = () => {
 					</StLoginOptions>
 
 					<LoginBox>
+
 						<LoginBoxTitle>
 							<LoginTitle>봉사 지원자</LoginTitle>
 							<LoginArrowBack onClick={() => navigate("/")} />
@@ -129,7 +130,7 @@ const Login = () => {
 							onClick={() => {
 								setLoginOption("manager");
 							}}
-						>
+						>d
 							봉사 기관
 						</span>
 					</StLoginOptions>
