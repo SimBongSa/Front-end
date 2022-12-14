@@ -5,6 +5,7 @@ import { setCookie } from "../../utils/cookie";
 export const __loginMember = createAsyncThunk("loginMember", async (payload, thunkAPI) => {
 	try {
 		const response = await apis.memberLogin(payload);
+		console.log(response);
 		if (response.status === 200) {
 			localStorage.setItem("refresh-token", response.headers["refresh-token"]); // refresh token은 로껄스토리지
 			setCookie("access-token", response.headers["access-token"], {
@@ -53,9 +54,10 @@ export const __registerManager = createAsyncThunk("registerManager", async (payl
 	});
 	try {
 		const response = await apis.managerSignup(payload);
-
 		if (response.status === 200) {
 			return thunkAPI.fulfillWithValue(response.data.success);
+		} else if (response.status === 400) {
+			return thunkAPI.rejectWithValue(response.data.error.detail);
 		}
 	} catch (error) {
 		return thunkAPI.rejectWithValue(error);
@@ -107,7 +109,7 @@ export const registerSlice = createSlice({
 			.addCase(__loginMember.fulfilled, (state, action) => {
 				state.isLoading = false;
 				state.statusCode = action.payload;
-				state.loginInfo.concat(action.payload.data);
+				state.loginInfo = action.payload.data;
 			})
 			.addCase(__loginMember.rejected, (state, action) => {
 				state.isLoading = false;

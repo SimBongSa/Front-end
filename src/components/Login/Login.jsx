@@ -19,9 +19,9 @@ import { toast, ToastContainer } from "react-toastify";
 const Login = () => {
 	const navigate = useNavigate();
 	const dispatch = useDispatch();
-	const status = useSelector(state => state.register.error.response?.data?.error?.detail);
-	const authority = useSelector(state => state.register?.statusCode?.data?.username);
-
+	const status = useSelector((state) => state.register.error.response?.data.error.detail);
+	const authority = useSelector((state) => state.register?.statusCode?.data?.username);
+  
 	const init = {
 		username: "",
 		password: "",
@@ -35,14 +35,14 @@ const Login = () => {
 	};
 
 	const onSubmitHandler = e => {
-		e.preventDefault();
-		if (status) {
-			toast.error(status);
-			setInput(init);
-		} else if (input.username && input.password) {
+		e.preventDefault();;
+		if (input.username && input.password) {
 			dispatch(__loginMember(input));
-		} else if (input.username === "" || input.password === "") {
-			toast.error("항목을 모두 입력해주세요");
+			if (status) {
+				toast.error(status);
+			}
+		} else if (input.username === '' || input.password === ''){
+			toast.error('항목을 모두 입력해주세요');
 		}
 	};
 
