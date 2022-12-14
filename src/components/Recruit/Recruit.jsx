@@ -57,7 +57,6 @@ const Recruit = () => {
 		try {
 			const compressedFile = await imageCompression(file, options);
 			setBoardImage(compressedFile);
-
 			const promise = imageCompression.getDataUrlFromFile(compressedFile);
 			promise.then((result) => {
 				setUploadPreview(result);
