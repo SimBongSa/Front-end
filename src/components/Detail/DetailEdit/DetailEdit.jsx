@@ -29,7 +29,6 @@ const DetailEdit = () => {
 		};
 	});
 
-
 	const [uploadpreview, setUploadpreview] = useState(boardsId.boardImage);
 	const [address, setAddress] = useState(boardsId.area);
 
@@ -107,7 +106,7 @@ const DetailEdit = () => {
 
 	const onSubmitHandler = e => {
 		e.preventDefault();
-		dispatch(__editBoard({ upDate, id }));
+		dispatch(__editBoard({ input, upDate, id }));
 	};
 
 	return (
