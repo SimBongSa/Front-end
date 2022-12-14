@@ -355,7 +355,7 @@ export const mypageSlice = createSlice({
 			})
 			.addCase(__putApprove.fulfilled, (state, action) => {
 				state.isLoading = false;
-				state.allAppliList = state.allAppliList.filter(payload => payload.id !== action.payload);
+				state.allAppliList = state.allAppliList.filter(item => item.id !== action.payload);
 			})
 
 			.addCase(__putApprove.rejected, (state, action) => {
@@ -367,7 +367,7 @@ export const mypageSlice = createSlice({
 			})
 			.addCase(__putDisapprove.fulfilled, (state, action) => {
 				state.isLoading = false;
-				state.allAppliList = state.allAppliList.filter(payload => payload.id !== action.payload);
+				state.allAppliList = state.allAppliList.filter(payload => payload !== action.payload);
 			})
 
 			.addCase(__putDisapprove.rejected, (state, action) => {

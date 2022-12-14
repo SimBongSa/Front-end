@@ -8,6 +8,24 @@ export const StCalendarList = styled.div`
 	border: 1px solid ${props => props.theme.borderBottom};
 	border-radius: 20px;
 	width: 35%;
+	height: 640px;
+	overflow-y: scroll;
+	overflow-x: hidden;
+
+	::-webkit-scrollbar {
+		width: 6px;
+		height: cal(50% - 6px);
+	}
+	/* 스크롤바 막대 설정*/
+	::-webkit-scrollbar-thumb {
+		background-color: ${props => props.theme.borderBottom};
+		border-radius: 20px;
+	}
+
+	/* 스크롤바 뒷 배경 설정*/
+	::-webkit-scrollbar-track {
+		border-radius: 20px;
+	}
 
 	& h3 {
 		font-size: 1.5rem;
