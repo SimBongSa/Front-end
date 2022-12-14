@@ -43,6 +43,7 @@ export const __registerMember = createAsyncThunk("regitserMember", async (payloa
 			return thunkAPI.fulfillWithValue(response.data.success);
 		}
 	} catch (error) {
+		console.log(error)
 		return thunkAPI.rejectWithValue(error);
 	}
 });

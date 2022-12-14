@@ -38,9 +38,6 @@ const Login = () => {
 		e.preventDefault();;
 		if (input.username && input.password) {
 			dispatch(__loginMember(input));
-			if (status) {
-				toast.error(status);
-			}
 		} else if (input.username === '' || input.password === ''){
 			toast.error('항목을 모두 입력해주세요');
 		}
@@ -53,8 +50,10 @@ const Login = () => {
 			setTimeout(() => {
 				navigate("/");
 			}, 1000);
+		} else if (status) {
+			toast.error(status)
 		}
-	}, [authority]);
+	}, [status, authority])
 
 	const [loginOption, setLoginOption] = useState("member");
 
