@@ -21,9 +21,7 @@ const Login = () => {
 	const navigate = useNavigate();
 	const dispatch = useDispatch();
 	const status = useSelector((state) => state.register.error.response?.data.error.detail);
-	console.log(status)
 	const authority = useSelector((state) => state.register?.statusCode?.data?.username);
-	console.log(authority);
 	
 	const init = {
 		username: "",
