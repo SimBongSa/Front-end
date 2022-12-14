@@ -60,7 +60,6 @@ export const __registerManager = createAsyncThunk("registerManager", async (payl
 			return thunkAPI.rejectWithValue(response.data.error.detail);
 		}
 	} catch (error) {
-		console.log(error);
 		return thunkAPI.rejectWithValue(error);
 	}
 });
