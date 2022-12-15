@@ -85,13 +85,16 @@
 <img src="https://img.shields.io/badge/react-61DAFB?style=for-the-badge&logo=react&logoColor=black"> 
 <img src="https://img.shields.io/badge/redux-764ABC?style=for-the-badge&logo=redux&logoColor=white">
 <img src="https://img.shields.io/badge/redux―toolkit-4D148C?style=for-the-badge&logo=redux&logoColor=white">
+<img src="https://img.shields.io/badge/Context api-191A1B?style=for-the-badge&logo=react&logoColor=white">
 <img src="https://img.shields.io/badge/react―router-CA4245?style=for-the-badge&logo=reactrouter&logoColor=black"> 
 <img src="https://img.shields.io/badge/redux―thunk-512BD4?style=for-the-badge&logo=redux&logoColor=white">
+
  <br>
 <img src="https://img.shields.io/badge/create react―app-09D3AC?style=for-the-badge&logo=createreactapp&logoColor=white">
   <img src="https://img.shields.io/badge/styled components-DB7093?style=for-the-badge&logo=styledcomponents&logoColor=white">
 <img src="https://img.shields.io/badge/yarn-2C8EBB?style=for-the-badge&logo=Yarn&logoColor=white">
 <img src="https://img.shields.io/badge/stomp-191A1B?style=for-the-badge&logo=stomp&logoColor=white">
+
   <br>
 <img src="https://img.shields.io/badge/kakao react―maps-FFCD00?style=for-the-badge&logo=kakao&logoColor=white">
 <img src="https://img.shields.io/badge/daum postcode-FFCD00?style=for-the-badge&logo=kakao&logoColor=white">
@@ -100,15 +103,6 @@
 <img src="https://img.shields.io/badge/Axios-5A29E4?style=for-the-badge&logo=Axios&logoColor=white">
 <img src="https://img.shields.io/badge/Websockets-41454A?style=for-the-badge&logo=&logoColor=white">
 <img src="https://img.shields.io/badge/JSON Web Tokens-000000?style=for-the-badge&logo=JSONWebTokens&logoColor=white">
-
-<br>
-
-<br>
-  
-<img src="https://img.shields.io/badge/spring-6DB33F?style=for-the-badge&logo=spring&logoColor=white">
-<img src="https://img.shields.io/badge/amazone ec2-FF9900?style=for-the-badge&logo=amazonec2&logoColor=white">
-<img src="https://img.shields.io/badge/mysql-4479A1?style=for-the-badge&logo=mysql&logoColor=white">
-<img src="https://img.shields.io/badge/amazon s3-569A31?style=for-the-badge&logo=amazons3&logoColor=white">
 
 <br>
 <img src="https://img.shields.io/badge/figma-F24E1E?style=for-the-badge&logo=figma&logoColor=white">
@@ -166,7 +160,7 @@
     "yup": "^0.32.11"
 
 - 사용한 패키지 간략한 설명
-  - redux, redux-toolkit : 리덕스 툴킷 사용
+  - redux, redux-toolkit : 상태 관리를 위한 리덕스, 리덕스 툴킷 사용
   - styled-components : 스타일 적용
   - axios : 서버와 비동기 통신
   - react-hook-form : 폼 유효성
@@ -213,7 +207,7 @@
 | 문제 상황 | 수정하려는 profileImage 미적용시 백앤드 서버 측에서 처리하지 못하는 문제                                                                                                                                                                                                                                                                                                                                                                                                                                  |
 | 문제 원인 | 프로필 수정 페이지에서 전체 항목을 수정할 필요는 없으니, 수정할 항목만 수정 가능하게 끔 하고 기존의 값들은 useSelector를 통해서 useState의 초깃값으로 선언했다.<br> image는 서버에서 GET 해오는건 `URL` 형식이고, 서버에 POST 할 땐 `file` 형식으로 요청해야하는데, 받아 온 URL 형식을 그대로 전달하면 file로 설정해둔 백앤드 측에서 인식을 하지 못하였다.<br> 그래서, 프로필 수정을 하지 않을 시에는 image : null값으로 POST 요청하였고, 백앤드에서도 image에 해당하는 null 값에 맞게끔 POST 요청받았다. |
 | 문제 해결 | · null이 아닌 falsy한 값들을 다 전달해보고, 테스트 해보았다.<br> → 그대로 오류가 났다. <br>· backend에서 요청한 페이로드를 소스형식으로 전달<br> → 마찬가지로 오류가 났다.<br> 백앤드 측과 다시 얘기를 해보고, 백앤드 팀원 4명이 전부 달라붙은 결과 원인은 백앤드 측에서 제대로 값을 수신하지 못하고 있었고, 백앤드 측 해당 코드를 고친 결과 요청이 성공하였다.                                                                                                                                           |
-| 해결 결과 | 취업을 해서도 백앤드 팀과 교신하여 이런 일들이 많겠지만,반드시 400에러라 해서 내 책임도 아니고, 500에러라 해서 백앤드 책임도 아니다. 너무 에러 코드에만 신경쓰지말고 내가, 혹은 각자 할 수 있는 부분에 대해서 책임감 있게 파다 보면 좋은 결과가 생기는 것 같다.                                                                                                                                                                                                                                           |
+| 해결 결과 | 취업을 해서도 백앤드 팀과 교신하여 이런 일들이 많겠지만, 반드시 400에러라 해서 내 책임도 아니고, 500에러라 해서 백앤드 책임도 아니다. 너무 에러 코드에만 신경쓰지말고 내가, 혹은 각자 할 수 있는 부분에 대해서 책임감 있게 파다 보면 좋은 결과가 생기는 것 같다.<br>                                                                                                                                                                                                                                        |
 
 ### **2. prop 및 새로고침 문제**
 
@@ -222,8 +216,8 @@
 | 문제 상황 | props로 데이터를 받아올때 새로고침을 하지 않으면 화면에 데이터값이 표시되지 않는 문제                                                                                                                |
 | 문제 원인 | useEffect의 실행보다 props로 받은 값들이 먼저 처리되어 값들이 undefined로 처리됨.                                                                                                                    |
 | 문제 해결 | props값의 길이가 0 이상일때에만 props가 실행되게 코드수정 했다.<br> 그러나 undefined 값들을 정의해주니 데이터 값이 없을때 표현되어야 할 default 화면도 함께 렌더링 되지 않는 문제가 추가로 발생했다. |
-| 해결 결과 | props값의 길이가 0 이상일때에만 props가 실행되게하는 처리를 삭제해주고 불필요하게 state에 저장해주던 코드를 삭제했더니 default 값도 자연히 보여지게 구현되었다.                                      |
-
+| 해결 결과 | props값의 길이가 0 이상일때에만 props가 실행되게하는 처리를 삭제해주고 불필요하게 state에 저장해주던 코드를 삭제했더니 default 값도 자연히 보여지게 구현되었다.  
+ 
 ```javascript
 props값의 길이가 0이상일때에만 props가 실행되게 바꿈
 {modal === false && companyBoards.length > 0 ? (
@@ -259,15 +253,24 @@ useEffect(() => {
 	const getElCount = mark => mark.reduce((ac, v) => ({ ...ac, [v]: (ac[v] || 0) + 1 }), {});
 	const arr = getElCount(mark);
 ```
+<br>
 
-### **3. 성호님**
+### **3. 사이트 초기 로딩**
 
 | 구분      | 내용 |
 | --------- | ---- |
-| 문제 상황 | ㅇ   |
-| 문제 원인 | ㅇ   |
-| 문제 해결 | ㅇ   |
-| 해결 결과 | ㅇ   |
+| 문제 상황 | 사이트 초기 로딩속도가 매우 느린 문제. |
+| 문제 원인 |초기 로딩 시 모든 데이터를 가져오는 SPA 특징으로 인해, 사이트 내 이미지의 출현빈도가 매우 높았다는 것을 분석했다. |
+| 문제 해결 | 1) page Component loading 시, image lazy Loading 적용. 2) 게시물 업로드 시, 이미지 압축을 통해 resizing을 해주었다.|
+| 해결 결과 | 1) 약 10% 속도 향상 개선 효과를 보였고, 2) lighthouse 점수에서 유의미한 차이가 보였다. |
+
+### **4. 채팅 리스트 component 로딩 속도 지연 관련**
+| 구분      | 내용 |
+| --------- | ---- |
+| 문제 상황 | 채팅 리스트를 불러올 때 로딩 속도 문제 |
+| 문제 원인 | 한 user가 무수히 많은 채팅방을 생성한 경우, 해당 채팅방의 정보와, 채팅방이 종속된 게시물의 정보(이미지 포함), 채팅 내역 등을 한 번에 불러오고 있어, 로딩 속도가 느린 현상을 발견했습니다.|
+| 문제 해결 | 1. 채팅방, 채팅 list, 채팅 input을 모두 컴포넌트로 나누어, 각각 불러올 데이터를 분산시키기<br>2. 각 채팅방을 클릭 시, chatRoomId를 param값으로 갖는 다른 페이지로 routing하기<br>3. chat history는, 채팅 관련 최상위 component에서 불러와서 각 채팅방을 클릭했을 때, 불러올 수 있도록 navigate 시 props값으로 함께 전달하기<br>4. 채팅방이 종속된 게시물의 정보는 해당 채팅방에서 갖는 param값으로 필요한 정보만 가져오도록 코드 수정|
+| 해결 결과 | 현재 띄워진 채팅방의 데이터만 불러오도록 했고, 결국 속도면에서 유의미한 차이를 보였다. |<br>
 
 ---
 
@@ -296,7 +299,7 @@ useEffect(() => {
 ## **🐶 추가하고 싶은 기능 및 기술**
 
 1. 기능 :
-   신고하기, 알림
+   신고하기, 알림, 카카오 맵 세부 활용, 
    <br>
 2. 기술 :
    타입스크립트 적용, 리액트 쿼리 적용
