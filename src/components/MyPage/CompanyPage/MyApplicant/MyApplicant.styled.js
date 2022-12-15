@@ -7,7 +7,6 @@ export const AppliCard = styled.article`
   position: relative;
   box-shadow: 0 4px 21px -12px rgba(0, 0, 0, 0.66);
   border-radius: 10px;
-  width: 80%;
   max-width: 1180px;
   margin: 0 0 2rem 0;
   overflow: hidden;
@@ -21,7 +20,6 @@ export const AppliCard = styled.article`
     right: 0;
     bottom: 0;
     left: 0;
-    /* background-image: linear-gradient(-70deg, #424242, transparent 50%); */
     opacity: 1;
     border-radius: 10px;
   }

@@ -66,13 +66,15 @@ export const StCards = styled.div`
 			case "company":
 				return css`
 					display: grid;
-					grid-column: ${props => props.gridColumn} / span 2;
-					grid-template-columns: repeat(3, minmax(auto, 120px));
+					grid-column: ${props => props.gridColumn} / span 12;
+					grid-template-columns: repeat(2, minmax(auto, 120px));
 					grid-gap: 1.5rem;
+					margin-top: -15rem;
 					@media screen and (max-width: 1440px) {
-						grid-template-columns: repeat(3, minmax(auto, 60px));
+						grid-template-columns: repeat(2, minmax(auto, 60px));
 					}
 					@media screen and (max-width: 1024px) {
+						margin-left: 2rem;
 						grid-template-columns: repeat(12, minmax(auto, 60px));
 					}
 				`;

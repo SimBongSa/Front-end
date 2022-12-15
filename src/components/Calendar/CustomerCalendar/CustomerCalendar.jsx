@@ -34,9 +34,7 @@ const CustomerCalendar = ({ companyBoards }) => {
 						navigationLabel={null}
 						tileContent={({ date, view }) => {
 							let html = [];
-
 							const momentDate = moment(date).format("YYYY-MM-DD");
-
 							if (mark.find(item => item === momentDate)) {
 								html.push(
 									<div className="dot" key={date}>

@@ -22,10 +22,7 @@ export const StCalendarWrap = styled.div`
 `;
 
 export const StCalendar = styled(Calendar)`
-	min-width: min-content;
-	@media (max-width: 1280px) {
-		min-width: fit-content;
-	}
+	width: 100%;
 `;
 
 export const StCalendarContainer = styled.div`
@@ -41,7 +38,6 @@ export const StCalendarContainer = styled.div`
 	}
 
 	.react-calendar {
-		/* width: 55rem; */
 		background-color: ${props => props.theme.bgColor};
 		font-family: Arial, Helvetica, sans-serif;
 		line-height: 2.5rem;
