@@ -123,7 +123,7 @@ const CompanyPage = () => {
 				) : null}
 
 				{companyPageOpt !== null && companyPageOpt === "myActivity" ? (
-					<CardGrid companyBoards={companyBoards} gridColumn={5} />
+					<CardGrid companyBoards={companyBoards} gridColumn={2} />
 				) : null}
 			</CompanyPageContainer>
 		</>

@@ -26,6 +26,18 @@ export const __getBoard = createAsyncThunk("getBoard", async (payload, thunkAPI)
 	}
 });
 
+export const __getBoardCnt = createAsyncThunk(
+	"getBoardCnt",
+	async (payload, thunkAPI) => {
+		try {
+			const response = await apis.getBoardCnt(payload);
+			return thunkAPI.fulfillWithValue(response.data.data.cnt);
+		} catch (error) {
+			return thunkAPI.rejectWithValue(error);
+		}
+	}
+)
+
 export const __getBoardId = createAsyncThunk("getBoardId", async (payload, thunkAPI) => {
 	try {
 		const response = await apis.getBoardId(payload);
@@ -97,6 +109,7 @@ export const boardSlice = createSlice({
 	name: "boards",
 	initialState: {
 		boards: [],
+		boardsCnt: null,
 		board: [],
 		searchResult: null,
 		area: [],
@@ -130,6 +143,18 @@ export const boardSlice = createSlice({
 				state.boards.push(...action.payload);
 			})
 			.addCase(__getBoard.rejected, (state, action) => {
+				state.isLoading = false;
+				state.error = action.payload;
+			})
+
+			.addCase(__getBoardCnt.pending, (state, _) => {
+				state.isLoading = true;
+			})
+			.addCase(__getBoardCnt.fulfilled, (state, action) => {
+				state.isLoading = false;
+				state.boardsCnt = action.payload;
+			})
+			.addCase(__getBoardCnt.rejected, (state, action) => {
 				state.isLoading = false;
 				state.error = action.payload;
 			})

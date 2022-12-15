@@ -41,7 +41,7 @@ export const StCalendarList = styled.div`
 		text-align: center;
 		padding: 45% 0 45% 0;
 	}
-	@media (max-width: 1280px) {
+	@media (max-width: 1330px) {
 		text-align: center;
 		margin-top: 5rem;
 		width: 100%;

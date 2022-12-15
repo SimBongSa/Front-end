@@ -13,6 +13,7 @@ import Button from "../../common/button/Button";
 import Profileimg from "../../common/profileimg/Profileimg";
 import Badge from "../../common/badge/Badge";
 import { useCookies } from "react-cookie";
+
 const Profile = ({
 	companyInfo,
 	userInfo,
@@ -71,14 +72,18 @@ const Profile = ({
 								</h3>
 								<h5>{userInfo.phoneNumber}</h5>
 								<h5>{userInfo.email}</h5>
-								<Button
-									variant="mypage-edit"
-									onClick={() => {
-										navigate("/mypageedit");
-									}}
-								>
-									프로필 수정하기
-								</Button>
+								{
+									authority ? (
+										<Button
+											variant="mypage-edit"
+											onClick={() => {
+												navigate("/mypageedit");
+											}}
+										>
+											프로필 수정하기
+										</Button>
+									) : null
+								}
 								<MyActivity>
 									<ProfileCategory>
 										<div>{userWait?.length}</div>
@@ -123,14 +128,19 @@ const Profile = ({
 								<h3>{companyInfo?.name}</h3>
 								<h5>{companyInfo?.phoneNumber}</h5>
 								<h5>{companyInfo?.email}</h5>
-								<Button
-									variant="mypage-edit"
-									onClick={() => {
-										navigate("/mypageedit");
-									}}
-								>
-									프로필 수정하기
-								</Button>
+								{
+									authority ? (
+										<Button
+											variant="mypage-edit"
+											onClick={() => {
+												navigate("/mypageedit");
+											}}
+										>
+											프로필 수정하기
+										</Button>
+									) : null
+								}
+
 								<ProfileCategory>단체 소개</ProfileCategory>
 								<p>{companyInfo?.introduction}</p>
 								<MyActivity>

@@ -16,8 +16,8 @@ export const CompanyPageContainer = styled.div`
 export const BtnContainer = styled.div`
 	display: flex;
 	flex-direction: row;
-	width: 80%;
 	overflow: hidden;
+	margin-bottom: 2rem;
 	& input[type="radio"] {
 		display: none;
 		&:checked:nth-child(1) ~ nav > label:nth-child(1) {
@@ -48,5 +48,8 @@ export const BtnContainer = styled.div`
 				border-bottom: 3px solid #aaaaaa;
 			}
 		}
+	}
+	@media screen and (max-width: 1024px) {
+		width: 100%;
 	}
 `;

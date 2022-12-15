@@ -7,7 +7,6 @@ export const AppliCard = styled.article`
   position: relative;
   box-shadow: 0 4px 21px -12px rgba(0, 0, 0, 0.66);
   border-radius: 10px;
-  width: 80%;
   max-width: 1180px;
   margin: 0 0 2rem 0;
   overflow: hidden;
@@ -21,7 +20,6 @@ export const AppliCard = styled.article`
     right: 0;
     bottom: 0;
     left: 0;
-    /* background-image: linear-gradient(-70deg, #424242, transparent 50%); */
     opacity: 1;
     border-radius: 10px;
   }
@@ -47,7 +45,7 @@ export const AppliCard = styled.article`
     margin-top: 5rem;
   }
   @media screen and (max-width: 1280px){
-    width: 500px;
+    width: 550px;
   }
   @media screen and (max-width: 768px){
     width: 400px;
@@ -66,9 +64,6 @@ export const AppliCardImg = styled.div`
     object-fit: cover;
     position: relative;
     transition: all 0.3s linear;
-    @media screen and (max-width: 1350px){
-      width: 100%;
-    }
   }
 `
 
@@ -109,7 +104,7 @@ export const PreviewText = styled.div`
 export const AppliBtnWrap = styled.div`
   display: flex;
   position: absolute;
-  right: -1px;
+  margin-left: calc(100% - 170px);
   & button {
     cursor: pointer;
     width: 100px;
@@ -117,11 +112,5 @@ export const AppliBtnWrap = styled.div`
     border: none;
     border-radius: 15px;
     margin-right: 1rem;
-  }
-  @media screen and (max-width: 1350px){
-    right: -8rem;
-  }
-  @media screen and (max-width: 1280px){
-    right: -5rem;
   }
 `
