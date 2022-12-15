@@ -19,7 +19,7 @@
 
 ---
 
-## **✨** Vongole 주요 기능
+## **✨** Vongole 주요 기능 (▶ Click ❕❗)
 
 - 회원과 봉사단체 각각의 로그인과 회원가입<br>
   ![ezgif-3-07a89fc0a6.gif](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/47e248b2-74b8-4390-b681-dceba62fa0ce/ezgif-3-07a89fc0a6.gif?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20221214%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20221214T051811Z&X-Amz-Expires=86400&X-Amz-Signature=ed52521e028e0365ffd4708849d3f2d0ac054b00231206d2a1d38ce3ba61ae90&X-Amz-SignedHeaders=host&x-id=GetObject)
