@@ -16,7 +16,6 @@ import { ToastContainer } from "react-toastify";
 
 const Board = () => {
 	const dispatch = useDispatch();
-
 	const [page, setPage] = useState(1);
 	const size = 6;
 	const [modal, setModal] = useState(false);

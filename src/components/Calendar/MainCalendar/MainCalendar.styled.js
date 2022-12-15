@@ -6,8 +6,26 @@ export const StCalendarListWrap = styled.div``;
 export const StCalendarList = styled.div`
 	background-color: ${props => props.theme.subBgColor};
 	border: 1px solid ${props => props.theme.borderBottom};
-	border-radius: 20px;
+	border-radius: 6px;
 	width: 35%;
+	height: 640px;
+	overflow-y: scroll;
+	overflow-x: hidden;
+
+	::-webkit-scrollbar {
+		width: 10px;
+	}
+	/* 스크롤바 막대 설정*/
+	::-webkit-scrollbar-thumb {
+		background-color: ${props => props.theme.borderBottom};
+		border-radius: 6px;
+	}
+
+	/* 스크롤바 뒷 배경 설정*/
+	::-webkit-scrollbar-track {
+		background-color: transparent;
+		border-radius: 6px;
+	}
 
 	& h3 {
 		font-size: 1.5rem;
