@@ -99,9 +99,3 @@ export const UserPageContainer = styled.div`
 		float: right;
 	}
 `;
-
-const BtnBox = styled.div`
-	display: flex;
-	justify-content: center;
-	cursor: pointer;
-`;
