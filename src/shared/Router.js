@@ -16,6 +16,7 @@ import { ChatPage } from "../pages/ChatPage";
 import ChatContent from "../components/Chat/ChatContent/ChatContent";
 import SearchPage from "../pages/SearchPage";
 import ScrollToTop from "../components/Scroll/ScrollToTop";
+import ClipLoader from "react-spinners/ClipLoader";
 
 const Router = () => {
 	return (
@@ -23,7 +24,7 @@ const Router = () => {
 			<ScrollToTop />
 			<ThemeProvider>
 				<GloblaStyle />
-				<Suspense fallback={<div>...loading</div>}>
+				<Suspense fallback={<ClipLoader color={(props) => props.theme.btnColor}/>}>
 					<Routes>
 						<Route path="/" element={<MainPage />} />
 						<Route path="/boards" element={<BoardListPage />} />
