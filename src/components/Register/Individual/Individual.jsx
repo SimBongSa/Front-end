@@ -6,7 +6,6 @@ import { __registerMember } from "../../../redux/modules/registerSlice";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { StInputContainer, InputHeader, StRegBtn } from "../Register.styled";
-import Notification from "../../common/noti/Notification";
 import { toast, ToastContainer } from 'react-toastify';
 
 const Individual = () => {
@@ -222,11 +221,9 @@ const Individual = () => {
 						<StRegBtn type="submit">회원가입</StRegBtn>
 					</form>
 				</InputBox>
-
 				<StToLogin>
 					이미 Vongole 회원이시라면? ➔ <b onClick={() => navigate("/login")}> Login </b>
 				</StToLogin>
-
 			</InputForm>
 		</StInputContainer>
 	);
