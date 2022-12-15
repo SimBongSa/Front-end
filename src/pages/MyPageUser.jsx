@@ -1,7 +1,13 @@
+import Header from "../components/Header/Header";
+import Footer from "../components/Footer/Footer";
+import UserPage from "../components/MyPage/UserPage/UserPage";
+
 export const MyPageUser = () => {
-  return (
-    <div>
-      유저 마이페이지임
-    </div>
-  )
-}
+	return (
+		<>
+			<Header />
+			<UserPage />
+			<Footer />
+		</>
+	);
+};

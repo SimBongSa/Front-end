@@ -1,7 +1,13 @@
+import Footer from "../components/Footer/Footer";
+import Header from "../components/Header/Header"
+import CompanyPage from "../components/MyPage/CompanyPage/CompanyPage"
+
 export const MyPageCompany = () => {
   return (
     <div>
-      회사 마이페이지임
+      <Header />
+      <CompanyPage/>
+      <Footer/>
     </div>
-  )
-}
+  );
+};
