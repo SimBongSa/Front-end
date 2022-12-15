@@ -14,15 +14,18 @@ const Board = () => {
 	const [page, setPage] = useState(1);
 	const size = 6;
 	const [modal, setModal] = useState(false);
-	const boards = useSelector((state) => state.boards.boards);
+
+
+	const boards = useSelector(state => state.boards.boards);
+
 
 	useEffect(() => {
-		dispatch(__getBoard({page, size}));
+		dispatch(__getBoard({ page, size }));
 	}, [dispatch, page]);
 
 	return (
 		<BoardContainer>
-			<ToastContainer/>
+			<ToastContainer />
 			<BoardContent>
 				<Stbtn 
 					variant="scroll-to-top" 
@@ -48,8 +51,11 @@ const Board = () => {
 				) : null}
 				<CardGrid boards={boards} gridColumn={5} />
 				<StBtnBox
-					onClick={() =>{
-						setPage((prev) => prev + 1);
+
+					onClick={() => {
+						setPage(prev => prev + 1);
+						dispatch(__getBoard({ page, size }));
+
 					}}
 				>
 					더 보기
