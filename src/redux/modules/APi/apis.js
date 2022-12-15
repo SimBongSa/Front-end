@@ -37,6 +37,7 @@ export const apis = {
 
 	// boards
 	getBoard: payload => axios.get(`${BASE_URL}/boards?page=${payload.page}&size=${payload.size}`),
+	getBoardCnt: (() => axios.get(`${BASE_URL}/boards/count`)),
 	getBoardId: boardId => axios.get(`${BASE_URL}/boards/${boardId}`),
 
 	// registerActivity slice

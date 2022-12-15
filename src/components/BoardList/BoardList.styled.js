@@ -7,6 +7,7 @@ export const BoardContainer = styled.div`
 	flex-direction: column;
 	margin: 3rem;
 	margin-left: 2rem;
+	margin-bottom: 15rem;
 `;
 
 export const StTitle = styled.div`
@@ -26,6 +27,7 @@ export const BoardContent = styled.div`
 `;
 
 export const StBtnBox = styled.div`
+	margin-top: 12rem;
 	margin-bottom: 5rem;
 	display: flex;
 	align-items: center;
