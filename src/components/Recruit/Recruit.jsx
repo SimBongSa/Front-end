@@ -11,8 +11,8 @@ import { useNavigate } from "react-router-dom";
 import Tags from "./Tags/Tags";
 import ImageUpload from "./ImageUpload/ImageUpload";
 import Stbtn from "../common/button/Button";
-
 import { toast, ToastContainer } from "react-toastify";
+import imageCompression from "browser-image-compression";
 
 import {
 	RecruitContainer,
@@ -23,28 +23,49 @@ import {
 } from "./Recruit.styled";
 
 const Recruit = () => {
+
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
-
 	const [isPopupOpen, setIsPopupOpen] = useState(false);
 
 	// Image
 	const [boardImage, setBoardImage] = useState(null);
 	const [uploadPreview, setUploadPreview] = useState([]);
 
-	const onChangeImage = e => {
-		setBoardImage(e.target.files[0]);
-		let reader = new FileReader();
-		if (e.target.files[0]) {
-			reader.readAsDataURL(e.target.files[0]);
-		}
-		reader.onloadend = () => {
-			const previewImgUrl = reader.result;
-			if (previewImgUrl) {
-				setUploadPreview(previewImgUrl);
-			}
+	// const onChangeImage = e => {
+	// 	setBoardImage(e.target.files[0]);
+	// 	let reader = new FileReader();
+	// 	if (e.target.files[0]) {
+	// 		reader.readAsDataURL(e.target.files[0]);
+	// 	}
+	// 	reader.onloadend = () => {
+	// 		const previewImgUrl = reader.result;
+	// 		if (previewImgUrl) {
+	// 			setUploadPreview(previewImgUrl);
+	// 		}
+	// 	};
+	// };
+
+	// 이미지 압축
+	const imageCompress = async (e) => {
+		let file = e.target?.files[0]
+		const options = {
+			maxSizeMB: 0.2,
+			maxWidthOrHeight: 1920,
+			useWebWorker: true,
 		};
+		try {
+			const compressedFile = await imageCompression(file, options);
+			setBoardImage(compressedFile);
+			const promise = imageCompression.getDataUrlFromFile(compressedFile);
+			promise.then((result) => {
+				setUploadPreview(result);
+			})
+		} catch (error) {
+			console.log(error)
+		}
 	};
+	
 
 	// date picker
 	const today = new Date();
@@ -211,7 +232,7 @@ const Recruit = () => {
 					/>
 
 					<p>봉사활동을 잘 나타내 줄 이미지를 올려보세요</p>
-					<ImageUpload onChangeImage={onChangeImage} uploadPreview={uploadPreview} />
+					<ImageUpload onChangeImage={imageCompress} uploadPreview={uploadPreview} />
 				</StLeftWrap>
 
 				<StRightWrap>

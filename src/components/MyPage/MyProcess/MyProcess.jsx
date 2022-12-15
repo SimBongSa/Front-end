@@ -75,11 +75,7 @@ const MyProcess = ({
 					<StepTitle variant="user">거절된 봉사</StepTitle>
 				</ProcessStep>
 			</ProcessStepWrap>
-			{modal === false && callendarData.length > 0 ? (
-				<UserCalendar userEnroll={callendarData} />
-			) : (
-				""
-			)}
+			{modal === false ? <UserCalendar userEnroll={callendarData} /> : null}
 			<StOpenCalendar>
 				{modal === false ? (
 					<div onClick={onClickCloseHandler}>

@@ -42,6 +42,7 @@ export const __registerMember = createAsyncThunk("regitserMember", async (payloa
 			return thunkAPI.fulfillWithValue(response.data.success);
 		}
 	} catch (error) {
+		console.log(error)
 		return thunkAPI.rejectWithValue(error);
 	}
 });
@@ -53,9 +54,10 @@ export const __registerManager = createAsyncThunk("registerManager", async (payl
 	});
 	try {
 		const response = await apis.managerSignup(payload);
-
 		if (response.status === 200) {
 			return thunkAPI.fulfillWithValue(response.data.success);
+		} else if (response.status === 400) {
+			return thunkAPI.rejectWithValue(response.data.error.detail);
 		}
 	} catch (error) {
 		return thunkAPI.rejectWithValue(error);
@@ -65,7 +67,6 @@ export const __registerManager = createAsyncThunk("registerManager", async (payl
 export const __checkUsername = createAsyncThunk("checkUsername", async (payload, thunkAPI) => {
 	try {
 		const response = await apis.checkUsername(payload);
-
 		return thunkAPI.fulfillWithValue(response.data.success);
 
 	} catch (error) {
@@ -76,7 +77,6 @@ export const __checkUsername = createAsyncThunk("checkUsername", async (payload,
 export const __checkNickname = createAsyncThunk("checkNickname", async (payload, thunkAPI) => {
 	try {
 		const response = await apis.checkNickname(payload);
-
 		return thunkAPI.fulfillWithValue(response.data.data);
 	} catch (error) {
 		return thunkAPI.rejectWithValue(error);
@@ -107,7 +107,7 @@ export const registerSlice = createSlice({
 			.addCase(__loginMember.fulfilled, (state, action) => {
 				state.isLoading = false;
 				state.statusCode = action.payload;
-				state.loginInfo.concat(action.payload.data);
+				state.loginInfo = action.payload.data;
 			})
 			.addCase(__loginMember.rejected, (state, action) => {
 				state.isLoading = false;

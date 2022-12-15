@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { useState } from "react";
 import { getCookieToken } from "../../../utils/cookie";
 import {
@@ -22,6 +22,7 @@ const CardGrid = ({ gridColumn, companyBoards, boards, userEnroll, userWait }) =
 	const navigate = useNavigate();
 	const dispatch = useDispatch();
 	const username = getCookieToken(["username"]);
+	const page = useLocation();
 
 	const getDateDiff = (d1, d2) => {
 		const dueDay = new Date(d1);
@@ -37,38 +38,42 @@ const CardGrid = ({ gridColumn, companyBoards, boards, userEnroll, userWait }) =
 	return (
 		<>
 			<ToastContainer />
-			<StCardGridContainer variant="board">
-				<StCards gridColumn={gridColumn} variant="board">
-					{/* boards 전체 게시물 리스트  */}
-					{boards?.map((item, idx) => {
-						const dDay = getDateDiff(item.dueDay, today);
-						return (
-							<StCard
-								variant="board"
-								key={idx}
-								onClick={() => navigate(`/boards/${item.boardId}`)}
-							>
-								<StDate variant="board">D-{dDay}</StDate>
-								<StImgWrapper variant="board">
-									<img src={item.boardImage} loading="lazy" alt="thumbnail" />
-								</StImgWrapper>
-								<StContent variant="board">
-									<p className="title">{item.title}</p>
-									<StCardInfo variant="board">
-										<StArea variant="board">{item.area}</StArea>
-										<StDetailArea variant="board">{item.detailArea}</StDetailArea>
-									</StCardInfo>
-									<StTagBox>
-										{item?.tags?.map(tag => {
-											return <li>{tag}</li>;
-										})}
-									</StTagBox>
-								</StContent>
-							</StCard>
-						);
-					})}
-				</StCards>
-			</StCardGridContainer>
+			{page.pathname === "/boards" ? (
+				<StCardGridContainer variant="board">
+					<StCards gridColumn={gridColumn} variant="board">
+						{/* boards 전체 게시물 리스트  */}
+						{boards?.map((item, idx) => {
+							const dDay = getDateDiff(item.dueDay, today);
+							return (
+								<StCard
+									variant="board"
+									key={idx}
+									onClick={() => navigate(`/boards/${item.boardId}`)}
+								>
+									<StDate variant="board">D-{dDay}</StDate>
+									<StImgWrapper variant="board">
+										<img src={item.boardImage} loading="lazy" alt="thumbnail" />
+									</StImgWrapper>
+									<StContent variant="board">
+										<p className="title">{item.title}</p>
+										<StCardInfo variant="board">
+											<StArea variant="board">{item.area}</StArea>
+											<StDetailArea variant="board">{item.detailArea}</StDetailArea>
+										</StCardInfo>
+										<StTagBox>
+											{item?.tags?.map(tag => {
+												return <li>{tag}</li>;
+											})}
+										</StTagBox>
+									</StContent>
+								</StCard>
+							);
+						})}
+					</StCards>
+				</StCardGridContainer>
+			) : (
+				""
+			)}
 
 			{/* user page  */}
 			<StCardGridContainer variant="userEnroll">

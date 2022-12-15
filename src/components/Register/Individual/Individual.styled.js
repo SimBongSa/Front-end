@@ -43,9 +43,27 @@ export const InputBox = styled.div`
 	}
 `;
 
+export const StGender = styled.div`
+	display: flex;
+	margin: 0 auto;
+	flex-direction: row;
+	justify-content: space-evenly;
+`;
+
 export const StLegend = styled.legend`
 	font-size: 1.4em;
 	margin-top: 15px;
 	margin-bottom: 0px;
 	text-align: left;
+`;
+
+export const StToRegister = styled.span`
+	font-weight: 300;
+	font-size: 1.2rem;
+	margin-top: 2rem;
+	margin-bottom: 15rem;
+	& b {
+		cursor: pointer;
+		color: orange;
+	}
 `;
