@@ -16,6 +16,7 @@ import { ChatPage } from "../pages/ChatPage";
 import ChatContent from "../components/Chat/ChatContent/ChatContent";
 import SearchPage from "../pages/SearchPage";
 import ScrollToTop from "../components/Scroll/ScrollToTop";
+import { NotFoundPage } from "../pages/NotFoundPage";
 
 const Router = () => {
 	return (
@@ -41,6 +42,7 @@ const Router = () => {
 						<Route path="/chat" element={<ChatPage />}>
 							<Route path="/chat:id" element={<ChatContent />} />
 						</Route>
+						<Route path="/*" element={<NotFoundPage />} />
 					</Routes>
 				</Suspense>
 			</ThemeProvider>
