@@ -55,6 +55,7 @@ export const __getUserReject = createAsyncThunk("reject", async (payload, thunkA
 
 export const __putUserInfo = createAsyncThunk("putUserInfo", async (payload, thunkAPI) => {
 	const formData = new FormData();
+
 	// formData append
 	Object.entries(payload).forEach(([key, value]) => {
 		formData.append(key, value);
@@ -78,6 +79,7 @@ export const __getOtherUserInfo = createAsyncThunk(
 	async (payload, thunkAPI) => {
 		try {
 			const response = await apis.getOtherUserInfo(payload);
+
 			return thunkAPI.fulfillWithValue(response.data.data);
 		} catch (error) {
 			return thunkAPI.rejectWithValue(error);
@@ -90,7 +92,6 @@ export const __getOtherUserEnroll = createAsyncThunk(
 	async (payload, thunkAPI) => {
 		try {
 			const response = await apis.getOtherUserEnroll(payload);
-			return thunkAPI.fulfillWithValue(response.data.data);
 		} catch (error) {
 			return thunkAPI.rejectWithValue(error);
 		}
@@ -101,6 +102,7 @@ export const __getOtherUserEnroll = createAsyncThunk(
 export const __getCompanyInfo = createAsyncThunk("companyInfo", async (payload, thunkAPI) => {
 	try {
 		const response = await apis.getCompanyPage(payload);
+
 		return thunkAPI.fulfillWithValue(response.data.data);
 	} catch (error) {
 		return thunkAPI.rejectWithValue(error);
@@ -134,6 +136,7 @@ export const __putCompanyInfo = createAsyncThunk("__putCompanyInfo", async (payl
 	});
 	try {
 		const response = await apis.putCompanyPage(formData);
+
 		if (response.status === 200) {
 			alert(response.data.data.msg);
 			return thunkAPI.fulfillWithValue(response);
@@ -352,7 +355,7 @@ export const mypageSlice = createSlice({
 			})
 			.addCase(__putApprove.fulfilled, (state, action) => {
 				state.isLoading = false;
-				state.allAppliList = state.allAppliList.filter(item => item.id !== action.payload);
+				state.allAppliList = state.allAppliList.filter(payload => payload.id !== action.payload);
 			})
 
 			.addCase(__putApprove.rejected, (state, action) => {
@@ -364,7 +367,7 @@ export const mypageSlice = createSlice({
 			})
 			.addCase(__putDisapprove.fulfilled, (state, action) => {
 				state.isLoading = false;
-				state.allAppliList = state.allAppliList.filter(payload => payload !== action.payload);
+				state.allAppliList = state.allAppliList.filter(payload => payload.id !== action.payload);
 			})
 
 			.addCase(__putDisapprove.rejected, (state, action) => {

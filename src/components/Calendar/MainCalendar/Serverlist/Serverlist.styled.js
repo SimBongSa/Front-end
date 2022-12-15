@@ -76,3 +76,21 @@ export const StDetailArea = styled.span`
 	white-space: nowrap;
 	text-overflow: ellipsis;
 `;
+
+export const StMoreBox = styled.div`
+	display: flex;
+	justify-content: center;
+	gap: 5px;
+`;
+
+export const StMore = styled.div`
+	width: 8px;
+	height: 8px;
+	margin-top: 1rem;
+	border: 1px solid gray;
+	border-radius: 50%;
+	cursor: pointer;
+	:hover {
+		background-color: gray;
+	}
+`;

@@ -3,7 +3,6 @@ import { apis } from "./Api/apis";
 
 export const __createBoard = createAsyncThunk("createBoard", async (payload, thunkAPI) => {
 	const formData = new FormData();
-
 	//formData append
 	Object.entries(payload).forEach(([key, value]) => {
 		formData.append(key, value);

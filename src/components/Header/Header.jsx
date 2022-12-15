@@ -44,7 +44,7 @@ const Header = () => {
 				<img src={logo} alt="" />
 			</HeaderLogo>
 			<LightThemeBtn onClick={toggleTheme}>
-				<BsFillMoonFill>Theme</BsFillMoonFill> 
+				<BsFillMoonFill>Theme</BsFillMoonFill>
 			</LightThemeBtn>
 			<HeaderMenu>
 				<HeaderMenuItem

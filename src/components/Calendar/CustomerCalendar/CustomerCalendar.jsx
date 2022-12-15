@@ -4,13 +4,16 @@ import moment from "moment";
 
 const CustomerCalendar = ({ companyBoards }) => {
 	const [value, setValue] = useState(new Date());
+	const [month, setMonth] = useState({ companyBoards });
 	const [mark, setMark] = useState([]);
 
 	useEffect(() => {
-		companyBoards?.map(item => {
-			setMark(prev => [...prev, item.dueDay.split(" ")[0]]);
-		});
-	}, [companyBoards]);
+		if (month.constructor === Object && Object.keys(month).length !== 0) {
+			month.companyBoards?.map(item => {
+				setMark(prev => [...prev, item.dueDay.split(" ")[0]]);
+			});
+		}
+	}, [month]);
 
 	const getElCount = mark => mark.reduce((ac, v) => ({ ...ac, [v]: (ac[v] || 0) + 1 }), {});
 	const arr = getElCount(mark);

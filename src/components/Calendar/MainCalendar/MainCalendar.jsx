@@ -1,6 +1,10 @@
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { __getCalendarList, __getMonthList } from "../../../redux/modules/calendarSlice";
+import {
+	__getTotalCalendarList,
+	__getCalendarList,
+	__getMonthList,
+} from "../../../redux/modules/calendarSlice";
 import Serverlist from "./Serverlist/Serverlist";
 import moment from "moment";
 import {
@@ -14,16 +18,20 @@ import {
 const MainCalendar = () => {
 	const dispatch = useDispatch();
 	const maindate = useSelector(state => state.calendarList.calendarList);
+	const totallist = useSelector(state => state.calendarList.TotalcalendarList);
 	const monthlist = useSelector(state => state.calendarList.montList);
 
 	const [value, setValue] = useState(new Date());
 	const [date, setDate] = useState(new Date());
+	const [result, setResult] = useState([]);
 	const [mark, setMark] = useState([]);
 
-	console.log(maindate);
-	console.log(monthlist);
-
 	// dueDay
+	useEffect(() => {
+		dispatch(__getTotalCalendarList(moment(value).format("YYYY-MM-DD")));
+	}, [dispatch, value]);
+
+	// dueDay page 4
 	useEffect(() => {
 		dispatch(__getCalendarList(moment(value).format("YYYY-MM-DD")));
 	}, [dispatch, value]);
@@ -90,7 +98,7 @@ const MainCalendar = () => {
 						) : (
 							<h2>해당 날짜에 활동이 없어요 💨</h2>
 						)}
-						<Serverlist result={maindate.data} key={date} totallist={maindate.data} />
+						<Serverlist result={maindate.data} key={date} totallist={totallist.data} />
 					</StCalendarList>
 				</StCalendarWrap>
 			</StCalendarContainer>

@@ -1,10 +1,12 @@
-import { InputForm, InputBox, StToLogin, StGender, StLegend } from "./Individual.styled";
+import { InputForm, InputBox, StToLogin } from "./Individual.styled";
 import Input from "../../common/input/Input";
 import { useState, useCallback, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { __registerMember } from "../../../redux/modules/registerSlice";
 import { useNavigate } from "react-router-dom";
+import styled from "styled-components";
 import { StInputContainer, InputHeader, StRegBtn } from "../Register.styled";
+import Notification from "../../common/noti/Notification";
 import { toast, ToastContainer } from 'react-toastify';
 
 const Individual = () => {
@@ -57,7 +59,8 @@ const Individual = () => {
 	);
 
 
-	const onUsernameChange = useCallback((e) => {
+	const onUsernameChange = useCallback(
+		e => {
 			const usernameRegex = /^[a-zA-Z0-9]{4,16}$/;
 			const { name, value } = e.target;
 			setInput({ ...input, [name]: value });
@@ -78,7 +81,8 @@ const Individual = () => {
 		[input]
 	);
 
-	const onPwChange = useCallback((e) => {
+	const onPwChange = useCallback(
+		e => {
 			const pwRegex = /^(?=.*[a-zA-Z0-9])(?=.*\d)(?=.*\W).{8,16}$/;
 			const { name, value } = e.target;
 			setInput({ ...input, [name]: value });
@@ -99,7 +103,8 @@ const Individual = () => {
 		[input]
 	);
 
-	const onPwConfirmChange = useCallback((e) => {
+	const onPwConfirmChange = useCallback(
+		e => {
 			const { name, value } = e.target;
 			setInput({ ...input, [name]: value });
 			if (value === input.password) {
@@ -113,7 +118,7 @@ const Individual = () => {
 		[input]
 	);
 
-	const onSubmitHandler = (e) => {
+	const onSubmitHandler = e => {
 		e.preventDefault();
 		if (isName && isPw && isPwConfirm && status) {
 			dispatch(__registerMember(input));
@@ -228,3 +233,28 @@ const Individual = () => {
 };
 
 export default Individual;
+
+export const StGender = styled.div`
+	display: flex;
+	margin: 0 auto;
+	flex-direction: row;
+	justify-content: space-evenly;
+`;
+
+export const StLegend = styled.legend`
+	font-size: 1.4em;
+	margin-top: 15px;
+	margin-bottom: 0px;
+	text-align: left;
+`;
+
+export const StToRegister = styled.span`
+	font-weight: 300;
+	font-size: 1.2rem;
+	margin-top: 2rem;
+	margin-bottom: 15rem;
+	& b {
+		cursor: pointer;
+		color: orange;
+	}
+`;

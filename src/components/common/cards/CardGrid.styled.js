@@ -5,8 +5,10 @@ export const StCardGridContainer = styled.section`
 		switch (variant) {
 			case "board":
 				return css`
+
 					display: grid;
 					grid-template-columns: 0fr repeat(6, minmax(auto, 20px)) 12fr;
+
 					justify-items: center;
 					margin: 30px 0px 0px 65px;
 				`;

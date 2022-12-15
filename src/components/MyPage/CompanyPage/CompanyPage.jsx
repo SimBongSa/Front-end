@@ -82,7 +82,11 @@ const CompanyPage = () => {
 						<StepTitle variant="company">나의 봉사</StepTitle>
 					</ProcessStep>
 				</ProcessStepWrap>
-				{modal === false ? <CustomerCalendar companyBoards={companyBoards} /> : null}
+				{modal === false && companyBoards.length > 0 ? (
+					<CustomerCalendar companyBoards={companyBoards} />
+				) : (
+					""
+				)}
 				<StOpenCalendar>
 					{modal === false ? (
 						<div onClick={onClickCloseHandler}>

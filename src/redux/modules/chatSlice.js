@@ -1,5 +1,4 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { act } from "react-dom/test-utils";
 import { apis } from "./Api/apis";
 
 export const __getChatList = createAsyncThunk("getChatList", async (payload, thunkAPI) => {

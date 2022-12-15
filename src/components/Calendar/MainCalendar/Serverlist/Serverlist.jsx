@@ -5,10 +5,12 @@ import {
 	StArea,
 	StDetailArea,
 	StCardInfo,
+	StMore,
+	StMoreBox,
 } from "./Serverlist.styled";
 import { useNavigate } from "react-router-dom";
 
-const Serverlist = ({ result }) => {
+const Serverlist = ({ result, totallist }) => {
 	const navigate = useNavigate();
 
 	return (
@@ -39,6 +41,14 @@ const Serverlist = ({ result }) => {
 						);
 				  })
 				: null}
+			{totallist?.length > 4 ? (
+				<StMoreBox>
+					<StMore></StMore>
+					<StMore></StMore>
+				</StMoreBox>
+			) : (
+				""
+			)}
 		</>
 	);
 };
