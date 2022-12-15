@@ -1,10 +1,9 @@
-import { InputForm, InputBox, StToLogin, StGender, StLegend, StToRegister } from "./Individual.styled";
+import { InputForm, InputBox, StToLogin, StGender, StLegend } from "./Individual.styled";
 import Input from "../../common/input/Input";
 import { useState, useCallback, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { __registerMember } from "../../../redux/modules/registerSlice";
 import { useNavigate } from "react-router-dom";
-import styled from "styled-components";
 import { StInputContainer, InputHeader, StRegBtn } from "../Register.styled";
 import { toast, ToastContainer } from 'react-toastify';
 
