@@ -142,9 +142,7 @@ const Login = () => {
 
 					<LoginBox>
 						<LoginBoxTitle>
-
 							<LoginTitle>봉사 기관</LoginTitle>
-
 							<LoginArrowBack onClick={() => navigate("/")} />
 						</LoginBoxTitle>
 
