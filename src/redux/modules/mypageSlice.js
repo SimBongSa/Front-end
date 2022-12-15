@@ -38,7 +38,6 @@ export const __getUserPass = createAsyncThunk("pass", async (payload, thunkAPI) 
 
 export const __getUserReject = createAsyncThunk("reject", async (payload, thunkAPI) => {
 	const formData = new FormData();
-
 	// formData append
 	Object.entries(payload).forEach(([key, value]) => {
 		formData.append(key, value);
@@ -46,7 +45,6 @@ export const __getUserReject = createAsyncThunk("reject", async (payload, thunkA
 
 	try {
 		const response = await apis.getUserReject(payload);
-
 		return thunkAPI.fulfillWithValue(response.data.data);
 	} catch (error) {
 		return thunkAPI.rejectWithValue(error);
@@ -92,6 +90,7 @@ export const __getOtherUserEnroll = createAsyncThunk(
 	async (payload, thunkAPI) => {
 		try {
 			const response = await apis.getOtherUserEnroll(payload);
+			return thunkAPI.fulfillWithValue(response.data.data);
 		} catch (error) {
 			return thunkAPI.rejectWithValue(error);
 		}

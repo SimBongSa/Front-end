@@ -19,7 +19,7 @@ export const DetailSide = styled.div`
 		padding: 1rem;
 		text-align: center;
 	}
-	@media screen and (max-width: 1060px) {
+	@media screen and (max-width: 1280px) {
 		display: flex;
 		margin: 0 auto;
 		flex-direction: column;
