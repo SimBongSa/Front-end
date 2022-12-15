@@ -6,7 +6,7 @@
 
 ## 🎈 프로젝트 소개
 
-## ![Untitled](https://peaceful-draw-c87.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fdcaa9b59-913d-439c-94aa-5c9e7ea8718b%2FUntitled.png?id=0baa97b8-fc86-4afa-a5bf-131c13110e09&table=block&spaceId=3f90d267-c606-41cf-aa9a-a2ad140810e0&width=600&userId=&cache=v2)
+## ![Untitled](https://peaceful-draw-c87.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fdcaa9b59-913d-439c-94aa-5c9e7ea8718b%2FUntitled.png?id=0baa97b8-fc86-4afa-a5bf-131c13110e09&table=block&spaceId=3f90d267-c606-41cf-aa9a-a2ad140810e0&width=400&userId=&cache=v2)
 
 👦 주말에 뻔한 여가생활은 싫은데 뭔가 색다른 여가활동이 없으려나?
 
