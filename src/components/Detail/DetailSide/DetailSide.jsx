@@ -10,6 +10,7 @@ import { __createChatRoom } from "../../../redux/modules/chatSlice";
 import Stbtn from "../../common/button/Button";
 import { toast, ToastContainer } from "react-toastify";
 import { FcCalendar, FcAlarmClock, FcManager } from "react-icons/fc";
+import styled from "styled-components";
 
 const DetailSlideBar = ({ boardsId, username, id }) => {
 	const role = getCookieToken(["authority"]);
@@ -44,11 +45,12 @@ const DetailSlideBar = ({ boardsId, username, id }) => {
 
 	return (
 		<DetailSide>
-			<ToastContainer />
+			<StToastContainer />
 			<h1>봉사활동 모집기간</h1>
 			<StDateBox>
 				<div>{boardsId?.startDate}</div> ━ <div>{boardsId?.endDate}</div>
 			</StDateBox>
+			<ToastContainer />
 			<DetailSideItem>
 				<div>
 					<FcCalendar /> 날짜 : {boardsId?.dueDay?.split(" ")[0]}
@@ -77,17 +79,20 @@ const DetailSlideBar = ({ boardsId, username, id }) => {
 					</Stbtn>
 
 					{chatRoom?.length > 0 ? (
-						<Stbtn
-							variant="boards-chat"
-							onClick={() => {
-								toast.success(boardsId.author + "님 과의 채팅방으로 이동합니다.");
-								setTimeout(() => {
-									navigate(`/chat/${chatRoom[0].chatRoomId}`);
-								}, 1000);
-							}}
-						>
-							봉사단체 연락하기
-						</Stbtn>
+						<>
+							<ToastContainer />
+							<Stbtn
+								variant="boards-chat"
+								onClick={() => {
+									toast.success(boardsId.author + "님 과의 채팅방으로 이동합니다.");
+									setTimeout(() => {
+										navigate(`/chat/${chatRoom[0].chatRoomId}`);
+									}, 1000);
+								}}
+							>
+								봉사단체 연락하기
+							</Stbtn>
+						</>
 					) : (
 						<Stbtn
 							variant="boards-chat"
@@ -140,3 +145,7 @@ const DetailSlideBar = ({ boardsId, username, id }) => {
 	);
 };
 export default DetailSlideBar;
+
+export const StToastContainer = styled(ToastContainer)`
+	margin-top: 10rem;
+`
