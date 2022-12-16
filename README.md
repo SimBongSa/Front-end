@@ -7,7 +7,7 @@
 
 ## 🎈 프로젝트 소개
 
-## ![Untitled]([[[https://peaceful-draw-c87.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F9b195eb9-b6f3-4d0e-85f0-22d94becf0cf%2FUntitled.jpeg?id=593188c4-159c-464b-a08f-795fda74277b&table=block&spaceId=3f90d267-c606-41cf-aa9a-a2ad140810e0&width=600&userId=&cache=v2](https://www.notion.so/Vongole-9824772a27c64952b69aada34e4dd9f9#1efb7091e57f4f1a9eb897eb8bcd7cd5)](https://peaceful-draw-c87.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fae5c3024-1464-4c67-8f31-6ba86f502df4%2FUntitled.png?id=1efb7091-e57f-4f1a-9eb8-97eb8bcd7cd5&table=block&spaceId=3f90d267-c606-41cf-aa9a-a2ad140810e0&width=1200&userId=&cache=v2)](https://peaceful-draw-c87.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fae5c3024-1464-4c67-8f31-6ba86f502df4%2FUntitled.png?id=1efb7091-e57f-4f1a-9eb8-97eb8bcd7cd5&table=block&spaceId=3f90d267-c606-41cf-aa9a-a2ad140810e0&width=1200&userId=&cache=v2))
+![Untitled]((https://peaceful-draw-c87.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fae5c3024-1464-4c67-8f31-6ba86f502df4%2FUntitled.png?id=1efb7091-e57f-4f1a-9eb8-97eb8bcd7cd5&table=block&spaceId=3f90d267-c606-41cf-aa9a-a2ad140810e0&width=1200&userId=&cache=v2))
 
 👦 주말에 뻔한 여가생활은 싫은데 뭔가 색다른 여가활동이 없으려나?
 
