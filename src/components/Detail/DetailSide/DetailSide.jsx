@@ -12,6 +12,7 @@ import { toast, ToastContainer } from "react-toastify";
 import { FcCalendar, FcAlarmClock, FcManager } from "react-icons/fc";
 
 const DetailSlideBar = ({ boardsId, username, id }) => {
+	const role = getCookieToken(["authority"]);
 	const [applied, setApplied] = useState("");
 	const authority = getCookieToken(["username"]);
 	const dispatch = useDispatch();
@@ -59,7 +60,7 @@ const DetailSlideBar = ({ boardsId, username, id }) => {
 					<FcManager /> 봉사 신청 인원 : {boardsId.applicantCnt}명
 				</div>
 			</DetailSideItem>
-			{authority === undefined ? null : (
+			{authority === undefined || role === "ROLE_ADMIN" ? null : (
 				<StBtnBox>
 					<Stbtn
 						variant="boards-apply"
