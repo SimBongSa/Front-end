@@ -44,6 +44,7 @@ export const TitleWrap = styled.div`
 `;
 
 export const Image = styled.img`
+	cursor: pointer;
 	width: 400px;
 	height: 350px;
 	border-radius: 30px;
