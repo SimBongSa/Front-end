@@ -4,7 +4,7 @@ import { BoardContainer, BoardContent, ListMap, StMap, StArrow } from "./BoardLi
 import { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { __getBoard, __getBoardCnt } from "../../redux/modules/boardSlice";
-import { toast, ToastContainer } from "react-toastify";
+import { ToastContainer } from "react-toastify";
 import KaMarker from "./../Map/KaMarker";
 import ClipLoader from "react-spinners/ClipLoader";
 
@@ -13,13 +13,10 @@ const Board = () => {
 	const [modal, setModal] = useState(false);
 
 	const boardsCnt = useSelector((state) => state.boards.boardsCnt);
-	console.log(boardsCnt)
 	const { boards, isLoading } = useSelector((state) => ({
 		boards: state.boards.boards,
 		isLoading: state.boards.isLoading,
 	}));
-
-	console.log(boards.length);
 
 	// 무한 스크롤
 	const page = useRef(1);
@@ -95,8 +92,7 @@ const Board = () => {
 						/> : null
 				}
 			</BoardContent>
-			{ boardsCnt === boards.length ? null : <div style={{ marginTop: '29rem'}} ref={setBottom}/>}
-			{/* <div style={{ marginTop: '29rem'}} ref={setBottom}/> */}
+			{ boardsCnt === boards.length ? null : <div style={{ marginTop: '25rem'}} ref={setBottom}/>}
 		</BoardContainer>
 	);
 };

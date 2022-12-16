@@ -9,6 +9,7 @@ export const MyPageCards = styled.div`
 	& h1 {
 		font-size: 2rem;
 		margin: 1rem;
+		margin-bottom: -10rem;
 	}
 	@media (max-width: 1024px) {
 		margin: 0 auto;
