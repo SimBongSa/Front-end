@@ -174,7 +174,7 @@
 
 # 기술 스택 정리 및 기술적 의사결정
 
-## 🛸[기술적 의사결정 보러가기 🎆Click!](https://github.com/SimBongSa/Front-end/wiki/%EA%B8%B0%EC%88%A0-%EC%8A%A4%ED%83%9D-%EC%A0%95%EB%A6%AC-%EB%B0%8F-%EA%B8%B0%EC%88%A0%EC%A0%81-%EC%9D%98%EC%82%AC%EA%B2%B0%EC%A0%95)
+# 🛸[기술적 의사결정 보러가기 🎆Click!](https://github.com/SimBongSa/Front-end/wiki/%EA%B8%B0%EC%88%A0-%EC%8A%A4%ED%83%9D-%EC%A0%95%EB%A6%AC-%EB%B0%8F-%EA%B8%B0%EC%88%A0%EC%A0%81-%EC%9D%98%EC%82%AC%EA%B2%B0%EC%A0%95)
 
 ---
 
