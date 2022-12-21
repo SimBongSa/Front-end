@@ -1,4 +1,4 @@
-# <span style='color: #2D3748; background-color:#fff5b1;'>Vongole</span> (<span style='background-color:#F7DDBE'>봉</span>사활동 <span style='background-color:#F7DDBE'>골</span>라서 해볼<span style='background-color:#F7DDBE'>래</span>?)
+# <span style='color: #2D3748; background-color:#fff5b1;'>Vongole</span> (<span style='background-color:#F7DDBE'>봉</span>사활동 <span style='background-color:#F7DDBE'>골</span>라서 갈<span style='background-color:#F7DDBE'>래</span>?)
 
 ![Untitled](https://peaceful-draw-c87.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fc8fbb2a2-aa09-44af-88f1-8001cb9fb8ea%2FKakaoTalk_20221209_153857269_01.jpg?table=block&id=9824772a-27c6-4952-b69a-ada34e4dd9f9&spaceId=3f90d267-c606-41cf-aa9a-a2ad140810e0&width=2000&userId=&cache=v2)
 
